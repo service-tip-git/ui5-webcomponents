@@ -1,5 +1,7 @@
-commit b77db6b04579cfa479fe0802406da691edca0b04
+commit 92987476d2238f512bae871aa1b8559a31b0a450
 Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Fri Aug 18 11:47:54 2023 +0300
+Date:   Mon Aug 21 09:36:47 2023 +0300
 
-    fix(ui5-input): apply correct button's box-shadow on hover (#7439)
+    fix(ui5-toast): enhance storybook samples (#7451)
+    
+    fix(ui5-toast): enhance storybook sample

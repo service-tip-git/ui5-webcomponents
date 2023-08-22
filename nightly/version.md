@@ -1,15 +1,9 @@
-commit 52be839e70e1cb94b86e177ea3a1efc66fd7a981
-Author: Martin <martin.r.hristov@gmail.com>
-Date:   Tue Aug 22 12:31:03 2023 +0300
+commit f942c9eab70d9129624e306bb8a255b221f8db4c
+Author: niyap <38278268+niyap@users.noreply.github.com>
+Date:   Tue Aug 22 23:56:23 2023 +0300
 
-    fix(ui5-panel): enhance storybook samples (#7403)
+    fix(ui5-slider): enhance storybook samples (#7460)
     
-    * docs(ui5-panel): simplify playground sample
+    * fix(ui5-slider): enhance storybook samples
     
-    * fix(ui5-panel): enhance storybook sample
-    
-    * fix(ui5-panel): apply review comments
-    
-    ---------
-    
-    Co-authored-by: Nia Peeva <nia.peeva@sap.com>
+    * fix(ui5-slider): apply review comments

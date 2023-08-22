@@ -1,5 +1,5 @@
-commit 52562ecb5f6c91a447210827c0ff27c9f726cf9b
+commit 0283e28b8993a37b98fc0acfb2e15d6fc6bc77f8
 Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Tue Aug 22 09:36:54 2023 +0300
+Date:   Tue Aug 22 10:18:50 2023 +0300
 
-    fix(ui5-multi-combobox): adjust storybook sample (#7441)
+    fix(ui5-message-strip): enhance storybook samples (#7464)

@@ -4281,7 +4281,7 @@
                                 "text": "sap.ui.webc.main.types.MessageStripDesign"
                             },
                             "default": "\"Information\"",
-                            "description": "Defines the component type. <br><br> <b>Note:</b> Available options are <code>\"Information\"</code>, <code>\"Positive\"</code>, <code>\"Negative\"</code>, and <code>\"Warning\"</code>."
+                            "description": "Defines the component type."
                         },
                         {
                             "deprecated": false,

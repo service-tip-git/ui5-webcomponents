@@ -1,9 +1,9 @@
-commit f942c9eab70d9129624e306bb8a255b221f8db4c
-Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Tue Aug 22 23:56:23 2023 +0300
+commit 40eb99c76c93229d43c79797dee970fa53e7c8ad
+Author: ilhan orhan <ilhan.orhan007@gmail.com>
+Date:   Wed Aug 23 11:13:06 2023 +0300
 
-    fix(ui5-slider): enhance storybook samples (#7460)
+    fix(icons): fix "employee-approvals" icon cutt-off (#7461)
     
-    * fix(ui5-slider): enhance storybook samples
+    The employee-approvals icon used to be cut-off from the top (as the SVG"s y coordinates were running out of the viewbox) now the SVG path is corrected.
     
-    * fix(ui5-slider): apply review comments
+    Fixes: #7410

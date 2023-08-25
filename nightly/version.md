@@ -1,7 +1,7 @@
-commit 7a6039b79b4d716e5322671cb8fdb74b19664a99
-Author: Vladislav Tasev <vladitasev@users.noreply.github.com>
-Date:   Fri Aug 25 11:46:02 2023 +0300
+commit 174f4b462de254fd3eaab41a06d26c016c360d5d
+Author: ilhan orhan <ilhan.orhan007@gmail.com>
+Date:   Fri Aug 25 12:15:26 2023 +0300
 
-    chore: upgrade to chromedriver 116 (#7476)
+    fix(framework): fix OpenUI5Support usage in applyTheme (#7485)
     
-    chore: upgrade to chromedrier 116
+    OpenUI5Support should have been imported as a type, not importing the feature itself. Importing the feature is done by the consumers, when they need better OpenUI5 integration.

@@ -1,9 +1,7 @@
-commit 31a3608562ae457f66bb51f7310566664a76a39c
-Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Tue Aug 29 17:20:47 2023 +0300
+commit d512116994e48998c2970d62180e22bbc249515d
+Author: Lukas Harbarth <lukas.harbarth@sap.com>
+Date:   Tue Aug 29 21:33:45 2023 +0200
 
-    fix(ui5-textarea): prevent console error on focus out (#7504)
+    docs(ui5-select & ui5-toolbar): fix JSDoc comments (#7507)
     
-    * fix(ui5-textarea): prevent console error on focus out
-    
-    * fix(ui5-textarea): apply review comments
+    docs(Select & Toolbar): fix JSDoc comments

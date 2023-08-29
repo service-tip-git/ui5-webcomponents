@@ -1,7 +1,34 @@
-commit 174f4b462de254fd3eaab41a06d26c016c360d5d
+commit 97c4a1259005225c54457dd269754d1eae2277c4
 Author: ilhan orhan <ilhan.orhan007@gmail.com>
-Date:   Fri Aug 25 12:15:26 2023 +0300
+Date:   Tue Aug 29 10:50:08 2023 +0300
 
-    fix(framework): fix OpenUI5Support usage in applyTheme (#7485)
+    chore: fix storybook build, Toolbar story and some Toolbar TS constructions (#7499)
     
-    OpenUI5Support should have been imported as a type, not importing the feature itself. Importing the feature is done by the consumers, when they need better OpenUI5 integration.
+    Since the Toolbar PR has been merged the "nightly" storybook stopped deploying due to errors when building the story of the Toolbar, see https://github.com/SAP/ui5-webcomponents/actions/runs/5974432275/job/16208568004#step:4:3210 tracked down to wrong jsdoc.
+    
+    - fixed wrong namespaces, make use of appendocs
+    
+    - fixed some TS construction has been fixed
+    
+    In ToolbarItem.js
+    ```js
+    export type { ToolbarItem };
+    export default ToolbarItem;
+    ```
+    
+    changed to
+    ```js
+    export default ToolbarItem;
+    ```
+    
+    In Toolbar.js
+    ```js
+    import type { ToolbarItem } from "./ToolbarItem.js";
+    ```
+    
+    changed to
+    ```js
+     import type ToolbarItem from "./ToolbarItem.js";
+     ```
+    
+    - showcase ui5-toolbar-select and ui5-toolbar-select-option in the storybook

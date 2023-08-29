@@ -2113,7 +2113,7 @@
                             "name": "default"
                         }
                     ],
-                    "description": "A component to be used as custom list item within the <code>ui5-list</code> the same way as the standard <code>ui5-li</code>.\n\nThe component accepts arbitrary HTML content to allow full customization.",
+                    "description": "A component to be used as custom list item within the <code>ui5-list</code> the same way as the standard <code>ui5-li</code>.\n\nThe component accepts arbitrary HTML content to allow full customization.\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-li-custom</code> exposes the following CSS Shadow Parts: <ul> <li>native-li - Used to style the main li tag of the list item</li> <li>content - Used to style the content area of the list item</li> <li>detail-button - Used to style the button rendered when the list item is of type detail</li> <li>delete-button - Used to style the button rendered when the list item is in delete mode</li> <li>radio - Used to style the radio button rendered when the list item is in single selection mode</li> <li>checkbox - Used to style the checkbox rendered when the list item is in multiple selection mode</li> </ul>",
                     "members": [
                         {
                             "deprecated": false,
@@ -6060,6 +6060,11 @@
                         },
                         {
                             "deprecated": false,
+                            "description": "Defines the HTML element that will be displayed in the component input part, representing the selected option. <br><br>\n\n<b>Note:</b> If not specified and <code>ui5-select-menu-option</code> is used, either the option's <code>display-text</code> or its textContent will be displayed. <br><br>\n\n<b>Note:</b> If not specified and <code>ui5-opton</code> is used, the option's textContent will be displayed.",
+                            "name": "label"
+                        },
+                        {
+                            "deprecated": false,
                             "description": "Defines the value state message that will be displayed as pop up under the component. <br><br>\n\n<b>Note:</b> If not specified, a default text (in the respective language) will be displayed. <br><br> <b>Note:</b> The <code>valueStateMessage</code> would be displayed, when the component is in <code>Information</code>, <code>Warning</code> or <code>Error</code> value state. <br><br> <b>Note:</b> If the component has <code>suggestionItems</code>, the <code>valueStateMessage</code> would be displayed as part of the same popover, if used on desktop, or dialog - on phone.",
                             "name": "valueStateMessage"
                         }
@@ -6076,6 +6081,12 @@
                             "name": "close",
                             "type": "CustomEvent",
                             "description": "Fired after the component's dropdown menu closes."
+                        },
+                        {
+                            "deprecated": false,
+                            "name": "live-change",
+                            "type": "CustomEvent",
+                            "description": "Fired when the user navigates through the options, but the selection is not finalized, or when pressing the ESC key to revert the current selection."
                         },
                         {
                             "deprecated": false,
@@ -6121,6 +6132,18 @@
                             },
                             "default": "false",
                             "description": "Defines whether the component is in disabled state. <br><br> <b>Note:</b> A disabled component is noninteractive."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "menu",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "sap.ui.webc.base.types.DOMReference"
+                            },
+                            "default": "false",
+                            "description": "Defines a reference (ID or DOM element) of component's menu of options. as alternative to define the select's dropdown. <br><br> <b>Note:</b> Usage of <code>ui5-select-menu</code> is recommended."
                         },
                         {
                             "deprecated": false,
@@ -6196,6 +6219,163 @@
                     "deprecated": false,
                     "kind": "custom-element-definition",
                     "name": "ui5-select"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "SelectMenu.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "SelectMenu",
+                    "name": "SelectMenu",
+                    "tagName": "SelectMenu",
+                    "slots": [
+                        {
+                            "deprecated": false,
+                            "description": "Defines the options of the component.",
+                            "name": "default"
+                        }
+                    ],
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-select-menu</code> is meant to be used together with the <code>ui5-select</code> component as alternative to define the select's dropdown. It acts as a popover on desktop and tablet, and as a Dialog on phone. <br></br> The component gives the possibilty to the user to customize the <code>ui5-select</code>'s dropdown by slotting custom options and adding custom styles.\n\n<h3>Usage</h3>\n\nTo use <code>ui5-select</code> with a <code>ui5-select-menu</code>, you need to set the <code>ui5-select</code> <code>menu</code> property to reference <code>ui5-select-menu</code> either by ID or DOM reference. <br></br>\n\nFor the <code>ui5-select-menu</code> <h3>ES6 Module Import</h3>\n\n<code>import @ui5/webcomponents/dist/SelectMenu.js\";</code>",
+                    "superclass": {
+                        "module": "UI5Element.js",
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "SelectMenu.js",
+                        "name": "SelectMenu",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "SelectMenu",
+                        "module": "SelectMenu.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-select-menu"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "SelectMenuOption.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "SelectMenuOption",
+                    "name": "SelectMenuOption",
+                    "tagName": "SelectMenuOption",
+                    "slots": [
+                        {
+                            "deprecated": false,
+                            "description": "Defines the content of the component. <br><br>",
+                            "name": "default"
+                        },
+                        {
+                            "deprecated": true,
+                            "description": "<b>Note:</b> The slot is inherited and not supported. If set, it won't take any effect.",
+                            "name": "deleteButton"
+                        }
+                    ],
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3> The code>ui5-select-menu-option</code> component represents an option in the <code>ui5-select-menu</code>.\n\n<h3>Usage</h3>\n\nFor the <code>ui5-select-menu-option</code> <h3>ES6 Module Import</h3>\n\n<code>import @ui5/webcomponents/dist/SelectMenuOption.js\";</code>",
+                    "members": [
+                        {
+                            "deprecated": true,
+                            "kind": "field",
+                            "name": "accessibilityAttributes",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "object"
+                            },
+                            "description": "<b>Note:</b> The property is inherited and not supported. If set, it won't take any effect."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "displayText",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text, displayed inside the <code>ui5-select</code> input filed when the option gets selected."
+                        },
+                        {
+                            "deprecated": true,
+                            "kind": "field",
+                            "name": "navigated",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "<b>Note:</b> The property is inherited and not supported. If set, it won't take any effect."
+                        },
+                        {
+                            "deprecated": true,
+                            "kind": "field",
+                            "name": "type",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "sap.ui.webc.main.types.ListItemType"
+                            },
+                            "default": "\"Active\"",
+                            "description": "<b>Note:</b> The property is inherited and not supported. If set, it won't take any effect."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "value",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the value of the <code>ui5-select</code> inside an HTML Form element when this component is selected. For more information on HTML Form support, see the <code>name</code> property of <code>ui5-select</code>."
+                        }
+                    ],
+                    "superclass": {
+                        "module": "UI5Element.js",
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "SelectMenuOption.js",
+                        "name": "SelectMenuOption",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "SelectMenuOption",
+                        "module": "SelectMenuOption.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-select-menu-option"
                 }
             ]
         },
@@ -6397,7 +6577,7 @@
                             "name": "imageContent"
                         }
                     ],
-                    "description": "The <code>ui5-li</code> represents the simplest type of item for a <code>ui5-list</code>.\n\nThis is a list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>.\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-li</code> exposes the following CSS Shadow Parts: <ul> <li>title - Used to style the title of the list item</li> <li>description - Used to style the description of the list item</li> <li>additional-text - Used to style the additionalText of the list item</li> <li>icon - Used to style the icon of the list item</li> </ul>",
+                    "description": "The <code>ui5-li</code> represents the simplest type of item for a <code>ui5-list</code>.\n\nThis is a list item, providing the most common use cases such as <code>text</code>, <code>image</code> and <code>icon</code>.\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-li</code> exposes the following CSS Shadow Parts: <ul> <li>title - Used to style the title of the list item</li> <li>description - Used to style the description of the list item</li> <li>additional-text - Used to style the additionalText of the list item</li> <li>icon - Used to style the icon of the list item</li> <li>native-li - Used to style the main li tag of the list item</li> <li>content - Used to style the content area of the list item</li> <li>detail-button - Used to style the button rendered when the list item is of type detail</li> <li>delete-button - Used to style the button rendered when the list item is in delete mode</li> <li>radio - Used to style the radio button rendered when the list item is in single selection mode</li> <li>checkbox - Used to style the checkbox rendered when the list item is in multiple selection mode</li> </ul>",
                     "members": [
                         {
                             "deprecated": false,
@@ -8510,6 +8690,529 @@
                     "deprecated": false,
                     "kind": "custom-element-definition",
                     "name": "ui5-token"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "Toolbar.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "Toolbar",
+                    "name": "Toolbar",
+                    "tagName": "Toolbar",
+                    "slots": [
+                        {
+                            "deprecated": false,
+                            "description": "Defines the items of the component.",
+                            "name": "default"
+                        }
+                    ],
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-toolbar</code> component is used to create a horizontal layout with items. The items can be overflowing in a popover, when the space is not enough to show all of them.\n\n<h3>Keyboard Handling</h3> The <code>ui5-toolbar</code> provides advanced keyboard handling. <br> <ul> <li>The control is not interactive, but can contain of interactive elements </li> <li>[TAB] - iterates through elements</li> </ul> <br>\n\n<h3>ES6 Module Import</h3> <code>import \"@ui5/webcomponents/dist/Toolbar\";</code>",
+                    "members": [
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "accessibleName",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the accessible ARIA name of the component."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "accessibleNameRef",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Receives id(or many ids) of the elements that label the input."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "alignContent",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "sap.ui.webc.main.types.ToolbarAlign"
+                            },
+                            "description": "Indicated the direction in which the Toolbar items will be aligned. Available options are: <ul> <li><code>End</code></li> <li><code>Start</code></li> </ul>"
+                        }
+                    ],
+                    "superclass": {
+                        "module": "UI5Element.js",
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "Toolbar.js",
+                        "name": "Toolbar",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "Toolbar",
+                        "module": "Toolbar.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-toolbar"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "ToolbarButton.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "ToolbarButton",
+                    "name": "ToolbarButton",
+                    "tagName": "ToolbarButton",
+                    "events": [
+                        {
+                            "deprecated": false,
+                            "name": "click",
+                            "type": "CustomEvent",
+                            "description": "Fired when the component is activated either with a mouse/tap or by using the Enter or Space key. <br><br> <b>Note:</b> The event will not be fired if the <code>disabled</code> property is set to <code>true</code>."
+                        }
+                    ],
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-toolbar-button</code> represents an abstract action, used in the <code>ui5-toolbar</code>.\n\n<h3>ES6 Module Import</h3> <code>import \"@ui5/webcomponents/dist/ToolbarButton\";</code>",
+                    "members": [
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "accessibilityAttributes",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "object"
+                            },
+                            "description": "An object of strings that defines several additional accessibility attribute values for customization depending on the use case.\n\nIt supports the following fields:\n\n<ul> <li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values: <ul> <li><code>true</code></li> <li><code>false</code></li> </ul> </li> <li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values: <ul> <li><code>Dialog</code></li> <li><code>Grid</code></li> <li><code>ListBox</code></li> <li><code>Menu</code></li> <li><code>Tree</code></li> </ul> </li> <li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li> </ul>"
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "accessibleName",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "undefined",
+                            "description": "Defines the accessible ARIA name of the component."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "accessibleNameRef",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Receives id(or many ids) of the elements that label the component."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "design",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "ButtonDesign"
+                            },
+                            "default": "\"Default\"",
+                            "description": "Defines the action design. <b>The available values are:</b>\n\n<ul> <li><code>Default</code></li> <li><code>Emphasized</code></li> <li><code>Positive</code></li> <li><code>Negative</code></li> <li><code>Transparent</code></li> <li><code>Attention</code></li> </ul>"
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "disabled",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "default": "false",
+                            "description": "Defines if the action is disabled. <br><br> <b>Note:</b> a disabled action can't be pressed or focused, and it is not in the tab chain."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "icon",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Defines the <code>icon</code> source URI. <br><br> <b>Note:</b> SAP-icons font provides numerous buil-in icons. To find all the available icons, see the <ui5-link target=\"_blank\" href=\"https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\" class=\"api-table-content-cell-link\">Icon Explorer</ui5-link>."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "iconEnd",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "default": "false",
+                            "description": "Defines whether the icon should be displayed after the component text."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "text",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Button text"
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "tooltip",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Defines the tooltip of the component. <br> <b>Note:</b> A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "width",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Button width"
+                        }
+                    ],
+                    "superclass": {
+                        "module": "ToolbarItem.js",
+                        "name": "ToolbarItem",
+                        "package": "@ui5/webcomponents"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "ToolbarButton.js",
+                        "name": "ToolbarButton",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "ToolbarButton",
+                        "module": "ToolbarButton.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-toolbar-button"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "ToolbarSelect.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "ToolbarSelect",
+                    "name": "ToolbarSelect",
+                    "tagName": "ToolbarSelect",
+                    "slots": [
+                        {
+                            "deprecated": false,
+                            "description": "Defines the component options.\n\n<br><br> <b>Note:</b> Only one selected option is allowed. If more than one option is defined as selected, the last one would be considered as the selected one.\n\n<br><br> <b>Note:</b> Use the <code>ui5-option</code> component to define the desired options.",
+                            "name": "default"
+                        }
+                    ],
+                    "events": [
+                        {
+                            "deprecated": false,
+                            "name": "change",
+                            "type": "CustomEvent",
+                            "description": "Fired when the selected option changes."
+                        },
+                        {
+                            "deprecated": false,
+                            "name": "close",
+                            "type": "CustomEvent",
+                            "description": "Fired after the component's dropdown menu closes."
+                        },
+                        {
+                            "deprecated": false,
+                            "name": "open",
+                            "type": "CustomEvent",
+                            "description": "Fired after the component's dropdown menu opens."
+                        }
+                    ],
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-toolbar-select</code> component is used to create a toolbar drop-down list. The items inside the <code>ui5-toolbar-select</code> define the available options by using the <code>ui5-toolbar-select-option</code> component.\n\n<h3>ES6 Module Import</h3> <code>import \"@ui5/webcomponents/dist/ToolbarSelect\";</code> <br> <code>import \"@ui5/webcomponents/dist/ToolbarSelectOption\";</code> (comes with <code>ui5-toolbar-select</code>)",
+                    "members": [
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "accessibleName",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Defines the accessible ARIA name of the component."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "accessibleNameRef",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Receives id(or many ids) of the elements that label the select."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "disabled",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "default": "false",
+                            "description": "Defines whether the component is in disabled state. <br><br> <b>Note:</b> A disabled component is noninteractive."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "valueState",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "sap.ui.webc.base.types.ValueState"
+                            },
+                            "default": "\"None\"",
+                            "description": "Defines the value state of the component. <br><br>"
+                        }
+                    ],
+                    "superclass": {
+                        "module": "UI5Element.js",
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "ToolbarSelect.js",
+                        "name": "ToolbarSelect",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "ToolbarSelect",
+                        "module": "ToolbarSelect.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-toolbar-select"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "ToolbarSelectOption.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "ToolbarSelectOption",
+                    "name": "ToolbarSelectOption",
+                    "tagName": "ToolbarSelectOption",
+                    "slots": [
+                        {
+                            "deprecated": false,
+                            "description": "Defines the text of the component. <br><br> <b>Note:</b> Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+                            "name": "default"
+                        }
+                    ],
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-toolbar-select-option</code> component defines the content of an option in the <code>ui5-toolbar-select</code>.",
+                    "members": [
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "selected",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "default": "false",
+                            "description": "Defines the selected state of the component."
+                        }
+                    ],
+                    "superclass": {
+                        "module": "UI5Element.js",
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "ToolbarSelectOption.js",
+                        "name": "ToolbarSelectOption",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "ToolbarSelectOption",
+                        "module": "ToolbarSelectOption.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-toolbar-select-option"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "ToolbarSeparator.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "ToolbarSeparator",
+                    "name": "ToolbarSeparator",
+                    "tagName": "ToolbarSeparator",
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-toolbar-separator</code> is an element, used for visual separation between two elements. It takes no space in calculating toolbar items width.",
+                    "superclass": {
+                        "module": "UI5Element.js",
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "ToolbarSeparator.js",
+                        "name": "ToolbarSeparator",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "ToolbarSeparator",
+                        "module": "ToolbarSeparator.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-toolbar-separator"
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "ToolbarSpacer.js",
+            "declarations": [
+                {
+                    "deprecated": false,
+                    "customElement": true,
+                    "kind": "ToolbarSpacer",
+                    "name": "ToolbarSpacer",
+                    "tagName": "ToolbarSpacer",
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-toolbar-spacer</code> is an element, used for taking needed space for toolbar items to take 100% width. It takes no space in calculating toolbar items width.",
+                    "members": [
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "width",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "undefined"
+                            },
+                            "description": "Spacer width"
+                        }
+                    ],
+                    "superclass": {
+                        "module": "UI5Element.js",
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base"
+                    }
+                }
+            ],
+            "exports": [
+                {
+                    "declaration": {
+                        "module": "ToolbarSpacer.js",
+                        "name": "ToolbarSpacer",
+                        "package": "@ui5/webcomponents"
+                    },
+                    "deprecated": false,
+                    "kind": "js",
+                    "name": "default"
+                },
+                {
+                    "declaration": {
+                        "name": "ToolbarSpacer",
+                        "module": "ToolbarSpacer.js"
+                    },
+                    "deprecated": false,
+                    "kind": "custom-element-definition",
+                    "name": "ui5-toolbar-spacer"
                 }
             ]
         },
@@ -10762,7 +11465,7 @@
                         {
                             "deprecated": false,
                             "name": "click",
-                            "type": "NativeEvent",
+                            "type": "CustomEvent",
                             "description": "Fired, when the item is pressed."
                         }
                     ],
@@ -10802,7 +11505,7 @@
                                 "text": "string"
                             },
                             "default": "\"\"",
-                            "description": "Defines the item text."
+                            "description": "Defines the item text. <br><br> <b>Note:</b> The text is only displayed inside the overflow popover list view."
                         }
                     ],
                     "superclass": {

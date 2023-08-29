@@ -1,13 +1,9 @@
-commit b3e0a6166e92b292ef598a2d3f178b33d885895e
-Author: ilhan orhan <ilhan.orhan007@gmail.com>
-Date:   Tue Aug 29 16:21:55 2023 +0300
+commit 31a3608562ae457f66bb51f7310566664a76a39c
+Author: niyap <38278268+niyap@users.noreply.github.com>
+Date:   Tue Aug 29 17:20:47 2023 +0300
 
-    docs: add SelectMenu, SelectMenuOption story (#7502)
+    fix(ui5-textarea): prevent console error on focus out (#7504)
     
-    * docs: add select menu story
+    * fix(ui5-textarea): prevent console error on focus out
     
-    * chore: fix js error
-    
-    * chore: add Storybook check
-    
-    * chore: rename job name
+    * fix(ui5-textarea): apply review comments

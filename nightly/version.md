@@ -1,7 +1,9 @@
-commit d512116994e48998c2970d62180e22bbc249515d
-Author: Lukas Harbarth <lukas.harbarth@sap.com>
-Date:   Tue Aug 29 21:33:45 2023 +0200
+commit e10575d2d500eb749464bc555e26da6530db73fb
+Author: niyap <38278268+niyap@users.noreply.github.com>
+Date:   Wed Aug 30 14:15:21 2023 +0300
 
-    docs(ui5-select & ui5-toolbar): fix JSDoc comments (#7507)
+    fix(ui5-textarea): enhance storybook samples (#7443)
     
-    docs(Select & Toolbar): fix JSDoc comments
+    * fix(ui5-textarea): enhance storybook samples
+    
+    * fix(ui5-textarea): apply review comments

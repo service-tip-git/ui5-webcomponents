@@ -6060,7 +6060,7 @@
                         },
                         {
                             "deprecated": false,
-                            "description": "Defines the HTML element that will be displayed in the component input part, representing the selected option. <br><br>\n\n<b>Note:</b> If not specified and <code>ui5-select-menu-option</code> is used, either the option's <code>display-text</code> or its textContent will be displayed. <br><br>\n\n<b>Note:</b> If not specified and <code>ui5-opton</code> is used, the option's textContent will be displayed.",
+                            "description": "Defines the HTML element that will be displayed in the component input part, representing the selected option. <br><br>\n\n<b>Note:</b> If not specified and <code>ui5-select-menu-option</code> is used, either the option's <code>display-text</code> or its textContent will be displayed. <br><br>\n\n<b>Note:</b> If not specified and <code>ui5-option</code> is used, the option's textContent will be displayed.",
                             "name": "label"
                         },
                         {

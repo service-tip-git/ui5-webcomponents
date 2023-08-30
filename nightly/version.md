@@ -1,5 +1,5 @@
-commit 8c7160b0aaff0316fd3666010f4623fd86d1e823
-Author: Vladislav Tasev <vladitasev@users.noreply.github.com>
-Date:   Wed Aug 30 14:46:10 2023 +0300
+commit 2cf9f07f8b30722407a09162534d9b8dbb4adffb
+Author: Lukas Harbarth <lukas.harbarth@sap.com>
+Date:   Wed Aug 30 14:12:23 2023 +0200
 
-    chore: disable vitejs hot module reload (#7513)
+    docs(ui5-select): fix typo in `label` description (#7514)

@@ -1,7 +1,9 @@
-commit 0368aab515f77ab52ede44c6bccaa5f7f80101c9
-Author: yanaminkova <32466553+yanaminkova@users.noreply.github.com>
-Date:   Wed Aug 30 18:05:41 2023 +0300
+commit 4774bc6d684f08c670ae65bc73d3f3ee641c288f
+Author: Georgieva <lidiya.georgieva@sap.com>
+Date:   Wed Aug 30 19:47:31 2023 +0300
 
-    feat(ui5-avatar): functionality for setting custom fallback icon (#7463)
+    fix(ui5-carousel): remove outer outline of the arrow on "down" state (#7511)
     
-    Related: https://github.com/SAP/ui5-webcomponents/issues/6655
+    * fix(ui5-carousel): remove outer outline of the arrow on "down" state
+    
+    * fix(ui5-carousel): remove outer outline of the arrow on "down" state

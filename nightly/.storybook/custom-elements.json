@@ -8913,7 +8913,7 @@
                                 "text": "string"
                             },
                             "default": "\"\"",
-                            "description": "Button width"
+                            "description": "Defines the width of the button. <br><br>\n\n<b>Note:</b> all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc."
                         }
                     ],
                     "superclass": {
@@ -9031,6 +9031,18 @@
                             },
                             "default": "\"None\"",
                             "description": "Defines the value state of the component. <br><br>"
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "width",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Defines the width of the select. <br><br>\n\n<b>Note:</b> all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc."
                         }
                     ],
                     "superclass": {
@@ -9182,9 +9194,10 @@
                             "privacy": "public",
                             "static": false,
                             "type": {
-                                "text": "undefined"
+                                "text": "string"
                             },
-                            "description": "Spacer width"
+                            "default": "\"\"",
+                            "description": "Defines the width of the spacer. <br><br>\n\n<b>Note:</b> all CSS sizes are supported - 'percentage', 'px', 'rem', 'auto', etc."
                         }
                     ],
                     "superclass": {

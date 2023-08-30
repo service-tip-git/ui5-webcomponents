@@ -1,5 +1,5 @@
-commit 2cf9f07f8b30722407a09162534d9b8dbb4adffb
-Author: Lukas Harbarth <lukas.harbarth@sap.com>
-Date:   Wed Aug 30 14:12:23 2023 +0200
+commit 235d4ecdee00f0ea3a045798c008b330b09563dd
+Author: Marcus Notheis <marcus.notheis@sap.com>
+Date:   Wed Aug 30 14:18:03 2023 +0200
 
-    docs(ui5-select): fix typo in `label` description (#7514)
+    docs(Toolbar): append docs for SelectOption, Separator and Spacer (#7510)

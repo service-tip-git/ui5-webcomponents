@@ -1,13 +1,7 @@
-commit 31553d5846856184bc0fdf5df9be6744bcf455fe
-Author: SAP LX Lab Service Account <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Wed Aug 30 05:21:34 2023 -0700
+commit 0368aab515f77ab52ede44c6bccaa5f7f80101c9
+Author: yanaminkova <32466553+yanaminkova@users.noreply.github.com>
+Date:   Wed Aug 30 18:05:41 2023 +0300
 
-    Translation Delivery (#7508)
+    feat(ui5-avatar): functionality for setting custom fallback icon (#7463)
     
-    * chore: translation delivery
-    
-    Change-Id: I1fb38947d400c933d70963baf4945cfa7b9e70f8
-    
-    * chore: translation delivery
-    
-    Change-Id: Ifad4080aebfb2e9b07a5ad76510a8babb1169b3b
+    Related: https://github.com/SAP/ui5-webcomponents/issues/6655

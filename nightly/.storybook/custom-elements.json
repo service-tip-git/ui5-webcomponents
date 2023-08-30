@@ -65,6 +65,18 @@
                         {
                             "deprecated": false,
                             "kind": "field",
+                            "name": "fallbackIcon",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "string"
+                            },
+                            "default": "\"\"",
+                            "description": "Defines the name of the fallback icon, which should be displayed in the following cases: <ul> <li>If the initials are not valid (more than 3 letters, unsupported languages or empty initials).</li> <li>If there are three initials and they do not fit in the shape (e.g. WWW for some of the sizes).</li> <li>If the image src is wrong.</li> </ul>\n\n<br> <b>Note:</b> If not set, a default fallback icon \"employee\" is displayed. <br> <b>Note:</b> You should import the desired icon first, then use its name as \"fallback-icon\". <br><br> import \"@ui5/webcomponents-icons/dist/{icon_name}.js\" <br> <pre>&lt;ui5-avatar fallback-icon=\"alert\"></pre> <br>\n\nSee all the available icons in the <ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html\">Icon Explorer</ui5-link>."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
                             "name": "icon",
                             "privacy": "public",
                             "static": false,

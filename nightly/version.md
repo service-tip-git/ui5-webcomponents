@@ -1,9 +1,7 @@
-commit 5def83bb75b520cb57dbdd4c1bf4eb8a54d5990a
+commit 208d992b5707ba5f00de3c1311fcc2425916c2c4
 Author: gmkv <georgi.minkov@sap.com>
-Date:   Thu Aug 31 14:31:35 2023 +0300
+Date:   Thu Aug 31 14:49:52 2023 +0300
 
-    fix(ui5-radio-button): avoid nesting elements with tab-index within each other (#7488)
+    feat(ui5-badge): update visual design (#7501)
     
-    Removed native input workaround to make forms work and replaced with ElementInternals to keep the same form submit functionality.
-    
-    Fixes #7419
+    Jira: 3113

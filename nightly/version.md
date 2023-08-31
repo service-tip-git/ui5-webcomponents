@@ -1,7 +1,9 @@
-commit d3acd4b9efed140320cf95a104a5b8643125d758
-Author: ilhan orhan <ilhan.orhan007@gmail.com>
-Date:   Thu Aug 31 16:38:21 2023 +0300
+commit 8ecd1183c2a8b041f444cc8d0814f096e8b2dbd5
+Author: Konstantin Gogov <68374332+kgogov@users.noreply.github.com>
+Date:   Thu Aug 31 21:43:36 2023 +0300
 
-    chore(ui5-toolbar): show separator in overflow (#7515)
+    fix(ui5-select): scroll item into view on keyboard navigation (#7370)
     
-    Show the separator in Toolbar's overflow only if it would appear between items.
+    * fix(ui5-select): scroll item into view on keyboard navigation
+    
+    Fixes: #7164

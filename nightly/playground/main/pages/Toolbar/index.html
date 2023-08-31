@@ -10,14 +10,24 @@
 
 	
 	
-  <script type="module" crossorigin src="../../../../assets/bundle.common.97a4b496.js"></script>
+  <script type="module" crossorigin src="../../../../assets/bundle.common.6b6c61ee.js"></script>
   <link rel="stylesheet" href="../../../../assets/Toolbar.d0c25006.css">
 </head>
 <body>
 	<div id="toolbars-container">
+		<ui5-title level="H3">Basic</ui5-title>
+		<br /><br />
+		<ui5-toolbar>
+			<ui5-toolbar-button icon="add" text="Left 1 (long)"></ui5-toolbar-button>
+			<ui5-toolbar-button icon="decline" text="Left 2"></ui5-toolbar-button>
+			<ui5-toolbar-button icon="employee" text="Left 3"></ui5-toolbar-button>
+			<ui5-toolbar-separator></ui5-toolbar-separator>
+			<ui5-toolbar-button icon="decline" text="Left 4"></ui5-toolbar-button>
+		</ui5-toolbar>
+
 		<br /><br />
 
-		<ui5-title level="H3">Standard Toolbar</ui5-title>
+		<ui5-title level="H3">Standard Toolbar with ToolbarSelect</ui5-title>
 		<br />
 		<section>
 			<ui5-toolbar>
@@ -166,6 +176,26 @@
 				<ui5-toolbar-button icon="employee" text="Call me later" stable-dom-ref="tb-button-employee-g"></ui5-toolbar-button>
 			</ui5-toolbar>
 		</section>
+
+		<section>
+			<ui5-title level="H3">Toolbar with many separators</ui5-title>
+			<br /><br />
+			<ui5-toolbar>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+				<ui5-toolbar-button icon="add" text="Left 1 (long)"></ui5-toolbar-button>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+				<ui5-toolbar-button icon="decline" text="Left 2"></ui5-toolbar-button>
+				<ui5-toolbar-button icon="employee" text="Left 3"></ui5-toolbar-button>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+				<ui5-toolbar-button icon="decline" text="Left 4"></ui5-toolbar-button>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+				<ui5-toolbar-separator></ui5-toolbar-separator>
+			</ui5-toolbar>
+		</section>
+
 		<br /><br />
 		<ui5-title level="H3">Dynamic Title example</ui5-title>
 		<br />

@@ -1,7 +1,7 @@
-commit 208d992b5707ba5f00de3c1311fcc2425916c2c4
-Author: gmkv <georgi.minkov@sap.com>
-Date:   Thu Aug 31 14:49:52 2023 +0300
+commit d3acd4b9efed140320cf95a104a5b8643125d758
+Author: ilhan orhan <ilhan.orhan007@gmail.com>
+Date:   Thu Aug 31 16:38:21 2023 +0300
 
-    feat(ui5-badge): update visual design (#7501)
+    chore(ui5-toolbar): show separator in overflow (#7515)
     
-    Jira: 3113
+    Show the separator in Toolbar's overflow only if it would appear between items.

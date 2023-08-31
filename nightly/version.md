@@ -1,9 +1,9 @@
-commit 1e2b367e8627f76b1089f6a60a871f769ae3daf0
-Author: SAP LX Lab Service Account <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Thu Aug 31 04:17:55 2023 -0700
+commit 5def83bb75b520cb57dbdd4c1bf4eb8a54d5990a
+Author: gmkv <georgi.minkov@sap.com>
+Date:   Thu Aug 31 14:31:35 2023 +0300
 
-    Translation Delivery (#7521)
+    fix(ui5-radio-button): avoid nesting elements with tab-index within each other (#7488)
     
-    chore: translation delivery
+    Removed native input workaround to make forms work and replaced with ElementInternals to keep the same form submit functionality.
     
-    Change-Id: I38f6085a444d9af7c2f86f2d456dc6b29c294930
+    Fixes #7419

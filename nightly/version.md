@@ -1,9 +1,5 @@
-commit 4774bc6d684f08c670ae65bc73d3f3ee641c288f
-Author: Georgieva <lidiya.georgieva@sap.com>
-Date:   Wed Aug 30 19:47:31 2023 +0300
+commit 2c2ffe2cf2b0829138997415c8950cde4c2c4caa
+Author: Vladislav Tasev <vladitasev@users.noreply.github.com>
+Date:   Thu Aug 31 10:09:46 2023 +0300
 
-    fix(ui5-carousel): remove outer outline of the arrow on "down" state (#7511)
-    
-    * fix(ui5-carousel): remove outer outline of the arrow on "down" state
-    
-    * fix(ui5-carousel): remove outer outline of the arrow on "down" state
+    chore: use a safe querySelector for ID (#7519)

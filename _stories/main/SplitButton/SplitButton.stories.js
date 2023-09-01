@@ -7,7 +7,7 @@ import ButtonDesign from "@ui5/webcomponents/dist/types/ButtonDesign.js";
 const component = "ui5-split-button";
 export default {
     title: "Main/SplitButton",
-    component,
+    component: "SplitButton",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

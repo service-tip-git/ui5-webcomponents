@@ -6,7 +6,7 @@ import IconDesign from "@ui5/webcomponents/dist/types/IconDesign.js";
 const component = "ui5-icon";
 export default {
     title: "Main/Icon",
-    component,
+    component: "Icon",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),

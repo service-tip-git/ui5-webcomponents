@@ -7,7 +7,7 @@ import CarouselArrowsPlacement from "@ui5/webcomponents/dist/types/CarouselArrow
 const component = "ui5-carousel";
 export default {
     title: "Main/Carousel",
-    component,
+    component: "Carousel",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })
@@ -30,14 +30,14 @@ const Template = (args) => {
 	${unsafeHTML(args.default)}
 </ui5-carousel>`;
 };
-export const SingleItemPerPage = Template.bind({});
-SingleItemPerPage.args = {
+export const Basic = Template.bind({});
+Basic.args = {
     cyclic: true,
     default: `<img src="../assets/images/sample1.jpg" alt="Landscape 1">
 	<img src="../assets/images/sample2.jpg" alt="Landscape 2">
 	<img src="../assets/images/sample3.jpg" alt="Bulb">`
 };
-SingleItemPerPage.decorators = [
+Basic.decorators = [
     (story) => html `<style>
 	img {
 		max-height: 30rem;

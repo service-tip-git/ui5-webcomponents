@@ -8,7 +8,7 @@ import CalendarType from "@ui5/webcomponents-base/dist/types/CalendarType.js";
 const component = "ui5-date-picker";
 export default {
     title: "Main/DatePicker",
-    component,
+    component: "DatePicker",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

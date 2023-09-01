@@ -7,7 +7,7 @@ import BarDesign from "@ui5/webcomponents-fiori/dist/types/BarDesign.js";
 const component = "ui5-bar";
 export default {
     title: "Fiori/Bar",
-    component,
+    component: "Bar",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

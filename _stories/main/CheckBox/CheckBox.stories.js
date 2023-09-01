@@ -6,7 +6,7 @@ import WrappingType from "@ui5/webcomponents/dist/types/WrappingType.js";
 const component = "ui5-checkbox";
 export default {
     title: "Main/CheckBox",
-    component,
+    component: "CheckBox",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),

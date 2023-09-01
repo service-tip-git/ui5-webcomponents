@@ -6,7 +6,7 @@ import SwitchDesign from "@ui5/webcomponents/dist/types/SwitchDesign.js";
 const component = "ui5-switch";
 export default {
     title: "Main/Switch",
-    component,
+    component: "Switch",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

@@ -6,7 +6,7 @@ import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-flexible-column-layout";
 export default {
     title: "Fiori/FlexibleColumnLayout",
-    component,
+    component: "FlexibleColumnLayout",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

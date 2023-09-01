@@ -4,7 +4,7 @@ import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-barcode-scanner-dialog";
 export default {
     title: "Fiori/BarcodeScannerDialog",
-    component,
+    component: "BarcodeScannerDialog",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),

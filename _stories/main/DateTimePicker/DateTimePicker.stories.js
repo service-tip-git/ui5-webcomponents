@@ -6,7 +6,7 @@ import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-datetime-picker";
 export default {
     title: "Main/DateTimePicker",
-    component,
+    component: "DateTimePicker",
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

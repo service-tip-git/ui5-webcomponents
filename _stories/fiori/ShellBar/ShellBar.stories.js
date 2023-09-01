@@ -6,8 +6,8 @@ import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-shellbar";
 export default {
     title: "Fiori/ShellBar",
-    component,
-    subcomponents: { ShellBarItem: "ui5-shellbar-item" },
+    component: "ShellBar",
+    subcomponents: { ShellBarItem: "ShellbarItem" },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),

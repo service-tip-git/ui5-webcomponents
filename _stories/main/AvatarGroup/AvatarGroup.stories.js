@@ -10,7 +10,7 @@ import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-avatar-group";
 export default {
     title: "Main/AvatarGroup",
-    component,
+    component: "AvatarGroup",
     argTypes,
     parameters: {
         docs: {

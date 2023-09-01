@@ -8,9 +8,9 @@ import ListMode from "@ui5/webcomponents/dist/types/ListMode.js";
 import ListItemType from "@ui5/webcomponents/dist/types/ListItemType.js";
 const component = "ui5-upload-collection";
 export default {
-    title: "Fiori/UploadCollection",
-    component,
-    subcomponents: { 'UploadCollectionItem': 'ui5-upload-collection-item' },
+    title: "Fiori/Upload Collection",
+    component: "UploadCollection",
+    subcomponents: { 'UploadCollectionItem': 'UploadCollectionItem' },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),
@@ -117,8 +117,8 @@ const handleFileUpload = (story) => {
 	});
 </script>`;
 };
-export const WithHeader = Template.bind({});
-WithHeader.args = {
+export const Basic = Template.bind({});
+Basic.args = {
     mode: ListMode.Delete,
     id: "uploadCollection",
     accessibleName: "Uploaded (2)",
@@ -134,14 +134,14 @@ WithHeader.args = {
     default: `${uploadCollectionItem("LaptopHT-1000.jpg", true, UploadState.Complete, "Uploaded By: David Keane · Uploaded On: 2014-07-26 · File Size: 35 KB", `<img src="../assets/images/HT-1000.jpg" slot="thumbnail">`)}
 ${uploadCollectionItem("Notes.txt", false, UploadState.Complete, `Uploaded By: John Smith · Uploaded On: 2014-09-02 · File Size: 226.6 KB`, `<ui5-icon name="document-text" slot="thumbnail"></ui5-icon>`)}`,
 };
-WithHeader.parameters = {
+Basic.parameters = {
     docs: {
         story: {
             iframeHeight: "500px",
         },
     },
 };
-WithHeader.decorators = [
+Basic.decorators = [
     setHeaderStyles,
     handleFileUpload,
     handleItemDeleteEvent,

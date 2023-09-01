@@ -5,8 +5,8 @@ import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-product-switch";
 export default {
     title: "Fiori/ProductSwitch",
-    component,
-    subcomponents: { ProductSwitchItem: "ui5-product-switch-item" },
+    component: "ProductSwitch",
+    subcomponents: { ProductSwitchItem: "ProductSwitchItem" },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),

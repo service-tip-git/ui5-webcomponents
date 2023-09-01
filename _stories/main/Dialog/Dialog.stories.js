@@ -7,7 +7,7 @@ import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 const component = "ui5-dialog";
 export default {
     title: "Main/Dialog",
-    component,
+    component: "Dialog",
     argTypes,
     parameters: {
         docs: {
@@ -87,6 +87,30 @@ Basic.args = {
 	<ui5-button class="dialogCloser" design="Emphasized">Register</ui5-button>
 </div>`,
 };
+Basic.decorators = [
+    (story) => html `<style>
+	.login-form {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: flex-start;
+		margin: 3rem 6rem;
+	}
+	
+	.login-form > div {
+		display: grid;
+		width: 15rem;
+		margin-bottom: .5rem;
+	}
+
+	@media(max-width: 600px) {
+		.login-form {
+			margin: 3rem 1rem;
+		}
+	}
+</style>
+${story()}`
+];
 export const DraggableAndResizable = Template.bind({});
 DraggableAndResizable.args = {
     resizable: true,

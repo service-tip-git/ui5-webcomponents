@@ -1,5 +1,7 @@
-commit 4eefd89b289630cce8fe40f9f0ec6c0fc007e637
-Author: ilhan orhan <ilhan.orhan007@gmail.com>
-Date:   Fri Sep 1 08:45:14 2023 +0300
+commit 8da719c827cef18d59bf16a3baa170a0dbb1b9ba
+Author: Evdokia Yordanova <evdokia.kotova@sap.com>
+Date:   Fri Sep 1 09:22:28 2023 +0300
 
-    chore: update Toolbar test (#7531)
+    chore: add detection for Mac device (#7530)
+    
+    Co-authored-by: ilhan007 <ilhan.myumyun@sap.com>

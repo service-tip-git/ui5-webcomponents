@@ -10465,7 +10465,7 @@
                                 "text": "sap.ui.webc.main.types.TableMode"
                             },
                             "default": "\"None\"",
-                            "description": "Defines the mode of the component. <br><br> Available options are: <ul> <li><code>MultiSelect</code></li> <li><code>SingleSelect</code></li> <li><code>None</code></li> <ul>"
+                            "description": "Defines the mode of the component."
                         },
                         {
                             "deprecated": false,

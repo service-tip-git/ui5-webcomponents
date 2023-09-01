@@ -1,5 +1,7 @@
-commit 4e6a56bfaa22fa7ce780f53c37e5e867e30b5507
-Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Fri Sep 1 10:55:51 2023 +0300
+commit f7bda6dc4ece2e8fd9c8682c5ffbb513b6c311cc
+Author: Siyana Todorova <72251110+s-todorova@users.noreply.github.com>
+Date:   Fri Sep 1 11:03:51 2023 +0300
 
-    fix(ui5-table): enhance storybook samples (#7517)
+    fix(ui5-busy-indicator): fixed text center alignment and wrapping
+    
+    fixes: #7470

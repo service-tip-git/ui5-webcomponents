@@ -1,7 +1,11 @@
-commit f7bda6dc4ece2e8fd9c8682c5ffbb513b6c311cc
-Author: Siyana Todorova <72251110+s-todorova@users.noreply.github.com>
-Date:   Fri Sep 1 11:03:51 2023 +0300
+commit ce98ce2bbd5802896dc0975f5bc317ffa43cbe0a
+Author: ilhan orhan <ilhan.orhan007@gmail.com>
+Date:   Fri Sep 1 11:12:57 2023 +0300
 
-    fix(ui5-busy-indicator): fixed text center alignment and wrapping
+    chore: add and use CSSSize (#7525)
     
-    fixes: #7470
+    * chore: add and use CSSSize
+    
+    * chore: update tests
+    
+    * chore: revert test changes

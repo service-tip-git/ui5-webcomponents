@@ -1,11 +1,5 @@
-commit ce98ce2bbd5802896dc0975f5bc317ffa43cbe0a
-Author: ilhan orhan <ilhan.orhan007@gmail.com>
-Date:   Fri Sep 1 11:12:57 2023 +0300
+commit 1206df26ea6f0fc999e93055ca8e52170cd483fc
+Author: niyap <38278268+niyap@users.noreply.github.com>
+Date:   Fri Sep 1 12:56:43 2023 +0300
 
-    chore: add and use CSSSize (#7525)
-    
-    * chore: add and use CSSSize
-    
-    * chore: update tests
-    
-    * chore: revert test changes
+    fix(ui5-multi-input): enhance storybook samples (#7534)

@@ -1,5 +1,5 @@
-commit 1206df26ea6f0fc999e93055ca8e52170cd483fc
+commit e48da755758dc7cc26b0da4a4999d79ed98753ac
 Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Fri Sep 1 12:56:43 2023 +0300
+Date:   Fri Sep 1 12:57:04 2023 +0300
 
-    fix(ui5-multi-input): enhance storybook samples (#7534)
+    fix(ui5-input): enhance storybook samples (#7532)

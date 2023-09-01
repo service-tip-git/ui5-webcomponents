@@ -1,9 +1,9 @@
-commit 8ecd1183c2a8b041f444cc8d0814f096e8b2dbd5
-Author: Konstantin Gogov <68374332+kgogov@users.noreply.github.com>
-Date:   Thu Aug 31 21:43:36 2023 +0300
+commit 9672b0a613f77fb81284fe2a2b3df97714cc2371
+Author: SAP LX Lab Service Account <tmsatsls+github.com_service-tip-git@sap.com>
+Date:   Thu Aug 31 22:38:23 2023 -0700
 
-    fix(ui5-select): scroll item into view on keyboard navigation (#7370)
+    Translation Delivery (#7529)
     
-    * fix(ui5-select): scroll item into view on keyboard navigation
+    chore: translation delivery
     
-    Fixes: #7164
+    Change-Id: I343947bfd8d353f9ac5c3ea840d730fe2fae9a4a

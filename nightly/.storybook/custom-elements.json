@@ -2007,6 +2007,7 @@
                             "type": {
                                 "text": "string"
                             },
+                            "default": "\"\"",
                             "description": "Defines the accessible ARIA name of the component."
                         },
                         {
@@ -2043,7 +2044,7 @@
                                 "text": "sap.ui.webc.main.types.ComboBoxFilter"
                             },
                             "default": "\"StartsWithPerTerm\"",
-                            "description": "Defines the filter type of the component. Available options are: <code>StartsWithPerTerm</code>, <code>StartsWith</code>, <code>Contains</code> and <code>None</code>."
+                            "description": "Defines the filter type of the component."
                         },
                         {
                             "deprecated": false,
@@ -2115,7 +2116,7 @@
                                 "text": "sap.ui.webc.base.types.ValueState"
                             },
                             "default": "\"None\"",
-                            "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>"
+                            "description": "Defines the value state of the component."
                         }
                     ],
                     "superclass": {

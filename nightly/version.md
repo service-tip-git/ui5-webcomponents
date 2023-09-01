@@ -1,7 +1,9 @@
-commit 039d57e7f79df561fffdb94209169817cab83d20
-Author: gmkv <georgi.minkov@sap.com>
-Date:   Fri Sep 1 10:17:58 2023 +0300
+commit 0f54160423ef193a591ef748601e1738cc0ce030
+Author: niyap <38278268+niyap@users.noreply.github.com>
+Date:   Fri Sep 1 10:54:48 2023 +0300
 
-    fix(ui5-tabcontainer): restore indentation in overflow (#7506)
+    fix(ui5-combobox): enhance storybook samples (#7469)
     
-    Fixes #7505
+    * fix(ui5-combobox): enhance storybook samples
+    
+    * fix(ui5-combobox): apply review comments

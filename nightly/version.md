@@ -1,7 +1,5 @@
-commit ebf6bdf5a66d603553b925c9b74866f598972700
-Author: Tsanislav Gatev <tsanislav.gatev@sap.com>
-Date:   Mon Sep 4 14:49:46 2023 +0300
+commit 85ea82900fdf17537597368d7e604ccb1f5b4d0b
+Author: ilhan orhan <ilhan.orhan007@gmail.com>
+Date:   Mon Sep 4 16:16:22 2023 +0300
 
-    fix(ui5-link): add title to inner link (#7537)
-    
-    fixes: #7518
+    chore(ui5-select, ui5-select-menu): fix few issues (#7545)

@@ -1,5 +1,11 @@
-commit b20ee4d82f23423532e7692e88968a6967dcf9fc
-Author: Petar Dimov <32839090+dimovpetar@users.noreply.github.com>
-Date:   Tue Sep 5 09:36:15 2023 +0300
+commit 12f541994e51048326893a80635b8f4014013760
+Author: Georgieva <lidiya.georgieva@sap.com>
+Date:   Tue Sep 5 15:52:29 2023 +0300
 
-    fix(ui5-radio-button): SAP Horizon theme updates (#7482)
+    fix(ui5-busy-indicator): fix spacing between dots (#7523)
+    
+    * fix(ui5-busy-indicator): fix spacing between dots
+    
+    JIRA: 3114
+    
+    * fix: address comments

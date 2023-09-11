@@ -1,9 +1,7 @@
-commit 1944e69551e89c4f78ed1c911a921c0254146d02
-Author: SAP LX Lab Service Account <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Mon Sep 11 02:35:36 2023 -0700
+commit 0332d5fb40a4715c68e9a304ad66f7f9438f03a1
+Author: Georgieva <lidiya.georgieva@sap.com>
+Date:   Mon Sep 11 15:22:40 2023 +0300
 
-    Translation Delivery (#7558)
+    docs(ui5-card): change "form like" sample to use <span> instead of <ui5-title> (#7565)
     
-    chore: translation delivery
-    
-    Change-Id: I6346dc3ec191247ccee1332ef3e1c9a97983b96d
+    JIRA: 3114

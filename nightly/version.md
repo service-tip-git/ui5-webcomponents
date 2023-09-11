@@ -1,5 +1,5 @@
-commit 434f24883a1f0ecd9d7cda969851f12cd3239cca
-Author: ilhan orhan <ilhan.orhan007@gmail.com>
-Date:   Thu Sep 7 16:08:44 2023 +0300
+commit 4a06de1a02ad95beb974f4b9657a4e379e771357
+Author: Vladislav Tasev <vladitasev@users.noreply.github.com>
+Date:   Mon Sep 11 12:32:59 2023 +0300
 
-    docs: update `Select` story (#7553)
+    chore: do not reload vitejs from json changes on MacOS (#7563)

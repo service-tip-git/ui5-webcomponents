@@ -1,9 +1,5 @@
-commit fe3ef36c1556c8da5ca53e48fcbb5291b9b66beb
-Author: gmkv <georgi.minkov@sap.com>
-Date:   Tue Sep 12 10:14:35 2023 +0300
+commit 40eabab07659c83f53f52d61dcdbb19d6a4d447b
+Author: Peter Skelin <petar.skelin@sap.com>
+Date:   Tue Sep 12 11:29:44 2023 +0300
 
-    chore(ui5-badge): update visual design (#7567)
-    
-    feat(ui5-badge): update visual design
-    
-    Jira: 3113
+    build: fix dev server page refresh (#7569)

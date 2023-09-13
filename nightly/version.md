@@ -1,7 +1,5 @@
-commit 0690e5142d10832584a4b485114280f0edd76424
-Author: Georgieva <lidiya.georgieva@sap.com>
-Date:   Wed Sep 13 11:10:41 2023 +0300
+commit 1051c4706fbc4433459f66984a8fe2349535b91e
+Author: Lukas Harbarth <lukas.harbarth@sap.com>
+Date:   Wed Sep 13 12:19:19 2023 +0200
 
-     fix(ui5-card): adjust samples for last list item's square corners (#7539)
-    
-    JIRA: 3114
+    docs(ui5-toolbar): add note about allowed components in default slot (#7577)

@@ -1,12 +1,7 @@
-commit 2746460ebd0d6517e8eedadde30b74e424c17a85
+commit 0690e5142d10832584a4b485114280f0edd76424
 Author: Georgieva <lidiya.georgieva@sap.com>
-Date:   Tue Sep 12 16:56:41 2023 +0300
+Date:   Wed Sep 13 11:10:41 2023 +0300
 
-    fix(ui5-dialog): fix background and shadow of slotted ui5-bar (#7421)
+     fix(ui5-card): adjust samples for last list item's square corners (#7539)
     
-    * fix(ui5-dialog): fixed background and shadow when ui5-bar is used inside ui5-dalog
-    
-    fixes: #7418
-    ---------
-    
-    Co-authored-by: Siyana Todorova <siyana.todorova@sap.com>
+    JIRA: 3114

@@ -1,8 +1,5 @@
-commit 0e4b7c97b280431415e088c9fcaad4fe5a249de8
-Author: gmkv <georgi.minkov@sap.com>
-Date:   Wed Sep 13 13:32:21 2023 +0300
+commit 6594cd5df91f31f31efc740846670df4a1c1933d
+Author: Petar Dimov <32839090+dimovpetar@users.noreply.github.com>
+Date:   Wed Sep 13 13:51:40 2023 +0300
 
-    chore: bump theming-base-content version to 11.6.8 (#7571)
-    
-    This update includes the updated theme parameters.
-    See https://github.com/SAP/theming-base-content/releases/tag/11.6.8
+    fix(ui5-upload-collеction): align buttons to avoid extra space when size is small (#7491)

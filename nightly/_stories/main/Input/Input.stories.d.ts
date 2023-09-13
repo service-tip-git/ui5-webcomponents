@@ -6,6 +6,7 @@ declare const _default: Meta<Input>;
 export default _default;
 export declare const Basic: UI5StoryArgs<Input, StoryArgsSlots>;
 export declare const WithSuggestions: UI5StoryArgs<Input, StoryArgsSlots>;
+export declare const SuggestionsWrapping: UI5StoryArgs<Input, StoryArgsSlots>;
 export declare const WithValueStateMessage: UI5StoryArgs<Input, StoryArgsSlots>;
 export declare const WithLabel: UI5StoryArgs<Input, StoryArgsSlots>;
 export declare const WithValueHelpDialog: StoryFn;

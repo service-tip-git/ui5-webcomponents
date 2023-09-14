@@ -1,9 +1,7 @@
-commit 3835032336d4e7366bd70639b59dc0bfca6c5b0b
-Author: SAP LX Lab Service Account <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Thu Sep 14 03:56:51 2023 -0700
+commit b4dea675f5793c28ee9f0123d0e8bf6bd38c0b83
+Author: Stoyan <88034608+hinzzx@users.noreply.github.com>
+Date:   Thu Sep 14 14:02:53 2023 +0300
 
-    Translation Delivery (#7587)
+    fix(ui5-switch): fix text alignment in all themes (#7416)
     
-    chore: translation delivery
-    
-    Change-Id: I8bae3c3918dc0a092e5bae721540300dfec3d940
+    In order to fix the visual design in all themes, we had to introduce an alternate CSS variable. This was added because in Horizon themes for example, for the Text and Graphical Switch, the variable --_ui5_switch_text_inactive_left needs to have a different value for each of the styles in order to be properly aligned.

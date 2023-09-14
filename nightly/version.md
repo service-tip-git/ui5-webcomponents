@@ -1,5 +1,9 @@
-commit 4d144dd76001cd2eed284629b12de9d99b64f383
-Author: Konstantin Gogov <68374332+kgogov@users.noreply.github.com>
-Date:   Thu Sep 14 11:31:33 2023 +0300
+commit 3835032336d4e7366bd70639b59dc0bfca6c5b0b
+Author: SAP LX Lab Service Account <tmsatsls+github.com_service-tip-git@sap.com>
+Date:   Thu Sep 14 03:56:51 2023 -0700
 
-    feat(ui5-checkbox): update horizon theme paramaters (#7576)
+    Translation Delivery (#7587)
+    
+    chore: translation delivery
+    
+    Change-Id: I8bae3c3918dc0a092e5bae721540300dfec3d940

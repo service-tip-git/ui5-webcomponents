@@ -1,7 +1,5 @@
-commit 16111210e746381b1a79c39ea656363b3b734fd5
-Author: Nayden Naydenov <31909318+nnaydenow@users.noreply.github.com>
-Date:   Thu Sep 14 11:05:24 2023 +0300
+commit 4d144dd76001cd2eed284629b12de9d99b64f383
+Author: Konstantin Gogov <68374332+kgogov@users.noreply.github.com>
+Date:   Thu Sep 14 11:31:33 2023 +0300
 
-    chore: remove preview themes (#7580)
-    
-    Co-authored-by: Nayden Naydenov <nnaydenow.work@sap.com>
+    feat(ui5-checkbox): update horizon theme paramaters (#7576)

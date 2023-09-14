@@ -16,7 +16,7 @@ export default {
     argTypes,
 };
 const Template = (args) => html `<ui5-menu
-	headerText="${ifDefined(args.headerText)}"
+	header-text="${ifDefined(args.headerText)}"
 	opener="${ifDefined(args.opener)}"
 	?open="${ifDefined(args.open)}"
 	id="${ifDefined(args.id)}"
@@ -24,7 +24,7 @@ const Template = (args) => html `<ui5-menu
 	${unsafeHTML(args.default)}
 </ui5-menu>`;
 export const Basic = Template.bind({});
-Basic.storyName = "Basic Menu with Header Text";
+Basic.storyName = "Basic";
 Basic.args = {
     id: "menuBasic",
     headerText: "Basic Menu with Items",

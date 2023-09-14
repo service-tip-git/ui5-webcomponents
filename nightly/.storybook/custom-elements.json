@@ -669,7 +669,7 @@
                                 "text": "sap.ui.webc.main.types.ButtonDesign"
                             },
                             "default": "\"Default\"",
-                            "description": "Defines the component design.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Default</code></li> <li><code>Emphasized</code></li> <li><code>Positive</code></li> <li><code>Negative</code></li> <li><code>Transparent</code></li> <li><code>Attention</code></li> </ul>"
+                            "description": "Defines the component design."
                         },
                         {
                             "deprecated": false,
@@ -741,7 +741,7 @@
                                 "text": "sap.ui.webc.main.types.ButtonType"
                             },
                             "default": "\"Button\"",
-                            "description": "Defines whether the button has special form-related functionality.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Button</code></li> <li><code>Submit</code></li> <li><code>Reset</code></li> </ul>\n\n<br><br> <b>Note:</b> For the <code>type</code> property to have effect, you must add the following import to your project: <code>import \"@ui5/webcomponents/dist/features/InputElementsFormSupport.js\";</code>"
+                            "description": "Defines whether the button has special form-related functionality.\n\n<br><br> <b>Note:</b> For the <code>type</code> property to have effect, you must add the following import to your project: <code>import \"@ui5/webcomponents/dist/features/InputElementsFormSupport.js\";</code>"
                         }
                     ],
                     "superclass": {
@@ -2650,7 +2650,7 @@
                                 "text": "sap.ui.webc.base.types.ValueState"
                             },
                             "default": "\"None\"",
-                            "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>"
+                            "description": "Defines the value state of the component."
                         },
                         {
                             "deprecated": false,
@@ -3029,7 +3029,7 @@
                                 "text": "sap.ui.webc.base.types.ValueState"
                             },
                             "default": "\"None\"",
-                            "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>"
+                            "description": "Defines the value state of the component."
                         },
                         {
                             "deprecated": false,
@@ -3389,7 +3389,7 @@
                                 "text": "sap.ui.webc.base.types.ValueState"
                             },
                             "default": "\"None\"",
-                            "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>"
+                            "description": "Defines the value state of the component."
                         },
                         {
                             "deprecated": false,
@@ -4158,7 +4158,7 @@
                                 "text": "sap.ui.webc.base.types.ValueState"
                             },
                             "default": "\"None\"",
-                            "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>"
+                            "description": "Defines the value state of the component."
                         }
                     ],
                     "superclass": {
@@ -8437,7 +8437,7 @@
                                 "text": "sap.ui.webc.main.types.ButtonType"
                             },
                             "default": "\"Button\"",
-                            "description": "Defines whether the button has special form-related functionality.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Button</code></li> <li><code>Submit</code></li> <li><code>Reset</code></li> </ul>\n\n<br><br> <b>Note:</b> For the <code>type</code> property to have effect, you must add the following import to your project: <code>import \"@ui5/webcomponents/dist/features/InputElementsFormSupport.js\";</code>"
+                            "description": "Defines whether the button has special form-related functionality.\n\n<br><br> <b>Note:</b> For the <code>type</code> property to have effect, you must add the following import to your project: <code>import \"@ui5/webcomponents/dist/features/InputElementsFormSupport.js\";</code>"
                         }
                     ],
                     "superclass": {
@@ -9200,7 +9200,7 @@
                                 "text": "sap.ui.webc.main.types.ButtonDesign"
                             },
                             "default": "\"Default\"",
-                            "description": "Defines the component design.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Default</code></li> <li><code>Emphasized</code></li> <li><code>Positive</code></li> <li><code>Negative</code></li> <li><code>Transparent</code></li> <li><code>Attention</code></li> </ul>"
+                            "description": "Defines the component design."
                         },
                         {
                             "deprecated": false,
@@ -9627,7 +9627,7 @@
                                 "text": "sap.ui.webc.base.types.ValueState"
                             },
                             "default": "\"None\"",
-                            "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>"
+                            "description": "Defines the value state of the component."
                         }
                     ],
                     "superclass": {
@@ -11705,7 +11705,7 @@
                                 "text": "sap.ui.webc.main.types.ButtonDesign"
                             },
                             "default": "\"Default\"",
-                            "description": "Defines the component design.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Default</code></li> <li><code>Emphasized</code></li> <li><code>Positive</code></li> <li><code>Negative</code></li> <li><code>Transparent</code></li> <li><code>Attention</code></li> </ul>"
+                            "description": "Defines the component design."
                         },
                         {
                             "deprecated": false,
@@ -11777,7 +11777,7 @@
                                 "text": "sap.ui.webc.main.types.ButtonType"
                             },
                             "default": "\"Button\"",
-                            "description": "Defines whether the button has special form-related functionality.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Button</code></li> <li><code>Submit</code></li> <li><code>Reset</code></li> </ul>\n\n<br><br> <b>Note:</b> For the <code>type</code> property to have effect, you must add the following import to your project: <code>import \"@ui5/webcomponents/dist/features/InputElementsFormSupport.js\";</code>"
+                            "description": "Defines whether the button has special form-related functionality.\n\n<br><br> <b>Note:</b> For the <code>type</code> property to have effect, you must add the following import to your project: <code>import \"@ui5/webcomponents/dist/features/InputElementsFormSupport.js\";</code>"
                         }
                     ],
                     "superclass": {
@@ -13510,17 +13510,17 @@
                     "slots": [
                         {
                             "deprecated": false,
-                            "description": "Defines the content in the middle of the bar",
+                            "description": "Defines the content in the middle of the bar.",
                             "name": "default"
                         },
                         {
                             "deprecated": false,
-                            "description": "Defines the content at the end of the bar",
+                            "description": "Defines the content at the end of the bar.",
                             "name": "endContent"
                         },
                         {
                             "deprecated": false,
-                            "description": "Defines the content at the start of the bar",
+                            "description": "Defines the content at the start of the bar.",
                             "name": "startContent"
                         }
                     ],
@@ -13536,7 +13536,7 @@
                                 "text": "sap.ui.webc.fiori.types.BarDesign"
                             },
                             "default": "\"Header\"",
-                            "description": "Defines the component's design.\n\n<br><br> <b>Note:</b> Available options are: <ul> <li><code>Header</code></li> <li><code>Subheader</code></li> <li><code>Footer</code></li> <li><code>FloatingFooter</code></li> </ul>"
+                            "description": "Defines the component's design."
                         }
                     ],
                     "superclass": {

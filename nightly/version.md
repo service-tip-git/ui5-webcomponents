@@ -1,5 +1,7 @@
-commit 202ac768dd824bd5eea1cb8e4fc3e30301ab6f3b
-Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Mon Sep 18 10:06:38 2023 +0300
+commit 555303ab273fbe361c19de4ff5cf8dddddfd5e55
+Author: Boyan Rakilovski <boyan.rakilovski@sap.com>
+Date:   Mon Sep 18 11:38:41 2023 +0300
 
-    fix(ui5-input,ui5-page,ui5-rating-indicator,ui5-slider,ui5-textarea): improve samples names (#7588)
+    fix(ui5-button): remove box shadows (#7590)
+    
+    feat(ui5-button): remove box shadow

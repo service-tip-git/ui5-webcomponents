@@ -58,8 +58,8 @@ Basic.args = {
         </ui5-bar>
     </div>`,
 };
-export const WithFloatingFooter = Template.bind({});
-WithFloatingFooter.args = {
+export const FloatingFooter = Template.bind({});
+FloatingFooter.args = {
     backgroundDesign: PageBackgroundDesign.List,
     floatingFooter: true,
     default: `

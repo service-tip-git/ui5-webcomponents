@@ -29,19 +29,19 @@ export const Basic = Template.bind({});
 Basic.args = {
     value: 3.7
 };
-export const WithMaxValue = Template.bind({});
-WithMaxValue.args = {
+export const MaxValue = Template.bind({});
+MaxValue.args = {
     value: 5,
     max: 10
 };
-export const WithRequiredLabel = Template.bind({});
-WithRequiredLabel.args = {
+export const RequiredLabel = Template.bind({});
+RequiredLabel.args = {
     value: 5,
     max: 7,
     accessibleNameRef: "label-acc-name-ref",
     required: true
 };
-WithRequiredLabel.decorators = [
+RequiredLabel.decorators = [
     (story) => {
         return html `
 	<ui5-label id="label-acc-name-ref" required="true" for="rating-indicator-${index + 1}">Rate us</ui5-label>

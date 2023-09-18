@@ -5,6 +5,6 @@ import type MultiInput from "@ui5/webcomponents/dist/MultiInput.js";
 declare const _default: Meta<MultiInput>;
 export default _default;
 export declare const Basic: UI5StoryArgs<MultiInput, StoryArgsSlots>;
-export declare const WithTokens: UI5StoryArgs<MultiInput, StoryArgsSlots>;
+export declare const Tokens: UI5StoryArgs<MultiInput, StoryArgsSlots>;
 export declare const TokenCreation: UI5StoryArgs<MultiInput, StoryArgsSlots>;
 export declare const SuggestionsWrapping: UI5StoryArgs<MultiInput, StoryArgsSlots>;

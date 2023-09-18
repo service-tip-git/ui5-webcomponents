@@ -45,8 +45,8 @@ Basic.args = {
     startValue: 0,
     endValue: 20
 };
-export const WithTooltips = Template.bind({});
-WithTooltips.decorators = [
+export const Tooltips = Template.bind({});
+Tooltips.decorators = [
     (story) => {
         return html `
 			<div class="wrapper" style="margin-top:1rem;">
@@ -55,7 +55,7 @@ WithTooltips.decorators = [
 		`;
     }
 ];
-WithTooltips.args = {
+Tooltips.args = {
     startValue: 3,
     endValue: 13,
     showTooltip: true
@@ -80,5 +80,5 @@ RangeSliderTickmarksTooltipLabel.args = {
     showTickmarks: true,
     showTooltip: true
 };
-RangeSliderTickmarksTooltipLabel.storyName = "With Tooltips, Tickmarks and Labels";
+RangeSliderTickmarksTooltipLabel.storyName = "Tooltips, Tickmarks and Labels";
 //# sourceMappingURL=RangeSlider.stories.js.map

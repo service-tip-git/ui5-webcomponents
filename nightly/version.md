@@ -1,7 +1,7 @@
-commit 555303ab273fbe361c19de4ff5cf8dddddfd5e55
-Author: Boyan Rakilovski <boyan.rakilovski@sap.com>
-Date:   Mon Sep 18 11:38:41 2023 +0300
+commit 28997c8468acf8e5b33a8c174cf9368c31310eb0
+Author: Stoyan <88034608+hinzzx@users.noreply.github.com>
+Date:   Mon Sep 18 16:19:30 2023 +0300
 
-    fix(ui5-button): remove box shadows (#7590)
+    feat(ui5-split-button): adapt visual design with new parameters (#7584)
     
-    feat(ui5-button): remove box shadow
+    Rework on the Split Button visual design in order to be complient with VD Spec in all themes and rtl direction as well.

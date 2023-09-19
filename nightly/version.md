@@ -1,7 +1,7 @@
-commit 292d15a0a7fcf468ecdfbff3048083b7014bf7c7
-Author: Elena Stoyanova <elena.stoyanova@sap.com>
-Date:   Tue Sep 19 12:44:24 2023 +0300
+commit a1b3bf63875c04870e01ff715f603293a233444f
+Author: gmkv <georgi.minkov@sap.com>
+Date:   Tue Sep 19 14:46:25 2023 +0300
 
-    fix(ui5-input): improve item announcement (#7585)
+    fix(ui5-popover): improve positioning when scrolling (#7593)
     
-    Co-authored-by: Elena Stoyanova <e.nikolova@sap.com>
+    Fixes #7173

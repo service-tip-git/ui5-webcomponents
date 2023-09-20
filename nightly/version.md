@@ -1,7 +1,7 @@
-commit a1b3bf63875c04870e01ff715f603293a233444f
-Author: gmkv <georgi.minkov@sap.com>
-Date:   Tue Sep 19 14:46:25 2023 +0300
+commit b32dba1dd5ca2874c4735bda8879b6ee82f149a9
+Author: niyap <38278268+niyap@users.noreply.github.com>
+Date:   Wed Sep 20 08:23:22 2023 +0300
 
-    fix(ui5-popover): improve positioning when scrolling (#7593)
+    fix(ui5-input): adjust button's size (#7597)
     
-    Fixes #7173
+    fix(ui5-input): adjust icon's size

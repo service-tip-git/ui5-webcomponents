@@ -1,5 +1,13 @@
-commit 7c44fb2c6a13be29c7f71444d48802bb55b98d8f
-Author: Vladislav Tasev <vladitasev@users.noreply.github.com>
-Date:   Wed Sep 20 10:08:27 2023 +0300
+commit af8015b68a3a90cfec999863230d0f7b5298e206
+Author: PetyaMarkovaBogdanova <petya.markova-bogdanova@sap.com>
+Date:   Thu Sep 21 09:36:21 2023 +0300
 
-    chore: fix JSDoc (#7604)
+    fix(ui5-breadcrumbs): infinite rerendering fixed (#7589)
+    
+    * fix(ui5-flexible-column-layout): wrong focus fixed
+    
+    * fix(ui5-breadcrumbs): infinite rerendering fixed
+    
+    ---------
+    
+    Co-authored-by: PetyaMarkovaBogdanova <petya.markova@sap.com>

@@ -1,13 +1,5 @@
-commit af8015b68a3a90cfec999863230d0f7b5298e206
-Author: PetyaMarkovaBogdanova <petya.markova-bogdanova@sap.com>
-Date:   Thu Sep 21 09:36:21 2023 +0300
+commit c59c3bc1ccd130d36d1835450d8c7aaff8418e9c
+Author: Nayden Naydenov <31909318+nnaydenow@users.noreply.github.com>
+Date:   Thu Sep 21 16:37:35 2023 +0300
 
-    fix(ui5-breadcrumbs): infinite rerendering fixed (#7589)
-    
-    * fix(ui5-flexible-column-layout): wrong focus fixed
-    
-    * fix(ui5-breadcrumbs): infinite rerendering fixed
-    
-    ---------
-    
-    Co-authored-by: PetyaMarkovaBogdanova <petya.markova@sap.com>
+    fix(ui5-multi-combobox): correct usage of css var (#7616)

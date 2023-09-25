@@ -1,5 +1,5 @@
-commit c59c3bc1ccd130d36d1835450d8c7aaff8418e9c
-Author: Nayden Naydenov <31909318+nnaydenow@users.noreply.github.com>
-Date:   Thu Sep 21 16:37:35 2023 +0300
+commit 092537e5616e23b88c46b93dc237593096c5c882
+Author: niyap <38278268+niyap@users.noreply.github.com>
+Date:   Mon Sep 25 11:31:18 2023 +0300
 
-    fix(ui5-multi-combobox): correct usage of css var (#7616)
+    fix(ui5-table): improve Horizon styles (#7609)

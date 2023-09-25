@@ -1,5 +1,5 @@
-commit bb8241a94b4af5588c4583663da0f88490778cf7
+commit 4540766a76595751323e2d2704f9fde69b80c36d
 Author: niyap <38278268+niyap@users.noreply.github.com>
-Date:   Mon Sep 25 11:31:05 2023 +0300
+Date:   Mon Sep 25 11:31:44 2023 +0300
 
-    fix(ui5-message-strip): remove button's custom width (#7606)
+    fix(ui5-slider): adjust Horizon themes (#7615)

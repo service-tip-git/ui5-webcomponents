@@ -4,7 +4,7 @@ import argTypes, { componentInfo } from "./argTypes.js";
 import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-progress-indicator";
 export default {
-    title: "Main/ProgressIndicator",
+    title: "Main/Progress Indicator",
     component: "ProgressIndicator",
     parameters: {
         docs: {

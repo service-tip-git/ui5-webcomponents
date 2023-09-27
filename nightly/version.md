@@ -1,5 +1,7 @@
-commit 25dbb4bd79890143021b9ecd3033665ea82cd6fa
-Author: Konstantin Gogov <68374332+kgogov@users.noreply.github.com>
-Date:   Tue Sep 26 17:10:03 2023 +0300
+commit b45c7a3a8ac94eb39f6588f48028b6dfeaa1b4db
+Author: yanaminkova <32466553+yanaminkova@users.noreply.github.com>
+Date:   Wed Sep 27 10:33:41 2023 +0300
 
-    fix(ui5-media-gallery): added new horizon theme parameters (#7575)
+    docs: improve storybook samples names (#7621)
+    
+    Related: #7284

@@ -3,7 +3,7 @@ import argTypes, { componentInfo } from "./argTypes.js";
 import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-barcode-scanner-dialog";
 export default {
-    title: "Fiori/BarcodeScannerDialog",
+    title: "Fiori/Barcode Scanner Dialog",
     component: "BarcodeScannerDialog",
     parameters: {
         docs: {

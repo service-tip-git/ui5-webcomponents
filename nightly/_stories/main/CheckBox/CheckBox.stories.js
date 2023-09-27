@@ -5,7 +5,7 @@ import { DocsPage } from "../../../.storybook/docs";
 import WrappingType from "@ui5/webcomponents/dist/types/WrappingType.js";
 const component = "ui5-checkbox";
 export default {
-    title: "Main/CheckBox",
+    title: "Main/Check Box",
     component: "CheckBox",
     parameters: {
         docs: {

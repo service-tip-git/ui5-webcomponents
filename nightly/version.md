@@ -1,7 +1,5 @@
-commit b45c7a3a8ac94eb39f6588f48028b6dfeaa1b4db
-Author: yanaminkova <32466553+yanaminkova@users.noreply.github.com>
-Date:   Wed Sep 27 10:33:41 2023 +0300
+commit b0b83597596248732f4bc92f968391aa67bb0355
+Author: Konstantin Gogov <68374332+kgogov@users.noreply.github.com>
+Date:   Wed Sep 27 11:35:19 2023 +0300
 
-    docs: improve storybook samples names (#7621)
-    
-    Related: #7284
+    fix(ui5-list): update horizon theme parameters (#7614)

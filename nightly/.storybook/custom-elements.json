@@ -11176,7 +11176,13 @@
                             "kind": "field",
                             "name": "closePicker",
                             "privacy": "public",
-                            "description": "Closes the picker"
+                            "description": "Closes the picker",
+                            "return": {
+                                "type": {
+                                    "text": "Promise"
+                                },
+                                "description": "Promise"
+                            }
                         },
                         {
                             "deprecated": false,
@@ -11382,7 +11388,13 @@
                             "kind": "field",
                             "name": "closePicker",
                             "privacy": "public",
-                            "description": "Closes the picker"
+                            "description": "Closes the picker",
+                            "return": {
+                                "type": {
+                                    "text": "Promise"
+                                },
+                                "description": "Promise"
+                            }
                         },
                         {
                             "deprecated": false,

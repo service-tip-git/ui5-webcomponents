@@ -4,7 +4,7 @@ import argTypes, { componentInfo } from "./argTypes.js";
 import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-product-switch";
 export default {
-    title: "Fiori/ProductSwitch",
+    title: "Fiori/Product Switch",
     component: "ProductSwitch",
     subcomponents: { ProductSwitchItem: "ProductSwitchItem" },
     parameters: {
@@ -26,8 +26,8 @@ Basic.args = {
 	<ui5-product-switch-item title-text="Travel &amp; Expense" subtitle-text="Concur" icon="flight"></ui5-product-switch-item>
 `,
 };
-export const ProductSwitchWithShellBar = Template.bind({});
-ProductSwitchWithShellBar.decorators = [
+export const WithShellBar = Template.bind({});
+WithShellBar.decorators = [
     (story) => html `
         <ui5-shellbar
             id="shellbar"
@@ -55,7 +55,7 @@ ProductSwitchWithShellBar.decorators = [
         </script>
     `,
 ];
-ProductSwitchWithShellBar.args = {
+WithShellBar.args = {
     default: `
 	<ui5-product-switch-item
 		title-text="Home"

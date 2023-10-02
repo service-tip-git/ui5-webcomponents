@@ -8,3 +8,4 @@ export declare const Basic: UI5StoryArgs<ComboBox, StoryArgsSlots>;
 export declare const Filters: UI5StoryArgs<ComboBox, StoryArgsSlots>;
 export declare const TwoColumnsLayout: UI5StoryArgs<ComboBox, StoryArgsSlots>;
 export declare const Grouping: UI5StoryArgs<ComboBox, StoryArgsSlots>;
+export declare const SuggestionsWrapping: UI5StoryArgs<ComboBox, StoryArgsSlots>;

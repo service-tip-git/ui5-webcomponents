@@ -29,7 +29,7 @@ const Template = (args) => html `<ui5-calendar
 </ui5-calendar>`;
 export const Basic = Template.bind({});
 export const Bounds = Template.bind({});
-Bounds.storyName = "Min/Max Dates and Format Pattern";
+Bounds.storyName = "Formatted Date Range";
 Bounds.args = {
     minDate: "7/10/2020",
     maxDate: "20/10/2020",

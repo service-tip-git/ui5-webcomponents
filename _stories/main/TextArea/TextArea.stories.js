@@ -39,8 +39,8 @@ export const Basic = Template.bind({});
 Basic.args = {
     placeholder: 'Enter text',
 };
-export const WithMaxLength = Template.bind({});
-WithMaxLength.decorators = [
+export const MaxLength = Template.bind({});
+MaxLength.decorators = [
     (story) => html `
 		${story()}
 		<script>
@@ -54,14 +54,14 @@ WithMaxLength.decorators = [
 		})()
 		</script>`
 ];
-WithMaxLength.args = {
+MaxLength.args = {
     placeholder: 'Enter text',
     maxlength: 10,
     showExceededText: true,
     valueStateMessage: `<div id="warningMessage" slot="valueStateMessage">The characters limit is exceeded</div>`
 };
-export const WithLabel = Template.bind({});
-WithLabel.decorators = [
+export const Label = Template.bind({});
+Label.decorators = [
     (story) => {
         return html `
 		<ui5-label for="textArea-${index}">Description</ui5-label>
@@ -69,7 +69,7 @@ WithLabel.decorators = [
 		`;
     }
 ];
-WithLabel.args = {
+Label.args = {
     placeholder: 'Enter description',
     required: true
 };

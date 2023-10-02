@@ -6,7 +6,7 @@ import { DocsPage } from "../../../.storybook/docs";
 import IllustrationMessageType from "@ui5/webcomponents-fiori/dist/types/IllustrationMessageType.js";
 const component = "ui5-illustrated-message";
 export default {
-    title: "Fiori/IllustratedMessage",
+    title: "Fiori/Illustrated Message",
     component: "IllustratedMessage",
     parameters: {
         docs: {

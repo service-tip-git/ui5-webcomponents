@@ -87,9 +87,9 @@ WithSeparator.args = {
 		<ui5-toolbar-button icon="employee" text="Right 4"></ui5-toolbar-button>
 		<ui5-toolbar-button id="myOverflowBtn" icon="employee" text="Call me later"></ui5-toolbar-button>`
 };
-export const WithAlwaysOverflowItems = Template.bind({});
-WithAlwaysOverflowItems.storyName = "With 'AlwaysOverflow' items";
-WithAlwaysOverflowItems.args = {
+export const AlwaysOverflowItems = Template.bind({});
+AlwaysOverflowItems.storyName = "'AlwaysOverflow' items";
+AlwaysOverflowItems.args = {
     default: `
 		<ui5-toolbar-button icon="add" text="Left 1 (long)" width="150px" design="Default"></ui5-toolbar-button>
 		<ui5-toolbar-button icon="decline" text="Left 2"></ui5-toolbar-button>
@@ -105,9 +105,9 @@ WithAlwaysOverflowItems.args = {
 		<ui5-toolbar-button icon="employee" text="Right 4" overflow-priority="AlwaysOverflow"></ui5-toolbar-button>
 		<ui5-toolbar-button id="myOverflowBtn" icon="employee" text="Call me later" overflow-priority="AlwaysOverflow"></ui5-toolbar-button>`
 };
-export const WithNeverOverflowItems = Template.bind({});
-WithNeverOverflowItems.storyName = "With 'NeverOverflow' items";
-WithNeverOverflowItems.args = {
+export const NeverOverflowItems = Template.bind({});
+NeverOverflowItems.storyName = "'NeverOverflow' items";
+NeverOverflowItems.args = {
     default: `
 		<ui5-toolbar-button icon="add" text="Left 1 (long)" width="150px" design="Default"></ui5-toolbar-button>
 		<ui5-toolbar-button icon="decline" text="Left 2" ></ui5-toolbar-button>
@@ -123,9 +123,9 @@ WithNeverOverflowItems.args = {
 		<ui5-toolbar-button icon="employee" text="Right 4" ></ui5-toolbar-button>
 		<ui5-toolbar-button id="myOverflowBtn" icon="employee" text="Call me later" overflow-priority="NeverOverflow"></ui5-toolbar-button>`
 };
-export const WithStartAlignedItems = Template.bind({});
-WithStartAlignedItems.storyName = "With 'Start' aligned items";
-WithStartAlignedItems.args = {
+export const StartAlignedItems = Template.bind({});
+StartAlignedItems.storyName = "'Start' aligned items";
+StartAlignedItems.args = {
     alignContent: ToolbarAlign.Start,
     default: Basic.args.default
 };

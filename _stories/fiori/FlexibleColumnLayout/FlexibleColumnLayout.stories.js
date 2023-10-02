@@ -5,7 +5,7 @@ import argTypes, { componentInfo } from "./argTypes.js";
 import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-flexible-column-layout";
 export default {
-    title: "Fiori/FlexibleColumnLayout",
+    title: "Fiori/Flexible Column Layout",
     component: "FlexibleColumnLayout",
     parameters: {
         docs: {

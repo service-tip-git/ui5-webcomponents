@@ -1,5 +1,5 @@
-commit 9601ad2205f74ee506c97633b3feacc57e0e2fc9
-Author: Lukas Harbarth <lukas.harbarth@sap.com>
-Date:   Mon Oct 2 08:18:44 2023 +0200
+commit 66c23a4f959f62730f06380b762e510583d00831
+Author: Nayden Naydenov <31909318+nnaydenow@users.noreply.github.com>
+Date:   Mon Oct 2 09:57:01 2023 +0300
 
-    docs(landing-page): dynamically fetch latest ui5wc version (#7643)
+    chore: bump readme (#7647)

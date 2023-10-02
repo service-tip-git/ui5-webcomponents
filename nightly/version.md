@@ -1,9 +1,5 @@
-commit ecf5c6a0a96580f6071974277e22634102d56cb0
-Author: SAP LX Lab Service Account <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Mon Oct 2 01:05:16 2023 -0700
+commit 7b43587253e4873e49211a02a4a3923bc4a819f6
+Author: Lukas Harbarth <lukas.harbarth@sap.com>
+Date:   Mon Oct 2 16:53:18 2023 +0200
 
-    Translation Delivery (#7639)
-    
-    chore: translation delivery
-    
-    Change-Id: Ia63798703c44ee58651925bbd3f57043e7568e3a
+    fix(ui5-label): use correct i18n bundle & make component language aware (#7652)

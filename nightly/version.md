@@ -1,5 +1,7 @@
-commit 7b43587253e4873e49211a02a4a3923bc4a819f6
-Author: Lukas Harbarth <lukas.harbarth@sap.com>
-Date:   Mon Oct 2 16:53:18 2023 +0200
+commit 6ce7c3315c022c83d35b1121a50ef6fc4bb57dd7
+Author: Tsanislav Gatev <tsanislav.gatev@sap.com>
+Date:   Tue Oct 3 17:06:41 2023 +0300
 
-    fix(ui5-label): use correct i18n bundle & make component language aware (#7652)
+    fix(ui5-calendar): hide secondary type when same as primary (#7650)
+    
+    fixes: 7557

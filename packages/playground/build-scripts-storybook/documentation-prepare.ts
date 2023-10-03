@@ -41,9 +41,26 @@ const changelogGenerator = new DocsGenerator({
     }),
 });
 
+const mainDocsGenerator = new DocsGenerator({
+    reader: new DocsReader({
+        directoryUtils,
+        src: directoryUtils.joinPath("../../../packages/main/src/_docs/**/*.md"),
+        ignore: [],
+    }),
+    parsers: [
+        new MetadataParser(),
+        new MDXParser({ subTitle: "Main/_docs" }),
+    ],
+    writer: new DocsWriter({
+        directoryUtils,
+        dest: directoryUtils.joinPath("../docs/storybook/main"),
+    }),
+});
+
 const main = async () => {
     await docsGenerator.generate();
     await changelogGenerator.generate();
+    await mainDocsGenerator.generate();
 };
 
 main();

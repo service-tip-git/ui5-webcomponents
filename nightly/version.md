@@ -1,7 +1,7 @@
-commit 6ce7c3315c022c83d35b1121a50ef6fc4bb57dd7
-Author: Tsanislav Gatev <tsanislav.gatev@sap.com>
-Date:   Tue Oct 3 17:06:41 2023 +0300
+commit 6ce57f75684620021319edebb2d1f81f17ef2e57
+Author: Nayden Naydenov <31909318+nnaydenow@users.noreply.github.com>
+Date:   Wed Oct 4 13:58:04 2023 +0300
 
-    fix(ui5-calendar): hide secondary type when same as primary (#7650)
+    fix(framework): stop bubbling of camel case events (#7658)
     
-    fixes: 7557
+    Co-authored-by: Nayden Naydenov <nnaydenow.work@sap.com>

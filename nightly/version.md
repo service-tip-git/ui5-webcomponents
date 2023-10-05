@@ -1,7 +1,7 @@
-commit 6ce57f75684620021319edebb2d1f81f17ef2e57
-Author: Nayden Naydenov <31909318+nnaydenow@users.noreply.github.com>
-Date:   Wed Oct 4 13:58:04 2023 +0300
+commit 6f5caf49def230e716b7534f83f27249caade7d7
+Author: Tsanislav Gatev <tsanislav.gatev@sap.com>
+Date:   Thu Oct 5 11:46:30 2023 +0300
 
-    fix(framework): stop bubbling of camel case events (#7658)
+    fix(ui5-menu): prevent bubbling in events (#7653)
     
-    Co-authored-by: Nayden Naydenov <nnaydenow.work@sap.com>
+    Fixes: #7637

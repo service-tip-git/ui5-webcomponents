@@ -1,7 +1,7 @@
-commit 6f5caf49def230e716b7534f83f27249caade7d7
-Author: Tsanislav Gatev <tsanislav.gatev@sap.com>
-Date:   Thu Oct 5 11:46:30 2023 +0300
+commit e9ee7ac466e28deedf36abd3c8793c3c220cca1a
+Author: gmkv <georgi.minkov@sap.com>
+Date:   Thu Oct 5 11:57:27 2023 +0300
 
-    fix(ui5-menu): prevent bubbling in events (#7653)
+    chore(test pages): remove jquery imports in test pages (#7671)
     
-    Fixes: #7637
+    Fixes #7669

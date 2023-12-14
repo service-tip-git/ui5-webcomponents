@@ -1,5 +1,7 @@
-commit ff04434c9c00b29367faff22d187edb55186eccd
-Author: Konstantin Gogov <68374332+kgogov@users.noreply.github.com>
-Date:   Thu Oct 5 16:10:04 2023 +0300
+commit 93290383aa556af1d91796823b20bb7d2e3782b1
+Author: service-tip-git <tmsatsls+github.com_service-tip-git@sap.com>
+Date:   Thu Dec 14 09:16:39 2023 +0000
 
-    fix(ui5-shellbar): horizon theme update (#7623)
+    [INTERNAL] Translation delivery: commit by LX Lab
+    
+    Change-Id: I9f413a7d9cf377206a7c1acee94e14ea9b05f89d

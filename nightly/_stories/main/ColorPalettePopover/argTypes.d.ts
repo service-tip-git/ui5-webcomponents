@@ -4,6 +4,11 @@ declare const _default: {
             type: string;
         };
     };
+    opener: {
+        control: {
+            type: string;
+        };
+    };
     default: {
         control: {
             type: string;

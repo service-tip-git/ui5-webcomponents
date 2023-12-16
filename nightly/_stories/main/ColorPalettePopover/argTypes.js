@@ -4,6 +4,11 @@ export default {
             "type": "text"
         }
     },
+    "opener": {
+        "control": {
+            "type": "text"
+        }
+    },
     "default": {
         "control": {
             "type": "text"

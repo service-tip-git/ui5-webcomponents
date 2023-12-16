@@ -1770,6 +1770,12 @@
                     "events": [
                         {
                             "deprecated": false,
+                            "name": "close",
+                            "type": "CustomEvent",
+                            "description": "Fired when the <code>ui5-color-palette-popover</code> is closed due to user interaction."
+                        },
+                        {
+                            "deprecated": false,
                             "name": "item-click",
                             "type": "CustomEvent",
                             "description": "Fired when the user selects a color."
@@ -1787,6 +1793,30 @@
                                 "text": "sap.ui.webc.base.types.CSSColor"
                             },
                             "description": "Defines the default color of the component. <b>Note:</b> The default color should be a part of the ColorPalette colors</code>"
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "open",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "default": "false",
+                            "description": "Defines the open | closed state of the popover."
+                        },
+                        {
+                            "deprecated": false,
+                            "kind": "field",
+                            "name": "opener",
+                            "privacy": "public",
+                            "static": false,
+                            "type": {
+                                "text": "sap.ui.webc.base.types.DOMReference"
+                            },
+                            "default": "undefined",
+                            "description": "Defines the ID or DOM Reference of the element that the popover is shown at."
                         },
                         {
                             "deprecated": false,
@@ -1842,7 +1872,7 @@
                             ]
                         },
                         {
-                            "deprecated": false,
+                            "deprecated": true,
                             "kind": "field",
                             "name": "showAt",
                             "privacy": "public",

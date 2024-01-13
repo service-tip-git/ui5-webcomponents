@@ -1,64 +1,18 @@
 declare const _default: {
-    busyDelay: {
+    default: {
         control: {
             type: string;
         };
-    };
-    growing: {
-        control: string;
-        options: string[];
-    };
-    mode: {
-        control: string;
-        options: string[];
+        table: {
+            type: {};
+        };
     };
     columns: {
         control: {
             type: string;
         };
-    };
-    default: {
-        control: {
-            type: string;
-        };
-    };
-    "popin-change": {
-        description: string;
         table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "row-click": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "selection-change": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            type: {};
         };
     };
 };
@@ -67,6 +21,6 @@ export declare const componentInfo: {
     package: string;
 };
 export type StoryArgsSlots = {
-    columns: string;
     default: string;
+    columns: string;
 };

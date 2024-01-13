@@ -22,7 +22,6 @@ const stylesDecorator = (storyFn) => html `
 export default {
     title: "Fiori/Media Gallery",
     component: "MediaGallery",
-    subcomponents: { MediaGalleryItem: "MediaGalleryItem" },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),

@@ -1,53 +1,43 @@
 declare const _default: {
-    tokens: {
-        control: {
-            type: string;
-        };
-    };
-    "token-delete": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    maxlength: {
-        control: {
-            type: string;
-        };
+    valueState: {
+        control: string;
+        options: string[];
     };
     previewItem: {
         control: {
             type: boolean;
         };
     };
-    type: {
-        control: string;
-        options: string[];
-    };
-    valueState: {
-        control: string;
-        options: string[];
+    tokens: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
+        };
     };
     default: {
         control: {
             type: string;
+        };
+        table: {
+            type: {};
         };
     };
     icon: {
         control: {
             type: string;
         };
+        table: {
+            type: {};
+        };
     };
     valueStateMessage: {
         control: {
             type: string;
+        };
+        table: {
+            type: {};
         };
     };
     openPicker: {
@@ -55,38 +45,18 @@ declare const _default: {
         table: {
             category: string;
         };
-    };
-    "suggestion-item-preview": {
-        description: string;
-        table: {
-            category: string;
-        };
         UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "suggestion-item-select": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
     tokens: string;

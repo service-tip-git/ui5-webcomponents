@@ -1,11 +1,12 @@
 export default {
-    "filter": {
+    "valueState": {
         "control": "select",
         "options": [
-            "Contains",
             "None",
-            "StartsWith",
-            "StartsWithPerTerm"
+            "Success",
+            "Warning",
+            "Error",
+            "Information"
         ]
     },
     "open": {
@@ -13,49 +14,32 @@ export default {
             "type": false
         }
     },
-    "valueState": {
-        "control": "select",
-        "options": [
-            "Error",
-            "Information",
-            "None",
-            "Success",
-            "Warning"
-        ]
-    },
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "icon": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "valueStateMessage": {
         "control": {
             "type": "text"
-        }
-    },
-    "selection-change": {
-        "description": "Fired when selection is changed by user interaction in <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
-        "table": {
-            "category": "events"
         },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "items",
-                    "type": "Array",
-                    "description": "an array of the selected items."
-                }
-            ]
+        "table": {
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "0.11.0"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

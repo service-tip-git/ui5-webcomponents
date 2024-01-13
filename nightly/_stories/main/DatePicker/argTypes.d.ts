@@ -1,10 +1,18 @@
 declare const _default: {
+    valueState: {
+        control: string;
+        options: string[];
+    };
     dateValue: {
         control: {
             type: boolean;
         };
     };
-    valueState: {
+    primaryCalendarType: {
+        control: string;
+        options: string[];
+    };
+    secondaryCalendarType: {
         control: string;
         options: string[];
     };
@@ -12,14 +20,11 @@ declare const _default: {
         control: {
             type: string;
         };
-    };
-    closePicker: {
-        description: string;
         table: {
-            category: string;
+            type: {};
         };
     };
-    formatValue: {
+    isValid: {
         description: string;
         table: {
             category: string;
@@ -27,13 +32,15 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
             returnValue: {
-                type: string;
-                description: string;
+                type: {
+                    text: string;
+                };
             };
         };
     };
@@ -45,29 +52,19 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
-                defaultValue: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
             returnValue: {
-                type: string;
+                type: {
+                    text: string;
+                };
             };
         };
     };
-    isOpen: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            returnValue: {
-                type: string;
-                description: string;
-            };
-        };
-    };
-    isValid: {
+    formatValue: {
         description: string;
         table: {
             category: string;
@@ -75,13 +72,29 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
-                defaultValue: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
             returnValue: {
-                type: string;
+                type: {
+                    text: string;
+                };
+                description: string;
+            };
+        };
+    };
+    closePicker: {
+        description: string;
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            returnValue: {
+                type: {
+                    text: string;
+                };
             };
         };
     };
@@ -92,44 +105,26 @@ declare const _default: {
         };
         UI5CustomData: {
             returnValue: {
-                type: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             };
         };
     };
-    change: {
+    isOpen: {
         description: string;
         table: {
             category: string;
         };
         UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
+            returnValue: {
+                type: {
+                    text: string;
+                };
                 description: string;
-            }[];
+            };
         };
-    };
-    input: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    primaryCalendarType: {
-        control: string;
-        options: string[];
-    };
-    secondaryCalendarType: {
-        control: string;
-        options: string[];
     };
 };
 export default _default;

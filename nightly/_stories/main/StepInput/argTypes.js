@@ -1,47 +1,24 @@
 export default {
-    "max": {
-        "control": {
-            "type": "number"
-        }
-    },
-    "min": {
-        "control": {
-            "type": "number"
-        }
-    },
-    "step": {
-        "control": {
-            "type": "number"
-        }
-    },
-    "value": {
-        "control": {
-            "type": "number"
-        }
-    },
-    "valuePrecision": {
-        "control": {
-            "type": "number"
-        }
-    },
     "valueState": {
         "control": "select",
         "options": [
-            "Error",
-            "Information",
             "None",
             "Success",
-            "Warning"
+            "Warning",
+            "Error",
+            "Information"
         ]
     },
     "valueStateMessage": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.13"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

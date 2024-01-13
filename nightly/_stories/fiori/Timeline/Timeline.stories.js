@@ -8,7 +8,6 @@ const component = "ui5-timeline";
 export default {
     title: "Fiori/Timeline",
     component: "Timeline",
-    subcomponents: { 'TimelineItem': 'TimelineItem' },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

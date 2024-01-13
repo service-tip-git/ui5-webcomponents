@@ -1,89 +1,54 @@
 export default {
-    "maxlength": {
-        "control": {
-            "type": "number"
-        }
+    "valueState": {
+        "control": "select",
+        "options": [
+            "None",
+            "Success",
+            "Warning",
+            "Error",
+            "Information"
+        ]
     },
     "previewItem": {
         "control": {
             "type": false
         }
     },
-    "type": {
-        "control": "select",
-        "options": [
-            "Email",
-            "Number",
-            "Password",
-            "Tel",
-            "Text",
-            "URL"
-        ]
-    },
-    "valueState": {
-        "control": "select",
-        "options": [
-            "Error",
-            "Information",
-            "None",
-            "Success",
-            "Warning"
-        ]
-    },
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "icon": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "valueStateMessage": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "openPicker": {
         "description": "Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.",
         "table": {
             "category": "methods"
-        }
-    },
-    "suggestion-item-preview": {
-        "description": "Fired when the user navigates to a suggestion item via the ARROW keys, as a preview, before the final selection.",
-        "table": {
-            "category": "events"
         },
         "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "item",
-                    "type": "HTMLElement",
-                    "description": "The previewed suggestion item."
-                },
-                {
-                    "name": "targetRef",
-                    "type": "HTMLElement",
-                    "description": "The DOM ref of the suggestion item."
+            "returnValue": {
+                "type": {
+                    "text": "void"
                 }
-            ]
-        }
-    },
-    "suggestion-item-select": {
-        "description": "Fired when a suggestion item, that is displayed in the suggestion popup, is selected.",
-        "table": {
-            "category": "events"
-        },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "item",
-                    "type": "HTMLElement",
-                    "description": "The selected item."
-                }
-            ]
+            }
         }
     }
 };

@@ -1,23 +1,10 @@
 declare const _default: {
-    busyDelay: {
-        control: {
-            type: string;
-        };
-    };
-    opener: {
-        control: {
-            type: string;
-        };
-    };
     default: {
         control: {
             type: string;
         };
-    };
-    close: {
-        description: string;
         table: {
-            category: string;
+            type: {};
         };
     };
     showAt: {
@@ -28,56 +15,35 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
-    "before-close": {
+    close: {
         description: string;
         table: {
             category: string;
         };
         UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "before-open": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "item-click": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
     default: string;

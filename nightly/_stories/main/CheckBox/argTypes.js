@@ -2,18 +2,11 @@ export default {
     "valueState": {
         "control": "select",
         "options": [
-            "Error",
-            "Information",
             "None",
             "Success",
-            "Warning"
-        ]
-    },
-    "wrappingType": {
-        "control": "select",
-        "options": [
-            "None",
-            "Normal"
+            "Warning",
+            "Error",
+            "Information"
         ]
     }
 };

@@ -1,10 +1,18 @@
 declare const _default: {
+    valueState: {
+        control: string;
+        options: string[];
+    };
     dateValue: {
         control: {
             type: boolean;
         };
     };
-    valueState: {
+    primaryCalendarType: {
+        control: string;
+        options: string[];
+    };
+    secondaryCalendarType: {
         control: string;
         options: string[];
     };
@@ -12,58 +20,20 @@ declare const _default: {
         control: {
             type: string;
         };
-    };
-    closePicker: {
-        description: string;
         table: {
-            category: string;
+            type: {};
         };
     };
-    formatValue: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                optional: boolean;
-                description: string;
-            }[];
-            returnValue: {
-                type: string;
-                description: string;
-            };
-        };
-    };
-    isInValidRange: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                optional: boolean;
-                defaultValue: string;
-                description: string;
-            }[];
-            returnValue: {
-                type: string;
-            };
-        };
-    };
-    isOpen: {
+    openPicker: {
         description: string;
         table: {
             category: string;
         };
         UI5CustomData: {
             returnValue: {
-                type: string;
-                description: string;
+                type: {
+                    text: string;
+                };
             };
         };
     };
@@ -75,29 +45,19 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
-                defaultValue: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
             returnValue: {
-                type: string;
+                type: {
+                    text: string;
+                };
             };
         };
     };
-    openPicker: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            returnValue: {
-                type: string;
-                description: string;
-            };
-        };
-    };
-    change: {
+    isInValidRange: {
         description: string;
         table: {
             category: string;
@@ -105,12 +65,19 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
-    input: {
+    formatValue: {
         description: string;
         table: {
             category: string;
@@ -118,24 +85,50 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+                description: string;
+            };
         };
     };
-    primaryCalendarType: {
-        control: string;
-        options: string[];
+    closePicker: {
+        description: string;
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
+        };
     };
-    secondaryCalendarType: {
-        control: string;
-        options: string[];
+    isOpen: {
+        description: string;
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            returnValue: {
+                type: {
+                    text: string;
+                };
+                description: string;
+            };
+        };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
     valueStateMessage: string;

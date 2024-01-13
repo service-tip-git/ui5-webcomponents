@@ -1,46 +1,34 @@
 declare const _default: {
-    colorScheme: {
-        control: {
-            type: boolean;
-        };
-    };
     hiddenItems: {
         control: {
             type: boolean;
         };
     };
-    type: {
-        control: string;
-        options: string[];
+    colorScheme: {
+        control: {
+            type: boolean;
+        };
     };
     default: {
         control: {
             type: string;
+        };
+        table: {
+            type: {};
         };
     };
     overflowButton: {
         control: {
             type: string;
         };
-    };
-    click: {
-        description: string;
         table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            type: {};
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
     default: string;

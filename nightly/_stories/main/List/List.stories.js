@@ -8,11 +8,6 @@ const component = "ui5-list";
 export default {
     title: "Main/List",
     component: "List",
-    subcomponents: {
-        StandardListItem: "StandardListItem",
-        CustomListItem: "CustomListItem",
-        GroupHeaderListItem: "GroupHeaderListItem",
-    },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

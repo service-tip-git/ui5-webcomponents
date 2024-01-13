@@ -1,37 +1,27 @@
 export default {
-    "duration": {
-        "control": {
-            "type": "number"
-        }
-    },
-    "placement": {
-        "control": "select",
-        "options": [
-            "BottomCenter",
-            "BottomEnd",
-            "BottomStart",
-            "MiddleCenter",
-            "MiddleEnd",
-            "MiddleStart",
-            "TopCenter",
-            "TopEnd",
-            "TopStart"
-        ]
-    },
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "show": {
         "description": "Shows the component.",
         "table": {
             "category": "methods"
+        },
+        "UI5CustomData": {
+            "returnValue": {
+                "type": {
+                    "text": "void"
+                }
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.6"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

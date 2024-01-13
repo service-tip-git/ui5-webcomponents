@@ -3,10 +3,16 @@ declare const _default: {
         control: {
             type: string;
         };
+        table: {
+            type: {};
+        };
     };
     header: {
         control: {
             type: string;
+        };
+        table: {
+            type: {};
         };
     };
 };

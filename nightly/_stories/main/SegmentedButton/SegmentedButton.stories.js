@@ -5,9 +5,8 @@ import argTypes, { componentInfo } from "./argTypes.js";
 import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-segmented-button";
 export default {
-    title: "Main/SegmentedButton",
+    title: "Main/Segmented Button",
     component: "SegmentedButton",
-    subcomponents: { 'SegmentedButtonItem': 'SegmentedButtonItem' },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

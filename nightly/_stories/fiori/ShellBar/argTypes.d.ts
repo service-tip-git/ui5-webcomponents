@@ -1,10 +1,10 @@
 declare const _default: {
-    copilotDomRef: {
+    logoDomRef: {
         control: {
             type: boolean;
         };
     };
-    logoDomRef: {
+    copilotDomRef: {
         control: {
             type: boolean;
         };
@@ -19,12 +19,12 @@ declare const _default: {
             type: boolean;
         };
     };
-    productSwitchDomRef: {
+    profileDomRef: {
         control: {
             type: boolean;
         };
     };
-    profileDomRef: {
+    productSwitchDomRef: {
         control: {
             type: boolean;
         };
@@ -33,30 +33,48 @@ declare const _default: {
         control: {
             type: string;
         };
-    };
-    logo: {
-        control: {
-            type: string;
-        };
-    };
-    menuItems: {
-        control: {
-            type: string;
+        table: {
+            type: {};
         };
     };
     profile: {
         control: {
             type: string;
         };
+        table: {
+            type: {};
+        };
+    };
+    logo: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
+        };
+    };
+    menuItems: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
+        };
     };
     searchField: {
         control: {
             type: string;
         };
+        table: {
+            type: {};
+        };
     };
     startButton: {
         control: {
             type: string;
+        };
+        table: {
+            type: {};
         };
     };
     closeOverflow: {
@@ -64,96 +82,24 @@ declare const _default: {
         table: {
             category: string;
         };
-    };
-    "co-pilot-click": {
-        description: string;
-        table: {
-            category: string;
-        };
         UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "logo-click": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "menu-item-click": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "notifications-click": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "product-switch-click": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "profile-click": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
     default: string;
+    profile: string;
     logo: string;
     menuItems: string;
-    profile: string;
     searchField: string;
     startButton: string;
 };

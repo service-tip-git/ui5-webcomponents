@@ -1,14 +1,5 @@
-export default {
-    "design": {
-        "control": "select",
-        "options": [
-            "Graphical",
-            "Textual"
-        ]
-    }
-};
+export default {};
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "0.8.0"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

@@ -2,16 +2,21 @@ export default {
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "icon": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "0.12.0"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

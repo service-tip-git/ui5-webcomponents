@@ -1,42 +1,15 @@
 declare const _default: {
-    arrowsPlacement: {
-        control: string;
-        options: string[];
-    };
-    backgroundDesign: {
-        control: string;
-        options: string[];
-    };
-    itemsPerPageL: {
+    visibleItemsIndices: {
         control: {
-            type: string;
+            type: boolean;
         };
-    };
-    itemsPerPageM: {
-        control: {
-            type: string;
-        };
-    };
-    itemsPerPageS: {
-        control: {
-            type: string;
-        };
-    };
-    pageIndicatorBackgroundDesign: {
-        control: string;
-        options: string[];
-    };
-    pageIndicatorBorderDesign: {
-        control: string;
-        options: string[];
-    };
-    pageIndicatorStyle: {
-        control: string;
-        options: string[];
     };
     default: {
         control: {
             type: string;
+        };
+        table: {
+            type: {};
         };
     };
     navigateTo: {
@@ -47,30 +20,22 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
+                type: {
+                    text: string;
+                };
                 description: string;
             }[];
-        };
-    };
-    navigate: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
     default: string;

@@ -1,25 +1,14 @@
 export default {
-    "delay": {
-        "control": {
-            "type": "number"
-        }
-    },
-    "size": {
-        "control": "select",
-        "options": [
-            "Large",
-            "Medium",
-            "Small"
-        ]
-    },
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "0.12.0"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

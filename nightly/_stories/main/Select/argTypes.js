@@ -1,72 +1,45 @@
 export default {
-    "menu": {
-        "control": {
-            "type": "text"
-        }
+    "valueState": {
+        "control": "select",
+        "options": [
+            "None",
+            "Success",
+            "Warning",
+            "Error",
+            "Information"
+        ]
     },
     "selectedOption": {
         "control": {
             "type": false
         }
     },
-    "valueState": {
-        "control": "select",
-        "options": [
-            "Error",
-            "Information",
-            "None",
-            "Success",
-            "Warning"
-        ]
-    },
     "default": {
         "control": {
             "type": "text"
-        }
-    },
-    "label": {
-        "control": {
-            "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "valueStateMessage": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
-    "change": {
-        "description": "Fired when the selected option changes.",
-        "table": {
-            "category": "events"
+    "label": {
+        "control": {
+            "type": "text"
         },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "selectedOption",
-                    "type": "HTMLElement",
-                    "description": "the selected option."
-                }
-            ]
-        }
-    },
-    "live-change": {
-        "description": "Fired when the user navigates through the options, but the selection is not finalized, or when pressing the ESC key to revert the current selection.",
         "table": {
-            "category": "events"
-        },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "selectedOption",
-                    "type": "HTMLElement",
-                    "description": "the selected option."
-                }
-            ]
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "0.8.0"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

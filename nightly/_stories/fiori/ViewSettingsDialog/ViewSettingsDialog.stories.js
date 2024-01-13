@@ -5,7 +5,7 @@ import argTypes, { componentInfo } from "./argTypes.js";
 import { DocsPage } from "../../../.storybook/docs";
 const component = "ui5-view-settings-dialog";
 export default {
-    title: "Fiori/ViewSettingsDialog",
+    title: "Fiori/View Settings Dialog",
     component: "ViewSettingsDialog",
     subcomponents: { 'SortItem': 'SortItem', 'FilterItem': 'FilterItem', 'FilterItemOption': 'FilterItemOption' },
     parameters: {

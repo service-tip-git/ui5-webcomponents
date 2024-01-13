@@ -7,10 +7,6 @@ const component = "ui5-side-navigation";
 export default {
     title: "Fiori/Side Navigation",
     component: "SideNavigation",
-    subcomponents: {
-        SideNavigationItem: "SideNavigationItem",
-        SideNavigationSubItem: "SideNavigationSubItem"
-    },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component })

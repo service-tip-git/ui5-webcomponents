@@ -3,38 +3,33 @@ declare const _default: {
         control: {
             type: string;
         };
-    };
-    fixedItems: {
-        control: {
-            type: string;
+        table: {
+            type: {};
         };
     };
     header: {
         control: {
             type: string;
         };
-    };
-    "selection-change": {
-        description: string;
         table: {
-            category: string;
+            type: {};
         };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+    };
+    fixedItems: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
     default: string;
-    fixedItems: string;
     header: string;
+    fixedItems: string;
 };

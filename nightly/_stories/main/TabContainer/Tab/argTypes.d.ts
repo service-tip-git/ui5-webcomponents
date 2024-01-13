@@ -1,0 +1,44 @@
+declare const _default: {
+    default: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
+        };
+    };
+    subTabs: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
+        };
+    };
+    getTabInStripDomRef: {
+        description: string;
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            returnValue: {
+                type: {
+                    text: string;
+                    references: {
+                        name: string;
+                        package: string;
+                        module: string;
+                    }[];
+                };
+            };
+        };
+    };
+};
+export default _default;
+export declare const componentInfo: {
+    package: string;
+};
+export type StoryArgsSlots = {
+    default: string;
+    subTabs: string;
+};

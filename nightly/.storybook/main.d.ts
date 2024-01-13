@@ -31,6 +31,7 @@ declare const config: {
     };
     features: {
         storyStoreV7: boolean;
+        buildStoriesJson: boolean;
     };
     typescript: {
         reactDocgen: string;

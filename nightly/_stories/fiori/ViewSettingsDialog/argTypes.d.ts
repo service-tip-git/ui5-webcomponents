@@ -1,12 +1,31 @@
 declare const _default: {
+    sortItems: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
+        };
+    };
     filterItems: {
         control: {
             type: string;
         };
+        table: {
+            type: {};
+        };
     };
-    sortItems: {
-        control: {
-            type: string;
+    show: {
+        description: string;
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
     setConfirmedSettings: {
@@ -17,71 +36,29 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
-                parameterProperties: {
-                    sortOrder: {
+                type: {
+                    text: string;
+                    references: {
                         name: string;
-                        type: string;
-                        optional: boolean;
-                        description: string;
-                    };
-                    sortBy: {
-                        name: string;
-                        type: string;
-                        optional: boolean;
-                        description: string;
-                    };
-                    filters: {
-                        name: string;
-                        type: string;
-                        optional: boolean;
-                        description: string;
-                    };
+                        package: string;
+                        module: string;
+                    }[];
                 };
                 description: string;
             }[];
-        };
-    };
-    show: {
-        description: string;
-        table: {
-            category: string;
-        };
-    };
-    cancel: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    confirm: {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {
-    filterItems: string;
     sortItems: string;
+    filterItems: string;
 };

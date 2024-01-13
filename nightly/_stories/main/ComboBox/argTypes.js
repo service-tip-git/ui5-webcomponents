@@ -1,56 +1,40 @@
 export default {
-    "filter": {
-        "control": "select",
-        "options": [
-            "Contains",
-            "None",
-            "StartsWith",
-            "StartsWithPerTerm"
-        ]
-    },
     "valueState": {
         "control": "select",
         "options": [
-            "Error",
-            "Information",
             "None",
             "Success",
-            "Warning"
+            "Warning",
+            "Error",
+            "Information"
         ]
     },
     "default": {
         "control": {
             "type": "text"
-        }
-    },
-    "icon": {
-        "control": {
-            "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "valueStateMessage": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
-    "selection-change": {
-        "description": "Fired when selection is changed by user interaction",
-        "table": {
-            "category": "events"
+    "icon": {
+        "control": {
+            "type": "text"
         },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "item",
-                    "type": "sap.ui.webc.main.IComboBoxItem",
-                    "description": "item to be selected."
-                }
-            ]
+        "table": {
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.6"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

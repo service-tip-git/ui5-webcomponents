@@ -2,36 +2,29 @@ export default {
     "default": {
         "control": {
             "type": "text"
-        }
-    },
-    "fixedItems": {
-        "control": {
-            "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "header": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
-    "selection-change": {
-        "description": "Fired when the selection has changed via user interaction",
-        "table": {
-            "category": "events"
+    "fixedItems": {
+        "control": {
+            "type": "text"
         },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "item",
-                    "type": "sap.ui.webc.fiori.SideNavigationItemBase",
-                    "description": "the clicked item."
-                }
-            ]
+        "table": {
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori",
-    "since": "1.0.0-rc.8"
+    "package": "@ui5/webcomponents-fiori"
 };
 //# sourceMappingURL=argTypes.js.map

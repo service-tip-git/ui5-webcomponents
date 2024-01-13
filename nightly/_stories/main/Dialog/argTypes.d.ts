@@ -3,14 +3,28 @@ declare const _default: {
         control: string;
         options: string[];
     };
+    header: {
+        control: {
+            type: string;
+        };
+        table: {
+            type: {};
+        };
+    };
     footer: {
         control: {
             type: string;
         };
+        table: {
+            type: {};
+        };
     };
-    header: {
+    default: {
         control: {
             type: string;
+        };
+        table: {
+            type: {};
         };
     };
     show: {
@@ -21,24 +35,19 @@ declare const _default: {
         UI5CustomData: {
             parameters: {
                 name: string;
-                type: string;
-                optional: boolean;
-                defaultValue: boolean;
+                default: string;
                 description: string;
+                optional: boolean;
+                type: {
+                    text: string;
+                };
             }[];
             returnValue: {
-                type: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             };
-        };
-    };
-    accessibleRole: {
-        control: string;
-        options: string[];
-    };
-    default: {
-        control: {
-            type: string;
         };
     };
     applyFocus: {
@@ -48,15 +57,11 @@ declare const _default: {
         };
         UI5CustomData: {
             returnValue: {
-                type: string;
+                type: {
+                    text: string;
+                };
                 description: string;
             };
-        };
-    };
-    close: {
-        description: string;
-        table: {
-            category: string;
         };
     };
     isOpen: {
@@ -66,21 +71,23 @@ declare const _default: {
         };
         UI5CustomData: {
             returnValue: {
-                type: string;
+                type: {
+                    text: string;
+                };
             };
         };
     };
-    "before-close": {
+    close: {
         description: string;
         table: {
             category: string;
         };
         UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
 };
@@ -89,7 +96,7 @@ export declare const componentInfo: {
     package: string;
 };
 export type StoryArgsSlots = {
-    footer: string;
     header: string;
+    footer: string;
     default: string;
 };

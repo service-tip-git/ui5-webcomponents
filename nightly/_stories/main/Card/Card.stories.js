@@ -1,13 +1,12 @@
 import { html } from "lit";
 import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../.storybook/docs";
+import { DocsPage } from "../../../.storybook/docs.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
 const component = "ui5-card";
 export default {
     title: "Main/Card",
     component: "Card",
-    subcomponents: { 'CardHeader': 'CardHeader' },
     parameters: {
         docs: {
             page: DocsPage({ ...componentInfo, component }),

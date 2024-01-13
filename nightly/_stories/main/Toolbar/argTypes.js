@@ -1,19 +1,27 @@
 export default {
-    "alignContent": {
-        "control": "select",
-        "options": [
-            "End",
-            "Start"
-        ]
-    },
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
+        }
+    },
+    "isOverflowOpen": {
+        "description": "Returns if the overflow popup is open.",
+        "table": {
+            "category": "methods"
+        },
+        "UI5CustomData": {
+            "returnValue": {
+                "type": {
+                    "text": "Promise<boolean>"
+                }
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.17.0"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

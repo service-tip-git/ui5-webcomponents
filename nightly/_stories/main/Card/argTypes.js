@@ -2,11 +2,17 @@ export default {
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "header": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     }
 };

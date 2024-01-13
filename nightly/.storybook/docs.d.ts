@@ -1,4 +1,5 @@
 interface DocsPageArgs {
+    showDefaultStoryOnly?: boolean;
     component: string;
     package: string;
     since?: string;

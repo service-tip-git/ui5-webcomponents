@@ -34,7 +34,8 @@ const config = {
         builder: "@storybook/builder-vite"
     },
     features: {
-        storyStoreV7: true
+        storyStoreV7: true,
+        buildStoriesJson: true,
     },
     typescript: {
         reactDocgen: 'react-docgen'

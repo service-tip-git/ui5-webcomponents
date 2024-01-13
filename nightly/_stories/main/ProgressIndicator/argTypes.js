@@ -1,22 +1,16 @@
 export default {
-    "value": {
-        "control": {
-            "type": "number"
-        }
-    },
     "valueState": {
         "control": "select",
         "options": [
-            "Error",
-            "Information",
             "None",
             "Success",
-            "Warning"
+            "Warning",
+            "Error",
+            "Information"
         ]
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.8"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

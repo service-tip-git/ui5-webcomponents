@@ -1,23 +1,30 @@
 export default {
-    "close": {
-        "description": "Closes the popup.",
+    "header": {
+        "control": {
+            "type": "text"
+        },
         "table": {
-            "category": "methods"
+            "type": {}
         }
     },
-    "isOpen": {
-        "description": "Tells if the component is opened",
-        "table": {
-            "category": "methods"
+    "footer": {
+        "control": {
+            "type": "text"
         },
-        "UI5CustomData": {
-            "returnValue": {
-                "type": "boolean"
-            }
+        "table": {
+            "type": {}
+        }
+    },
+    "default": {
+        "control": {
+            "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "showAt": {
-        "description": "Shows the popover.",
+        "description": "Shows popover on desktop and dialog on mobile.",
         "table": {
             "category": "methods"
         },
@@ -25,109 +32,71 @@ export default {
             "parameters": [
                 {
                     "name": "opener",
-                    "type": "HTMLElement",
-                    "optional": false,
+                    "type": {
+                        "text": "HTMLElement"
+                    },
                     "description": "the element that the popover is shown at"
                 },
                 {
                     "name": "preventInitialFocus",
-                    "type": "boolean",
+                    "default": "false",
+                    "description": "Prevents applying the focus inside the popup",
                     "optional": true,
-                    "defaultValue": false,
-                    "description": "prevents applying the focus inside the popover"
+                    "type": {
+                        "text": "boolean"
+                    }
                 }
             ],
             "returnValue": {
-                "type": "Promise",
-                "description": "Resolved when the popover is open"
+                "type": {
+                    "text": "Promise<void>"
+                },
+                "description": "Resolves when the responsive popover is open"
             }
         }
     },
-    "horizontalAlign": {
-        "control": "select",
-        "options": [
-            "Center",
-            "Left",
-            "Right",
-            "Stretch"
-        ]
-    },
-    "opener": {
-        "control": {
-            "type": "text"
-        }
-    },
-    "placementType": {
-        "control": "select",
-        "options": [
-            "Bottom",
-            "Left",
-            "Right",
-            "Top"
-        ]
-    },
-    "verticalAlign": {
-        "control": "select",
-        "options": [
-            "Bottom",
-            "Center",
-            "Stretch",
-            "Top"
-        ]
-    },
-    "footer": {
-        "control": {
-            "type": "text"
-        }
-    },
-    "header": {
-        "control": {
-            "type": "text"
-        }
-    },
-    "accessibleRole": {
-        "control": "select",
-        "options": [
-            "AlertDialog",
-            "Dialog",
-            "None"
-        ]
-    },
-    "default": {
-        "control": {
-            "type": "text"
-        }
-    },
-    "applyFocus": {
-        "description": "Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.",
+    "close": {
+        "description": "Closes the popover/dialog.",
         "table": {
             "category": "methods"
         },
         "UI5CustomData": {
             "returnValue": {
-                "type": "Promise",
-                "description": "Promise that resolves when the focus is applied"
+                "type": {
+                    "text": "void"
+                }
             }
         }
     },
-    "before-close": {
-        "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. <b>This event does not bubble.</b>",
+    "isOpen": {
+        "description": "Tells if the responsive popover is open.",
         "table": {
-            "category": "events"
+            "category": "methods"
         },
         "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "escPressed",
-                    "type": "boolean",
-                    "description": "Indicates that <code>ESC</code> key has triggered the event."
+            "returnValue": {
+                "type": {
+                    "text": "boolean"
                 }
-            ]
+            }
+        }
+    },
+    "applyFocus": {
+        "description": "Focuses the element denoted by <code>initialFocus</code>, if provided,\nor the first focusable element otherwise.",
+        "table": {
+            "category": "methods"
+        },
+        "UI5CustomData": {
+            "returnValue": {
+                "type": {
+                    "text": "Promise<void>"
+                },
+                "description": "Promise that resolves when the focus is applied"
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.6"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

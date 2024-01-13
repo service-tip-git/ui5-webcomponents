@@ -1,79 +1,57 @@
 export default {
+    "valueState": {
+        "control": "select",
+        "options": [
+            "None",
+            "Success",
+            "Warning",
+            "Error",
+            "Information"
+        ]
+    },
     "dateValue": {
         "control": {
             "type": false
         }
     },
-    "valueState": {
+    "primaryCalendarType": {
         "control": "select",
         "options": [
-            "Error",
-            "Information",
-            "None",
-            "Success",
-            "Warning"
+            "Gregorian",
+            "Islamic",
+            "Japanese",
+            "Buddhist",
+            "Persian"
+        ]
+    },
+    "secondaryCalendarType": {
+        "control": "select",
+        "options": [
+            "Gregorian",
+            "Islamic",
+            "Japanese",
+            "Buddhist",
+            "Persian"
         ]
     },
     "valueStateMessage": {
         "control": {
             "type": "text"
-        }
-    },
-    "closePicker": {
-        "description": "Closes the picker.",
+        },
         "table": {
-            "category": "methods"
+            "type": {}
         }
     },
-    "formatValue": {
-        "description": "Formats a Java Script date object into a string representing a locale date according to the <code>formatPattern</code> property of the DatePicker instance",
+    "openPicker": {
+        "description": "Opens the picker.",
         "table": {
             "category": "methods"
         },
         "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "date",
-                    "type": "Date",
-                    "optional": false,
-                    "description": "A Java Script date object to be formatted as string"
+            "returnValue": {
+                "type": {
+                    "text": "Promise<void>"
                 }
-            ],
-            "returnValue": {
-                "type": "string",
-                "description": "The date as string"
-            }
-        }
-    },
-    "isInValidRange": {
-        "description": "Checks if a date is between the minimum and maximum date.",
-        "table": {
-            "category": "methods"
-        },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "value",
-                    "type": "string",
-                    "optional": true,
-                    "defaultValue": "\"\"",
-                    "description": "A value to be checked"
-                }
-            ],
-            "returnValue": {
-                "type": "boolean"
-            }
-        }
-    },
-    "isOpen": {
-        "description": "Checks if the picker is open.",
-        "table": {
-            "category": "methods"
-        },
-        "UI5CustomData": {
-            "returnValue": {
-                "type": "boolean",
-                "description": "true if the picker is open, false otherwise"
             }
         }
     },
@@ -86,92 +64,93 @@ export default {
             "parameters": [
                 {
                     "name": "value",
-                    "type": "string",
-                    "optional": true,
-                    "defaultValue": "\"\"",
+                    "type": {
+                        "text": "string"
+                    },
                     "description": "A value to be tested against the current date format"
                 }
             ],
             "returnValue": {
-                "type": "boolean"
+                "type": {
+                    "text": "boolean"
+                }
             }
         }
     },
-    "openPicker": {
-        "description": "Opens the picker.",
+    "isInValidRange": {
+        "description": "Checks if a date is between the minimum and maximum date.",
+        "table": {
+            "category": "methods"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "name": "value",
+                    "type": {
+                        "text": "string"
+                    },
+                    "description": "A value to be checked"
+                }
+            ],
+            "returnValue": {
+                "type": {
+                    "text": "boolean"
+                }
+            }
+        }
+    },
+    "formatValue": {
+        "description": "Formats a Java Script date object into a string representing a locale date\naccording to the <code>formatPattern</code> property of the DatePicker instance",
+        "table": {
+            "category": "methods"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "name": "date",
+                    "type": {
+                        "text": "Date"
+                    },
+                    "description": "A Java Script date object to be formatted as string"
+                }
+            ],
+            "returnValue": {
+                "type": {
+                    "text": "string"
+                },
+                "description": "The date as string"
+            }
+        }
+    },
+    "closePicker": {
+        "description": "Closes the picker.",
         "table": {
             "category": "methods"
         },
         "UI5CustomData": {
             "returnValue": {
-                "type": "Promise",
-                "description": "Resolves when the picker is open"
+                "type": {
+                    "text": "void"
+                }
             }
         }
     },
-    "change": {
-        "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+    "isOpen": {
+        "description": "Checks if the picker is open.",
         "table": {
-            "category": "events"
+            "category": "methods"
         },
         "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "value",
-                    "type": "string",
-                    "description": "The submitted value."
+            "returnValue": {
+                "type": {
+                    "text": "boolean"
                 },
-                {
-                    "name": "valid",
-                    "type": "boolean",
-                    "description": "Indicator if the value is in correct format pattern and in valid range."
-                }
-            ]
+                "description": "true if the picker is open, false otherwise"
+            }
         }
-    },
-    "input": {
-        "description": "Fired when the value of the component is changed at each key stroke.",
-        "table": {
-            "category": "events"
-        },
-        "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "value",
-                    "type": "string",
-                    "description": "The submitted value."
-                },
-                {
-                    "name": "valid",
-                    "type": "boolean",
-                    "description": "Indicator if the value is in correct format pattern and in valid range."
-                }
-            ]
-        }
-    },
-    "primaryCalendarType": {
-        "control": "select",
-        "options": [
-            "Buddhist",
-            "Gregorian",
-            "Islamic",
-            "Japanese",
-            "Persian"
-        ]
-    },
-    "secondaryCalendarType": {
-        "control": "select",
-        "options": [
-            "Buddhist",
-            "Gregorian",
-            "Islamic",
-            "Japanese",
-            "Persian"
-        ]
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.7"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

@@ -2,11 +2,13 @@ export default {
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori",
-    "since": "1.0.0-rc.5"
+    "package": "@ui5/webcomponents-fiori"
 };
 //# sourceMappingURL=argTypes.js.map

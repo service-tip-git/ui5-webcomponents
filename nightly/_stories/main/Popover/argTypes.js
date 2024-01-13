@@ -1,44 +1,26 @@
 export default {
-    "horizontalAlign": {
-        "control": "select",
-        "options": [
-            "Center",
-            "Left",
-            "Right",
-            "Stretch"
-        ]
-    },
-    "opener": {
+    "header": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
-    },
-    "placementType": {
-        "control": "select",
-        "options": [
-            "Bottom",
-            "Left",
-            "Right",
-            "Top"
-        ]
-    },
-    "verticalAlign": {
-        "control": "select",
-        "options": [
-            "Bottom",
-            "Center",
-            "Stretch",
-            "Top"
-        ]
     },
     "footer": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
-    "header": {
+    "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     },
     "showAt": {
@@ -50,53 +32,41 @@ export default {
             "parameters": [
                 {
                     "name": "opener",
-                    "type": "HTMLElement",
-                    "optional": false,
+                    "type": {
+                        "text": "HTMLElement"
+                    },
                     "description": "the element that the popover is shown at"
                 },
                 {
                     "name": "preventInitialFocus",
-                    "type": "boolean",
+                    "default": "false",
+                    "description": "prevents applying the focus inside the popover",
                     "optional": true,
-                    "defaultValue": false,
-                    "description": "prevents applying the focus inside the popover"
+                    "type": {
+                        "text": "boolean"
+                    }
                 }
             ],
             "returnValue": {
-                "type": "Promise",
+                "type": {
+                    "text": "Promise<void>"
+                },
                 "description": "Resolved when the popover is open"
             }
         }
     },
-    "accessibleRole": {
-        "control": "select",
-        "options": [
-            "AlertDialog",
-            "Dialog",
-            "None"
-        ]
-    },
-    "default": {
-        "control": {
-            "type": "text"
-        }
-    },
     "applyFocus": {
-        "description": "Focuses the element denoted by <code>initialFocus</code>, if provided, or the first focusable element otherwise.",
+        "description": "Focuses the element denoted by <code>initialFocus</code>, if provided,\nor the first focusable element otherwise.",
         "table": {
             "category": "methods"
         },
         "UI5CustomData": {
             "returnValue": {
-                "type": "Promise",
+                "type": {
+                    "text": "Promise<void>"
+                },
                 "description": "Promise that resolves when the focus is applied"
             }
-        }
-    },
-    "close": {
-        "description": "Closes the popup.",
-        "table": {
-            "category": "methods"
         }
     },
     "isOpen": {
@@ -106,28 +76,27 @@ export default {
         },
         "UI5CustomData": {
             "returnValue": {
-                "type": "boolean"
+                "type": {
+                    "text": "boolean"
+                }
             }
         }
     },
-    "before-close": {
-        "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. <b>This event does not bubble.</b>",
+    "close": {
+        "description": "Closes the popup.",
         "table": {
-            "category": "events"
+            "category": "methods"
         },
         "UI5CustomData": {
-            "parameters": [
-                {
-                    "name": "escPressed",
-                    "type": "boolean",
-                    "description": "Indicates that <code>ESC</code> key has triggered the event."
+            "returnValue": {
+                "type": {
+                    "text": "void"
                 }
-            ]
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.6"
+    "package": "@ui5/webcomponents"
 };
 //# sourceMappingURL=argTypes.js.map

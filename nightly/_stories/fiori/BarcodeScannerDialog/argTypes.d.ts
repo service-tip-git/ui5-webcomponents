@@ -1,46 +1,33 @@
 declare const _default: {
-    close: {
-        description: string;
-        table: {
-            category: string;
-        };
-    };
     show: {
         description: string;
         table: {
             category: string;
         };
+        UI5CustomData: {
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
+        };
     };
-    "scan-error": {
+    close: {
         description: string;
         table: {
             category: string;
         };
         UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
-        };
-    };
-    "scan-success": {
-        description: string;
-        table: {
-            category: string;
-        };
-        UI5CustomData: {
-            parameters: {
-                name: string;
-                type: string;
-                description: string;
-            }[];
+            returnValue: {
+                type: {
+                    text: string;
+                };
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
-    since: string;
 };
 export type StoryArgsSlots = {};

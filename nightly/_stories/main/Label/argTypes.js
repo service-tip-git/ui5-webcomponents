@@ -1,14 +1,10 @@
 export default {
-    "wrappingType": {
-        "control": "select",
-        "options": [
-            "None",
-            "Normal"
-        ]
-    },
     "default": {
         "control": {
             "type": "text"
+        },
+        "table": {
+            "type": {}
         }
     }
 };

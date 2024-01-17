@@ -3,12 +3,18 @@ declare const _default: {
         control: string;
         options: string[];
     };
+    type: {
+        control: string;
+        options: string[];
+    };
     content: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     default: {
@@ -16,7 +22,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     deleteButton: {
@@ -24,7 +32,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     toggle: {
@@ -44,6 +54,7 @@ declare const _default: {
 export default _default;
 export declare const componentInfo: {
     package: string;
+    since: string;
 };
 export type StoryArgsSlots = {
     content: string;

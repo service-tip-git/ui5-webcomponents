@@ -1,10 +1,28 @@
 export default {
+    "wrappingType": {
+        "control": "select",
+        "options": [
+            "None",
+            "Normal"
+        ]
+    },
+    "priority": {
+        "control": "select",
+        "options": [
+            "High",
+            "Medium",
+            "Low",
+            "None"
+        ]
+    },
     "avatar": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "footnotes": {
@@ -12,7 +30,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "default": {
@@ -20,7 +40,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Node>"
+            }
         }
     },
     "actions": {
@@ -28,11 +50,35 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<NotificationAction>"
+            }
+        }
+    },
+    "close": {
+        "description": "Fired when the <code>Close</code> button is pressed.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "item",
+                    "_ui5privacy": "public",
+                    "description": "the closed item."
+                }
+            ]
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori"
+    "package": "@ui5/webcomponents-fiori",
+    "since": "1.0.0-rc.8"
 };
 //# sourceMappingURL=argTypes.js.map

@@ -1,10 +1,20 @@
 declare const _default: {
+    design: {
+        control: string;
+        options: string[];
+    };
+    type: {
+        control: string;
+        options: string[];
+    };
     default: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };

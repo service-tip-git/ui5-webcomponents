@@ -1,4 +1,8 @@
 declare const _default: {
+    layout: {
+        control: string;
+        options: string[];
+    };
     columnLayout: {
         control: {
             type: boolean;
@@ -29,7 +33,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     midColumn: {
@@ -37,7 +43,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     endColumn: {
@@ -45,13 +53,48 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
+        };
+    };
+    "layout-change": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: ({
+                type: {
+                    text: string;
+                    references: {
+                        name: string;
+                        package: string;
+                        module: string;
+                    }[];
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            } | {
+                type: {
+                    text: string;
+                    references?: undefined;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            })[];
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
+    since: string;
 };
 export type StoryArgsSlots = {
     startColumn: string;

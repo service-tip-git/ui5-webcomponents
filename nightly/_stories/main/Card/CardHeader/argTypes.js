@@ -4,7 +4,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "action": {
@@ -12,11 +14,14 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "1.0.0-rc.15"
 };
 //# sourceMappingURL=argTypes.js.map

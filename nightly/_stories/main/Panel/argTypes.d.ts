@@ -1,10 +1,20 @@
 declare const _default: {
+    accessibleRole: {
+        control: string;
+        options: string[];
+    };
+    headerLevel: {
+        control: string;
+        options: string[];
+    };
     default: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     header: {
@@ -12,7 +22,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };

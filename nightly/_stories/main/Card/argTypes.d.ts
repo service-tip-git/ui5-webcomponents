@@ -4,7 +4,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     header: {
@@ -12,7 +14,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };

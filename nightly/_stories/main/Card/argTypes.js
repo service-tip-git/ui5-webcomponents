@@ -4,7 +4,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "header": {
@@ -12,7 +14,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<ICardHeader>"
+            }
         }
     }
 };

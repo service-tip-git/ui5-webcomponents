@@ -1,4 +1,13 @@
 export default {
+    "type": {
+        "control": "select",
+        "options": [
+            "Inactive",
+            "Active",
+            "Detail",
+            "Navigation"
+        ]
+    },
     "additionalTextState": {
         "control": "select",
         "options": [

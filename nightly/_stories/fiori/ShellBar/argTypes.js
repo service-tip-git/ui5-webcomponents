@@ -34,7 +34,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<ShellBarItem>"
+            }
         }
     },
     "profile": {
@@ -42,7 +44,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "logo": {
@@ -50,7 +54,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "menuItems": {
@@ -58,7 +64,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<ListItemBase>"
+            }
         }
     },
     "searchField": {
@@ -66,7 +74,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Input>"
+            }
         }
     },
     "startButton": {
@@ -74,7 +84,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IButton>"
+            }
         }
     },
     "closeOverflow": {
@@ -89,9 +101,136 @@ export default {
                 }
             }
         }
+    },
+    "notifications-click": {
+        "description": "Fired, when the notification icon is activated.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "targetRef",
+                    "_ui5privacy": "public",
+                    "description": "dom ref of the activated element"
+                }
+            ]
+        }
+    },
+    "profile-click": {
+        "description": "Fired, when the profile slot is present.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "targetRef",
+                    "_ui5privacy": "public",
+                    "description": "dom ref of the activated element"
+                }
+            ]
+        }
+    },
+    "product-switch-click": {
+        "description": "Fired, when the product switch icon is activated.\n<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "targetRef",
+                    "_ui5privacy": "public",
+                    "description": "dom ref of the activated element"
+                }
+            ]
+        }
+    },
+    "logo-click": {
+        "description": "Fired, when the logo is activated.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "targetRef",
+                    "_ui5privacy": "public",
+                    "description": "dom ref of the activated element"
+                }
+            ]
+        }
+    },
+    "co-pilot-click": {
+        "description": "Fired, when the co pilot is activated.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "targetRef",
+                    "_ui5privacy": "public",
+                    "description": "dom ref of the activated element"
+                }
+            ]
+        }
+    },
+    "menu-item-click": {
+        "description": "Fired, when a menu item is activated\n<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "item",
+                    "_ui5privacy": "public",
+                    "description": "DOM ref of the activated list item"
+                }
+            ]
+        }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori"
+    "package": "@ui5/webcomponents-fiori",
+    "since": "0.8.0"
 };
 //# sourceMappingURL=argTypes.js.map

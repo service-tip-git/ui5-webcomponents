@@ -3,12 +3,18 @@ declare const _default: {
         control: string;
         options: string[];
     };
+    type: {
+        control: string;
+        options: string[];
+    };
     default: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     imageContent: {
@@ -16,7 +22,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     deleteButton: {
@@ -24,7 +32,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };

@@ -1,10 +1,16 @@
 declare const _default: {
+    design: {
+        control: string;
+        options: string[];
+    };
     startContent: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     default: {
@@ -12,7 +18,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     endContent: {
@@ -20,13 +28,16 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
+    since: string;
 };
 export type StoryArgsSlots = {
     startContent: string;

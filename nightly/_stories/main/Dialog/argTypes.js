@@ -9,12 +9,22 @@ export default {
             "Information"
         ]
     },
+    "accessibleRole": {
+        "control": "select",
+        "options": [
+            "None",
+            "Dialog",
+            "AlertDialog"
+        ]
+    },
     "header": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "footer": {
@@ -22,7 +32,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "default": {
@@ -30,7 +42,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "show": {
@@ -45,6 +59,7 @@ export default {
                     "default": "false",
                     "description": "Prevents applying the focus inside the popup",
                     "optional": true,
+                    "_ui5privacy": "public",
                     "type": {
                         "text": "boolean"
                     }
@@ -96,6 +111,27 @@ export default {
                     "text": "void"
                 }
             }
+        }
+    },
+    "before-close": {
+        "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. <b>This event does not bubble.</b>",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "boolean"
+                    },
+                    "name": "escPressed",
+                    "_ui5privacy": "public",
+                    "description": "Indicates that <code>ESC</code> key has triggered the event."
+                }
+            ]
         }
     }
 };

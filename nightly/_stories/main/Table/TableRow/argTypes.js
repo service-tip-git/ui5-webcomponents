@@ -1,10 +1,19 @@
 export default {
+    "type": {
+        "control": "select",
+        "options": [
+            "Inactive",
+            "Active"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<TableCell>"
+            }
         }
     }
 };

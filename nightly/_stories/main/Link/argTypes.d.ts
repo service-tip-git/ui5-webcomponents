@@ -1,10 +1,39 @@
 declare const _default: {
+    design: {
+        control: string;
+        options: string[];
+    };
+    wrappingType: {
+        control: string;
+        options: string[];
+    };
     default: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
+        };
+    };
+    click: {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
         };
     };
 };

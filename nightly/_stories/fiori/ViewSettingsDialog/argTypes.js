@@ -4,7 +4,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<SortItem>"
+            }
         }
     },
     "filterItems": {
@@ -12,7 +14,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<FilterItem>"
+            }
         }
     },
     "show": {
@@ -47,7 +51,8 @@ export default {
                             }
                         ]
                     },
-                    "description": "predefined settings."
+                    "description": "predefined settings.",
+                    "_ui5privacy": "public"
                 }
             ],
             "returnValue": {
@@ -56,9 +61,116 @@ export default {
                 }
             }
         }
+    },
+    "confirm": {
+        "description": "Fired when confirmation button is activated.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "String"
+                    },
+                    "name": "sortOrder",
+                    "_ui5privacy": "public",
+                    "description": "The current sort order selected."
+                },
+                {
+                    "type": {
+                        "text": "String"
+                    },
+                    "name": "sortBy",
+                    "_ui5privacy": "public",
+                    "description": "The currently selected <code>ui5-sort-item</code> text attribute."
+                },
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "sortByItem",
+                    "_ui5privacy": "public",
+                    "description": "The currently selected <code>ui5-sort-item</code>."
+                },
+                {
+                    "type": {
+                        "text": "Boolean"
+                    },
+                    "name": "sortDescending",
+                    "_ui5privacy": "public",
+                    "description": "The selected sort order (true = descending, false = ascending)."
+                },
+                {
+                    "type": {
+                        "text": "Array"
+                    },
+                    "name": "filters",
+                    "_ui5privacy": "public",
+                    "description": "The selected filters items."
+                }
+            ]
+        }
+    },
+    "cancel": {
+        "description": "Fired when cancel button is activated.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "String"
+                    },
+                    "name": "sortOrder",
+                    "_ui5privacy": "public",
+                    "description": "The current sort order selected."
+                },
+                {
+                    "type": {
+                        "text": "String"
+                    },
+                    "name": "sortBy",
+                    "_ui5privacy": "public",
+                    "description": "The currently selected <code>ui5-sort-item</code> text attribute."
+                },
+                {
+                    "type": {
+                        "text": "HTMLElement"
+                    },
+                    "name": "sortByItem",
+                    "_ui5privacy": "public",
+                    "description": "The currently selected <code>ui5-sort-item</code>."
+                },
+                {
+                    "type": {
+                        "text": "Boolean"
+                    },
+                    "name": "sortDescending",
+                    "_ui5privacy": "public",
+                    "description": "The selected sort order (true = descending, false = ascending)."
+                },
+                {
+                    "type": {
+                        "text": "Array"
+                    },
+                    "name": "filters",
+                    "_ui5privacy": "public",
+                    "description": "The selected filters items."
+                }
+            ]
+        }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori"
+    "package": "@ui5/webcomponents-fiori",
+    "since": "1.0.0-rc.16"
 };
 //# sourceMappingURL=argTypes.js.map

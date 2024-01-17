@@ -1,10 +1,20 @@
 declare const _default: {
+    wrappingType: {
+        control: string;
+        options: string[];
+    };
+    priority: {
+        control: string;
+        options: string[];
+    };
     avatar: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     footnotes: {
@@ -12,7 +22,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     default: {
@@ -20,7 +32,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     actions: {
@@ -28,13 +42,35 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
+        };
+    };
+    close: {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
+    since: string;
 };
 export type StoryArgsSlots = {
     avatar: string;

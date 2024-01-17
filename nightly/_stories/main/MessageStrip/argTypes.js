@@ -1,10 +1,21 @@
 export default {
+    "design": {
+        "control": "select",
+        "options": [
+            "Information",
+            "Positive",
+            "Negative",
+            "Warning"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Node>"
+            }
         }
     },
     "icon": {
@@ -12,11 +23,14 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IIcon>"
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "0.9.0"
 };
 //# sourceMappingURL=argTypes.js.map

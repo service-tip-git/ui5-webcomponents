@@ -39,7 +39,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "isValid": {
@@ -54,7 +56,8 @@ export default {
                     "type": {
                         "text": "string"
                     },
-                    "description": "A value to be tested against the current date format"
+                    "description": "A value to be tested against the current date format",
+                    "_ui5privacy": "public"
                 }
             ],
             "returnValue": {
@@ -76,7 +79,8 @@ export default {
                     "type": {
                         "text": "string"
                     },
-                    "description": "A value to be checked"
+                    "description": "A value to be checked",
+                    "_ui5privacy": "public"
                 }
             ],
             "returnValue": {
@@ -98,7 +102,8 @@ export default {
                     "type": {
                         "text": "Date"
                     },
-                    "description": "A Java Script date object to be formatted as string"
+                    "description": "A Java Script date object to be formatted as string",
+                    "_ui5privacy": "public"
                 }
             ],
             "returnValue": {
@@ -148,6 +153,64 @@ export default {
                 },
                 "description": "true if the picker is open, false otherwise"
             }
+        }
+    },
+    "change": {
+        "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "string"
+                    },
+                    "name": "value",
+                    "_ui5privacy": "public",
+                    "description": "The submitted value."
+                },
+                {
+                    "type": {
+                        "text": "boolean"
+                    },
+                    "name": "valid",
+                    "_ui5privacy": "public",
+                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                }
+            ]
+        }
+    },
+    "input": {
+        "description": "Fired when the value of the component is changed at each key stroke.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "string"
+                    },
+                    "name": "value",
+                    "_ui5privacy": "public",
+                    "description": "The submitted value."
+                },
+                {
+                    "type": {
+                        "text": "boolean"
+                    },
+                    "name": "valid",
+                    "_ui5privacy": "public",
+                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                }
+            ]
         }
     }
 };

@@ -9,12 +9,23 @@ export default {
             "Information"
         ]
     },
+    "type": {
+        "control": "select",
+        "options": [
+            "Inactive",
+            "Active",
+            "Detail",
+            "Navigation"
+        ]
+    },
     "content": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "default": {
@@ -22,7 +33,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<TreeItemBase>"
+            }
         }
     },
     "deleteButton": {
@@ -30,7 +43,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IButton>"
+            }
         }
     },
     "toggle": {
@@ -48,6 +63,7 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "1.9.2"
 };
 //# sourceMappingURL=argTypes.js.map

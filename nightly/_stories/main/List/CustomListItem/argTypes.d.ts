@@ -1,10 +1,16 @@
 declare const _default: {
+    type: {
+        control: string;
+        options: string[];
+    };
     default: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     deleteButton: {
@@ -12,7 +18,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };

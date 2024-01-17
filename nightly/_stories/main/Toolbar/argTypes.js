@@ -1,10 +1,19 @@
 export default {
+    "alignContent": {
+        "control": "select",
+        "options": [
+            "Start",
+            "End"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<ToolbarItem>"
+            }
         }
     },
     "isOverflowOpen": {
@@ -22,6 +31,7 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "1.17.0"
 };
 //# sourceMappingURL=argTypes.js.map

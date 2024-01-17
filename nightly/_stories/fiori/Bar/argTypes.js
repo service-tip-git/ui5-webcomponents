@@ -1,10 +1,21 @@
 export default {
+    "design": {
+        "control": "select",
+        "options": [
+            "Header",
+            "Subheader",
+            "Footer",
+            "FloatingFooter"
+        ]
+    },
     "startContent": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "default": {
@@ -12,7 +23,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "endContent": {
@@ -20,11 +33,14 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori"
+    "package": "@ui5/webcomponents-fiori",
+    "since": "1.0.0-rc.11"
 };
 //# sourceMappingURL=argTypes.js.map

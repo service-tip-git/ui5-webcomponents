@@ -1,4 +1,41 @@
 export default {
+    "pageIndicatorStyle": {
+        "control": "select",
+        "options": [
+            "Default",
+            "Numeric"
+        ]
+    },
+    "backgroundDesign": {
+        "control": "select",
+        "options": [
+            "Solid",
+            "Transparent",
+            "Translucent"
+        ]
+    },
+    "pageIndicatorBackgroundDesign": {
+        "control": "select",
+        "options": [
+            "Solid",
+            "Transparent",
+            "Translucent"
+        ]
+    },
+    "pageIndicatorBorderDesign": {
+        "control": "select",
+        "options": [
+            "Solid",
+            "None"
+        ]
+    },
+    "arrowsPlacement": {
+        "control": "select",
+        "options": [
+            "Content",
+            "Navigation"
+        ]
+    },
     "visibleItemsIndices": {
         "control": {
             "type": false
@@ -9,7 +46,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "navigateTo": {
@@ -24,7 +63,8 @@ export default {
                     "type": {
                         "text": "number"
                     },
-                    "description": "The index of the target page"
+                    "description": "The index of the target page",
+                    "_ui5privacy": "public"
                 }
             ],
             "returnValue": {
@@ -33,9 +73,38 @@ export default {
                 }
             }
         }
+    },
+    "navigate": {
+        "description": "Fired whenever the page changes due to user interaction,\nwhen the user clicks on the navigation arrows or while resizing,\nbased on the <code>items-per-page-l</code>, <code>items-per-page-m</code> and <code>items-per-page-s</code> properties.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "Integer",
+                        "references": [
+                            {
+                                "name": "Integer",
+                                "package": "@ui5/webcomponents-base",
+                                "module": "dist/types/Integer.js"
+                            }
+                        ]
+                    },
+                    "name": "selectedIndex",
+                    "_ui5privacy": "public",
+                    "description": "the current selected index"
+                }
+            ]
+        }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "1.0.0-rc.6"
 };
 //# sourceMappingURL=argTypes.js.map

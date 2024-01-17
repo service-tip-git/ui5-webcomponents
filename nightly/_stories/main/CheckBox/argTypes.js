@@ -8,6 +8,13 @@ export default {
             "Error",
             "Information"
         ]
+    },
+    "wrappingType": {
+        "control": "select",
+        "options": [
+            "None",
+            "Normal"
+        ]
     }
 };
 export const componentInfo = {

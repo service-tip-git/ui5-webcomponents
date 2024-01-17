@@ -9,12 +9,23 @@ export default {
             "Information"
         ]
     },
+    "type": {
+        "control": "select",
+        "options": [
+            "Inactive",
+            "Active",
+            "Detail",
+            "Navigation"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Node>"
+            }
         }
     },
     "imageContent": {
@@ -22,7 +33,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "deleteButton": {
@@ -30,7 +43,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IButton>"
+            }
         }
     }
 };

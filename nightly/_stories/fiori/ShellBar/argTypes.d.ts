@@ -34,7 +34,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     profile: {
@@ -42,7 +44,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     logo: {
@@ -50,7 +54,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     menuItems: {
@@ -58,7 +64,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     searchField: {
@@ -66,7 +74,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     startButton: {
@@ -74,7 +84,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     closeOverflow: {
@@ -90,10 +102,125 @@ declare const _default: {
             };
         };
     };
+    "notifications-click": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "profile-click": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "product-switch-click": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "logo-click": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "co-pilot-click": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "menu-item-click": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
+    since: string;
 };
 export type StoryArgsSlots = {
     default: string;

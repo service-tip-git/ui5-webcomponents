@@ -1,10 +1,26 @@
 export default {
+    "placement": {
+        "control": "select",
+        "options": [
+            "TopStart",
+            "TopCenter",
+            "TopEnd",
+            "MiddleStart",
+            "MiddleCenter",
+            "MiddleEnd",
+            "BottomStart",
+            "BottomCenter",
+            "BottomEnd"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Node>"
+            }
         }
     },
     "show": {
@@ -22,6 +38,7 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "1.0.0-rc.6"
 };
 //# sourceMappingURL=argTypes.js.map

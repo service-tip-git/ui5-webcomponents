@@ -1,10 +1,30 @@
 export default {
+    "uploadState": {
+        "control": "select",
+        "options": [
+            "Complete",
+            "Error",
+            "Ready",
+            "Uploading"
+        ]
+    },
+    "type": {
+        "control": "select",
+        "options": [
+            "Inactive",
+            "Active",
+            "Detail",
+            "Navigation"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Node>"
+            }
         }
     },
     "thumbnail": {
@@ -12,7 +32,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "deleteButton": {
@@ -20,11 +42,14 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IButton>"
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori"
+    "package": "@ui5/webcomponents-fiori",
+    "since": "1.0.0-rc.7"
 };
 //# sourceMappingURL=argTypes.js.map

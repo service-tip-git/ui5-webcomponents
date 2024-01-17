@@ -1,10 +1,20 @@
 declare const _default: {
+    wrappingType: {
+        control: string;
+        options: string[];
+    };
+    level: {
+        control: string;
+        options: string[];
+    };
     default: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };

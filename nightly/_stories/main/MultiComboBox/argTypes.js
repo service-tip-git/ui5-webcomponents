@@ -9,6 +9,15 @@ export default {
             "Information"
         ]
     },
+    "filter": {
+        "control": "select",
+        "options": [
+            "StartsWithPerTerm",
+            "StartsWith",
+            "Contains",
+            "None"
+        ]
+    },
     "open": {
         "control": {
             "type": false
@@ -19,7 +28,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IMultiComboBoxItem>"
+            }
         }
     },
     "icon": {
@@ -27,7 +38,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IIcon>"
+            }
         }
     },
     "valueStateMessage": {
@@ -35,11 +48,42 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
+        }
+    },
+    "selection-change": {
+        "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "Array<IMultiComboBoxItem>",
+                        "references": [
+                            {
+                                "name": "IMultiComboBoxItem",
+                                "package": "@ui5/webcomponents",
+                                "module": "dist/Interfaces.js"
+                            }
+                        ]
+                    },
+                    "name": "items",
+                    "_ui5privacy": "public",
+                    "description": "an array of the selected items."
+                }
+            ]
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "0.11.0"
 };
 //# sourceMappingURL=argTypes.js.map

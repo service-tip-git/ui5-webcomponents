@@ -1,10 +1,16 @@
 declare const _default: {
+    mode: {
+        control: string;
+        options: string[];
+    };
     default: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     header: {
@@ -12,7 +18,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     walk: {
@@ -32,6 +40,7 @@ declare const _default: {
                     }[];
                 };
                 description: string;
+                _ui5privacy: string;
             }[];
             returnValue: {
                 type: {
@@ -40,10 +49,125 @@ declare const _default: {
             };
         };
     };
+    "item-toggle": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "item-mouseover": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "item-mouseout": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "item-click": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "item-delete": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    "selection-change": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
+    since: string;
 };
 export type StoryArgsSlots = {
     default: string;

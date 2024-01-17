@@ -1,4 +1,8 @@
 declare const _default: {
+    type: {
+        control: string;
+        options: string[];
+    };
     additionalTextState: {
         control: string;
         options: string[];

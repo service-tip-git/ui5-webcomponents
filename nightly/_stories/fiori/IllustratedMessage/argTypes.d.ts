@@ -1,10 +1,20 @@
 declare const _default: {
+    size: {
+        control: string;
+        options: string[];
+    };
+    titleLevel: {
+        control: string;
+        options: string[];
+    };
     title: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     subtitle: {
@@ -12,7 +22,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     default: {
@@ -20,13 +32,16 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
 };
 export default _default;
 export declare const componentInfo: {
     package: string;
+    since: string;
 };
 export type StoryArgsSlots = {
     title: string;

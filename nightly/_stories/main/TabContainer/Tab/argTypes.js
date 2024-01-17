@@ -1,10 +1,22 @@
 export default {
+    "design": {
+        "control": "select",
+        "options": [
+            "Default",
+            "Positive",
+            "Negative",
+            "Critical",
+            "Neutral"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Node>"
+            }
         }
     },
     "subTabs": {
@@ -12,7 +24,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<ITab>"
+            }
         }
     },
     "getTabInStripDomRef": {

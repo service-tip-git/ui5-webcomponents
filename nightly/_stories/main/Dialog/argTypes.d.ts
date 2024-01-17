@@ -3,12 +3,18 @@ declare const _default: {
         control: string;
         options: string[];
     };
+    accessibleRole: {
+        control: string;
+        options: string[];
+    };
     header: {
         control: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     footer: {
@@ -16,7 +22,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     default: {
@@ -24,7 +32,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     show: {
@@ -38,6 +48,7 @@ declare const _default: {
                 default: string;
                 description: string;
                 optional: boolean;
+                _ui5privacy: string;
                 type: {
                     text: string;
                 };
@@ -88,6 +99,25 @@ declare const _default: {
                     text: string;
                 };
             };
+        };
+    };
+    "before-close": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
         };
     };
 };

@@ -1,4 +1,20 @@
 declare const _default: {
+    tabLayout: {
+        control: string;
+        options: string[];
+    };
+    tabsOverflowMode: {
+        control: string;
+        options: string[];
+    };
+    headerBackgroundDesign: {
+        control: string;
+        options: string[];
+    };
+    contentBackgroundDesign: {
+        control: string;
+        options: string[];
+    };
     allItems: {
         control: {
             type: boolean;
@@ -9,7 +25,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     overflowButton: {
@@ -17,7 +35,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     startOverflowButton: {
@@ -25,7 +45,33 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
+        };
+    };
+    "tab-select": {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                    references: {
+                        name: string;
+                        package: string;
+                        module: string;
+                    }[];
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
         };
     };
 };

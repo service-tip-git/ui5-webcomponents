@@ -19,7 +19,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<IOption>"
+            }
         }
     },
     "valueStateMessage": {
@@ -27,7 +29,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "label": {
@@ -35,11 +39,70 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
+        }
+    },
+    "change": {
+        "description": "Fired when the selected option changes.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "IOption",
+                        "references": [
+                            {
+                                "name": "IOption",
+                                "package": "@ui5/webcomponents",
+                                "module": "dist/Interfaces.js"
+                            }
+                        ]
+                    },
+                    "name": "selectedOption",
+                    "_ui5privacy": "public",
+                    "description": "the selected option."
+                }
+            ]
+        }
+    },
+    "live-change": {
+        "description": "Fired when the user navigates through the options, but the selection is not finalized,\nor when pressing the ESC key to revert the current selection.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "IOption",
+                        "references": [
+                            {
+                                "name": "IOption",
+                                "package": "@ui5/webcomponents",
+                                "module": "dist/Interfaces.js"
+                            }
+                        ]
+                    },
+                    "name": "selectedOption",
+                    "_ui5privacy": "public",
+                    "description": "the selected option."
+                }
+            ]
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "0.8.0"
 };
 //# sourceMappingURL=argTypes.js.map

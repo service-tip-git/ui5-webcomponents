@@ -1,4 +1,11 @@
 export default {
+    "mode": {
+        "control": "select",
+        "options": [
+            "SingleSelect",
+            "MultiSelect"
+        ]
+    },
     "selectedItem": {
         "control": {
             "type": false
@@ -14,11 +21,59 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<ISegmentedButtonItem>"
+            }
+        }
+    },
+    "selection-change": {
+        "description": "Fired when the selected item changes.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "ISegmentedButtonItem",
+                        "references": [
+                            {
+                                "name": "ISegmentedButtonItem",
+                                "package": "@ui5/webcomponents",
+                                "module": "dist/Interfaces.js"
+                            }
+                        ]
+                    },
+                    "name": "selectedItem",
+                    "_ui5privacy": "public",
+                    "description": "the pressed item.",
+                    "deprecated": "deprecated since 1.14.0 and will be removed in the next major release, use the <code>selectedItems</code> parameter instead."
+                },
+                {
+                    "type": {
+                        "text": "Array<ISegmentedButtonItem>",
+                        "references": [
+                            {
+                                "name": "ISegmentedButtonItem",
+                                "package": "@ui5/webcomponents",
+                                "module": "dist/Interfaces.js"
+                            }
+                        ]
+                    },
+                    "name": "selectedItems",
+                    "_ui5privacy": "public",
+                    "description": "an array of selected items.",
+                    "_ui5since": "1.14.0"
+                }
+            ]
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "1.0.0-rc.6"
 };
 //# sourceMappingURL=argTypes.js.map

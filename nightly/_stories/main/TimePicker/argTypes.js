@@ -19,7 +19,9 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "openPicker": {
@@ -75,7 +77,8 @@ export default {
                     "type": {
                         "text": "Date"
                     },
-                    "description": "A Java Script date object to be formatted as string"
+                    "description": "A Java Script date object to be formatted as string",
+                    "_ui5privacy": "public"
                 }
             ],
             "returnValue": {
@@ -98,7 +101,8 @@ export default {
                     "type": {
                         "text": "string | undefined"
                     },
-                    "description": "The value to be tested against the current date format"
+                    "description": "The value to be tested against the current date format",
+                    "_ui5privacy": "public"
                 }
             ],
             "returnValue": {
@@ -107,9 +111,68 @@ export default {
                 }
             }
         }
+    },
+    "change": {
+        "description": "Fired when the input operation has finished by clicking the \"OK\" button or\nwhen the text in the input field has changed and the focus leaves the input field.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "string"
+                    },
+                    "name": "value",
+                    "_ui5privacy": "public",
+                    "description": "The submitted value."
+                },
+                {
+                    "type": {
+                        "text": "boolean"
+                    },
+                    "name": "valid",
+                    "_ui5privacy": "public",
+                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                }
+            ]
+        }
+    },
+    "input": {
+        "description": "Fired when the value of the <code>ui5-time-picker</code> is changed at each key stroke.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "string"
+                    },
+                    "name": "value",
+                    "_ui5privacy": "public",
+                    "description": "The current value."
+                },
+                {
+                    "type": {
+                        "text": "boolean"
+                    },
+                    "name": "valid",
+                    "_ui5privacy": "public",
+                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                }
+            ]
+        }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "since": "1.0.0-rc.6"
 };
 //# sourceMappingURL=argTypes.js.map

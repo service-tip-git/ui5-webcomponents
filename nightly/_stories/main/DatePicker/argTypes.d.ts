@@ -21,7 +21,9 @@ declare const _default: {
             type: string;
         };
         table: {
-            type: {};
+            type: {
+                summary: string;
+            };
         };
     };
     isValid: {
@@ -36,6 +38,7 @@ declare const _default: {
                     text: string;
                 };
                 description: string;
+                _ui5privacy: string;
             }[];
             returnValue: {
                 type: {
@@ -56,6 +59,7 @@ declare const _default: {
                     text: string;
                 };
                 description: string;
+                _ui5privacy: string;
             }[];
             returnValue: {
                 type: {
@@ -76,6 +80,7 @@ declare const _default: {
                     text: string;
                 };
                 description: string;
+                _ui5privacy: string;
             }[];
             returnValue: {
                 type: {
@@ -124,6 +129,44 @@ declare const _default: {
                 };
                 description: string;
             };
+        };
+    };
+    change: {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
+        };
+    };
+    input: {
+        description: string;
+        control: {
+            type: boolean;
+        };
+        table: {
+            category: string;
+        };
+        UI5CustomData: {
+            parameters: {
+                type: {
+                    text: string;
+                };
+                name: string;
+                _ui5privacy: string;
+                description: string;
+            }[];
         };
     };
 };

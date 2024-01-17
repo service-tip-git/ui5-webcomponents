@@ -1,10 +1,30 @@
 export default {
+    "wrappingType": {
+        "control": "select",
+        "options": [
+            "None",
+            "Normal"
+        ]
+    },
+    "level": {
+        "control": "select",
+        "options": [
+            "H1",
+            "H2",
+            "H3",
+            "H4",
+            "H5",
+            "H6"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<Node>"
+            }
         }
     }
 };

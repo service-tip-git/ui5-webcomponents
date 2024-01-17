@@ -1,10 +1,19 @@
 export default {
+    "layout": {
+        "control": "select",
+        "options": [
+            "Square",
+            "Wide"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     },
     "thumbnail": {
@@ -12,11 +21,14 @@ export default {
             "type": "text"
         },
         "table": {
-            "type": {}
+            "type": {
+                "summary": "Array<HTMLElement>"
+            }
         }
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori"
+    "package": "@ui5/webcomponents-fiori",
+    "since": "1.1.0"
 };
 //# sourceMappingURL=argTypes.js.map

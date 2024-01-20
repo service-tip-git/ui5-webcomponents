@@ -3318,7 +3318,14 @@
                             "name": "click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<AvatarGroupClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "AvatarGroupClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/AvatarGroup.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the component is activated either with a\nclick/tap or by using the Enter or Space key.",
                             "_ui5since": "1.0.0-rc.11",
@@ -3610,7 +3617,14 @@
                             "name": "item-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<BreadcrumbsItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "BreadcrumbsItemClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Breadcrumbs.js"
+                                    }
+                                ]
                             },
                             "description": "Fires when a <code>BreadcrumbsItem</code> is clicked.\n<b>Note:</b> You can prevent browser location change by calling <code>event.preventDefault()</code>.",
                             "_ui5allowPreventDefault": true,
@@ -4164,7 +4178,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4187,7 +4201,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4202,7 +4216,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4218,7 +4232,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4234,7 +4248,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         }
                     ],
@@ -4243,7 +4257,14 @@
                             "name": "selected-dates-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<CalendarSelectedDatesChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "CalendarSelectedDatesChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Calendar.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the selected dates change.\n<b>Note:</b> If you call <code>preventDefault()</code> for this event, the component will not\ncreate instances of <code>ui5-date</code> for the newly selected dates. In that case you should do this manually.",
                             "_ui5allowPreventDefault": true,
@@ -4416,7 +4437,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4439,7 +4460,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4454,7 +4475,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4470,7 +4491,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -4486,7 +4507,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         }
                     ],
@@ -4980,7 +5001,14 @@
                             "name": "navigate",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<CarouselNavigateEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "CarouselNavigateEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Carousel.js"
+                                    }
+                                ]
                             },
                             "description": "Fired whenever the page changes due to user interaction,\nwhen the user clicks on the navigation arrows or while resizing,\nbased on the <code>items-per-page-l</code>, <code>items-per-page-m</code> and <code>items-per-page-s</code> properties.",
                             "_ui5since": "1.0.0-rc.7",
@@ -5274,7 +5302,14 @@
                             "name": "item-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ColorPaletteItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ColorPaletteItemClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ColorPalette.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the user selects a color.",
                             "_ui5since": "1.0.0-rc.15",
@@ -5536,7 +5571,14 @@
                             "name": "item-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ColorPalettePopoverItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ColorPalettePopoverItemClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ColorPalettePopover.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the user selects a color.",
                             "_ui5parameters": [
@@ -5875,7 +5917,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ComboBoxSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ComboBoxSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ComboBox.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when selection is changed by user interaction",
                             "_ui5parameters": [
@@ -6167,7 +6216,7 @@
                             "_ui5validator": "ListItemType",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -6190,7 +6239,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -6206,7 +6255,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -6221,7 +6270,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -6243,7 +6292,7 @@
                             "description": "Fired when the user clicks on the detail button when type is <code>Detail</code>.",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         }
                     ],
@@ -6646,7 +6695,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -6669,7 +6718,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -6684,7 +6733,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -6700,7 +6749,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -6716,7 +6765,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         }
                     ],
@@ -6725,7 +6774,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<DatePickerChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
                             "_ui5allowPreventDefault": true,
@@ -6752,7 +6808,14 @@
                             "name": "input",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<DatePickerInputEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerInputEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the value of the component is changed at each key stroke.",
                             "_ui5allowPreventDefault": true,
@@ -6854,7 +6917,7 @@
                             "readonly": true,
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -6904,7 +6967,7 @@
                             "_ui5formEvents": "change,input",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -6926,7 +6989,7 @@
                             "_ui5validator": "ValueState",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -6942,7 +7005,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -6957,7 +7020,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -6972,7 +7035,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -6987,7 +7050,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7002,7 +7065,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7018,7 +7081,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7034,7 +7097,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7050,7 +7113,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7075,7 +7138,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7100,7 +7163,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7126,7 +7189,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7141,7 +7204,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7157,7 +7220,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7173,7 +7236,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7195,7 +7258,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7218,7 +7281,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7233,7 +7296,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7249,7 +7312,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7265,7 +7328,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         }
                     ],
@@ -7283,7 +7346,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<DatePickerChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
                             "_ui5allowPreventDefault": true,
@@ -7307,14 +7377,21 @@
                             ],
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
                             "name": "input",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<DatePickerInputEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerInputEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the value of the component is changed at each key stroke.",
                             "_ui5allowPreventDefault": true,
@@ -7338,7 +7415,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         }
                     ],
@@ -7412,7 +7489,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7429,7 +7506,7 @@
                             "_ui5formEvents": "change,input",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7451,7 +7528,7 @@
                             "_ui5validator": "ValueState",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7467,7 +7544,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7482,7 +7559,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7497,7 +7574,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7512,7 +7589,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7527,7 +7604,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7543,7 +7620,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7559,7 +7636,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7575,7 +7652,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7600,7 +7677,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7625,7 +7702,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7651,7 +7728,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7666,7 +7743,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7682,7 +7759,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7697,7 +7774,7 @@
                             "readonly": true,
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
@@ -7719,7 +7796,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7742,7 +7819,7 @@
                             "_ui5validator": "CalendarType",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7757,7 +7834,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7773,7 +7850,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         },
                         {
@@ -7789,7 +7866,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "DateComponentBase",
-                                "module": "src/DateComponentBase.ts"
+                                "module": "dist/DateComponentBase.js"
                             }
                         }
                     ],
@@ -7807,7 +7884,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<DatePickerChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
                             "_ui5allowPreventDefault": true,
@@ -7831,14 +7915,21 @@
                             ],
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         },
                         {
                             "name": "input",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<DatePickerInputEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerInputEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the value of the component is changed at each key stroke.",
                             "_ui5allowPreventDefault": true,
@@ -7862,7 +7953,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "DatePicker",
-                                "module": "src/DatePicker.ts"
+                                "module": "dist/DatePicker.js"
                             }
                         }
                     ],
@@ -8097,7 +8188,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8113,7 +8204,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8129,7 +8220,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8145,7 +8236,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8161,7 +8252,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8184,7 +8275,7 @@
                             "_ui5validator": "PopupAccessibleRole",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8200,7 +8291,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8215,7 +8306,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8230,7 +8321,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         }
                     ],
@@ -8253,7 +8344,7 @@
                             "_ui5allowPreventDefault": true,
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8265,14 +8356,21 @@
                             "description": "Fired after the component is opened. <b>This event does not bubble.</b>",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
                             "name": "before-close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<PopupBeforeCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "PopupBeforeCloseEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Popup.js"
+                                    }
+                                ]
                             },
                             "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. <b>This event does not bubble.</b>",
                             "_ui5allowPreventDefault": true,
@@ -8288,7 +8386,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -8300,7 +8398,7 @@
                             "description": "Fired after the component is closed. <b>This event does not bubble.</b>",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         }
                     ],
@@ -8477,7 +8575,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<FileUploaderChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "FileUploaderChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/FileUploader.js"
+                                    }
+                                ]
                             },
                             "description": "Event is fired when the value of the file path has been changed.\n<b>Note:</b> Keep in mind that because of the HTML input element of type file, the event is also fired in Chrome browser when the Cancel button of the uploads window is pressed.",
                             "_ui5parameters": [
@@ -8613,7 +8718,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -9055,7 +9160,14 @@
                             "name": "suggestion-item-select",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<InputSuggestionItemSelectEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "InputSuggestionItemSelectEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Input.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when a suggestion item, that is displayed in the suggestion popup, is selected.",
                             "_ui5parameters": [
@@ -9073,7 +9185,14 @@
                             "name": "suggestion-item-preview",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<InputSuggestionItemPreviewEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "InputSuggestionItemPreviewEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Input.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.",
                             "_ui5since": "1.0.0-rc.8",
@@ -9626,7 +9745,14 @@
                             "name": "click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<LinkClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "LinkClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Link.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the component is triggered either with a mouse/tap\nor by using the Enter key.",
                             "_ui5allowPreventDefault": true,
@@ -9903,7 +10029,14 @@
                             "name": "item-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ListItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ListItemClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/List.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when an item is activated, unless the item's <code>type</code> property\nis set to <code>Inactive</code>.",
                             "_ui5allowPreventDefault": true,
@@ -9922,7 +10055,14 @@
                             "name": "item-close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ListItemCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ListItemCloseEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/List.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the <code>Close</code> button of any item is clicked\n<br><br>\n<b>Note:</b> This event is only applicable to list items that can be closed (such as notification list items),\nnot to be confused with <code>item-delete</code>.",
                             "_ui5since": "1.0.0-rc.8",
@@ -9941,7 +10081,14 @@
                             "name": "item-toggle",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ListItemToggleEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ListItemToggleEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/List.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the <code>Toggle</code> button of any item is clicked.\n<br><br>\n<b>Note:</b> This event is only applicable to list items that can be toggled (such as notification group list items).",
                             "_ui5since": "1.0.0-rc.8",
@@ -9960,7 +10107,14 @@
                             "name": "item-delete",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ListItemDeleteEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ListItemDeleteEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/List.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the Delete button of any item is pressed.\n<br><br>\n<b>Note:</b> A Delete button is displayed on each item,\nwhen the component <code>mode</code> property is set to <code>Delete</code>.",
                             "_ui5parameters": [
@@ -9978,7 +10132,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ListSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ListSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/List.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code> modes.",
                             "_ui5allowPreventDefault": true,
@@ -10191,7 +10352,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -10426,7 +10587,14 @@
                             "name": "item-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<MenuItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "MenuItemClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Menu.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when an item is being clicked.\n<br />\n<b>Note:</b> Since 1.17.0 the event is preventable, allowing the menu to remain open after an item is pressed.",
                             "_ui5allowPreventDefault": true,
@@ -10453,7 +10621,14 @@
                             "name": "before-open",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<MenuBeforeOpenEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "MenuBeforeOpenEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Menu.js"
+                                    }
+                                ]
                             },
                             "description": "Fired before the menu is opened. This event can be cancelled, which will prevent the menu from opening. <b>This event does not bubble.</b>\n<br />\n<b>Note:</b> Since 1.14.0 the event is also fired before a sub-menu opens.",
                             "_ui5allowPreventDefault": true,
@@ -10482,7 +10657,14 @@
                             "name": "before-close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<MenuBeforeCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "MenuBeforeCloseEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Menu.js"
+                                    }
+                                ]
                             },
                             "description": "Fired before the menu is closed. This event can be cancelled, which will prevent the menu from closing. <b>This event does not bubble.</b>",
                             "_ui5allowPreventDefault": true,
@@ -11105,7 +11287,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<MultiComboBoxSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "MultiComboBoxSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/MultiComboBox.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
                             "_ui5parameters": [
@@ -11197,7 +11386,8 @@
                     ],
                     "superclass": {
                         "name": "UI5Element",
-                        "package": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "package": "@ui5/webcomponents-base",
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "MultiComboBoxGroupItem",
                     "customElement": true,
@@ -11265,7 +11455,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "ComboBoxItem",
-                                "module": "src/ComboBoxItem.ts"
+                                "module": "dist/ComboBoxItem.js"
                             }
                         },
                         {
@@ -11281,7 +11471,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "ComboBoxItem",
-                                "module": "src/ComboBoxItem.ts"
+                                "module": "dist/ComboBoxItem.js"
                             }
                         }
                     ],
@@ -11412,7 +11602,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11427,7 +11617,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11442,7 +11632,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11458,7 +11648,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11474,7 +11664,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11496,7 +11686,7 @@
                             "_ui5validator": "InputType",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11513,7 +11703,7 @@
                             "_ui5formEvents": "change,input",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11535,7 +11725,7 @@
                             "_ui5validator": "ValueState",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11550,7 +11740,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11565,7 +11755,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11581,7 +11771,7 @@
                             "_ui5validator": "Integer",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11597,7 +11787,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11613,7 +11803,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11629,7 +11819,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11645,7 +11835,7 @@
                             "_ui5since": "1.3.0",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11667,7 +11857,7 @@
                             "readonly": true,
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         }
                     ],
@@ -11684,7 +11874,14 @@
                             "name": "token-delete",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<MultiInputTokenDeleteEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "MultiInputTokenDeleteEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/MultiInput.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when a token is about to be deleted.",
                             "_ui5parameters": [
@@ -11707,7 +11904,7 @@
                             "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
@@ -11719,14 +11916,21 @@
                             "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected.",
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
                             "name": "suggestion-item-select",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<InputSuggestionItemSelectEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "InputSuggestionItemSelectEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Input.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when a suggestion item, that is displayed in the suggestion popup, is selected.",
                             "_ui5parameters": [
@@ -11741,14 +11945,21 @@
                             ],
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         },
                         {
                             "name": "suggestion-item-preview",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<InputSuggestionItemPreviewEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "InputSuggestionItemPreviewEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Input.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.",
                             "_ui5since": "1.0.0-rc.8",
@@ -11772,7 +11983,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "Input",
-                                "module": "src/Input.ts"
+                                "module": "dist/Input.js"
                             }
                         }
                     ],
@@ -12376,7 +12587,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12392,7 +12603,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12408,7 +12619,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12424,7 +12635,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12440,7 +12651,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12463,7 +12674,7 @@
                             "_ui5validator": "PopupAccessibleRole",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12479,7 +12690,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12494,7 +12705,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12509,7 +12720,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         }
                     ],
@@ -12533,7 +12744,7 @@
                             "_ui5allowPreventDefault": true,
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12545,14 +12756,21 @@
                             "description": "Fired after the component is opened. <b>This event does not bubble.</b>",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
                             "name": "before-close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<PopupBeforeCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "PopupBeforeCloseEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Popup.js"
+                                    }
+                                ]
                             },
                             "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. <b>This event does not bubble.</b>",
                             "_ui5allowPreventDefault": true,
@@ -12568,7 +12786,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -12580,7 +12798,7 @@
                             "description": "Fired after the component is closed. <b>This event does not bubble.</b>",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         }
                     ],
@@ -12777,7 +12995,14 @@
                             "name": "before-close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<PopupBeforeCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "PopupBeforeCloseEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Popup.js"
+                                    }
+                                ]
                             },
                             "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. <b>This event does not bubble.</b>",
                             "_ui5allowPreventDefault": true,
@@ -13222,7 +13447,7 @@
                             "_ui5validator": "Float",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13237,7 +13462,7 @@
                             "_ui5validator": "Float",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13252,7 +13477,7 @@
                             "_ui5validator": "Float",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13267,7 +13492,7 @@
                             "_ui5validator": "Integer",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13282,7 +13507,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13297,7 +13522,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13312,7 +13537,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13328,7 +13553,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         }
                     ],
@@ -13351,7 +13576,7 @@
                             "description": "Fired when the value changes and the user has finished interacting with the slider.",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -13363,7 +13588,7 @@
                             "description": "Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         }
                     ],
@@ -13589,7 +13814,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13604,7 +13829,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13619,7 +13844,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13634,7 +13859,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13656,7 +13881,7 @@
                             "_ui5validator": "PopoverPlacementType",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13678,7 +13903,7 @@
                             "_ui5validator": "PopoverHorizontalAlign",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13700,7 +13925,7 @@
                             "_ui5validator": "PopoverVerticalAlign",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13715,7 +13940,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13731,7 +13956,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13747,7 +13972,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13762,7 +13987,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13778,7 +14003,7 @@
                             "_ui5validator": "DOMReference",
                             "inheritedFrom": {
                                 "name": "Popover",
-                                "module": "src/Popover.ts"
+                                "module": "dist/Popover.js"
                             }
                         },
                         {
@@ -13793,7 +14018,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13809,7 +14034,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13825,7 +14050,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13841,7 +14066,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13857,7 +14082,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13880,7 +14105,7 @@
                             "_ui5validator": "PopupAccessibleRole",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13896,7 +14121,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         }
                     ],
@@ -13920,7 +14145,7 @@
                             "_ui5allowPreventDefault": true,
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13932,14 +14157,21 @@
                             "description": "Fired after the component is opened. <b>This event does not bubble.</b>",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
                             "name": "before-close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<PopupBeforeCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "PopupBeforeCloseEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Popup.js"
+                                    }
+                                ]
                             },
                             "description": "Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. <b>This event does not bubble.</b>",
                             "_ui5allowPreventDefault": true,
@@ -13955,7 +14187,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         },
                         {
@@ -13967,7 +14199,7 @@
                             "description": "Fired after the component is closed. <b>This event does not bubble.</b>",
                             "inheritedFrom": {
                                 "name": "Popup",
-                                "module": "src/Popup.ts"
+                                "module": "dist/Popup.js"
                             }
                         }
                     ],
@@ -14130,7 +14362,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<SegmentedButtonSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "SegmentedButtonSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/SegmentedButton.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the selected item changes.",
                             "_ui5parameters": [
@@ -14236,7 +14475,7 @@
                             "_ui5validator": "ButtonDesign",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14251,7 +14490,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14267,7 +14506,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14282,7 +14521,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ToggleButton",
-                                "module": "src/ToggleButton.ts"
+                                "module": "dist/ToggleButton.js"
                             }
                         },
                         {
@@ -14297,7 +14536,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14312,7 +14551,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14328,7 +14567,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14344,7 +14583,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14360,7 +14599,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14376,7 +14615,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -14399,7 +14638,7 @@
                             "_ui5validator": "ButtonType",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         }
                     ],
@@ -14429,7 +14668,7 @@
                             "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n<br><br>\n<b>Note:</b> The event will not be fired if the <code>disabled</code>\nproperty is set to <code>true</code>.",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         }
                     ],
@@ -14653,7 +14892,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<SelectChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "SelectChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Select.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the selected option changes.",
                             "_ui5allowPreventDefault": true,
@@ -14679,7 +14925,14 @@
                             "name": "live-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<SelectLiveChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "SelectLiveChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Select.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the user navigates through the options, but the selection is not finalized,\nor when pressing the ESC key to revert the current selection.",
                             "_ui5since": "1.17.0",
@@ -14933,7 +15186,7 @@
                             "_ui5validator": "ListItemType",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             },
                             "deprecated": true
                         },
@@ -14956,7 +15209,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             },
                             "deprecated": true
                         },
@@ -14972,7 +15225,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             },
                             "deprecated": true
                         },
@@ -14989,7 +15242,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "CustomListItem",
-                                "module": "src/CustomListItem.ts"
+                                "module": "dist/CustomListItem.js"
                             }
                         },
                         {
@@ -15004,7 +15257,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -15034,7 +15287,7 @@
                             "description": "Fired when the user clicks on the detail button when type is <code>Detail</code>.",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         }
                     ],
@@ -15134,7 +15387,7 @@
                             "_ui5validator": "Float",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15149,7 +15402,7 @@
                             "_ui5validator": "Float",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15164,7 +15417,7 @@
                             "_ui5validator": "Float",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15179,7 +15432,7 @@
                             "_ui5validator": "Integer",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15194,7 +15447,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15209,7 +15462,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15224,7 +15477,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15240,7 +15493,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         }
                     ],
@@ -15263,7 +15516,7 @@
                             "description": "Fired when the value changes and the user has finished interacting with the slider.",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         },
                         {
@@ -15275,7 +15528,7 @@
                             "description": "Fired when the value changes due to user interaction that is not yet finished - during mouse/touch dragging.",
                             "inheritedFrom": {
                                 "name": "SliderBase",
-                                "module": "src/SliderBase.ts"
+                                "module": "dist/SliderBase.js"
                             }
                         }
                     ],
@@ -15777,7 +16030,7 @@
                             "_ui5validator": "ListItemType",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -15800,7 +16053,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -15816,7 +16069,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -15831,7 +16084,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -15853,7 +16106,7 @@
                             "description": "Fired when the user clicks on the detail button when type is <code>Detail</code>.",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         }
                     ],
@@ -16881,7 +17134,14 @@
                             "name": "tab-select",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TabContainerTabSelectEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TabContainerTabSelectEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TabContainer.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when a tab is selected.",
                             "_ui5allowPreventDefault": true,
@@ -17222,7 +17482,14 @@
                             "name": "row-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TableRowClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TableRowClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TableRow.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when a row in <code>Active</code> mode is clicked or <code>Enter</code> key is pressed.",
                             "_ui5parameters": [
@@ -17240,7 +17507,14 @@
                             "name": "popin-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TablePopinChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TablePopinChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Table.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when <code>ui5-table-column</code> is shown as a pop-in instead of hiding it.",
                             "_ui5since": "1.0.0-rc.6",
@@ -17268,7 +17542,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TableSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TableSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Table.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
                             "_ui5since": "1.0.0-rc.15",
@@ -17550,7 +17831,8 @@
                     ],
                     "superclass": {
                         "name": "UI5Element",
-                        "package": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "package": "@ui5/webcomponents-base",
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "TableGroupRow",
                     "customElement": true,
@@ -18042,7 +18324,7 @@
                             "_ui5formEvents": "change,input",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18064,7 +18346,7 @@
                             "_ui5validator": "ValueState",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18079,7 +18361,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18094,7 +18376,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18110,7 +18392,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18126,7 +18408,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18141,7 +18423,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18167,7 +18449,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
@@ -18192,7 +18474,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         }
                     ],
@@ -18210,7 +18492,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TimePickerBaseChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TimePickerBaseChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TimePickerBase.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the input operation has finished by clicking the \"OK\" button or\nwhen the text in the input field has changed and the focus leaves the input field.",
                             "_ui5parameters": [
@@ -18233,14 +18522,21 @@
                             ],
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         },
                         {
                             "name": "input",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TimePickerBaseInputEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TimePickerBaseInputEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TimePickerBase.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the value of the <code>ui5-time-picker</code> is changed at each key stroke.",
                             "_ui5parameters": [
@@ -18263,7 +18559,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "TimePickerBase",
-                                "module": "src/TimePickerBase.ts"
+                                "module": "dist/TimePickerBase.js"
                             }
                         }
                     ],
@@ -18473,7 +18769,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TimePickerBaseChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TimePickerBaseChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TimePickerBase.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the input operation has finished by clicking the \"OK\" button or\nwhen the text in the input field has changed and the focus leaves the input field.",
                             "_ui5parameters": [
@@ -18499,7 +18802,14 @@
                             "name": "input",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TimePickerBaseInputEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TimePickerBaseInputEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TimePickerBase.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the value of the <code>ui5-time-picker</code> is changed at each key stroke.",
                             "_ui5parameters": [
@@ -18900,7 +19210,7 @@
                             "_ui5validator": "ButtonDesign",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -18915,7 +19225,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -18930,7 +19240,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -18945,7 +19255,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -18961,7 +19271,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -18977,7 +19287,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -18993,7 +19303,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -19009,7 +19319,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -19025,7 +19335,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         },
                         {
@@ -19048,7 +19358,7 @@
                             "_ui5validator": "ButtonType",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         }
                     ],
@@ -19070,7 +19380,7 @@
                             "description": "Fired when the component is activated either with a\nmouse/tap or by using the Enter or Space key.\n<br><br>\n<b>Note:</b> The event will not be fired if the <code>disabled</code>\nproperty is set to <code>true</code>.",
                             "inheritedFrom": {
                                 "name": "Button",
-                                "module": "src/Button.ts"
+                                "module": "dist/Button.js"
                             }
                         }
                     ],
@@ -19531,7 +19841,7 @@
                             "_ui5validator": "ToolbarItemOverflowBehavior",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         },
                         {
@@ -19546,7 +19856,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         }
                     ],
@@ -19818,7 +20128,7 @@
                             "_ui5validator": "ToolbarItemOverflowBehavior",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         },
                         {
@@ -19833,7 +20143,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         }
                     ],
@@ -19842,7 +20152,14 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ToolbarSelectChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ToolbarSelectChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ToolbarSelect.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the selected option changes.",
                             "_ui5allowPreventDefault": true,
@@ -20016,7 +20333,7 @@
                             "_ui5validator": "ToolbarItemOverflowBehavior",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         },
                         {
@@ -20031,7 +20348,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         }
                     ],
@@ -20096,7 +20413,7 @@
                             "_ui5validator": "ToolbarItemOverflowBehavior",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         },
                         {
@@ -20111,7 +20428,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ToolbarItem",
-                                "module": "src/ToolbarItem.ts"
+                                "module": "dist/ToolbarItem.js"
                             }
                         }
                     ],
@@ -20291,7 +20608,14 @@
                             "name": "item-toggle",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TreeItemToggleEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TreeItemToggleEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Tree.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when a tree item is expanded or collapsed.\n<i>Note:</i> You can call <code>preventDefault()</code> on the event object to suppress the event, if needed.\nThis may be handy for example if you want to dynamically load tree items upon the user expanding a node.\nEven if you prevented the event's default behavior, you can always manually call <code>toggle()</code> on a tree item.",
                             "_ui5allowPreventDefault": true,
@@ -20310,7 +20634,14 @@
                             "name": "item-mouseover",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TreeItemMouseoverEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TreeItemMouseoverEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Tree.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the mouse cursor enters the tree item borders.",
                             "_ui5since": "1.0.0-rc.16",
@@ -20329,7 +20660,14 @@
                             "name": "item-mouseout",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TreeItemMouseoutEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TreeItemMouseoutEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Tree.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the mouse cursor leaves the tree item borders.",
                             "_ui5since": "1.0.0-rc.16",
@@ -20348,7 +20686,14 @@
                             "name": "item-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TreeItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TreeItemClickEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Tree.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when a tree item is activated.",
                             "_ui5allowPreventDefault": true,
@@ -20367,7 +20712,14 @@
                             "name": "item-delete",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TreeItemDeleteEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TreeItemDeleteEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Tree.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the Delete button of any tree item is pressed.\n<br><br>\n<b>Note:</b> A Delete button is displayed on each item,\nwhen the component <code>mode</code> property is set to <code>Delete</code>.",
                             "_ui5parameters": [
@@ -20385,7 +20737,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<TreeSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TreeSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Tree.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code> and <code>MultiSelect</code> modes.",
                             "_ui5parameters": [
@@ -20553,7 +20912,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -20568,7 +20927,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -20584,7 +20943,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -20599,7 +20958,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -20622,7 +20981,7 @@
                             "_ui5validator": "ValueState",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -20638,7 +20997,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -20653,7 +21012,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -20675,7 +21034,7 @@
                             "_ui5validator": "ListItemType",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -20698,7 +21057,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -20714,7 +21073,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -20729,7 +21088,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -20752,7 +21111,7 @@
                             "description": "Fired when the user clicks on the detail button when type is <code>Detail</code>.",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         }
                     ],
@@ -20961,7 +21320,7 @@
                             "_ui5validator": "ListItemType",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -20984,7 +21343,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -21000,7 +21359,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -21015,7 +21374,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -21037,7 +21396,7 @@
                             "description": "Fired when the user clicks on the detail button when type is <code>Detail</code>.",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         }
                     ],
@@ -21168,7 +21527,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -21183,7 +21542,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -21199,7 +21558,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -21214,7 +21573,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -21237,7 +21596,7 @@
                             "_ui5validator": "ValueState",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -21253,7 +21612,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -21268,7 +21627,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",
-                                "module": "src/TreeItemBase.ts"
+                                "module": "dist/TreeItemBase.js"
                             }
                         },
                         {
@@ -21290,7 +21649,7 @@
                             "_ui5validator": "ListItemType",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -21313,7 +21672,7 @@
                             "_ui5validator": "Object",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -21329,7 +21688,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         },
                         {
@@ -21344,7 +21703,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -21367,7 +21726,7 @@
                             "description": "Fired when the user clicks on the detail button when type is <code>Detail</code>.",
                             "inheritedFrom": {
                                 "name": "ListItem",
-                                "module": "src/ListItem.ts"
+                                "module": "dist/ListItem.js"
                             }
                         }
                     ],
@@ -23464,7 +23823,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "Bar",
                     "customElement": true,
@@ -23536,7 +23895,14 @@
                             "name": "scan-success",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<BarcodeScannerDialogScanSuccessEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "BarcodeScannerDialogScanSuccessEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/BarcodeScannerDialog.js"
+                                    }
+                                ]
                             },
                             "description": "Fires when the scan is completed successfuuly.",
                             "_ui5parameters": [
@@ -23562,7 +23928,14 @@
                             "name": "scan-error",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<BarcodeScannerDialogScanErrorEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "BarcodeScannerDialogScanErrorEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/BarcodeScannerDialog.js"
+                                    }
+                                ]
                             },
                             "description": "Fires when the scan fails with error.",
                             "_ui5parameters": [
@@ -23580,7 +23953,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "BarcodeScannerDialog",
                     "customElement": true,
@@ -23755,7 +24128,14 @@
                             "name": "layout-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<DynamicSideContentLayoutChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DynamicSideContentLayoutChangeEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/DynamicSideContent.js"
+                                    }
+                                ]
                             },
                             "description": "Fires when the current breakpoint has been changed.",
                             "_ui5parameters": [
@@ -23797,7 +24177,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "DynamicSideContent",
                     "customElement": true,
@@ -23885,7 +24265,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "FilterItem",
                     "customElement": true,
@@ -23949,7 +24329,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "FilterItemOption",
                     "customElement": true,
@@ -24047,10 +24427,10 @@
                             "kind": "field",
                             "name": "accessibilityTexts",
                             "type": {
-                                "text": "AccessiblilityTexts",
+                                "text": "FlexibleColumnLayoutAccessibilityTexts",
                                 "references": [
                                     {
-                                        "name": "AccessiblilityTexts",
+                                        "name": "FlexibleColumnLayoutAccessibilityTexts",
                                         "package": "@ui5/webcomponents-fiori",
                                         "module": "dist/FlexibleColumnLayout.js"
                                     }
@@ -24066,10 +24446,10 @@
                             "kind": "field",
                             "name": "accessibilityRoles",
                             "type": {
-                                "text": "AccessibilityRoles",
+                                "text": "FlexibleColumnLayoutAccessibilityRoles",
                                 "references": [
                                     {
-                                        "name": "AccessibilityRoles",
+                                        "name": "FlexibleColumnLayoutAccessibilityRoles",
                                         "package": "@ui5/webcomponents-fiori",
                                         "module": "dist/FlexibleColumnLayout.js"
                                     }
@@ -24085,10 +24465,10 @@
                             "kind": "field",
                             "name": "columnLayout",
                             "type": {
-                                "text": "ColumnLayout | undefined",
+                                "text": "FlexibleColumnLayoutColumnLayout | undefined",
                                 "references": [
                                     {
-                                        "name": "ColumnLayout",
+                                        "name": "FlexibleColumnLayoutColumnLayout",
                                         "package": "@ui5/webcomponents-fiori",
                                         "module": "dist/FlexibleColumnLayout.js"
                                     }
@@ -24149,7 +24529,14 @@
                             "name": "layout-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<FlexibleColumnLayoutLayoutChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "FlexibleColumnLayoutLayoutChangeEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/FlexibleColumnLayout.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the layout changes via user interaction by clicking the arrows\nor by changing the component size due to resizing.",
                             "_ui5parameters": [
@@ -24222,7 +24609,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "FlexibleColumnLayout",
                     "customElement": true,
@@ -24253,6 +24640,30 @@
                     "name": "FlexibleColumnLayoutLayoutChangeEventDetail",
                     "declaration": {
                         "name": "FlexibleColumnLayoutLayoutChangeEventDetail",
+                        "module": "dist/FlexibleColumnLayout.js"
+                    }
+                },
+                {
+                    "kind": "js",
+                    "name": "FlexibleColumnLayoutAccessibilityTexts",
+                    "declaration": {
+                        "name": "FlexibleColumnLayoutAccessibilityTexts",
+                        "module": "dist/FlexibleColumnLayout.js"
+                    }
+                },
+                {
+                    "kind": "js",
+                    "name": "FlexibleColumnLayoutAccessibilityRoles",
+                    "declaration": {
+                        "name": "FlexibleColumnLayoutAccessibilityRoles",
+                        "module": "dist/FlexibleColumnLayout.js"
+                    }
+                },
+                {
+                    "kind": "js",
+                    "name": "FlexibleColumnLayoutColumnLayout",
+                    "declaration": {
+                        "name": "FlexibleColumnLayoutColumnLayout",
                         "module": "dist/FlexibleColumnLayout.js"
                     }
                 },
@@ -24404,7 +24815,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "IllustratedMessage",
                     "customElement": true,
@@ -24629,7 +25040,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<MediaGallerySelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "MediaGallerySelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/MediaGallery.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when selection is changed by user interaction.",
                             "_ui5parameters": [
@@ -24663,7 +25081,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "MediaGallery",
                     "customElement": true,
@@ -24771,7 +25189,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "MediaGalleryItem",
                     "customElement": true,
@@ -24872,7 +25290,14 @@
                             "name": "click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<NotificationActionClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "NotificationActionClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/NotificationAction.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when the action is pressed."
                         }
@@ -24880,7 +25305,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "NotificationAction",
                     "customElement": true,
@@ -24991,7 +25416,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25013,7 +25438,7 @@
                             "_ui5validator": "Priority",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25028,7 +25453,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25043,7 +25468,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25059,7 +25484,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25074,7 +25499,7 @@
                             "_ui5validator": "Integer",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25102,7 +25527,14 @@
                             "name": "close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<NotificationListItemBaseCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "NotificationListItemBaseCloseEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/NotificationListItemBase.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the <code>Close</code> button is pressed.",
                             "_ui5parameters": [
@@ -25117,7 +25549,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         }
                     ],
@@ -25256,7 +25688,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25278,7 +25710,7 @@
                             "_ui5validator": "Priority",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25293,7 +25725,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25308,7 +25740,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25324,7 +25756,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25339,7 +25771,7 @@
                             "_ui5validator": "Integer",
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         },
                         {
@@ -25368,7 +25800,14 @@
                             "name": "close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<NotificationListItemBaseCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "NotificationListItemBaseCloseEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/NotificationListItemBase.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the <code>Close</code> button is pressed.",
                             "_ui5parameters": [
@@ -25383,7 +25822,7 @@
                             ],
                             "inheritedFrom": {
                                 "name": "NotificationListItemBase",
-                                "module": "src/NotificationListItemBase.ts"
+                                "module": "dist/NotificationListItemBase.js"
                             }
                         }
                     ],
@@ -25542,7 +25981,14 @@
                             "name": "close",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<NotificationListItemBaseCloseEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "NotificationListItemBaseCloseEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/NotificationListItemBase.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the <code>Close</code> button is pressed.",
                             "_ui5parameters": [
@@ -25685,7 +26131,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "Page",
                     "customElement": true,
@@ -25742,7 +26188,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "ProductSwitch",
                     "customElement": true,
@@ -25850,7 +26296,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "ProductSwitchItem",
                     "customElement": true,
@@ -26063,10 +26509,10 @@
                             "kind": "field",
                             "name": "accessibilityRoles",
                             "type": {
-                                "text": "AccessibilityRoles",
+                                "text": "ShellBarAccessibilityRoles",
                                 "references": [
                                     {
-                                        "name": "AccessibilityRoles",
+                                        "name": "ShellBarAccessibilityRoles",
                                         "package": "@ui5/webcomponents-fiori",
                                         "module": "dist/ShellBar.js"
                                     }
@@ -26082,10 +26528,10 @@
                             "kind": "field",
                             "name": "accessibilityTexts",
                             "type": {
-                                "text": "AccessibilityTexts",
+                                "text": "ShellBarAccessibilityTexts",
                                 "references": [
                                     {
-                                        "name": "AccessibilityTexts",
+                                        "name": "ShellBarAccessibilityTexts",
                                         "package": "@ui5/webcomponents-fiori",
                                         "module": "dist/ShellBar.js"
                                     }
@@ -26101,10 +26547,10 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ShellBarAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ShellBarAccessibilityAttributes",
                                         "package": "@ui5/webcomponents-fiori",
                                         "module": "dist/ShellBar.js"
                                     }
@@ -26205,7 +26651,14 @@
                             "name": "notifications-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ShellBarNotificationsClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarNotificationsClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBar.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when the notification icon is activated.",
                             "_ui5allowPreventDefault": true,
@@ -26224,7 +26677,14 @@
                             "name": "profile-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ShellBarProfileClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarProfileClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBar.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when the profile slot is present.",
                             "_ui5parameters": [
@@ -26242,7 +26702,14 @@
                             "name": "product-switch-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ShellBarProductSwitchClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarProductSwitchClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBar.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when the product switch icon is activated.\n<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.",
                             "_ui5allowPreventDefault": true,
@@ -26261,7 +26728,14 @@
                             "name": "logo-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ShellBarLogoClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarLogoClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBar.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when the logo is activated.",
                             "_ui5since": "0.10",
@@ -26280,7 +26754,14 @@
                             "name": "co-pilot-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ShellBarCoPilotClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarCoPilotClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBar.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when the co pilot is activated.",
                             "_ui5since": "0.10",
@@ -26299,7 +26780,14 @@
                             "name": "menu-item-click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ShellBarMenuItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarMenuItemClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBar.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when a menu item is activated\n<b>Note:</b> You can prevent closing of overflow popover by calling <code>event.preventDefault()</code>.",
                             "_ui5since": "0.10",
@@ -26318,7 +26806,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "ShellBar",
                     "customElement": true,
@@ -26385,6 +26873,30 @@
                     }
                 },
                 {
+                    "kind": "js",
+                    "name": "ShellBarAccessibilityAttributes",
+                    "declaration": {
+                        "name": "ShellBarAccessibilityAttributes",
+                        "module": "dist/ShellBar.js"
+                    }
+                },
+                {
+                    "kind": "js",
+                    "name": "ShellBarAccessibilityRoles",
+                    "declaration": {
+                        "name": "ShellBarAccessibilityRoles",
+                        "module": "dist/ShellBar.js"
+                    }
+                },
+                {
+                    "kind": "js",
+                    "name": "ShellBarAccessibilityTexts",
+                    "declaration": {
+                        "name": "ShellBarAccessibilityTexts",
+                        "module": "dist/ShellBar.js"
+                    }
+                },
+                {
                     "kind": "custom-element-definition",
                     "name": "ui5-shellbar",
                     "declaration": {
@@ -26443,7 +26955,14 @@
                             "name": "click",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ShellBarItemClickEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarItemClickEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBarItem.js"
+                                    }
+                                ]
                             },
                             "description": "Fired, when the item is pressed.",
                             "_ui5allowPreventDefault": true
@@ -26452,7 +26971,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "ShellBarItem",
                     "customElement": true,
@@ -26556,7 +27075,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<SideNavigationSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "SideNavigationSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/SideNavigation.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the selection has changed via user interaction",
                             "_ui5allowPreventDefault": true,
@@ -26582,7 +27108,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "SideNavigation",
                     "customElement": true,
@@ -26680,7 +27206,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26695,7 +27221,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26710,7 +27236,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26726,7 +27252,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26742,7 +27268,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26758,7 +27284,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         }
                     ],
@@ -26782,7 +27308,7 @@
                             "description": "Fired when the component is activated either with a\nclick/tap or by using the Enter or Space key.",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         }
                     ],
@@ -26900,7 +27426,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "customElement": true,
                     "_ui5since": "1.19.0",
@@ -26952,7 +27478,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26967,7 +27493,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26982,7 +27508,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -26998,7 +27524,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -27014,7 +27540,7 @@
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         },
                         {
@@ -27030,7 +27556,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         }
                     ],
@@ -27044,7 +27570,7 @@
                             "description": "Fired when the component is activated either with a\nclick/tap or by using the Enter or Space key.",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
-                                "module": "src/SideNavigationItemBase.ts"
+                                "module": "dist/SideNavigationItemBase.js"
                             }
                         }
                     ],
@@ -27105,7 +27631,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "SortItem",
                     "customElement": true,
@@ -27196,7 +27722,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "Timeline",
                     "customElement": true,
@@ -27312,7 +27838,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "TimelineItem",
                     "customElement": true,
@@ -27458,7 +27984,14 @@
                             "name": "item-delete",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<UploadCollectionItemDeleteEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "UploadCollectionItemDeleteEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/UploadCollection.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the delete button of any item is pressed.",
                             "_ui5parameters": [
@@ -27476,7 +28009,14 @@
                             "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<UploadCollectionSelectionChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "UploadCollectionSelectionChangeEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/UploadCollection.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
                             "_ui5parameters": [
@@ -27494,7 +28034,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "UploadCollection",
                     "customElement": true,
@@ -27748,7 +28288,7 @@
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "ListItemBase",
-                                "module": "src/ListItemBase.ts"
+                                "module": "dist/ListItemBase.js"
                             }
                         }
                     ],
@@ -27929,7 +28469,14 @@
                             "name": "confirm",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ViewSettingsDialogConfirmEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ViewSettingsDialogConfirmEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ViewSettingsDialog.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when confirmation button is activated.",
                             "_ui5parameters": [
@@ -27979,7 +28526,14 @@
                             "name": "cancel",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<ViewSettingsDialogCancelEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ViewSettingsDialogCancelEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ViewSettingsDialog.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when cancel button is activated.",
                             "_ui5parameters": [
@@ -28037,7 +28591,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "ViewSettingsDialog",
                     "customElement": true,
@@ -28143,7 +28697,14 @@
                             "name": "step-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent"
+                                "text": "CustomEvent<WizardStepChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "WizardStepChangeEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/Wizard.js"
+                                    }
+                                ]
                             },
                             "description": "Fired when the step is changed by user interaction - either with scrolling,\nor by clicking on the steps within the component header.",
                             "_ui5parameters": [
@@ -28191,7 +28752,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "Wizard",
                     "customElement": true,
@@ -28318,7 +28879,7 @@
                     "superclass": {
                         "name": "UI5Element",
                         "package": "@ui5/webcomponents-base",
-                        "module": "@ui5/webcomponents-base/dist/UI5Element.js"
+                        "module": "dist/UI5Element.js"
                     },
                     "tagName": "WizardStep",
                     "customElement": true,
@@ -29981,7 +30542,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DataType",
-                                "module": "src/types/DataType.ts"
+                                "module": "dist/types/DataType.js"
                             }
                         }
                     ],
@@ -30027,7 +30588,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DataType",
-                                "module": "src/types/DataType.ts"
+                                "module": "dist/types/DataType.js"
                             }
                         }
                     ],
@@ -30139,7 +30700,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DataType",
-                                "module": "src/types/DataType.ts"
+                                "module": "dist/types/DataType.js"
                             }
                         }
                     ],
@@ -30223,7 +30784,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DataType",
-                                "module": "src/types/DataType.ts"
+                                "module": "dist/types/DataType.js"
                             }
                         }
                     ],
@@ -30269,7 +30830,7 @@
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DataType",
-                                "module": "src/types/DataType.ts"
+                                "module": "dist/types/DataType.js"
                             }
                         }
                     ],

@@ -54,7 +54,7 @@ export default {
         }
     },
     "selection-change": {
-        "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
+        "description": "Fired when selection is changed by user interaction.",
         "control": {
             "type": false
         },

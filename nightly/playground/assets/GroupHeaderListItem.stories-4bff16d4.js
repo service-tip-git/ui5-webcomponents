@@ -1,0 +1,53 @@
+import{x as o}from"./lit-element-c5a2b594.js";import{l as e}from"./if-defined-c29cffe1.js";import{o as s}from"./unsafe-html-0ddd83da.js";import{D as m}from"./docs-e23e4e8f.js";import"./jsx-runtime-670e1be8.js";import"./index-4e9ba9b8.js";import"./_commonjsHelpers-725317a4.js";import"./Footer-524bafb2.js";import"./index-a68b1905.js";import"./iframe-a4e8f984.js";import"../sb-preview/runtime.js";import"./index-11d98b33.js";import"./index-d38538b0.js";import"./index-356e4a49.js";import"./chunk-HLWAVYOI-470159da.js";import"./client-fb0f3103.js";const p={default:{control:{type:"text"},table:{type:{summary:"Array<Node>"}}}},c={package:"@ui5/webcomponents"},l="ui5-li-groupheader",N={title:"Main/List/Group Header List Item",component:"GroupHeaderListItem",parameters:{docs:{page:m({...c,component:l,showDefaultStoryOnly:!0})}},argTypes:p},g=i=>o` <ui5-list>
+  <ui5-li-groupheader
+    accessible-name="${e(i.accessibleName)}"
+    ?selected="${e(i.selected)}"
+  >
+    ${s(i.default)}
+  </ui5-li-groupheader>
+  <ui5-li
+  image="../assets/images/avatars/woman_avatar_3.png"
+  icon="navigation-right-arrow"
+  icon-end=""
+  >Jennifer</ui5-li
+>
+<ui5-li
+  image="../assets/images/avatars/woman_avatar_4.png"
+  icon="navigation-right-arrow"
+  icon-end=""
+  >Lora</ui5-li
+>
+<ui5-li
+  image="../assets/images/avatars/woman_avatar_5.png"
+  icon="navigation-right-arrow"
+  icon-end=""
+  >Carlotta</ui5-li
+>
+  </ui5-list>`,a=g.bind({});a.tags=["_hidden_"];a.args={default:"Front End Developers"};var r,t,n;a.parameters={...a.parameters,docs:{...(r=a.parameters)==null?void 0:r.docs,source:{originalSource:`args => {
+  return html\` <ui5-list>
+  <ui5-li-groupheader
+    accessible-name="\${ifDefined(args.accessibleName)}"
+    ?selected="\${ifDefined(args.selected)}"
+  >
+    \${unsafeHTML(args.default)}
+  </ui5-li-groupheader>
+  <ui5-li
+  image="../assets/images/avatars/woman_avatar_3.png"
+  icon="navigation-right-arrow"
+  icon-end=""
+  >Jennifer</ui5-li
+>
+<ui5-li
+  image="../assets/images/avatars/woman_avatar_4.png"
+  icon="navigation-right-arrow"
+  icon-end=""
+  >Lora</ui5-li
+>
+<ui5-li
+  image="../assets/images/avatars/woman_avatar_5.png"
+  icon="navigation-right-arrow"
+  icon-end=""
+  >Carlotta</ui5-li
+>
+  </ui5-list>\`;
+}`,...(n=(t=a.parameters)==null?void 0:t.docs)==null?void 0:n.source}}};const T=["Basic"];export{a as Basic,T as __namedExportsOrder,N as default};

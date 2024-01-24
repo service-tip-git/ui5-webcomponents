@@ -29,38 +29,6 @@
                         "name": "FormSupport",
                         "module": "dist/features/InputElementsFormSupport.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "IFormElement",
-                    "declaration": {
-                        "name": "IFormElement",
-                        "module": "dist/features/InputElementsFormSupport.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NativeFormElement",
-                    "declaration": {
-                        "name": "NativeFormElement",
-                        "module": "dist/features/InputElementsFormSupport.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NativeInputChangeCallback",
-                    "declaration": {
-                        "name": "NativeInputChangeCallback",
-                        "module": "dist/features/InputElementsFormSupport.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NativeInputUpdateCallback",
-                    "declaration": {
-                        "name": "NativeInputUpdateCallback",
-                        "module": "dist/features/InputElementsFormSupport.js"
-                    }
                 }
             ]
         },
@@ -76,22 +44,6 @@
                         "name": "Suggestions",
                         "module": "dist/features/InputSuggestions.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "SuggestionComponent",
-                    "declaration": {
-                        "name": "SuggestionComponent",
-                        "module": "dist/features/InputSuggestions.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "InputSuggestion",
-                    "declaration": {
-                        "name": "InputSuggestion",
-                        "module": "dist/features/InputSuggestions.js"
-                    }
                 }
             ]
         },
@@ -99,126 +51,19 @@
             "kind": "javascript-module",
             "path": "dist/popup-utils/OpenedPopupsRegistry.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "addOpenedPopup",
-                    "declaration": {
-                        "name": "addOpenedPopup",
-                        "module": "dist/popup-utils/OpenedPopupsRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "removeOpenedPopup",
-                    "declaration": {
-                        "name": "removeOpenedPopup",
-                        "module": "dist/popup-utils/OpenedPopupsRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getOpenedPopups",
-                    "declaration": {
-                        "name": "getOpenedPopups",
-                        "module": "dist/popup-utils/OpenedPopupsRegistry.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/popup-utils/PopoverRegistry.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "addOpenedPopover",
-                    "declaration": {
-                        "name": "addOpenedPopover",
-                        "module": "dist/popup-utils/PopoverRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "removeOpenedPopover",
-                    "declaration": {
-                        "name": "removeOpenedPopover",
-                        "module": "dist/popup-utils/PopoverRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getRegistry",
-                    "declaration": {
-                        "name": "getRegistry",
-                        "module": "dist/popup-utils/PopoverRegistry.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/timepicker-utils/TimeSlider.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getHours",
-                    "declaration": {
-                        "name": "getHours",
-                        "module": "dist/timepicker-utils/TimeSlider.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getMinutes",
-                    "declaration": {
-                        "name": "getMinutes",
-                        "module": "dist/timepicker-utils/TimeSlider.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getSeconds",
-                    "declaration": {
-                        "name": "getSeconds",
-                        "module": "dist/timepicker-utils/TimeSlider.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getHoursConfigByFormat",
-                    "declaration": {
-                        "name": "getHoursConfigByFormat",
-                        "module": "dist/timepicker-utils/TimeSlider.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getTimeControlsByFormat",
-                    "declaration": {
-                        "name": "getTimeControlsByFormat",
-                        "module": "dist/timepicker-utils/TimeSlider.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "HourType",
-                    "declaration": {
-                        "name": "HourType",
-                        "module": "dist/timepicker-utils/TimeSlider.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "HoursConfiguration",
-                    "declaration": {
-                        "name": "HoursConfiguration",
-                        "module": "dist/timepicker-utils/TimeSlider.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -3380,14 +3225,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "AvatarGroupClickEventDetail",
-                    "declaration": {
-                        "name": "AvatarGroupClickEventDetail",
-                        "module": "dist/AvatarGroup.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-avatar-group",
                     "declaration": {
@@ -3690,14 +3527,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "Breadcrumbs",
-                        "module": "dist/Breadcrumbs.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "BreadcrumbsItemClickEventDetail",
-                    "declaration": {
-                        "name": "BreadcrumbsItemClickEventDetail",
                         "module": "dist/Breadcrumbs.js"
                     }
                 },
@@ -4310,22 +4139,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ICalendarPicker",
-                    "declaration": {
-                        "name": "ICalendarPicker",
-                        "module": "dist/Calendar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "CalendarSelectedDatesChangeEventDetail",
-                    "declaration": {
-                        "name": "CalendarSelectedDatesChangeEventDetail",
-                        "module": "dist/Calendar.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-calendar",
                     "declaration": {
@@ -4756,14 +4569,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ICardHeader",
-                    "declaration": {
-                        "name": "ICardHeader",
-                        "module": "dist/CardHeader.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-card-header",
                     "declaration": {
@@ -5053,14 +4858,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "CarouselNavigateEventDetail",
-                    "declaration": {
-                        "name": "CarouselNavigateEventDetail",
-                        "module": "dist/Carousel.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-carousel",
                     "declaration": {
@@ -5133,6 +4930,18 @@
                             "description": "Defines whether the component is read-only.\n<br><br>\n<b>Note:</b> A read-only component is not editable,\nbut still provides visual feedback upon user interaction.",
                             "default": "false",
                             "privacy": "public",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "displayOnly",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Determines whether the <code>ui5-checkbox</code> is in display only state.\n\nWhen set to <code>true</code>, the <code>ui5-checkbox</code> is not interactive, not editable, not focusable\nand not in the tab chain. This setting is used for forms in review mode.\n\n<Note:> When the property <code>disabled</code> is set to <code>true</code> this property has no effect.",
+                            "privacy": "public",
+                            "default": "false",
+                            "_ui5since": "1.22.0",
                             "_ui5validator": "Boolean"
                         },
                         {
@@ -5238,7 +5047,8 @@
                             "type": {
                                 "text": "CustomEvent"
                             },
-                            "description": "Fired when the component checked state changes."
+                            "description": "Fired when the component checked state changes.",
+                            "_ui5allowPreventDefault": true
                         }
                     ],
                     "superclass": {
@@ -5343,14 +5153,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "ColorPalette",
-                        "module": "dist/ColorPalette.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ColorPaletteItemClickEventDetail",
-                    "declaration": {
-                        "name": "ColorPaletteItemClickEventDetail",
                         "module": "dist/ColorPalette.js"
                     }
                 },
@@ -5624,14 +5426,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ColorPalettePopoverItemClickEventDetail",
-                    "declaration": {
-                        "name": "ColorPalettePopoverItemClickEventDetail",
-                        "module": "dist/ColorPalettePopover.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-color-palette-popover",
                     "declaration": {
@@ -5873,6 +5667,18 @@
                         },
                         {
                             "kind": "field",
+                            "name": "showClearIcon",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the clear icon of the combobox will be shown.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "1.20.1",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string"
@@ -5911,7 +5717,7 @@
                             "type": {
                                 "text": "CustomEvent"
                             },
-                            "description": "Fired when typing in input.\n<br><br>\n<b>Note:</b> filterValue property is updated, input is changed."
+                            "description": "Fired when typing in input or clear icon is pressed.\n<br><br>\n<b>Note:</b> filterValue property is updated, input is changed."
                         },
                         {
                             "name": "selection-change",
@@ -5964,22 +5770,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "ComboBox",
-                        "module": "dist/ComboBox.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ComboBoxSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "ComboBoxSelectionChangeEventDetail",
-                        "module": "dist/ComboBox.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IComboBoxItem",
-                    "declaration": {
-                        "name": "IComboBoxItem",
                         "module": "dist/ComboBox.js"
                     }
                 },
@@ -6860,22 +6650,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "DatePickerChangeEventDetail",
-                    "declaration": {
-                        "name": "DatePickerChangeEventDetail",
-                        "module": "dist/DatePicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DatePickerInputEventDetail",
-                    "declaration": {
-                        "name": "DatePickerInputEventDetail",
-                        "module": "dist/DatePicker.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-date-picker",
                     "declaration": {
@@ -7443,22 +7217,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "DateRangePickerChangeEventDetail",
-                    "declaration": {
-                        "name": "DateRangePickerChangeEventDetail",
-                        "module": "dist/DateRangePicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DateRangePickerInputEventDetail",
-                    "declaration": {
-                        "name": "DateRangePickerInputEventDetail",
-                        "module": "dist/DateRangePicker.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-daterange-picker",
                     "declaration": {
@@ -7981,22 +7739,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "DateTimePickerChangeEventDetail",
-                    "declaration": {
-                        "name": "DateTimePickerChangeEventDetail",
-                        "module": "dist/DateTimePicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DateTimePickerInputEventDetail",
-                    "declaration": {
-                        "name": "DateTimePickerInputEventDetail",
-                        "module": "dist/DateTimePicker.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-datetime-picker",
                     "declaration": {
@@ -8016,22 +7758,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "DayPicker",
-                        "module": "dist/DayPicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DayPickerNavigateEventDetail",
-                    "declaration": {
-                        "name": "DayPickerNavigateEventDetail",
-                        "module": "dist/DayPicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DayPickerChangeEventDetail",
-                    "declaration": {
-                        "name": "DayPickerChangeEventDetail",
                         "module": "dist/DayPicker.js"
                     }
                 }
@@ -8415,14 +8141,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "DialogBeforeCloseEventDetail",
-                    "declaration": {
-                        "name": "DialogBeforeCloseEventDetail",
-                        "module": "dist/Dialog.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-dialog",
                     "declaration": {
@@ -8619,14 +8337,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "FileUploaderChangeEventDetail",
-                    "declaration": {
-                        "name": "FileUploaderChangeEventDetail",
-                        "module": "dist/FileUploader.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-file-uploader",
                     "declaration": {
@@ -8640,40 +8350,7 @@
             "kind": "javascript-module",
             "path": "dist/Filters.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "StartsWithPerTerm",
-                    "declaration": {
-                        "name": "StartsWithPerTerm",
-                        "module": "dist/Filters.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "StartsWith",
-                    "declaration": {
-                        "name": "StartsWith",
-                        "module": "dist/Filters.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "Contains",
-                    "declaration": {
-                        "name": "Contains",
-                        "module": "dist/Filters.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "None",
-                    "declaration": {
-                        "name": "None",
-                        "module": "dist/Filters.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -9170,6 +8847,7 @@
                                 ]
                             },
                             "description": "Fired when a suggestion item, that is displayed in the suggestion popup, is selected.",
+                            "_ui5allowPreventDefault": true,
                             "_ui5parameters": [
                                 {
                                     "type": {
@@ -9237,30 +8915,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "InputSuggestionScrollEventDetail",
-                    "declaration": {
-                        "name": "InputSuggestionScrollEventDetail",
-                        "module": "dist/Input.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "InputSuggestionItemSelectEventDetail",
-                    "declaration": {
-                        "name": "InputSuggestionItemSelectEventDetail",
-                        "module": "dist/Input.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "InputSuggestionItemPreviewEventDetail",
-                    "declaration": {
-                        "name": "InputSuggestionItemPreviewEventDetail",
-                        "module": "dist/Input.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-input",
                     "declaration": {
@@ -9273,234 +8927,8 @@
         {
             "kind": "javascript-module",
             "path": "dist/Interfaces.js",
-            "declarations": [
-                {
-                    "kind": "interface",
-                    "name": "IAvatar",
-                    "description": "Interface for components that represent an avatar and may be slotted in numerous higher-order components such as <code>ui5-avatar-group</code>",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IAvatar"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IButton",
-                    "description": "Interface for components that may be used as a button inside numerous higher-order components",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IButton"
-                },
-                {
-                    "kind": "interface",
-                    "name": "ICardHeader",
-                    "description": "Interface for components that may be slotted inside <code>ui5-card</code> as header",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "ICardHeader"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IComboBoxItem",
-                    "description": "Interface for components that may be slotted inside a <code>ui5-combobox</code>",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IComboBoxItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IColorPaletteItem",
-                    "description": "Interface for components that may be used inside a <code>ui5-color-palette</code> or <code>ui5-color-palette-popover</code>",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IColorPaletteItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IIcon",
-                    "description": "Interface for components that represent an icon, usable in numerous higher-order components",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IIcon"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IInput",
-                    "description": "Interface for components that represent an input, usable in numerous higher-order components",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IInput"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IMultiComboBoxItem",
-                    "description": "Interface for components that may be slotted inside a <code>ui5-multi-combobox</code> as items",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IMultiComboBoxItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "ISegmentedButtonItem",
-                    "description": "Interface for components that may be slotted inside <code>ui5-segmented-button</code> as items",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "ISegmentedButtonItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IOption",
-                    "description": "Interface for components that may be slotted inside <code>ui5-select</code> as options",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IOption"
-                },
-                {
-                    "kind": "interface",
-                    "name": "ITab",
-                    "description": "Interface for components that may be slotted inside <code>ui5-tabcontainer</code> as items",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "ITab"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IInputSuggestionItem",
-                    "description": "Interface for components that represent a suggestion item, usable in <code>ui5-input</code>",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IInputSuggestionItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "ITableRow",
-                    "description": "Interface for components that may be slotted inside a <code>ui5-table</code> as rows",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "ITableRow"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IToken",
-                    "description": "Interface for components that represent a token and are usable in components such as <code>ui5-multi-input</code>",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "IToken"
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "IAvatar",
-                    "declaration": {
-                        "name": "IAvatar",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IButton",
-                    "declaration": {
-                        "name": "IButton",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ICardHeader",
-                    "declaration": {
-                        "name": "ICardHeader",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IColorPaletteItem",
-                    "declaration": {
-                        "name": "IColorPaletteItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IComboBoxItem",
-                    "declaration": {
-                        "name": "IComboBoxItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IIcon",
-                    "declaration": {
-                        "name": "IIcon",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IInput",
-                    "declaration": {
-                        "name": "IInput",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IMultiComboBoxItem",
-                    "declaration": {
-                        "name": "IMultiComboBoxItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ISegmentedButtonItem",
-                    "declaration": {
-                        "name": "ISegmentedButtonItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IInputSuggestionItem",
-                    "declaration": {
-                        "name": "IInputSuggestionItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IOption",
-                    "declaration": {
-                        "name": "IOption",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ITab",
-                    "declaration": {
-                        "name": "ITab",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ITableRow",
-                    "declaration": {
-                        "name": "ITableRow",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IToken",
-                    "declaration": {
-                        "name": "IToken",
-                        "module": "dist/Interfaces.js"
-                    }
-                }
-            ]
+            "declarations": [],
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -9809,14 +9237,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "Link",
-                        "module": "dist/Link.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "LinkClickEventDetail",
-                    "declaration": {
-                        "name": "LinkClickEventDetail",
                         "module": "dist/Link.js"
                     }
                 },
@@ -10207,54 +9627,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ListItemClickEventDetail",
-                    "declaration": {
-                        "name": "ListItemClickEventDetail",
-                        "module": "dist/List.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ListItemFocusEventDetail",
-                    "declaration": {
-                        "name": "ListItemFocusEventDetail",
-                        "module": "dist/List.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ListItemDeleteEventDetail",
-                    "declaration": {
-                        "name": "ListItemDeleteEventDetail",
-                        "module": "dist/List.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ListItemCloseEventDetail",
-                    "declaration": {
-                        "name": "ListItemCloseEventDetail",
-                        "module": "dist/List.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ListItemToggleEventDetail",
-                    "declaration": {
-                        "name": "ListItemToggleEventDetail",
-                        "module": "dist/List.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ListSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "ListSelectionChangeEventDetail",
-                        "module": "dist/List.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-list",
                     "declaration": {
@@ -10383,38 +9755,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "ListItem",
-                        "module": "dist/ListItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IAccessibleListItem",
-                    "declaration": {
-                        "name": "IAccessibleListItem",
-                        "module": "dist/ListItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "SelectionRequestEventDetail",
-                    "declaration": {
-                        "name": "SelectionRequestEventDetail",
-                        "module": "dist/ListItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "PressEventDetail",
-                    "declaration": {
-                        "name": "PressEventDetail",
-                        "module": "dist/ListItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "AccessibilityAttributes",
-                    "declaration": {
-                        "name": "AccessibilityAttributes",
                         "module": "dist/ListItem.js"
                     }
                 }
@@ -10712,30 +10052,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "MenuItemClickEventDetail",
-                    "declaration": {
-                        "name": "MenuItemClickEventDetail",
-                        "module": "dist/Menu.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MenuBeforeCloseEventDetail",
-                    "declaration": {
-                        "name": "MenuBeforeCloseEventDetail",
-                        "module": "dist/Menu.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MenuBeforeOpenEventDetail",
-                    "declaration": {
-                        "name": "MenuBeforeOpenEventDetail",
-                        "module": "dist/Menu.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-menu",
                     "declaration": {
@@ -11027,22 +10343,6 @@
                         "name": "MonthPicker",
                         "module": "dist/MonthPicker.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "MonthPickerNavigateEventDetail",
-                    "declaration": {
-                        "name": "MonthPickerNavigateEventDetail",
-                        "module": "dist/MonthPicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MonthPickerChangeEventDetail",
-                    "declaration": {
-                        "name": "MonthPickerChangeEventDetail",
-                        "module": "dist/MonthPicker.js"
-                    }
                 }
             ]
         },
@@ -11223,6 +10523,18 @@
                         },
                         {
                             "kind": "field",
+                            "name": "showClearIcon",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the clear icon of the multi-combobox will be shown.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "1.20.1",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string"
@@ -11244,6 +10556,17 @@
                             "privacy": "public",
                             "_ui5since": "1.4.0",
                             "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "showSelectAll",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Determines if the select all checkbox is visible on top of suggestions.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5validator": "Boolean"
                         },
                         {
                             "kind": "field",
@@ -11272,7 +10595,7 @@
                             "type": {
                                 "text": "CustomEvent"
                             },
-                            "description": "Fired when the value of the component changes at each keystroke."
+                            "description": "Fired when the value of the component changes at each keystroke or clear icon is pressed."
                         },
                         {
                             "name": "open-change",
@@ -11296,7 +10619,8 @@
                                     }
                                 ]
                             },
-                            "description": "Fired when selection is changed by user interaction\nin <code>SingleSelect</code> and <code>MultiSelect</code> modes.",
+                            "description": "Fired when selection is changed by user interaction.",
+                            "_ui5allowPreventDefault": true,
                             "_ui5parameters": [
                                 {
                                     "type": {
@@ -11334,22 +10658,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "MultiComboBox",
-                        "module": "dist/MultiComboBox.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IMultiComboBoxItem",
-                    "declaration": {
-                        "name": "IMultiComboBoxItem",
-                        "module": "dist/MultiComboBox.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MultiComboBoxSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "MultiComboBoxSelectionChangeEventDetail",
                         "module": "dist/MultiComboBox.js"
                     }
                 },
@@ -11933,6 +11241,7 @@
                                 ]
                             },
                             "description": "Fired when a suggestion item, that is displayed in the suggestion popup, is selected.",
+                            "_ui5allowPreventDefault": true,
                             "_ui5parameters": [
                                 {
                                     "type": {
@@ -12005,30 +11314,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "MultiInput",
-                        "module": "dist/MultiInput.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MultiInputTokenDeleteEventDetail",
-                    "declaration": {
-                        "name": "MultiInputTokenDeleteEventDetail",
-                        "module": "dist/MultiInput.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MultiInputSuggestionItemSelectEventDetail",
-                    "declaration": {
-                        "name": "MultiInputSuggestionItemSelectEventDetail",
-                        "module": "dist/MultiInput.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MultiInputSuggestionItemPreviewEventDetail",
-                    "declaration": {
-                        "name": "MultiInputSuggestionItemPreviewEventDetail",
                         "module": "dist/MultiInput.js"
                     }
                 },
@@ -12815,22 +12100,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "instanceOfPopover",
-                    "declaration": {
-                        "name": "instanceOfPopover",
-                        "module": "dist/Popover.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "PopoverBeforeCloseEventDetail",
-                    "declaration": {
-                        "name": "PopoverBeforeCloseEventDetail",
-                        "module": "dist/Popover.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-popover",
                     "declaration": {
@@ -13043,22 +12312,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "Popup",
-                        "module": "dist/Popup.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "PopupScrollEventDetail",
-                    "declaration": {
-                        "name": "PopupScrollEventDetail",
-                        "module": "dist/Popup.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "PopupBeforeCloseEventDetail",
-                    "declaration": {
-                        "name": "PopupBeforeCloseEventDetail",
                         "module": "dist/Popup.js"
                     }
                 }
@@ -14243,14 +13496,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ResponsivePopoverBeforeCloseEventDetail",
-                    "declaration": {
-                        "name": "ResponsivePopoverBeforeCloseEventDetail",
-                        "module": "dist/ResponsivePopover.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-responsive-popover",
                     "declaration": {
@@ -14426,14 +13671,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "SegmentedButton",
-                        "module": "dist/SegmentedButton.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "SegmentedButtonSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "SegmentedButtonSelectionChangeEventDetail",
                         "module": "dist/SegmentedButton.js"
                     }
                 },
@@ -14993,30 +14230,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "SelectChangeEventDetail",
-                    "declaration": {
-                        "name": "SelectChangeEventDetail",
-                        "module": "dist/Select.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "SelectLiveChangeEventDetail",
-                    "declaration": {
-                        "name": "SelectLiveChangeEventDetail",
-                        "module": "dist/Select.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IOption",
-                    "declaration": {
-                        "name": "IOption",
-                        "module": "dist/Select.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-select",
                     "declaration": {
@@ -15070,22 +14283,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "SelectMenu",
-                        "module": "dist/SelectMenu.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "SelectMenuOptionClick",
-                    "declaration": {
-                        "name": "SelectMenuOptionClick",
-                        "module": "dist/SelectMenu.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "SelectMenuChange",
-                    "declaration": {
-                        "name": "SelectMenuChange",
                         "module": "dist/SelectMenu.js"
                     }
                 },
@@ -16732,7 +15929,8 @@
                             "type": {
                                 "text": "CustomEvent"
                             },
-                            "description": "Fired when the component checked state changes."
+                            "description": "Fired when the component checked state changes.",
+                            "_ui5allowPreventDefault": true
                         }
                     ],
                     "superclass": {
@@ -17200,22 +16398,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ITab",
-                    "declaration": {
-                        "name": "ITab",
-                        "module": "dist/TabContainer.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TabContainerTabSelectEventDetail",
-                    "declaration": {
-                        "name": "TabContainerTabSelectEventDetail",
-                        "module": "dist/TabContainer.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-tabcontainer",
                     "declaration": {
@@ -17594,46 +16776,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ITableRow",
-                    "declaration": {
-                        "name": "ITableRow",
-                        "module": "dist/Table.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableColumnInfo",
-                    "declaration": {
-                        "name": "TableColumnInfo",
-                        "module": "dist/Table.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableRowClickEventDetail",
-                    "declaration": {
-                        "name": "TableRowClickEventDetail",
-                        "module": "dist/Table.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "TableSelectionChangeEventDetail",
-                        "module": "dist/Table.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TablePopinChangeEventDetail",
-                    "declaration": {
-                        "name": "TablePopinChangeEventDetail",
-                        "module": "dist/Table.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-table",
                     "declaration": {
@@ -17972,46 +17114,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "TableRow",
-                        "module": "dist/TableRow.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableRowClickEventDetail",
-                    "declaration": {
-                        "name": "TableRowClickEventDetail",
-                        "module": "dist/TableRow.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableRowSelectionRequestedEventDetail",
-                    "declaration": {
-                        "name": "TableRowSelectionRequestedEventDetail",
-                        "module": "dist/TableRow.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableRowForwardBeforeEventDetail",
-                    "declaration": {
-                        "name": "TableRowForwardBeforeEventDetail",
-                        "module": "dist/TableRow.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableRowForwardAfterEventDetail",
-                    "declaration": {
-                        "name": "TableRowForwardAfterEventDetail",
-                        "module": "dist/TableRow.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TableRowF7PressEventDetail",
-                    "declaration": {
-                        "name": "TableRowF7PressEventDetail",
                         "module": "dist/TableRow.js"
                     }
                 },
@@ -18587,22 +17689,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "TimePickerChangeEventDetail",
-                    "declaration": {
-                        "name": "TimePickerChangeEventDetail",
-                        "module": "dist/TimePicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimePickerInputEventDetail",
-                    "declaration": {
-                        "name": "TimePickerInputEventDetail",
-                        "module": "dist/TimePicker.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-time-picker",
                     "declaration": {
@@ -18852,30 +17938,6 @@
                         "name": "TimePickerBase",
                         "module": "dist/TimePickerBase.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimeSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "TimeSelectionChangeEventDetail",
-                        "module": "dist/TimePickerBase.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimePickerBaseChangeEventDetail",
-                    "declaration": {
-                        "name": "TimePickerBaseChangeEventDetail",
-                        "module": "dist/TimePickerBase.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimePickerBaseInputEventDetail",
-                    "declaration": {
-                        "name": "TimePickerBaseInputEventDetail",
-                        "module": "dist/TimePickerBase.js"
-                    }
                 }
             ]
         },
@@ -18889,14 +17951,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "TimePickerClock",
-                        "module": "dist/TimePickerClock.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimePickerClockChangeEventDetail",
-                    "declaration": {
-                        "name": "TimePickerClockChangeEventDetail",
                         "module": "dist/TimePickerClock.js"
                     }
                 }
@@ -18914,22 +17968,6 @@
                         "name": "TimePickerInternals",
                         "module": "dist/TimePickerInternals.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimePickerComponentIndexMap",
-                    "declaration": {
-                        "name": "TimePickerComponentIndexMap",
-                        "module": "dist/TimePickerInternals.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimeSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "TimeSelectionChangeEventDetail",
-                        "module": "dist/TimePickerInternals.js"
-                    }
                 }
             ]
         },
@@ -18943,22 +17981,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "TimeSelection",
-                        "module": "dist/TimeSelection.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimeSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "TimeSelectionChangeEventDetail",
-                        "module": "dist/TimeSelection.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TimeSelectionSliderChangeEventDetail",
-                    "declaration": {
-                        "name": "TimeSelectionSliderChangeEventDetail",
                         "module": "dist/TimeSelection.js"
                     }
                 }
@@ -19538,14 +18560,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "TokenDeleteEventDetail",
-                    "declaration": {
-                        "name": "TokenDeleteEventDetail",
-                        "module": "dist/Token.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-token",
                     "declaration": {
@@ -19565,22 +18579,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "Tokenizer",
-                        "module": "dist/Tokenizer.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ClipboardDataOperation",
-                    "declaration": {
-                        "name": "ClipboardDataOperation",
-                        "module": "dist/Tokenizer.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TokenizerTokenDeleteEventDetail",
-                    "declaration": {
-                        "name": "TokenizerTokenDeleteEventDetail",
                         "module": "dist/Tokenizer.js"
                     }
                 }
@@ -19957,14 +18955,6 @@
             "exports": [
                 {
                     "kind": "js",
-                    "name": "IEventOptions",
-                    "declaration": {
-                        "name": "IEventOptions",
-                        "module": "dist/ToolbarItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
                     "name": "default",
                     "declaration": {
                         "name": "ToolbarItem",
@@ -19977,48 +18967,7 @@
             "kind": "javascript-module",
             "path": "dist/ToolbarRegistry.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerToolbarItem",
-                    "declaration": {
-                        "name": "registerToolbarItem",
-                        "module": "dist/ToolbarRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getRegisteredToolbarItem",
-                    "declaration": {
-                        "name": "getRegisteredToolbarItem",
-                        "module": "dist/ToolbarRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getRegisteredStyles",
-                    "declaration": {
-                        "name": "getRegisteredStyles",
-                        "module": "dist/ToolbarRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getRegisteredStaticAreaStyles",
-                    "declaration": {
-                        "name": "getRegisteredStaticAreaStyles",
-                        "module": "dist/ToolbarRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getRegisteredDependencies",
-                    "declaration": {
-                        "name": "getRegisteredDependencies",
-                        "module": "dist/ToolbarRegistry.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -20210,14 +19159,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "ToolbarSelect",
-                        "module": "dist/ToolbarSelect.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ToolbarSelectChangeEventDetail",
-                    "declaration": {
-                        "name": "ToolbarSelectChangeEventDetail",
                         "module": "dist/ToolbarSelect.js"
                     }
                 },
@@ -20797,54 +19738,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "TreeItemToggleEventDetail",
-                    "declaration": {
-                        "name": "TreeItemToggleEventDetail",
-                        "module": "dist/Tree.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeItemMouseoverEventDetail",
-                    "declaration": {
-                        "name": "TreeItemMouseoverEventDetail",
-                        "module": "dist/Tree.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeItemMouseoutEventDetail",
-                    "declaration": {
-                        "name": "TreeItemMouseoutEventDetail",
-                        "module": "dist/Tree.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeItemClickEventDetail",
-                    "declaration": {
-                        "name": "TreeItemClickEventDetail",
-                        "module": "dist/Tree.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeItemDeleteEventDetail",
-                    "declaration": {
-                        "name": "TreeItemDeleteEventDetail",
-                        "module": "dist/Tree.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "TreeSelectionChangeEventDetail",
-                        "module": "dist/Tree.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-tree",
                     "declaration": {
@@ -21412,30 +20305,6 @@
                         "name": "TreeItemBase",
                         "module": "dist/TreeItemBase.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeItemBaseToggleEventDetail",
-                    "declaration": {
-                        "name": "TreeItemBaseToggleEventDetail",
-                        "module": "dist/TreeItemBase.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeItemBaseStepInEventDetail",
-                    "declaration": {
-                        "name": "TreeItemBaseStepInEventDetail",
-                        "module": "dist/TreeItemBase.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TreeItemBaseStepOutEventDetail",
-                    "declaration": {
-                        "name": "TreeItemBaseStepOutEventDetail",
-                        "module": "dist/TreeItemBase.js"
-                    }
                 }
             ]
         },
@@ -21779,14 +20648,6 @@
                         "name": "WheelSlider",
                         "module": "dist/WheelSlider.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "WheelSliderSelectEventDetail",
-                    "declaration": {
-                        "name": "WheelSliderSelectEventDetail",
-                        "module": "dist/WheelSlider.js"
-                    }
                 }
             ]
         },
@@ -21802,22 +20663,6 @@
                         "name": "YearPicker",
                         "module": "dist/YearPicker.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "YearPickerChangeEventDetail",
-                    "declaration": {
-                        "name": "YearPickerChangeEventDetail",
-                        "module": "dist/YearPicker.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "YearPickerNavigateEventDetail",
-                    "declaration": {
-                        "name": "YearPickerNavigateEventDetail",
-                        "module": "dist/YearPicker.js"
-                    }
                 }
             ]
         },
@@ -21825,48 +20670,7 @@
             "kind": "javascript-module",
             "path": "dist/fcl-utils/FCLLayout.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getLayoutsByMedia",
-                    "declaration": {
-                        "name": "getLayoutsByMedia",
-                        "module": "dist/fcl-utils/FCLLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getNextLayoutByStartArrow",
-                    "declaration": {
-                        "name": "getNextLayoutByStartArrow",
-                        "module": "dist/fcl-utils/FCLLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getNextLayoutByEndArrow",
-                    "declaration": {
-                        "name": "getNextLayoutByEndArrow",
-                        "module": "dist/fcl-utils/FCLLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "LayoutConfiguration",
-                    "declaration": {
-                        "name": "LayoutConfiguration",
-                        "module": "dist/fcl-utils/FCLLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "FCLLayout",
-                    "declaration": {
-                        "name": "FCLLayout",
-                        "module": "dist/fcl-utils/FCLLayout.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -23704,48 +22508,7 @@
             "kind": "javascript-module",
             "path": "dist/upload-utils/UploadCollectionBodyDnD.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "attachBodyDnDHandler",
-                    "declaration": {
-                        "name": "attachBodyDnDHandler",
-                        "module": "dist/upload-utils/UploadCollectionBodyDnD.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "detachBodyDnDHandler",
-                    "declaration": {
-                        "name": "detachBodyDnDHandler",
-                        "module": "dist/upload-utils/UploadCollectionBodyDnD.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "draggingFiles",
-                    "declaration": {
-                        "name": "draggingFiles",
-                        "module": "dist/upload-utils/UploadCollectionBodyDnD.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DnDEventListener",
-                    "declaration": {
-                        "name": "DnDEventListener",
-                        "module": "dist/upload-utils/UploadCollectionBodyDnD.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DnDEventListenerParam",
-                    "declaration": {
-                        "name": "DnDEventListenerParam",
-                        "module": "dist/upload-utils/UploadCollectionBodyDnD.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -23972,22 +22735,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "BarcodeScannerDialogScanErrorEventDetail",
-                    "declaration": {
-                        "name": "BarcodeScannerDialogScanErrorEventDetail",
-                        "module": "dist/BarcodeScannerDialog.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "BarcodeScannerDialogScanSuccessEventDetail",
-                    "declaration": {
-                        "name": "BarcodeScannerDialogScanSuccessEventDetail",
-                        "module": "dist/BarcodeScannerDialog.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-barcode-scanner-dialog",
                     "declaration": {
@@ -24192,14 +22939,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "DynamicSideContent",
-                        "module": "dist/DynamicSideContent.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "DynamicSideContentLayoutChangeEventDetail",
-                    "declaration": {
-                        "name": "DynamicSideContentLayoutChangeEventDetail",
                         "module": "dist/DynamicSideContent.js"
                     }
                 },
@@ -24628,46 +23367,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "MEDIA",
-                    "declaration": {
-                        "name": "MEDIA",
-                        "module": "dist/FlexibleColumnLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "FlexibleColumnLayoutLayoutChangeEventDetail",
-                    "declaration": {
-                        "name": "FlexibleColumnLayoutLayoutChangeEventDetail",
-                        "module": "dist/FlexibleColumnLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "FlexibleColumnLayoutAccessibilityTexts",
-                    "declaration": {
-                        "name": "FlexibleColumnLayoutAccessibilityTexts",
-                        "module": "dist/FlexibleColumnLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "FlexibleColumnLayoutAccessibilityRoles",
-                    "declaration": {
-                        "name": "FlexibleColumnLayoutAccessibilityRoles",
-                        "module": "dist/FlexibleColumnLayout.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "FlexibleColumnLayoutColumnLayout",
-                    "declaration": {
-                        "name": "FlexibleColumnLayoutColumnLayout",
-                        "module": "dist/FlexibleColumnLayout.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-flexible-column-layout",
                     "declaration": {
@@ -24846,90 +23545,8 @@
         {
             "kind": "javascript-module",
             "path": "dist/Interfaces.js",
-            "declarations": [
-                {
-                    "kind": "interface",
-                    "name": "IBar",
-                    "description": "Interface for components that may be slotted inside <code>ui5-page</code> as header and footer.",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents-fiori",
-                    "tagName": "IBar"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IMediaGalleryItem",
-                    "description": "Interface for components that can be slotted inside <code>ui5-media-gallery</code> as items.",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents-fiori",
-                    "tagName": "IMediaGalleryItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IProductSwitchItem",
-                    "description": "Interface for components that may be slotted inside <code>ui5-product-switch</code> as items",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents-fiori",
-                    "tagName": "IProductSwitchItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "ITimelineItem",
-                    "description": "Interface for components that may be slotted inside <code>ui5-timeline</code> as items",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents-fiori",
-                    "tagName": "ITimelineItem"
-                },
-                {
-                    "kind": "interface",
-                    "name": "IUploadCollectionItem",
-                    "description": "Interface for components that may be slotted inside <code>ui5-upload-collection</code> as items",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents-fiori",
-                    "tagName": "IUploadCollectionItem"
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "IBar",
-                    "declaration": {
-                        "name": "IBar",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IMediaGalleryItem",
-                    "declaration": {
-                        "name": "IMediaGalleryItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IProductSwitchItem",
-                    "declaration": {
-                        "name": "IProductSwitchItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ITimelineItem",
-                    "declaration": {
-                        "name": "ITimelineItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IUploadCollectionItem",
-                    "declaration": {
-                        "name": "IUploadCollectionItem",
-                        "module": "dist/Interfaces.js"
-                    }
-                }
-            ]
+            "declarations": [],
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -25096,14 +23713,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "MediaGallery",
-                        "module": "dist/MediaGallery.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "MediaGallerySelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "MediaGallerySelectionChangeEventDetail",
                         "module": "dist/MediaGallery.js"
                     }
                 },
@@ -25319,14 +23928,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "NotificationAction",
-                        "module": "dist/NotificationAction.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NotificationActionClickEventDetail",
-                    "declaration": {
-                        "name": "NotificationActionClickEventDetail",
                         "module": "dist/NotificationAction.js"
                     }
                 },
@@ -25571,22 +24172,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "NotificationListGroupItem",
-                        "module": "dist/NotificationListGroupItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NotificationListGroupItemToggleEventDetail",
-                    "declaration": {
-                        "name": "NotificationListGroupItemToggleEventDetail",
-                        "module": "dist/NotificationListGroupItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NotificationListGroupItemCloseEventDetail",
-                    "declaration": {
-                        "name": "NotificationListGroupItemCloseEventDetail",
                         "module": "dist/NotificationListGroupItem.js"
                     }
                 },
@@ -25839,22 +24424,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "NotificationListItemPressEventDetail",
-                    "declaration": {
-                        "name": "NotificationListItemPressEventDetail",
-                        "module": "dist/NotificationListItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NotificationListItemCloseEventDetail",
-                    "declaration": {
-                        "name": "NotificationListItemCloseEventDetail",
-                        "module": "dist/NotificationListItem.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-li-notification",
                     "declaration": {
@@ -26021,14 +24590,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "NotificationListItemBase",
-                        "module": "dist/NotificationListItemBase.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "NotificationListItemBaseCloseEventDetail",
-                    "declaration": {
-                        "name": "NotificationListItemBaseCloseEventDetail",
                         "module": "dist/NotificationListItemBase.js"
                     }
                 }
@@ -26825,78 +25386,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ShellBarNotificationsClickEventDetail",
-                    "declaration": {
-                        "name": "ShellBarNotificationsClickEventDetail",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarProfileClickEventDetail",
-                    "declaration": {
-                        "name": "ShellBarProfileClickEventDetail",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarProductSwitchClickEventDetail",
-                    "declaration": {
-                        "name": "ShellBarProductSwitchClickEventDetail",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarLogoClickEventDetail",
-                    "declaration": {
-                        "name": "ShellBarLogoClickEventDetail",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarCoPilotClickEventDetail",
-                    "declaration": {
-                        "name": "ShellBarCoPilotClickEventDetail",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarMenuItemClickEventDetail",
-                    "declaration": {
-                        "name": "ShellBarMenuItemClickEventDetail",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarAccessibilityAttributes",
-                    "declaration": {
-                        "name": "ShellBarAccessibilityAttributes",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarAccessibilityRoles",
-                    "declaration": {
-                        "name": "ShellBarAccessibilityRoles",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarAccessibilityTexts",
-                    "declaration": {
-                        "name": "ShellBarAccessibilityTexts",
-                        "module": "dist/ShellBar.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-shellbar",
                     "declaration": {
@@ -26986,14 +25475,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "ShellBarItem",
-                        "module": "dist/ShellBarItem.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ShellBarItemClickEventDetail",
-                    "declaration": {
-                        "name": "ShellBarItemClickEventDetail",
                         "module": "dist/ShellBarItem.js"
                     }
                 },
@@ -27123,14 +25604,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "SideNavigation",
-                        "module": "dist/SideNavigation.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "SideNavigationSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "SideNavigationSelectionChangeEventDetail",
                         "module": "dist/SideNavigation.js"
                     }
                 },
@@ -28053,22 +26526,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "UploadCollectionItemDeleteEventDetail",
-                    "declaration": {
-                        "name": "UploadCollectionItemDeleteEventDetail",
-                        "module": "dist/UploadCollection.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "UploadCollectionSelectionChangeEventDetail",
-                    "declaration": {
-                        "name": "UploadCollectionSelectionChangeEventDetail",
-                        "module": "dist/UploadCollection.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-upload-collection",
                     "declaration": {
@@ -28610,22 +27067,6 @@
                     }
                 },
                 {
-                    "kind": "js",
-                    "name": "ViewSettingsDialogConfirmEventDetail",
-                    "declaration": {
-                        "name": "ViewSettingsDialogConfirmEventDetail",
-                        "module": "dist/ViewSettingsDialog.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ViewSettingsDialogCancelEventDetail",
-                    "declaration": {
-                        "name": "ViewSettingsDialogCancelEventDetail",
-                        "module": "dist/ViewSettingsDialog.js"
-                    }
-                },
-                {
                     "kind": "custom-element-definition",
                     "name": "ui5-view-settings-dialog",
                     "declaration": {
@@ -28762,14 +27203,6 @@
                 }
             ],
             "exports": [
-                {
-                    "kind": "js",
-                    "name": "WizardStepChangeEventDetail",
-                    "declaration": {
-                        "name": "WizardStepChangeEventDetail",
-                        "module": "dist/Wizard.js"
-                    }
-                },
                 {
                     "kind": "js",
                     "name": "default",
@@ -28945,22 +27378,6 @@
             "exports": [
                 {
                     "kind": "js",
-                    "name": "duration",
-                    "declaration": {
-                        "name": "duration",
-                        "module": "dist/animations/animate.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "AnimateOptions",
-                    "declaration": {
-                        "name": "AnimateOptions",
-                        "module": "dist/animations/animate.js"
-                    }
-                },
-                {
-                    "kind": "js",
                     "name": "default",
                     "declaration": {
                         "name": "animate",
@@ -29018,546 +27435,91 @@
             "kind": "javascript-module",
             "path": "dist/asset-registries/Icons.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerIconLoader",
-                    "declaration": {
-                        "name": "registerIconLoader",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getIconData",
-                    "declaration": {
-                        "name": "getIconData",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getIconDataSync",
-                    "declaration": {
-                        "name": "getIconDataSync",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getIconAccessibleName",
-                    "declaration": {
-                        "name": "getIconAccessibleName",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerIcon",
-                    "declaration": {
-                        "name": "registerIcon",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "_getRegisteredNames",
-                    "declaration": {
-                        "name": "_getRegisteredNames",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IconData",
-                    "declaration": {
-                        "name": "IconData",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "CollectionData",
-                    "declaration": {
-                        "name": "CollectionData",
-                        "module": "dist/asset-registries/Icons.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/asset-registries/Illustrations.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getIllustrationDataSync",
-                    "declaration": {
-                        "name": "getIllustrationDataSync",
-                        "module": "dist/asset-registries/Illustrations.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerIllustration",
-                    "declaration": {
-                        "name": "registerIllustration",
-                        "module": "dist/asset-registries/Illustrations.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerIllustrationLoader",
-                    "declaration": {
-                        "name": "registerIllustrationLoader",
-                        "module": "dist/asset-registries/Illustrations.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getIllustrationData",
-                    "declaration": {
-                        "name": "getIllustrationData",
-                        "module": "dist/asset-registries/Illustrations.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/asset-registries/LocaleData.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerLocaleDataLoader",
-                    "declaration": {
-                        "name": "registerLocaleDataLoader",
-                        "module": "dist/asset-registries/LocaleData.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "fetchCldr",
-                    "declaration": {
-                        "name": "fetchCldr",
-                        "module": "dist/asset-registries/LocaleData.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getLocaleData",
-                    "declaration": {
-                        "name": "getLocaleData",
-                        "module": "dist/asset-registries/LocaleData.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "CLDRData",
-                    "declaration": {
-                        "name": "CLDRData",
-                        "module": "dist/asset-registries/LocaleData.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/asset-registries/Themes.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerThemePropertiesLoader",
-                    "declaration": {
-                        "name": "registerThemePropertiesLoader",
-                        "module": "dist/asset-registries/Themes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerCustomThemePropertiesLoader",
-                    "declaration": {
-                        "name": "registerCustomThemePropertiesLoader",
-                        "module": "dist/asset-registries/Themes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getThemeProperties",
-                    "declaration": {
-                        "name": "getThemeProperties",
-                        "module": "dist/asset-registries/Themes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getRegisteredPackages",
-                    "declaration": {
-                        "name": "getRegisteredPackages",
-                        "module": "dist/asset-registries/Themes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isThemeRegistered",
-                    "declaration": {
-                        "name": "isThemeRegistered",
-                        "module": "dist/asset-registries/Themes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ThemeData",
-                    "declaration": {
-                        "name": "ThemeData",
-                        "module": "dist/asset-registries/Themes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ThemeLoader",
-                    "declaration": {
-                        "name": "ThemeLoader",
-                        "module": "dist/asset-registries/Themes.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/asset-registries/i18n.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerI18nLoader",
-                    "declaration": {
-                        "name": "registerI18nLoader",
-                        "module": "dist/asset-registries/i18n.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "fetchI18nBundle",
-                    "declaration": {
-                        "name": "fetchI18nBundle",
-                        "module": "dist/asset-registries/i18n.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getI18nBundleData",
-                    "declaration": {
-                        "name": "getI18nBundleData",
-                        "module": "dist/asset-registries/i18n.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/AnimationMode.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getAnimationMode",
-                    "declaration": {
-                        "name": "getAnimationMode",
-                        "module": "dist/config/AnimationMode.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setAnimationMode",
-                    "declaration": {
-                        "name": "setAnimationMode",
-                        "module": "dist/config/AnimationMode.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/CalendarType.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getCalendarType",
-                    "declaration": {
-                        "name": "getCalendarType",
-                        "module": "dist/config/CalendarType.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getSecondaryCalendarType",
-                    "declaration": {
-                        "name": "getSecondaryCalendarType",
-                        "module": "dist/config/CalendarType.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/FormatSettings.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getFirstDayOfWeek",
-                    "declaration": {
-                        "name": "getFirstDayOfWeek",
-                        "module": "dist/config/FormatSettings.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getLegacyDateCalendarCustomizing",
-                    "declaration": {
-                        "name": "getLegacyDateCalendarCustomizing",
-                        "module": "dist/config/FormatSettings.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "FormatSettings",
-                    "declaration": {
-                        "name": "FormatSettings",
-                        "module": "dist/config/FormatSettings.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/Icons.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "setDefaultIconCollection",
-                    "declaration": {
-                        "name": "setDefaultIconCollection",
-                        "module": "dist/config/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getDefaultIconCollection",
-                    "declaration": {
-                        "name": "getDefaultIconCollection",
-                        "module": "dist/config/Icons.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "IconCollection",
-                    "declaration": {
-                        "name": "IconCollection",
-                        "module": "dist/config/Icons.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/Language.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getLanguage",
-                    "declaration": {
-                        "name": "getLanguage",
-                        "module": "dist/config/Language.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setLanguage",
-                    "declaration": {
-                        "name": "setLanguage",
-                        "module": "dist/config/Language.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getDefaultLanguage",
-                    "declaration": {
-                        "name": "getDefaultLanguage",
-                        "module": "dist/config/Language.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setFetchDefaultLanguage",
-                    "declaration": {
-                        "name": "setFetchDefaultLanguage",
-                        "module": "dist/config/Language.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getFetchDefaultLanguage",
-                    "declaration": {
-                        "name": "getFetchDefaultLanguage",
-                        "module": "dist/config/Language.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/NoConflict.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getNoConflict",
-                    "declaration": {
-                        "name": "getNoConflict",
-                        "module": "dist/config/NoConflict.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setNoConflict",
-                    "declaration": {
-                        "name": "setNoConflict",
-                        "module": "dist/config/NoConflict.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "skipOriginalEvent",
-                    "declaration": {
-                        "name": "skipOriginalEvent",
-                        "module": "dist/config/NoConflict.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/RTL.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getRTL",
-                    "declaration": {
-                        "name": "getRTL",
-                        "module": "dist/config/RTL.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/Theme.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getTheme",
-                    "declaration": {
-                        "name": "getTheme",
-                        "module": "dist/config/Theme.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setTheme",
-                    "declaration": {
-                        "name": "setTheme",
-                        "module": "dist/config/Theme.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isTheme",
-                    "declaration": {
-                        "name": "isTheme",
-                        "module": "dist/config/Theme.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isLegacyThemeFamily",
-                    "declaration": {
-                        "name": "isLegacyThemeFamily",
-                        "module": "dist/config/Theme.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getDefaultTheme",
-                    "declaration": {
-                        "name": "getDefaultTheme",
-                        "module": "dist/config/Theme.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/ThemeRoot.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getThemeRoot",
-                    "declaration": {
-                        "name": "getThemeRoot",
-                        "module": "dist/config/ThemeRoot.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setThemeRoot",
-                    "declaration": {
-                        "name": "setThemeRoot",
-                        "module": "dist/config/ThemeRoot.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "attachCustomThemeStylesToHead",
-                    "declaration": {
-                        "name": "attachCustomThemeStylesToHead",
-                        "module": "dist/config/ThemeRoot.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/config/Timezone.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getTimezone",
-                    "declaration": {
-                        "name": "getTimezone",
-                        "module": "dist/config/Timezone.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setTimezone",
-                    "declaration": {
-                        "name": "setTimezone",
-                        "module": "dist/config/Timezone.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -29690,14 +27652,6 @@
                         "name": "ItemNavigation",
                         "module": "dist/delegate/ItemNavigation.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "ITabbable",
-                    "declaration": {
-                        "name": "ITabbable",
-                        "module": "dist/delegate/ItemNavigation.js"
-                    }
                 }
             ]
         },
@@ -29796,14 +27750,6 @@
                         "name": "ResizeHandler",
                         "module": "dist/delegate/ResizeHandler.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "ResizeObserverCallback",
-                    "declaration": {
-                        "name": "ResizeObserverCallback",
-                        "module": "dist/delegate/ResizeHandler.js"
-                    }
                 }
             ]
         },
@@ -29817,14 +27763,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "ScrollEnablement",
-                        "module": "dist/delegate/ScrollEnablement.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ScrollEnablementEventListenerParam",
-                    "declaration": {
-                        "name": "ScrollEnablementEventListenerParam",
                         "module": "dist/delegate/ScrollEnablement.js"
                     }
                 }
@@ -29855,22 +27793,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "LegacyDateFormats",
-                        "module": "dist/features/LegacyDateFormats.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "FormatSettings",
-                    "declaration": {
-                        "name": "FormatSettings",
-                        "module": "dist/features/LegacyDateFormats.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "LegacyDateCalendarCustomizing",
-                    "declaration": {
-                        "name": "LegacyDateCalendarCustomizing",
                         "module": "dist/features/LegacyDateFormats.js"
                     }
                 }
@@ -29940,24 +27862,7 @@
             "kind": "javascript-module",
             "path": "dist/locale/RTLAwareRegistry.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "markAsRtlAware",
-                    "declaration": {
-                        "name": "markAsRtlAware",
-                        "module": "dist/locale/RTLAwareRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isRtlAware",
-                    "declaration": {
-                        "name": "isRtlAware",
-                        "module": "dist/locale/RTLAwareRegistry.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -29978,32 +27883,7 @@
             "kind": "javascript-module",
             "path": "dist/locale/directionChange.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "attachDirectionChange",
-                    "declaration": {
-                        "name": "attachDirectionChange",
-                        "module": "dist/locale/directionChange.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "detachDirectionChange",
-                    "declaration": {
-                        "name": "detachDirectionChange",
-                        "module": "dist/locale/directionChange.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "fireDirectionChange",
-                    "declaration": {
-                        "name": "fireDirectionChange",
-                        "module": "dist/locale/directionChange.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -30039,32 +27919,7 @@
             "kind": "javascript-module",
             "path": "dist/locale/languageChange.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "attachLanguageChange",
-                    "declaration": {
-                        "name": "attachLanguageChange",
-                        "module": "dist/locale/languageChange.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "detachLanguageChange",
-                    "declaration": {
-                        "name": "detachLanguageChange",
-                        "module": "dist/locale/languageChange.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "fireLanguageChange",
-                    "declaration": {
-                        "name": "fireLanguageChange",
-                        "module": "dist/locale/languageChange.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -30103,70 +27958,6 @@
             "exports": [
                 {
                     "kind": "js",
-                    "name": "html",
-                    "declaration": {
-                        "name": "effectiveHtml",
-                        "module": "dist/renderer/LitRenderer.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "svg",
-                    "declaration": {
-                        "name": "effectiveSvg",
-                        "module": "dist/renderer/LitRenderer.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "scopeTag",
-                    "declaration": {
-                        "name": "scopeTag",
-                        "module": "dist/renderer/LitRenderer.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "repeat",
-                    "declaration": {
-                        "name": "repeat",
-                        "module": "\"lit-html/directives/repeat.js\""
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "classMap",
-                    "declaration": {
-                        "name": "classMap",
-                        "module": "\"lit-html/directives/class-map.js\""
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "styleMap",
-                    "declaration": {
-                        "name": "styleMap",
-                        "module": "\"./directives/style-map.js\""
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ifDefined",
-                    "declaration": {
-                        "name": "ifDefined",
-                        "module": "\"lit-html/directives/if-defined.js\""
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "unsafeHTML",
-                    "declaration": {
-                        "name": "unsafeHTML",
-                        "module": "\"lit-html/directives/unsafe-html.js\""
-                    }
-                },
-                {
-                    "kind": "js",
                     "name": "default",
                     "declaration": {
                         "name": "litRender",
@@ -30187,22 +27978,6 @@
                         "name": "executeTemplate",
                         "module": "dist/renderer/executeTemplate.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "TemplateFunction",
-                    "declaration": {
-                        "name": "TemplateFunction",
-                        "module": "dist/renderer/executeTemplate.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "TemplateFunctionResult",
-                    "declaration": {
-                        "name": "TemplateFunctionResult",
-                        "module": "dist/renderer/executeTemplate.js"
-                    }
                 }
             ]
         },
@@ -30210,94 +27985,19 @@
             "kind": "javascript-module",
             "path": "dist/theming/CustomStyle.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "addCustomCSS",
-                    "declaration": {
-                        "name": "addCustomCSS",
-                        "module": "dist/theming/CustomStyle.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getCustomCSS",
-                    "declaration": {
-                        "name": "getCustomCSS",
-                        "module": "dist/theming/CustomStyle.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "attachCustomCSSChange",
-                    "declaration": {
-                        "name": "attachCustomCSSChange",
-                        "module": "dist/theming/CustomStyle.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "detachCustomCSSChange",
-                    "declaration": {
-                        "name": "detachCustomCSSChange",
-                        "module": "dist/theming/CustomStyle.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/theming/ThemeLoaded.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "attachThemeLoaded",
-                    "declaration": {
-                        "name": "attachThemeLoaded",
-                        "module": "dist/theming/ThemeLoaded.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "detachThemeLoaded",
-                    "declaration": {
-                        "name": "detachThemeLoaded",
-                        "module": "dist/theming/ThemeLoaded.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "fireThemeLoaded",
-                    "declaration": {
-                        "name": "fireThemeLoaded",
-                        "module": "dist/theming/ThemeLoaded.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/theming/ThemeRegistered.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "attachThemeRegistered",
-                    "declaration": {
-                        "name": "attachThemeRegistered",
-                        "module": "dist/theming/ThemeRegistered.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "fireThemeRegistered",
-                    "declaration": {
-                        "name": "fireThemeRegistered",
-                        "module": "dist/theming/ThemeRegistered.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -30384,14 +28084,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "getThemeDesignerTheme",
-                        "module": "dist/theming/getThemeDesignerTheme.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ThemeDescriptor",
-                    "declaration": {
-                        "name": "ThemeDescriptor",
                         "module": "dist/theming/getThemeDesignerTheme.js"
                     }
                 }
@@ -31036,211 +28728,37 @@
             "kind": "javascript-module",
             "path": "dist/util/AriaLabelHelper.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getEffectiveAriaLabelText",
-                    "declaration": {
-                        "name": "getEffectiveAriaLabelText",
-                        "module": "dist/util/AriaLabelHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getAssociatedLabelForTexts",
-                    "declaration": {
-                        "name": "getAssociatedLabelForTexts",
-                        "module": "dist/util/AriaLabelHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerUI5Element",
-                    "declaration": {
-                        "name": "registerUI5Element",
-                        "module": "dist/util/AriaLabelHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "deregisterUI5Element",
-                    "declaration": {
-                        "name": "deregisterUI5Element",
-                        "module": "dist/util/AriaLabelHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getAllAccessibleNameRefTexts",
-                    "declaration": {
-                        "name": "getAllAccessibleNameRefTexts",
-                        "module": "dist/util/AriaLabelHelper.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/Caret.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getCaretPosition",
-                    "declaration": {
-                        "name": "getCaretPosition",
-                        "module": "dist/util/Caret.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setCaretPosition",
-                    "declaration": {
-                        "name": "setCaretPosition",
-                        "module": "dist/util/Caret.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/ColorConversion.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getRGBColor",
-                    "declaration": {
-                        "name": "getRGBColor",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "HSLToRGB",
-                    "declaration": {
-                        "name": "HSLToRGB",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "HEXToRGB",
-                    "declaration": {
-                        "name": "HEXToRGB",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "RGBToHSL",
-                    "declaration": {
-                        "name": "RGBToHSL",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "RGBStringToRGBObject",
-                    "declaration": {
-                        "name": "RGBStringToRGBObject",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "RGBtoHEX",
-                    "declaration": {
-                        "name": "RGBtoHEX",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ColorHSL",
-                    "declaration": {
-                        "name": "ColorHSL",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ColorRGB",
-                    "declaration": {
-                        "name": "ColorRGB",
-                        "module": "dist/util/ColorConversion.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/FetchHelper.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "fetchTextOnce",
-                    "declaration": {
-                        "name": "fetchTextOnce",
-                        "module": "dist/util/FetchHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "fetchJsonOnce",
-                    "declaration": {
-                        "name": "fetchJsonOnce",
-                        "module": "dist/util/FetchHelper.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/FocusableElements.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getFirstFocusableElement",
-                    "declaration": {
-                        "name": "getFirstFocusableElement",
-                        "module": "dist/util/FocusableElements.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getLastFocusableElement",
-                    "declaration": {
-                        "name": "getLastFocusableElement",
-                        "module": "dist/util/FocusableElements.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/HTMLSanitizer.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "URLListValidator",
-                    "declaration": {
-                        "name": "URLListValidator",
-                        "module": "dist/util/HTMLSanitizer.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "sanitizeHTML",
-                    "declaration": {
-                        "name": "sanitizeHTML",
-                        "module": "dist/util/HTMLSanitizer.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -31261,133 +28779,25 @@
             "kind": "javascript-module",
             "path": "dist/util/PopupUtils.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getFocusedElement",
-                    "declaration": {
-                        "name": "getFocusedElement",
-                        "module": "dist/util/PopupUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isClickInRect",
-                    "declaration": {
-                        "name": "isClickInRect",
-                        "module": "dist/util/PopupUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getClosedPopupParent",
-                    "declaration": {
-                        "name": "getClosedPopupParent",
-                        "module": "dist/util/PopupUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getNextZIndex",
-                    "declaration": {
-                        "name": "getNextZIndex",
-                        "module": "dist/util/PopupUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getCurrentZIndex",
-                    "declaration": {
-                        "name": "getCurrentZIndex",
-                        "module": "dist/util/PopupUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isFocusedElementWithinNode",
-                    "declaration": {
-                        "name": "isFocusedElementWithinNode",
-                        "module": "dist/util/PopupUtils.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/SlotsHelper.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getSlotName",
-                    "declaration": {
-                        "name": "getSlotName",
-                        "module": "dist/util/SlotsHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getSlottedNodes",
-                    "declaration": {
-                        "name": "getSlottedNodes",
-                        "module": "dist/util/SlotsHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getSlottedNodesList",
-                    "declaration": {
-                        "name": "getSlottedNodesList",
-                        "module": "dist/util/SlotsHelper.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/StringHelper.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "kebabToCamelCase",
-                    "declaration": {
-                        "name": "kebabToCamelCase",
-                        "module": "dist/util/StringHelper.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "camelToKebabCase",
-                    "declaration": {
-                        "name": "camelToKebabCase",
-                        "module": "dist/util/StringHelper.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/util/TabbableElements.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getTabbableElements",
-                    "declaration": {
-                        "name": "getTabbableElements",
-                        "module": "dist/util/TabbableElements.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getLastTabbableElement",
-                    "declaration": {
-                        "name": "getLastTabbableElement",
-                        "module": "dist/util/TabbableElements.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -31798,425 +29208,49 @@
             "kind": "javascript-module",
             "path": "dist/AssetRegistry.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerI18nLoader",
-                    "declaration": {
-                        "name": "registerI18nLoader",
-                        "module": "dist/AssetRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerLocaleDataLoader",
-                    "declaration": {
-                        "name": "registerLocaleDataLoader",
-                        "module": "dist/AssetRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerThemePropertiesLoader",
-                    "declaration": {
-                        "name": "registerThemePropertiesLoader",
-                        "module": "dist/AssetRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerCustomThemePropertiesLoader",
-                    "declaration": {
-                        "name": "registerCustomThemePropertiesLoader",
-                        "module": "dist/AssetRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerIconLoader",
-                    "declaration": {
-                        "name": "registerIconLoader",
-                        "module": "dist/AssetRegistry.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/Boot.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "boot",
-                    "declaration": {
-                        "name": "boot",
-                        "module": "dist/Boot.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "attachBoot",
-                    "declaration": {
-                        "name": "attachBoot",
-                        "module": "dist/Boot.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/CSP.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "setPackageCSSRoot",
-                    "declaration": {
-                        "name": "setPackageCSSRoot",
-                        "module": "dist/CSP.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getUrl",
-                    "declaration": {
-                        "name": "getUrl",
-                        "module": "dist/CSP.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setUseLinks",
-                    "declaration": {
-                        "name": "setUseLinks",
-                        "module": "dist/CSP.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setPreloadLinks",
-                    "declaration": {
-                        "name": "setPreloadLinks",
-                        "module": "dist/CSP.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "shouldUseLinks",
-                    "declaration": {
-                        "name": "shouldUseLinks",
-                        "module": "dist/CSP.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "shouldPreloadLinks",
-                    "declaration": {
-                        "name": "shouldPreloadLinks",
-                        "module": "dist/CSP.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/CustomElementsRegistry.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerTag",
-                    "declaration": {
-                        "name": "registerTag",
-                        "module": "dist/CustomElementsRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isTagRegistered",
-                    "declaration": {
-                        "name": "isTagRegistered",
-                        "module": "dist/CustomElementsRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getAllRegisteredTags",
-                    "declaration": {
-                        "name": "getAllRegisteredTags",
-                        "module": "dist/CustomElementsRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "recordTagRegistrationFailure",
-                    "declaration": {
-                        "name": "recordTagRegistrationFailure",
-                        "module": "dist/CustomElementsRegistry.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/CustomElementsScope.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "LitStatic",
-                    "declaration": {
-                        "name": "LitStatic",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setCustomElementsScopingSuffix",
-                    "declaration": {
-                        "name": "setCustomElementsScopingSuffix",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getCustomElementsScopingSuffix",
-                    "declaration": {
-                        "name": "getCustomElementsScopingSuffix",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setCustomElementsScopingRules",
-                    "declaration": {
-                        "name": "setCustomElementsScopingRules",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getCustomElementsScopingRules",
-                    "declaration": {
-                        "name": "getCustomElementsScopingRules",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "shouldScopeCustomElement",
-                    "declaration": {
-                        "name": "shouldScopeCustomElement",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getEffectiveScopingSuffixForTag",
-                    "declaration": {
-                        "name": "getEffectiveScopingSuffixForTag",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getScopedVarName",
-                    "declaration": {
-                        "name": "getScopedVarName",
-                        "module": "dist/CustomElementsScope.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/CustomElementsScopeUtils.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "setCustomElementsScopingSuffix",
-                    "declaration": {
-                        "name": "setCustomElementsScopingSuffix",
-                        "module": "dist/CustomElementsScopeUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getCustomElementsScopingSuffix",
-                    "declaration": {
-                        "name": "getCustomElementsScopingSuffix",
-                        "module": "dist/CustomElementsScopeUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setCustomElementsScopingRules",
-                    "declaration": {
-                        "name": "setCustomElementsScopingRules",
-                        "module": "dist/CustomElementsScopeUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getCustomElementsScopingRules",
-                    "declaration": {
-                        "name": "getCustomElementsScopingRules",
-                        "module": "dist/CustomElementsScopeUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "shouldScopeCustomElement",
-                    "declaration": {
-                        "name": "shouldScopeCustomElement",
-                        "module": "dist/CustomElementsScopeUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getEffectiveScopingSuffixForTag",
-                    "declaration": {
-                        "name": "getEffectiveScopingSuffixForTag",
-                        "module": "dist/CustomElementsScopeUtils.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getScopedVarName",
-                    "declaration": {
-                        "name": "getScopedVarName",
-                        "module": "dist/CustomElementsScopeUtils.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/DOMObserver.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "observeDOMNode",
-                    "declaration": {
-                        "name": "observeDOMNode",
-                        "module": "dist/DOMObserver.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "unobserveDOMNode",
-                    "declaration": {
-                        "name": "unobserveDOMNode",
-                        "module": "dist/DOMObserver.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/Device.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "supportsTouch",
-                    "declaration": {
-                        "name": "supportsTouch",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isIE",
-                    "declaration": {
-                        "name": "isIE",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isSafari",
-                    "declaration": {
-                        "name": "isSafari",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isChrome",
-                    "declaration": {
-                        "name": "isChrome",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isFirefox",
-                    "declaration": {
-                        "name": "isFirefox",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPhone",
-                    "declaration": {
-                        "name": "isPhone",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isTablet",
-                    "declaration": {
-                        "name": "isTablet",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDesktop",
-                    "declaration": {
-                        "name": "isDesktop",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isCombi",
-                    "declaration": {
-                        "name": "isCombi",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isIOS",
-                    "declaration": {
-                        "name": "isIOS",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isAndroid",
-                    "declaration": {
-                        "name": "isAndroid",
-                        "module": "dist/Device.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isMac",
-                    "declaration": {
-                        "name": "isMac",
-                        "module": "dist/Device.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -32237,24 +29271,7 @@
             "kind": "javascript-module",
             "path": "dist/FeaturesRegistry.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "registerFeature",
-                    "declaration": {
-                        "name": "registerFeature",
-                        "module": "dist/FeaturesRegistry.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getFeature",
-                    "declaration": {
-                        "name": "getFeature",
-                        "module": "dist/FeaturesRegistry.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -32275,700 +29292,31 @@
             "kind": "javascript-module",
             "path": "dist/IgnoreCustomElements.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "ignoreCustomElements",
-                    "declaration": {
-                        "name": "ignoreCustomElements",
-                        "module": "dist/IgnoreCustomElements.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "shouldIgnoreCustomElement",
-                    "declaration": {
-                        "name": "shouldIgnoreCustomElement",
-                        "module": "dist/IgnoreCustomElements.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/InitialConfiguration.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getAnimationMode",
-                    "declaration": {
-                        "name": "getAnimationMode",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getTheme",
-                    "declaration": {
-                        "name": "getTheme",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getThemeRoot",
-                    "declaration": {
-                        "name": "getThemeRoot",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getRTL",
-                    "declaration": {
-                        "name": "getRTL",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getLanguage",
-                    "declaration": {
-                        "name": "getLanguage",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getFetchDefaultLanguage",
-                    "declaration": {
-                        "name": "getFetchDefaultLanguage",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getNoConflict",
-                    "declaration": {
-                        "name": "getNoConflict",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getCalendarType",
-                    "declaration": {
-                        "name": "getCalendarType",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getSecondaryCalendarType",
-                    "declaration": {
-                        "name": "getSecondaryCalendarType",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getTimezone",
-                    "declaration": {
-                        "name": "getTimezone",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getFormatSettings",
-                    "declaration": {
-                        "name": "getFormatSettings",
-                        "module": "dist/InitialConfiguration.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/Keys.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "isEnter",
-                    "declaration": {
-                        "name": "isEnter",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isEnterShift",
-                    "declaration": {
-                        "name": "isEnterShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isSpace",
-                    "declaration": {
-                        "name": "isSpace",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isSpaceShift",
-                    "declaration": {
-                        "name": "isSpaceShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isSpaceCtrl",
-                    "declaration": {
-                        "name": "isSpaceCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isLeft",
-                    "declaration": {
-                        "name": "isLeft",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isRight",
-                    "declaration": {
-                        "name": "isRight",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isUp",
-                    "declaration": {
-                        "name": "isUp",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDown",
-                    "declaration": {
-                        "name": "isDown",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isLeftCtrl",
-                    "declaration": {
-                        "name": "isLeftCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isRightCtrl",
-                    "declaration": {
-                        "name": "isRightCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isUpCtrl",
-                    "declaration": {
-                        "name": "isUpCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDownCtrl",
-                    "declaration": {
-                        "name": "isDownCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isUpShift",
-                    "declaration": {
-                        "name": "isUpShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDownShift",
-                    "declaration": {
-                        "name": "isDownShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isUpAlt",
-                    "declaration": {
-                        "name": "isUpAlt",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDownAlt",
-                    "declaration": {
-                        "name": "isDownAlt",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isLeftShift",
-                    "declaration": {
-                        "name": "isLeftShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isRightShift",
-                    "declaration": {
-                        "name": "isRightShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isLeftShiftCtrl",
-                    "declaration": {
-                        "name": "isLeftShiftCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isRightShiftCtrl",
-                    "declaration": {
-                        "name": "isRightShiftCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isUpShiftCtrl",
-                    "declaration": {
-                        "name": "isUpShiftCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDownShiftCtrl",
-                    "declaration": {
-                        "name": "isDownShiftCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isHome",
-                    "declaration": {
-                        "name": "isHome",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isEnd",
-                    "declaration": {
-                        "name": "isEnd",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPlus",
-                    "declaration": {
-                        "name": "isPlus",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isMinus",
-                    "declaration": {
-                        "name": "isMinus",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isHomeCtrl",
-                    "declaration": {
-                        "name": "isHomeCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isEndCtrl",
-                    "declaration": {
-                        "name": "isEndCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isHomeShift",
-                    "declaration": {
-                        "name": "isHomeShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isEndShift",
-                    "declaration": {
-                        "name": "isEndShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isEscape",
-                    "declaration": {
-                        "name": "isEscape",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isTabNext",
-                    "declaration": {
-                        "name": "isTabNext",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isTabPrevious",
-                    "declaration": {
-                        "name": "isTabPrevious",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isBackSpace",
-                    "declaration": {
-                        "name": "isBackSpace",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDelete",
-                    "declaration": {
-                        "name": "isDelete",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isShow",
-                    "declaration": {
-                        "name": "isShow",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isF4",
-                    "declaration": {
-                        "name": "isF4",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isF4Shift",
-                    "declaration": {
-                        "name": "isF4Shift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isF6Previous",
-                    "declaration": {
-                        "name": "isF6Previous",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isF6Next",
-                    "declaration": {
-                        "name": "isF6Next",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isF7",
-                    "declaration": {
-                        "name": "isF7",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageUp",
-                    "declaration": {
-                        "name": "isPageUp",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageDown",
-                    "declaration": {
-                        "name": "isPageDown",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageUpShift",
-                    "declaration": {
-                        "name": "isPageUpShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageUpAlt",
-                    "declaration": {
-                        "name": "isPageUpAlt",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageDownShift",
-                    "declaration": {
-                        "name": "isPageDownShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageDownAlt",
-                    "declaration": {
-                        "name": "isPageDownAlt",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageUpShiftCtrl",
-                    "declaration": {
-                        "name": "isPageUpShiftCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isPageDownShiftCtrl",
-                    "declaration": {
-                        "name": "isPageDownShiftCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isShift",
-                    "declaration": {
-                        "name": "isShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isCtrlA",
-                    "declaration": {
-                        "name": "isCtrlA",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isCtrlV",
-                    "declaration": {
-                        "name": "isCtrlV",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isKeyA",
-                    "declaration": {
-                        "name": "isKeyA",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isKeyP",
-                    "declaration": {
-                        "name": "isKeyP",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isDeleteShift",
-                    "declaration": {
-                        "name": "isDeleteShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isInsertShift",
-                    "declaration": {
-                        "name": "isInsertShift",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isInsertCtrl",
-                    "declaration": {
-                        "name": "isInsertCtrl",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isNumber",
-                    "declaration": {
-                        "name": "isNumber",
-                        "module": "dist/Keys.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "isColon",
-                    "declaration": {
-                        "name": "isColon",
-                        "module": "dist/Keys.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/ManagedStyles.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "createStyle",
-                    "declaration": {
-                        "name": "createStyle",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "hasStyle",
-                    "declaration": {
-                        "name": "hasStyle",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "updateStyle",
-                    "declaration": {
-                        "name": "updateStyle",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "removeStyle",
-                    "declaration": {
-                        "name": "removeStyle",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "createOrUpdateStyle",
-                    "declaration": {
-                        "name": "createOrUpdateStyle",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "mergeStyles",
-                    "declaration": {
-                        "name": "mergeStyles",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "StyleData",
-                    "declaration": {
-                        "name": "StyleData",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "StyleDataCSP",
-                    "declaration": {
-                        "name": "StyleDataCSP",
-                        "module": "dist/ManagedStyles.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
             "path": "dist/MarkedEvents.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "markEvent",
-                    "declaration": {
-                        "name": "markEvent",
-                        "module": "dist/MarkedEvents.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getEventMark",
-                    "declaration": {
-                        "name": "getEventMark",
-                        "module": "dist/MarkedEvents.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -33004,64 +29352,7 @@
             "kind": "javascript-module",
             "path": "dist/Render.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "renderDeferred",
-                    "declaration": {
-                        "name": "renderDeferred",
-                        "module": "dist/Render.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "renderImmediately",
-                    "declaration": {
-                        "name": "renderImmediately",
-                        "module": "dist/Render.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "cancelRender",
-                    "declaration": {
-                        "name": "cancelRender",
-                        "module": "dist/Render.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "renderFinished",
-                    "declaration": {
-                        "name": "renderFinished",
-                        "module": "dist/Render.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "reRenderAllUI5Elements",
-                    "declaration": {
-                        "name": "reRenderAllUI5Elements",
-                        "module": "dist/Render.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "attachBeforeComponentRender",
-                    "declaration": {
-                        "name": "attachBeforeComponentRender",
-                        "module": "dist/Render.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "detachBeforeComponentRender",
-                    "declaration": {
-                        "name": "detachBeforeComponentRender",
-                        "module": "dist/Render.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -33082,48 +29373,7 @@
             "kind": "javascript-module",
             "path": "dist/Runtimes.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "getCurrentRuntimeIndex",
-                    "declaration": {
-                        "name": "getCurrentRuntimeIndex",
-                        "module": "dist/Runtimes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerCurrentRuntime",
-                    "declaration": {
-                        "name": "registerCurrentRuntime",
-                        "module": "dist/Runtimes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "compareRuntimes",
-                    "declaration": {
-                        "name": "compareRuntimes",
-                        "module": "dist/Runtimes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "setRuntimeAlias",
-                    "declaration": {
-                        "name": "setRuntimeAlias",
-                        "module": "dist/Runtimes.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getAllRuntimes",
-                    "declaration": {
-                        "name": "getAllRuntimes",
-                        "module": "dist/Runtimes.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -33174,32 +29424,7 @@
             "kind": "javascript-module",
             "path": "dist/Theming.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "addCustomCSS",
-                    "declaration": {
-                        "name": "addCustomCSS",
-                        "module": "dist/Theming.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "attachThemeLoaded",
-                    "declaration": {
-                        "name": "attachThemeLoaded",
-                        "module": "dist/Theming.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "detachThemeLoaded",
-                    "declaration": {
-                        "name": "detachThemeLoaded",
-                        "module": "dist/Theming.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -33222,38 +29447,6 @@
                     "name": "default",
                     "declaration": {
                         "name": "UI5Element",
-                        "module": "dist/UI5Element.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "instanceOfUI5Element",
-                    "declaration": {
-                        "name": "instanceOfUI5Element",
-                        "module": "dist/UI5Element.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ChangeInfo",
-                    "declaration": {
-                        "name": "ChangeInfo",
-                        "module": "dist/UI5Element.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "Renderer",
-                    "declaration": {
-                        "name": "Renderer",
-                        "module": "dist/UI5Element.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "RendererOptions",
-                    "declaration": {
-                        "name": "RendererOptions",
                         "module": "dist/UI5Element.js"
                     }
                 }
@@ -33475,62 +29668,6 @@
                         "name": "UI5ElementMetadata",
                         "module": "dist/UI5ElementMetadata.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "Property",
-                    "declaration": {
-                        "name": "Property",
-                        "module": "dist/UI5ElementMetadata.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "PropertyValue",
-                    "declaration": {
-                        "name": "PropertyValue",
-                        "module": "dist/UI5ElementMetadata.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "Slot",
-                    "declaration": {
-                        "name": "Slot",
-                        "module": "dist/UI5ElementMetadata.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "SlotValue",
-                    "declaration": {
-                        "name": "SlotValue",
-                        "module": "dist/UI5ElementMetadata.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "EventData",
-                    "declaration": {
-                        "name": "EventData",
-                        "module": "dist/UI5ElementMetadata.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "State",
-                    "declaration": {
-                        "name": "State",
-                        "module": "dist/UI5ElementMetadata.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "Metadata",
-                    "declaration": {
-                        "name": "Metadata",
-                        "module": "dist/UI5ElementMetadata.js"
-                    }
                 }
             ]
         },
@@ -33623,38 +29760,6 @@
                         "name": "I18nBundle",
                         "module": "dist/i18nBundle.js"
                     }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerI18nLoader",
-                    "declaration": {
-                        "name": "registerI18nLoader",
-                        "module": "dist/i18nBundle.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "getI18nBundle",
-                    "declaration": {
-                        "name": "getI18nBundle",
-                        "module": "dist/i18nBundle.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "registerCustomI18nBundleGetter",
-                    "declaration": {
-                        "name": "registerCustomI18nBundleGetter",
-                        "module": "dist/i18nBundle.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "I18nText",
-                    "declaration": {
-                        "name": "I18nText",
-                        "module": "dist/i18nBundle.js"
-                    }
                 }
             ]
         },
@@ -33662,80 +29767,7 @@
             "kind": "javascript-module",
             "path": "dist/types.js",
             "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "PromiseResolve",
-                    "declaration": {
-                        "name": "PromiseResolve",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "Timeout",
-                    "declaration": {
-                        "name": "Timeout",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "Interval",
-                    "declaration": {
-                        "name": "Interval",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "StyleData",
-                    "declaration": {
-                        "name": "StyleData",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "StyleDataCSP",
-                    "declaration": {
-                        "name": "StyleDataCSP",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ComponentStylesData",
-                    "declaration": {
-                        "name": "ComponentStylesData",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ClassMap",
-                    "declaration": {
-                        "name": "ClassMap",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "ClassMapValue",
-                    "declaration": {
-                        "name": "ClassMapValue",
-                        "module": "dist/types.js"
-                    }
-                },
-                {
-                    "kind": "js",
-                    "name": "PassiveEventListenerObject",
-                    "declaration": {
-                        "name": "PassiveEventListenerObject",
-                        "module": "dist/types.js"
-                    }
-                }
-            ]
+            "exports": []
         },
         {
             "kind": "javascript-module",

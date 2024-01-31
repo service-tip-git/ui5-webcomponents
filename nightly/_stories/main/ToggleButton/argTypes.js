@@ -30,6 +30,7 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "tagName": "ui5-toggle-button"
 };
 //# sourceMappingURL=argTypes.js.map

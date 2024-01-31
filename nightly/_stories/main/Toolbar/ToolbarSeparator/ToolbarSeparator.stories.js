@@ -1,16 +1,9 @@
 import { html } from "lit";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-toolbar-separator";
+import argTypes from "./argTypes.js";
 export default {
     title: "Main/Toolbar/Toolbar Separator",
     component: "ToolbarSeparator",
     argTypes,
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
 };
 const Template = (args) => {
     return html `

@@ -3093,7 +3093,7 @@
                                     {
                                         "name": "IAvatar",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Avatar.js"
+                                        "module": "dist/Interfaces.js"
                                     }
                                 ]
                             },
@@ -3139,7 +3139,14 @@
                             "kind": "field",
                             "name": "hiddenItems",
                             "type": {
-                                "text": "Array<IAvatar>"
+                                "text": "Array<IAvatar>",
+                                "references": [
+                                    {
+                                        "name": "IAvatar",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Interfaces.js"
+                                    }
+                                ]
                             },
                             "description": "Returns an array containing the <code>ui5-avatar</code> instances that are currently not displayed due to lack of space.",
                             "default": "[]",
@@ -3150,7 +3157,14 @@
                             "kind": "field",
                             "name": "colorScheme",
                             "type": {
-                                "text": "Array<AvatarColorScheme>"
+                                "text": "Array<AvatarColorScheme>",
+                                "references": [
+                                    {
+                                        "name": "AvatarColorScheme",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/AvatarColorScheme.js"
+                                    }
+                                ]
                             },
                             "description": "Returns an array containing the <code>AvatarColorScheme</code> values that correspond to the avatars in the component.",
                             "default": "[]",
@@ -6627,6 +6641,40 @@
                                     "description": "Indicator if the value is in correct format pattern and in valid range."
                                 }
                             ]
+                        },
+                        {
+                            "name": "value-state-change",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<DatePickerValueStateChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerValueStateChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "string"
+                                    },
+                                    "name": "valueState",
+                                    "_ui5privacy": "public",
+                                    "description": "The new <code>valueState</code> that will be set."
+                                },
+                                {
+                                    "type": {
+                                        "text": "boolean"
+                                    },
+                                    "name": "valid",
+                                    "_ui5privacy": "public",
+                                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                                }
+                            ]
                         }
                     ],
                     "superclass": {
@@ -7191,6 +7239,44 @@
                                 "name": "DatePicker",
                                 "module": "dist/DatePicker.js"
                             }
+                        },
+                        {
+                            "name": "value-state-change",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<DatePickerValueStateChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerValueStateChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "string"
+                                    },
+                                    "name": "valueState",
+                                    "_ui5privacy": "public",
+                                    "description": "The new <code>valueState</code> that will be set."
+                                },
+                                {
+                                    "type": {
+                                        "text": "boolean"
+                                    },
+                                    "name": "valid",
+                                    "_ui5privacy": "public",
+                                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                                }
+                            ],
+                            "inheritedFrom": {
+                                "name": "DatePicker",
+                                "module": "dist/DatePicker.js"
+                            }
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents",
@@ -7699,6 +7785,44 @@
                                     "name": "value",
                                     "_ui5privacy": "public",
                                     "description": "The submitted value."
+                                },
+                                {
+                                    "type": {
+                                        "text": "boolean"
+                                    },
+                                    "name": "valid",
+                                    "_ui5privacy": "public",
+                                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                                }
+                            ],
+                            "inheritedFrom": {
+                                "name": "DatePicker",
+                                "module": "dist/DatePicker.js"
+                            }
+                        },
+                        {
+                            "name": "value-state-change",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<DatePickerValueStateChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "DatePickerValueStateChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/DatePicker.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "string"
+                                    },
+                                    "name": "valueState",
+                                    "_ui5privacy": "public",
+                                    "description": "The new <code>valueState</code> that will be set."
                                 },
                                 {
                                     "type": {
@@ -10475,7 +10599,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the value state of the component.\n<br><br>\nAvailable options are:",
+                            "description": "Defines the value state of the component.",
                             "default": "\"None\"",
                             "privacy": "public",
                             "_ui5validator": "ValueState"
@@ -10516,7 +10640,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the filter type of the component.\nAvailable options are: <code>StartsWithPerTerm</code>, <code>StartsWith</code>, <code>Contains</code> and <code>None</code>.",
+                            "description": "Defines the filter type of the component.",
                             "default": "\"StartsWithPerTerm\"",
                             "privacy": "public",
                             "_ui5validator": "ComboBoxFilter"
@@ -11585,7 +11709,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the \"aria-level\" of component heading,\nset by the <code>headerText</code>.\n<br><br>\nAvailable options are: <code>\"H6\"</code> to <code>\"H1\"</code>.",
+                            "description": "Defines the \"aria-level\" of component heading,\nset by the <code>headerText</code>.",
                             "default": "\"H2\"",
                             "privacy": "public",
                             "_ui5validator": "TitleLevel"
@@ -15710,7 +15834,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the state of the <code>additionalText</code>.\n<br><br>\nAvailable options are: <code>\"None\"</code> (by default), <code>\"Success\"</code>, <code>\"Information\"</code>, <code>\"Warning\"</code> and <code>\"Error\"</code>.",
+                            "description": "Defines the state of the <code>additionalText</code>.",
                             "default": "\"None\"",
                             "privacy": "public",
                             "_ui5since": "1.0.0-rc.15",
@@ -17059,7 +17183,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the component.\n<br><br>\nAvailable options are:\n<ul>\n<li><code>Active</code></li>\n<li><code>Inactive</code></li>\n</ul>\n<br><br>\n<b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press,\nwhile with type <code>Inactive</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the component.\n\n<b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press,\nwhile with type <code>Inactive</code>-will not.",
                             "default": "\"Inactive\"",
                             "privacy": "public",
                             "_ui5since": "1.0.0-rc.15",
@@ -20948,6 +21072,15 @@
                             "kind": "field",
                             "static": true,
                             "privacy": "public",
+                            "description": "\"New Mail\" illustration type.",
+                            "default": "NewMail",
+                            "name": "NewMail",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
                             "description": "\"No Activities\" illustration type.",
                             "default": "NoActivities",
                             "name": "NoActivities",
@@ -21248,6 +21381,15 @@
                             "description": "\"Search Folder\" illustration type.",
                             "default": "SearchFolder",
                             "name": "SearchFolder",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "\"Sign Out\" illustration type.",
+                            "default": "SignOut",
+                            "name": "SignOut",
                             "readonly": true
                         },
                         {
@@ -26587,7 +26729,8 @@
                             "description": "Holds an instance of <code>File</code> associated with this item.",
                             "default": "null",
                             "privacy": "public",
-                            "_ui5validator": "Object"
+                            "_ui5validator": "Object",
+                            "_ui5noAttribute": true
                         },
                         {
                             "kind": "field",
@@ -27086,11 +27229,11 @@
                     "name": "Wizard",
                     "cssParts": [
                         {
-                            "description": "Used to style the progress navigator of the <code>ui5-wizard</code>.</li>",
+                            "description": "Used to style the progress navigator of the <code>ui5-wizard</code>.",
                             "name": "_ui5navigator"
                         },
                         {
-                            "description": "Used to style a <code>ui5-wizard-step</code> container.</li>",
+                            "description": "Used to style a <code>ui5-wizard-step</code> container.",
                             "name": "_ui5step-content"
                         }
                     ],
@@ -29762,6 +29905,18 @@
                     }
                 }
             ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/ssr-dom-shim.js",
+            "declarations": [],
+            "exports": []
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/ssr-dom.js",
+            "declarations": [],
+            "exports": []
         },
         {
             "kind": "javascript-module",

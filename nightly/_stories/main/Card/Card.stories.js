@@ -1,15 +1,12 @@
 import { html } from "lit";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../.storybook/docs.js";
+import argTypes from "./argTypes.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-const component = "ui5-card";
 export default {
     title: "Main/Card",
     component: "Card",
     parameters: {
         docs: {
-            page: DocsPage({ ...componentInfo, component }),
             story: {
                 iframeHeight: "370px",
                 inline: false,
@@ -142,7 +139,6 @@ WithTable.args = {
 WithTable.decorators = [setWidth("40rem")];
 WithTable.parameters = {
     docs: {
-        page: DocsPage({ ...componentInfo, component }),
         story: {
             iframeHeight: "250px",
             inline: false,
@@ -226,7 +222,6 @@ More.decorators = [
 ];
 More.parameters = {
     docs: {
-        page: DocsPage({ ...componentInfo, component }),
         story: {
             iframeHeight: "680px",
             inline: false,

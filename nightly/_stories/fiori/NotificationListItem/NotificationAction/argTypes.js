@@ -12,6 +12,8 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents-fiori"
+    "package": "@ui5/webcomponents-fiori",
+    "tagName": "ui5-notification-action",
+    "showDefaultStoryOnly": true
 };
 //# sourceMappingURL=argTypes.js.map

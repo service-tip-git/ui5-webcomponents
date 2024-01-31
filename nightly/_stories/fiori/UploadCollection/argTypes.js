@@ -76,6 +76,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents-fiori",
-    "since": "1.0.0-rc.7"
+    "since": "1.0.0-rc.7",
+    "tagName": "ui5-upload-collection"
 };
 //# sourceMappingURL=argTypes.js.map

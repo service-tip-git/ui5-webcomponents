@@ -1,17 +1,10 @@
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-toolbar-spacer";
+import argTypes from "./argTypes.js";
 export default {
     title: "Main/Toolbar/Toolbar Spacer",
     component: "ToolbarSpacer",
     argTypes,
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
 };
 const Template = (args) => {
     return html `

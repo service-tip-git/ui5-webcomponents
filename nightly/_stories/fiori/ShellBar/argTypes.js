@@ -231,6 +231,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents-fiori",
-    "since": "0.8.0"
+    "since": "0.8.0",
+    "tagName": "ui5-shellbar"
 };
 //# sourceMappingURL=argTypes.js.map

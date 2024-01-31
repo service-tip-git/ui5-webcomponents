@@ -1,17 +1,10 @@
 import { html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs";
-const component = "ui5-select-menu";
+import argTypes from "./argTypes.js";
 export default {
     title: "Main/Select/Select Menu",
     component: "SelectMenu",
     argTypes,
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
 };
 const Template = (args) => {
     return html `<style>

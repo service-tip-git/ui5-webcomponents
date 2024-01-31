@@ -23,6 +23,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents",
-    "since": "1.1.0"
+    "since": "1.1.0",
+    "tagName": "ui5-split-button"
 };
 //# sourceMappingURL=argTypes.js.map

@@ -79,6 +79,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.16"
+    "since": "1.0.0-rc.16",
+    "tagName": "ui5-color-palette-popover"
 };
 //# sourceMappingURL=argTypes.js.map

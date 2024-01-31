@@ -1,14 +1,11 @@
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-notification-action";
+import argTypes from "./argTypes.js";
 export default {
     title: "Fiori/Notification List Group Item/Notification Action",
     component: "NotificationAction",
     parameters: {
         docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true }),
             story: {
                 iframeHeight: "470px",
                 inline: false,

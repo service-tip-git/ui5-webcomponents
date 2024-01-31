@@ -37,7 +37,7 @@ declare const config: {
         reactDocgen: string;
     };
     docs: {
-        autodocs: boolean;
+        autodocs: string;
     };
 };
 export default config;

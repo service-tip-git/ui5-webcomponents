@@ -233,11 +233,395 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatar--docs</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatar--avatar-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatargroup--avatar-group-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-badge--badge-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-breadcrumbs--breadcrumbs-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-busy-indicator--busy-indicator-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-button--button-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar--calendar-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-card--card-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-carousel--carousel-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-check-box--check-box-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalette--color-palette-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalettepopover--color-palette-popover-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpicker--color-picker-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box--combo-box-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datepicker--date-picker-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-daterangepicker--date-range-picker-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datetimepicker--date-time-picker-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-dialog--dialog-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-fileuploader--file-uploader-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-icon--icon-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input--input-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-label--label-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-link--link-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list--list-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-menu--menu-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-message-strip--message-strip-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box--multi-combo-box-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-input--multi-input-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-panel--panel-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-popover--popover-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-progress-indicator--progress-indicator-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-radio-button--radio-button-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-range-slider--range-slider-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-rating-indicator--rating-indicator-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-responsive-popover--responsive-popover-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-segmented-button--segmented-button-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select--select-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-slider--slider-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-splitbutton--split-button-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-stepinput--step-input-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-switch--switch-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container--tab-container-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table--table-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-text-area--text-area-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-timepicker--time-picker-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-title--title-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toast--toast-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-togglebutton--toggle-button-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar--toolbar-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree--tree-overview</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatar--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatargroup--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-badge--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-breadcrumbs--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-busy-indicator--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-button--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-carousel--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-check-box--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalettepopover--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpicker--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datepicker--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-daterangepicker--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datetimepicker--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-dialog--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-fileuploader--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-icon--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-label--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-link--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-menu--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-message-strip--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-input--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-panel--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-popover--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-progress-indicator--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-radio-button--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-range-slider--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-rating-indicator--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-responsive-popover--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-segmented-button--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-slider--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-splitbutton--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-stepinput--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-switch--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-text-area--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-timepicker--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-title--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toast--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-togglebutton--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -246,14 +630,6 @@
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatar--styles</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatargroup--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatargroup--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -266,14 +642,6 @@
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-avatargroup--type-group-with-popover</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-badge--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-badge--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -301,19 +669,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-breadcrumbs--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-breadcrumbs--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-breadcrumbs--separator-style</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-breadcrumbs-breadcrumbs-item--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -321,23 +677,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-busy-indicator--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-busy-indicator--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-busy-indicator--usage-with-components</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-button--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-button--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -349,14 +689,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar--bounds</loc>
     <changefreq>monthly</changefreq>
   </url>
@@ -365,15 +697,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar-calendar-date--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar-calendar-date--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-card--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -397,31 +721,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-card-card-header--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-card-card-header--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-carousel--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-carousel--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-carousel--multiple-items-per-page</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-check-box--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-check-box--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -433,15 +737,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalette--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalette--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalette-colorpaletteitem--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -449,31 +745,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalettepopover--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalettepopover--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalettepopover--default-color</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpicker--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpicker--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -493,27 +765,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box-combo-box-group-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box-combo-box-group-item--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box-combo-box-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box-combo-box-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datepicker--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datepicker--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -529,14 +785,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-daterangepicker--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-daterangepicker--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-daterangepicker--min-max</loc>
     <changefreq>monthly</changefreq>
   </url>
@@ -545,27 +793,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datetimepicker--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datetimepicker--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datetimepicker--format-pattern</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-datetimepicker--min-max</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-dialog--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-dialog--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -581,35 +813,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-fileuploader--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-fileuploader--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-fileuploader--advanced</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-icon--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-icon--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-icon--customized</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -633,27 +841,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input-suggestion-group-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input-suggestion-group-item--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input-suggestion-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input-suggestion-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-label--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-label--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -665,14 +857,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-link--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-link--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-link--design</loc>
     <changefreq>monthly</changefreq>
   </url>
@@ -681,11 +865,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list--docs</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-custom-list-item--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list--basic</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-group-header-list-item--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -705,35 +889,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-custom-list-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-custom-list-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-group-header-list-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-group-header-list-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-standard-list-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-standard-list-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-menu--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-menu--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -745,19 +901,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-menu-menuitem--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-menu-menuitem--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-message-strip--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-message-strip--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -766,14 +910,6 @@
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-message-strip--custom</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -793,27 +929,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box-multi-combo-box-group-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box-multi-combo-box-group-item--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box-multi-combo-box-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box-multi-combo-box-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-input--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-input--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -829,19 +949,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-input-token--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-input-token--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-panel--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-panel--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -857,31 +965,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-popover--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-popover--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-progress-indicator--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-progress-indicator--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-progress-indicator--customised</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-radio-button--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-radio-button--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -893,27 +977,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-range-slider--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-range-slider--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-range-slider--tooltips</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-range-slider--range-slider-tickmarks-tooltip-label</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-rating-indicator--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-rating-indicator--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -925,27 +993,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-responsive-popover--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-responsive-popover--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-segmented-button--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-segmented-button--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-segmented-button--with-icons</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-segmented-button-segmented-button-item--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -953,11 +1001,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select--basic</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-option--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -973,35 +1017,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-option--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-option--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-select-menu--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-select-menu--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-select-menu-option--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-select-menu-option--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-slider--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-slider--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1013,27 +1033,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-splitbutton--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-splitbutton--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-splitbutton--opening-menu</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-splitbutton--different-designs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-stepinput--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-stepinput--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1053,23 +1057,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-switch--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-switch--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-switch--required-in-form</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container--basic</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container-tab--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1089,27 +1081,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container-tab--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container-tab--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container-tab-separator--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container-tab-separator--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1137,15 +1109,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-cell--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-cell--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-column--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1153,27 +1117,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-group-row--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-group-row--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-row--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-row--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-text-area--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-text-area--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1185,23 +1133,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-timepicker--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-timepicker--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-timepicker--with-value-state</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-title--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-title--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1213,14 +1145,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toast--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toast--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toast--duration</loc>
     <changefreq>monthly</changefreq>
   </url>
@@ -1229,23 +1153,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-togglebutton--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-togglebutton--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-togglebutton--examples</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1257,15 +1165,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-button--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-button--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-select--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1273,15 +1173,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-select-option--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-select-option--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-separator--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1289,19 +1181,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-spacer--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-spacer--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1313,15 +1193,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree-tree-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree-tree-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree-tree-item-custom--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1329,7 +1201,195 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-bar--docs</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-breadcrumbs-breadcrumbs-item--breadcrumbs-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-calendar-calendar-date--calendar-date-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-card-card-header--card-header-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-colorpalette-colorpaletteitem--color-palette-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box-combo-box-group-item--combo-box-group-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-combo-box-combo-box-item--combo-box-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input-suggestion-group-item--suggestion-group-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-input-suggestion-item--suggestion-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-custom-list-item--custom-list-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-group-header-list-item--group-header-list-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-list-standard-list-item--standard-list-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-menu-menuitem--menu-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box-multi-combo-box-group-item--multi-combo-box-group-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-combo-box-multi-combo-box-item--multi-combo-box-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-multi-input-token--token-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-segmented-button-segmented-button-item--segmented-button-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-option--option-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-select-menu--select-menu-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-select-select-menu-option--select-menu-option-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container-tab--tab-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tab-container-tab-separator--tab-separator-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-cell--table-cell-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-column--table-column-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-group-row--table-group-row-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-table-table-row--table-row-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-button--toolbar-button-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-select--toolbar-select-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-select-option--toolbar-select-option-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-separator--toolbar-separator-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-toolbar-toolbar-spacer--toolbar-spacer-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree-tree-item--tree-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/main/main-tree-tree-item-custom--tree-item-custom-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-bar--bar-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-barcode-scanner-dialog--barcode-scanner-dialog-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-dynamicsidecontent--dynamic-side-content-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-flexible-column-layout--flexible-column-layout-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-illustrated-message--illustrated-message-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-media-gallery--media-gallery-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item--notification-list-group-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item--notification-list-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-page--page-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-product-switch--product-switch-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar--shell-bar-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation--side-navigation-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-timeline--timeline-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-upload-collection--upload-collection-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog--view-settings-dialog-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard--wizard-overview</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1337,15 +1397,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-barcode-scanner-dialog--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-barcode-scanner-dialog--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-dynamicsidecontent--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1353,19 +1405,47 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-flexible-column-layout--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-flexible-column-layout--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-illustrated-message--docs</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-illustrated-message--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-illustrated-message--basic</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-media-gallery--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-page--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-product-switch--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-upload-collection--basic</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1374,14 +1454,6 @@
   </url>
   <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-illustrated-message--custom-title</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-media-gallery--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-media-gallery--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1397,27 +1469,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-media-gallery-media-gallery-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-media-gallery-media-gallery-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item--in-shell-bar</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item-notification-action--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1425,11 +1477,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item--docs</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item--in-shell-bar</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item--basic</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item-notification-action--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1441,31 +1493,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item-notification-action--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item-notification-action--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-page--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-page--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-page--floating-footer</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-product-switch--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-product-switch--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1473,19 +1501,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-product-switch-product-switch-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-product-switch-product-switch-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1493,7 +1509,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar--with-co-pilot</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar--with-joule</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1501,19 +1517,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar-shellbaritem--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar-shellbaritem--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1521,15 +1525,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation-side-navigation-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation-side-navigation-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation-side-navigation-sub-item--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1537,27 +1533,11 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-timeline--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-timeline--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-timeline-timeline-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-timeline-timeline-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-upload-collection--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-upload-collection--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1573,23 +1553,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-upload-collection-upload-collection-item--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-upload-collection-upload-collection-item--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog-filter-item--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1597,15 +1561,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog-filter-item-option--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog-filter-item-option--basic</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog-sort-item--docs</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1613,11 +1569,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard--docs</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard--basic</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -1625,11 +1577,59 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard-wizard-step--docs</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard-wizard-step--basic</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard-wizard-step--basic</loc>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-media-gallery-media-gallery-item--media-gallery-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-group-item-notification-action--notification-action-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-notification-list-item-notification-action--notification-action-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-product-switch-product-switch-item--product-switch-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-shellbar-shellbaritem--shell-bar-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation-side-navigation-item--side-navigation-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-side-navigation-side-navigation-sub-item--side-navigation-sub-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-timeline-timeline-item--timeline-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-upload-collection-upload-collection-item--upload-collection-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog-filter-item--filter-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog-filter-item-option--filter-item-option-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-view-settings-dialog-sort-item--sort-item-overview</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://sap.github.io/ui5-webcomponents/playground/?path=/fiori/fiori-wizard-wizard-step--wizard-step-overview</loc>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

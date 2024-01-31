@@ -106,6 +106,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents-fiori",
-    "since": "1.1.0"
+    "since": "1.1.0",
+    "tagName": "ui5-dynamic-side-content"
 };
 //# sourceMappingURL=argTypes.js.map

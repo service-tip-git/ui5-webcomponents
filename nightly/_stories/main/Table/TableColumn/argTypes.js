@@ -18,6 +18,8 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "tagName": "ui5-table-column",
+    "showDefaultStoryOnly": true
 };
 //# sourceMappingURL=argTypes.js.map

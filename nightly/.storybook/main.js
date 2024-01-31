@@ -1,6 +1,6 @@
 import remarkGfm from 'remark-gfm';
 const config = {
-    stories: ["../docs/**/*.mdx", "../_stories/**/*.stories.@(ts)"],
+    stories: ["../docs/**/*.mdx", "../_stories/**/*.stories.@(ts)", "../_stories/**/*.mdx"],
     staticDirs: [
         { from: "../assets", to: "../assets" },
         { from: "../docs/storybook-pages", to: "/" },
@@ -41,7 +41,7 @@ const config = {
         reactDocgen: 'react-docgen'
     },
     docs: {
-        autodocs: true
+        autodocs: 'tag'
     }
 };
 export default config;

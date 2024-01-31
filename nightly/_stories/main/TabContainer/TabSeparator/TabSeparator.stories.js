@@ -1,15 +1,8 @@
 import { html } from "lit";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-tab-separator";
+import argTypes from "./argTypes.js";
 export default {
     title: "Main/Tab Container/Tab Separator",
     component: "TabSeparator",
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
     argTypes,
 };
 const Template = (args) => {

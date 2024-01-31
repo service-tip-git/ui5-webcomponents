@@ -1,16 +1,9 @@
 import { html } from "lit";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
+import argTypes from "./argTypes.js";
 import { ifDefined } from "lit-html/directives/if-defined.js";
-const component = "ui5-mcb-item";
 export default {
     title: "Main/Multi-Combo Box/Multi-Combo Box Item",
     component: "MultiComboBoxItem",
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
     argTypes,
 };
 const Template = (args) => html `

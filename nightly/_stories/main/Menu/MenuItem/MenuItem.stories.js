@@ -1,17 +1,10 @@
 import { html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-menu-item";
+import argTypes from "./argTypes.js";
 export default {
     title: "Main/Menu/MenuItem",
     component: "MenuItem",
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
     argTypes,
 };
 const Template = (args) => html `<ui5-menu id="menuBasic">

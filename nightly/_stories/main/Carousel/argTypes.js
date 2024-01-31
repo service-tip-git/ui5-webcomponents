@@ -105,6 +105,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.6"
+    "since": "1.0.0-rc.6",
+    "tagName": "ui5-carousel"
 };
 //# sourceMappingURL=argTypes.js.map

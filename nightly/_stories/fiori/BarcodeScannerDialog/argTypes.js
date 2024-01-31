@@ -78,6 +78,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents-fiori",
-    "since": "1.0.0-rc.15"
+    "since": "1.0.0-rc.15",
+    "tagName": "ui5-barcode-scanner-dialog"
 };
 //# sourceMappingURL=argTypes.js.map

@@ -58,6 +58,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.6"
+    "since": "1.0.0-rc.6",
+    "tagName": "ui5-file-uploader"
 };
 //# sourceMappingURL=argTypes.js.map

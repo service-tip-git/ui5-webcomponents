@@ -12,6 +12,8 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.9"
+    "since": "1.0.0-rc.9",
+    "tagName": "ui5-token",
+    "showDefaultStoryOnly": true
 };
 //# sourceMappingURL=argTypes.js.map

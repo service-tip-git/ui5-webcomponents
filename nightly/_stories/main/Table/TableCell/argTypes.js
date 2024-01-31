@@ -11,6 +11,8 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "tagName": "ui5-table-cell",
+    "showDefaultStoryOnly": true
 };
 //# sourceMappingURL=argTypes.js.map

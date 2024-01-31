@@ -1,16 +1,9 @@
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-date";
+import argTypes from "./argTypes.js";
 export default {
     title: "Main/Calendar/Calendar Date",
     component: "CalendarDate",
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
     argTypes,
 };
 const Template = (args) => html `<ui5-calendar format-pattern="dd/MM/yyyy">

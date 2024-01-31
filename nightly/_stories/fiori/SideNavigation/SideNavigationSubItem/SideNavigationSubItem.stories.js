@@ -1,16 +1,9 @@
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs";
-const component = "ui5-side-navigation-sub-item";
+import argTypes from "./argTypes.js";
 export default {
     title: "Fiori/Side Navigation/Side Navigation Sub Item",
     component: "SideNavigationSubItem",
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
     argTypes,
 };
 const Template = (args) => {

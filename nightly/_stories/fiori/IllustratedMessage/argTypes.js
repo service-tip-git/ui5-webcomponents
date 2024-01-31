@@ -53,6 +53,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents-fiori",
-    "since": "1.0.0-rc.15"
+    "since": "1.0.0-rc.15",
+    "tagName": "ui5-illustrated-message"
 };
 //# sourceMappingURL=argTypes.js.map

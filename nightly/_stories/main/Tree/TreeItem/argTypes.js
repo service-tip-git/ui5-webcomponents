@@ -54,6 +54,8 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.8"
+    "since": "1.0.0-rc.8",
+    "tagName": "ui5-tree-item",
+    "showDefaultStoryOnly": true
 };
 //# sourceMappingURL=argTypes.js.map

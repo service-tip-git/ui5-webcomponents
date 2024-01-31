@@ -1,9 +1,7 @@
 import { html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { ifDefined } from "lit/directives/if-defined.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-media-gallery-item";
+import argTypes from "./argTypes.js";
 const stylesDecorator = (storyFn) => html `
     <style>
         ui5-media-gallery-item:not(:defined) {
@@ -21,11 +19,6 @@ const stylesDecorator = (storyFn) => html `
 export default {
     title: "Fiori/Media Gallery/Media Gallery Item",
     component: "MediaGalleryItem",
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true }),
-        }
-    },
     decorators: [stylesDecorator],
     argTypes,
 };

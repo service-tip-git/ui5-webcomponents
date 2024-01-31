@@ -109,6 +109,7 @@ export default {
     }
 };
 export const componentInfo = {
-    "package": "@ui5/webcomponents"
+    "package": "@ui5/webcomponents",
+    "tagName": "ui5-tabcontainer"
 };
 //# sourceMappingURL=argTypes.js.map

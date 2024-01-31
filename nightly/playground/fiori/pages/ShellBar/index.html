@@ -16,7 +16,7 @@
 
 
 	
-  <script type="module" crossorigin src="../../../../assets/bundle.esm-f5b6ca84.js"></script>
+  <script type="module" crossorigin src="../../../../assets/bundle.esm-326a687c.js"></script>
   <link rel="stylesheet" href="../../../../assets/ShellBar-fb23ecc4.css">
 </head>
 
@@ -99,6 +99,7 @@
 		<ui5-input slot="searchField" value-state="Error"></ui5-input>
 	</ui5-shellbar>
 
+	<ui5-checkbox id="checkKeepPopoverOpen" text="keep popover open on menu-item click"></ui5-checkbox>
 	<ui5-shellbar
 			class="shellbar-example"
 			id="shellbar"
@@ -271,6 +272,9 @@
 		});
 
 		shellbar.addEventListener("ui5-menu-item-click", function(event) {
+			if (checkKeepPopoverOpen.checked) {
+				event.preventDefault();
+			}
 			var item = event.detail.item;
 			window["press-input"].value = item.textContent;
 			window["press-data"].value = item.getAttribute("data-key");

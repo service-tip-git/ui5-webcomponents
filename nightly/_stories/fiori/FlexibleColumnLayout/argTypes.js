@@ -147,6 +147,7 @@ export default {
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents-fiori",
-    "since": "1.0.0-rc.8"
+    "since": "1.0.0-rc.8",
+    "tagName": "ui5-flexible-column-layout"
 };
 //# sourceMappingURL=argTypes.js.map

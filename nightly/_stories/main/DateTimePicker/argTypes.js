@@ -211,10 +211,40 @@ export default {
                 }
             ]
         }
+    },
+    "value-state-change": {
+        "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+        "control": {
+            "type": false
+        },
+        "table": {
+            "category": "events"
+        },
+        "UI5CustomData": {
+            "parameters": [
+                {
+                    "type": {
+                        "text": "string"
+                    },
+                    "name": "valueState",
+                    "_ui5privacy": "public",
+                    "description": "The new <code>valueState</code> that will be set."
+                },
+                {
+                    "type": {
+                        "text": "boolean"
+                    },
+                    "name": "valid",
+                    "_ui5privacy": "public",
+                    "description": "Indicator if the value is in correct format pattern and in valid range."
+                }
+            ]
+        }
     }
 };
 export const componentInfo = {
     "package": "@ui5/webcomponents",
-    "since": "1.0.0-rc.7"
+    "since": "1.0.0-rc.7",
+    "tagName": "ui5-datetime-picker"
 };
 //# sourceMappingURL=argTypes.js.map

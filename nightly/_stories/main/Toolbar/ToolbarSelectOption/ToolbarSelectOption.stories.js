@@ -1,18 +1,11 @@
 import { html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import argTypes, { componentInfo } from "./argTypes.js";
-import { DocsPage } from "../../../../.storybook/docs.js";
-const component = "ui5-toolbar-select-option";
+import argTypes from "./argTypes.js";
 export default {
     title: "Main/Toolbar/Toolbar Select Option",
     component: "ToolbarSelectOption",
     argTypes,
-    parameters: {
-        docs: {
-            page: DocsPage({ ...componentInfo, component, showDefaultStoryOnly: true })
-        },
-    },
 };
 const Template = (args) => {
     return html `

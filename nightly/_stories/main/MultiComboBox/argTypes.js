@@ -70,7 +70,7 @@ export default {
                             {
                                 "name": "IMultiComboBoxItem",
                                 "package": "@ui5/webcomponents",
-                                "module": "dist/Interfaces.js"
+                                "module": "dist/MultiComboBox.js"
                             }
                         ]
                     },

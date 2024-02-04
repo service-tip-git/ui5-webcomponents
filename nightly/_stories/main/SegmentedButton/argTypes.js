@@ -43,7 +43,7 @@ export default {
                             {
                                 "name": "ISegmentedButtonItem",
                                 "package": "@ui5/webcomponents",
-                                "module": "dist/Interfaces.js"
+                                "module": "dist/SegmentedButton.js"
                             }
                         ]
                     },
@@ -59,7 +59,7 @@ export default {
                             {
                                 "name": "ISegmentedButtonItem",
                                 "package": "@ui5/webcomponents",
-                                "module": "dist/Interfaces.js"
+                                "module": "dist/SegmentedButton.js"
                             }
                         ]
                     },

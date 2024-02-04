@@ -61,7 +61,7 @@ export default {
                             {
                                 "name": "IOption",
                                 "package": "@ui5/webcomponents",
-                                "module": "dist/Interfaces.js"
+                                "module": "dist/Select.js"
                             }
                         ]
                     },
@@ -89,7 +89,7 @@ export default {
                             {
                                 "name": "IOption",
                                 "package": "@ui5/webcomponents",
-                                "module": "dist/Interfaces.js"
+                                "module": "dist/Select.js"
                             }
                         ]
                     },

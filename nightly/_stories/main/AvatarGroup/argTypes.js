@@ -22,7 +22,7 @@ export default {
         },
         "table": {
             "type": {
-                "summary": "Array<IAvatar>"
+                "summary": "Array<IAvatarGroupItem>"
             }
         }
     },

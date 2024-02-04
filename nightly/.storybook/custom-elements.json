@@ -3047,9 +3047,9 @@
                     "_ui5privacy": "public",
                     "_ui5implements": [
                         {
-                            "name": "IAvatar",
+                            "name": "IAvatarGroupItem",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/AvatarGroup.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -3079,6 +3079,14 @@
             "path": "dist/AvatarGroup.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IAvatarGroupItem",
+                    "description": "Interface for components that represent an avatar and may be slotted in numerous higher-order components such as <code>ui5-avatar-group</code>",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IAvatarGroupItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nDisplays a group of avatars arranged horizontally. It is useful to visually\nshowcase a group of related avatars, such as, project team members or employees.\n\nThe component allows you to display the avatars in different sizes,\ndepending on your use case.\n\nThe <code>AvatarGroup</code> component has two group types:\n<ul>\n<li><code>Group</code> type: The avatars are displayed as partially overlapped on\ntop of each other and the entire group has one click/tap area.</li>\n<li><code>Individual</code> type: The avatars are displayed side-by-side and each\navatar has its own click/tap area.</li>\n</ul>\n\n<h3>Responsive Behavior</h3>\n\nWhen the available space is less than the width required to display all avatars,\nan overflow visualization appears as a button placed at the end with the same shape\nand size as the avatars. The visualization displays the number of avatars that have overflowed\nand are not currently visible.\n\n<h3>Usage</h3>\n\nUse the <code>AvatarGroup</code> if:\n<ul>\n<li>You want to display a group of avatars.</li>\n<li>You want to display several avatars which have something in common.</li>\n</ul>\n\nDo not use the <code>AvatarGroup</code> if:\n<ul>\n<li>You want to display a single avatar.</li>\n<li>You want to display a gallery for simple images.</li>\n<li>You want to use it for other visual content than avatars.</li>\n</ul>\n\n<h3>Keyboard Handling</h3>\nThe component provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n<br>\n<code>type</code> Individual:\n<br>\n<ul>\n<li>[TAB] - Move focus to the overflow button</li>\n<li>[LEFT] - Navigate one avatar to the left</li>\n<li>[RIGHT] - Navigate one avatar to the right</li>\n<li>[HOME] - Navigate to the first avatar</li>\n<li>[END] - Navigate to the last avatar</li>\n<li>[SPACE],[ENTER],[RETURN] - Trigger <code>ui5-click</code> event</li>\n</ul>\n<br>\n<code>type</code> Group:\n<br>\n<ul>\n<li>[TAB] - Move focus to the next interactive element after the component</li>\n<li>[SPACE],[ENTER],[RETURN] - Trigger <code>ui5-click</code> event</li>\n</ul>\n<br>",
                     "name": "AvatarGroup",
@@ -3088,12 +3096,12 @@
                             "description": "Defines the items of the component. Use the <code>ui5-avatar</code> component as an item.\n<br><br>\n<b>Note:</b> The UX guidelines recommends using avatars with \"Circle\" shape.\nMoreover, if you use avatars with \"Square\" shape, there will be visual inconsistency\nas the built-in overflow action has \"Circle\" shape.",
                             "_ui5propertyName": "items",
                             "_ui5type": {
-                                "text": "Array<IAvatar>",
+                                "text": "Array<IAvatarGroupItem>",
                                 "references": [
                                     {
-                                        "name": "IAvatar",
+                                        "name": "IAvatarGroupItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/AvatarGroup.js"
                                     }
                                 ]
                             },
@@ -3109,7 +3117,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -3139,12 +3147,12 @@
                             "kind": "field",
                             "name": "hiddenItems",
                             "type": {
-                                "text": "Array<IAvatar>",
+                                "text": "Array<IAvatarGroupItem>",
                                 "references": [
                                     {
-                                        "name": "IAvatar",
+                                        "name": "IAvatarGroupItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/AvatarGroup.js"
                                     }
                                 ]
                             },
@@ -3275,7 +3283,7 @@
                                     {
                                         "name": "IIcon",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Icon.js"
                                     }
                                 ]
                             },
@@ -3617,6 +3625,7 @@
                     "customElement": true,
                     "_ui5since": "1.0.0-rc.15",
                     "_ui5privacy": "public",
+                    "_ui5abstract": true,
                     "_ui5package": "@ui5/webcomponents"
                 }
             ],
@@ -3747,6 +3756,14 @@
             "path": "dist/Button.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IButton",
+                    "description": "Interface for components that may be used as a button inside numerous higher-order components",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IButton"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-button</code> component represents a simple push button.\nIt enables users to trigger actions by clicking or tapping the <code>ui5-button</code>, or by pressing\ncertain keyboard keys, such as Enter.\n\n\n<h3>Usage</h3>\n\nFor the <code>ui5-button</code> UI, you can define text, icon, or both. You can also specify\nwhether the text or the icon is displayed first.\n<br><br>\nYou can choose from a set of predefined types that offer different\nstyling to correspond to the triggered action.\n<br><br>\nYou can set the <code>ui5-button</code> as enabled or disabled. An enabled\n<code>ui5-button</code> can be pressed by clicking or tapping it. The button changes\nits style to provide visual feedback to the user that it is pressed or hovered over with\nthe mouse cursor. A disabled <code>ui5-button</code> appears inactive and cannot be pressed.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Button\";</code>",
                     "name": "Button",
@@ -3871,9 +3888,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "{ expanded: \"true\" | \"false\", hasPopup: \"Dialog\" | \"Grid\" | \"ListBox\" | \"Menu\" | \"Tree\", controls: string}"
+                                "text": "AccessibilityAttributes",
+                                "references": [
+                                    {
+                                        "name": "AccessibilityAttributes",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Button.js"
+                                    }
+                                ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -3921,7 +3945,7 @@
                         {
                             "name": "IButton",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Button.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -4358,6 +4382,14 @@
             "path": "dist/Card.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "ICardHeader",
+                    "description": "Interface for components that may be slotted inside <code>ui5-card</code> as header",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "ICardHeader"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-card</code> is a component that represents information in the form of a\ntile with separate header and content areas.\nThe content area of a <code>ui5-card</code> can be arbitrary HTML content.\nThe header can be used through slot <code>header</code>. For which there is a <code>ui5-card-header</code> component to achieve the card look and feel.\n\nNote: We recommend the usage of <code>ui5-card-header</code> for the header slot, so advantage can be taken for keyboard handling, styling and accessibility.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Card\";</code>\n<br>\n<code>import \"@ui5/webcomponents/dist/CardHeader.js\";</code> (for <code>ui5-card-header</code>)",
                     "name": "Card",
@@ -4391,7 +4423,7 @@
                                     {
                                         "name": "ICardHeader",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/CardHeader.js"
+                                        "module": "dist/Card.js"
                                     }
                                 ]
                             },
@@ -4567,7 +4599,7 @@
                         {
                             "name": "ICardHeader",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Card.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -5100,6 +5132,14 @@
             "path": "dist/ColorPalette.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IColorPaletteItem",
+                    "description": "Interface for components that may be used inside a <code>ui5-color-palette</code> or <code>ui5-color-palette-popover</code>",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IColorPaletteItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThe <code>ui5-color-palette</code> provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.\n\n<h3>Usage</h3>\n\nThe <code>ui5-color-palette</code> is meant for users that need to select a color from a predefined set.\nTo define the colors, use the <code>ui5-color-palette-item</code> component inside the default slot of the <code>ui5-color-palette</code>.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ColorPalette.js\";</code>",
                     "name": "ColorPalette",
@@ -5114,7 +5154,7 @@
                                     {
                                         "name": "IColorPaletteItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/ColorPalette.js"
                                     }
                                 ]
                             },
@@ -5210,12 +5250,11 @@
                     "customElement": true,
                     "_ui5since": "1.0.0-rc.12",
                     "_ui5privacy": "public",
-                    "_ui5abstract": true,
                     "_ui5implements": [
                         {
                             "name": "IColorPaletteItem",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/ColorPalette.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -5259,7 +5298,7 @@
                                     {
                                         "name": "IColorPaletteItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/ColorPalette.js"
                                     }
                                 ]
                             },
@@ -5516,6 +5555,14 @@
             "path": "dist/ComboBox.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IComboBoxItem",
+                    "description": "Interface for components that may be slotted inside a <code>ui5-combobox</code>",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IComboBoxItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-combobox</code> component represents a drop-down menu with a list of the available options and a text input field to narrow down the options.\n\nIt is commonly used to enable users to select an option from a predefined list.\n\n<h3>Structure</h3>\nThe <code>ui5-combobox</code> consists of the following elements:\n\n<ul>\n<li> Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value.</li>\n<li> Drop-down arrow - expands\\collapses the option list.</li>\n<li> Option list - the list of available options.</li>\n</ul>\n\n<h3>Keyboard Handling</h3>\n\nThe <code>ui5-combobox</code> provides advanced keyboard handling.\n<br>\n\n<ul>\n<li>[F4], [ALT]+[UP], or [ALT]+[DOWN] - Toggles the picker.</li>\n<li>[ESC] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.</li>\n<li>[ENTER] or [RETURN] - If picker is open, takes over the currently selected item and closes it.</li>\n<li>[DOWN] - Selects the next matching item in the picker.</li>\n<li>[UP] - Selects the previous matching item in the picker.</li>\n<li>[PAGEDOWN] - Moves selection down by page size (10 items by default).</li>\n<li>[PAGEUP] - Moves selection up by page size (10 items by default). </li>\n<li>[HOME] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.</li>\n<li>[END] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.</li>\n</ul>\n\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ComboBox\";</code>",
                     "name": "ComboBox",
@@ -5530,7 +5577,7 @@
                                     {
                                         "name": "IComboBoxItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/ComboBox.js"
                                     }
                                 ]
                             },
@@ -5555,7 +5602,7 @@
                                     {
                                         "name": "IIcon",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Icon.js"
                                     }
                                 ]
                             },
@@ -5755,7 +5802,7 @@
                                             {
                                                 "name": "IComboBoxItem",
                                                 "package": "@ui5/webcomponents",
-                                                "module": "dist/Interfaces.js"
+                                                "module": "dist/ComboBox.js"
                                             }
                                         ]
                                     },
@@ -5981,7 +6028,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -8558,6 +8605,14 @@
             "path": "dist/Icon.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IIcon",
+                    "description": "Interface for components that represent an icon, usable in numerous higher-order components",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IIcon"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-icon</code> component represents an SVG icon.\nThere are two main scenarios how the <code>ui5-icon</code> component is used:\nas a purely decorative element, <br>\nor as an interactive element that can be focused and clicked.\n\n<h3>Usage</h3>\n\n1. <b>Get familiar with the icons collections.</b>\n<br>\nBefore displaying an icon, you need to explore the icons collections to find and import the desired icon.\n<br>\nCurrently there are 3 icons collection, available as 3 npm packages:\n<br>\n\n<ul>\n<li>\n<ui5-link target=\"_blank\" href=\"https://www.npmjs.com/package/@ui5/webcomponents-icons\">@ui5/webcomponents-icons</ui5-link> represents the \"SAP-icons\" collection and includes the following\n<ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons\">icons</ui5-link>.\n</li>\n<li>\n<ui5-link target=\"_blank\" href=\"https://www.npmjs.com/package/@ui5/webcomponents-icons-tnt\">@ui5/webcomponents-icons-tnt</ui5-link> represents the \"tnt\" collection and includes the following\n<ui5-link target=\"_blank\" href=\"https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/SAP-icons-TNT\">icons</ui5-link>.\n</li>\n<li>\n<ui5-link target=\"_blank\" href=\"https://www.npmjs.com/package/@ui5/webcomponents-icons-business-suite\">@ui5/webcomponents-icons-icons-business-suite</ui5-link> represents the \"business-suite\" collection and includes the following\n<ui5-link target=\"_blank\" href=\"https://ui5.sap.com/test-resources/sap/m/demokit/iconExplorer/webapp/index.html#/overview/BusinessSuiteInAppSymbols\">icons</ui5-link>.\n</li>\n</ul>\n\n2. <b>After exploring the icons collections, add one or more of the packages as dependencies to your project.</b>\n<br>\n<code>npm i @ui5/webcomponents-icons</code><br>\n<code>npm i @ui5/webcomponents-icons-tnt</code><br>\n<code>npm i @ui5/webcomponents-icons-business-suite</code>\n<br><br>\n\n3. <b>Then, import the desired icon</b>.\n<br>\n<code>import \"@ui5/{package_name}/dist/{icon_name}.js\";</code>\n<br><br>\n\n<b>For Example</b>:\n<br>\n\nFor the standard \"SAP-icons\" icon collection, import an icon from the <code>@ui5/webcomponents-icons</code> package:\n<br>\n<code>import \"@ui5/webcomponents-icons/dist/employee.js\";</code>\n<br><br>\n\nFor the \"tnt\" (SAP Fiori Tools) icon collection, import an icon from the <code>@ui5/webcomponents-icons-tnt</code> package:\n<br>\n<code>import \"@ui5/webcomponents-icons-tnt/dist/antenna.js\";</code>\n<br><br>\n\nFor the \"business-suite\" (SAP Business Suite) icon collection, import an icon from the <code>@ui5/webcomponents-icons-business-suite</code> package:\n<br>\n<code>import \"@ui5/webcomponents-icons-business-suite/dist/ab-testing.js\";</code>\n<br><br>\n\n4. <b>Display the icon using the <code>ui5-icon</code> web component.</b><br>\nSet the icon collection (\"SAP-icons\", \"tnt\" or \"business-suite\" - \"SAP-icons\" is the default icon collection and can be skipped)<br>\nand the icon name to the <code>name</code> property.\n<br><br>\n\n<code>&lt;ui5-icon name=\"employee\">&lt;/ui5-icon></code><br>\n<code>&lt;ui5-icon name=\"tnt/antenna\">&lt;/ui5-icon></code><br>\n<code>&lt;ui5-icon name=\"business-suite/ab-testing\">&lt;/ui5-icon></code>\n\n<br><br>\n<h3>Keyboard Handling</h3>\n\n<ul>\n<li>[SPACE, ENTER, RETURN] - Fires the <code>click</code> event if the <code>interactive</code> property is set to true.</li>\n<li>[SHIFT] - If [SPACE] or [ENTER],[RETURN] is pressed, pressing [SHIFT] releases the ui5-icon without triggering the click event.</li>\n</ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Icon.js\";</code>",
                     "name": "Icon",
@@ -8657,7 +8712,7 @@
                         {
                             "name": "IIcon",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Icon.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -8687,6 +8742,14 @@
             "path": "dist/Input.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IInputSuggestionItem",
+                    "description": "Interface for components that represent a suggestion item, usable in <code>ui5-input</code>",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IInputSuggestionItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-input</code> component allows the user to enter and edit text or numeric values in one line.\n<br>\nAdditionally, you can provide <code>suggestionItems</code>,\nthat are displayed in a popover right under the input.\n<br><br>\nThe text field can be editable or read-only (<code>readonly</code> property),\nand it can be enabled or disabled (<code>disabled</code> property).\nTo visualize semantic states, such as \"error\" or \"warning\", the <code>valueState</code> property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n<br><br>\n<b>Note:</b> If you are using the <code>ui5-input</code> as a single npm module,\ndon't forget to import the <code>InputSuggestions</code> module from\n\"@ui5/webcomponents/dist/features/InputSuggestions.js\"\nto enable the suggestions functionality.\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-input</code> provides the following keyboard shortcuts:\n<br>\n\n<ul>\n<li>[ESC] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.</li>\n<li>[ENTER] or [RETURN] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.</li>\n<li>[DOWN] - Focuses the next matching item in the suggestion list.</li>\n<li>[UP] - Focuses the previous matching item in the suggestion list.</li>\n<li>[HOME] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.</li>\n<li>[END] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.</li>\n<li>[PAGEUP] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.</li>\n<li>[PAGEDOWN] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.</li>\n</ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Input.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents/dist/features/InputSuggestions.js\";</code> (optional - for input suggestions support)",
                     "name": "Input",
@@ -8701,7 +8764,7 @@
                                     {
                                         "name": "IInputSuggestionItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Input.js"
                                     }
                                 ]
                             },
@@ -8716,7 +8779,7 @@
                                     {
                                         "name": "IIcon",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Icon.js"
                                     }
                                 ]
                             },
@@ -8930,7 +8993,7 @@
                                     {
                                         "name": "IInputSuggestionItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Input.js"
                                     }
                                 ]
                             },
@@ -9047,12 +9110,6 @@
                     }
                 }
             ]
-        },
-        {
-            "kind": "javascript-module",
-            "path": "dist/Interfaces.js",
-            "declarations": [],
-            "exports": []
         },
         {
             "kind": "javascript-module",
@@ -9283,9 +9340,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "{ expanded: \"true\" | \"false\", hasPopup: \"Dialog\" | \"Grid\" | \"ListBox\" | \"Menu\" | \"Tree\" }"
+                                "text": "AccessibilityAttributes",
+                                "references": [
+                                    {
+                                        "name": "AccessibilityAttributes",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Link.js"
+                                    }
+                                ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.1.0",
@@ -9779,7 +9843,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -9869,6 +9933,7 @@
                     },
                     "customElement": true,
                     "_ui5privacy": "public",
+                    "_ui5abstract": true,
                     "_ui5package": "@ui5/webcomponents",
                     "tagName": "ListItem"
                 }
@@ -9912,6 +9977,7 @@
                     },
                     "customElement": true,
                     "_ui5privacy": "public",
+                    "_ui5abstract": true,
                     "_ui5package": "@ui5/webcomponents",
                     "tagName": "ListItemBase"
                 }
@@ -10363,7 +10429,7 @@
                                     {
                                         "name": "IIcon",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Icon.js"
                                     }
                                 ]
                             },
@@ -10475,6 +10541,14 @@
             "path": "dist/MultiComboBox.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IMultiComboBoxItem",
+                    "description": "Interface for components that may be slotted inside a <code>ui5-multi-combobox</code> as items",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IMultiComboBoxItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-multi-combobox</code> component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.\n\nThe drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.\nThe options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.\n<h3>Structure</h3>\nThe <code>ui5-multi-combobox</code> consists of the following elements:\n<ul>\n<li> Tokenizer - a list of tokens with selected options.</li>\n<li> Input field - displays the selected option/s as token/s. Users can type to filter the list.</li>\n<li> Drop-down arrow - expands\\collapses the option list.</li>\n<li> Option list - the list of available options.</li>\n</ul>\n<h3>Keyboard Handling</h3>\n\nThe <code>ui5-multi-combobox</code> provides advanced keyboard handling.\n\n<h4>Picker</h4>\nIf the <code>ui5-multi-combobox</code> is focused,\nyou can open or close the drop-down by pressing <code>F4</code>, <code>ALT+UP</code> or <code>ALT+DOWN</code> keys.\nOnce the drop-down is opened, you can use the <code>UP</code> and <code>DOWN</code> arrow keys\nto navigate through the available options and select one by pressing the <code>Space</code> or <code>Enter</code> keys.\n<br>\n\n<h4>Tokens</h4>\n<ul>\n<li> Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available). </li>\n<li> Delete -  deletes the token and focuses the previous token. </li>\n<li> Backspace -  deletes the token and focus the next token. </li>\n</ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/MultiComboBox\";</code>",
                     "name": "MultiComboBox",
@@ -10495,7 +10569,7 @@
                                     {
                                         "name": "IMultiComboBoxItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/MultiComboBox.js"
                                     }
                                 ]
                             },
@@ -10511,7 +10585,7 @@
                                     {
                                         "name": "IIcon",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Icon.js"
                                     }
                                 ]
                             },
@@ -10753,7 +10827,7 @@
                                             {
                                                 "name": "IMultiComboBoxItem",
                                                 "package": "@ui5/webcomponents",
-                                                "module": "dist/Interfaces.js"
+                                                "module": "dist/MultiComboBox.js"
                                             }
                                         ]
                                     },
@@ -10963,7 +11037,7 @@
                                     {
                                         "name": "IToken",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/MultiInput.js"
                                     }
                                 ]
                             },
@@ -10979,7 +11053,7 @@
                                     {
                                         "name": "IInputSuggestionItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Input.js"
                                     }
                                 ]
                             },
@@ -10994,7 +11068,7 @@
                                     {
                                         "name": "IIcon",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Icon.js"
                                     }
                                 ]
                             },
@@ -11279,7 +11353,7 @@
                                     {
                                         "name": "IInputSuggestionItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Input.js"
                                     }
                                 ]
                             },
@@ -11567,11 +11641,12 @@
                     "tagName": "Option",
                     "customElement": true,
                     "_ui5privacy": "public",
+                    "_ui5abstract": true,
                     "_ui5implements": [
                         {
                             "name": "IOption",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Select.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -13634,6 +13709,14 @@
             "path": "dist/SegmentedButton.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "ISegmentedButtonItem",
+                    "description": "Interface for components that may be slotted inside <code>ui5-segmented-button</code> as items",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "ISegmentedButtonItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-segmented-button</code> shows a group of items. When the user clicks or taps\none of the items, it stays in a pressed state. It automatically resizes the items\nto fit proportionally within the component. When no width is set, the component uses the available width.\n<br><br>\n<b>Note:</b> There can be just one selected <code>item</code> at a time.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/SegmentedButton\";</code>",
                     "name": "SegmentedButton",
@@ -13648,7 +13731,7 @@
                                     {
                                         "name": "ISegmentedButtonItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/SegmentedButton.js"
                                     }
                                 ]
                             },
@@ -13696,7 +13779,7 @@
                                     {
                                         "name": "ISegmentedButtonItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/SegmentedButton.js"
                                     }
                                 ]
                             },
@@ -13715,7 +13798,7 @@
                                     {
                                         "name": "ISegmentedButtonItem",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/SegmentedButton.js"
                                     }
                                 ]
                             },
@@ -13749,7 +13832,7 @@
                                             {
                                                 "name": "ISegmentedButtonItem",
                                                 "package": "@ui5/webcomponents",
-                                                "module": "dist/Interfaces.js"
+                                                "module": "dist/SegmentedButton.js"
                                             }
                                         ]
                                     },
@@ -13765,7 +13848,7 @@
                                             {
                                                 "name": "ISegmentedButtonItem",
                                                 "package": "@ui5/webcomponents",
-                                                "module": "dist/Interfaces.js"
+                                                "module": "dist/SegmentedButton.js"
                                             }
                                         ]
                                     },
@@ -13967,9 +14050,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "{ expanded: \"true\" | \"false\", hasPopup: \"Dialog\" | \"Grid\" | \"ListBox\" | \"Menu\" | \"Tree\", controls: string}"
+                                "text": "AccessibilityAttributes",
+                                "references": [
+                                    {
+                                        "name": "AccessibilityAttributes",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Button.js"
+                                    }
+                                ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -14011,12 +14101,11 @@
                     "tagName": "SegmentedButtonItem",
                     "customElement": true,
                     "_ui5privacy": "public",
-                    "_ui5abstract": true,
                     "_ui5implements": [
                         {
                             "name": "ISegmentedButtonItem",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/SegmentedButton.js"
                         }
                     ],
                     "events": [
@@ -14077,6 +14166,14 @@
             "path": "dist/Select.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IOption",
+                    "description": "Interface for components that may be slotted inside <code>ui5-select</code> as options",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "IOption"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-select</code> component is used to create a drop-down list.\n\n<h3>Usage</h3>\n\nThere are two main usages of the <code>ui5-select></code>.\n\n1. With Option (<code>ui5-option</code>) web component:\n<br>\nThe available options of the Select are defined by using the Option component.\nThe Option comes with predefined design and layout, including <code>icon</code>, <code>text</code> and <code>additional-text</code>.\n<br><br>\n\n2. With SelectMenu (<code>ui5-select-menu</code>) and SelectMenuOption (<code>ui5-select-menu-option</code>) web components:\n<br>\nThe SelectMenu can be used as alternative to define the Select's dropdown\nand can be used via the <code>menu</code> property of the Select to reference SelectMenu by its ID.\nThe component gives the possibility to customize the Select's dropdown\nby slotting entirely custom options (via the SelectMenuOption component) and adding custom styles.\n\n<b>Note:</b> SelectMenu is a popover and placing it top-level in the HTML page is recommended,\nbecause some page styles (for example transitions) can misplace the SelectMenu.\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-select</code> provides advanced keyboard handling.\n<br>\n<ul>\n<li>[F4, ALT+UP, ALT+DOWN, SPACE, ENTER] - Opens/closes the drop-down.</li>\n<li>[UP, DOWN] - If the drop-down is closed - changes selection to the next or the previous option. If the drop-down is opened - moves focus to the next or the previous option.</li>\n<li>[SPACE, ENTER] - If the drop-down is opened - selects the focused option.</li>\n<li>[ESC] - Closes the drop-down without changing the selection.</li>\n<li>[HOME] - Navigates to first option</li>\n<li>[END] - Navigates to the last option</li>\n</ul>\n<br>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents/dist/Select\";</code>\n<br>\n<code>import \"@ui5/webcomponents/dist/Option\";</code> (comes with <code>ui5-select</code>)",
                     "name": "Select",
@@ -14091,7 +14188,7 @@
                                     {
                                         "name": "IOption",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Select.js"
                                     }
                                 ]
                             },
@@ -14238,7 +14335,7 @@
                                     {
                                         "name": "IOption",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Select.js"
                                     }
                                 ]
                             },
@@ -14272,7 +14369,7 @@
                                             {
                                                 "name": "IOption",
                                                 "package": "@ui5/webcomponents",
-                                                "module": "dist/Interfaces.js"
+                                                "module": "dist/Select.js"
                                             }
                                         ]
                                     },
@@ -14305,7 +14402,7 @@
                                             {
                                                 "name": "IOption",
                                                 "package": "@ui5/webcomponents",
-                                                "module": "dist/Interfaces.js"
+                                                "module": "dist/Select.js"
                                             }
                                         ]
                                     },
@@ -14382,7 +14479,7 @@
                                     {
                                         "name": "IOption",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Select.js"
                                     }
                                 ]
                             },
@@ -14447,7 +14544,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -14595,7 +14692,7 @@
                         {
                             "name": "IOption",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Select.js"
                         }
                     ],
                     "events": [
@@ -15236,7 +15333,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -15701,7 +15798,7 @@
                         {
                             "name": "IInputSuggestionItem",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Input.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -15854,7 +15951,7 @@
                         {
                             "name": "IInputSuggestionItem",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Input.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -16115,7 +16212,7 @@
                                     {
                                         "name": "ITab",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/TabContainer.js"
                                     }
                                 ]
                             },
@@ -16206,7 +16303,7 @@
                                         {
                                             "name": "ITab",
                                             "package": "@ui5/webcomponents",
-                                            "module": "dist/Interfaces.js"
+                                            "module": "dist/TabContainer.js"
                                         }
                                     ]
                                 }
@@ -16229,7 +16326,7 @@
                         {
                             "name": "ITab",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/TabContainer.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -16259,6 +16356,14 @@
             "path": "dist/TabContainer.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "ITab",
+                    "description": "Interface for components that may be slotted inside <code>ui5-tabcontainer</code> as items",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "ITab"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-tabcontainer</code> represents a collection of tabs with associated content.\nNavigation through the tabs changes the content display of the currently active content area.\nA tab can be labeled with text only, or icons with text.\n\n<h3>Structure</h3>\n\nThe <code>ui5-tabcontainer</code> can hold two types of entities:\n<ul>\n<li><code>ui5-tab</code> - contains all the information on an item (text and icon)</li>\n<li><code>ui5-tab-separator</code> - used to separate tabs with a line</li>\n</ul>\n\n<h3>Hierarchies</h3>\nMultiple sub tabs could be placed underneath one main tab. Nesting allows deeper hierarchies with indentations\nto indicate the level of each nested tab. When a tab has both sub tabs and own content its click area is split\nto allow the user to display the content or alternatively to expand / collapse the list of sub tabs.\n\n<h3>Keyboard Handling</h3>\n\n<h4>Fast Navigation</h4>\nThis component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n<br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/TabContainer\";</code>\n<br>\n<code>import \"@ui5/webcomponents/dist/Tab\";</code> (for <code>ui5-tab</code>)\n<br>\n<code>import \"@ui5/webcomponents/dist/TabSeparator\";</code> (for <code>ui5-tab-separator</code>)",
                     "name": "TabContainer",
@@ -16283,7 +16388,7 @@
                                     {
                                         "name": "ITab",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/TabContainer.js"
                                     }
                                 ]
                             },
@@ -16299,7 +16404,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -16315,7 +16420,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -16441,7 +16546,7 @@
                                     {
                                         "name": "ITab",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/TabContainer.js"
                                     }
                                 ]
                             },
@@ -16475,7 +16580,7 @@
                                             {
                                                 "name": "ITab",
                                                 "package": "@ui5/webcomponents",
-                                                "module": "dist/Interfaces.js"
+                                                "module": "dist/TabContainer.js"
                                             }
                                         ]
                                     },
@@ -16550,7 +16655,7 @@
                                         {
                                             "name": "ITab",
                                             "package": "@ui5/webcomponents",
-                                            "module": "dist/Interfaces.js"
+                                            "module": "dist/TabContainer.js"
                                         }
                                     ]
                                 }
@@ -16572,7 +16677,7 @@
                         {
                             "name": "ITab",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/TabContainer.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -16602,6 +16707,14 @@
             "path": "dist/Table.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "ITableRow",
+                    "description": "Interface for components that may be slotted inside a <code>ui5-table</code> as rows",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "ITableRow"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-table</code> component provides a set of sophisticated and convenient functions for responsive table design.\nIt provides a comprehensive set of features for displaying and dealing with vast amounts of data.\n<br><br>\nTo render the <code>Table</code> properly, the order of the <code>columns</code> should match with the\norder of the item <code>cells</code> in the <code>rows</code>.\n<br><br>\nDesktop and tablet devices are supported.\nOn tablets, special consideration should be given to the number of visible columns\nand rows due to the limited performance of some devices.\n\n<h3>Selection</h3>\nTo benefit from the selection mechanism of <code>ui5-table</code> component, you can use the available selection modes:\n<code>SingleSelect</code> and <code>MultiSelect</code>.\n<br>\nIn additition to the used mode, you can also specify the <code>ui5-table-row</code> type choosing between\n<code>Active</code> or <code>Inactive</code>.\n<br><br>\nIn <code>SingleSelect</code> mode, you can select both an <code>Active</code> and <code>Inactive</code> row via mouse or\nby pressing the <code>Space</code> or <code>Enter</code> keys.\n<br>\nIn <code>MultiSelect</code> mode, you can select both an <code>Active</code> and <code>Inactive</code> row by pressing the\n<code>Space</code> key when a row is on focus or via mouse click over the selection checkbox of the row.\nIn order to select all the available rows at once, you can use the selection checkbox presented in the table's header.\n<br><br>\n<b>Note:</b> Currently, when a column is shown as a pop-in, the visual indication for selection is not presented over it.\n\n<h3>Keyboard Handling</h3>\n\n<h4>Fast Navigation</h4>\nThis component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down /  Ctrl + Alt(Option) + Up</code>.\nIn order to use this functionality, you need to import the following module:\n<code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n<br><br>\nFurthermore, you can interact with <code>ui5-table</code> via the following keys.\n<br>\n\n<ul>\n<li>[F7] - If focus is on an interactive control inside an item, moves focus to the corresponding item.</li>\n<li>[CTRL]+[A] - Selects all items, if MultiSelect mode is enabled.</li>\n<li>[HOME]/[END] - Focuses the first/last item.</li>\n<li>[PAGEUP]/[PAGEDOWN] - Moves focus up/down by page size (20 items by default).</li>\n<li>[ALT]+[DOWN]/[UP] - Switches focus between header, last focused item, and More button (if applies) in either direction.</li>\n<li>[SHIFT]+[DOWN]/[UP] - Selects the next/previous item in a MultiSelect table, if the current item is selected (Range selection). Otherwise, deselects them (Range deselection).</li>\n<li>[SHIFT]+[HOME]/[END] - Range selection to the first/last item of the List.</li>\n<li>[CTRL]+[HOME]/[END] - Same behavior as HOME & END.</li>\n</ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Table.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents/dist/TableColumn.js\";</code> (for <code>ui5-table-column</code>)\n<br>\n<code>import \"@ui5/webcomponents/dist/TableRow.js\";</code> (for <code>ui5-table-row</code>)\n<br>\n<code>import \"@ui5/webcomponents/dist/TableCell.js\";</code> (for <code>ui5-table-cell</code>)",
                     "name": "Table",
@@ -16616,7 +16729,7 @@
                                     {
                                         "name": "ITableRow",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Table.js"
                                     }
                                 ]
                             },
@@ -18472,9 +18585,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "{ expanded: \"true\" | \"false\", hasPopup: \"Dialog\" | \"Grid\" | \"ListBox\" | \"Menu\" | \"Tree\", controls: string}"
+                                "text": "AccessibilityAttributes",
+                                "references": [
+                                    {
+                                        "name": "AccessibilityAttributes",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Button.js"
+                                    }
+                                ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -18603,7 +18723,7 @@
                                     {
                                         "name": "IIcon",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Icon.js"
                                     }
                                 ]
                             },
@@ -18668,7 +18788,7 @@
                         {
                             "name": "IToken",
                             "package": "@ui5/webcomponents",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/MultiInput.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents"
@@ -18915,9 +19035,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "{ expanded: \"true\" | \"false\", hasPopup: \"Dialog\" | \"Grid\" | \"ListBox\" | \"Menu\" | \"Tree\", controls: string}"
+                                "text": "AccessibilityAttributes",
+                                "references": [
+                                    {
+                                        "name": "AccessibilityAttributes",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ToolbarButton.js"
+                                    }
+                                ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5validator": "Object"
@@ -20160,7 +20287,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -20223,7 +20350,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -20489,7 +20616,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -22734,13 +22861,6 @@
                     "customElement": true,
                     "_ui5since": "1.0.0-rc.11",
                     "_ui5privacy": "public",
-                    "_ui5implements": [
-                        {
-                            "name": "IBar",
-                            "package": "@ui5/webcomponents-fiori",
-                            "module": "dist/Interfaces.js"
-                        }
-                    ],
                     "_ui5package": "@ui5/webcomponents-fiori"
                 }
             ],
@@ -23686,14 +23806,16 @@
         },
         {
             "kind": "javascript-module",
-            "path": "dist/Interfaces.js",
-            "declarations": [],
-            "exports": []
-        },
-        {
-            "kind": "javascript-module",
             "path": "dist/MediaGallery.js",
             "declarations": [
+                {
+                    "kind": "interface",
+                    "name": "IMediaGalleryItem",
+                    "description": "Interface for components that can be slotted inside <code>ui5-media-gallery</code> as items.",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents-fiori",
+                    "tagName": "IMediaGalleryItem"
+                },
                 {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-media-gallery</code> component allows the user to browse through multimedia items. Currently,\nthe supported items are images and videos. The items should be defined using the <code>ui5-media-gallery-item</code>\ncomponent.\n\nThe items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item\nis displayed in larger size.\n<br>\nThe component is responsive by default and adjusts the position of the menu with respect to viewport size,\nbut the application is able to further customize the layout via the provided API.\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-media-gallery</code> provides advanced keyboard handling.\n<br>\nWhen the thumbnails menu is focused the following keyboard\nshortcuts allow the user to navigate through the thumbnail items:\n<br>\n\n<ul>\n<li>[UP/DOWN] - Navigates up and down the items</li>\n<li>[HOME] - Navigates to first item</li>\n<li>[END] - Navigates to the last item</li>\n<li>[SPACE/ENTER] - Select an item</li>\n</ul>\n<br>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/MediaGallery\";</code>\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/MediaGalleryItem\";</code>",
@@ -23709,7 +23831,7 @@
                                     {
                                         "name": "IMediaGalleryItem",
                                         "package": "@ui5/webcomponents-fiori",
-                                        "module": "dist/MediaGalleryItem.js"
+                                        "module": "dist/MediaGallery.js"
                                     }
                                 ]
                             },
@@ -23950,7 +24072,7 @@
                         {
                             "name": "IMediaGalleryItem",
                             "package": "@ui5/webcomponents-fiori",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/MediaGallery.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents-fiori"
@@ -24061,6 +24183,7 @@
                     "tagName": "NotificationAction",
                     "customElement": true,
                     "_ui5privacy": "public",
+                    "_ui5abstract": true,
                     "_ui5package": "@ui5/webcomponents-fiori"
                 }
             ],
@@ -24867,6 +24990,14 @@
             "path": "dist/ProductSwitch.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IProductSwitchItem",
+                    "description": "Interface for components that may be slotted inside <code>ui5-product-switch</code> as items",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents-fiori",
+                    "tagName": "IProductSwitchItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-product-switch</code> is an SAP Fiori specific web component that is used in <code>ui5-shellbar</code>\nand allows the user to easily switch between products.\n<br><br>\n\n<h3>Keyboard Handling</h3>\nThe <code>ui5-product-switch</code> provides advanced keyboard handling.\nWhen focused, the user can use the following keyboard\nshortcuts in order to perform a navigation:\n<br>\n<ul>\n<li>[TAB] - Move focus to the next interactive element after the <code>ui5-product-switch</code></li>\n<li>[UP/DOWN] - Navigates up and down the items </li>\n<li>[LEFT/RIGHT] - Navigates left and right the items</li>\n</ul>\n<br>\n<br>\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/ProductSwitch.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/ProductSwitchItem.js\";</code> (for <code>ui5-product-switch-item</code>)",
                     "name": "ProductSwitch",
@@ -24881,7 +25012,7 @@
                                     {
                                         "name": "IProductSwitchItem",
                                         "package": "@ui5/webcomponents-fiori",
-                                        "module": "dist/ProductSwitchItem.js"
+                                        "module": "dist/ProductSwitch.js"
                                     }
                                 ]
                             },
@@ -25009,7 +25140,7 @@
                         {
                             "name": "IProductSwitchItem",
                             "package": "@ui5/webcomponents-fiori",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/ProductSwitch.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents-fiori"
@@ -25123,7 +25254,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -25504,6 +25635,22 @@
                                     "description": "DOM ref of the activated list item"
                                 }
                             ]
+                        },
+                        {
+                            "name": "search-button-click",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<ShellBarSearchButtonEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ShellBarSearchButtonEventDetail",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/ShellBar.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired, when the search button is activated.\n<b>Note:</b> You can prevent expanding/collapsing of the search field by calling <code>event.preventDefault()</code>.",
+                            "_ui5allowPreventDefault": true
                         }
                     ],
                     "superclass": {
@@ -26280,6 +26427,14 @@
             "path": "dist/Timeline.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "ITimelineItem",
+                    "description": "Interface for components that may be slotted inside <code>ui5-timeline</code> as items",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents-fiori",
+                    "tagName": "ITimelineItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-timeline</code> component shows entries (such as objects, events, or posts) in chronological order.\nA common use case is to provide information about changes to an object, or events related to an object.\nThese entries can be generated by the system (for example, value XY changed from A to B), or added manually.\nThere are two distinct variants of the timeline: basic and social. The basic timeline is read-only,\nwhile the social timeline offers a high level of interaction and collaboration, and is integrated within SAP Jam.",
                     "name": "Timeline",
@@ -26294,7 +26449,7 @@
                                     {
                                         "name": "ITimelineItem",
                                         "package": "@ui5/webcomponents-fiori",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Timeline.js"
                                     }
                                 ]
                             },
@@ -26462,7 +26617,7 @@
                         {
                             "name": "ITimelineItem",
                             "package": "@ui5/webcomponents-fiori",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/Timeline.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents-fiori"
@@ -26492,6 +26647,14 @@
             "path": "dist/UploadCollection.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "IUploadCollectionItem",
+                    "description": "Interface for components that may be slotted inside <code>ui5-upload-collection</code> as items",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents-fiori",
+                    "tagName": "IUploadCollectionItem"
+                },
+                {
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\nThis component allows you to represent files before uploading them to a server, with the help of <code>ui5-upload-collection-item</code>.\nIt also allows you to show already uploaded files.\n\n<h3>ES6 Module Import</h3>\n<code>import \"@ui5/webcomponents-fiori/dist/UploadCollection.js\";</code>\n<br>\n<code>import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";</code> (for <code>ui5-upload-collection-item</code>)",
                     "name": "UploadCollection",
@@ -26506,7 +26669,7 @@
                                     {
                                         "name": "IUploadCollectionItem",
                                         "package": "@ui5/webcomponents-fiori",
-                                        "module": "dist/UploadCollectionItem.js"
+                                        "module": "dist/UploadCollection.js"
                                     }
                                 ]
                             },
@@ -26712,7 +26875,7 @@
                                     {
                                         "name": "IButton",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/Interfaces.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
@@ -26947,7 +27110,7 @@
                         {
                             "name": "IUploadCollectionItem",
                             "package": "@ui5/webcomponents-fiori",
-                            "module": "dist/Interfaces.js"
+                            "module": "dist/UploadCollection.js"
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents-fiori"
@@ -27730,7 +27893,7 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "The ItemNavigation class manages the calculations to determine the correct \"tabindex\" for a group of related items inside a root component.\nImportant: ItemNavigation only does the calculations and does not change \"tabindex\" directly, this is a responsibility of the developer.\n\nThe keys that trigger ItemNavigation are:\n - Up/down\n - Left/right\n - Home/End\n\nUsage:\n1) Use the \"getItemsCallback\" constructor property to pass a callback to ItemNavigation, which, whenever called, will return the list of items to navigate among.\n\nEach item passed to ItemNavigation via \"getItemsCallback\" must be:\n - A) either a UI5Element with a \"_tabIndex\" property\n - B) or an Object with \"id\" and \"_tabIndex\" properties which represents a part of the root component's shadow DOM.\n   The \"id\" must be a valid ID within the shadow root of the component ItemNavigation operates on.\n   This object must not be a DOM object because, as said, ItemNavigation will not set \"tabindex\" on it. It must be a representation of a DOM object only\n   and the developer has the responsibility to update the \"tabindex\" in the component's DOM.\n - C) a combination of the above\n\nWhenever the user navigates with the keyboard, ItemNavigation will modify the \"_tabIndex\" properties of the items.\nIt is the items' responsibilities to re-render themselves and apply the correct value of \"tabindex\" (i.e. to map the \"_tabIndex\" ItemNavigation set to them to the \"tabindex\" property).\nIf the items of the ItemNavigation are UI5Elements themselves, this can happen naturally since they will be invalidated by their \"_tabIndex\" property.\nIf the items are Objects with \"id\" and \"_tabIndex\" however, it is the developer's responsibility to apply these and the easiest way is to have the root component invalidated by ItemNavigation.\nTo do so, set the \"affectedPropertiesNames\" constructor property to point to one or more of the root component's properties that need refreshing when \"_tabIndex\" is changed deeply.\n\n2) Call the \"setCurrentItem\" method of ItemNavigation whenever you want to change the current item.\nThis is most commonly required if the user for example clicks on an item and thus selects it directly.\nPass as the only argument to \"setCurrentItem\" the item that becomes current (must be one of the items, returned by \"getItemsCallback\").",
+                    "description": "The ItemNavigation class manages the calculations to determine the correct \"tabindex\" for a group of related items inside a root component.\nImportant: ItemNavigation only does the calculations and does not change \"tabindex\" directly, this is a responsibility of the developer.\n\nThe keys that trigger ItemNavigation are:\n - Up/down\n - Left/right\n - Home/End\n\nUsage:\n1) Use the \"getItemsCallback\" constructor property to pass a callback to ItemNavigation, which, whenever called, will return the list of items to navigate among.\n\nEach item passed to ItemNavigation via \"getItemsCallback\" must be:\n - A) either a UI5Element with a \"forcedTabIndex\" property\n - B) or an Object with \"id\" and \"forcedTabIndex\" properties which represents a part of the root component's shadow DOM.\n   The \"id\" must be a valid ID within the shadow root of the component ItemNavigation operates on.\n   This object must not be a DOM object because, as said, ItemNavigation will not set \"tabindex\" on it. It must be a representation of a DOM object only\n   and the developer has the responsibility to update the \"tabindex\" in the component's DOM.\n - C) a combination of the above\n\nWhenever the user navigates with the keyboard, ItemNavigation will modify the \"forcedTabIndex\" properties of the items.\nIt is the items' responsibilities to re-render themselves and apply the correct value of \"tabindex\" (i.e. to map the \"forcedTabIndex\" ItemNavigation set to them to the \"tabindex\" property).\nIf the items of the ItemNavigation are UI5Elements themselves, this can happen naturally since they will be invalidated by their \"forcedTabIndex\" property.\nIf the items are Objects with \"id\" and \"forcedTabIndex\" however, it is the developer's responsibility to apply these and the easiest way is to have the root component invalidated by ItemNavigation.\nTo do so, set the \"affectedPropertiesNames\" constructor property to point to one or more of the root component's properties that need refreshing when \"forcedTabIndex\" is changed deeply.\n\n2) Call the \"setCurrentItem\" method of ItemNavigation whenever you want to change the current item.\nThis is most commonly required if the user for example clicks on an item and thus selects it directly.\nPass as the only argument to \"setCurrentItem\" the item that becomes current (must be one of the items, returned by \"getItemsCallback\").",
                     "name": "ItemNavigation",
                     "members": [
                         {

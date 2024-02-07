@@ -3307,7 +3307,7 @@
                             "description": "Defines the design type of the component.",
                             "default": "\"Set3\"",
                             "privacy": "public",
-                            "_ui5since": "1.20",
+                            "_ui5since": "1.22.0",
                             "_ui5validator": "String"
                         },
                         {
@@ -3330,7 +3330,7 @@
                             "description": "Defines if the default state icon is shown.",
                             "default": "false",
                             "privacy": "public",
-                            "_ui5since": "1.20",
+                            "_ui5since": "1.22.0",
                             "_ui5validator": "Boolean"
                         },
                         {
@@ -3342,7 +3342,7 @@
                             "description": "Defines if the component is interactive (focusable and pressable).\n<br><b>Note:</b> The badge cannot be <code>interactive</code>\nwhen <code>design</code> property is <code>BadgeDesign.Set3</code>",
                             "default": "false",
                             "privacy": "public",
-                            "_ui5since": "1.20",
+                            "_ui5since": "1.22.0",
                             "_ui5validator": "Boolean"
                         },
                         {
@@ -3361,7 +3361,7 @@
                             "description": "Defines how the text of a component will be displayed when there is not enough space.\n<br><b>Note:</b> For option \"Normal\" the text will wrap and the\nwords will not be broken based on hyphenation.",
                             "default": "\"None\"",
                             "privacy": "public",
-                            "_ui5since": "1.20",
+                            "_ui5since": "1.22.0",
                             "_ui5validator": "WrappingType"
                         }
                     ],
@@ -3373,7 +3373,7 @@
                                 "text": "CustomEvent"
                             },
                             "description": "Fired when the user clicks on an interactive badge.\n<b>Note:</b> The event will be fired if the <code>interactive</code> property is <code>true</code>",
-                            "_ui5since": "1.20"
+                            "_ui5since": "1.22.0"
                         }
                     ],
                     "superclass": {
@@ -3897,7 +3897,7 @@
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -6061,7 +6061,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
                             "default": "\"Active\"",
                             "privacy": "public",
                             "_ui5validator": "ListItemType",
@@ -9349,7 +9349,7 @@
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.1.0",
@@ -9864,7 +9864,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
                             "default": "\"Active\"",
                             "privacy": "public",
                             "_ui5validator": "ListItemType"
@@ -14059,7 +14059,7 @@
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -15442,7 +15442,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
                             "default": "\"Active\"",
                             "privacy": "public",
                             "_ui5validator": "ListItemType",
@@ -18594,7 +18594,7 @@
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -19044,7 +19044,7 @@
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>Listbox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
+                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n<ul>\n\t\t<li><code>expanded</code>: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t\t<ul>\n\t\t\t<li><code>true</code></li>\n\t\t\t<li><code>false</code></li>\n\t\t</ul>\n\t\t</li>\n\t\t<li><code>hasPopup</code>: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t\t\t<ul>\n\t\t\t<li><code>Dialog</code></li>\n\t\t\t<li><code>Grid</code></li>\n\t\t\t<li><code>ListBox</code></li>\n\t\t\t<li><code>Menu</code></li>\n\t\t\t<li><code>Tree</code></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><code>controls</code>: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.</li>\n</ul>",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5validator": "Object"
@@ -20172,7 +20172,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
                             "default": "\"Active\"",
                             "privacy": "public",
                             "_ui5validator": "ListItemType",
@@ -20458,7 +20458,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
                             "default": "\"Active\"",
                             "privacy": "public",
                             "_ui5validator": "ListItemType",
@@ -20763,7 +20763,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
                             "default": "\"Active\"",
                             "privacy": "public",
                             "_ui5validator": "ListItemType",
@@ -22161,7 +22161,7 @@
                             "kind": "field",
                             "static": true,
                             "privacy": "public",
-                            "description": "Recommended to use when the item contains an image.<br>\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a square display area.",
+                            "description": "Recommended to use when the item contains an image.\n\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a square display area.",
                             "default": "Square",
                             "name": "Square",
                             "readonly": true
@@ -22170,7 +22170,7 @@
                             "kind": "field",
                             "static": true,
                             "privacy": "public",
-                            "description": "Recommended to use when the item contains video content.<br>\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a wide display area\n(stretched to fill all of the available width) for optimal user experiance.",
+                            "description": "Recommended to use when the item contains video content.\n\nWhen a thumbnail is selected, it makes the corresponding enlarged content appear in a wide display area\n(stretched to fill all of the available width) for optimal user experiance.",
                             "default": "Wide",
                             "name": "Wide",
                             "readonly": true
@@ -27003,7 +27003,7 @@
                                     }
                                 ]
                             },
-                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br>\n<b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
+                            "description": "Defines the visual indication and behavior of the list items.\nAvailable options are <code>Active</code> (by default), <code>Inactive</code>, <code>Detail</code> and <code>Navigation</code>.\n<br><br> <b>Note:</b> When set to <code>Active</code> or <code>Navigation</code>, the item will provide visual response upon press and hover,\nwhile with type <code>Inactive</code> and <code>Detail</code> - will not.",
                             "default": "\"Active\"",
                             "privacy": "public",
                             "_ui5validator": "ListItemType"

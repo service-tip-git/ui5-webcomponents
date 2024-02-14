@@ -845,6 +845,240 @@
         },
         {
             "kind": "javascript-module",
+            "path": "dist/types/CalendarLegendItemType.js",
+            "declarations": [
+                {
+                    "kind": "enum",
+                    "name": "CalendarLegendItemType",
+                    "description": "Enum for calendar legend items' types.",
+                    "_ui5privacy": "public",
+                    "_ui5since": "1.23.0",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Set when no type is set.",
+                            "default": "None",
+                            "name": "None",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Working\" item in the calendar legend.",
+                            "default": "Working",
+                            "name": "Working",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"NonWorking\" item in the calendar legend.",
+                            "default": "NonWorking",
+                            "name": "NonWorking",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type01\" item in the calendar legend.",
+                            "default": "Type01",
+                            "name": "Type01",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type02\" item in the calendar legend.",
+                            "default": "Type02",
+                            "name": "Type02",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type03\" item in the calendar legend.",
+                            "default": "Type03",
+                            "name": "Type03",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type04\" item in the calendar legend.",
+                            "default": "Type04",
+                            "name": "Type04",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type05\" item in the calendar legend.",
+                            "default": "Type05",
+                            "name": "Type05",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type06\" item in the calendar legend.",
+                            "default": "Type06",
+                            "name": "Type06",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type07\" item in the calendar legend.",
+                            "default": "Type07",
+                            "name": "Type07",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type08\" item in the calendar legend.",
+                            "default": "Type08",
+                            "name": "Type08",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type09\" item in the calendar legend.",
+                            "default": "Type09",
+                            "name": "Type09",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type10\" item in the calendar legend.",
+                            "default": "Type10",
+                            "name": "Type10",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type11\" item in the calendar legend.",
+                            "default": "Type11",
+                            "name": "Type11",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type12\" item in the calendar legend.",
+                            "default": "Type12",
+                            "name": "Type12",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type13\" item in the calendar legend.",
+                            "default": "Type13",
+                            "name": "Type13",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type14\" item in the calendar legend.",
+                            "default": "Type14",
+                            "name": "Type14",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type15\" item in the calendar legend.",
+                            "default": "Type15",
+                            "name": "Type15",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type16\" item in the calendar legend.",
+                            "default": "Type16",
+                            "name": "Type16",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type17\" item in the calendar legend.",
+                            "default": "Type17",
+                            "name": "Type17",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type18\" item in the calendar legend.",
+                            "default": "Type18",
+                            "name": "Type18",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type19\" item in the calendar legend.",
+                            "default": "Type19",
+                            "name": "Type19",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Represents the \"Type20\" item in the calendar legend.",
+                            "default": "Type20",
+                            "name": "Type20",
+                            "readonly": true
+                        }
+                    ],
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "CalendarLegendItemType"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "CalendarLegendItemType",
+                        "module": "dist/types/CalendarLegendItemType.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
             "path": "dist/types/CalendarPickersMode.js",
             "declarations": [],
             "exports": [
@@ -3980,6 +4214,22 @@
                     "name": "Calendar",
                     "slots": [
                         {
+                            "name": "calendarLegend",
+                            "description": "Defines the calendar legend of the component.",
+                            "_ui5since": "1.23.0",
+                            "_ui5type": {
+                                "text": "Array<CalendarLegend>",
+                                "references": [
+                                    {
+                                        "name": "CalendarLegend",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/CalendarLegend.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        },
+                        {
                             "name": "default",
                             "description": "Defines the selected date or dates (depending on the <code>selectionMode</code> property)\nfor this calendar as instances of <code>ui5-date</code>.",
                             "_ui5propertyName": "dates",
@@ -3990,6 +4240,22 @@
                                         "name": "CalendarDate",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/CalendarDate.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        },
+                        {
+                            "name": "specialDates",
+                            "description": "Defines the special dates, visually emphasized in the calendar.",
+                            "_ui5since": "1.23.0",
+                            "_ui5type": {
+                                "text": "Array<SpecialCalendarDate>",
+                                "references": [
+                                    {
+                                        "name": "SpecialCalendarDate",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/SpecialCalendarDate.js"
                                     }
                                 ]
                             },
@@ -4249,6 +4515,179 @@
                     "declaration": {
                         "name": "CalendarHeader",
                         "module": "dist/CalendarHeader.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/CalendarLegend.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-calendar-legend</code> component is designed for use within the <code>ui5-calendar</code> to display a legend.\nEach <code>ui5-calendar-legend-item</code> represents a unique date type, specifying its visual style\nand a corresponding textual label.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/CalendarLegend.js\";</code>",
+                    "name": "CalendarLegend",
+                    "slots": [
+                        {
+                            "name": "default",
+                            "description": "Defines the items of the component.",
+                            "_ui5propertyName": "items",
+                            "_ui5type": {
+                                "text": "Array<CalendarLegendItem>",
+                                "references": [
+                                    {
+                                        "name": "CalendarLegendItem",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/CalendarLegendItem.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        }
+                    ],
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "hideToday",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Hides the Today item in the legend.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "hideSelectedDay",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Hides the Selected day item in the legend.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "hideNonWorkingDay",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Hides the Non-Working day item in the legend.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "hideWorkingDay",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Hides the Working day item in the legend.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5validator": "Boolean"
+                        }
+                    ],
+                    "superclass": {
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base",
+                        "module": "dist/UI5Element.js"
+                    },
+                    "tagName": "CalendarLegend",
+                    "customElement": true,
+                    "_ui5since": "1.23.0",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "CalendarLegend",
+                        "module": "dist/CalendarLegend.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-calendar-legend",
+                    "declaration": {
+                        "name": "CalendarLegend",
+                        "module": "dist/CalendarLegend.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/CalendarLegendItem.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\n<h3>Usage</h3>\nThe <code>ui5-calendar-legend-item</code> is intended to be used within the <code>ui5-calendar-legend</code> component.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/CalendarLegendItem.js\";</code>",
+                    "name": "CalendarLegendItem",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "text",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text content of the Calendar Legend Item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "type",
+                            "type": {
+                                "text": "CalendarLegendItemType",
+                                "references": [
+                                    {
+                                        "name": "CalendarLegendItemType",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/CalendarLegendItemType.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines the type of the Calendar Legend Item.",
+                            "default": "\"None\"",
+                            "privacy": "public",
+                            "_ui5validator": "CalendarLegendItemType"
+                        }
+                    ],
+                    "superclass": {
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base",
+                        "module": "dist/UI5Element.js"
+                    },
+                    "tagName": "CalendarLegendItem",
+                    "customElement": true,
+                    "_ui5since": "1.23.0",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "CalendarLegendItem",
+                        "module": "dist/CalendarLegendItem.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-calendar-legend-item",
+                    "declaration": {
+                        "name": "CalendarLegendItem",
+                        "module": "dist/CalendarLegendItem.js"
                     }
                 }
             ]
@@ -12524,6 +12963,12 @@
                     "kind": "class",
                     "description": "<h3 class=\"comment-api-title\">Overview</h3>\nShows the progress of a process in a graphical way. To indicate the progress,\nthe inside of the component is filled with a color.\n\n<h3>Responsive Behavior</h3>\nYou can change the size of the Progress Indicator by changing its <code>width</code> or <code>height</code> CSS properties.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ProgressIndicator.js\";</code>",
                     "name": "ProgressIndicator",
+                    "cssParts": [
+                        {
+                            "description": "Used to style the remaining bar of the <code>ui5-progress-indicator</code>",
+                            "name": "_ui5remaining-bar"
+                        }
+                    ],
                     "members": [
                         {
                             "kind": "field",
@@ -15113,6 +15558,81 @@
         },
         {
             "kind": "javascript-module",
+            "path": "dist/SpecialCalendarDate.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-special-date</code> component defines a special calendar date to be used inside <code>ui5-calendar</code>,\nwhich is visually distinguished from the rest of the dates.",
+                    "name": "SpecialCalendarDate",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "type",
+                            "type": {
+                                "text": "CalendarLegendItemType",
+                                "references": [
+                                    {
+                                        "name": "CalendarLegendItemType",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/CalendarLegendItemType.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines the type of the special date.",
+                            "default": "\"None\"",
+                            "privacy": "public",
+                            "_ui5validator": "CalendarLegendItemType"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "value",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "The date formatted according to the <code>formatPattern</code> property\nof the <code>ui5-calendar</code> that hosts the component.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5validator": "String",
+                            "inheritedFrom": {
+                                "name": "CalendarDate",
+                                "module": "dist/CalendarDate.js"
+                            }
+                        }
+                    ],
+                    "superclass": {
+                        "name": "CalendarDate",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/CalendarDate.js"
+                    },
+                    "tagName": "SpecialCalendarDate",
+                    "customElement": true,
+                    "_ui5since": "1.23.0",
+                    "_ui5privacy": "public",
+                    "_ui5abstract": true,
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "SpecialCalendarDate",
+                        "module": "dist/SpecialCalendarDate.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-special-date",
+                    "declaration": {
+                        "name": "SpecialCalendarDate",
+                        "module": "dist/SpecialCalendarDate.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
             "path": "dist/SplitButton.js",
             "declarations": [
                 {
@@ -15730,6 +16250,41 @@
                                 "text": "CustomEvent"
                             },
                             "description": "Fired when the input operation has finished by pressing Enter or on focusout."
+                        },
+                        {
+                            "name": "value-state-change",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<StepInputValueStateChangeEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "StepInputValueStateChangeEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/StepInput.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5since": "1.23.0",
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "string"
+                                    },
+                                    "name": "valueState",
+                                    "_ui5privacy": "public",
+                                    "description": "The new <code>valueState</code> that will be set."
+                                },
+                                {
+                                    "type": {
+                                        "text": "boolean"
+                                    },
+                                    "name": "valid",
+                                    "_ui5privacy": "public",
+                                    "description": "Indicator if the value is in between the min and max value."
+                                }
+                            ]
                         }
                     ],
                     "superclass": {
@@ -27800,12 +28355,6 @@
         {
             "kind": "javascript-module",
             "path": "dist/config/NoConflict.js",
-            "declarations": [],
-            "exports": []
-        },
-        {
-            "kind": "javascript-module",
-            "path": "dist/config/RTL.js",
             "declarations": [],
             "exports": []
         },

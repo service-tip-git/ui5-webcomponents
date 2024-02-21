@@ -6550,6 +6550,22 @@
                         },
                         {
                             "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String",
+                            "inheritedFrom": {
+                                "name": "ListItem",
+                                "module": "dist/ListItem.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
                             "name": "selected",
                             "type": {
                                 "text": "boolean"
@@ -10341,6 +10357,18 @@
                         },
                         {
                             "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
                             "name": "selected",
                             "type": {
                                 "text": "boolean"
@@ -10808,6 +10836,18 @@
                             "privacy": "public",
                             "_ui5since": "1.7.0",
                             "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip for the menu item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String"
                         }
                     ],
                     "superclass": {
@@ -10838,6 +10878,21 @@
                     "declaration": {
                         "name": "MenuItem",
                         "module": "dist/MenuItem.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/MenuListItem.js",
+            "declarations": [],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "MenuListItem",
+                        "module": "dist/MenuListItem.js"
                     }
                 }
             ]
@@ -15110,6 +15165,22 @@
                         },
                         {
                             "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String",
+                            "inheritedFrom": {
+                                "name": "ListItem",
+                                "module": "dist/ListItem.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
                             "name": "selected",
                             "type": {
                                 "text": "boolean"
@@ -16005,6 +16076,22 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "ListItem",
+                                "module": "dist/ListItem.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "ListItem",
                                 "module": "dist/ListItem.js"
@@ -20777,6 +20864,22 @@
                         },
                         {
                             "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String",
+                            "inheritedFrom": {
+                                "name": "ListItem",
+                                "module": "dist/ListItem.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
                             "name": "selected",
                             "type": {
                                 "text": "boolean"
@@ -21056,6 +21159,22 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "ListItem",
+                                "module": "dist/ListItem.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "ListItem",
                                 "module": "dist/ListItem.js"
@@ -21361,6 +21480,22 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "ListItem",
+                                "module": "dist/ListItem.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "ListItem",
                                 "module": "dist/ListItem.js"
@@ -27593,6 +27728,18 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the text of the tooltip that would be displayed for the list item.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "1.23.0",
+                            "_ui5validator": "String"
                         },
                         {
                             "kind": "field",

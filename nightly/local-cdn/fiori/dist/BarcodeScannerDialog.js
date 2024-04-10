@@ -114,16 +114,14 @@ let BarcodeScannerDialog = BarcodeScannerDialog_1 = class BarcodeScannerDialog e
     _getUserPermission() {
         return navigator.mediaDevices.getUserMedia(defaultMediaConstraints);
     }
-    async _getDialog() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector("[ui5-dialog]");
+    _getDialog() {
+        return this.shadowRoot.querySelector("[ui5-dialog]");
     }
-    async _getVideoElement() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector(".ui5-barcode-scanner-dialog-video");
+    _getVideoElement() {
+        return this.shadowRoot.querySelector(".ui5-barcode-scanner-dialog-video");
     }
-    async _showDialog() {
-        this.dialog = await this._getDialog();
+    _showDialog() {
+        this.dialog = this._getDialog();
         this.dialog.show();
         this.open = true;
     }
@@ -136,13 +134,13 @@ let BarcodeScannerDialog = BarcodeScannerDialog_1 = class BarcodeScannerDialog e
     _startReader() {
         this._decodeFromCamera();
     }
-    async _resetReader() {
-        const videoElement = await this._getVideoElement();
+    _resetReader() {
+        const videoElement = this._getVideoElement();
         videoElement.pause();
         this._codeReader.reset();
     }
-    async _decodeFromCamera() {
-        const videoElement = await this._getVideoElement();
+    _decodeFromCamera() {
+        const videoElement = this._getVideoElement();
         this._codeReader.decodeFromVideoDevice(null, videoElement, (result, err) => {
             this.loading = false;
             if (result) {
@@ -174,8 +172,8 @@ BarcodeScannerDialog = BarcodeScannerDialog_1 = __decorate([
         tag: "ui5-barcode-scanner-dialog",
         languageAware: true,
         renderer: litRender,
-        staticAreaTemplate: BarcodeScannerDialogTemplate,
-        staticAreaStyles: [BarcodeScannerDialogCss],
+        template: BarcodeScannerDialogTemplate,
+        styles: [BarcodeScannerDialogCss],
         dependencies: [
             Dialog,
             BusyIndicator,

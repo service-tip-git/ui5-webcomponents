@@ -66,13 +66,13 @@ declare class BarcodeScannerDialog extends UI5Element {
      */
     _hasGetUserMedia(): boolean;
     _getUserPermission(): Promise<MediaStream>;
-    _getDialog(): Promise<Dialog>;
-    _getVideoElement(): Promise<HTMLVideoElement>;
-    _showDialog(): Promise<void>;
+    _getDialog(): Dialog;
+    _getVideoElement(): HTMLVideoElement;
+    _showDialog(): void;
     _closeDialog(): void;
     _startReader(): void;
-    _resetReader(): Promise<void>;
-    _decodeFromCamera(): Promise<void>;
+    _resetReader(): void;
+    _decodeFromCamera(): void;
     get _cancelButtonText(): string;
     get _busyIndicatorText(): string;
 }

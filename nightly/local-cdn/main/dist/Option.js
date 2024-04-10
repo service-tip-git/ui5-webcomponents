@@ -33,9 +33,6 @@ __decorate([
     property({ type: Boolean })
 ], Option.prototype, "selected", void 0);
 __decorate([
-    property({ type: Boolean })
-], Option.prototype, "disabled", void 0);
-__decorate([
     property()
 ], Option.prototype, "title", void 0);
 __decorate([

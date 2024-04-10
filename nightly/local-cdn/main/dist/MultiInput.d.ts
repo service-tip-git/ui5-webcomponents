@@ -103,6 +103,7 @@ declare class MultiInput extends Input {
     };
     get ariaRoleDescription(): string;
     get morePopoverOpener(): HTMLElement;
+    get shouldDisplayOnlyValueStateMessage(): boolean;
 }
 export default MultiInput;
 export type { IToken, MultiInputTokenDeleteEventDetail, MultiInputSuggestionItemSelectEventDetail, MultiInputSuggestionItemPreviewEventDetail, };

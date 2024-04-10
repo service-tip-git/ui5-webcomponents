@@ -5,7 +5,7 @@ import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNaviga
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import BreadcrumbsDesign from "./types/BreadcrumbsDesign.js";
-import BreadcrumbsSeparatorStyle from "./types/BreadcrumbsSeparatorStyle.js";
+import BreadcrumbsSeparator from "./types/BreadcrumbsSeparator.js";
 import BreadcrumbsItem from "./BreadcrumbsItem.js";
 import Link from "./Link.js";
 import type { LinkClickEventDetail } from "./Link.js";
@@ -64,7 +64,7 @@ declare class Breadcrumbs extends UI5Element {
      * @default "Slash"
      * @public
      */
-    separatorStyle: `${BreadcrumbsSeparatorStyle}`;
+    separators: `${BreadcrumbsSeparator}`;
     /**
      * Holds the number of items in the overflow.
      * @default 0
@@ -110,10 +110,10 @@ declare class Breadcrumbs extends UI5Element {
     _getTotalContentWidth(): number;
     _onLinkPress(e: CustomEvent<LinkClickEventDetail>): void;
     _onOverflowListItemSelect(e: CustomEvent<ListSelectionChangeEventDetail>): void;
-    _respPopover(): Promise<ResponsivePopover>;
-    _toggleRespPopover(): Promise<void>;
+    _respPopover(): ResponsivePopover;
+    _toggleRespPopover(): void;
     _closeRespPopover(): void;
-    _openRespPopover(): Promise<void>;
+    _openRespPopover(): void;
     _isItemVisible(item: BreadcrumbsItem): string | boolean;
     _hasVisibleContent(item: BreadcrumbsItem): string | boolean;
     _preprocessItems(): void;

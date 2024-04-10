@@ -252,11 +252,11 @@ declare class Wizard extends UI5Element {
     _adjustHeaderOverflow(): void;
     _isGroupAtStart(selectedStep: WizardTab): boolean;
     _isGroupAtEnd(selectedStep: WizardTab): boolean;
-    _showPopover(oDomTarget: WizardTab, isAtStart: boolean): Promise<void>;
-    _onGroupedTabClick(e: MouseEvent): Promise<void>;
+    _showPopover(oDomTarget: WizardTab, isAtStart: boolean): void;
+    _onGroupedTabClick(e: MouseEvent): void;
     _onOverflowStepButtonClick(e: MouseEvent): void;
-    _closeRespPopover(): Promise<void>;
-    _respPopover(): Promise<ResponsivePopover>;
+    _closeRespPopover(): void;
+    _respPopover(): ResponsivePopover;
     /**
      * Called upon `onScroll`.
      * Selects the closest step, based on the user scroll position.

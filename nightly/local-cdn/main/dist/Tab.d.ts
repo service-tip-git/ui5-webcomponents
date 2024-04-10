@@ -6,9 +6,17 @@ import "@ui5/webcomponents-icons/dist/alert.js";
 import "@ui5/webcomponents-icons/dist/sys-enter-2.js";
 import SemanticColor from "./types/SemanticColor.js";
 import ListItemType from "./types/ListItemType.js";
-import type { ITab } from "./TabContainer.js";
+import type TabSeparator from "./TabSeparator.js";
+import type { TabContainerStripInfo, TabContainerOverflowInfo } from "./TabContainer.js";
+import CustomListItem from "./CustomListItem.js";
 import TabInStripTemplate from "./generated/templates/TabInStripTemplate.lit.js";
 import TabInOverflowTemplate from "./generated/templates/TabInOverflowTemplate.lit.js";
+interface TabInStrip extends HTMLElement {
+    realTabReference: Tab;
+}
+interface TabInOverflow extends CustomListItem {
+    realTabReference: Tab;
+}
 /**
  * @class
  * The `ui5-tab` represents a selectable item inside a `ui5-tabcontainer`.
@@ -17,10 +25,9 @@ import TabInOverflowTemplate from "./generated/templates/TabInOverflowTemplate.l
  * @abstract
  * @constructor
  * @extends UI5Element
- * @implements {ITab}
  * @public
  */
-declare class Tab extends UI5Element implements ITab, ITabbable {
+declare class Tab extends UI5Element implements ITabbable {
     /**
      * The text to be displayed for the item.
      * @default ""
@@ -77,8 +84,7 @@ declare class Tab extends UI5Element implements ITab, ITabbable {
      */
     movable: boolean;
     forcedSelected: boolean;
-    realTabReference: Tab;
-    isTopLevelTab: boolean;
+    _isTopLevelTab: boolean;
     _selectedTabReference: Tab;
     /**
      * Holds the content associated with this tab.
@@ -91,11 +97,14 @@ declare class Tab extends UI5Element implements ITab, ITabbable {
      * **Note:** Use `ui5-tab` and `ui5-tab-separator` for the intended design.
      * @public
      */
-    subTabs: Array<ITab>;
-    isInline?: boolean;
-    forcedMixedMode?: boolean;
-    getElementInStrip?: () => ITab | null;
+    items: Array<Tab | TabSeparator>;
+    _isInline?: boolean;
+    _forcedMixedMode?: boolean;
+    _getElementInStrip?: () => HTMLElement | undefined;
     _individualSlot: string;
+    _forcedPosinset?: number;
+    _forcedSetsize?: number;
+    _forcedStyleInOverflow?: Record<string, any>;
     static i18nBundle: I18nBundle;
     set forcedTabIndex(val: string);
     get forcedTabIndex(): string;
@@ -111,16 +120,18 @@ declare class Tab extends UI5Element implements ITab, ITabbable {
     get _effectiveSlotName(): string;
     get _defaultSlotName(): "" | "disabled-slot";
     get hasOwnContent(): boolean;
+    receiveStripInfo({ getElementInStrip, posinset, setsize, isInline, isTopLevelTab, mixedMode, }: TabContainerStripInfo): void;
+    receiveOverflowInfo({ style }: TabContainerOverflowInfo): void;
     /**
      * Returns the DOM reference of the tab that is placed in the header.
      *
-     * **Note:** Tabs, placed in the `subTabs` slot of other tabs are not shown in the header. Calling this method on such tabs will return `null`.
+     * **Note:** Tabs, placed in the `items` slot of other tabs are not shown in the header. Calling this method on such tabs will return `undefined`.
      *
      * **Note:** If you need a DOM ref to the tab content please use the `getDomRef` method.
      * @public
      * @since 1.0.0-rc.16
      */
-    getTabInStripDomRef(): ITab | null;
+    getDomRefInStrip(): HTMLElement | undefined;
     getFocusDomRef(): HTMLElement | undefined;
     focus(focusOptions?: FocusOptions): Promise<void>;
     get isMixedModeTab(): boolean | undefined;
@@ -151,3 +162,4 @@ declare class Tab extends UI5Element implements ITab, ITabbable {
     _ondragend(e: DragEvent): void;
 }
 export default Tab;
+export type { TabInStrip, TabInOverflow, };

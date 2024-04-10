@@ -165,9 +165,6 @@ let Dialog = Dialog_1 = class Dialog extends Popup {
     get ariaDescribedByHeaderTextDraggableAndResizable() {
         return Dialog_1.i18nBundle.getText(DIALOG_HEADER_ARIA_DESCRIBEDBY_DRAGGABLE_RESIZABLE);
     }
-    get _displayProp() {
-        return "flex";
-    }
     /**
      * Determines if the header should be shown.
      */
@@ -478,6 +475,7 @@ Dialog = Dialog_1 = __decorate([
         tag: "ui5-dialog",
         template: DialogTemplate,
         styles: [
+            Popup.styles,
             browserScrollbarCSS,
             PopupsCommonCss,
             dialogCSS,

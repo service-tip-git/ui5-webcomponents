@@ -21,12 +21,12 @@ import { getFeature } from "@ui5/webcomponents-base/dist/FeaturesRegistry.js";
 import { isEscape } from "@ui5/webcomponents-base/dist/Keys.js";
 import Popover from "./Popover.js";
 import Icon from "./Icon.js";
+import "./types/PopoverHorizontalAlign.js";
 import "@ui5/webcomponents-icons/dist/error.js";
 import "@ui5/webcomponents-icons/dist/alert.js";
 import "@ui5/webcomponents-icons/dist/sys-enter-2.js";
 import "@ui5/webcomponents-icons/dist/information.js";
 import TextAreaTemplate from "./generated/templates/TextAreaTemplate.lit.js";
-import TextAreaPopoverTemplate from "./generated/templates/TextAreaPopoverTemplate.lit.js";
 import { VALUE_STATE_SUCCESS, VALUE_STATE_INFORMATION, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, TEXTAREA_CHARACTERS_LEFT, TEXTAREA_CHARACTERS_EXCEEDED, } from "./generated/i18n/i18n-defaults.js";
 // Styles
 import styles from "./generated/themes/TextArea.css.js";
@@ -165,16 +165,15 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
         }
     }
     async openPopover() {
-        this.valueStatePopover = await this._getPopover();
+        this.valueStatePopover = this._getPopover();
         this.valueStatePopover && await this.valueStatePopover.showAt(this.shadowRoot.querySelector(".ui5-textarea-root .ui5-textarea-wrapper"));
     }
-    async closePopover() {
-        this.valueStatePopover = await this._getPopover();
+    closePopover() {
+        this.valueStatePopover = this._getPopover();
         this.valueStatePopover && this.valueStatePopover.close();
     }
-    async _getPopover() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector("[ui5-popover]");
+    _getPopover() {
+        return this.shadowRoot.querySelector("[ui5-popover]");
     }
     _tokenizeText(value) {
         const tokenizedText = value.replace(/&/gm, "&amp;").replace(/"/gm, "&quot;").replace(/'/gm, "&apos;").replace(/</gm, "<")
@@ -288,7 +287,7 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
         return this.valueStateMessage.map(x => x.cloneNode(true));
     }
     get _valueStatePopoverHorizontalAlign() {
-        return this.effectiveDir !== "rtl" ? "Left" : "Right";
+        return this.effectiveDir !== "rtl" ? "Start" : "End";
     }
     /**
      * This method is relevant for sap_horizon theme only
@@ -386,11 +385,9 @@ TextArea = TextArea_1 = __decorate([
     customElement({
         tag: "ui5-textarea",
         languageAware: true,
-        styles: [browserScrollbarCSS, styles],
+        styles: [browserScrollbarCSS, styles, valueStateMessageStyles],
         renderer: litRender,
         template: TextAreaTemplate,
-        staticAreaTemplate: TextAreaPopoverTemplate,
-        staticAreaStyles: valueStateMessageStyles,
         dependencies: [Popover, Icon],
     })
     /**

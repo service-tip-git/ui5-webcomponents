@@ -4,7 +4,7 @@ import "@ui5/webcomponents-icons/dist/decline.js";
 import "@ui5/webcomponents-icons/dist/edit.js";
 import HighlightTypes from "./types/HighlightTypes.js";
 import ListItemType from "./types/ListItemType.js";
-import ListMode from "./types/ListMode.js";
+import ListSelectionMode from "./types/ListSelectionMode.js";
 import ListItemBase from "./ListItemBase.js";
 import type { IButton } from "./Button.js";
 import HasPopup from "./types/HasPopup.js";
@@ -145,7 +145,7 @@ declare abstract class ListItem extends ListItemBase {
      *
      */
     accessibleRole: string;
-    _mode: `${ListMode}`;
+    _selectionMode: `${ListSelectionMode}`;
     /**
      * Defines the availability and type of interactive popup element that can be triggered by the component on which the property is set.
      * @since 1.10.0
@@ -191,7 +191,7 @@ declare abstract class ListItem extends ListItemBase {
     get placeSelectionElementBefore(): boolean;
     get placeSelectionElementAfter(): boolean;
     get modeSingleSelect(): boolean;
-    get modeMultiSelect(): boolean;
+    get modeMultiple(): boolean;
     get modeDelete(): boolean;
     /**
      * Used in UploadCollectionItem

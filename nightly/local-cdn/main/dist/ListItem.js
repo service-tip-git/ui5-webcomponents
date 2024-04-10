@@ -16,7 +16,7 @@ import "@ui5/webcomponents-icons/dist/decline.js";
 import "@ui5/webcomponents-icons/dist/edit.js";
 import HighlightTypes from "./types/HighlightTypes.js";
 import ListItemType from "./types/ListItemType.js";
-import ListMode from "./types/ListMode.js";
+import ListSelectionMode from "./types/ListSelectionMode.js";
 import ListItemBase from "./ListItemBase.js";
 import RadioButton from "./RadioButton.js";
 import CheckBox from "./CheckBox.js";
@@ -58,7 +58,7 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
         };
     }
     onBeforeRendering() {
-        this.actionable = (this.type === ListItemType.Active || this.type === ListItemType.Navigation) && (this._mode !== ListMode.Delete);
+        this.actionable = (this.type === ListItemType.Active || this.type === ListItemType.Navigation) && (this._selectionMode !== ListSelectionMode.Delete);
     }
     onEnterDOM() {
         document.addEventListener("mouseup", this.deactivate);
@@ -169,25 +169,25 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
         return this.type === ListItemType.Inactive || this.type === ListItemType.Detail;
     }
     get placeSelectionElementBefore() {
-        return this._mode === ListMode.MultiSelect
-            || this._mode === ListMode.SingleSelectBegin;
+        return this._selectionMode === ListSelectionMode.Multiple
+            || this._selectionMode === ListSelectionMode.SingleStart;
     }
     get placeSelectionElementAfter() {
         return !this.placeSelectionElementBefore
-            && (this._mode === ListMode.SingleSelectEnd || this._mode === ListMode.Delete);
+            && (this._selectionMode === ListSelectionMode.SingleEnd || this._selectionMode === ListSelectionMode.Delete);
     }
     get modeSingleSelect() {
         return [
-            ListMode.SingleSelectBegin,
-            ListMode.SingleSelectEnd,
-            ListMode.SingleSelect,
-        ].includes(this._mode);
+            ListSelectionMode.SingleStart,
+            ListSelectionMode.SingleEnd,
+            ListSelectionMode.Single,
+        ].includes(this._selectionMode);
     }
-    get modeMultiSelect() {
-        return this._mode === ListMode.MultiSelect;
+    get modeMultiple() {
+        return this._selectionMode === ListSelectionMode.Multiple;
     }
     get modeDelete() {
-        return this._mode === ListMode.Delete;
+        return this._selectionMode === ListSelectionMode.Delete;
     }
     /**
      * Used in UploadCollectionItem
@@ -208,7 +208,7 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
         return this.type === ListItemType.Active;
     }
     get _ariaSelected() {
-        if (this.modeMultiSelect || this.modeSingleSelect) {
+        if (this.modeMultiple || this.modeSingleSelect) {
             return this.selected;
         }
         return undefined;
@@ -299,8 +299,8 @@ __decorate([
     property()
 ], ListItem.prototype, "accessibleRole", void 0);
 __decorate([
-    property({ type: ListMode, defaultValue: ListMode.None })
-], ListItem.prototype, "_mode", void 0);
+    property({ type: ListSelectionMode, defaultValue: ListSelectionMode.None })
+], ListItem.prototype, "_selectionMode", void 0);
 __decorate([
     property({ type: HasPopup, noAttribute: true })
 ], ListItem.prototype, "ariaHaspopup", void 0);

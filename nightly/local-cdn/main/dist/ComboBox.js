@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var ComboBox_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event.js";
@@ -32,7 +33,6 @@ import * as Filters from "./Filters.js";
 import { VALUE_STATE_SUCCESS, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_INFORMATION, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS_TITLE, SELECT_OPTIONS, LIST_ITEM_POSITION, LIST_ITEM_GROUP_HEADER, INPUT_CLEAR_ICON_ACC_NAME, } from "./generated/i18n/i18n-defaults.js";
 // Templates
 import ComboBoxTemplate from "./generated/templates/ComboBoxTemplate.lit.js";
-import ComboBoxPopoverTemplate from "./generated/templates/ComboBoxPopoverTemplate.lit.js";
 // Styles
 import ComboBoxCss from "./generated/themes/ComboBox.css.js";
 import ComboBoxPopoverCss from "./generated/themes/ComboBoxPopover.css.js";
@@ -173,7 +173,8 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
             e.stopImmediatePropagation();
             return;
         }
-        if (!(this.shadowRoot.contains(toBeFocused)) && (this.staticAreaItem !== e.relatedTarget)) {
+        const popover = this.shadowRoot.querySelector("[ui5-responsive-popover]");
+        if (!(this.getDomRef().contains(toBeFocused)) && (popover !== e.relatedTarget)) {
             this.focused = false;
             !isPhone() && this._closeRespPopover(e);
         }
@@ -224,8 +225,8 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         (await this._getValueStatePopover())?.close();
     }
     async _getValueStatePopover() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        const popover = staticAreaItem.querySelector(".ui5-valuestatemessage-popover");
+        await renderFinished();
+        const popover = this.shadowRoot.querySelector(".ui5-valuestatemessage-popover");
         // backward compatibility
         // rework all methods to work with async getters
         this.valueStatePopover = popover;
@@ -672,8 +673,8 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         return isPhone() ? this.responsivePopover.querySelector("[ui5-input]").shadowRoot.querySelector("input") : this.shadowRoot.querySelector("[inner-input]");
     }
     async _getPicker() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        const picker = staticAreaItem.querySelector("[ui5-responsive-popover]");
+        await renderFinished();
+        const picker = this.shadowRoot.querySelector("[ui5-responsive-popover]");
         // backward compatibility
         // rework all methods to work with async getters
         this.responsivePopover = picker;
@@ -731,7 +732,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         return !this.valueStateMessage.length && this.hasValueStateText;
     }
     get _valueStatePopoverHorizontalAlign() {
-        return this.effectiveDir !== "rtl" ? PopoverHorizontalAlign.Left : PopoverHorizontalAlign.Right;
+        return this.effectiveDir !== "rtl" ? PopoverHorizontalAlign.Start : PopoverHorizontalAlign.End;
     }
     /**
      * This method is relevant for sap_horizon theme only
@@ -771,6 +772,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
                 "min-width": `${this.offsetWidth || 0}px`,
                 "max-width": (this.offsetWidth / remSizeInPx) > 40 ? `${this.offsetWidth}px` : "40rem",
             },
+            popoverValueStateMessage: {},
         };
     }
     get classes() {
@@ -862,15 +864,14 @@ ComboBox = ComboBox_1 = __decorate([
         tag: "ui5-combobox",
         languageAware: true,
         renderer: litRender,
-        styles: ComboBoxCss,
-        staticAreaStyles: [
+        styles: [
+            ComboBoxCss,
             ResponsivePopoverCommonCss,
             ValueStateMessageCss,
             ComboBoxPopoverCss,
             SuggestionsCss,
         ],
         template: ComboBoxTemplate,
-        staticAreaTemplate: ComboBoxPopoverTemplate,
         dependencies: [
             ComboBoxItem,
             Icon,

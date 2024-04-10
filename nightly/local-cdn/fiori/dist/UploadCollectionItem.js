@@ -43,7 +43,6 @@ import UploadCollectionItemCss from "./generated/themes/UploadCollectionItem.css
  * @constructor
  * @extends ListItem
  * @public
- * @implements {IUploadCollectionItem}
  * @slot {Node[]} default - Hold the description of the `ui5-upload-collection-item`. Will be shown below the file name.
  * @since 1.0.0-rc.7
  */
@@ -161,12 +160,6 @@ let UploadCollectionItem = UploadCollectionItem_1 = class UploadCollectionItem e
                 "ui5-uci-root-uploading": this.uploadState === UploadState.Uploading,
             },
         };
-    }
-    /**
-     * @override
-     */
-    get renderUploadCollectionDeleteButton() {
-        return !this.hideDeleteButton;
     }
     get _fileNameWithoutExtension() {
         return this.fileName.substring(0, this.fileName.length - this._fileExtension.length);

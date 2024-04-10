@@ -1,6 +1,5 @@
 import { registerFeature } from "../FeaturesRegistry.js";
 import { setTheme } from "../config/Theme.js";
-import { getCurrentZIndex } from "../util/PopupUtils.js";
 class OpenUI5Support {
     static isAtLeastVersion116() {
         const version = window.sap.ui.version;
@@ -20,7 +19,7 @@ class OpenUI5Support {
         return new Promise(resolve => {
             window.sap.ui.require(["sap/ui/core/Core"], async (Core) => {
                 const callback = () => {
-                    let deps = ["sap/ui/core/Popup", "sap/ui/core/LocaleData"];
+                    let deps = ["sap/ui/core/LocaleData"];
                     if (OpenUI5Support.isAtLeastVersion116()) { // for versions since 1.116.0 and onward, use the modular core
                         deps = [
                             ...deps,
@@ -31,10 +30,7 @@ class OpenUI5Support {
                             "sap/ui/core/date/CalendarUtils",
                         ];
                     }
-                    window.sap.ui.require(deps, (Popup) => {
-                        Popup.setInitialZIndex(getCurrentZIndex());
-                        resolve();
-                    });
+                    window.sap.ui.require(deps, resolve);
                 };
                 if (OpenUI5Support.isAtLeastVersion116()) {
                     await Core.ready();
@@ -131,23 +127,6 @@ class OpenUI5Support {
             return false;
         }
         return !!link.href.match(/\/css(-|_)variables\.css/);
-    }
-    static getNextZIndex() {
-        if (!OpenUI5Support.isOpenUI5Detected()) {
-            return;
-        }
-        const Popup = window.sap.ui.require("sap/ui/core/Popup");
-        if (!Popup) {
-            console.warn(`The OpenUI5Support feature hasn't been initialized properly. Make sure you import the "@ui5/webcomponents-base/dist/features/OpenUI5Support.js" module before all components' modules.`); // eslint-disable-line
-        }
-        return Popup.getNextZIndex();
-    }
-    static setInitialZIndex() {
-        if (!OpenUI5Support.isOpenUI5Detected()) {
-            return;
-        }
-        const Popup = window.sap.ui.require("sap/ui/core/Popup");
-        Popup.setInitialZIndex(getCurrentZIndex());
     }
 }
 registerFeature("OpenUI5Support", OpenUI5Support);

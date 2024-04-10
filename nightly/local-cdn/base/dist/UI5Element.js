@@ -4,11 +4,9 @@ import merge from "./thirdparty/merge.js";
 import { boot } from "./Boot.js";
 import UI5ElementMetadata from "./UI5ElementMetadata.js";
 import EventProvider from "./EventProvider.js";
-import getSingletonElementInstance from "./util/getSingletonElementInstance.js";
-import StaticAreaItem from "./StaticAreaItem.js";
 import updateShadowRoot from "./updateShadowRoot.js";
 import { shouldIgnoreCustomElement } from "./IgnoreCustomElements.js";
-import { renderDeferred, renderImmediately, cancelRender } from "./Render.js";
+import { renderDeferred, renderImmediately, cancelRender, } from "./Render.js";
 import { registerTag, isTagRegistered, recordTagRegistrationFailure } from "./CustomElementsRegistry.js";
 import { observeDOMNode, unobserveDOMNode } from "./DOMObserver.js";
 import { skipOriginalEvent } from "./config/NoConflict.js";
@@ -18,7 +16,6 @@ import isValidPropertyName from "./util/isValidPropertyName.js";
 import { getSlotName, getSlottedNodesList } from "./util/SlotsHelper.js";
 import arraysAreEqual from "./util/arraysAreEqual.js";
 import { markAsRtlAware } from "./locale/RTLAwareRegistry.js";
-import preloadLinks from "./theming/preloadLinks.js";
 import executeTemplate from "./renderer/executeTemplate.js";
 let autoId = 0;
 const elementTimeouts = new Map();
@@ -39,6 +36,22 @@ function _invalidate(changeInfo) {
     this._changedState.push(changeInfo);
     renderDeferred(this);
     this._invalidationEventProvider.fireEvent("invalidate", { ...changeInfo, target: this });
+}
+/**
+ * looks up a property descsriptor including in the prototype chain
+ * @param proto the starting prototype
+ * @param name the property to look for
+ * @returns the property descriptor if found directly or in the prototype chaing, undefined if not found
+ */
+function getPropertyDescriptor(proto, name) {
+    do {
+        const descriptor = Object.getOwnPropertyDescriptor(proto, name);
+        if (descriptor) {
+            return descriptor;
+        }
+        // go up the prototype chain
+        proto = Object.getPrototypeOf(proto);
+    } while (proto && proto !== HTMLElement.prototype);
 }
 /**
  * @class
@@ -68,7 +81,8 @@ class UI5Element extends HTMLElement {
         this._state = { ...ctor.getMetadata().getInitialState() };
         this._upgradeAllProperties();
         if (ctor._needsShadowDOM()) {
-            this.attachShadow({ mode: "open" });
+            const defaultOptions = { mode: "open" };
+            this.attachShadow({ ...defaultOptions, ...ctor.getMetadata().getShadowRootOptions() });
         }
     }
     /**
@@ -85,10 +99,6 @@ class UI5Element extends HTMLElement {
     }
     render() {
         const template = this.constructor.template;
-        return executeTemplate(template, this);
-    }
-    renderStatic() {
-        const template = this.constructor.staticAreaTemplate;
         return executeTemplate(template, this);
     }
     /**
@@ -130,9 +140,6 @@ class UI5Element extends HTMLElement {
         if (this._fullyConnected) {
             this.onExitDOM();
             this._fullyConnected = false;
-        }
-        if (this.staticAreaItem && this.staticAreaItem.parentElement) {
-            this.staticAreaItem.parentElement.removeChild(this.staticAreaItem);
         }
         cancelRender(this);
     }
@@ -510,9 +517,9 @@ class UI5Element extends HTMLElement {
      *   1) children: immediate children (HTML elements or text nodes) were added, removed or reordered in the slot
      *   2) textcontent: text nodes in the slot changed value (or nested text nodes were added or changed value). Can only trigger for slots of "type: Node"
      *   3) slotchange: a slot element, slotted inside that slot had its "slotchange" event listener called. This practically means that transitively slotted children changed.
-     *      Can only trigger if the child of a slot is a slot element itself.
+     *	  Can only trigger if the child of a slot is a slot element itself.
      *   4) childchange: indicates that a UI5Element child in that slot was invalidated and in turn invalidated the component.
-     *      Can only trigger for slots with "invalidateOnChildChange" metadata descriptor
+     *	  Can only trigger for slots with "invalidateOnChildChange" metadata descriptor
      *
      *  - newValue: the new value of the property (for type="property" only)
      *
@@ -563,9 +570,6 @@ class UI5Element extends HTMLElement {
         if (ctor._needsShadowDOM()) {
             updateShadowRoot(this);
         }
-        if (this.staticAreaItem) {
-            this.staticAreaItem.update();
-        }
         // Safari requires that children get the slot attribute only after the slot tags have been rendered in the shadow DOM
         if (hasIndividualSlots) {
             this._assignIndividualSlotsToChildren();
@@ -605,11 +609,7 @@ class UI5Element extends HTMLElement {
         if (!this.shadowRoot || this.shadowRoot.children.length === 0) {
             return;
         }
-        const children = [...this.shadowRoot.children].filter(child => !["link", "style"].includes(child.localName));
-        if (children.length !== 1) {
-            console.warn(`The shadow DOM for ${this.constructor.getMetadata().getTag()} does not have a top level element, the getDomRef() method might not work as expected`); // eslint-disable-line
-        }
-        return children[0];
+        return this.shadowRoot.children[0];
     }
     /**
      * Returns the DOM Element marked with "data-sap-focus-ref" inside the template.
@@ -733,6 +733,13 @@ class UI5Element extends HTMLElement {
         return {};
     }
     /**
+     * Returns the component accessibility info.
+     * @private
+     */
+    get accessibilityInfo() {
+        return {};
+    }
+    /**
      * Do not override this method in derivatives of UI5Element, use metadata properties instead
      * @private
      */
@@ -744,28 +751,6 @@ class UI5Element extends HTMLElement {
      */
     static _needsShadowDOM() {
         return !!this.template || Object.prototype.hasOwnProperty.call(this.prototype, "render");
-    }
-    /**
-     * @private
-     */
-    static _needsStaticArea() {
-        return !!this.staticAreaTemplate || Object.prototype.hasOwnProperty.call(this.prototype, "renderStatic");
-    }
-    /**
-     * @public
-     */
-    getStaticAreaItemDomRef() {
-        if (!this.constructor._needsStaticArea()) {
-            throw new Error("This component does not use the static area");
-        }
-        if (!this.staticAreaItem) {
-            this.staticAreaItem = StaticAreaItem.createInstance();
-            this.staticAreaItem.setOwnerElement(this);
-        }
-        if (!this.staticAreaItem.parentElement) {
-            getSingletonElementInstance("ui5-static-area").appendChild(this.staticAreaItem);
-        }
-        return this.staticAreaItem.getDomRef();
     }
     /**
      * @private
@@ -791,8 +776,25 @@ class UI5Element extends HTMLElement {
             if (propData.multiple && propData.defaultValue) {
                 throw new Error(`Cannot set a default value for property "${prop}". All multiple properties are empty arrays by default.`);
             }
+            const descriptor = getPropertyDescriptor(proto, prop);
+            // if the decorator is on a setter, proxy the new setter to it
+            let origSet;
+            if (descriptor?.set) {
+                // eslint-disable-next-line @typescript-eslint/unbound-method
+                origSet = descriptor.set;
+            }
+            // if the decorator is on a setter, there will be a corresponding getter - proxy the new getter to it
+            let origGet;
+            if (descriptor?.get) {
+                // eslint-disable-next-line @typescript-eslint/unbound-method
+                origGet = descriptor.get;
+            }
             Object.defineProperty(proto, prop, {
                 get() {
+                    // proxy the getter to the original accessor if there was one
+                    if (origGet) {
+                        return origGet.call(this);
+                    }
                     if (this._state[prop] !== undefined) {
                         return this._state[prop];
                     }
@@ -817,7 +819,7 @@ class UI5Element extends HTMLElement {
                     value = metadataCtor.validatePropertyValue(value, propData);
                     const propertyType = propData.type;
                     let propertyValidator = propData.validator;
-                    const oldState = this._state[prop];
+                    const oldState = origGet ? origGet.call(this) : this._state[prop];
                     if (propertyType && propertyType.isDataTypeClass) {
                         propertyValidator = propertyType;
                     }
@@ -831,7 +833,13 @@ class UI5Element extends HTMLElement {
                         isDifferent = oldState !== value;
                     }
                     if (isDifferent) {
-                        this._state[prop] = value;
+                        // if the decorator is on a setter, use it for storage
+                        if (origSet) {
+                            origSet.call(this, value);
+                        }
+                        else {
+                            this._state[prop] = value;
+                        }
                         _invalidate.call(this, {
                             type: "property",
                             name: prop,
@@ -864,13 +872,6 @@ class UI5Element extends HTMLElement {
                 });
             }
         }
-    }
-    /**
-     * Returns the Static Area CSS for this UI5 Web Component Class
-     * @protected
-     */
-    static get staticAreaStyles() {
-        return "";
     }
     /**
      * Returns an array with the dependencies for this UI5 Web Component, which could be:
@@ -928,7 +929,6 @@ class UI5Element extends HTMLElement {
             this._generateAccessors();
             registerTag(tag);
             customElements.define(tag, this);
-            preloadLinks(this);
         }
         return this;
     }
@@ -969,5 +969,5 @@ const instanceOfUI5Element = (object) => {
     return "isUI5Element" in object;
 };
 export default UI5Element;
-export { instanceOfUI5Element };
+export { instanceOfUI5Element, };
 //# sourceMappingURL=UI5Element.js.map

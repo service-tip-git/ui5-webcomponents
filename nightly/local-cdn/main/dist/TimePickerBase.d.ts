@@ -82,13 +82,13 @@ declare class TimePickerBase extends UI5Element {
      * @public
      * @returns Resolves when the picker is open
      */
-    openPicker(): Promise<void>;
+    openPicker(): void;
     /**
      * Closes the picker
      * @public
      * @returns Resolves when the picker is closed
      */
-    closePicker(): Promise<void>;
+    closePicker(): void;
     togglePicker(): void;
     /**
      * Checks if the picker is open
@@ -97,19 +97,19 @@ declare class TimePickerBase extends UI5Element {
     isOpen(): boolean;
     submitPickers(): void;
     onResponsivePopoverAfterClose(): void;
-    onResponsivePopoverAfterOpen(): Promise<void>;
+    onResponsivePopoverAfterOpen(): void;
     /**
      * Opens the Inputs popover.
      * @private
      * @returns Resolves when the Inputs popover is open
      */
-    openInputsPopover(): Promise<void>;
+    openInputsPopover(): void;
     /**
      * Closes the Inputs popover
      * @private
      * @returns Resolves when the Inputs popover is closed
      */
-    closeInputsPopover(): Promise<void>;
+    closeInputsPopover(): void;
     toggleInputsPopover(): void;
     /**
      * Checks if the inputs popover is open
@@ -117,7 +117,7 @@ declare class TimePickerBase extends UI5Element {
      */
     isInputsPopoverOpen(): boolean;
     submitInputsPopover(): void;
-    onInputsPopoverAfterOpen(): Promise<void>;
+    onInputsPopoverAfterOpen(): void;
     onInputsPopoverAfterClose(): void;
     _handleInputClick(evt: MouseEvent): Promise<void>;
     _updateValueAndFireEvents(value: string, normalizeValue: boolean, eventsNames: Array<string>): void;
@@ -126,8 +126,8 @@ declare class TimePickerBase extends UI5Element {
     _handleInputLiveChange(e: CustomEvent): void;
     _canOpenPicker(): boolean;
     _canOpenInputsPopover(): boolean;
-    _getPopover(): Promise<ResponsivePopover>;
-    _getInputsPopover(): Promise<Popover>;
+    _getPopover(): ResponsivePopover;
+    _getInputsPopover(): Popover;
     _getInput(): Input;
     _getInputField(): Promise<HTMLInputElement | Input | null>;
     _onkeydown(e: KeyboardEvent): void;
@@ -161,7 +161,7 @@ declare class TimePickerBase extends UI5Element {
      * Hides mobile device keyboard by temporary setting the input to readonly state.
      */
     _hideMobileKeyboard(): void;
-    _onfocusin(evt: FocusEvent): Promise<void>;
+    _onfocusin(evt: FocusEvent): void;
     _oninput(evt: CustomEvent): void;
     get submitButtonLabel(): string;
     get cancelButtonLabel(): string;

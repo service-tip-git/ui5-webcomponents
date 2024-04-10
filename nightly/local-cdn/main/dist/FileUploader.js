@@ -22,7 +22,6 @@ import Popover from "./Popover.js";
 import Icon from "./Icon.js";
 // Template
 import FileUploaderTemplate from "./generated/templates/FileUploaderTemplate.lit.js";
-import FileUploaderPopoverTemplate from "./generated/templates/FileUploaderPopoverTemplate.lit.js";
 // Styles
 import FileUploaderCss from "./generated/themes/FileUploader.css.js";
 import ResponsivePopoverCommonCss from "./generated/themes/ResponsivePopoverCommon.css.js";
@@ -157,21 +156,20 @@ let FileUploader = FileUploader_1 = class FileUploader extends UI5Element {
             this.closeValueStatePopover();
         }
     }
-    async openValueStatePopover() {
-        const popover = await this._getPopover();
+    openValueStatePopover() {
+        const popover = this._getPopover();
         if (popover) {
             popover.showAt(this);
         }
     }
-    async closeValueStatePopover() {
-        const popover = await this._getPopover();
+    closeValueStatePopover() {
+        const popover = this._getPopover();
         if (popover) {
             popover.close();
         }
     }
-    async _getPopover() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector(".ui5-valuestatemessage-popover");
+    _getPopover() {
+        return this.shadowRoot.querySelector(".ui5-valuestatemessage-popover");
     }
     /**
      * in case when the component is not placed in the DOM, return empty FileList, like native input would do
@@ -304,10 +302,12 @@ FileUploader = FileUploader_1 = __decorate([
         tag: "ui5-file-uploader",
         languageAware: true,
         renderer: litRender,
-        styles: FileUploaderCss,
+        styles: [
+            FileUploaderCss,
+            ResponsivePopoverCommonCss,
+            ValueStateMessageCss,
+        ],
         template: FileUploaderTemplate,
-        staticAreaTemplate: FileUploaderPopoverTemplate,
-        staticAreaStyles: [ResponsivePopoverCommonCss, ValueStateMessageCss],
         dependencies: [
             Input,
             Popover,

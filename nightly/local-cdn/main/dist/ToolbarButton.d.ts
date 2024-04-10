@@ -104,7 +104,6 @@ declare class ToolbarButton extends ToolbarItem {
      * @public
      */
     width?: string;
-    static get staticAreaStyles(): import("@ui5/webcomponents-base/dist/types.js").StyleData;
     get styles(): {
         width: string | undefined;
         display: string;

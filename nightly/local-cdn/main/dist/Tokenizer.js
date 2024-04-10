@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var Tokenizer_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event.js";
@@ -25,7 +26,6 @@ import Title from "./Title.js";
 import Button from "./Button.js";
 import StandardListItem from "./StandardListItem.js";
 import TokenizerTemplate from "./generated/templates/TokenizerTemplate.lit.js";
-import TokenizerPopoverTemplate from "./generated/templates/TokenizerPopoverTemplate.lit.js";
 import { MULTIINPUT_SHOW_MORE_TOKENS, TOKENIZER_ARIA_LABEL, TOKENIZER_POPOVER_REMOVE, TOKENIZER_ARIA_CONTAIN_TOKEN, TOKENIZER_ARIA_CONTAIN_ONE_TOKEN, TOKENIZER_ARIA_CONTAIN_SEVERAL_TOKENS, TOKENIZER_SHOW_ALL_ITEMS, } from "./generated/i18n/i18n-defaults.js";
 // Styles
 import TokenizerCss from "./generated/themes/Tokenizer.css.js";
@@ -61,6 +61,7 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
             getItemsCallback: this._getVisibleTokens.bind(this),
         });
         this._scrollEnablement = new ScrollEnablement(this);
+        this._isOpen = false;
     }
     onBeforeRendering() {
         this._tokensCount = this._getTokens().length;
@@ -85,6 +86,7 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
     }
     async openMorePopover() {
         (await this.getPopover()).showAt(this.morePopoverOpener || this);
+        this._isOpen = true;
     }
     _getTokens() {
         return this.getSlottedNodes("tokens");
@@ -405,6 +407,7 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
     }
     async closeMorePopover() {
         (await this.getPopover()).close(false, false, true);
+        this._isOpen = false;
     }
     get _nMoreText() {
         if (!this._nMoreCount) {
@@ -546,8 +549,8 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
         Tokenizer_1.i18nBundle = await getI18nBundle("@ui5/webcomponents");
     }
     async getPopover() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector("[ui5-responsive-popover]");
+        await renderFinished();
+        return this.shadowRoot.querySelector("[ui5-responsive-popover]");
     }
 };
 __decorate([
@@ -589,14 +592,13 @@ Tokenizer = Tokenizer_1 = __decorate([
         languageAware: true,
         renderer: litRender,
         template: TokenizerTemplate,
-        styles: TokenizerCss,
-        staticAreaStyles: [
+        styles: [
+            TokenizerCss,
             ResponsivePopoverCommonCss,
             ValueStateMessageCss,
             SuggestionsCss,
             TokenizerPopoverCss,
         ],
-        staticAreaTemplate: TokenizerPopoverTemplate,
         dependencies: [
             ResponsivePopover,
             List,

@@ -89,6 +89,11 @@ let CheckBox = CheckBox_1 = class CheckBox extends UI5Element {
     onBeforeRendering() {
         this._enableFormSupport();
     }
+    onEnterDOM() {
+        if (isDesktop()) {
+            this.setAttribute("desktop", "");
+        }
+    }
     _enableFormSupport() {
         const formSupport = getFeature("FormSupport");
         if (formSupport) {

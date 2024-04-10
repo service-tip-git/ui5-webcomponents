@@ -78,12 +78,12 @@ declare class IllustratedMessage extends UI5Element {
     * Determines which illustration breakpoint variant is used.
     *
     * As `IllustratedMessage` adapts itself around the `Illustration`, the other
-    * elements of the component are displayed differently on the different breakpoints/illustration sizes.
+    * elements of the component are displayed differently on the different breakpoints/illustration designs.
     * @default "Auto"
     * @public
     * @since 1.5.0
     */
-    size: `${IllustrationMessageSize}`;
+    design: `${IllustrationMessageSize}`;
     /**
     * Defines the subtitle of the component.
     *
@@ -121,27 +121,27 @@ declare class IllustratedMessage extends UI5Element {
     */
     titleLevel: `${TitleLevel}`;
     /**
-    * Illustration breakpoint variant for the <code>Dot</code> size.
+    * Illustration breakpoint variant for the <code>Dot</code> design.
     *
     * @private
     * @since 1.24.0
     */
     dotSvg: string;
     /**
-    * Illustration breakpoint variant for the <code>Spot</code> size.
+    * Illustration breakpoint variant for the <code>Spot</code> design.
     *
     * @private
     * @since 1.9.0
     */
     spotSvg: string;
     /**
-    * Illustration breakpoint variant for the `Scene` size.
+    * Illustration breakpoint variant for the `Scene` design.
     * @private
     * @since 1.9.0
     */
     sceneSvg: string;
     /**
-    * Illustration breakpoint variant for the `Dialog` size.
+    * Illustration breakpoint variant for the `Dialog` design.
     * @private
     * @since 1.9.0
     */

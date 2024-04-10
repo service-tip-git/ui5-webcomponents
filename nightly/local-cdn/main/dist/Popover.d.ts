@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 import type { PopupBeforeCloseEventDetail as PopoverBeforeCloseEventDetail } from "./Popup.js";
-import PopoverPlacementType from "./types/PopoverPlacementType.js";
+import PopoverPlacement from "./types/PopoverPlacement.js";
 import PopoverVerticalAlign from "./types/PopoverVerticalAlign.js";
 import PopoverHorizontalAlign from "./types/PopoverHorizontalAlign.js";
 type PopoverSize = {
@@ -15,7 +15,7 @@ type CalculatedPlacement = {
     arrow: ArrowPosition;
     top: number;
     left: number;
-    placementType: `${PopoverPlacementType}`;
+    placement: `${PopoverPlacement}`;
 };
 /**
  * @class
@@ -69,10 +69,10 @@ declare class Popover extends Popup {
     headerText: string;
     /**
      * Determines on which side the component is placed at.
-     * @default "Right"
+     * @default "End"
      * @public
      */
-    placementType: `${PopoverPlacementType}`;
+    placement: `${PopoverPlacement}`;
     /**
      * Determines the horizontal alignment of the component.
      * @default "Center"
@@ -141,7 +141,7 @@ declare class Popover extends Popup {
      * Returns the calculated placement depending on the free space
      * @private
      */
-    actualPlacementType: `${PopoverPlacementType}`;
+    actualPlacement: `${PopoverPlacement}`;
     _maxHeight?: number;
     _maxWidth?: number;
     /**
@@ -183,7 +183,7 @@ declare class Popover extends Popup {
      * @private
      */
     _removeOpenedPopup(): void;
-    shouldCloseDueToOverflow(placement: `${PopoverPlacementType}`, openerRect: DOMRect): boolean;
+    shouldCloseDueToOverflow(placement: `${PopoverPlacement}`, openerRect: DOMRect): boolean;
     shouldCloseDueToNoOpener(openerRect: DOMRect): boolean;
     isOpenerOutsideViewport(openerRect: DOMRect): boolean;
     /**
@@ -227,8 +227,8 @@ declare class Popover extends Popup {
      * Fallbacks to new placement, prioritizing `Left` and `Right` placements.
      * @private
      */
-    fallbackPlacement(clientWidth: number, clientHeight: number, targetRect: DOMRect, popoverSize: PopoverSize): PopoverPlacementType | undefined;
-    getActualPlacementType(targetRect: DOMRect, popoverSize: PopoverSize): `${PopoverPlacementType}`;
+    fallbackPlacement(clientWidth: number, clientHeight: number, targetRect: DOMRect, popoverSize: PopoverSize): PopoverPlacement | undefined;
+    getActualPlacement(targetRect: DOMRect, popoverSize: PopoverSize): `${PopoverPlacement}`;
     getVerticalLeft(targetRect: DOMRect, popoverSize: PopoverSize): number;
     getHorizontalTop(targetRect: DOMRect, popoverSize: PopoverSize): number;
     get isModal(): boolean;
@@ -243,9 +243,6 @@ declare class Popover extends Popup {
             transform: string;
         };
         content: {};
-        blockLayer: {
-            zIndex: string | number;
-        };
     };
     get classes(): import("@ui5/webcomponents-base/dist/types.js").ClassMap;
     /**
@@ -256,7 +253,7 @@ declare class Popover extends Popup {
      * Hook for descendants to hide footer.
      */
     get _displayFooter(): boolean;
-    get _actualHorizontalAlign(): "Left" | "Right" | "Center" | "Stretch" | PopoverHorizontalAlign.Left | PopoverHorizontalAlign.Right;
+    get _actualHorizontalAlign(): "Start" | "End" | "Center" | "Stretch" | PopoverHorizontalAlign.Start | PopoverHorizontalAlign.End;
 }
 declare const instanceOfPopover: (object: any) => object is Popover;
 export default Popover;

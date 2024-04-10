@@ -7,7 +7,7 @@ import "@ui5/webcomponents-icons/dist/appointment-2.js";
 import "@ui5/webcomponents-icons/dist/decline.js";
 import DateComponentBase from "./DateComponentBase.js";
 import ResponsivePopover from "./ResponsivePopover.js";
-import type { CalendarSelectedDatesChangeEventDetail } from "./Calendar.js";
+import type { CalendarSelectionChangeEventDetail } from "./Calendar.js";
 import Input from "./Input.js";
 import InputType from "./types/InputType.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";
@@ -314,7 +314,7 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
      * @private
      */
     get _ariaHidden(): boolean;
-    _respPopover(): Promise<ResponsivePopover>;
+    _respPopover(): ResponsivePopover;
     _canOpenPicker(): boolean;
     get _calendarPickersMode(): CalendarPickersMode;
     /**
@@ -322,7 +322,7 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
      * @param e
      * @protected
      */
-    onSelectedDatesChange(e: CustomEvent<CalendarSelectedDatesChangeEventDetail>): void;
+    onSelectedDatesChange(e: CustomEvent<CalendarSelectionChangeEventDetail>): void;
     /**
      * The user clicked the "month" button in the header
      */

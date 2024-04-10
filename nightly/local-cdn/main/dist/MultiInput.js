@@ -83,8 +83,7 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
         target.focus();
     }
     _tokenizerFocusOut(e) {
-        const isFocusingMorePopover = e.relatedTarget === this.tokenizer.staticAreaItem;
-        if (!this.contains(e.relatedTarget) && !isFocusingMorePopover) {
+        if (!this.contains(e.relatedTarget) && !this.shadowRoot.contains(e.relatedTarget)) {
             this.tokenizer._tokens.forEach(token => { token.selected = false; });
             this.tokenizer.scrollToStart();
         }
@@ -125,6 +124,7 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
         }
         if (isCtrl && e.key.toLowerCase() === "i" && tokens.length > 0) {
             e.preventDefault();
+            this.closePopover();
             this.tokenizer.openMorePopover();
         }
     }
@@ -256,6 +256,9 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
             return this.tokens[0];
         }
         return this;
+    }
+    get shouldDisplayOnlyValueStateMessage() {
+        return this.hasValueStateMessage && !this.readonly && !this.open && this.focused && !this.tokenizer._isOpen;
     }
 };
 __decorate([

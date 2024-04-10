@@ -13,6 +13,7 @@ import "@ui5/webcomponents-icons/dist/overflow.js";
 import "@ui5/webcomponents-icons/dist/grid.js";
 import type { Timeout, ClassMap } from "@ui5/webcomponents-base/dist/types.js";
 import type ListItemBase from "@ui5/webcomponents/dist/ListItemBase.js";
+import PopoverHorizontalAlign from "@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js";
 import type ShellBarItem from "./ShellBarItem.js";
 import "@ui5/webcomponents-icons/dist/da.js";
 import "@ui5/webcomponents-icons/dist/da-2.js";
@@ -284,16 +285,16 @@ declare class ShellBar extends UI5Element {
     coPilot?: ShellBarCoPilot;
     _coPilotIcon: string;
     _debounceInterval?: Timeout | null;
-    _hiddenIcons?: Array<IShelBarItemInfo>;
+    _hiddenIcons: Array<IShelBarItemInfo>;
     _handleResize: ResizeObserverCallback;
-    _headerPress: () => Promise<void>;
+    _headerPress: () => void;
     static get CO_PILOT_ICON_PRESSED(): string;
     static get CO_PILOT_ICON_UNPRESSED(): string;
     static get FIORI_3_BREAKPOINTS(): number[];
     static get FIORI_3_BREAKPOINTS_MAP(): Record<string, string>;
     constructor();
     _toggleCoPilotIcon(button: ToggleButton): void;
-    _debounce(fn: () => Promise<void>, delay: number): void;
+    _debounce(fn: () => void, delay: number): void;
     _menuItemPress(e: CustomEvent<ListSelectionChangeEventDetail>): void;
     _logoPress(): void;
     _menuPopoverBeforeOpen(): void;
@@ -316,7 +317,7 @@ declare class ShellBar extends UI5Element {
     _handleSizeS(): void;
     _handleActionsOverflow(): IShelBarItemInfo[];
     _overflowActions(): void;
-    _toggleActionPopover(): Promise<void>;
+    _toggleActionPopover(): void;
     onEnterDOM(): void;
     onExitDOM(): void;
     _handleSearchIconPress(): void;
@@ -377,9 +378,8 @@ declare class ShellBar extends UI5Element {
     _updateItemsInfo(newItems: Array<IShelBarItemInfo>): void;
     _updateClonedMenuItems(): void;
     _observeMenuItems(): void;
-    _getResponsivePopover(): Promise<void>;
-    _getOverflowPopover(): Promise<Popover | null>;
-    _getMenuPopover(): Promise<Popover | null>;
+    _getOverflowPopover(): Popover;
+    _getMenuPopover(): Popover;
     isIconHidden(name: string): boolean;
     get classes(): ClassMap;
     get styles(): {
@@ -407,7 +407,7 @@ declare class ShellBar extends UI5Element {
     get showLogoInMenuButton(): boolean;
     get showTitleInMenuButton(): boolean | "";
     get showMenuButton(): string | boolean;
-    get popoverHorizontalAlign(): "Left" | "Right";
+    get popoverHorizontalAlign(): `${PopoverHorizontalAlign}`;
     get hasSearchField(): boolean;
     get hasMidContent(): boolean;
     get hasProfile(): boolean;

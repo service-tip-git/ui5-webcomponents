@@ -147,9 +147,9 @@ declare class FileUploader extends UI5Element implements IFormElement {
     _updateValue(files: FileList | null): void;
     _setFormValue(): void;
     toggleValueStatePopover(open: boolean): void;
-    openValueStatePopover(): Promise<void>;
-    closeValueStatePopover(): Promise<void>;
-    _getPopover(): Promise<Popover>;
+    openValueStatePopover(): void;
+    closeValueStatePopover(): void;
+    _getPopover(): Popover;
     /**
      * in case when the component is not placed in the DOM, return empty FileList, like native input would do
      * @private

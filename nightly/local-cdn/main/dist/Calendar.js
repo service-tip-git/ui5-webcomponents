@@ -45,7 +45,7 @@ import calendarCSS from "./generated/themes/Calendar.css.js";
  * date string, correctly formatted according to the `ui5-calendar`'s `formatPattern` property.
  * Whenever the user changes the date selection, `ui5-calendar` will automatically create/remove instances
  * of `ui5-date` in itself, unless you prevent this behavior by calling `preventDefault()` for the
- * `selected-dates-change` event. This is useful if you want to control the selected dates externally.
+ * `selection-change` event. This is useful if you want to control the selected dates externally.
  *
  * ### Usage
  *
@@ -329,7 +329,7 @@ let Calendar = class Calendar extends CalendarPart {
             const calendarDate = CalendarDateComponent.fromTimestamp(timestamp * 1000, this._primaryCalendarType);
             return this.getFormat().format(calendarDate.toUTCJSDate(), true);
         });
-        const defaultPrevented = !this.fireEvent("selected-dates-change", { timestamp: this.timestamp, dates: [...selectedDates], values: datesValues }, true);
+        const defaultPrevented = !this.fireEvent("selection-change", { timestamp: this.timestamp, selectedDates: [...selectedDates], selectedValues: datesValues }, true);
         if (!defaultPrevented) {
             this._setSelectedDates(selectedDates);
         }
@@ -459,21 +459,21 @@ Calendar = __decorate([
      * **Note:** If you call `preventDefault()` for this event, the component will not
      * create instances of `ui5-date` for the newly selected dates. In that case you should do this manually.
      * @allowPreventDefault
-     * @param {Array<string>} values The selected dates
-     * @param {Array<number>} dates The selected dates as UTC timestamps
+     * @param {Array<string>} selectedValues The selected dates
+     * @param {Array<number>} selectedDates The selected dates as UTC timestamps
      * @public
      */
     ,
-    event("selected-dates-change", {
+    event("selection-change", {
         detail: {
             /**
              * @public
              */
-            dates: { type: Array },
+            selectedDates: { type: Array },
             /**
              * @public
              */
-            values: { type: Array },
+            selectedValues: { type: Array },
             timestamp: { type: Number },
         },
     }),

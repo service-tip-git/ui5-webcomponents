@@ -301,6 +301,7 @@ Button = Button_1 = __decorate([
         template: ButtonTemplate,
         styles: buttonCss,
         dependencies: [Icon],
+        shadowRootOptions: { delegatesFocus: true },
     })
     /**
      * Fired when the component is activated either with a

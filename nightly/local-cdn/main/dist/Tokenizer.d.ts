@@ -56,6 +56,7 @@ declare class Tokenizer extends UI5Element {
     _itemNav: ItemNavigation;
     _scrollEnablement: ScrollEnablement;
     _expandedScrollWidth?: number;
+    _isOpen: boolean;
     _handleResize(): void;
     constructor();
     onBeforeRendering(): void;

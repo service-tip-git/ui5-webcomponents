@@ -22,7 +22,7 @@ import TimeSelectionClocks from "./TimeSelectionClocks.js";
 // i18n texts
 import { TIMEPICKER_SUBMIT_BUTTON, TIMEPICKER_CANCEL_BUTTON, DATETIME_DESCRIPTION, DATETIME_PICKER_DATE_BUTTON, DATETIME_PICKER_TIME_BUTTON, } from "./generated/i18n/i18n-defaults.js";
 // Template
-import DateTimePickerPopoverTemplate from "./generated/templates/DateTimePickerPopoverTemplate.lit.js";
+import DateTimePickerTemplate from "./generated/templates/DateTimePickerTemplate.lit.js";
 // Styles
 import DateTimePickerCss from "./generated/themes/DateTimePicker.css.js";
 import DateTimePickerPopoverCss from "./generated/themes/DateTimePickerPopover.css.js";
@@ -208,7 +208,7 @@ let DateTimePicker = DateTimePicker_1 = class DateTimePicker extends DatePicker 
         this._previewValues = {
             ...this._previewValues,
             calendarTimestamp: e.detail.timestamp,
-            calendarValue: e.detail.values[0],
+            calendarValue: e.detail.selectedValues[0],
             timeSelectionValue: dateTimePickerContent.lastChild.value,
         };
     }
@@ -274,9 +274,8 @@ let DateTimePicker = DateTimePicker_1 = class DateTimePicker extends DatePicker 
         const newValue = this.formatValue(modifiedLocalDate);
         this._updateValueAndFireEvents(newValue, true, ["change", "value-changed"]);
     }
-    async getPicker() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector("[ui5-responsive-popover]");
+    getPicker() {
+        return this.shadowRoot.querySelector("[ui5-responsive-popover]");
     }
     getSelectedDateTime() {
         const selectedDate = this.getFormat().parse(this._calendarSelectedDates[0]);
@@ -307,13 +306,10 @@ __decorate([
 DateTimePicker = DateTimePicker_1 = __decorate([
     customElement({
         tag: "ui5-datetime-picker",
-        staticAreaTemplate: DateTimePickerPopoverTemplate,
+        template: DateTimePickerTemplate,
         styles: [
-            DateTimePicker.styles,
+            DatePicker.styles,
             DateTimePickerCss,
-        ],
-        staticAreaStyles: [
-            DatePicker.staticAreaStyles,
             DateTimePickerPopoverCss,
         ],
         dependencies: [

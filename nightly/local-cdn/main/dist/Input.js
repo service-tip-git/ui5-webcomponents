@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var Input_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
@@ -31,9 +32,9 @@ import "@ui5/webcomponents-icons/dist/information.js";
 import InputType from "./types/InputType.js";
 import Popover from "./Popover.js";
 import Icon from "./Icon.js";
+import "./types/PopoverHorizontalAlign.js";
 // Templates
 import InputTemplate from "./generated/templates/InputTemplate.lit.js";
-import InputPopoverTemplate from "./generated/templates/InputPopoverTemplate.lit.js";
 import { StartsWith } from "./Filters.js";
 import { VALUE_STATE_SUCCESS, VALUE_STATE_INFORMATION, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS, INPUT_SUGGESTIONS_TITLE, INPUT_SUGGESTIONS_ONE_HIT, INPUT_SUGGESTIONS_MORE_HITS, INPUT_SUGGESTIONS_NO_HIT, INPUT_CLEAR_ICON_ACC_NAME, } from "./generated/i18n/i18n-defaults.js";
 // Styles
@@ -182,7 +183,7 @@ let Input = Input_1 = class Input extends UI5Element {
     async onAfterRendering() {
         const innerInput = this.getInputDOMRefSync();
         if (this.Suggestions && this.showSuggestions) {
-            this.Suggestions.toggle(this.open, {
+            await this.Suggestions.toggle(this.open, {
                 preventFocusRestore: true,
             });
             this._listWidth = await this.Suggestions._getListWidth();
@@ -572,8 +573,8 @@ let Input = Input_1 = class Input extends UI5Element {
         popover && popover.close();
     }
     async _getPopover() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector("[ui5-popover]");
+        await renderFinished();
+        return this.shadowRoot.querySelector("[ui5-popover]");
     }
     /**
      * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
@@ -974,7 +975,7 @@ let Input = Input_1 = class Input extends UI5Element {
         return "";
     }
     get _valueStatePopoverHorizontalAlign() {
-        return this.effectiveDir !== "rtl" ? "Left" : "Right";
+        return this.effectiveDir !== "rtl" ? "Start" : "End";
     }
     /**
      * This method is relevant for sap_horizon theme only
@@ -1135,9 +1136,12 @@ Input = Input_1 = __decorate([
         languageAware: true,
         renderer: litRender,
         template: InputTemplate,
-        staticAreaTemplate: InputPopoverTemplate,
-        styles: inputStyles,
-        staticAreaStyles: [ResponsivePopoverCommonCss, ValueStateMessageCss, SuggestionsCss],
+        styles: [
+            inputStyles,
+            ResponsivePopoverCommonCss,
+            ValueStateMessageCss,
+            SuggestionsCss,
+        ],
         get dependencies() {
             const Suggestions = getFeature("InputSuggestions");
             return [Popover, Icon].concat(Suggestions ? Suggestions.dependencies : []);

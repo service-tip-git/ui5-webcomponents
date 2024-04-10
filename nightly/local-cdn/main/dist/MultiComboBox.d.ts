@@ -23,6 +23,7 @@ import ComboBoxFilter from "./types/ComboBoxFilter.js";
 import type FormSupportT from "./features/InputElementsFormSupport.js";
 import type ListItemBase from "./ListItemBase.js";
 import { InputEventDetail } from "./Input.js";
+import PopoverHorizontalAlign from "./types/PopoverHorizontalAlign.js";
 /**
  * Interface for components that may be slotted inside a `ui5-multi-combobox` as items
  * @public
@@ -216,6 +217,7 @@ declare class MultiComboBox extends UI5Element {
     icon: Array<IIcon>;
     /**
      * Defines the value state message that will be displayed as pop up under the component.
+     * The value state message slot should contain only one root element.
      *
      * **Note:** If not specified, a default text (in the respective language) will be displayed.
      *
@@ -236,7 +238,6 @@ declare class MultiComboBox extends UI5Element {
     _shouldFilterItems?: boolean;
     _showMorePressed?: boolean;
     _clearingValue?: boolean;
-    allItemsPopover?: ResponsivePopover;
     valueStateHeader?: HTMLElement;
     list?: List;
     _shouldAutocomplete?: boolean;
@@ -244,7 +245,7 @@ declare class MultiComboBox extends UI5Element {
     _isOpenedByKeyboard?: boolean;
     _itemToFocus?: IMultiComboBoxItem;
     _itemsBeforeOpen: Array<MultiComboboxItemWithSelection>;
-    selectedItems?: Array<IMultiComboBoxItem>;
+    selectedItems: Array<IMultiComboBoxItem>;
     FormSupport?: typeof FormSupportT;
     static i18nBundle: I18nBundle;
     constructor();
@@ -253,7 +254,7 @@ declare class MultiComboBox extends UI5Element {
     _handleResize(): void;
     _handleMobileInput(e: CustomEvent<InputEventDetail>): void;
     _inputChange(): void;
-    _mobileInputChange(e: CustomEvent): Promise<void>;
+    _mobileInputChange(e: CustomEvent): void;
     _togglePopover(): void;
     togglePopoverByDropdownIcon(): void;
     _showFilteredItems(): void;
@@ -288,10 +289,10 @@ declare class MultiComboBox extends UI5Element {
     _handleSelectAll(): void;
     _onListHeaderKeydown(e: KeyboardEvent): Promise<void>;
     _handleSelectAllCheckboxClick(e: CustomEvent): void;
-    _onItemKeydown(e: KeyboardEvent): Promise<void>;
+    _onItemKeydown(e: KeyboardEvent): void;
     _handleArrowCtrl(e: KeyboardEvent): void;
     _onItemTab(): void;
-    _handleArrowNavigation(e: KeyboardEvent, isDownControl: boolean): Promise<void>;
+    _handleArrowNavigation(e: KeyboardEvent, isDownControl: boolean): void;
     _handleArrowDown(): Promise<void>;
     _handleItemRangeSelection(e: KeyboardEvent): void;
     _navigateToNextItem(): void;
@@ -311,10 +312,10 @@ declare class MultiComboBox extends UI5Element {
     _listSelectionChange(e: CustomEvent<ListSelectionChangeEventDetail>): void;
     syncItems(listItems: Array<ListItemBase>): void;
     fireSelectionChange(): boolean;
-    _getRespPopover(): Promise<void>;
+    _getRespPopover(): ResponsivePopover;
     _getList(): Promise<List>;
     _click(): void;
-    handleBeforeTokenizerPopoverOpen(): Promise<void>;
+    handleBeforeTokenizerPopoverOpen(): void;
     _afterClosePicker(): void;
     _beforeOpen(): void;
     _handleTypeAhead(item: IMultiComboBoxItem, filterValue: string): void;
@@ -331,19 +332,19 @@ declare class MultiComboBox extends UI5Element {
     toggle(isToggled: boolean): void;
     handleCancel(): void;
     handleOK(): void;
-    openPopover(): Promise<void>;
+    openPopover(): void;
     _forwardFocusToInner(): void;
     get morePopoverOpener(): HTMLElement;
-    closePopover(): Promise<void>;
-    _getPopover(): Promise<Popover>;
-    _getResponsivePopover(): Promise<ResponsivePopover>;
-    _setValueStateHeader(): Promise<void>;
+    closePopover(): void;
+    _getPopover(): Popover;
+    _getResponsivePopover(): ResponsivePopover;
+    _setValueStateHeader(): void;
     get _tokenizer(): Tokenizer;
     inputFocusIn(e: FocusEvent): void;
     inputFocusOut(e: FocusEvent): void;
     get editable(): boolean;
     get _isFocusInside(): boolean;
-    get selectedItemsListMode(): "None" | "MultiSelect";
+    get selectedItemsListMode(): "None" | "Multiple";
     get _listItemsType(): "Inactive" | "Active";
     get hasValueState(): boolean;
     get hasValueStateMessage(): boolean;
@@ -370,7 +371,7 @@ declare class MultiComboBox extends UI5Element {
     get _showSelectedButtonAccessibleNameText(): string;
     get _dialogOkButton(): string;
     get _tokenizerExpanded(): boolean;
-    get _valueStatePopoverHorizontalAlign(): "Left" | "Right";
+    get _valueStatePopoverHorizontalAlign(): `${PopoverHorizontalAlign}`;
     get iconsCount(): number;
     get clearIconAccessibleName(): string;
     get selectAllCheckboxLabel(): string;

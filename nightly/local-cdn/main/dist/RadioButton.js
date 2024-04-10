@@ -83,6 +83,11 @@ let RadioButton = RadioButton_1 = class RadioButton extends UI5Element {
         this.syncGroup();
         this._enableFormSupport();
     }
+    onEnterDOM() {
+        if (isDesktop()) {
+            this.setAttribute("desktop", "");
+        }
+    }
     onExitDOM() {
         this.syncGroup(true);
     }

@@ -32,7 +32,6 @@ import WizardTab from "./WizardTab.js";
 import WizardStep from "./WizardStep.js";
 // Template and Styles
 import WizardTemplate from "./generated/templates/WizardTemplate.lit.js";
-import WizardPopoverTemplate from "./generated/templates/WizardPopoverTemplate.lit.js";
 import WizardCss from "./generated/themes/Wizard.css.js";
 import WizardPopoverCss from "./generated/themes/WizardPopover.css.js";
 const MIN_STEP_WIDTH_NO_TITLE = 64;
@@ -409,7 +408,7 @@ let Wizard = Wizard_1 = class Wizard extends UI5Element {
         const iStepNumber = this.stepsInHeaderDOM.indexOf(selectedStep);
         return selectedStep.getAttribute(EXPANDED_STEP) === "false" && selectedStep.getAttribute(AFTER_EXPANDED_STEP) === "true" && (iStepNumber + 1 < this.steps.length);
     }
-    async _showPopover(oDomTarget, isAtStart) {
+    _showPopover(oDomTarget, isAtStart) {
         const tabs = Array.from(this.stepsInHeaderDOM);
         this._groupedTabs = [];
         const iFromStep = isAtStart ? 0 : this.stepsInHeaderDOM.indexOf(oDomTarget);
@@ -417,10 +416,10 @@ let Wizard = Wizard_1 = class Wizard extends UI5Element {
         for (let i = iFromStep; i <= iToStep; i++) {
             this._groupedTabs.push(tabs[i]);
         }
-        const responsivePopover = await this._respPopover();
+        const responsivePopover = this._respPopover();
         responsivePopover.showAt(oDomTarget);
     }
-    async _onGroupedTabClick(e) {
+    _onGroupedTabClick(e) {
         const eTarget = e.target;
         if (this._isGroupAtStart(eTarget)) {
             return this._showPopover(eTarget, true);
@@ -440,13 +439,12 @@ let Wizard = Wizard_1 = class Wizard extends UI5Element {
         this._closeRespPopover();
         tabs[newlySelectedIndex].focus();
     }
-    async _closeRespPopover() {
-        const responsivePopover = await this._respPopover();
+    _closeRespPopover() {
+        const responsivePopover = this._respPopover();
         responsivePopover && responsivePopover.close();
     }
-    async _respPopover() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector(`.ui5-wizard-responsive-popover`);
+    _respPopover() {
+        return this.shadowRoot.querySelector(`.ui5-wizard-responsive-popover`);
     }
     /**
      * Called upon `onScroll`.
@@ -802,10 +800,9 @@ Wizard = Wizard_1 = __decorate([
         styles: [
             browserScrollbarCSS,
             WizardCss,
+            WizardPopoverCss,
         ],
-        staticAreaStyles: WizardPopoverCss,
         template: WizardTemplate,
-        staticAreaTemplate: WizardPopoverTemplate,
         dependencies: [
             WizardTab,
             WizardStep,

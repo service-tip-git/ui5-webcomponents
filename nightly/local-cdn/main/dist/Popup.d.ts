@@ -115,12 +115,12 @@ declare abstract class Popup extends UI5Element {
     _shouldFocusRoot?: boolean;
     _zIndex?: number;
     _focusedElementBeforeOpen?: HTMLElement | null;
+    _opening: boolean;
     constructor();
     onBeforeRendering(): void;
     onAfterRendering(): void;
     onEnterDOM(): void;
     onExitDOM(): void;
-    get _displayProp(): string;
     _resize(): void;
     /**
      * Prevents the user from interacting with the content under the block layer
@@ -169,6 +169,7 @@ declare abstract class Popup extends UI5Element {
      */
     isOpen(): boolean;
     isFocusWithin(): boolean;
+    get _getBlockingLayer(): HTMLElement;
     /**
      * Shows the block layer (for modal popups only) and sets the correct z-index for the purpose of popup stacking
      * @protected
@@ -232,9 +233,6 @@ declare abstract class Popup extends UI5Element {
     get styles(): {
         root: {};
         content: {};
-        blockLayer: {
-            zIndex: string | number;
-        };
     };
     get classes(): ClassMap;
 }

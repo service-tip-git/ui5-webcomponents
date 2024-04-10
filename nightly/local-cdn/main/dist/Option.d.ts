@@ -24,15 +24,6 @@ declare class Option extends UI5Element implements IOption {
      */
     selected: boolean;
     /**
-     * Defines whether the component is in disabled state.
-     *
-     * **Note:** A disabled component is hidden.
-     * @default false
-     * @public
-     * @since 1.0.0-rc.12
-     */
-    disabled: boolean;
-    /**
      * Defines the tooltip of the component.
      * @default ""
      * @private

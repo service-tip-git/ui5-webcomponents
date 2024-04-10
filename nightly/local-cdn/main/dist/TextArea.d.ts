@@ -3,6 +3,7 @@ import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import Popover from "./Popover.js";
+import PopoverHorizontalAlign from "./types/PopoverHorizontalAlign.js";
 import "@ui5/webcomponents-icons/dist/error.js";
 import "@ui5/webcomponents-icons/dist/alert.js";
 import "@ui5/webcomponents-icons/dist/sys-enter-2.js";
@@ -178,6 +179,7 @@ declare class TextArea extends UI5Element implements IFormElement {
     _width?: number;
     /**
      * Defines the value state message that will be displayed as pop up under the component.
+     * The value state message slot should contain only one root element.
      *
      * **Note:** If not specified, a default text (in the respective language) will be displayed.
      *
@@ -221,8 +223,8 @@ declare class TextArea extends UI5Element implements IFormElement {
     _setCSSParams(): void;
     toggleValueStateMessage(toggle: boolean): void;
     openPopover(): Promise<void>;
-    closePopover(): Promise<void>;
-    _getPopover(): Promise<Popover>;
+    closePopover(): void;
+    _getPopover(): Popover;
     _tokenizeText(value: string): {
         text: string;
         last: boolean;
@@ -264,7 +266,7 @@ declare class TextArea extends UI5Element implements IFormElement {
     get hasCustomValueState(): boolean;
     get hasValueState(): boolean;
     get valueStateMessageText(): Node[];
-    get _valueStatePopoverHorizontalAlign(): "Left" | "Right";
+    get _valueStatePopoverHorizontalAlign(): `${PopoverHorizontalAlign}`;
     /**
      * This method is relevant for sap_horizon theme only
      */

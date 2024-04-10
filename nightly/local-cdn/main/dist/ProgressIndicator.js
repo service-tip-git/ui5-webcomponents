@@ -33,6 +33,7 @@ import ProgressIndicatorCss from "./generated/themes/ProgressIndicator.css.js";
  * ### ES6 Module Import
  *
  * `import "@ui5/webcomponents/dist/ProgressIndicator.js";`
+ * @csspart bar - Used to style the main bar of the `ui5-progress-indicator`
  * @csspart remaining-bar - Used to style the remaining bar of the `ui5-progress-indicator`
  * @constructor
  * @extends UI5Element
@@ -107,9 +108,6 @@ let ProgressIndicator = ProgressIndicator_1 = class ProgressIndicator extends UI
     get valueStateIcon() {
         return this.valueStateIconMappings()[this.valueState];
     }
-    get _ariaDisabled() {
-        return this.disabled || undefined;
-    }
     static async onDefine() {
         ProgressIndicator_1.i18nBundle = await getI18nBundle("@ui5/webcomponents");
     }
@@ -117,9 +115,6 @@ let ProgressIndicator = ProgressIndicator_1 = class ProgressIndicator extends UI
 __decorate([
     property()
 ], ProgressIndicator.prototype, "accessibleName", void 0);
-__decorate([
-    property({ type: Boolean })
-], ProgressIndicator.prototype, "disabled", void 0);
 __decorate([
     property({ type: Boolean })
 ], ProgressIndicator.prototype, "hideValue", void 0);

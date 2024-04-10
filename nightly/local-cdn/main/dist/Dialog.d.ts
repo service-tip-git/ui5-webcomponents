@@ -187,7 +187,6 @@ declare class Dialog extends Popup {
     get ariaDescribedByHeaderTextResizable(): string;
     get ariaDescribedByHeaderTextDraggable(): string;
     get ariaDescribedByHeaderTextDraggableAndResizable(): string;
-    get _displayProp(): string;
     /**
      * Determines if the header should be shown.
      */

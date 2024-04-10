@@ -20,9 +20,10 @@ import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import { isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import AnimationMode from "@ui5/webcomponents-base/dist/types/AnimationMode.js";
 import { getAnimationMode } from "@ui5/webcomponents-base/dist/config/AnimationMode.js";
+import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AriaLabelHelper.js";
 import { CAROUSEL_OF_TEXT, CAROUSEL_DOT_TEXT, CAROUSEL_PREVIOUS_ARROW_TEXT, CAROUSEL_NEXT_ARROW_TEXT, } from "./generated/i18n/i18n-defaults.js";
 import CarouselArrowsPlacement from "./types/CarouselArrowsPlacement.js";
-import CarouselPageIndicatorStyle from "./types/CarouselPageIndicatorStyle.js";
+import CarouselPageIndicatorType from "./types/CarouselPageIndicatorType.js";
 import BackgroundDesign from "./types/BackgroundDesign.js";
 import BorderDesign from "./types/BorderDesign.js";
 import CarouselTemplate from "./generated/templates/CarouselTemplate.lit.js";
@@ -107,6 +108,9 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
     }
     onEnterDOM() {
         ResizeHandler.register(this, this._onResizeBound);
+        if (isDesktop()) {
+            this.setAttribute("desktop", "");
+        }
     }
     onExitDOM() {
         ResizeHandler.deregister(this, this._onResizeBound);
@@ -367,7 +371,7 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         return items > this.effectiveItemsPerPage ? items - this.effectiveItemsPerPage + 1 : 1;
     }
     get isPageTypeDots() {
-        if (this.pageIndicatorStyle === CarouselPageIndicatorStyle.Numeric) {
+        if (this.pageIndicatorType === CarouselPageIndicatorType.Numeric) {
             return false;
         }
         return this.pagesCount < Carousel_1.pageTypeLimit;
@@ -411,6 +415,9 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
     get ariaActiveDescendant() {
         return this.content.length ? `${this._id}-carousel-item-${this._selectedIndex + 1}` : undefined;
     }
+    get ariaLabelTxt() {
+        return getEffectiveAriaLabelText(this);
+    }
     get nextPageText() {
         return Carousel_1.i18nBundle.getText(CAROUSEL_NEXT_ARROW_TEXT);
     }
@@ -437,6 +444,12 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
     }
 };
 __decorate([
+    property()
+], Carousel.prototype, "accessibleName", void 0);
+__decorate([
+    property({ defaultValue: "" })
+], Carousel.prototype, "accessibleNameRef", void 0);
+__decorate([
     property({ type: Boolean })
 ], Carousel.prototype, "cyclic", void 0);
 __decorate([
@@ -455,8 +468,8 @@ __decorate([
     property({ type: Boolean })
 ], Carousel.prototype, "hidePageIndicator", void 0);
 __decorate([
-    property({ type: CarouselPageIndicatorStyle, defaultValue: CarouselPageIndicatorStyle.Default })
-], Carousel.prototype, "pageIndicatorStyle", void 0);
+    property({ type: CarouselPageIndicatorType, defaultValue: CarouselPageIndicatorType.Default })
+], Carousel.prototype, "pageIndicatorType", void 0);
 __decorate([
     property({ type: BackgroundDesign, defaultValue: BackgroundDesign.Translucent })
 ], Carousel.prototype, "backgroundDesign", void 0);

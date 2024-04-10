@@ -13,6 +13,7 @@ import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import willShowContent from "@ui5/webcomponents-base/dist/util/willShowContent.js";
+import { isDesktop, } from "@ui5/webcomponents-base/dist/Device.js";
 import Icon from "./Icon.js";
 import "@ui5/webcomponents-icons/dist/sys-help-2.js";
 import "@ui5/webcomponents-icons/dist/sys-enter-2.js";
@@ -51,6 +52,11 @@ import badgeCss from "./generated/themes/Badge.css.js";
 let Badge = Badge_1 = class Badge extends UI5Element {
     static async onDefine() {
         Badge_1.i18nBundle = await getI18nBundle("@ui5/webcomponents");
+    }
+    onEnterDOM() {
+        if (isDesktop()) {
+            this.setAttribute("desktop", "");
+        }
     }
     onBeforeRendering() {
         this._hasIcon = this.hasIcon || !!this._semanticIconName;

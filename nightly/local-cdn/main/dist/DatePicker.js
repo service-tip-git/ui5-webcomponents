@@ -33,7 +33,6 @@ import CalendarDateComponent from "./CalendarDate.js";
 import Input from "./Input.js";
 import InputType from "./types/InputType.js";
 import DatePickerTemplate from "./generated/templates/DatePickerTemplate.lit.js";
-import DatePickerPopoverTemplate from "./generated/templates/DatePickerPopoverTemplate.lit.js";
 // default calendar for bundling
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";
 // Styles
@@ -424,9 +423,8 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
     get _ariaHidden() {
         return isDesktop();
     }
-    async _respPopover() {
-        const staticAreaItem = await this.getStaticAreaItemDomRef();
-        return staticAreaItem.querySelector("[ui5-responsive-popover]");
+    _respPopover() {
+        return this.shadowRoot.querySelector("[ui5-responsive-popover]");
     }
     _canOpenPicker() {
         return !this.disabled && !this.readonly;
@@ -451,7 +449,7 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
      */
     onSelectedDatesChange(e) {
         e.preventDefault();
-        const newValue = e.detail.values && e.detail.values[0];
+        const newValue = e.detail.selectedValues && e.detail.selectedValues[0];
         this._updateValueAndFireEvents(newValue, true, ["change", "value-changed"]);
         this.closePicker();
     }
@@ -492,8 +490,8 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
     async openPicker() {
         this._isPickerOpen = true;
         this._calendarCurrentPicker = this.firstPicker;
-        this.responsivePopover = await this._respPopover();
-        this.responsivePopover.showAt(this);
+        this.responsivePopover = this._respPopover();
+        await this.responsivePopover.showAt(this);
     }
     togglePicker() {
         if (this.isOpen()) {
@@ -583,9 +581,8 @@ DatePicker = DatePicker_1 = __decorate([
         tag: "ui5-date-picker",
         languageAware: true,
         template: DatePickerTemplate,
-        staticAreaTemplate: DatePickerPopoverTemplate,
-        styles: datePickerCss,
-        staticAreaStyles: [
+        styles: [
+            datePickerCss,
             ResponsivePopoverCommonCss,
             datePickerPopoverCss,
         ],

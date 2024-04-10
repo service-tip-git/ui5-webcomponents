@@ -175,6 +175,7 @@ declare class CheckBox extends UI5Element implements IFormElement {
     _deactivate: () => void;
     constructor();
     onBeforeRendering(): void;
+    onEnterDOM(): void;
     _enableFormSupport(): void;
     _onclick(): void;
     _onmousedown(): void;

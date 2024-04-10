@@ -6,6 +6,7 @@ import ResponsivePopover from "./ResponsivePopover.js";
 import type { ResponsivePopoverBeforeCloseEventDetail } from "./ResponsivePopover.js";
 import StandardListItem from "./StandardListItem.js";
 import type MenuItem from "./MenuItem.js";
+import PopoverPlacement from "./types/PopoverPlacement.js";
 import type { ListItemClickEventDetail } from "./List.js";
 type CurrentItem = {
     item: MenuItem;
@@ -144,7 +145,7 @@ declare class Menu extends UI5Element {
     get itemsWithChildren(): boolean;
     get itemsWithIcon(): boolean;
     get isRtl(): boolean;
-    get placementType(): "Left" | "Right" | "Bottom";
+    get placement(): `${PopoverPlacement}`;
     get verticalAlign(): "Top" | "Bottom";
     get labelBack(): string;
     get labelClose(): string;

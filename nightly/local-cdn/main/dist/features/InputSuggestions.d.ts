@@ -81,9 +81,9 @@ declare class Suggestions {
     onTab(): boolean;
     toggle(bToggle: boolean, options: {
         preventFocusRestore: boolean;
-    }): void;
+    }): Promise<void>;
     _isScrollable(): Promise<boolean>;
-    open(): void;
+    open(): Promise<void>;
     close(preventFocusRestore?: boolean): Promise<void>;
     updateSelectedItemPosition(pos: number): void;
     onItemMouseOver(e: MouseEvent): void;

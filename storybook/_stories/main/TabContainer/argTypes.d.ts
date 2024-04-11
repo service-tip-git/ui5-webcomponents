@@ -3,7 +3,7 @@ declare const _default: {
         control: string;
         options: string[];
     };
-    tabsOverflowMode: {
+    overflowMode: {
         control: string;
         options: string[];
     };

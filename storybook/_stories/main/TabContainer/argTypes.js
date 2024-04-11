@@ -6,7 +6,7 @@ export default {
             "Standard"
         ]
     },
-    "tabsOverflowMode": {
+    "overflowMode": {
         "control": "select",
         "options": [
             "End",
@@ -40,7 +40,7 @@ export default {
         },
         "table": {
             "type": {
-                "summary": "Array<ITab>"
+                "summary": "Array<Tab | TabSeparator>"
             }
         }
     },
@@ -76,12 +76,12 @@ export default {
             "parameters": [
                 {
                     "type": {
-                        "text": "ITab",
+                        "text": "Tab",
                         "references": [
                             {
-                                "name": "ITab",
+                                "name": "Tab",
                                 "package": "@ui5/webcomponents",
-                                "module": "dist/TabContainer.js"
+                                "module": "dist/Tab.js"
                             }
                         ]
                     },

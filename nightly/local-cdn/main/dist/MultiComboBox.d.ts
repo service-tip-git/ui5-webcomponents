@@ -115,7 +115,7 @@ declare class MultiComboBox extends UI5Element {
      * @default false
      * @public
      */
-    allowCustomValues: boolean;
+    noValidation: boolean;
     /**
      * Defines whether the component is in disabled state.
      *

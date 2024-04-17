@@ -331,7 +331,7 @@ let Breadcrumbs = Breadcrumbs_1 = class Breadcrumbs extends UI5Element {
         return undefined;
     }
     get _isPickerOpen() {
-        return !!this.responsivePopover && this.responsivePopover.opened;
+        return !!this.responsivePopover && this.responsivePopover.open;
     }
     get _accessibleNameText() {
         return Breadcrumbs_1.i18nBundle.getText(BREADCRUMBS_ARIA_LABEL);

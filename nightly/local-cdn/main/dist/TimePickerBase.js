@@ -20,6 +20,7 @@ import DateFormat from "@ui5/webcomponents-localization/dist/DateFormat.js";
 import { fetchCldr } from "@ui5/webcomponents-base/dist/asset-registries/LocaleData.js";
 import { isShow, isPageUp, isPageDown, isPageUpShift, isPageDownShift, isPageUpShiftCtrl, isPageDownShiftCtrl, isTabNext, isTabPrevious, isF6Next, isF6Previous, } from "@ui5/webcomponents-base/dist/Keys.js";
 import "@ui5/webcomponents-icons/dist/time-entry-request.js";
+import UI5Date from "@ui5/webcomponents-localization/dist/dates/UI5Date.js";
 import Icon from "./Icon.js";
 import Popover from "./Popover.js";
 import ResponsivePopover from "./ResponsivePopover.js";
@@ -81,7 +82,7 @@ let TimePickerBase = TimePickerBase_1 = class TimePickerBase extends UI5Element 
      * @returns Resolves when the picker is open
      */
     openPicker() {
-        this.tempValue = this.value && this.isValid(this.value) ? this.value : this.getFormat().format(new Date());
+        this.tempValue = this.value && this.isValid(this.value) ? this.value : this.getFormat().format(UI5Date.getInstance());
         const responsivePopover = this._getPopover();
         responsivePopover.showAt(this);
     }
@@ -128,7 +129,7 @@ let TimePickerBase = TimePickerBase_1 = class TimePickerBase extends UI5Element 
      * @returns Resolves when the Inputs popover is open
      */
     openInputsPopover() {
-        this.tempValue = this.value && this.isValid(this.value) ? this.value : this.getFormat().format(new Date());
+        this.tempValue = this.value && this.isValid(this.value) ? this.value : this.getFormat().format(UI5Date.getInstance());
         const popover = this._getInputsPopover();
         popover.showAt(this);
         this._isInputsPopoverOpen = true;

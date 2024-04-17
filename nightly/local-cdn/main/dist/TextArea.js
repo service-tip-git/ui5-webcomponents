@@ -37,7 +37,7 @@ import browserScrollbarCSS from "./generated/themes/BrowserScrollbar.css.js";
  *
  * ### Overview
  *
- * The `ui5-textarea` component is used to enter multiple lines of text.
+ * The `ui5-textarea` component is used to enter multiple rows of text.
  *
  * When empty, it can hold a placeholder similar to a `ui5-input`.
  * You can define the rows of the `ui5-textarea` and also determine specific behavior when handling long texts.
@@ -154,7 +154,7 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
     }
     _setCSSParams() {
         this.style.setProperty("--_textarea_rows", this.rows ? String(this.rows) : "2");
-        this.style.setProperty("--_textarea_growing_max_lines", String(this.growingMaxLines));
+        this.style.setProperty("--_textarea_growing_max_rows", String(this.growingMaxRows));
     }
     toggleValueStateMessage(toggle) {
         if (toggle) {
@@ -350,7 +350,7 @@ __decorate([
 ], TextArea.prototype, "growing", void 0);
 __decorate([
     property({ validator: Integer, defaultValue: 0 })
-], TextArea.prototype, "growingMaxLines", void 0);
+], TextArea.prototype, "growingMaxRows", void 0);
 __decorate([
     property()
 ], TextArea.prototype, "name", void 0);

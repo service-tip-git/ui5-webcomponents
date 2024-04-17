@@ -149,7 +149,7 @@ declare class TreeItemBase extends ListItem {
      */
     toggle(): void;
     _toggleClick(e: MouseEvent | KeyboardEvent): void;
-    _onkeydown(e: KeyboardEvent): void;
+    _onkeydown(e: KeyboardEvent): Promise<void>;
     get iconAccessibleName(): string;
     static onDefine(): Promise<void>;
 }

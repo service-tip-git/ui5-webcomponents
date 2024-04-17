@@ -115,13 +115,6 @@ declare class Popover extends Popup {
      */
     allowTargetOverlap: boolean;
     /**
-     * Defines the ID or DOM Reference of the element that the popover is shown at
-     * @public
-     * @default undefined
-     * @since 1.2.0
-     */
-    opener?: HTMLElement | string;
-    /**
      * Defines whether the content is scrollable.
      * @default false
      * @private
@@ -163,7 +156,15 @@ declare class Popover extends Popup {
     _width?: string;
     static get VIEWPORT_MARGIN(): number;
     constructor();
-    onAfterRendering(): void;
+    /**
+     * Defines the ID or DOM Reference of the element that the popover is shown at
+     * @public
+     * @default undefined
+     * @since 1.2.0
+     */
+    set opener(value: HTMLElement);
+    get opener(): HTMLElement | undefined;
+    openPopup(): Promise<void>;
     isOpenerClicked(e: MouseEvent): boolean;
     /**
      * Shows the popover.

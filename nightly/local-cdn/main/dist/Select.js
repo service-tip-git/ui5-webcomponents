@@ -141,7 +141,7 @@ let Select = Select_1 = class Select extends UI5Element {
         if (menu) {
             return menu.open;
         }
-        return !!this.responsivePopover && this.responsivePopover.opened;
+        return !!this.responsivePopover && this.responsivePopover.open;
     }
     _respPopover() {
         return this.shadowRoot.querySelector("[ui5-responsive-popover]");
@@ -607,7 +607,7 @@ let Select = Select_1 = class Select extends UI5Element {
     get _effectiveTabIndex() {
         return this.disabled
             || (this.responsivePopover // Handles focus on Tab/Shift + Tab when the popover is opened
-                && this.responsivePopover.opened) ? "-1" : "0";
+                && this.responsivePopover.open) ? "-1" : "0";
     }
     /**
     * This method is relevant for sap_horizon theme only

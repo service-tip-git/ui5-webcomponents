@@ -7,7 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var ListItem_1;
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import { getEventMark } from "@ui5/webcomponents-base/dist/MarkedEvents.js";
-import { isSpace, isEnter, isDelete } from "@ui5/webcomponents-base/dist/Keys.js";
+import { isSpace, isEnter, isDelete, isF2, } from "@ui5/webcomponents-base/dist/Keys.js";
+import { getFirstFocusableElement } from "@ui5/webcomponents-base/dist/util/FocusableElements.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event.js";
@@ -70,7 +71,7 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
         document.removeEventListener("keyup", this.deactivateByKey);
         document.removeEventListener("touchend", this.deactivate);
     }
-    _onkeydown(e) {
+    async _onkeydown(e) {
         super._onkeydown(e);
         const itemActive = this.type === ListItemType.Active, itemNavigated = this.typeNavigation;
         if (isSpace(e)) {
@@ -81,6 +82,15 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
         }
         if (isEnter(e)) {
             this.fireItemPress(e);
+        }
+        if (isF2(e)) {
+            const focusDomRef = this.getFocusDomRef();
+            if (this.focused) {
+                (await getFirstFocusableElement(focusDomRef))?.focus(); // start content editing
+            }
+            else {
+                focusDomRef.focus(); // stop content editing
+            }
         }
     }
     _onkeyup(e) {

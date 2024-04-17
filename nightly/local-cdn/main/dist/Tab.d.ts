@@ -6,8 +6,7 @@ import "@ui5/webcomponents-icons/dist/alert.js";
 import "@ui5/webcomponents-icons/dist/sys-enter-2.js";
 import SemanticColor from "./types/SemanticColor.js";
 import ListItemType from "./types/ListItemType.js";
-import type TabSeparator from "./TabSeparator.js";
-import type { TabContainerStripInfo, TabContainerOverflowInfo } from "./TabContainer.js";
+import type { TabContainerStripInfo, TabContainerOverflowInfo, ITab } from "./TabContainer.js";
 import CustomListItem from "./CustomListItem.js";
 import TabInStripTemplate from "./generated/templates/TabInStripTemplate.lit.js";
 import TabInOverflowTemplate from "./generated/templates/TabInOverflowTemplate.lit.js";
@@ -25,9 +24,10 @@ interface TabInOverflow extends CustomListItem {
  * @abstract
  * @constructor
  * @extends UI5Element
+ * @implements {ITab}
  * @public
  */
-declare class Tab extends UI5Element implements ITabbable {
+declare class Tab extends UI5Element implements ITabbable, ITab {
     /**
      * The text to be displayed for the item.
      * @default ""
@@ -97,7 +97,7 @@ declare class Tab extends UI5Element implements ITabbable {
      * **Note:** Use `ui5-tab` and `ui5-tab-separator` for the intended design.
      * @public
      */
-    items: Array<Tab | TabSeparator>;
+    items: Array<ITab>;
     _isInline?: boolean;
     _forcedMixedMode?: boolean;
     _getElementInStrip?: () => HTMLElement | undefined;

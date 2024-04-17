@@ -170,17 +170,12 @@ declare class Button extends UI5Element implements IFormElement, IButton {
      */
     iconOnly: boolean;
     /**
-     * Indicates if the elements is on focus
-     * @private
-     */
-    focused: boolean;
-    /**
      * Indicates if the elements has a slotted icon
      * @private
      */
     hasIcon: boolean;
     /**
-     * Indicates if the element if focusable
+     * Indicates if the element is focusable
      * @private
      */
     nonInteractive: boolean;

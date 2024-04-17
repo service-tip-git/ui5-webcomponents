@@ -55,19 +55,6 @@ declare abstract class Popup extends UI5Element {
     */
     preventFocusRestore: boolean;
     /**
-     * Indicates if the element is open
-     * @public
-     * @default false
-     * @since 1.2.0
-     */
-    open: boolean;
-    /**
-     * Indicates if the element is already open
-     * @private
-     * @default false
-     */
-    opened: boolean;
-    /**
      * Defines the accessible name of the component.
      * @default undefined
      * @public
@@ -97,7 +84,6 @@ declare abstract class Popup extends UI5Element {
      * @private
      */
     _disableInitialFocus: boolean;
-    _blockLayerHidden: boolean;
     /**
      * Indicates if the element is the top modal popup
      *
@@ -113,14 +99,22 @@ declare abstract class Popup extends UI5Element {
     content: Array<HTMLElement>;
     _resizeHandler: ResizeObserverCallback;
     _shouldFocusRoot?: boolean;
-    _zIndex?: number;
     _focusedElementBeforeOpen?: HTMLElement | null;
-    _opening: boolean;
+    _isOpened: boolean;
+    _opened: boolean;
     constructor();
-    onBeforeRendering(): void;
     onAfterRendering(): void;
     onEnterDOM(): void;
     onExitDOM(): void;
+    /**
+     * Indicates if the element is open
+     * @public
+     * @default false
+     * @since 1.2.0
+     */
+    set open(value: boolean);
+    get open(): boolean;
+    openPopup(): Promise<void>;
     _resize(): void;
     /**
      * Prevents the user from interacting with the content under the block layer
@@ -155,7 +149,7 @@ declare abstract class Popup extends UI5Element {
      * Use this method to focus the element denoted by "initialFocus", if provided, or the first focusable element otherwise.
      * @protected
      */
-    applyInitialFocus(): Promise<void>;
+    applyInitialFocus(preventInitialFocus: boolean): Promise<void>;
     /**
      * Focuses the element denoted by `initialFocus`, if provided,
      * or the first focusable element otherwise.
@@ -169,7 +163,6 @@ declare abstract class Popup extends UI5Element {
      */
     isOpen(): boolean;
     isFocusWithin(): boolean;
-    get _getBlockingLayer(): HTMLElement;
     /**
      * Shows the block layer (for modal popups only) and sets the correct z-index for the purpose of popup stacking
      * @protected

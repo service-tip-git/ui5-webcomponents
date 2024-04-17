@@ -17,7 +17,7 @@ import { getFeature } from "@ui5/webcomponents-base/dist/FeaturesRegistry.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import { markEvent } from "@ui5/webcomponents-base/dist/MarkedEvents.js";
 import { getIconAccessibleName } from "@ui5/webcomponents-base/dist/asset-registries/Icons.js";
-import { isPhone, isTablet, isCombi, isDesktop, isSafari, } from "@ui5/webcomponents-base/dist/Device.js";
+import { isDesktop, isSafari, } from "@ui5/webcomponents-base/dist/Device.js";
 import willShowContent from "@ui5/webcomponents-base/dist/util/willShowContent.js";
 import ButtonDesign from "./types/ButtonDesign.js";
 import ButtonType from "./types/ButtonType.js";
@@ -86,7 +86,9 @@ let Button = Button_1 = class Button extends UI5Element {
         };
     }
     onEnterDOM() {
-        this._isTouch = (isPhone() || isTablet()) && !isCombi();
+        if (isDesktop()) {
+            this.setAttribute("desktop", "");
+        }
     }
     async onBeforeRendering() {
         const formSupport = getFeature("FormSupport");
@@ -117,7 +119,7 @@ let Button = Button_1 = class Button extends UI5Element {
         }
     }
     _onmousedown(e) {
-        if (this.nonInteractive || this._isTouch) {
+        if (this.nonInteractive) {
             return;
         }
         markEvent(e, "button");
@@ -159,18 +161,12 @@ let Button = Button_1 = class Button extends UI5Element {
         if (this.active) {
             this._setActiveState(false);
         }
-        if (isDesktop()) {
-            this.focused = false;
-        }
     }
     _onfocusin(e) {
         if (this.nonInteractive) {
             return;
         }
         markEvent(e, "button");
-        if (isDesktop()) {
-            this.focused = true;
-        }
     }
     _setActiveState(active) {
         const eventPrevented = !this.fireEvent("_active-state-change", null, true);
@@ -269,9 +265,6 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], Button.prototype, "iconOnly", void 0);
-__decorate([
-    property({ type: Boolean })
-], Button.prototype, "focused", void 0);
 __decorate([
     property({ type: Boolean })
 ], Button.prototype, "hasIcon", void 0);

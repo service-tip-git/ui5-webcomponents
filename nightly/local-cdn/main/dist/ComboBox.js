@@ -153,7 +153,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     }
     async shouldClosePopover() {
         const popover = await this._getPicker();
-        return popover.opened && !this.focused && !this._itemFocused && !this._isValueStateFocused;
+        return popover.open && !this.focused && !this._itemFocused && !this._isValueStateFocused;
     }
     _focusin(e) {
         this.focused = true;
@@ -198,7 +198,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     }
     async _toggleRespPopover() {
         const picker = await this._getPicker();
-        if (picker.opened) {
+        if (picker.open) {
             this._closeRespPopover();
         }
         else {
@@ -375,7 +375,6 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
             });
         }
         this.fireEvent("input");
-        this._fireChangeEvent();
     }
     _handleArrowDown(e, indexOfItem) {
         const isOpen = this.open;
@@ -462,7 +461,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
                 return item.focused;
             });
             this._fireChangeEvent();
-            if (picker?.opened && !focusedItem?.isGroupItem) {
+            if (picker?.open && !focusedItem?.isGroupItem) {
                 this._closeRespPopover();
                 this.focused = true;
                 this.inner.setSelectionRange(this.value.length, this.value.length);
@@ -741,7 +740,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         return this.valueState !== ValueState.None ? ValueStateIconMapping[this.valueState] : "";
     }
     get open() {
-        return this?.responsivePopover?.opened || false;
+        return this?.responsivePopover?.open || false;
     }
     get _isPhone() {
         return isPhone();

@@ -94,12 +94,6 @@ declare class SplitButton extends UI5Element {
      */
     accessibleName?: string;
     /**
-     * Indicates if the elements is on focus
-     * @default false
-     * @private
-     */
-    focused: boolean;
-    /**
      * Accessibility-related properties for inner elements of the Split Button
      * @private
      */
@@ -148,7 +142,7 @@ declare class SplitButton extends UI5Element {
      */
     text: Array<Node>;
     _textButtonPress: {
-        handleEvent: () => void;
+        handleEvent: (e: MouseEvent) => void;
         passive: boolean;
     };
     _isDefaultActionPressed: boolean;
@@ -156,16 +150,11 @@ declare class SplitButton extends UI5Element {
     static i18nBundle: I18nBundle;
     static onDefine(): Promise<void>;
     constructor();
-    /**
-     * Function that makes sure the focus is properly managed.
-     * @private
-     */
-    _manageFocus(button?: Button | SplitButton): void;
     onBeforeRendering(): void;
     _handleMouseClick(e: MouseEvent): void;
     _onFocusOut(e: FocusEvent): void;
     _onFocusIn(e: FocusEvent): void;
-    _textButtonFocusIn(e?: FocusEvent): void;
+    _onInnerButtonFocusIn(e: FocusEvent): void;
     _onKeyDown(e: KeyboardEvent): void;
     _onKeyUp(e: KeyboardEvent): void;
     _fireClick(e?: Event): void;
@@ -173,7 +162,7 @@ declare class SplitButton extends UI5Element {
     _textButtonRelease(): void;
     _arrowButtonPress(e: MouseEvent): void;
     _arrowButtonRelease(e: MouseEvent): void;
-    _setTabIndexValue(): void;
+    _setTabIndexValue(innerButtonPressed?: boolean): void;
     _onArrowButtonActiveStateChange(e: CustomEvent): void;
     /**
      * Checks if the pressed key is an arrow key.

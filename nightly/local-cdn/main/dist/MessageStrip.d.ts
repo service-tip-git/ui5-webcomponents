@@ -12,13 +12,9 @@ declare enum DesignClassesMapping {
     Information = "ui5-message-strip-root--info",
     Positive = "ui5-message-strip-root--positive",
     Negative = "ui5-message-strip-root--negative",
-    Warning = "ui5-message-strip-root--warning"
-}
-declare enum IconMapping {
-    Information = "information",
-    Positive = "sys-enter-2",
-    Negative = "error",
-    Warning = "alert"
+    Warning = "ui5-message-strip-root--warning",
+    ColorSet1 = "ui5-message-strip-root--color-set-1",
+    ColorSet2 = "ui5-message-strip-root--color-set-2"
 }
 type DesignTypeAnnouncemnt = Record<MessageStripDesign, string>;
 /**
@@ -64,8 +60,21 @@ declare class MessageStrip extends UI5Element {
      */
     design: `${MessageStripDesign}`;
     /**
+     * Defines the color scheme of the component.
+     * There are 10 predefined schemes.
+     * To use one you can set a number from `"1"` to `"10"`. The `colorScheme` `"1"` will be set by default.
+     *
+     * @default "1"
+     * @public
+     * @since 2.0
+     */
+    colorScheme: string;
+    /**
      * Defines whether the MessageStrip will show an icon in the beginning.
      * You can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.
+     *
+     *  * **Note:** If <code>MessageStripDesign.ColorSet1</code> or <code>MessageStripDesign.ColorSet2</code> value is set to the <code>design</code> property, default icon will not be presented.
+     *
      * @default false
      * @public
      * @since 1.0.0-rc.15
@@ -96,7 +105,7 @@ declare class MessageStrip extends UI5Element {
     get _closableText(): string;
     get classes(): ClassMap;
     get iconProvided(): boolean;
-    get standardIconName(): IconMapping;
+    get standardIconName(): "sys-enter-2" | "error" | "alert" | "information" | null;
     get designClasses(): DesignClassesMapping;
 }
 export default MessageStrip;

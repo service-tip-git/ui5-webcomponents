@@ -5,6 +5,7 @@ import type { MenuItemClickEventDetail } from "@ui5/webcomponents/dist/Menu.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
+import "@ui5/webcomponents-icons/dist/overflow.js";
 import SideNavigationItemBase from "./SideNavigationItemBase.js";
 import SideNavigationSelectableItemBase from "./SideNavigationSelectableItemBase.js";
 import SideNavigationItem from "./SideNavigationItem.js";
@@ -78,7 +79,7 @@ declare class SideNavigation extends UI5Element {
      *
      * @public
      */
-    items: Array<SideNavigationItem | SideNavigationGroup>;
+    items: Array<SideNavigationItemBase>;
     /**
      * Defines the fixed items at the bottom of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component
      * for the fixed items, and optionally the `ui5-side-navigation-sub-item` component to provide second-level items inside them.
@@ -87,7 +88,7 @@ declare class SideNavigation extends UI5Element {
      *
      * @public
      */
-    fixedItems: Array<SideNavigationItem | SideNavigationGroup>;
+    fixedItems: Array<SideNavigationItemBase>;
     /**
      * Defines the header of the `ui5-side-navigation`.
      *

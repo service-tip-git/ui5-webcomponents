@@ -11,6 +11,7 @@ import event from "@ui5/webcomponents-base/dist/decorators/event.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import { getIconData, getIconDataSync } from "@ui5/webcomponents-base/dist/asset-registries/Icons.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
+import { isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import { isSpace, isEnter } from "@ui5/webcomponents-base/dist/Keys.js";
 import executeTemplate from "@ui5/webcomponents-base/dist/renderer/executeTemplate.js";
 import IconTemplate from "./generated/templates/IconTemplate.lit.js";
@@ -90,14 +91,6 @@ const PRESENTATION_ROLE = "presentation";
  * @public
  */
 let Icon = class Icon extends UI5Element {
-    _onFocusInHandler() {
-        if (this.interactive) {
-            this.focused = true;
-        }
-    }
-    _onFocusOutHandler() {
-        this.focused = false;
-    }
     _onkeydown(e) {
         if (!this.interactive) {
             return;
@@ -144,6 +137,11 @@ let Icon = class Icon extends UI5Element {
         }
         return this.effectiveAccessibleName ? "img" : PRESENTATION_ROLE;
     }
+    onEnterDOM() {
+        if (isDesktop()) {
+            this.setAttribute("desktop", "");
+        }
+    }
     async onBeforeRendering() {
         const name = this.name;
         if (!name) {
@@ -175,8 +173,6 @@ let Icon = class Icon extends UI5Element {
         this.accData = iconData.accData;
         this.ltr = iconData.ltr;
         this.packageName = iconData.packageName;
-        this._onfocusout = this.interactive ? this._onFocusOutHandler.bind(this) : undefined;
-        this._onfocusin = this.interactive ? this._onFocusInHandler.bind(this) : undefined;
         if (this.accessibleName) {
             this.effectiveAccessibleName = this.accessibleName;
         }
@@ -219,9 +215,6 @@ __decorate([
 __decorate([
     property({ type: Object, defaultValue: undefined, noAttribute: true })
 ], Icon.prototype, "accData", void 0);
-__decorate([
-    property({ type: Boolean })
-], Icon.prototype, "focused", void 0);
 __decorate([
     property({ type: Boolean })
 ], Icon.prototype, "invalid", void 0);

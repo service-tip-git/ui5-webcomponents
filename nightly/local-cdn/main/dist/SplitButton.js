@@ -75,25 +75,15 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         super();
         this._isDefaultActionPressed = false;
         this._isKeyDownOperation = false;
-        const handleTouchStartEvent = () => {
+        const handleTouchStartEvent = (e) => {
+            e.stopPropagation();
             this._textButtonActive = true;
-            this.focused = false;
             this._tabIndex = "-1";
         };
         this._textButtonPress = {
             handleEvent: handleTouchStartEvent,
             passive: true,
         };
-    }
-    /**
-     * Function that makes sure the focus is properly managed.
-     * @private
-     */
-    _manageFocus(button) {
-        const buttons = [this.textButton, this.arrowButton, this];
-        buttons.forEach(btn => {
-            btn.focused = btn === button;
-        });
     }
     onBeforeRendering() {
         this._textButtonIcon = this.textButton && this.activeIcon !== "" && (this._textButtonActive) && !this._shiftOrEscapePressed ? this.activeIcon : this.icon;
@@ -102,8 +92,6 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         }
     }
     _handleMouseClick(e) {
-        const target = e.target;
-        this._manageFocus(target);
         this._fireClick(e);
     }
     _onFocusOut(e) {
@@ -112,19 +100,18 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         }
         this._shiftOrEscapePressed = false;
         this._setTabIndexValue();
-        this._manageFocus();
     }
     _onFocusIn(e) {
         if (this.disabled || getEventMark(e)) {
             return;
         }
         this._shiftOrEscapePressed = false;
-        this._manageFocus(this);
     }
-    _textButtonFocusIn(e) {
-        e?.stopPropagation();
-        this._manageFocus(this.textButton);
-        this._setTabIndexValue();
+    _onInnerButtonFocusIn(e) {
+        e.stopPropagation();
+        this._setTabIndexValue(true);
+        const target = e.target;
+        target.focus();
     }
     _onKeyDown(e) {
         this._isKeyDownOperation = true;
@@ -186,17 +173,16 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         this._tabIndex = "-1";
     }
     _arrowButtonPress(e) {
-        e.preventDefault();
-        this.arrowButton.focus();
+        e.stopPropagation();
         this._tabIndex = "-1";
     }
     _arrowButtonRelease(e) {
         e.preventDefault();
         this._tabIndex = "-1";
     }
-    _setTabIndexValue() {
+    _setTabIndexValue(innerButtonPressed) {
         this._tabIndex = this.disabled ? "-1" : "0";
-        if (this._tabIndex === "-1" && (this.textButton?.focused || this.arrowButton?.focused)) {
+        if (this._tabIndex === "-1" && innerButtonPressed) {
             this._tabIndex = "0";
         }
     }
@@ -249,19 +235,20 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
     _handleDefaultAction(e) {
         e.preventDefault();
         const wasSpacePressed = isSpace(e);
-        if (this.focused || this.textButton?.focused) {
-            this._textButtonActive = true;
-            this._fireClick();
-            if (wasSpacePressed) {
-                this._spacePressed = true;
-            }
-        }
-        else if (this.arrowButton && this.arrowButton.focused) {
+        const target = e.target;
+        if (this.arrowButton && target === this.arrowButton) {
             this._activeArrowButton = true;
             this._fireArrowClick();
             if (wasSpacePressed) {
                 this._spacePressed = true;
                 this._textButtonActive = false;
+            }
+        }
+        else {
+            this._textButtonActive = true;
+            this._fireClick();
+            if (wasSpacePressed) {
+                this._spacePressed = true;
             }
         }
     }
@@ -317,9 +304,6 @@ __decorate([
 __decorate([
     property({ defaultValue: undefined })
 ], SplitButton.prototype, "accessibleName", void 0);
-__decorate([
-    property({ type: Boolean })
-], SplitButton.prototype, "focused", void 0);
 __decorate([
     property({ type: Object })
 ], SplitButton.prototype, "_splitButtonAccInfo", void 0);

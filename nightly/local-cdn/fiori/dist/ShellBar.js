@@ -602,6 +602,7 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
                 },
                 copilot: {
                     "ui5-shellbar-hidden-button": this.isIconHidden(this._coPilotIcon),
+                    "ui5-shellbar-coPilot-pressed": this._coPilotPressed,
                 },
                 overflow: {
                     "ui5-shellbar-hidden-button": this.isIconHidden("overflow"),

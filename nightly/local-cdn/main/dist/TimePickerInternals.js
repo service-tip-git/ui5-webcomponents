@@ -17,6 +17,7 @@ import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js"; //
 import CalendarType from "@ui5/webcomponents-base/dist/types/CalendarType.js";
 import { fetchCldr } from "@ui5/webcomponents-base/dist/asset-registries/LocaleData.js";
 import Integer from "@ui5/webcomponents-base/dist/types/Integer.js";
+import UI5Date from "@ui5/webcomponents-localization/dist/dates/UI5Date.js";
 import "./SegmentedButton.js";
 import { getHoursConfigByFormat, getTimeControlsByFormat, } from "./timepicker-utils/TimeSlider.js";
 import { TIMEPICKER_HOURS_LABEL, TIMEPICKER_MINUTES_LABEL, TIMEPICKER_SECONDS_LABEL, TIMEPICKER_CLOCK_DIAL_LABEL, } from "./generated/i18n/i18n-defaults.js";
@@ -72,10 +73,10 @@ let TimePickerInternals = TimePickerInternals_1 = class TimePickerInternals exte
         return this._neededComponents[3];
     }
     get dateValue() {
-        return this.value ? this.getFormat().parse(this.value, undefined, undefined) : new Date();
+        return this.value ? this.getFormat().parse(this.value, undefined, undefined) : UI5Date.getInstance();
     }
     get validDateValue() {
-        return this.value !== undefined && this.isValid(this.value) ? this.dateValue : new Date();
+        return this.value !== undefined && this.isValid(this.value) ? this.dateValue : UI5Date.getInstance();
     }
     get periodsArray() {
         // @ts-ignore aDayPeriodsAbbrev is a private API of DateFormat

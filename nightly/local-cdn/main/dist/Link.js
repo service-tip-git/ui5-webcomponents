@@ -159,7 +159,7 @@ __decorate([
 ], Link.prototype, "disabled", void 0);
 __decorate([
     property()
-], Link.prototype, "title", void 0);
+], Link.prototype, "tooltip", void 0);
 __decorate([
     property()
 ], Link.prototype, "href", void 0);

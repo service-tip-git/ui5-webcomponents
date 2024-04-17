@@ -21,6 +21,7 @@ import overflowCss from "./generated/themes/TabSeparatorInOverflow.css.js";
  * The `ui5-tab-separator` represents a vertical line to separate tabs inside a `ui5-tabcontainer`.
  * @constructor
  * @extends UI5Element
+ * @implements {ITab}
  * @abstract
  * @public
  */

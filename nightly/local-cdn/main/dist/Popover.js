@@ -75,25 +75,43 @@ let Popover = Popover_1 = class Popover extends Popup {
     constructor() {
         super();
     }
-    onAfterRendering() {
-        super.onAfterRendering();
-        if (!this.isOpen() && this.open) {
-            let opener;
-            if (this.opener instanceof HTMLElement) {
-                opener = this.opener;
-            }
-            else if (typeof this.opener === "string") {
-                opener = this.getRootNode().getElementById(this.opener) || document.getElementById(this.opener);
+    /**
+     * Defines the ID or DOM Reference of the element that the popover is shown at
+     * @public
+     * @default undefined
+     * @since 1.2.0
+     */
+    set opener(value) {
+        if (this._opener === value) {
+            return;
+        }
+        this._opener = value;
+        if (value && this.open) {
+            this.openPopup();
+        }
+    }
+    get opener() {
+        return this._opener;
+    }
+    async openPopup() {
+        let opener;
+        if (this.opener instanceof HTMLElement) {
+            opener = this.opener;
+        }
+        else if (typeof this.opener === "string") {
+            const rootNode = this.getRootNode();
+            if (rootNode instanceof Document) {
+                opener = rootNode.getElementById(this.opener);
             }
             if (!opener) {
-                console.warn("Valid opener id is required."); // eslint-disable-line
-                return;
+                opener = document.getElementById(this.opener);
             }
-            this.showAt(opener);
         }
-        else if (this.isOpen() && !this.open) {
-            this.close();
+        if (!opener) {
+            console.warn("Valid opener id is required. It must be defined before opening the popover."); // eslint-disable-line
+            return;
         }
+        await this.showAt(opener);
     }
     isOpenerClicked(e) {
         const target = e.target;
@@ -114,7 +132,7 @@ let Popover = Popover_1 = class Popover extends Popup {
      * @returns Resolved when the popover is open
      */
     async showAt(opener, preventInitialFocus = false) {
-        if (!opener || this.opened) {
+        if (!opener || this._isOpened) {
             return;
         }
         this._opener = opener;
@@ -170,7 +188,7 @@ let Popover = Popover_1 = class Popover extends Popup {
      */
     _resize() {
         super._resize();
-        if (this.opened) {
+        if (this.open) {
             this.reposition();
         }
     }
@@ -178,7 +196,8 @@ let Popover = Popover_1 = class Popover extends Popup {
         this._show();
     }
     _show() {
-        if (!this.opened) {
+        super._show();
+        if (!this._isOpened) {
             this._showOutsideViewport();
         }
         const popoverSize = this.getPopoverSize();
@@ -252,10 +271,6 @@ let Popover = Popover_1 = class Popover extends Popup {
         return { width, height };
     }
     _showOutsideViewport() {
-        if (this.isConnected) {
-            this.setAttribute("popover", "manual");
-            this.showPopover();
-        }
         Object.assign(this.style, {
             top: "-10000px",
             left: "-10000px",
@@ -557,9 +572,6 @@ __decorate([
     property({ type: Boolean })
 ], Popover.prototype, "allowTargetOverlap", void 0);
 __decorate([
-    property({ validator: DOMReference })
-], Popover.prototype, "opener", void 0);
-__decorate([
     property({ type: Boolean })
 ], Popover.prototype, "disableScrolling", void 0);
 __decorate([
@@ -583,6 +595,9 @@ __decorate([
 __decorate([
     slot({ type: HTMLElement })
 ], Popover.prototype, "footer", void 0);
+__decorate([
+    property({ validator: DOMReference })
+], Popover.prototype, "opener", null);
 Popover = Popover_1 = __decorate([
     customElement({
         tag: "ui5-popover",

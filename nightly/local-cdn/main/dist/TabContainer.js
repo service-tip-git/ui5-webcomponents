@@ -137,7 +137,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
             const focusStart = this._getRootTab(this._selectedTab);
             this._itemNavigation.setCurrentItem(focusStart);
         }
-        if (this.responsivePopover?.opened) {
+        if (this.responsivePopover?.open) {
             const popoverItems = this._getPopoverItemsFor(this._getPopoverOwner(this.responsivePopover._opener));
             if (popoverItems.length) {
                 this._setPopoverItems(popoverItems);
@@ -162,7 +162,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         this._setDraggedElement = undefined;
     }
     _handleResize() {
-        if (this.responsivePopover && this.responsivePopover.opened) {
+        if (this.responsivePopover && this.responsivePopover.open) {
             this._closePopover();
         }
         // invalidate
@@ -515,7 +515,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
                     [getScopedVarName("--_ui5-tab-extra-indent")]: extraIndent ? 1 : null,
                 },
             });
-            if (!item.isSeparator) {
+            if (item.items) {
                 this._setIndentLevels(item.items, level + 1, extraIndent);
             }
         });
@@ -1022,6 +1022,7 @@ TabContainer = TabContainer_1 = __decorate([
      * @param {Tab} tab The selected `tab`.
      * @param {Integer} tabIndex The selected `tab` index in the flattened array of all tabs and their subTabs, provided by the `allItems` getter.
      * @public
+     * @since 2.0.0
      * @allowPreventDefault
      */
     ,
@@ -1037,6 +1038,51 @@ TabContainer = TabContainer_1 = __decorate([
             tabIndex: { type: Number },
         },
     })
+    /**
+     * Fired when element is being moved over the tab container.
+     *
+     * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+     * @param {object} source Contains information about the moved element under `element` property.
+     * @param {object} destination Contains information about the destination of the moved element. Has `element` and `placement` properties.
+     * @public
+     * @since 2.0.0
+     * @allowPreventDefault
+     */
+    ,
+    event("move-over", {
+        detail: {
+            /**
+             * @public
+             */
+            source: { type: Object },
+            /**
+             * @public
+             */
+            destination: { type: Object },
+        },
+    })
+    /**
+     * Fired when element is moved to the tab container.
+     *
+     * **Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.
+     * @param {object} source Contains information about the moved element under `element` property.
+     * @param {object} destination Contains information about the destination of the moved element. Has `element` and `placement` properties.
+     * @public
+     * @allowPreventDefault
+     */
+    ,
+    event("move", {
+        detail: {
+            /**
+             * @public
+             */
+            source: { type: Object },
+            /**
+             * @public
+             */
+            destination: { type: Object },
+        },
+    })
 ], TabContainer);
 const isTabInStrip = (el) => el.localName === "div" && el.getAttribute("role") === "tab";
 const getTabInStrip = (el) => {
@@ -1049,10 +1095,10 @@ const getTabInStrip = (el) => {
     return false;
 };
 const walk = (items, callback) => {
-    [...items].forEach(tab => {
-        callback(tab);
-        if (tab.hasAttribute("ui5-tab")) {
-            walk(tab.items, callback);
+    [...items].forEach(item => {
+        callback(item);
+        if (item.hasAttribute("ui5-tab") && item.items) {
+            walk(item.items, callback);
         }
     });
 };

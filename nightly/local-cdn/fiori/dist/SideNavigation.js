@@ -16,6 +16,7 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
+import "@ui5/webcomponents-icons/dist/overflow.js";
 import { isPhone, isTablet, isCombi, } from "@ui5/webcomponents-base/dist/Device.js";
 import { isSpace, isEnter, } from "@ui5/webcomponents-base/dist/Keys.js";
 import NavigationMode from "@ui5/webcomponents-base/dist/types/NavigationMode.js";

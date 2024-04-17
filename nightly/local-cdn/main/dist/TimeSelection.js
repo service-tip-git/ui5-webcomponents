@@ -21,6 +21,7 @@ import CalendarType from "@ui5/webcomponents-base/dist/types/CalendarType.js";
 import { fetchCldr } from "@ui5/webcomponents-base/dist/asset-registries/LocaleData.js";
 import { isLeft, isRight, } from "@ui5/webcomponents-base/dist/Keys.js";
 import "@ui5/webcomponents-icons/dist/time-entry-request.js";
+import UI5Date from "@ui5/webcomponents-localization/dist/dates/UI5Date.js";
 import timeSelectionTemplate from "./generated/templates/TimeSelectionTemplate.lit.js";
 import WheelSlider from "./WheelSlider.js";
 import { getHours, getMinutes, getSeconds, getHoursConfigByFormat, getTimeControlsByFormat, } from "./timepicker-utils/TimeSlider.js";
@@ -276,10 +277,10 @@ let TimeSelection = TimeSelection_1 = class TimeSelection extends UI5Element {
         return this.getFormat().format(date);
     }
     get dateValue() {
-        return this.value ? this.getFormat().parse(this.value) : new Date();
+        return this.value ? this.getFormat().parse(this.value) : UI5Date.getInstance();
     }
     get validDateValue() {
-        return this.value !== undefined && this.isValid(this.value) ? this.dateValue : new Date();
+        return this.value !== undefined && this.isValid(this.value) ? this.dateValue : UI5Date.getInstance();
     }
     get hoursSliderTitle() {
         return TimeSelection_1.i18nBundle.getText(TIMEPICKER_HOURS_LABEL);

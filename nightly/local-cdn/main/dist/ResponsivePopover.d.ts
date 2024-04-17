@@ -55,6 +55,7 @@ declare class ResponsivePopover extends Popover {
      * @returns Resolves when the responsive popover is open
      */
     showAt(opener: HTMLElement, preventInitialFocus?: boolean): Promise<void>;
+    _show(): void;
     /**
      * Closes the popover/dialog.
      * @public

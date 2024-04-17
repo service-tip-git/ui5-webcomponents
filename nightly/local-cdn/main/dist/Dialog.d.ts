@@ -200,7 +200,6 @@ declare class Dialog extends Popup {
     get _role(): string | undefined;
     _show(): void;
     onBeforeRendering(): void;
-    onAfterRendering(): void;
     onEnterDOM(): void;
     onExitDOM(): void;
     /**

@@ -47,6 +47,7 @@ const DESIGN_DESCRIPTIONS = {
  * @abstract
  * @constructor
  * @extends UI5Element
+ * @implements {ITab}
  * @public
  */
 let Tab = Tab_1 = class Tab extends UI5Element {

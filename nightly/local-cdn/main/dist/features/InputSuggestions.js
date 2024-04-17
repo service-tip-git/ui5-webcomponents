@@ -269,7 +269,7 @@ class Suggestions {
         return (items[this.selectedItemIndex].groupItem || items[this.selectedItemIndex].type === "Inactive");
     }
     isOpened() {
-        return !!(this.responsivePopover && this.responsivePopover.opened);
+        return !!(this.responsivePopover && this.responsivePopover.open);
     }
     _handleItemNavigation(forward) {
         if (!this._getItems().length) {

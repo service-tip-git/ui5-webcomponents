@@ -1,5 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { TabContainerStripInfo, TabContainerOverflowInfo } from "./TabContainer.js";
+import type { TabContainerStripInfo, TabContainerOverflowInfo, ITab } from "./TabContainer.js";
 import TabSeparatorInStripTemplate from "./generated/templates/TabSeparatorInStripTemplate.lit.js";
 import TabSeparatorInOverflowTemplate from "./generated/templates/TabSeparatorInOverflowTemplate.lit.js";
 interface TabSeparatorInStrip extends HTMLElement {
@@ -10,10 +10,11 @@ interface TabSeparatorInStrip extends HTMLElement {
  * The `ui5-tab-separator` represents a vertical line to separate tabs inside a `ui5-tabcontainer`.
  * @constructor
  * @extends UI5Element
+ * @implements {ITab}
  * @abstract
  * @public
  */
-declare class TabSeparator extends UI5Element {
+declare class TabSeparator extends UI5Element implements ITab {
     _forcedStyleInOverflow?: Record<string, any>;
     _getElementInStrip?: () => HTMLElement | undefined;
     static get stripTemplate(): typeof TabSeparatorInStripTemplate;

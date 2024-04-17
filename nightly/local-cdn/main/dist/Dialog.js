@@ -217,15 +217,6 @@ let Dialog = Dialog_1 = class Dialog extends Popup {
         this.onPhone = isPhone();
         this.onDesktop = isDesktop();
     }
-    onAfterRendering() {
-        super.onAfterRendering();
-        if (!this.isOpen() && this.open) {
-            this.show();
-        }
-        else if (this.isOpen() && !this.open) {
-            this.close();
-        }
-    }
     onEnterDOM() {
         super.onEnterDOM();
         this._attachScreenResizeHandler();

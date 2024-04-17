@@ -172,7 +172,7 @@ declare abstract class ListItem extends ListItemBase {
     onBeforeRendering(): void;
     onEnterDOM(): void;
     onExitDOM(): void;
-    _onkeydown(e: KeyboardEvent): void;
+    _onkeydown(e: KeyboardEvent): Promise<void>;
     _onkeyup(e: KeyboardEvent): void;
     _onmousedown(e: MouseEvent): void;
     _onmouseup(e: MouseEvent): void;

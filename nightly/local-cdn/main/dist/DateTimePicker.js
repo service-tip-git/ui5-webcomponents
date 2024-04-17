@@ -13,6 +13,7 @@ import getCachedLocaleDataInstance from "@ui5/webcomponents-localization/dist/ge
 import modifyDateBy from "@ui5/webcomponents-localization/dist/dates/modifyDateBy.js";
 import CalendarDate from "@ui5/webcomponents-localization/dist/dates/CalendarDate.js";
 import "@ui5/webcomponents-icons/dist/date-time.js";
+import UI5Date from "@ui5/webcomponents-localization/dist/dates/UI5Date.js";
 import Button from "./Button.js";
 import ToggleButton from "./ToggleButton.js";
 import SegmentedButton from "./SegmentedButton.js";
@@ -123,7 +124,7 @@ let DateTimePicker = DateTimePicker_1 = class DateTimePicker extends DatePicker 
         await super.openPicker();
         this._previewValues = {
             ...this._previewValues,
-            timeSelectionValue: this.value || this.getFormat().format(new Date()),
+            timeSelectionValue: this.value || this.getFormat().format(UI5Date.getInstance()),
         };
     }
     /**

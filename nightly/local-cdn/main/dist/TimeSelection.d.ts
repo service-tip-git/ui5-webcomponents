@@ -127,8 +127,8 @@ declare class TimeSelection extends UI5Element {
     _handleWheel(e: WheelEvent): void;
     getFormat(): DateFormat;
     formatValue(date: Date): string;
-    get dateValue(): Date;
-    get validDateValue(): Date;
+    get dateValue(): Date | import("sap/ui/core/date/UI5Date").default;
+    get validDateValue(): Date | import("sap/ui/core/date/UI5Date").default;
     get hoursSliderTitle(): string;
     get minutesSliderTitle(): string;
     get secondsSliderTitle(): string;

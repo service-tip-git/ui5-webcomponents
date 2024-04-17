@@ -159,10 +159,6 @@ declare class Icon extends UI5Element implements IIcon {
      */
     accData?: I18nText;
     /**
-     * @private
-     */
-    focused: boolean;
-    /**
     * @private
     */
     invalid: boolean;
@@ -174,10 +170,6 @@ declare class Icon extends UI5Element implements IIcon {
     packageName?: string;
     viewBox?: string;
     customSvg?: object;
-    _onfocusout?: ((event: FocusEvent) => void);
-    _onfocusin?: ((event: FocusEvent) => void);
-    _onFocusInHandler(): void;
-    _onFocusOutHandler(): void;
     _onkeydown(e: KeyboardEvent): void;
     _onkeyup(e: KeyboardEvent): void;
     /**
@@ -188,6 +180,7 @@ declare class Icon extends UI5Element implements IIcon {
     get _tabIndex(): "0" | undefined;
     get isDecorative(): boolean;
     get effectiveAccessibleRole(): string;
+    onEnterDOM(): void;
     onBeforeRendering(): Promise<void>;
     get hasIconTooltip(): string | false | undefined;
 }

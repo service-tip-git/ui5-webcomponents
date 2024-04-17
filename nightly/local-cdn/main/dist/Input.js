@@ -818,7 +818,7 @@ let Input = Input_1 = class Input extends UI5Element {
         return this.hasValueState ? `${this._id}-valueStateDesc` : "";
     }
     get accInfo() {
-        const ariaHasPopupDefault = this.showSuggestions ? "true" : undefined;
+        const ariaHasPopupDefault = this.showSuggestions ? "dialog" : undefined;
         const ariaAutoCompleteDefault = this.showSuggestions ? "list" : undefined;
         const ariaDescribedBy = this._inputAccInfo.ariaDescribedBy ? `${this.suggestionsTextId} ${this.valueStateTextId} ${this._inputAccInfo.ariaDescribedBy}`.trim() : `${this.suggestionsTextId} ${this.valueStateTextId}`.trim();
         const info = {

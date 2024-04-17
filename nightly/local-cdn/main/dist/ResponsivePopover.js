@@ -59,6 +59,11 @@ let ResponsivePopover = ResponsivePopover_1 = class ResponsivePopover extends Po
             await this._dialog.show(preventInitialFocus);
         }
     }
+    _show() {
+        if (!isPhone()) {
+            super._show();
+        }
+    }
     /**
      * Closes the popover/dialog.
      * @public
@@ -111,13 +116,13 @@ let ResponsivePopover = ResponsivePopover_1 = class ResponsivePopover extends Po
         return ResponsivePopover_1.i18nBundle.getText(RESPONSIVE_POPOVER_CLOSE_DIALOG_BUTTON);
     }
     _beforeDialogOpen(e) {
+        this._isOpened = true;
         this.open = true;
-        this.opened = true;
         this._propagateDialogEvent(e);
     }
     _afterDialogClose(e) {
+        this._isOpened = false;
         this.open = false;
-        this.opened = false;
         this._propagateDialogEvent(e);
     }
     _propagateDialogEvent(e) {

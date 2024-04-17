@@ -141,6 +141,7 @@ class UI5Element extends HTMLElement {
             this.onExitDOM();
             this._fullyConnected = false;
         }
+        this._domRefReadyPromise._deferredResolve();
         cancelRender(this);
     }
     /**

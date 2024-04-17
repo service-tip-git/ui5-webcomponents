@@ -10,7 +10,6 @@ import Button from "./Button.js";
 import DropIndicator from "./DropIndicator.js";
 import type Tab from "./Tab.js";
 import type { TabInStrip, TabInOverflow } from "./Tab.js";
-import type TabSeparator from "./TabSeparator.js";
 import type { TabSeparatorInStrip } from "./TabSeparator.js";
 import type { ListItemClickEventDetail, ListMoveEventDetail } from "./List.js";
 import ResponsivePopover from "./ResponsivePopover.js";
@@ -44,6 +43,19 @@ type TabContainerMoveEventDetail = {
         placement: `${MovePlacement}`;
     };
 };
+/**
+ * Interface for components that may be slotted inside `ui5-tabcontainer` as items
+ *
+ * **Note:** Use directly `ui5-tab` or `ui5-tab-seprator`. Implementing the interface does not guarantee that the class can work as a tab.
+ * @public
+ */
+interface ITab extends UI5Element {
+    isSeparator: boolean;
+    receiveStripInfo: (arg0: TabContainerStripInfo) => void;
+    receiveOverflowInfo: (arg0: TabContainerOverflowInfo) => void;
+    getDomRefInStrip: () => HTMLElement | undefined;
+    items?: Array<ITab>;
+}
 /**
  * @class
  *
@@ -149,7 +161,7 @@ declare class TabContainer extends UI5Element {
     _contentCollapsed: boolean;
     _startOverflowText: string;
     _endOverflowText: string;
-    _popoverItemsFlat: Array<Tab | TabSeparator>;
+    _popoverItemsFlat: Array<ITab>;
     _width?: number;
     /**
      * Defines the tabs.
@@ -157,7 +169,7 @@ declare class TabContainer extends UI5Element {
      * **Note:** Use `ui5-tab` and `ui5-tab-separator` for the intended design.
      * @public
      */
-    items: Array<Tab | TabSeparator>;
+    items: Array<ITab>;
     /**
      * Defines the button which will open the overflow menu. If nothing is provided to this slot,
      * the default button will be used.
@@ -173,7 +185,7 @@ declare class TabContainer extends UI5Element {
      */
     startOverflowButton: Array<IButton>;
     _itemNavigation: ItemNavigation;
-    _itemsFlat?: Array<Tab | TabSeparator>;
+    _itemsFlat?: Array<ITab>;
     responsivePopover?: ResponsivePopover;
     _hasScheduledPopoverOpen: boolean;
     _handleResizeBound: () => void;
@@ -187,7 +199,7 @@ declare class TabContainer extends UI5Element {
     onExitDOM(): void;
     _handleResize(): void;
     _updateMediaRange(width: number): void;
-    _sendStripPresentationInfos(items: Array<Tab | TabSeparator>): void;
+    _sendStripPresentationInfos(items: Array<ITab>): void;
     _onHeaderFocusin(e: FocusEvent): void;
     _onDragStart(e: DragEvent): void;
     _onHeaderDragEnter(e: DragEvent): void;
@@ -212,8 +224,8 @@ declare class TabContainer extends UI5Element {
      * @public
      * @default []
      */
-    get allItems(): Array<Tab | TabSeparator>;
-    _flatten(items: Array<Tab | TabSeparator>): (TabSeparator | Tab)[];
+    get allItems(): Array<ITab>;
+    _flatten(items: Array<ITab>): ITab[];
     _onItemSelect(selectedTabId: string): void;
     /**
      * Fires the `tab-select` event and changes the internal reference for the currently selected tab.
@@ -227,8 +239,8 @@ declare class TabContainer extends UI5Element {
     slideContentDown(element: HTMLElement): Promise<void | Error>;
     slideContentUp(element: HTMLElement): Promise<void | Error>;
     _onOverflowClick(e: Event): Promise<void>;
-    _setIndentLevels(items: Array<Tab | TabSeparator>, level: number, extraIndent: boolean): void;
-    _sendOverflowPresentationInfos(items: Array<Tab | TabSeparator>): void;
+    _setIndentLevels(items: Array<ITab>, level: number, extraIndent: boolean): void;
+    _sendOverflowPresentationInfos(items: Array<ITab>): void;
     _onOverflowKeyDown(e: KeyboardEvent): Promise<void>;
     _setItemsForStrip(): void;
     _getRootTab(tab: Tab): Tab;
@@ -255,8 +267,8 @@ declare class TabContainer extends UI5Element {
     _getHeader(): HTMLElement;
     _getTabs(): Array<Tab>;
     _getPopoverOwner(opener: HTMLElement): TabContainerPopoverOwner;
-    _getPopoverItemsFor(targetOwner: TabContainerPopoverOwner): (TabSeparator | Tab)[];
-    _setPopoverItems(items: Array<Tab | TabSeparator>): void;
+    _getPopoverItemsFor(targetOwner: TabContainerPopoverOwner): ITab[];
+    _setPopoverItems(items: Array<ITab>): void;
     _togglePopover(opener: HTMLElement, setInitialFocus?: boolean): Promise<void>;
     _showPopoverAt(opener: HTMLElement, setInitialFocus?: boolean, preventInitialFocus?: boolean): Promise<void>;
     get hasItems(): boolean;
@@ -305,4 +317,4 @@ declare class TabContainer extends UI5Element {
     static onDefine(): Promise<void>;
 }
 export default TabContainer;
-export type { TabContainerTabSelectEventDetail, TabContainerMoveEventDetail, TabContainerStripInfo, TabContainerOverflowInfo, };
+export type { TabContainerTabSelectEventDetail, TabContainerMoveEventDetail, TabContainerStripInfo, TabContainerOverflowInfo, ITab, };

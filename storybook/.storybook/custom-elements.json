@@ -2116,6 +2116,24 @@
                             "default": "Warning",
                             "name": "Warning",
                             "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Message uses custom color set 1",
+                            "default": "ColorSet1",
+                            "name": "ColorSet1",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Message uses custom color set 2",
+                            "default": "ColorSet2",
+                            "name": "ColorSet2",
+                            "readonly": true
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents",
@@ -8838,22 +8856,6 @@
                         },
                         {
                             "kind": "field",
-                            "name": "open",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Indicates if the element is open",
-                            "privacy": "public",
-                            "default": "false",
-                            "_ui5since": "1.2.0",
-                            "_ui5validator": "Boolean",
-                            "inheritedFrom": {
-                                "name": "Popup",
-                                "module": "dist/Popup.js"
-                            }
-                        },
-                        {
-                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string | undefined"
@@ -8902,6 +8904,22 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "PopupAccessibleRole",
+                            "inheritedFrom": {
+                                "name": "Popup",
+                                "module": "dist/Popup.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "open",
+                            "description": "Indicates if the element is open",
+                            "privacy": "public",
+                            "default": "false",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "_ui5since": "1.2.0",
+                            "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
                                 "module": "dist/Popup.js"
@@ -9988,6 +10006,18 @@
                             "default": "false",
                             "privacy": "public",
                             "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "tooltip",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the tooltip of the component.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5since": "2.0",
+                            "_ui5validator": "String"
                         },
                         {
                             "kind": "field",
@@ -11310,11 +11340,23 @@
                         },
                         {
                             "kind": "field",
+                            "name": "colorScheme",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the color scheme of the component.\nThere are 10 predefined schemes.\nTo use one you can set a number from `\"1\"` to `\"10\"`. The `colorScheme` `\"1\"` will be set by default.",
+                            "default": "\"1\"",
+                            "privacy": "public",
+                            "_ui5since": "2.0",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
                             "name": "hideIcon",
                             "type": {
                                 "text": "boolean"
                             },
-                            "description": "Defines whether the MessageStrip will show an icon in the beginning.\nYou can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.",
+                            "description": "Defines whether the MessageStrip will show an icon in the beginning.\nYou can directly provide an icon with the `icon` slot. Otherwise, the default icon for the type will be used.\n\n * **Note:** If <code>MessageStripDesign.ColorSet1</code> or <code>MessageStripDesign.ColorSet2</code> value is set to the <code>design</code> property, default icon will not be presented.",
                             "default": "false",
                             "privacy": "public",
                             "_ui5since": "1.0.0-rc.15",
@@ -11492,7 +11534,7 @@
                         },
                         {
                             "kind": "field",
-                            "name": "allowCustomValues",
+                            "name": "noValidation",
                             "type": {
                                 "text": "boolean"
                             },
@@ -12858,12 +12900,12 @@
                         {
                             "kind": "field",
                             "name": "opener",
-                            "type": {
-                                "text": "HTMLElement | string | undefined"
-                            },
                             "description": "Defines the ID or DOM Reference of the element that the popover is shown at",
                             "privacy": "public",
                             "default": "undefined",
+                            "type": {
+                                "text": "HTMLElement | undefined"
+                            },
                             "_ui5since": "1.2.0",
                             "_ui5validator": "DOMReference"
                         },
@@ -12932,22 +12974,6 @@
                         },
                         {
                             "kind": "field",
-                            "name": "open",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Indicates if the element is open",
-                            "privacy": "public",
-                            "default": "false",
-                            "_ui5since": "1.2.0",
-                            "_ui5validator": "Boolean",
-                            "inheritedFrom": {
-                                "name": "Popup",
-                                "module": "dist/Popup.js"
-                            }
-                        },
-                        {
-                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string | undefined"
@@ -12996,6 +13022,22 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "PopupAccessibleRole",
+                            "inheritedFrom": {
+                                "name": "Popup",
+                                "module": "dist/Popup.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "open",
+                            "description": "Indicates if the element is open",
+                            "privacy": "public",
+                            "default": "false",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "_ui5since": "1.2.0",
+                            "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
                                 "module": "dist/Popup.js"
@@ -13193,18 +13235,6 @@
                         },
                         {
                             "kind": "field",
-                            "name": "open",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Indicates if the element is open",
-                            "privacy": "public",
-                            "default": "false",
-                            "_ui5since": "1.2.0",
-                            "_ui5validator": "Boolean"
-                        },
-                        {
-                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string | undefined"
@@ -13245,6 +13275,18 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "PopupAccessibleRole"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "open",
+                            "description": "Indicates if the element is open",
+                            "privacy": "public",
+                            "default": "false",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "_ui5since": "1.2.0",
+                            "_ui5validator": "Boolean"
                         },
                         {
                             "kind": "method",
@@ -14294,12 +14336,12 @@
                         {
                             "kind": "field",
                             "name": "opener",
-                            "type": {
-                                "text": "HTMLElement | string | undefined"
-                            },
                             "description": "Defines the ID or DOM Reference of the element that the popover is shown at",
                             "privacy": "public",
                             "default": "undefined",
+                            "type": {
+                                "text": "HTMLElement | undefined"
+                            },
                             "_ui5since": "1.2.0",
                             "_ui5validator": "DOMReference",
                             "inheritedFrom": {
@@ -14332,22 +14374,6 @@
                             "default": "false",
                             "privacy": "public",
                             "_ui5since": "1.0.0-rc.8",
-                            "_ui5validator": "Boolean",
-                            "inheritedFrom": {
-                                "name": "Popup",
-                                "module": "dist/Popup.js"
-                            }
-                        },
-                        {
-                            "kind": "field",
-                            "name": "open",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Indicates if the element is open",
-                            "privacy": "public",
-                            "default": "false",
-                            "_ui5since": "1.2.0",
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
@@ -14404,6 +14430,22 @@
                             "privacy": "public",
                             "_ui5since": "1.10.0",
                             "_ui5validator": "PopupAccessibleRole",
+                            "inheritedFrom": {
+                                "name": "Popup",
+                                "module": "dist/Popup.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "open",
+                            "description": "Indicates if the element is open",
+                            "privacy": "public",
+                            "default": "false",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "_ui5since": "1.2.0",
+                            "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
                                 "module": "dist/Popup.js"
@@ -17264,7 +17306,14 @@
                             "name": "items",
                             "description": "Defines hierarchies with nested sub tabs.\n\n**Note:** Use `ui5-tab` and `ui5-tab-separator` for the intended design.",
                             "_ui5type": {
-                                "text": "Array<Tab | TabSeparator>"
+                                "text": "Array<ITab>",
+                                "references": [
+                                    {
+                                        "name": "ITab",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TabContainer.js"
+                                    }
+                                ]
                             },
                             "_ui5privacy": "public"
                         }
@@ -17365,6 +17414,13 @@
                     "customElement": true,
                     "_ui5privacy": "public",
                     "_ui5abstract": true,
+                    "_ui5implements": [
+                        {
+                            "name": "ITab",
+                            "package": "@ui5/webcomponents",
+                            "module": "dist/TabContainer.js"
+                        }
+                    ],
                     "_ui5package": "@ui5/webcomponents"
                 }
             ],
@@ -17392,6 +17448,14 @@
             "path": "dist/TabContainer.js",
             "declarations": [
                 {
+                    "kind": "interface",
+                    "name": "ITab",
+                    "description": "Interface for components that may be slotted inside `ui5-tabcontainer` as items\n\n**Note:** Use directly `ui5-tab` or `ui5-tab-seprator`. Implementing the interface does not guarantee that the class can work as a tab.",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "ITab"
+                },
+                {
                     "kind": "class",
                     "description": "### Overview\n\nThe `ui5-tabcontainer` represents a collection of tabs with associated content.\nNavigation through the tabs changes the content display of the currently active content area.\nA tab can be labeled with text only, or icons with text.\n\n### Structure\n\nThe `ui5-tabcontainer` can hold two types of entities:\n\n- `ui5-tab` - contains all the information on an item (text and icon)\n- `ui5-tab-separator` - used to separate tabs with a line\n\n### Hierarchies\nMultiple sub tabs could be placed underneath one main tab. Nesting allows deeper hierarchies with indentations\nto indicate the level of each nested tab. When a tab has both sub tabs and own content its click area is split\nto allow the user to display the content or alternatively to expand / collapse the list of sub tabs.\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TabContainer.js\";`\n\n`import \"@ui5/webcomponents/dist/Tab.js\";` (for `ui5-tab`)\n\n`import \"@ui5/webcomponents/dist/TabSeparator.js\";` (for `ui5-tab-separator`)",
                     "name": "TabContainer",
@@ -17411,7 +17475,14 @@
                             "description": "Defines the tabs.\n\n**Note:** Use `ui5-tab` and `ui5-tab-separator` for the intended design.",
                             "_ui5propertyName": "items",
                             "_ui5type": {
-                                "text": "Array<Tab | TabSeparator>"
+                                "text": "Array<ITab>",
+                                "references": [
+                                    {
+                                        "name": "ITab",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TabContainer.js"
+                                    }
+                                ]
                             },
                             "_ui5privacy": "public"
                         },
@@ -17539,7 +17610,14 @@
                             "kind": "field",
                             "name": "allItems",
                             "type": {
-                                "text": "Array<Tab | TabSeparator>"
+                                "text": "Array<ITab>",
+                                "references": [
+                                    {
+                                        "name": "ITab",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TabContainer.js"
+                                    }
+                                ]
                             },
                             "description": "Returns all slotted tabs and their subTabs in a flattened array.\nThe order of tabs is depth-first.",
                             "privacy": "public",
@@ -17563,6 +17641,7 @@
                             },
                             "description": "Fired when a tab is selected.",
                             "_ui5allowPreventDefault": true,
+                            "_ui5since": "2.0.0",
                             "_ui5parameters": [
                                 {
                                     "type": {
@@ -17593,6 +17672,75 @@
                                     "name": "tabIndex",
                                     "_ui5privacy": "public",
                                     "description": "The selected `tab` index in the flattened array of all tabs and their subTabs, provided by the `allItems` getter."
+                                }
+                            ]
+                        },
+                        {
+                            "name": "move-over",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<TabContainerMoveEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TabContainerMoveEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TabContainer.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired when element is being moved over the tab container.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5since": "2.0.0",
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "source",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the moved element under `element` property."
+                                },
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "destination",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                                }
+                            ]
+                        },
+                        {
+                            "name": "move",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<TabContainerMoveEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "TabContainerMoveEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/TabContainer.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired when element is moved to the tab container.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "source",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the moved element under `element` property."
+                                },
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "destination",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
                                 }
                             ]
                         }
@@ -17657,6 +17805,13 @@
                     "customElement": true,
                     "_ui5privacy": "public",
                     "_ui5abstract": true,
+                    "_ui5implements": [
+                        {
+                            "name": "ITab",
+                            "package": "@ui5/webcomponents",
+                            "module": "dist/TabContainer.js"
+                        }
+                    ],
                     "_ui5package": "@ui5/webcomponents"
                 }
             ],
@@ -18409,7 +18564,7 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "### Overview\n\nThe `ui5-textarea` component is used to enter multiple lines of text.\n\nWhen empty, it can hold a placeholder similar to a `ui5-input`.\nYou can define the rows of the `ui5-textarea` and also determine specific behavior when handling long texts.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TextArea.js\";`",
+                    "description": "### Overview\n\nThe `ui5-textarea` component is used to enter multiple rows of text.\n\nWhen empty, it can hold a placeholder similar to a `ui5-input`.\nYou can define the rows of the `ui5-textarea` and also determine specific behavior when handling long texts.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TextArea.js\";`",
                     "name": "TextArea",
                     "cssParts": [
                         {
@@ -18512,7 +18667,7 @@
                             "type": {
                                 "text": "number"
                             },
-                            "description": "Defines the number of visible text lines for the component.\n\n**Notes:**\n\n- If the `growing` property is enabled, this property defines the minimum rows to be displayed\nin the textarea.\n- The CSS `height` property wins over the `rows` property, if both are set.",
+                            "description": "Defines the number of visible text rows for the component.\n\n**Notes:**\n\n- If the `growing` property is enabled, this property defines the minimum rows to be displayed\nin the textarea.\n- The CSS `height` property wins over the `rows` property, if both are set.",
                             "default": "0",
                             "privacy": "public",
                             "_ui5validator": "Integer"
@@ -18552,11 +18707,11 @@
                         },
                         {
                             "kind": "field",
-                            "name": "growingMaxLines",
+                            "name": "growingMaxRows",
                             "type": {
                                 "text": "number"
                             },
-                            "description": "Defines the maximum number of lines that the component can grow.",
+                            "description": "Defines the maximum number of rows that the component can grow.",
                             "default": "0",
                             "privacy": "public",
                             "_ui5validator": "Integer"
@@ -24029,33 +24184,17 @@
                             "default": "false",
                             "_ui5since": "1.24.0",
                             "_ui5validator": "Boolean"
-                        },
-                        {
-                            "kind": "method",
-                            "name": "show",
-                            "return": {
-                                "type": {
-                                    "text": "void"
-                                }
-                            },
-                            "description": "Shows a dialog with the camera videostream. Starts a scan session.",
-                            "privacy": "public",
-                            "deprecated": "The method is deprecated in favour of <code>open</code> property."
-                        },
-                        {
-                            "kind": "method",
-                            "name": "close",
-                            "return": {
-                                "type": {
-                                    "text": "void"
-                                }
-                            },
-                            "description": "Closes the dialog and the scan session.",
-                            "privacy": "public",
-                            "deprecated": "The method is deprecated in favour of <code>open</code> property."
                         }
                     ],
                     "events": [
+                        {
+                            "name": "close",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent"
+                            },
+                            "description": "Fired when the user closes the component."
+                        },
                         {
                             "name": "scan-success",
                             "_ui5privacy": "public",
@@ -26931,7 +27070,14 @@
                             "description": "Defines the main items of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the top-level items, and the `ui5-side-navigation-sub-item` component for second-level items, nested\ninside the items.",
                             "_ui5propertyName": "items",
                             "_ui5type": {
-                                "text": "Array<SideNavigationItem | SideNavigationGroup>"
+                                "text": "Array<SideNavigationItemBase>",
+                                "references": [
+                                    {
+                                        "name": "SideNavigationItemBase",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/SideNavigationItemBase.js"
+                                    }
+                                ]
                             },
                             "_ui5privacy": "public"
                         },
@@ -26939,7 +27085,14 @@
                             "name": "fixedItems",
                             "description": "Defines the fixed items at the bottom of the `ui5-side-navigation`. Use the `ui5-side-navigation-item` component\nfor the fixed items, and optionally the `ui5-side-navigation-sub-item` component to provide second-level items inside them.\n\n**Note:** In order to achieve the best user experience, it is recommended that you keep the fixed items \"flat\" (do not pass sub-items)",
                             "_ui5type": {
-                                "text": "Array<SideNavigationItem | SideNavigationGroup>"
+                                "text": "Array<SideNavigationItemBase>",
+                                "references": [
+                                    {
+                                        "name": "SideNavigationItemBase",
+                                        "package": "@ui5/webcomponents-fiori",
+                                        "module": "dist/SideNavigationItemBase.js"
+                                    }
+                                ]
                             },
                             "_ui5privacy": "public"
                         },

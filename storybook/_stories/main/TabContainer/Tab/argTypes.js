@@ -25,7 +25,7 @@ export default {
         },
         "table": {
             "type": {
-                "summary": "Array<Tab | TabSeparator>"
+                "summary": "Array<ITab>"
             }
         }
     },

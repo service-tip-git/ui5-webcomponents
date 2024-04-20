@@ -27,13 +27,18 @@ export default {
             "None"
         ]
     },
+    "listItems": {
+        "control": {
+            "type": false
+        }
+    },
     "default": {
         "control": {
             "type": "text"
         },
         "table": {
             "type": {
-                "summary": "Array<ListItemBase>"
+                "summary": "Array<ListItemBase | ListItemGroup>"
             }
         }
     },

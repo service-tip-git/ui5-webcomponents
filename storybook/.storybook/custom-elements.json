@@ -3715,7 +3715,7 @@
                                 ]
                             },
                             "description": "Defines the design type of the component.",
-                            "default": "\"Set3\"",
+                            "default": "\"Neutral\"",
                             "privacy": "public",
                             "_ui5since": "1.22.0",
                             "_ui5validator": "String"
@@ -5359,7 +5359,7 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "### Overview\nThe Carousel allows the user to browse through a set of items.\nThe component is mostly used for showing a gallery of images, but can hold any other HTML element.\n\nThere are several ways to perform navigation:\n\n- on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.\n- on mobile - the user can use swipe gestures.\n\n### Usage\n\n#### When to use:\n\n- The items you want to display are very different from each other.\n- You want to display the items one after the other.\n\n#### When not to use:\n\n- The items you want to display need to be visible at the same time.\n- The items you want to display are uniform and very similar.\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-carousel` is focused the user can navigate between the items\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] - Navigates to previous and next item\n- [Left] or [Right] - Navigates to previous and next item\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Carousel.js\";`",
+                    "description": "### Overview\nThe Carousel allows the user to browse through a set of items.\nThe component is mostly used for showing a gallery of images, but can hold any other HTML element.\n\nThere are several ways to perform navigation:\n\n- on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.\n- on mobile - the user can use swipe gestures.\n\n### Usage\n\n#### When to use:\n\n- The items you want to display are very different from each other.\n- You want to display the items one after the other.\n\n#### When not to use:\n\n- The items you want to display need to be visible at the same time.\n- The items you want to display are uniform and very similar.\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-carousel` is focused the user can navigate between the items\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] - Navigates to previous and next item\n- [Left] or [Right] - Navigates to previous and next item\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Carousel.js\";`",
                     "name": "Carousel",
                     "cssParts": [
                         {
@@ -5416,36 +5416,14 @@
                         },
                         {
                             "kind": "field",
-                            "name": "itemsPerPageS",
+                            "name": "itemsPerPage",
                             "type": {
-                                "text": "number"
+                                "text": "string"
                             },
-                            "description": "Defines the number of items per page on small size (up to 640px). One item per page shown by default.",
-                            "default": "1",
+                            "description": "Defines the number of items per page depending on the carousel width.\n\n- 'S' for screens smaller than 600 pixels.\n- 'M' for screens greater than or equal to 600 pixels and smaller than 1024 pixels.\n- 'L' for screens greater than or equal to 1024 pixels and smaller than 1440 pixels.\n- 'XL' for screens greater than or equal to 1440 pixels.\n\nOne item per page is shown by default.",
+                            "default": "\"S1 M1 L1 XL1\"",
                             "privacy": "public",
-                            "_ui5validator": "Integer"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "itemsPerPageM",
-                            "type": {
-                                "text": "number"
-                            },
-                            "description": "Defines the number of items per page on medium size (from 640px to 1024px). One item per page shown by default.",
-                            "default": "1",
-                            "privacy": "public",
-                            "_ui5validator": "Integer"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "itemsPerPageL",
-                            "type": {
-                                "text": "number"
-                            },
-                            "description": "Defines the number of items per page on large size (more than 1024px). One item per page shown by default.",
-                            "default": "1",
-                            "privacy": "public",
-                            "_ui5validator": "Integer"
+                            "_ui5validator": "String"
                         },
                         {
                             "kind": "field",
@@ -5614,7 +5592,7 @@
                                     }
                                 ]
                             },
-                            "description": "Fired whenever the page changes due to user interaction,\nwhen the user clicks on the navigation arrows or while resizing,\nbased on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.",
+                            "description": "Fired whenever the page changes due to user interaction,\nwhen the user clicks on the navigation arrows or while resizing,\nbased on the `items-per-page` property.",
                             "_ui5since": "1.0.0-rc.7",
                             "_ui5parameters": [
                                 {
@@ -9290,83 +9268,6 @@
         },
         {
             "kind": "javascript-module",
-            "path": "dist/GroupHeaderListItem.js",
-            "declarations": [
-                {
-                    "kind": "class",
-                    "description": "The `ui5-li-groupheader` is a special list item, used only to separate other list items into logical groups.",
-                    "name": "GroupHeaderListItem",
-                    "slots": [
-                        {
-                            "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
-                            "name": "default",
-                            "_ui5privacy": "public",
-                            "_ui5type": {
-                                "text": "Array<Node>"
-                            }
-                        }
-                    ],
-                    "members": [
-                        {
-                            "kind": "field",
-                            "name": "accessibleName",
-                            "type": {
-                                "text": "string"
-                            },
-                            "description": "Defines the text alternative of the component.\n\n**Note:** If not provided a default text alternative will be set, if present.",
-                            "default": "\"\"",
-                            "privacy": "public",
-                            "_ui5since": "1.0.0-rc.15",
-                            "_ui5validator": "String"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "selected",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Defines the selected state of the `ListItem`.",
-                            "default": "false",
-                            "privacy": "public",
-                            "_ui5validator": "Boolean",
-                            "inheritedFrom": {
-                                "name": "ListItemBase",
-                                "module": "dist/ListItemBase.js"
-                            }
-                        }
-                    ],
-                    "superclass": {
-                        "name": "ListItemBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/ListItemBase.js"
-                    },
-                    "tagName": "GroupHeaderListItem",
-                    "customElement": true,
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents"
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "GroupHeaderListItem",
-                        "module": "dist/GroupHeaderListItem.js"
-                    }
-                },
-                {
-                    "kind": "custom-element-definition",
-                    "name": "ui5-li-groupheader",
-                    "declaration": {
-                        "name": "GroupHeaderListItem",
-                        "module": "dist/GroupHeaderListItem.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
             "path": "dist/Icon.js",
             "declarations": [
                 {
@@ -10221,22 +10122,15 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "### Overview\n\nThe `ui5-list` component allows displaying a list of items, advanced keyboard\nhandling support for navigating between items, and predefined modes to improve the development efficiency.\n\nThe `ui5-list` is a container for the available list items:\n\n- `ui5-li`\n- `ui5-li-custom`\n- `ui5-li-groupheader`\n\nTo benefit from the built-in selection mechanism, you can use the available\nselection modes, such as\n`Single`, `Multiple` and `Delete`.\n\nAdditionally, the `ui5-list` provides header, footer, and customization for the list item separators.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe `ui5-list` provides advanced keyboard handling.\nWhen a list is focused the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Up] or [Down] - Navigates up and down the items\n- [Home] - Navigates to first item\n- [End] - Navigates to the last item\n\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete),\nwhen the `selectionMode` property is in use:\n\n- [Space] - Select an item (if `type` is 'Active') when `selectionMode` is selection\n- [Delete] - Delete an item if `selectionMode` property is `Delete`\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/List.js\";`\n\n`import \"@ui5/webcomponents/dist/StandardListItem.js\";` (for `ui5-li`)\n\n`import \"@ui5/webcomponents/dist/CustomListItem.js\";` (for `ui5-li-custom`)\n\n`import \"@ui5/webcomponents/dist/GroupHeaderListItem.js\";` (for `ui5-li-groupheader`)",
+                    "description": "### Overview\n\nThe `ui5-list` component allows displaying a list of items, advanced keyboard\nhandling support for navigating between items, and predefined modes to improve the development efficiency.\n\nThe `ui5-list` is a container for the available list items:\n\n- `ui5-li`\n- `ui5-li-custom`\n- `ui5-li-group`\n\nTo benefit from the built-in selection mechanism, you can use the available\nselection modes, such as\n`Single`, `Multiple` and `Delete`.\n\nAdditionally, the `ui5-list` provides header, footer, and customization for the list item separators.\n\n### Keyboard Handling\n\n#### Basic Navigation\nThe `ui5-list` provides advanced keyboard handling.\nWhen a list is focused the user can use the following keyboard\nshortcuts in order to perform a navigation:\n\n- [Up] or [Down] - Navigates up and down the items\n- [Home] - Navigates to first item\n- [End] - Navigates to the last item\n\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete),\nwhen the `selectionMode` property is in use:\n\n- [Space] - Select an item (if `type` is 'Active') when `selectionMode` is selection\n- [Delete] - Delete an item if `selectionMode` property is `Delete`\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/List.js\";`\n\n`import \"@ui5/webcomponents/dist/StandardListItem.js\";` (for `ui5-li`)\n\n`import \"@ui5/webcomponents/dist/CustomListItem.js\";` (for `ui5-li-custom`)\n\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";` (for `ui5-li-group`)",
                     "name": "List",
                     "slots": [
                         {
                             "name": "default",
-                            "description": "Defines the items of the component.\n\n**Note:** Use `ui5-li`, `ui5-li-custom`, and `ui5-li-groupheader` for the intended design.",
+                            "description": "Defines the items of the component.\n\n**Note:** Use `ui5-li`, `ui5-li-custom`, and `ui5-li-group` for the intended design.",
                             "_ui5propertyName": "items",
                             "_ui5type": {
-                                "text": "Array<ListItemBase>",
-                                "references": [
-                                    {
-                                        "name": "ListItemBase",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/ListItemBase.js"
-                                    }
-                                ]
+                                "text": "Array<ListItemBase | ListItemGroup>"
                             },
                             "_ui5privacy": "public"
                         },
@@ -10419,6 +10313,25 @@
                             "default": "\"list\"",
                             "_ui5since": "1.0.0-rc.15",
                             "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "listItems",
+                            "type": {
+                                "text": "Array<ListItemBase>",
+                                "references": [
+                                    {
+                                        "name": "ListItemBase",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ListItemBase.js"
+                                    }
+                                ]
+                            },
+                            "description": "Returns an array containing the list item instances without the groups in a flat structure.",
+                            "default": "[]",
+                            "privacy": "public",
+                            "readonly": true,
+                            "_ui5since": "2.0.0"
                         }
                     ],
                     "events": [
@@ -10775,7 +10688,7 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "A class to serve as a foundation\nfor the `ListItem` and `GroupHeaderListItem` classes.",
+                    "description": "A class to serve as a foundation\nfor the `ListItem` and `ListItemGroupHeader` classes.",
                     "name": "ListItemBase",
                     "members": [
                         {
@@ -10809,6 +10722,123 @@
                     "declaration": {
                         "name": "ListItemBase",
                         "module": "dist/ListItemBase.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/ListItemGroup.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "### Overview\nThe `ui5-li-group` is a special list item, used only to create groups of list items.\n\nThis is the item to use inside a `ui5-list`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";`",
+                    "name": "ListItemGroup",
+                    "cssParts": [
+                        {
+                            "description": "Used to style the header item of the group",
+                            "name": "_ui5header"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "name": "default",
+                            "description": "Defines the items of the <code>ui5-li-group</code>.",
+                            "_ui5propertyName": "items",
+                            "_ui5type": {
+                                "text": "Array<ListItemBase>",
+                                "references": [
+                                    {
+                                        "name": "ListItemBase",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ListItemBase.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        },
+                        {
+                            "name": "header",
+                            "description": "Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.",
+                            "_ui5type": {
+                                "text": "Array<ListItemBase>",
+                                "references": [
+                                    {
+                                        "name": "ListItemBase",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/ListItemBase.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        }
+                    ],
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "headerText",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the header text of the <code>ui5-li-group</code>.",
+                            "privacy": "public",
+                            "default": "\"\"",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "headerAccessibleName",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the accessible name of the header.",
+                            "privacy": "public",
+                            "default": "\"\"",
+                            "_ui5validator": "String"
+                        }
+                    ],
+                    "superclass": {
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base",
+                        "module": "dist/UI5Element.js"
+                    },
+                    "tagName": "ListItemGroup",
+                    "customElement": true,
+                    "_ui5since": "2.0",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "ListItemGroup",
+                        "module": "dist/ListItemGroup.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-li-group",
+                    "declaration": {
+                        "name": "ListItemGroup",
+                        "module": "dist/ListItemGroup.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/ListItemGroupHeader.js",
+            "declarations": [],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "ListItemGroupHeader",
+                        "module": "dist/ListItemGroupHeader.js"
                     }
                 }
             ]

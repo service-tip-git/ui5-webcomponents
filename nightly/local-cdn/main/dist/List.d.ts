@@ -10,6 +10,7 @@ import ListItemBase from "./ListItemBase.js";
 import DropIndicator from "./DropIndicator.js";
 import type { SelectionRequestEventDetail, PressEventDetail } from "./ListItem.js";
 import ListSeparators from "./types/ListSeparators.js";
+import ListItemGroup from "./ListItemGroup.js";
 type ListItemFocusEventDetail = {
     item: ListItemBase;
 };
@@ -53,7 +54,7 @@ type ListItemClickEventDetail = {
  *
  * - `ui5-li`
  * - `ui5-li-custom`
- * - `ui5-li-groupheader`
+ * - `ui5-li-group`
  *
  * To benefit from the built-in selection mechanism, you can use the available
  * selection modes, such as
@@ -91,7 +92,7 @@ type ListItemClickEventDetail = {
  *
  * `import "@ui5/webcomponents/dist/CustomListItem.js";` (for `ui5-li-custom`)
  *
- * `import "@ui5/webcomponents/dist/GroupHeaderListItem.js";` (for `ui5-li-groupheader`)
+ * `import "@ui5/webcomponents/dist/ListItemGroup.js";` (for `ui5-li-group`)
  * @constructor
  * @extends UI5Element
  * @public
@@ -211,10 +212,10 @@ declare class List extends UI5Element {
     /**
      * Defines the items of the component.
      *
-     * **Note:** Use `ui5-li`, `ui5-li-custom`, and `ui5-li-groupheader` for the intended design.
+     * **Note:** Use `ui5-li`, `ui5-li-custom`, and `ui5-li-group` for the intended design.
      * @public
      */
-    items: Array<ListItemBase>;
+    items: Array<ListItemBase | ListItemGroup>;
     /**
      * Defines the component header.
      *
@@ -235,12 +236,25 @@ declare class List extends UI5Element {
     _itemNavigation: ItemNavigation;
     _beforeElement?: HTMLElement | null;
     _afterElement?: HTMLElement | null;
+    onItemFocusedBound: (e: CustomEvent) => void;
+    onForwardAfterBound: (e: CustomEvent) => void;
+    onForwardBeforeBound: (e: CustomEvent) => void;
+    onItemTabIndexChangeBound: (e: CustomEvent) => void;
     static onDefine(): Promise<void>;
     constructor();
+    /**
+     * Returns an array containing the list item instances without the groups in a flat structure.
+     * @default []
+     * @since 2.0.0
+     * @public
+     */
+    get listItems(): ListItemBase[];
     onEnterDOM(): void;
     onExitDOM(): void;
     onBeforeRendering(): void;
     onAfterRendering(): void;
+    attachGroupHeaderEvents(): void;
+    detachGroupHeaderEvents(): void;
     attachForResize(): void;
     get shouldRenderH1(): string | false;
     get headerID(): string;

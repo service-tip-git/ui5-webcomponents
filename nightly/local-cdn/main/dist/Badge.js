@@ -129,7 +129,7 @@ let Badge = Badge_1 = class Badge extends UI5Element {
     }
 };
 __decorate([
-    property({ defaultValue: BadgeDesign.Set3 })
+    property({ defaultValue: BadgeDesign.Neutral })
 ], Badge.prototype, "design", void 0);
 __decorate([
     property({ defaultValue: "1" })

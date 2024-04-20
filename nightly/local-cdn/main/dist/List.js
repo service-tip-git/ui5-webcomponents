@@ -42,6 +42,7 @@ import browserScrollbarCSS from "./generated/themes/BrowserScrollbar.css.js";
 import { LOAD_MORE_TEXT, ARIA_LABEL_LIST_SELECTABLE, ARIA_LABEL_LIST_MULTISELECTABLE, ARIA_LABEL_LIST_DELETABLE, } from "./generated/i18n/i18n-defaults.js";
 import "./CheckBox.js";
 import "./RadioButton.js";
+import ListItemGroup from "./ListItemGroup.js";
 const INFINITE_SCROLL_DEBOUNCE_RATE = 250; // ms
 const PAGE_UP_DOWN_SIZE = 10;
 /**
@@ -56,7 +57,7 @@ const PAGE_UP_DOWN_SIZE = 10;
  *
  * - `ui5-li`
  * - `ui5-li-custom`
- * - `ui5-li-groupheader`
+ * - `ui5-li-group`
  *
  * To benefit from the built-in selection mechanism, you can use the available
  * selection modes, such as
@@ -94,7 +95,7 @@ const PAGE_UP_DOWN_SIZE = 10;
  *
  * `import "@ui5/webcomponents/dist/CustomListItem.js";` (for `ui5-li-custom`)
  *
- * `import "@ui5/webcomponents/dist/GroupHeaderListItem.js";` (for `ui5-li-groupheader`)
+ * `import "@ui5/webcomponents/dist/ListItemGroup.js";` (for `ui5-li-group`)
  * @constructor
  * @extends UI5Element
  * @public
@@ -122,6 +123,19 @@ let List = List_1 = class List extends UI5Element {
         // Indicates the List bottom most part has been detected by the IntersectionObserver
         // for the first time.
         this.initialIntersection = true;
+        this.onItemFocusedBound = this.onItemFocused.bind(this);
+        this.onForwardAfterBound = this.onForwardAfter.bind(this);
+        this.onForwardBeforeBound = this.onForwardBefore.bind(this);
+        this.onItemTabIndexChangeBound = this.onItemTabIndexChange.bind(this);
+    }
+    /**
+     * Returns an array containing the list item instances without the groups in a flat structure.
+     * @default []
+     * @since 2.0.0
+     * @public
+     */
+    get listItems() {
+        return this.getItems();
     }
     onEnterDOM() {
         DragRegistry.subscribe(this);
@@ -133,9 +147,11 @@ let List = List_1 = class List extends UI5Element {
         DragRegistry.unsubscribe(this);
     }
     onBeforeRendering() {
+        this.detachGroupHeaderEvents();
         this.prepareListItems();
     }
     onAfterRendering() {
+        this.attachGroupHeaderEvents();
         if (this.growsOnScroll) {
             this.observeListEnd();
         }
@@ -146,6 +162,28 @@ let List = List_1 = class List extends UI5Element {
             this.checkListInViewport();
             this.attachForResize();
         }
+    }
+    attachGroupHeaderEvents() {
+        // events fired by the group headers are not bubbling through the shadow
+        // dom of the groups because of capture: false of the custom events
+        this.getItems().forEach(item => {
+            if (item.hasAttribute("ui5-li-group-header")) {
+                item.addEventListener("ui5-_focused", this.onItemFocusedBound);
+                item.addEventListener("ui5-_forward-after", this.onForwardAfterBound);
+                item.addEventListener("ui5-_forward-before", this.onForwardBeforeBound);
+                item.addEventListener("ui5-_tabindex-change", this.onItemTabIndexChangeBound);
+            }
+        });
+    }
+    detachGroupHeaderEvents() {
+        this.getItems().forEach(item => {
+            if (item.hasAttribute("ui5-li-group-header")) {
+                item.removeEventListener("ui5-_focused", this.onItemFocusedBound);
+                item.removeEventListener("ui5-_forward-after", this.onForwardAfterBound);
+                item.removeEventListener("ui5-_forward-before", this.onForwardBeforeBound);
+                item.removeEventListener("ui5-_tabindex-change", this.onItemTabIndexChangeBound);
+            }
+        });
     }
     attachForResize() {
         if (!this.resizeListenerAttached) {
@@ -346,7 +384,19 @@ let List = List_1 = class List extends UI5Element {
         return this.getItems().filter(item => item._focusable);
     }
     getItems() {
-        return this.getSlottedNodes("items");
+        // drill down when we see ui5-li-group and get the items
+        const items = [];
+        const slottedItems = this.getSlottedNodes("items");
+        slottedItems.forEach(item => {
+            if (item instanceof ListItemGroup) {
+                const groupItems = [item.groupHeaderItem, ...item.items].filter(Boolean);
+                items.push(...groupItems);
+            }
+            else {
+                items.push(item);
+            }
+        });
+        return items;
     }
     getItemsForProcessing() {
         return this.getItems();
@@ -770,7 +820,7 @@ List = List_1 = __decorate([
         renderer: litRender,
         template: ListTemplate,
         styles: [browserScrollbarCSS, listCss],
-        dependencies: [BusyIndicator, DropIndicator],
+        dependencies: [BusyIndicator, DropIndicator, ListItemGroup],
     })
     /**
      * Fired when an item is activated, unless the item's `type` property

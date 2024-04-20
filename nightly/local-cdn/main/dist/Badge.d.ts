@@ -33,7 +33,7 @@ import BadgeDesign from "./types/BadgeDesign.js";
 declare class Badge extends UI5Element {
     /**
      * Defines the design type of the component.
-     * @default "Set3"
+     * @default "Neutral"
      * @public
      * @since 1.22.0
      */

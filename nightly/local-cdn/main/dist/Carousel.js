@@ -42,7 +42,7 @@ import CarouselCss from "./generated/themes/Carousel.css.js";
  *
  * There are several ways to perform navigation:
  *
- * - on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.
+ * - on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.
  * - on mobile - the user can use swipe gestures.
  *
  * ### Usage
@@ -297,16 +297,35 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         });
     }
     get effectiveItemsPerPage() {
+        const itemsPerPageArray = this.itemsPerPage.split(" ");
+        let itemsPerPageSizeS = 1, itemsPerPageSizeM = 1, itemsPerPageSizeL = 1, itemsPerPageSizeXL = 1;
+        itemsPerPageArray.forEach(element => {
+            if (element.startsWith("S")) {
+                itemsPerPageSizeS = Number(element.slice(1)) || 1;
+            }
+            else if (element.startsWith("M")) {
+                itemsPerPageSizeM = Number(element.slice(1)) || 1;
+            }
+            else if (element.startsWith("L")) {
+                itemsPerPageSizeL = Number(element.slice(1)) || 1;
+            }
+            else if (element.startsWith("XL")) {
+                itemsPerPageSizeXL = Number(element.slice(2)) || 1;
+            }
+        });
         if (!this._width) {
-            return this.itemsPerPageL;
+            return itemsPerPageSizeL;
         }
-        if (this._width <= 640) {
-            return this.itemsPerPageS;
+        if (this._width < 600) {
+            return itemsPerPageSizeS;
         }
-        if (this._width <= 1024) {
-            return this.itemsPerPageM;
+        if (this._width >= 600 && this._width < 1024) {
+            return itemsPerPageSizeM;
         }
-        return this.itemsPerPageL;
+        if (this._width >= 1024 && this._width < 1440) {
+            return itemsPerPageSizeL;
+        }
+        return itemsPerPageSizeXL;
     }
     isItemInViewport(index) {
         return index >= this._selectedIndex && index <= this._selectedIndex + this.effectiveItemsPerPage - 1;
@@ -453,14 +472,8 @@ __decorate([
     property({ type: Boolean })
 ], Carousel.prototype, "cyclic", void 0);
 __decorate([
-    property({ validator: Integer, defaultValue: 1 })
-], Carousel.prototype, "itemsPerPageS", void 0);
-__decorate([
-    property({ validator: Integer, defaultValue: 1 })
-], Carousel.prototype, "itemsPerPageM", void 0);
-__decorate([
-    property({ validator: Integer, defaultValue: 1 })
-], Carousel.prototype, "itemsPerPageL", void 0);
+    property({ type: String, defaultValue: "S1 M1 L1 XL1" })
+], Carousel.prototype, "itemsPerPage", void 0);
 __decorate([
     property({ type: Boolean })
 ], Carousel.prototype, "hideNavigationArrows", void 0);
@@ -513,7 +526,7 @@ Carousel = Carousel_1 = __decorate([
     /**
      * Fired whenever the page changes due to user interaction,
      * when the user clicks on the navigation arrows or while resizing,
-     * based on the `items-per-page-l`, `items-per-page-m` and `items-per-page-s` properties.
+     * based on the `items-per-page` property.
      * @param {Integer} selectedIndex the current selected index
      * @public
      * @since 1.0.0-rc.7

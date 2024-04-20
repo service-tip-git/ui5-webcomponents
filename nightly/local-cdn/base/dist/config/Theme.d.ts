@@ -35,4 +35,5 @@ declare const isTheme: (theme: string) => boolean;
  * @returns { boolean }
  */
 declare const isLegacyThemeFamily: () => boolean;
-export { getTheme, setTheme, isTheme, isLegacyThemeFamily, getDefaultTheme, };
+declare const isLegacyThemeFamilyAsync: () => Promise<boolean>;
+export { getTheme, setTheme, isTheme, isLegacyThemeFamily, isLegacyThemeFamilyAsync, getDefaultTheme, };

@@ -9,7 +9,7 @@ import SuggestionGroupItem from "../SuggestionGroupItem.js";
 import Button from "../Button.js";
 import Icon from "../Icon.js";
 import Popover from "../Popover.js";
-import GroupHeaderListItem from "../GroupHeaderListItem.js";
+import ListItemGroupHeader from "../ListItemGroupHeader.js";
 import SuggestionListItem from "../SuggestionListItem.js";
 import type ListItemType from "../types/ListItemType.js";
 import type { IInputSuggestionItem } from "../Input.js";
@@ -127,7 +127,7 @@ declare class Suggestions {
     _focusValueState(): void;
     _clearValueStateFocus(): void;
     _clearSelectedSuggestionAndAccInfo(): void;
-    static get dependencies(): (typeof Button | typeof Icon | typeof Popover | typeof List | typeof SuggestionListItem | typeof GroupHeaderListItem | typeof SuggestionGroupItem)[];
+    static get dependencies(): (typeof Button | typeof Icon | typeof Popover | typeof ListItemGroupHeader | typeof List | typeof SuggestionListItem | typeof SuggestionGroupItem)[];
     static init(): Promise<void>;
 }
 export default Suggestions;

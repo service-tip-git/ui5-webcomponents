@@ -21,7 +21,7 @@ type CarouselNavigateEventDetail = {
  *
  * There are several ways to perform navigation:
  *
- * - on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.
+ * - on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.
  * - on mobile - the user can use swipe gestures.
  *
  * ### Usage
@@ -82,23 +82,18 @@ declare class Carousel extends UI5Element {
      */
     cyclic: boolean;
     /**
-     * Defines the number of items per page on small size (up to 640px). One item per page shown by default.
-     * @default 1
+     * Defines the number of items per page depending on the carousel width.
+     *
+     * - 'S' for screens smaller than 600 pixels.
+     * - 'M' for screens greater than or equal to 600 pixels and smaller than 1024 pixels.
+     * - 'L' for screens greater than or equal to 1024 pixels and smaller than 1440 pixels.
+     * - 'XL' for screens greater than or equal to 1440 pixels.
+     *
+     * One item per page is shown by default.
+     * @default "S1 M1 L1 XL1"
      * @public
      */
-    itemsPerPageS: number;
-    /**
-     * Defines the number of items per page on medium size (from 640px to 1024px). One item per page shown by default.
-     * @default 1
-     * @public
-     */
-    itemsPerPageM: number;
-    /**
-     * Defines the number of items per page on large size (more than 1024px). One item per page shown by default.
-     * @default 1
-     * @public
-     */
-    itemsPerPageL: number;
+    itemsPerPage: string;
     /**
      * Defines the visibility of the navigation arrows.
      * If set to true the navigation arrows will be hidden.

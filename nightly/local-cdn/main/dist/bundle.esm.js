@@ -59,7 +59,7 @@ import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.j
 import announce from "@ui5/webcomponents-base/dist/util/InvisibleMessage.js";
 import { ignoreCustomElements, shouldIgnoreCustomElement } from "@ui5/webcomponents-base/dist/IgnoreCustomElements.js";
 // SAP Icons
-import accept from "@ui5/webcomponents-icons/dist/accept.js";
+import accept, { getPathData } from "@ui5/webcomponents-icons/dist/accept.js";
 import acceptv4 from "@ui5/webcomponents-icons/dist/v4/accept.js";
 import acceptv5 from "@ui5/webcomponents-icons/dist/v5/accept.js";
 // SAP TNT Icons
@@ -159,7 +159,8 @@ import "./List.js";
 // console.log({List})
 import "./StandardListItem.js";
 import "./CustomListItem.js";
-import "./GroupHeaderListItem.js";
+import "./ListItemGroupHeader.js";
+import "./ListItemGroup.js";
 // Features
 import "./features/InputElementsFormSupport.js";
 import "./features/ColorPaletteMoreColors.js";
@@ -199,6 +200,7 @@ const testAssets = {
     detachThemeLoaded,
     getIconNames,
     getIconAccessibleName,
+    getAcceptIconPathData: getPathData,
     renderFinished,
     defaultTexts,
     getExportedIconsValues: () => icons,

@@ -18,7 +18,6 @@ import Button from "./Button.js";
  * `ui5-split-button` consists two separate buttons:
  *
  * - for the first one (default action) you can define some `text` or an `icon`, or both.
- * Also, it is possible to define different icon for active state of this button - `activeIcon`.
  * - the second one (arrow action) contains only `slim-arrow-down` icon.
  *
  * You can choose a `design` from a set of predefined types (the same as for ui5-button) that offer
@@ -60,12 +59,6 @@ declare class SplitButton extends UI5Element {
      * @public
      */
     icon: string;
-    /**
-     * Defines the icon to be displayed in active state as graphical element within the component.
-     * @default ""
-     * @public
-     */
-    activeIcon: string;
     /**
      * Defines whether the arrow button should have the active state styles or not.
      * @default false
@@ -122,12 +115,6 @@ declare class SplitButton extends UI5Element {
      * @private
      */
     _textButtonActive: boolean;
-    /**
-     * Defines the icon of the text button
-     * @default ""
-     * @private
-     */
-    _textButtonIcon: string;
     /**
      * Defines the state of the internal Button used for the Arrow button of the SplitButton.
      * @default false

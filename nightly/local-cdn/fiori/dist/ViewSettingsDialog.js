@@ -266,7 +266,7 @@ let ViewSettingsDialog = ViewSettingsDialog_1 = class ViewSettingsDialog extends
         this._dialog.querySelector("[ui5-list]")?.focusFirstItem();
     }
     _handleModeChange(e) {
-        const mode = e.detail.selectedItem.getAttribute("mode");
+        const mode = e.detail.selectedItems[0].getAttribute("mode");
         this._currentMode = ViewSettingsDialogMode[mode];
     }
     _handleFilterValueItemClick(e) {

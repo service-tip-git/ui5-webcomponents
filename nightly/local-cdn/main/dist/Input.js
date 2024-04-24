@@ -6,7 +6,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var Input_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
@@ -42,6 +41,7 @@ import inputStyles from "./generated/themes/Input.css.js";
 import ResponsivePopoverCommonCss from "./generated/themes/ResponsivePopoverCommon.css.js";
 import ValueStateMessageCss from "./generated/themes/ValueStateMessage.css.js";
 import SuggestionsCss from "./generated/themes/Suggestions.css.js";
+import ResponsivePopover from "./ResponsivePopover.js";
 // all sementic events
 var INPUT_EVENTS;
 (function (INPUT_EVENTS) {
@@ -150,6 +150,12 @@ let Input = Input_1 = class Input extends UI5Element {
         const hasItems = !!this.suggestionItems.length;
         const hasValue = !!this.value;
         const isFocused = this.shadowRoot.querySelector("input") === getActiveElement();
+        if (this.shouldDisplayOnlyValueStateMessage) {
+            this.openValueStatePopover();
+        }
+        else {
+            this.closeValueStatePopover();
+        }
         if (this._isPhone) {
             this.open = this.openOnMobile;
         }
@@ -180,19 +186,10 @@ let Input = Input_1 = class Input extends UI5Element {
             }
         }
     }
-    async onAfterRendering() {
+    onAfterRendering() {
         const innerInput = this.getInputDOMRefSync();
-        if (this.Suggestions && this.showSuggestions) {
-            await this.Suggestions.toggle(this.open, {
-                preventFocusRestore: true,
-            });
-            this._listWidth = await this.Suggestions._getListWidth();
-        }
-        if (this.shouldDisplayOnlyValueStateMessage) {
-            this.openPopover();
-        }
-        else {
-            this.closePopover();
+        if (this.Suggestions && this.showSuggestions && this.Suggestions._getPicker()) {
+            this._listWidth = this.Suggestions._getListWidth();
         }
         if (this._performTextSelection) {
             // this is required to syncronize lit-html input's value and user's input
@@ -353,8 +350,7 @@ let Input = Input_1 = class Input extends UI5Element {
             this.focused = true;
         }
     }
-    async _onfocusin(e) {
-        await this.getInputDOMRef();
+    _onfocusin(e) {
         this.focused = true; // invalidating property
         if (!this._focusedAfterClear) {
             this.previousValue = this.value;
@@ -370,21 +366,14 @@ let Input = Input_1 = class Input extends UI5Element {
     innerFocusIn() { }
     _onfocusout(e) {
         const toBeFocused = e.relatedTarget;
-        const focusedOutToSuggestions = this.Suggestions && toBeFocused && toBeFocused.shadowRoot && toBeFocused.shadowRoot.contains(this.Suggestions.responsivePopover);
-        const focusedOutToValueStateMessage = toBeFocused && toBeFocused.shadowRoot && toBeFocused.shadowRoot.querySelector(".ui5-valuestatemessage-root");
+        if (this.Suggestions?._getPicker().contains(toBeFocused) || this.getSlottedNodes("valueStateMessage").some(el => el.contains(toBeFocused))) {
+            return;
+        }
         this._keepInnerValue = false;
+        this.focused = false; // invalidating property
         if (this.showClearIcon && !this._effectiveShowClearIcon) {
             this._clearIconClicked = false;
             this._handleChange();
-        }
-        // if focusout is triggered by pressing on suggestion item or value state message popover, skip invalidation, because re-rendering
-        // will happen before "itemPress" event, which will make item "active" state not visualized
-        if (focusedOutToSuggestions || focusedOutToValueStateMessage) {
-            e.stopImmediatePropagation();
-            return;
-        }
-        if (toBeFocused && (toBeFocused).classList.contains(this._id)) {
-            return;
         }
         this.open = false;
         this._clearPopoverFocusAndSelection();
@@ -392,7 +381,6 @@ let Input = Input_1 = class Input extends UI5Element {
             this.previousValue = "";
         }
         this.lastConfirmedValue = "";
-        this.focused = false; // invalidating property
         this.isTyping = false;
         this._forceOpen = false;
     }
@@ -424,7 +412,7 @@ let Input = Input_1 = class Input extends UI5Element {
     }
     _clear() {
         this.value = "";
-        this.fireEvent(INPUT_EVENTS.INPUT);
+        this.fireEvent(INPUT_EVENTS.INPUT, { inputType: "" });
         if (!this._isPhone) {
             this.focus();
             this._focusedAfterClear = true;
@@ -532,16 +520,18 @@ let Input = Input_1 = class Input extends UI5Element {
         this._associatedLabelsTexts = getAssociatedLabelForTexts(this);
         this._accessibleLabelsRefTexts = getAllAccessibleNameRefTexts(this);
     }
-    _closeRespPopover() {
-        this.Suggestions.close(true);
+    _closePicker() {
+        this.open = false;
+        this.openOnMobile = false;
     }
-    async _afterOpenPopover() {
+    _afterOpenPicker() {
         // Set initial focus to the native input
         if (isPhone()) {
-            (await this.getInputDOMRef()).focus();
+            (this.getInputDOMRef()).focus();
         }
+        this._handlePickerAfterOpen();
     }
-    _afterClosePopover() {
+    _afterClosePicker() {
         this.announceSelectedItem();
         // close device's keyboard and prevent further typing
         if (isPhone()) {
@@ -550,30 +540,41 @@ let Input = Input_1 = class Input extends UI5Element {
         }
         this.openOnMobile = false;
         this.open = false;
+        this.isTyping = false;
         this._forceOpen = false;
         if (this.hasSuggestionItemSelected) {
             this.focus();
         }
+        this._handlePickerAfterClose();
     }
-    /**
-     * Checks if the value state popover is open.
-     */
-    isValueStateOpened() {
-        return !!this._isPopoverOpen;
+    _handleSuggestionItemPress(e) {
+        this.Suggestions?.fnOnSuggestionItemPress(e);
     }
-    async openPopover() {
-        const popover = await this._getPopover();
-        if (popover) {
-            this._isPopoverOpen = true;
-            popover.showAt(this);
-        }
+    _handleSelectionChange(e) {
+        this.Suggestions?.fnOnSuggestionItemPress(e);
     }
-    async closePopover() {
-        const popover = await this._getPopover();
-        popover && popover.close();
+    _handleItemMouseOver(e) {
+        this.Suggestions?.fnOnSuggestionItemMouseOver(e);
     }
-    async _getPopover() {
-        await renderFinished();
+    _handleItemMouseOut(e) {
+        this.Suggestions?.fnOnSuggestionItemMouseOut(e);
+    }
+    _handlePickerAfterOpen() {
+        this.Suggestions?._onOpen();
+    }
+    _handlePickerAfterClose() {
+        this.Suggestions?._onClose();
+    }
+    openValueStatePopover() {
+        this.valueStateOpen = true;
+    }
+    closeValueStatePopover() {
+        this.valueStateOpen = false;
+    }
+    _handleValueStatePopoverAfterClose() {
+        this.valueStateOpen = false;
+    }
+    _getValueStatePopover() {
         return this.shadowRoot.querySelector("[ui5-popover]");
     }
     /**
@@ -679,11 +680,11 @@ let Input = Input_1 = class Input extends UI5Element {
         }
         return this.getSuggestionByListItem(this._previewItem);
     }
-    async fireEventByAction(action, e) {
+    fireEventByAction(action, e) {
         if (this.disabled || this.readonly) {
             return;
         }
-        const inputValue = await this.getInputValue();
+        const inputValue = this.getInputValue();
         const isUserInput = action === INPUT_ACTIONS.ACTION_ENTER;
         this.value = inputValue;
         this.typedInValue = inputValue;
@@ -694,23 +695,22 @@ let Input = Input_1 = class Input extends UI5Element {
             this.fireEvent("value-changed");
         }
     }
-    async getInputValue() {
+    getInputValue() {
         const domRef = this.getDomRef();
         if (domRef) {
-            return (await this.getInputDOMRef()).value;
+            return (this.getInputDOMRef()).value;
         }
         return "";
     }
-    async getInputDOMRef() {
+    getInputDOMRef() {
         if (isPhone() && this.Suggestions) {
-            await this.Suggestions._getSuggestionPopover();
-            return this.Suggestions.responsivePopover.querySelector(".ui5-input-inner-phone");
+            return this.Suggestions._getPicker().querySelector(".ui5-input-inner-phone");
         }
         return this.nativeInput;
     }
     getInputDOMRefSync() {
-        if (isPhone() && this.Suggestions && this.Suggestions.responsivePopover) {
-            return this.Suggestions.responsivePopover.querySelector(".ui5-input-inner-phone").shadowRoot.querySelector("input");
+        if (isPhone() && this.Suggestions?._getPicker()) {
+            return this.Suggestions._getPicker().querySelector(".ui5-input-inner-phone").shadowRoot.querySelector("input");
         }
         return this.nativeInput;
     }
@@ -724,9 +724,6 @@ let Input = Input_1 = class Input extends UI5Element {
     }
     get nativeInputWidth() {
         return this.nativeInput ? this.nativeInput.offsetWidth : 0;
-    }
-    getLabelableElementId() {
-        return this.getInputId();
     }
     getSuggestionByListItem(item) {
         const key = parseInt(item.getAttribute("data-ui5-key"));
@@ -742,9 +739,6 @@ let Input = Input_1 = class Input extends UI5Element {
             return Promise.resolve(false);
         }
         return this.Suggestions._isScrollable();
-    }
-    getInputId() {
-        return `${this._id}-inner`;
     }
     /* Suggestions interface  */
     onItemMouseOver(e) {
@@ -793,7 +787,7 @@ let Input = Input_1 = class Input extends UI5Element {
         };
     }
     announceSelectedItem() {
-        const invisibleText = this.shadowRoot.querySelector(`[id="${this._id}-selectionText"]`);
+        const invisibleText = this.shadowRoot.querySelector(`#selectionText`);
         invisibleText.textContent = this.itemSelectionAnnounce;
     }
     get _readonly() {
@@ -812,10 +806,10 @@ let Input = Input_1 = class Input extends UI5Element {
         return this.type === InputType.Number;
     }
     get suggestionsTextId() {
-        return this.showSuggestions ? `${this._id}-suggestionsText` : "";
+        return this.showSuggestions ? `suggestionsText` : "";
     }
     get valueStateTextId() {
-        return this.hasValueState ? `${this._id}-valueStateDesc` : "";
+        return this.hasValueState ? `valueStateDesc` : "";
     }
     get accInfo() {
         const ariaHasPopupDefault = this.showSuggestions ? "dialog" : undefined;
@@ -852,7 +846,7 @@ let Input = Input_1 = class Input extends UI5Element {
         if (this.shouldDisplayDefaultValueStateMessage) {
             return this.valueStateText ? `${valueState} ${this.valueStateText}` : valueState;
         }
-        return `${valueState}`.concat(" ", this.valueStateMessageText.map(el => el.textContent).join(" "));
+        return `${valueState}`.concat(" ", this.valueStateMessage.map(el => el.textContent).join(" "));
     }
     get itemSelectionAnnounce() {
         return this.Suggestions ? this.Suggestions.itemSelectionAnnounce : "";
@@ -901,9 +895,6 @@ let Input = Input_1 = class Input extends UI5Element {
     }
     get suggestionSeparators() {
         return "None";
-    }
-    get valueStateMessageText() {
-        return this.getSlottedNodes("valueStateMessage").map(el => el.cloneNode(true));
     }
     get shouldDisplayOnlyValueStateMessage() {
         return this.hasValueStateMessage && !this.readonly && !this.open && this.focused;
@@ -1086,6 +1077,9 @@ __decorate([
 ], Input.prototype, "open", void 0);
 __decorate([
     property({ type: Boolean })
+], Input.prototype, "valueStateOpen", void 0);
+__decorate([
+    property({ type: Boolean })
 ], Input.prototype, "_forceOpen", void 0);
 __decorate([
     property({ type: Boolean })
@@ -1102,9 +1096,6 @@ __decorate([
 __decorate([
     property({ validator: Integer })
 ], Input.prototype, "_listWidth", void 0);
-__decorate([
-    property({ type: Boolean, noAttribute: true })
-], Input.prototype, "_isPopoverOpen", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], Input.prototype, "_inputIconFocused", void 0);
@@ -1127,7 +1118,6 @@ __decorate([
     slot({
         type: HTMLElement,
         invalidateOnChildChange: true,
-        cloned: true,
     })
 ], Input.prototype, "valueStateMessage", void 0);
 Input = Input_1 = __decorate([
@@ -1144,7 +1134,7 @@ Input = Input_1 = __decorate([
         ],
         get dependencies() {
             const Suggestions = getFeature("InputSuggestions");
-            return [Popover, Icon].concat(Suggestions ? Suggestions.dependencies : []);
+            return [Popover, ResponsivePopover, Icon].concat(Suggestions ? Suggestions.dependencies : []);
         },
     })
     /**

@@ -120,7 +120,7 @@ declare class TreeItemBase extends ListItem {
     get effectiveLevel(): number;
     get hasParent(): boolean;
     get _toggleIconName(): "navigation-down-arrow" | "navigation-right-arrow";
-    get _ariaLabel(): string | undefined;
+    get _ariaLabel(): string;
     get _accInfo(): {
         role: string;
         ariaExpanded: boolean | undefined;

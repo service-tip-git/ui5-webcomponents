@@ -21,6 +21,7 @@ import Popover from "./Popover.js";
 import type { IIcon } from "./Icon.js";
 import type ListItemType from "./types/ListItemType.js";
 import PopoverHorizontalAlign from "./types/PopoverHorizontalAlign.js";
+import type { ListItemClickEventDetail, ListSelectionChangeEventDetail } from "./List.js";
 /**
  * Interface for components that represent a suggestion item, usable in `ui5-input`
  * @public
@@ -261,6 +262,7 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
     focused: boolean;
     openOnMobile: boolean;
     open: boolean;
+    valueStateOpen: boolean;
     /**
      * Determines whether to manually show the suggestions popover
      * @private
@@ -275,7 +277,6 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
     _nativeInputAttributes: NativeInputAttributes;
     _inputWidth?: number;
     _listWidth?: number;
-    _isPopoverOpen: boolean;
     _inputIconFocused: boolean;
     /**
      * Constantly updated value of texts collected from the associated labels
@@ -356,7 +357,7 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
     onEnterDOM(): void;
     onExitDOM(): void;
     onBeforeRendering(): void;
-    onAfterRendering(): Promise<void>;
+    onAfterRendering(): void;
     _onkeydown(e: KeyboardEvent): void;
     _onkeyup(e: KeyboardEvent): void;
     _handleUp(e: KeyboardEvent): void;
@@ -369,7 +370,7 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
     _handleHome(e: KeyboardEvent): void;
     _handleEnd(e: KeyboardEvent): void;
     _handleEscape(): void;
-    _onfocusin(e: FocusEvent): Promise<void>;
+    _onfocusin(e: FocusEvent): void;
     /**
      * Called on "focusin" of the native input HTML Element.
      * **Note:** implemented in MultiInput, but used in the Input template.
@@ -388,16 +389,19 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
     _handleTypeAhead(item: IInputSuggestionItem): void;
     _handleResize(): void;
     _updateAssociatedLabelsTexts(): void;
-    _closeRespPopover(): void;
-    _afterOpenPopover(): Promise<void>;
-    _afterClosePopover(): void;
-    /**
-     * Checks if the value state popover is open.
-     */
-    isValueStateOpened(): boolean;
-    openPopover(): Promise<void>;
-    closePopover(): Promise<void>;
-    _getPopover(): Promise<Popover>;
+    _closePicker(): void;
+    _afterOpenPicker(): void;
+    _afterClosePicker(): void;
+    _handleSuggestionItemPress(e: CustomEvent<ListItemClickEventDetail>): void;
+    _handleSelectionChange(e: CustomEvent<ListSelectionChangeEventDetail>): void;
+    _handleItemMouseOver(e: MouseEvent): void;
+    _handleItemMouseOut(e: MouseEvent): void;
+    _handlePickerAfterOpen(): void;
+    _handlePickerAfterClose(): void;
+    openValueStatePopover(): void;
+    closeValueStatePopover(): void;
+    _handleValueStatePopoverAfterClose(): void;
+    _getValueStatePopover(): Popover;
     /**
      * Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.
      * @public
@@ -418,9 +422,9 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
      * @public
      */
     get previewItem(): IInputSuggestionItem | null;
-    fireEventByAction(action: INPUT_ACTIONS, e: InputEvent): Promise<void>;
-    getInputValue(): Promise<string>;
-    getInputDOMRef(): Promise<HTMLInputElement | Input | null>;
+    fireEventByAction(action: INPUT_ACTIONS, e: InputEvent): void;
+    getInputValue(): string;
+    getInputDOMRef(): HTMLInputElement | Input | null;
     getInputDOMRefSync(): HTMLInputElement | null;
     /**
      * Returns a reference to the native input element
@@ -428,15 +432,13 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
      */
     get nativeInput(): HTMLInputElement | null;
     get nativeInputWidth(): number;
-    getLabelableElementId(): string;
     getSuggestionByListItem(item: SuggestionListItem): IInputSuggestionItem;
     /**
      * Returns if the suggestions popover is scrollable.
      * The method returns `Promise` that resolves to true,
      * if the popup is scrollable and false otherwise.
      */
-    isSuggestionsScrollable(): Promise<boolean>;
-    getInputId(): string;
+    isSuggestionsScrollable(): boolean | Promise<boolean>;
     onItemMouseOver(e: MouseEvent): void;
     onItemMouseOut(e: MouseEvent): void;
     onItemMouseDown(e: MouseEvent): void;
@@ -460,8 +462,8 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
     get clearIconAccessibleName(): string;
     get inputType(): string;
     get isTypeNumber(): boolean;
-    get suggestionsTextId(): string;
-    get valueStateTextId(): string;
+    get suggestionsTextId(): "" | "suggestionsText";
+    get valueStateTextId(): "" | "valueStateDesc";
     get accInfo(): {
         input: {
             ariaRoledescription: string | undefined;
@@ -502,7 +504,6 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
         };
     };
     get suggestionSeparators(): string;
-    get valueStateMessageText(): Node[];
     get shouldDisplayOnlyValueStateMessage(): boolean;
     get shouldDisplayDefaultValueStateMessage(): boolean;
     get hasValueState(): boolean;

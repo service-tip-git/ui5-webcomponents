@@ -109,14 +109,14 @@ let Menu = Menu_1 = class Menu extends UI5Element {
             item.item._siblingsWithIcon = itemsWithIcon;
             const subMenu = item.item._subMenu;
             const menuItem = item.item;
-            if (subMenu && subMenu.busy) {
+            if (subMenu && subMenu.loading) {
                 subMenu.innerHTML = "";
                 const fragment = this._clonedItemsFragment(menuItem);
                 subMenu.appendChild(fragment);
             }
             if (subMenu) {
-                subMenu.busy = item.item.busy;
-                subMenu.busyDelay = item.item.busyDelay;
+                subMenu.loading = item.item.loading;
+                subMenu.loadingDelay = item.item.loadingDelay;
             }
         });
     }
@@ -144,10 +144,10 @@ let Menu = Menu_1 = class Menu extends UI5Element {
             this._parentMenuItem = undefined;
             this._opener = undefined;
         }
-        const busyWithoutItems = !this._parentMenuItem?.items.length && this._parentMenuItem?.busy;
+        const loadingWithoutItems = !this._parentMenuItem?.items.length && this._parentMenuItem?.loading;
         const popover = await this._createPopover();
         popover.initialFocus = `${this._id}-menu-item-0`;
-        popover.showAt(opener, busyWithoutItems);
+        popover.showAt(opener, loadingWithoutItems);
     }
     /**
      * Closes the Menu.
@@ -193,8 +193,8 @@ let Menu = Menu_1 = class Menu extends UI5Element {
         subMenu.setAttribute("id", `submenu-${opener.id}`);
         subMenu._parentMenuItem = item;
         subMenu._opener = opener;
-        subMenu.busy = item.busy;
-        subMenu.busyDelay = item.busyDelay;
+        subMenu.loading = item.loading;
+        subMenu.loadingDelay = item.loadingDelay;
         const fragment = this._clonedItemsFragment(item);
         subMenu.appendChild(fragment);
         this.shadowRoot.querySelector(".ui5-menu-submenus").appendChild(subMenu);
@@ -289,7 +289,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
             this._startOpenTimeout(item, opener);
         }
     }
-    _busyMouseOver() {
+    _loadingMouseOver() {
         if (this._parentMenuItem) {
             this._parentMenuItem._preventSubMenuClose = true;
         }
@@ -407,10 +407,10 @@ __decorate([
 ], Menu.prototype, "open", void 0);
 __decorate([
     property({ type: Boolean })
-], Menu.prototype, "busy", void 0);
+], Menu.prototype, "loading", void 0);
 __decorate([
     property({ validator: Integer, defaultValue: 1000 })
-], Menu.prototype, "busyDelay", void 0);
+], Menu.prototype, "loadingDelay", void 0);
 __decorate([
     property({ validator: DOMReference, defaultValue: "" })
 ], Menu.prototype, "opener", void 0);

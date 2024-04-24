@@ -75,7 +75,7 @@ declare class MultiInput extends Input {
     /**
      * @override
      */
-    _onfocusin(e: FocusEvent): Promise<void>;
+    _onfocusin(e: FocusEvent): void;
     lastItemDeleted(): void;
     onBeforeRendering(): void;
     get iconsCount(): number;

@@ -137,7 +137,6 @@ import "./TableRow.js";
 import "./TableGroupRow.js";
 import "./TableCell.js";
 import "./TextArea.js";
-import "./TimeSelection.js";
 import "./TimePicker.js";
 import "./TimePickerClock.js";
 import "./TimeSelectionClocks.js";

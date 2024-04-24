@@ -22,6 +22,7 @@ import "@ui5/webcomponents-icons/dist/alert.js";
 import "@ui5/webcomponents-icons/dist/information.js";
 import WrappingType from "./types/WrappingType.js";
 import BadgeDesign from "./types/BadgeDesign.js";
+import BadgeSize from "./types/BadgeSize.js";
 // Template
 import BadgeTemplate from "./generated/templates/BadgeTemplate.lit.js";
 import { BADGE_DESCRIPTION_BADGE, BADGE_DESCRIPTION_TAG, BADGE_ROLE_DESCRIPTION, BADGE_ERROR, BADGE_WARNING, BADGE_SUCCESS, BADGE_INFORMATION, } from "./generated/i18n/i18n-defaults.js";
@@ -143,6 +144,9 @@ __decorate([
 __decorate([
     property({ type: WrappingType, defaultValue: WrappingType.None })
 ], Badge.prototype, "wrappingType", void 0);
+__decorate([
+    property({ type: BadgeSize, defaultValue: BadgeSize.S })
+], Badge.prototype, "size", void 0);
 __decorate([
     property({ type: Boolean })
 ], Badge.prototype, "_hasIcon", void 0);

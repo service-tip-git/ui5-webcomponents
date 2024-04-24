@@ -1,7 +1,7 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import ItemNavigation, { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
-import SegmentedButtonMode from "./types/SegmentedButtonMode.js";
+import SegmentedButtonSelectionMode from "./types/SegmentedButtonSelectionMode.js";
 /**
  * Interface for components that may be slotted inside `ui5-segmented-button` as items
  * @public
@@ -11,7 +11,6 @@ interface ISegmentedButtonItem extends UI5Element, ITabbable {
     pressed: boolean;
 }
 type SegmentedButtonSelectionChangeEventDetail = {
-    selectedItem: ISegmentedButtonItem;
     selectedItems: Array<ISegmentedButtonItem>;
 };
 /**
@@ -43,11 +42,11 @@ declare class SegmentedButton extends UI5Element {
     accessibleName?: string;
     /**
      * Defines the component selection mode.
-     * @default "SingleSelect"
+     * @default "Single"
      * @public
      * @since 1.14.0
      */
-    mode: `${SegmentedButtonMode}`;
+    selectionMode: `${SegmentedButtonSelectionMode}`;
     /**
      * Defines the items of `ui5-segmented-button`.
      *
@@ -72,14 +71,6 @@ declare class SegmentedButton extends UI5Element {
     _onkeyup(e: KeyboardEvent): void;
     _onmousedown(e: MouseEvent): void;
     _onfocusin(e: FocusEvent): void;
-    /**
-     * Currently selected item.
-     * @deprecated since 1.14.0. This method will be removed in the next major release.
-     * Please use the `selectedItems` property instead.
-     * @public
-     * @default undefined
-     */
-    get selectedItem(): ISegmentedButtonItem | undefined;
     /**
      * Returns an array of the currently selected items.
      * @since 1.14.0

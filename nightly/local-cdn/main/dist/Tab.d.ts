@@ -83,7 +83,6 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
      * @private
      */
     movable: boolean;
-    forcedSelected: boolean;
     _isTopLevelTab: boolean;
     _selectedTabReference: Tab;
     /**
@@ -101,6 +100,7 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
     _isInline?: boolean;
     _forcedMixedMode?: boolean;
     _getElementInStrip?: () => HTMLElement | undefined;
+    _getElementInOverflow?: () => HTMLElement | undefined;
     _individualSlot: string;
     _forcedPosinset?: number;
     _forcedSetsize?: number;
@@ -121,7 +121,7 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
     get _defaultSlotName(): "" | "disabled-slot";
     get hasOwnContent(): boolean;
     receiveStripInfo({ getElementInStrip, posinset, setsize, isInline, isTopLevelTab, mixedMode, }: TabContainerStripInfo): void;
-    receiveOverflowInfo({ style }: TabContainerOverflowInfo): void;
+    receiveOverflowInfo({ getElementInOverflow, style }: TabContainerOverflowInfo): void;
     /**
      * Returns the DOM reference of the tab that is placed in the header.
      *

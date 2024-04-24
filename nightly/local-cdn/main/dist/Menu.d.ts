@@ -82,14 +82,14 @@ declare class Menu extends UI5Element {
      * @public
      * @since 1.13.0
      */
-    busy: boolean;
+    loading: boolean;
     /**
-     * Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover..
+     * Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..
      * @default 1000
      * @public
      * @since 1.13.0
      */
-    busyDelay: number;
+    loadingDelay: number;
     /**
      * Defines the ID or DOM Reference of the element that the menu is shown at
      * @public
@@ -180,7 +180,7 @@ declare class Menu extends UI5Element {
     _startOpenTimeout(item: MenuItem, opener: OpenerStandardListItem): void;
     _startCloseTimeout(item: MenuItem): void;
     _itemMouseOver(e: MouseEvent): void;
-    _busyMouseOver(): void;
+    _loadingMouseOver(): void;
     _itemMouseOut(e: MouseEvent): void;
     _itemKeyDown(e: KeyboardEvent): void;
     _itemClick(e: CustomEvent<ListItemClickEventDetail>): void;

@@ -193,13 +193,6 @@ declare class List extends UI5Element {
      */
     accessibleRole: string;
     /**
-     * Defines the description for the accessible role of the component.
-     * @protected
-     * @default undefined
-     * @since 1.10.0
-     */
-    accessibleRoleDescription?: string;
-    /**
      * Defines if the entire list is in view port.
      * @private
      */

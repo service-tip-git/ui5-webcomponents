@@ -105,7 +105,8 @@ let Tab = Tab_1 = class Tab extends UI5Element {
         this._isInline = isInline;
         this._isTopLevelTab = !!isTopLevelTab;
     }
-    receiveOverflowInfo({ style }) {
+    receiveOverflowInfo({ getElementInOverflow, style }) {
+        this._getElementInOverflow = getElementInOverflow;
         this._forcedStyleInOverflow = style;
     }
     /**
@@ -121,9 +122,9 @@ let Tab = Tab_1 = class Tab extends UI5Element {
         return this._getElementInStrip?.();
     }
     getFocusDomRef() {
-        let focusedDomRef = super.getFocusDomRef();
-        if (this._getElementInStrip && this._getElementInStrip()) {
-            focusedDomRef = this._getElementInStrip();
+        let focusedDomRef = this._getElementInOverflow?.();
+        if (!focusedDomRef) {
+            focusedDomRef = this._getElementInStrip?.();
         }
         return focusedDomRef;
     }
@@ -145,7 +146,7 @@ let Tab = Tab_1 = class Tab extends UI5Element {
     }
     get effectiveSelected() {
         const subItemSelected = this.tabs.some(elem => elem.effectiveSelected);
-        return this.selected || this.forcedSelected || subItemSelected;
+        return this.selected || this._selectedTabReference === this || subItemSelected;
     }
     get effectiveHidden() {
         return !this.effectiveSelected;
@@ -307,9 +308,6 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], Tab.prototype, "movable", void 0);
-__decorate([
-    property({ type: Boolean })
-], Tab.prototype, "forcedSelected", void 0);
 __decorate([
     property({ type: Boolean })
 ], Tab.prototype, "_isTopLevelTab", void 0);

@@ -297,9 +297,6 @@ __decorate([
     property()
 ], Tree.prototype, "accessibleNameRef", void 0);
 __decorate([
-    property({ defaultValue: undefined, noAttribute: true })
-], Tree.prototype, "accessibleRoleDescription", void 0);
-__decorate([
     slot({ type: HTMLElement, invalidateOnChildChange: true, "default": true })
 ], Tree.prototype, "items", void 0);
 __decorate([

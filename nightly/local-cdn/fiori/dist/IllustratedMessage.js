@@ -14,7 +14,6 @@ import { getIllustrationDataSync, getIllustrationData } from "@ui5/webcomponents
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AriaLabelHelper.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import Title from "@ui5/webcomponents/dist/Title.js";
-import TitleLevel from "@ui5/webcomponents/dist/types/TitleLevel.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import IllustrationMessageSize from "./types/IllustrationMessageSize.js";
 import IllustrationMessageType from "./types/IllustrationMessageType.js";
@@ -286,9 +285,6 @@ __decorate([
 __decorate([
     property({ defaultValue: "" })
 ], IllustratedMessage.prototype, "accessibleNameRef", void 0);
-__decorate([
-    property({ type: TitleLevel, defaultValue: TitleLevel.H2 })
-], IllustratedMessage.prototype, "titleLevel", void 0);
 __decorate([
     property({ noAttribute: true })
 ], IllustratedMessage.prototype, "dotSvg", void 0);

@@ -1,7 +1,6 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
-import TitleLevel from "@ui5/webcomponents/dist/types/TitleLevel.js";
 import type { IButton } from "@ui5/webcomponents/dist/Button.js";
 import IllustrationMessageSize from "./types/IllustrationMessageSize.js";
 import "./illustrations/BeforeSearch.js";
@@ -109,17 +108,6 @@ declare class IllustratedMessage extends UI5Element {
     * @since 1.7.0
     */
     accessibleNameRef: string;
-    /**
-    * Defines the semantic level of the title.
-    *
-    * **Note:** Used for accessibility purposes only.
-    *
-    * **Note:** Doesn't take effect when `title` slot is being used.
-    * @default "H2"
-    * @public
-    * @since 1.20.0
-    */
-    titleLevel: `${TitleLevel}`;
     /**
     * Illustration breakpoint variant for the <code>Dot</code> design.
     *

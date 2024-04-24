@@ -47,7 +47,7 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
         this._valueHelpIconPressed = false;
     }
     valueHelpPress() {
-        this.closePopover();
+        this.closeValueStatePopover();
         this.fireEvent("value-help-trigger");
     }
     showMorePress() {
@@ -77,7 +77,7 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
     }
     valueHelpMouseDown(e) {
         const target = e.target;
-        this.closePopover();
+        this.closeValueStatePopover();
         this.tokenizer.closeMorePopover();
         this._valueHelpIconPressed = true;
         target.focus();
@@ -124,7 +124,7 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
         }
         if (isCtrl && e.key.toLowerCase() === "i" && tokens.length > 0) {
             e.preventDefault();
-            this.closePopover();
+            this.closeValueStatePopover();
             this.tokenizer.openMorePopover();
         }
     }
@@ -197,10 +197,10 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
     /**
      * @override
      */
-    async _onfocusin(e) {
-        const inputDomRef = await this.getInputDOMRef();
+    _onfocusin(e) {
+        const inputDomRef = this.getInputDOMRef();
         if (e.target === inputDomRef) {
-            await super._onfocusin(e);
+            super._onfocusin(e);
         }
     }
     lastItemDeleted() {
@@ -226,7 +226,7 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
         return this.tokenizer._tokensCountText();
     }
     get _tokensCountTextId() {
-        return `${this._id}-hiddenText-nMore`;
+        return `hiddenText-nMore`;
     }
     /**
      * Returns the placeholder value when there are no tokens.

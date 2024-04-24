@@ -111,6 +111,10 @@ let Popover = Popover_1 = class Popover extends Popup {
             console.warn("Valid opener id is required. It must be defined before opening the popover."); // eslint-disable-line
             return;
         }
+        if (this.isOpenerOutsideViewport(opener.getBoundingClientRect())) {
+            this.fireEvent("after-close", {}, false, false);
+            return;
+        }
         await this.showAt(opener);
     }
     isOpenerClicked(e) {

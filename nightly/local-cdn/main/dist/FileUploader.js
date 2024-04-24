@@ -85,6 +85,22 @@ let FileUploader = FileUploader_1 = class FileUploader extends UI5Element {
             e.preventDefault();
         }
     }
+    _ondrag(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    _ondrop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const files = e.dataTransfer?.files;
+        if (files) {
+            this._input.files = files;
+            this._updateValue(files);
+            this.fireEvent("change", {
+                files,
+            });
+        }
+    }
     _onfocusin() {
         this.focused = true;
     }

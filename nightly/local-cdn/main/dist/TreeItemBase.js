@@ -61,7 +61,7 @@ let TreeItemBase = TreeItemBase_1 = class TreeItemBase extends ListItem {
         return this.expanded ? "navigation-down-arrow" : "navigation-right-arrow";
     }
     get _ariaLabel() {
-        return this.accessibleRoleDescription ? undefined : TreeItemBase_1.i18nBundle.getText(TREE_ITEM_ARIA_LABEL);
+        return TreeItemBase_1.i18nBundle.getText(TREE_ITEM_ARIA_LABEL);
     }
     get _accInfo() {
         const accInfoSettings = {

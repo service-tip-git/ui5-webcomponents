@@ -8,6 +8,7 @@ import "@ui5/webcomponents-icons/dist/alert.js";
 import "@ui5/webcomponents-icons/dist/information.js";
 import WrappingType from "./types/WrappingType.js";
 import BadgeDesign from "./types/BadgeDesign.js";
+import BadgeSize from "./types/BadgeSize.js";
 /**
  * @class
  * ### Overview
@@ -75,6 +76,13 @@ declare class Badge extends UI5Element {
      * @since 1.22.0
      */
     wrappingType: `${WrappingType}`;
+    /**
+     * Defines predefined size of the component.
+     * @default "S"
+     * @public
+     * @since 2.0
+     */
+    size: `${BadgeSize}`;
     /**
      * Defines if the badge has an icon.
      * @private

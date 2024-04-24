@@ -10,7 +10,7 @@ import Button from "./Button.js";
 import DropIndicator from "./DropIndicator.js";
 import type Tab from "./Tab.js";
 import type { TabInStrip, TabInOverflow } from "./Tab.js";
-import type { TabSeparatorInStrip } from "./TabSeparator.js";
+import type { TabSeparatorInOverflow, TabSeparatorInStrip } from "./TabSeparator.js";
 import type { ListItemClickEventDetail, ListMoveEventDetail } from "./List.js";
 import ResponsivePopover from "./ResponsivePopover.js";
 import TabContainerTabsPlacement from "./types/TabContainerTabsPlacement.js";
@@ -28,6 +28,7 @@ type TabContainerStripInfo = {
     isTopLevelTab?: boolean;
 };
 type TabContainerOverflowInfo = {
+    getElementInOverflow: () => HTMLElement | undefined;
     style: Record<string, any>;
 };
 type TabContainerTabSelectEventDetail = {
@@ -213,6 +214,7 @@ declare class TabContainer extends UI5Element {
     _setPopoverInitialFocus(): void;
     _getSelectedTabInOverflow(): TabInOverflow;
     _getFirstFocusableItemInOverflow(): TabInOverflow;
+    _findTabInOverflow(realTab: ITab): TabSeparatorInOverflow | TabInOverflow | undefined;
     _onTabStripKeyDown(e: KeyboardEvent): void;
     _onTabStripKeyUp(e: KeyboardEvent): void;
     _onHeaderItemSelect(tab: HTMLElement): void;
@@ -239,7 +241,6 @@ declare class TabContainer extends UI5Element {
     slideContentDown(element: HTMLElement): Promise<void | Error>;
     slideContentUp(element: HTMLElement): Promise<void | Error>;
     _onOverflowClick(e: Event): Promise<void>;
-    _setIndentLevels(items: Array<ITab>, level: number, extraIndent: boolean): void;
     _sendOverflowPresentationInfos(items: Array<ITab>): void;
     _onOverflowKeyDown(e: KeyboardEvent): Promise<void>;
     _setItemsForStrip(): void;

@@ -713,6 +713,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     _resetValueState(valueState, callback) {
         this._validationTimeout = setTimeout(() => {
             this._effectiveValueState = this.valueState;
+            this._dialogInputValueState = valueState;
             this.valueState = valueState;
             this._validationTimeout = null;
             callback && callback();
@@ -1201,7 +1202,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     get _innerInput() {
         if (isPhone()) {
             if (this._getRespPopover()?.open) {
-                return this._getRespPopover().querySelector("ui5-input").shadowRoot.querySelector("input");
+                return this._getRespPopover().querySelector("[ui5-input]").shadowRoot.querySelector("input");
             }
         }
         return this._inputDom;

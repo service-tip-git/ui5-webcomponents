@@ -73,7 +73,7 @@ let ResponsivePopover = ResponsivePopover_1 = class ResponsivePopover extends Po
             super.close(escPressed, preventRegistryUpdate, preventFocusRestore);
         }
         else {
-            this._dialog.close(escPressed, preventRegistryUpdate, preventFocusRestore);
+            this._dialog?.close(escPressed, preventRegistryUpdate, preventFocusRestore);
         }
     }
     toggle(opener) {

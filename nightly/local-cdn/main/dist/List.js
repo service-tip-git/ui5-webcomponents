@@ -799,9 +799,6 @@ __decorate([
     property({ defaultValue: "list" })
 ], List.prototype, "accessibleRole", void 0);
 __decorate([
-    property({ defaultValue: undefined, noAttribute: true })
-], List.prototype, "accessibleRoleDescription", void 0);
-__decorate([
     property({ type: Boolean })
 ], List.prototype, "_inViewport", void 0);
 __decorate([

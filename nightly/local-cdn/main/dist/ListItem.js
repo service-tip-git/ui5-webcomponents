@@ -250,7 +250,7 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
     }
     get _accInfo() {
         return {
-            role: this.accessibleRole || this.role,
+            role: this.accessibleRole,
             ariaExpanded: undefined,
             ariaLevel: undefined,
             ariaLabel: ListItem_1.i18nBundle.getText(ARIA_LABEL_LIST_ITEM_CHECKBOX),
@@ -299,12 +299,6 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], ListItem.prototype, "actionable", void 0);
-__decorate([
-    property({ defaultValue: "listitem" })
-], ListItem.prototype, "role", void 0);
-__decorate([
-    property({ defaultValue: undefined, noAttribute: true })
-], ListItem.prototype, "accessibleRoleDescription", void 0);
 __decorate([
     property()
 ], ListItem.prototype, "accessibleRole", void 0);

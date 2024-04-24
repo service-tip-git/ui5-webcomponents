@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event.js";
-import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js"; // default calendar for bundling
 import { isDown, isUp, isDownAlt, isUpAlt, isPageUp, isPageDown, isPageUpShift, isPageDownShift, isPageUpShiftCtrl, isPageDownShiftCtrl, isSpace, isEnter, isKeyA, isKeyP, isNumber, isColon, } from "@ui5/webcomponents-base/dist/Keys.js";
 import TimePickerInternals from "./TimePickerInternals.js";
@@ -422,7 +421,6 @@ TimeSelectionClocks = __decorate([
     ,
     customElement({
         tag: "ui5-time-selection-clocks",
-        renderer: litRender,
         styles: TimeSelectionClocksCss,
         template: TimeSelectionClocksTemplate,
         dependencies: [

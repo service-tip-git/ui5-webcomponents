@@ -37,7 +37,6 @@ import SplitButtonCss from "./generated/themes/SplitButton.css.js";
  * `ui5-split-button` consists two separate buttons:
  *
  * - for the first one (default action) you can define some `text` or an `icon`, or both.
- * Also, it is possible to define different icon for active state of this button - `activeIcon`.
  * - the second one (arrow action) contains only `slim-arrow-down` icon.
  *
  * You can choose a `design` from a set of predefined types (the same as for ui5-button) that offer
@@ -86,7 +85,6 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         };
     }
     onBeforeRendering() {
-        this._textButtonIcon = this.textButton && this.activeIcon !== "" && (this._textButtonActive) && !this._shiftOrEscapePressed ? this.activeIcon : this.icon;
         if (this.disabled) {
             this._tabIndex = "-1";
         }
@@ -169,7 +167,6 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
     }
     _textButtonRelease() {
         this._textButtonActive = false;
-        this._textButtonIcon = this.textButton && this.activeIcon !== "" && (this._textButtonActive) && !this._shiftOrEscapePressed ? this.activeIcon : this.icon;
         this._tabIndex = "-1";
     }
     _arrowButtonPress(e) {
@@ -290,9 +287,6 @@ __decorate([
     property()
 ], SplitButton.prototype, "icon", void 0);
 __decorate([
-    property()
-], SplitButton.prototype, "activeIcon", void 0);
-__decorate([
     property({ type: Boolean })
 ], SplitButton.prototype, "activeArrowButton", void 0);
 __decorate([
@@ -319,9 +313,6 @@ __decorate([
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], SplitButton.prototype, "_textButtonActive", void 0);
-__decorate([
-    property({ noAttribute: true })
-], SplitButton.prototype, "_textButtonIcon", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], SplitButton.prototype, "_activeArrowButton", void 0);

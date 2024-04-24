@@ -109,14 +109,12 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
             return;
         }
         // update selected tab
-        const selectedTabs = this._itemsFlat.filter((tab) => !tab.isSeparator && tab.selected);
-        if (selectedTabs.length) {
-            this._selectedTab.forcedSelected = false;
-            this._selectedTab = selectedTabs[0];
+        const selectedTab = this._itemsFlat.find((tab) => !tab.isSeparator && tab.selected);
+        if (selectedTab) {
+            this._selectedTab = selectedTab;
         }
         else {
             this._selectedTab = this._itemsFlat[0];
-            this._selectedTab.forcedSelected = true;
         }
         walk(this.items, item => {
             if (!item.isSeparator) {
@@ -379,6 +377,12 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
     _getFirstFocusableItemInOverflow() {
         return this.responsivePopover.content[0].items.find(item => item.classList.contains("ui5-tab-overflow-item"));
     }
+    _findTabInOverflow(realTab) {
+        if (!this.responsivePopover.isOpen()) {
+            return undefined;
+        }
+        return this.responsivePopover.content[0].items.find(item => item.realTabReference === realTab);
+    }
     _onTabStripKeyDown(e) {
         const tab = getTabInStrip(e.target);
         if (!tab || tab.realTabReference.disabled) {
@@ -459,13 +463,9 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
             return;
         }
         // update selected property on all items
-        this._itemsFlat.forEach((item, index) => {
+        this._itemsFlat.forEach(item => {
             if (!item.isSeparator) {
-                const selected = selectedTabIndex === index;
-                item.selected = selected;
-                if (item.forcedSelected) {
-                    item.forcedSelected = false;
-                }
+                item.selected = item === selectedTab;
             }
         });
     }
@@ -507,24 +507,21 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         }
         await this._togglePopover(opener, true);
     }
-    _setIndentLevels(items, level, extraIndent) {
-        items.forEach(item => {
+    _sendOverflowPresentationInfos(items) {
+        const extraIndent = items
+            .filter((item) => !item.isSeparator)
+            .some(tab => tab.design !== SemanticColor.Default && tab.design !== SemanticColor.Neutral);
+        walk(items, (item, level) => {
             item.receiveOverflowInfo({
+                getElementInOverflow: () => {
+                    return this._findTabInOverflow(item);
+                },
                 style: {
                     [getScopedVarName("--_ui5-tab-indentation-level")]: item.isSeparator ? level + 1 : level,
                     [getScopedVarName("--_ui5-tab-extra-indent")]: extraIndent ? 1 : null,
                 },
             });
-            if (item.items) {
-                this._setIndentLevels(item.items, level + 1, extraIndent);
-            }
         });
-    }
-    _sendOverflowPresentationInfos(items) {
-        const extraIndent = items
-            .filter((item) => !item.isSeparator)
-            .some(tab => tab.design !== SemanticColor.Default && tab.design !== SemanticColor.Neutral);
-        this._setIndentLevels(this.items, 0, extraIndent);
     }
     async _onOverflowKeyDown(e) {
         const overflow = e.currentTarget;
@@ -1094,13 +1091,16 @@ const getTabInStrip = (el) => {
     }
     return false;
 };
-const walk = (items, callback) => {
+const _walk = (items, callback, level) => {
     [...items].forEach(item => {
-        callback(item);
+        callback(item, level);
         if (item.hasAttribute("ui5-tab") && item.items) {
-            walk(item.items, callback);
+            _walk(item.items, callback, level + 1);
         }
     });
+};
+const walk = (items, callback) => {
+    _walk(items, callback, 0);
 };
 TabContainer.define();
 export default TabContainer;

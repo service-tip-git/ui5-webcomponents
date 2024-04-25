@@ -19,6 +19,13 @@ export default {
             "Normal"
         ]
     },
+    "size": {
+        "control": "select",
+        "options": [
+            "S",
+            "L"
+        ]
+    },
     "default": {
         "control": {
             "type": "text"

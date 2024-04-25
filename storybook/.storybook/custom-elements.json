@@ -491,6 +491,50 @@
         },
         {
             "kind": "javascript-module",
+            "path": "dist/types/BadgeSize.js",
+            "declarations": [
+                {
+                    "kind": "enum",
+                    "name": "BadgeSize",
+                    "description": "Predefined sizes for the badge.",
+                    "_ui5privacy": "public",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Small size of the badge",
+                            "default": "S",
+                            "name": "S",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Large size of the badge",
+                            "default": "L",
+                            "name": "L",
+                            "readonly": true
+                        }
+                    ],
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "BadgeSize"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "BadgeSize",
+                        "module": "dist/types/BadgeSize.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
             "path": "dist/types/BarDesign.js",
             "declarations": [
                 {
@@ -2550,12 +2594,12 @@
         },
         {
             "kind": "javascript-module",
-            "path": "dist/types/SegmentedButtonMode.js",
+            "path": "dist/types/SegmentedButtonSelectionMode.js",
             "declarations": [
                 {
                     "kind": "enum",
-                    "name": "SegmentedButtonMode",
-                    "description": "Different SegmentedButton modes.",
+                    "name": "SegmentedButtonSelectionMode",
+                    "description": "Different SegmentedButton selection modes.",
                     "_ui5privacy": "public",
                     "members": [
                         {
@@ -2563,8 +2607,8 @@
                             "static": true,
                             "privacy": "public",
                             "description": "There is always one selected. Selecting one deselects the previous one.",
-                            "default": "SingleSelect",
-                            "name": "SingleSelect",
+                            "default": "Single",
+                            "name": "Single",
                             "readonly": true
                         },
                         {
@@ -2572,13 +2616,13 @@
                             "static": true,
                             "privacy": "public",
                             "description": "Multiple items can be selected at a time. All items can be deselected.",
-                            "default": "MultiSelect",
-                            "name": "MultiSelect",
+                            "default": "Multiple",
+                            "name": "Multiple",
                             "readonly": true
                         }
                     ],
                     "_ui5package": "@ui5/webcomponents",
-                    "tagName": "SegmentedButtonMode"
+                    "tagName": "SegmentedButtonSelectionMode"
                 }
             ],
             "exports": [
@@ -2586,8 +2630,8 @@
                     "kind": "js",
                     "name": "default",
                     "declaration": {
-                        "name": "SegmentedButtonMode",
-                        "module": "dist/types/SegmentedButtonMode.js"
+                        "name": "SegmentedButtonSelectionMode",
+                        "module": "dist/types/SegmentedButtonSelectionMode.js"
                     }
                 }
             ]
@@ -3773,6 +3817,25 @@
                             "privacy": "public",
                             "_ui5since": "1.22.0",
                             "_ui5validator": "WrappingType"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "size",
+                            "type": {
+                                "text": "BadgeSize",
+                                "references": [
+                                    {
+                                        "name": "BadgeSize",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/BadgeSize.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines predefined size of the component.",
+                            "default": "\"S\"",
+                            "privacy": "public",
+                            "_ui5since": "2.0",
+                            "_ui5validator": "BadgeSize"
                         }
                     ],
                     "events": [
@@ -10895,7 +10958,7 @@
                         },
                         {
                             "kind": "field",
-                            "name": "busy",
+                            "name": "loading",
                             "type": {
                                 "text": "boolean"
                             },
@@ -10907,11 +10970,11 @@
                         },
                         {
                             "kind": "field",
-                            "name": "busyDelay",
+                            "name": "loadingDelay",
                             "type": {
                                 "text": "number"
                             },
-                            "description": "Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover..",
+                            "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover..",
                             "default": "1000",
                             "privacy": "public",
                             "_ui5since": "1.13.0",
@@ -11221,11 +11284,11 @@
                         },
                         {
                             "kind": "field",
-                            "name": "busy",
+                            "name": "loading",
                             "type": {
                                 "text": "boolean"
                             },
-                            "description": "Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover.\n\n**Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.",
+                            "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.\n\n**Note:** If set to `true` a `ui5-busy-indicator` component will be displayed into the related one to the current `ui5-menu-item` sub-menu popover.",
                             "default": "false",
                             "privacy": "public",
                             "_ui5since": "1.13.0",
@@ -11233,11 +11296,11 @@
                         },
                         {
                             "kind": "field",
-                            "name": "busyDelay",
+                            "name": "loadingDelay",
                             "type": {
                                 "text": "number"
                             },
-                            "description": "Defines the delay in milliseconds, after which the busy indicator will be displayed inside the corresponding ui5-menu popover.",
+                            "description": "Defines the delay in milliseconds, after which the loading indicator will be displayed inside the corresponding ui5-menu popover.",
                             "default": "1000",
                             "privacy": "public",
                             "_ui5since": "1.13.0",
@@ -14674,41 +14737,22 @@
                         },
                         {
                             "kind": "field",
-                            "name": "mode",
+                            "name": "selectionMode",
                             "type": {
-                                "text": "SegmentedButtonMode",
+                                "text": "SegmentedButtonSelectionMode",
                                 "references": [
                                     {
-                                        "name": "SegmentedButtonMode",
+                                        "name": "SegmentedButtonSelectionMode",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/types/SegmentedButtonMode.js"
+                                        "module": "dist/types/SegmentedButtonSelectionMode.js"
                                     }
                                 ]
                             },
                             "description": "Defines the component selection mode.",
-                            "default": "\"SingleSelect\"",
+                            "default": "\"Single\"",
                             "privacy": "public",
                             "_ui5since": "1.14.0",
-                            "_ui5validator": "SegmentedButtonMode"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "selectedItem",
-                            "type": {
-                                "text": "ISegmentedButtonItem | undefined",
-                                "references": [
-                                    {
-                                        "name": "ISegmentedButtonItem",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/SegmentedButton.js"
-                                    }
-                                ]
-                            },
-                            "description": "Currently selected item.",
-                            "deprecated": "since 1.14.0. This method will be removed in the next major release.\nPlease use the `selectedItems` property instead.",
-                            "privacy": "public",
-                            "default": "undefined",
-                            "readonly": true
+                            "_ui5validator": "SegmentedButtonSelectionMode"
                         },
                         {
                             "kind": "field",
@@ -14746,22 +14790,6 @@
                             },
                             "description": "Fired when the selected item changes.",
                             "_ui5parameters": [
-                                {
-                                    "type": {
-                                        "text": "ISegmentedButtonItem",
-                                        "references": [
-                                            {
-                                                "name": "ISegmentedButtonItem",
-                                                "package": "@ui5/webcomponents",
-                                                "module": "dist/SegmentedButton.js"
-                                            }
-                                        ]
-                                    },
-                                    "name": "selectedItem",
-                                    "_ui5privacy": "public",
-                                    "description": "the pressed item.",
-                                    "deprecated": "deprecated since 1.14.0 and will be removed in the next major release, use the `selectedItems` parameter instead."
-                                },
                                 {
                                     "type": {
                                         "text": "Array<ISegmentedButtonItem>",
@@ -16172,7 +16200,7 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "### Overview\n\n`ui5-split-button` enables users to trigger actions. It is constructed of two separate actions -\ndefault action and arrow action that can be activated by clicking or tapping, or by\npressing certain keyboard keys - `Space` or `Enter` for default action,\nand `Arrow Down` or `Arrow Up` for arrow action.\n\n### Usage\n\n`ui5-split-button` consists two separate buttons:\n\n- for the first one (default action) you can define some `text` or an `icon`, or both.\nAlso, it is possible to define different icon for active state of this button - `activeIcon`.\n- the second one (arrow action) contains only `slim-arrow-down` icon.\n\nYou can choose a `design` from a set of predefined types (the same as for ui5-button) that offer\ndifferent styling to correspond to the triggered action. Both text and arrow actions have the same design.\n\nYou can set the `ui5-split-button` as enabled or disabled. Both parts of an enabled\n`ui5-split-button` can be pressed by clicking or tapping it, or by certain keys, which changes\nthe style to provide visual feedback to the user that it is pressed or hovered over with\nthe mouse cursor. A disabled `ui5-split-button` appears inactive and any of the two buttons\ncannot be pressed.\n\n### Keyboard Handling\n\n- `Space` or `Enter` - triggers the default action\n- `Shift` or `Escape` - if `Space` is pressed, releases the default action button without triggering the click event.\n- `Arrow Down`, `Arrow Up`, `Alt`+`Arrow Down`, `Alt`+`Arrow Up`, or `F4` - triggers the arrow action\nThere are separate events that are fired on activating of `ui5-split-button` parts:\n\n- `click` for the first button (default action)\n- `arrow-click` for the second button (arrow action)\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/SplitButton.js\";`",
+                    "description": "### Overview\n\n`ui5-split-button` enables users to trigger actions. It is constructed of two separate actions -\ndefault action and arrow action that can be activated by clicking or tapping, or by\npressing certain keyboard keys - `Space` or `Enter` for default action,\nand `Arrow Down` or `Arrow Up` for arrow action.\n\n### Usage\n\n`ui5-split-button` consists two separate buttons:\n\n- for the first one (default action) you can define some `text` or an `icon`, or both.\n- the second one (arrow action) contains only `slim-arrow-down` icon.\n\nYou can choose a `design` from a set of predefined types (the same as for ui5-button) that offer\ndifferent styling to correspond to the triggered action. Both text and arrow actions have the same design.\n\nYou can set the `ui5-split-button` as enabled or disabled. Both parts of an enabled\n`ui5-split-button` can be pressed by clicking or tapping it, or by certain keys, which changes\nthe style to provide visual feedback to the user that it is pressed or hovered over with\nthe mouse cursor. A disabled `ui5-split-button` appears inactive and any of the two buttons\ncannot be pressed.\n\n### Keyboard Handling\n\n- `Space` or `Enter` - triggers the default action\n- `Shift` or `Escape` - if `Space` is pressed, releases the default action button without triggering the click event.\n- `Arrow Down`, `Arrow Up`, `Alt`+`Arrow Down`, `Alt`+`Arrow Up`, or `F4` - triggers the arrow action\nThere are separate events that are fired on activating of `ui5-split-button` parts:\n\n- `click` for the first button (default action)\n- `arrow-click` for the second button (arrow action)\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/SplitButton.js\";`",
                     "name": "SplitButton",
                     "slots": [
                         {
@@ -16193,17 +16221,6 @@
                                 "text": "string"
                             },
                             "description": "Defines the icon to be displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
-                            "default": "\"\"",
-                            "privacy": "public",
-                            "_ui5validator": "String"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "activeIcon",
-                            "type": {
-                                "text": "string"
-                            },
-                            "description": "Defines the icon to be displayed in active state as graphical element within the component.",
                             "default": "\"\"",
                             "privacy": "public",
                             "_ui5validator": "String"
@@ -18857,334 +18874,6 @@
                     "kind": "class",
                     "description": "### Overview\nThe `ui5-time-picker` component provides an input field with assigned clocks which are opened on user action.\nThe `ui5-time-picker` allows users to select a localized time using touch, mouse, or keyboard input.\nIt consists of two parts: the time input field and the clocks.\n\n### Usage\nThe user can enter a time by:\n\n- Using the clocks that are displayed in a popup\n- Typing it in directly in the input field\n\nWhen the user makes an entry and chooses the enter key, the clocks show the corresponding time (hours, minutes and seconds separately).\nWhen the user directly triggers the clocks display, the actual time is displayed.\nFor the `ui5-time-picker`\n\n### Formatting\n\nIf a time is entered by typing it into\nthe input field, it must fit to the used time format.\n\nSupported format options are pattern-based on Unicode LDML Date Format notation.\nFor more information, see [UTS #35: Unicode Locale Data Markup Language](http://unicode.org/reports/tr35/#Date_Field_Symbol_Table).\n\nFor example, if the `format-pattern` is \"HH:mm:ss\",\na valid value string is \"11:42:35\" and the same is displayed in the input.\n\n### Keyboard handling\n[F4], [Alt]+[Up], [Alt]+[Down] Open/Close picker dialog and move focus to it.\n\nWhen closed:\n\n- [Page Up] - Increments hours by 1. If 12 am is reached, increment hours to 1 pm and vice versa.\n- [Page Down] - Decrements the corresponding field by 1. If 1 pm is reached, decrement hours to 12 am and vice versa.\n- [Shift]+[Page Up] - Increments minutes by 1.\n- [Shift]+[Page Down] - Decrements minutes by 1.\n- [Shift]+[Ctrl]+[Page Up] - Increments seconds by 1.\n- [Shift]+[Ctrl]+[Page Down] - Decrements seconds by 1.\n-\n\nWhen opened:\n\n- [Page Up] - Increments hours by 1. If 12 am is reached, increment hours to 1 pm and vice versa.\n- [Page Down] - Decrements the corresponding field by 1. If 1 pm is reached, decrement hours to 12 am and vice versa.\n- [Shift]+[Page Up] - Increments minutes by 1.\n- [Shift]+[Page Down] - Decrements minutes by 1.\n- [Shift]+[Ctrl]+[Page Up] - Increments seconds by 1.\n- [Shift]+[Ctrl]+[Page Down] - Decrements seconds by 1.\n- [A] or [P] - Selects AM or PM respectively.\n- [0]-[9] - Allows direct time selecting (hours/minutes/seconds).\n- [:] - Allows switching between hours/minutes/seconds clocks. If the last clock is displayed and [:] is pressed, the first clock is beind displayed.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TimePicker.js\";`",
                     "name": "TimePicker",
-                    "members": [
-                        {
-                            "kind": "field",
-                            "name": "placeholder",
-                            "type": {
-                                "text": "string | undefined"
-                            },
-                            "description": "Defines a short hint, intended to aid the user with data entry when the\ncomponent has no value.\n\n**Note:** When no placeholder is set, the format pattern is displayed as a placeholder.\nPassing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.",
-                            "default": "undefined",
-                            "privacy": "public",
-                            "_ui5validator": "String"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "formatPattern",
-                            "type": {
-                                "text": "string"
-                            },
-                            "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
-                            "default": "\"\"",
-                            "privacy": "public",
-                            "_ui5validator": "String"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "dateValue",
-                            "type": {
-                                "text": "Date | Array<Date> | null"
-                            },
-                            "description": "Currently selected time represented as JavaScript Date instance",
-                            "privacy": "public",
-                            "default": "null",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "name": "value",
-                            "type": {
-                                "text": "string | undefined"
-                            },
-                            "description": "Defines a formatted time value.",
-                            "default": "undefined",
-                            "privacy": "public",
-                            "_ui5validator": "String",
-                            "_ui5formProperty": true,
-                            "_ui5formEvents": "change,input",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "field",
-                            "name": "valueState",
-                            "type": {
-                                "text": "ValueState",
-                                "references": [
-                                    {
-                                        "name": "ValueState",
-                                        "package": "@ui5/webcomponents-base",
-                                        "module": "dist/types/ValueState.js"
-                                    }
-                                ]
-                            },
-                            "description": "Defines the value state of the `ui5-time-picker`.",
-                            "default": "\"None\"",
-                            "privacy": "public",
-                            "_ui5validator": "ValueState",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "field",
-                            "name": "disabled",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Determines whether the `ui5-time-picker` is displayed as disabled.",
-                            "default": "false",
-                            "privacy": "public",
-                            "_ui5validator": "Boolean",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "field",
-                            "name": "readonly",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Determines whether the `ui5-time-picker` is displayed as readonly.",
-                            "default": "false",
-                            "privacy": "public",
-                            "_ui5validator": "Boolean",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "openPicker",
-                            "return": {
-                                "type": {
-                                    "text": "void"
-                                },
-                                "description": "Resolves when the picker is open"
-                            },
-                            "description": "Opens the picker.",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "closePicker",
-                            "return": {
-                                "type": {
-                                    "text": "void"
-                                },
-                                "description": "Resolves when the picker is closed"
-                            },
-                            "description": "Closes the picker",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "isOpen",
-                            "return": {
-                                "type": {
-                                    "text": "boolean"
-                                }
-                            },
-                            "description": "Checks if the picker is open",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "formatValue",
-                            "return": {
-                                "type": {
-                                    "text": "string"
-                                },
-                                "description": "formatted value"
-                            },
-                            "parameters": [
-                                {
-                                    "name": "date",
-                                    "type": {
-                                        "text": "Date"
-                                    },
-                                    "description": "A Java Script date object to be formatted as string",
-                                    "_ui5privacy": "public"
-                                }
-                            ],
-                            "description": "Formats a Java Script date object into a string representing a locale date and time\naccording to the `formatPattern` property of the TimePicker instance",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "isValid",
-                            "return": {
-                                "type": {
-                                    "text": "boolean"
-                                }
-                            },
-                            "parameters": [
-                                {
-                                    "name": "value",
-                                    "type": {
-                                        "text": "string | undefined"
-                                    },
-                                    "description": "The value to be tested against the current date format",
-                                    "_ui5privacy": "public"
-                                }
-                            ],
-                            "description": "Checks if a value is valid against the current `formatPattern` value.\n\n**Note:** an empty string is considered as valid value.",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        }
-                    ],
-                    "superclass": {
-                        "name": "TimePickerBase",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/TimePickerBase.js"
-                    },
-                    "tagName": "TimePicker",
-                    "customElement": true,
-                    "_ui5since": "1.0.0-rc.6",
-                    "_ui5privacy": "public",
-                    "events": [
-                        {
-                            "name": "change",
-                            "_ui5privacy": "public",
-                            "type": {
-                                "text": "CustomEvent<TimePickerBaseChangeEventDetail>",
-                                "references": [
-                                    {
-                                        "name": "TimePickerBaseChangeEventDetail",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/TimePickerBase.js"
-                                    }
-                                ]
-                            },
-                            "description": "Fired when the input operation has finished by clicking the \"OK\" button or\nwhen the text in the input field has changed and the focus leaves the input field.",
-                            "_ui5parameters": [
-                                {
-                                    "type": {
-                                        "text": "string"
-                                    },
-                                    "name": "value",
-                                    "_ui5privacy": "public",
-                                    "description": "The submitted value."
-                                },
-                                {
-                                    "type": {
-                                        "text": "boolean"
-                                    },
-                                    "name": "valid",
-                                    "_ui5privacy": "public",
-                                    "description": "Indicator if the value is in correct format pattern and in valid range."
-                                }
-                            ],
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        },
-                        {
-                            "name": "input",
-                            "_ui5privacy": "public",
-                            "type": {
-                                "text": "CustomEvent<TimePickerBaseInputEventDetail>",
-                                "references": [
-                                    {
-                                        "name": "TimePickerBaseInputEventDetail",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/TimePickerBase.js"
-                                    }
-                                ]
-                            },
-                            "description": "Fired when the value of the `ui5-time-picker` is changed at each key stroke.",
-                            "_ui5parameters": [
-                                {
-                                    "type": {
-                                        "text": "string"
-                                    },
-                                    "name": "value",
-                                    "_ui5privacy": "public",
-                                    "description": "The current value."
-                                },
-                                {
-                                    "type": {
-                                        "text": "boolean"
-                                    },
-                                    "name": "valid",
-                                    "_ui5privacy": "public",
-                                    "description": "Indicator if the value is in correct format pattern and in valid range."
-                                }
-                            ],
-                            "inheritedFrom": {
-                                "name": "TimePickerBase",
-                                "module": "dist/TimePickerBase.js"
-                            }
-                        }
-                    ],
-                    "_ui5package": "@ui5/webcomponents",
-                    "slots": [
-                        {
-                            "name": "valueStateMessage",
-                            "description": "Defines the value state message that will be displayed as pop up under the `ui5-time-picker`.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the `ui5-time-picker` is in `Information`, `Warning` or `Error` value state.",
-                            "_ui5since": "1.0.0-rc.8",
-                            "_ui5type": {
-                                "text": "Array<HTMLElement>"
-                            },
-                            "_ui5privacy": "public"
-                        }
-                    ]
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "TimePicker",
-                        "module": "dist/TimePicker.js"
-                    }
-                },
-                {
-                    "kind": "custom-element-definition",
-                    "name": "ui5-time-picker",
-                    "declaration": {
-                        "name": "TimePicker",
-                        "module": "dist/TimePicker.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
-            "path": "dist/TimePickerBase.js",
-            "declarations": [
-                {
-                    "kind": "class",
-                    "description": "",
-                    "name": "TimePickerBase",
                     "slots": [
                         {
                             "name": "valueStateMessage",
@@ -19251,6 +18940,39 @@
                             "_ui5validator": "Boolean"
                         },
                         {
+                            "kind": "field",
+                            "name": "placeholder",
+                            "type": {
+                                "text": "string | undefined"
+                            },
+                            "description": "Defines a short hint, intended to aid the user with data entry when the\ncomponent has no value.\n\n**Note:** When no placeholder is set, the format pattern is displayed as a placeholder.\nPassing an empty string as the value of this property will make the component appear empty - without placeholder or format pattern.",
+                            "default": "undefined",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "formatPattern",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "dateValue",
+                            "type": {
+                                "text": "Date | Array<Date> | null"
+                            },
+                            "description": "Currently selected time represented as JavaScript Date instance",
+                            "privacy": "public",
+                            "default": "null",
+                            "readonly": true
+                        },
+                        {
                             "kind": "method",
                             "name": "openPicker",
                             "return": {
@@ -19334,12 +19056,12 @@
                             "name": "change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent<TimePickerBaseChangeEventDetail>",
+                                "text": "CustomEvent<TimePickerChangeEventDetail>",
                                 "references": [
                                     {
-                                        "name": "TimePickerBaseChangeEventDetail",
+                                        "name": "TimePickerChangeEventDetail",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/TimePickerBase.js"
+                                        "module": "dist/TimePicker.js"
                                     }
                                 ]
                             },
@@ -19367,12 +19089,12 @@
                             "name": "input",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent<TimePickerBaseInputEventDetail>",
+                                "text": "CustomEvent<TimePickerInputEventDetail>",
                                 "references": [
                                     {
-                                        "name": "TimePickerBaseInputEventDetail",
+                                        "name": "TimePickerInputEventDetail",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/TimePickerBase.js"
+                                        "module": "dist/TimePicker.js"
                                     }
                                 ]
                             },
@@ -19402,11 +19124,11 @@
                         "package": "@ui5/webcomponents-base",
                         "module": "dist/UI5Element.js"
                     },
+                    "tagName": "TimePicker",
                     "customElement": true,
                     "_ui5since": "1.0.0-rc.6",
                     "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "TimePickerBase"
+                    "_ui5package": "@ui5/webcomponents"
                 }
             ],
             "exports": [
@@ -19414,8 +19136,16 @@
                     "kind": "js",
                     "name": "default",
                     "declaration": {
-                        "name": "TimePickerBase",
-                        "module": "dist/TimePickerBase.js"
+                        "name": "TimePicker",
+                        "module": "dist/TimePicker.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-time-picker",
+                    "declaration": {
+                        "name": "TimePicker",
+                        "module": "dist/TimePicker.js"
                     }
                 }
             ]
@@ -19446,21 +19176,6 @@
                     "declaration": {
                         "name": "TimePickerInternals",
                         "module": "dist/TimePickerInternals.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
-            "path": "dist/TimeSelection.js",
-            "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "TimeSelection",
-                        "module": "dist/TimeSelection.js"
                     }
                 }
             ]
@@ -22271,21 +21986,6 @@
         },
         {
             "kind": "javascript-module",
-            "path": "dist/WheelSlider.js",
-            "declarations": [],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "WheelSlider",
-                        "module": "dist/WheelSlider.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
             "path": "dist/YearPicker.js",
             "declarations": [],
             "exports": [
@@ -25061,25 +24761,6 @@
                             "privacy": "public",
                             "_ui5since": "1.7.0",
                             "_ui5validator": "String"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "titleLevel",
-                            "type": {
-                                "text": "TitleLevel",
-                                "references": [
-                                    {
-                                        "name": "TitleLevel",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/types/TitleLevel.js"
-                                    }
-                                ]
-                            },
-                            "description": "Defines the semantic level of the title.\n\n**Note:** Used for accessibility purposes only.\n\n**Note:** Doesn't take effect when `title` slot is being used.",
-                            "default": "\"H2\"",
-                            "privacy": "public",
-                            "_ui5since": "1.20.0",
-                            "_ui5validator": "TitleLevel"
                         }
                     ],
                     "superclass": {
@@ -26175,7 +25856,7 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content.\nThis is enabled with the `floatingFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
+                    "description": "### Overview\n\nThe `ui5-page` is a container component that holds one whole screen of an application.\nThe page has three distinct areas that can hold content - a header, content area and a footer.\n### Structure\n#### Header\nThe top most area of the page is occupied by the header. The standard header includes a navigation button and a title.\n#### Content\nThe content occupies the main part of the page. Only the content area is scrollable by default.\nThis can be prevented by setting  `enableScrolling` to `false`.\n#### Footer\nThe footer is optional and occupies the part above the bottom part of the content. Alternatively, the footer can be fixed at the bottom of the page by enabling the `fixedFooter` property.\n\n**Note:** `ui5-page` occipues the whole available space of its parent. In order to achieve the intended design you have to make sure\nthat there is enough space for the `ui5-page` to be rendered.\n**Note:** In order for the `ui5-page` to be displayed, the parent element should have fixed height.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/Page.js\";`",
                     "name": "Page",
                     "cssParts": [
                         {
@@ -26197,7 +25878,7 @@
                             "description": "Defines the content HTML Element.",
                             "_ui5propertyName": "content",
                             "_ui5type": {
-                                "text": "Array<HTMLElement>"
+                                "text": "Array<Node>"
                             },
                             "_ui5privacy": "public"
                         },
@@ -26231,7 +25912,7 @@
                         },
                         {
                             "kind": "field",
-                            "name": "disableScrolling",
+                            "name": "noScrolling",
                             "type": {
                                 "text": "boolean"
                             },
@@ -26242,12 +25923,12 @@
                         },
                         {
                             "kind": "field",
-                            "name": "floatingFooter",
+                            "name": "fixedFooter",
                             "type": {
                                 "text": "boolean"
                             },
-                            "description": "Defines if the footer should float over the content.\n\n**Note:** When set to true the footer floats over the content with a slight offset from the bottom, otherwise it is fixed at the very bottom of the page.",
-                            "default": "true",
+                            "description": "Defines if the footer is fixed at the very bottom of the page.\n\n**Note:** When set to true the footer is fixed at the very bottom of the page, otherwise it floats over the content with a slight offset from the bottom.",
+                            "default": "false",
                             "privacy": "public",
                             "_ui5validator": "Boolean"
                         },

@@ -14,7 +14,7 @@
 	<script>// delete Document.prototype.adoptedStyleSheets;</script>
 
 
-  <script type="module" crossorigin src="../../../../assets/bundle.esm-fc21a811.js"></script>
+  <script type="module" crossorigin src="../../../../assets/bundle.esm-b5cecd12.js"></script>
   <link rel="stylesheet" href="../../../../assets/SegmentedButton-654bc4ab.css">
 </head>
 
@@ -99,7 +99,7 @@
 				<section>
 					<h1>Example with 4 items</h1>
 
-					<ui5-segmented-button id="segButtonMulti" mode="MultiSelect">
+					<ui5-segmented-button id="segButtonMulti" selection-mode="Multiple">
 						<ui5-segmented-button-item>Item</ui5-segmented-button-item>
 						<ui5-segmented-button-item>Item</ui5-segmented-button-item>
 						<ui5-segmented-button-item>Click</ui5-segmented-button-item>
@@ -195,7 +195,7 @@
 		});
 
 		progSetButton3.addEventListener("click", function() {
-			segButtonProg.selectedItem.pressed = true;
+			segButtonProg.selectedItems[0].pressed = true;
 		});
 
 		progSetButton4.addEventListener("click", function() {

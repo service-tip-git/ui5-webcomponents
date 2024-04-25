@@ -6,7 +6,7 @@
 	<title>RTL and Language</title>
 	
 	
-  <script type="module" crossorigin src="../../../../assets/bundle.esm-fc21a811.js"></script>
+  <script type="module" crossorigin src="../../../../assets/bundle.esm-b5cecd12.js"></script>
   <link rel="stylesheet" href="../../../../assets/RTL-63030fdf.css">
 </head>
 
@@ -90,7 +90,7 @@
 		});
 
 		tb.addEventListener("ui5-selection-change", function(e) {
-			var lang = e.detail.selectedItem.textContent.toLowerCase();
+			var lang = e.detail.selectedItems[0].textContent.toLowerCase();
 
 			setLanguage(lang).then(function() {
 				const rtlLang = lang === "he" || lang === "ar";

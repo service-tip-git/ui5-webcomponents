@@ -1,9 +1,4 @@
 export default {
-    "dateValue": {
-        "control": {
-            "type": false
-        }
-    },
     "valueState": {
         "control": "select",
         "options": [
@@ -13,6 +8,11 @@ export default {
             "Error",
             "Information"
         ]
+    },
+    "dateValue": {
+        "control": {
+            "type": false
+        }
     },
     "valueStateMessage": {
         "control": {

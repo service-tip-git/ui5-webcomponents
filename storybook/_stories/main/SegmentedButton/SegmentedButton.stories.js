@@ -9,7 +9,7 @@ export default {
 };
 const Template = (args) => html `<ui5-segmented-button
 	accessible-name="${ifDefined(args.accessibleName)}"
-	mode="${ifDefined(args.mode)}"
+	selection-mode="${ifDefined(args.selectionMode)}"
 >
 	${unsafeHTML(args.default)}
 </ui5-segmented-button>`;

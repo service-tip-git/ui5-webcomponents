@@ -15,7 +15,7 @@
 	</script>
 	
 	
-  <script type="module" crossorigin src="../../../../assets/bundle.esm-fc21a811.js"></script>
+  <script type="module" crossorigin src="../../../../assets/bundle.esm-b5cecd12.js"></script>
   <link rel="stylesheet" href="../../../../assets/Tokenizer-09a50163.css">
 </head>
 
@@ -83,7 +83,7 @@
 	<script>
 
 		document.getElementById("theme-switch").addEventListener("ui5-selection-change", event => {
-			window["sap-ui-webcomponents-bundle"].configuration.setTheme(event.detail.selectedItem.getAttribute("data-ui5-theme-name"));
+			window["sap-ui-webcomponents-bundle"].configuration.setTheme(event.detail.selectedItems[0].getAttribute("data-ui5-theme-name"));
 		});
 	</script>
 </body>

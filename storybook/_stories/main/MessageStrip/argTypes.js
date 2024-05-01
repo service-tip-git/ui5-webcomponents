@@ -5,7 +5,7 @@ export default {
             "Information",
             "Positive",
             "Negative",
-            "Warning",
+            "Critical",
             "ColorSet1",
             "ColorSet2"
         ]

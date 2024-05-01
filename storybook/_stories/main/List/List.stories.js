@@ -33,13 +33,13 @@ Basic.args = {
 		icon="nutrition-activity"
 		description="Tropical plant with an edible fruit"
 		additional-text="In-stock"
-		additional-text-state="Success"
+		additional-text-state="Positive"
 		>Pineapple</ui5-li>
 	<ui5-li
 		icon="nutrition-activity"
 		description="Occurs between red and yellow"
 		additional-text="Expires"
-		additional-text-state="Warning"
+		additional-text-state="Critical"
 		>Orange</ui5-li>
 	<ui5-li
 		icon="nutrition-activity"
@@ -51,7 +51,7 @@ Basic.args = {
 		icon="nutrition-activity"
 		description="The tropical stone fruit"
 		additional-text="Re-stock"
-		additional-text-state="Error"
+		additional-text-state="Negative"
 		>Mango</ui5-li>`,
 };
 export const Growing = () => html `<ui5-list id="infiniteScrollEx" style="height: 200px" growing="Scroll">
@@ -59,21 +59,21 @@ export const Growing = () => html `<ui5-list id="infiniteScrollEx" style="height
         icon="nutrition-activity"
         description="Tropical plant with an edible fruit"
         additional-text="In-stock"
-        additional-text-state="Success"
+        additional-text-state="Positive"
         >Pineapple</ui5-li
       >
       <ui5-li
         icon="nutrition-activity"
         description="Occurs between red and yellow"
         additional-text="Expires"
-        additional-text-state="Warning"
+        additional-text-state="Critical"
         >Orange</ui5-li
       >
       <ui5-li
         icon="nutrition-activity"
         description="The yellow lengthy fruit"
         additional-text="Re-stock"
-        additional-text-state="Error"
+        additional-text-state="Negative"
         >Banana</ui5-li
       >
     </ui5-list>
@@ -83,7 +83,7 @@ export const Growing = () => html `<ui5-list id="infiniteScrollEx" style="height
         li.textContent = "Fruit name";
         li.description = "the description goes here " + i;
         li.additionalText = "Available";
-        li.additionalTextState = "Success";
+        li.additionalTextState = "Positive";
         li.icon = "nutrition-activity";
         return li;
       }
@@ -209,9 +209,9 @@ export const HighlightTypes = () => html ` <ui5-list
       class="full-width"
     >
       <ui5-li highlight="None">None</ui5-li>
-      <ui5-li highlight="Success">Success</ui5-li>
-      <ui5-li highlight="Warning">Warning</ui5-li>
-      <ui5-li highlight="Error">Error</ui5-li>
+      <ui5-li highlight="Positive">Success</ui5-li>
+      <ui5-li highlight="Critical">Warning</ui5-li>
+      <ui5-li highlight="Negative">Error</ui5-li>
       <ui5-li highlight="Information">Information</ui5-li>
     </ui5-list>`;
 //# sourceMappingURL=List.stories.js.map

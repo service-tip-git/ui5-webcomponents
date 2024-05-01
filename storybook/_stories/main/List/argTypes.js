@@ -27,6 +27,15 @@ export default {
             "None"
         ]
     },
+    "accessibleRole": {
+        "control": "select",
+        "options": [
+            "List",
+            "Menu",
+            "Tree",
+            "ListBox"
+        ]
+    },
     "listItems": {
         "control": {
             "type": false

@@ -56,9 +56,9 @@ import SuggestionItem from "./SuggestionItem.js";
 const SKIP_ITEMS_SIZE = 10;
 var ValueStateIconMapping;
 (function (ValueStateIconMapping) {
-    ValueStateIconMapping["Error"] = "error";
-    ValueStateIconMapping["Warning"] = "alert";
-    ValueStateIconMapping["Success"] = "sys-enter-2";
+    ValueStateIconMapping["Negative"] = "error";
+    ValueStateIconMapping["Critical"] = "alert";
+    ValueStateIconMapping["Positive"] = "sys-enter-2";
     ValueStateIconMapping["Information"] = "information";
 })(ValueStateIconMapping || (ValueStateIconMapping = {}));
 /**
@@ -683,7 +683,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         return this.valueState !== ValueState.None;
     }
     get hasValueStateText() {
-        return this.hasValueState && this.valueState !== ValueState.Success;
+        return this.hasValueState && this.valueState !== ValueState.Positive;
     }
     get ariaValueStateHiddenText() {
         if (!this.hasValueState) {
@@ -709,18 +709,18 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     }
     get valueStateTextMappings() {
         return {
-            [ValueState.Success]: ComboBox_1.i18nBundle.getText(VALUE_STATE_SUCCESS),
-            [ValueState.Error]: ComboBox_1.i18nBundle.getText(VALUE_STATE_ERROR),
-            [ValueState.Warning]: ComboBox_1.i18nBundle.getText(VALUE_STATE_WARNING),
+            [ValueState.Positive]: ComboBox_1.i18nBundle.getText(VALUE_STATE_SUCCESS),
+            [ValueState.Negative]: ComboBox_1.i18nBundle.getText(VALUE_STATE_ERROR),
+            [ValueState.Critical]: ComboBox_1.i18nBundle.getText(VALUE_STATE_WARNING),
             [ValueState.Information]: ComboBox_1.i18nBundle.getText(VALUE_STATE_INFORMATION),
         };
     }
     get valueStateTypeMappings() {
         return {
-            [ValueState.Success]: ComboBox_1.i18nBundle.getText(VALUE_STATE_TYPE_SUCCESS),
+            [ValueState.Positive]: ComboBox_1.i18nBundle.getText(VALUE_STATE_TYPE_SUCCESS),
             [ValueState.Information]: ComboBox_1.i18nBundle.getText(VALUE_STATE_TYPE_INFORMATION),
-            [ValueState.Error]: ComboBox_1.i18nBundle.getText(VALUE_STATE_TYPE_ERROR),
-            [ValueState.Warning]: ComboBox_1.i18nBundle.getText(VALUE_STATE_TYPE_WARNING),
+            [ValueState.Negative]: ComboBox_1.i18nBundle.getText(VALUE_STATE_TYPE_ERROR),
+            [ValueState.Critical]: ComboBox_1.i18nBundle.getText(VALUE_STATE_TYPE_WARNING),
         };
     }
     get shouldOpenValueStateMessagePopover() {
@@ -784,9 +784,9 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
             popoverValueState: {
                 "ui5-valuestatemessage-header": true,
                 "ui5-valuestatemessage-root": true,
-                "ui5-valuestatemessage--success": this.valueState === ValueState.Success,
-                "ui5-valuestatemessage--error": this.valueState === ValueState.Error,
-                "ui5-valuestatemessage--warning": this.valueState === ValueState.Warning,
+                "ui5-valuestatemessage--success": this.valueState === ValueState.Positive,
+                "ui5-valuestatemessage--error": this.valueState === ValueState.Negative,
+                "ui5-valuestatemessage--warning": this.valueState === ValueState.Critical,
                 "ui5-valuestatemessage--information": this.valueState === ValueState.Information,
             },
         };

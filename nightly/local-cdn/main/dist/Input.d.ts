@@ -445,16 +445,16 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormElem
     onItemSelected(item: SuggestionItem, keyboardUsed: boolean): void;
     onItemPreviewed(item: SuggestionListItem): void;
     get valueStateTypeMappings(): {
-        Success: string;
+        Positive: string;
         Information: string;
-        Error: string;
-        Warning: string;
+        Negative: string;
+        Critical: string;
     };
     valueStateTextMappings(): {
-        Success: string;
+        Positive: string;
         Information: string;
-        Error: string;
-        Warning: string;
+        Negative: string;
+        Critical: string;
     };
     announceSelectedItem(): void;
     get _readonly(): boolean;

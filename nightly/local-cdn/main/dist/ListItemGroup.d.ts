@@ -44,5 +44,8 @@ declare class ListItemGroup extends UI5Element {
     get groupHeaderItem(): ListItemGroupHeader;
     get hasHeader(): boolean;
     get hasFormattedHeader(): boolean;
+    get isListItemGroup(): boolean;
 }
+declare const isInstanceOfListItemGroup: (object: any) => object is ListItemGroup;
 export default ListItemGroup;
+export { isInstanceOfListItemGroup };

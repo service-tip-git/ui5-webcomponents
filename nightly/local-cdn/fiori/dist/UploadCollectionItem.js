@@ -202,7 +202,7 @@ let UploadCollectionItem = UploadCollectionItem_1 = class UploadCollectionItem e
     }
     get valueStateName() {
         if (this.uploadState === UploadState.Error) {
-            return ValueState.Error;
+            return ValueState.Negative;
         }
         if (this.uploadState === UploadState.Ready || this.uploadState === UploadState.Uploading) {
             return ValueState.Information;

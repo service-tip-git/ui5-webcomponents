@@ -36,9 +36,9 @@ const STEP_SIZE = 16;
  * Defines the icons corresponding to the dialog's state.
  */
 const ICON_PER_STATE = {
-    [ValueState.Error]: "error",
-    [ValueState.Warning]: "alert",
-    [ValueState.Success]: "sys-enter-2",
+    [ValueState.Negative]: "error",
+    [ValueState.Critical]: "alert",
+    [ValueState.Positive]: "sys-enter-2",
     [ValueState.Information]: "information",
 };
 /**
@@ -202,7 +202,7 @@ let Dialog = Dialog_1 = class Dialog extends Popup {
         if (this.accessibleRole === PopupAccessibleRole.None) {
             return undefined;
         }
-        if (this.state === ValueState.Error || this.state === ValueState.Warning) {
+        if (this.state === ValueState.Negative || this.state === ValueState.Critical) {
             return PopupAccessibleRole.AlertDialog.toLowerCase();
         }
         return this.accessibleRole.toLowerCase();

@@ -12,7 +12,7 @@ declare enum DesignClassesMapping {
     Information = "ui5-message-strip-root--info",
     Positive = "ui5-message-strip-root--positive",
     Negative = "ui5-message-strip-root--negative",
-    Warning = "ui5-message-strip-root--warning",
+    Critical = "ui5-message-strip-root--critical",
     ColorSet1 = "ui5-message-strip-root--color-set-1",
     ColorSet2 = "ui5-message-strip-root--color-set-2"
 }
@@ -23,7 +23,7 @@ type DesignTypeAnnouncemnt = Record<MessageStripDesign, string>;
  * ### Overview
  *
  * The `ui5-message-strip` component enables the embedding of app-related messages.
- * It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative.
+ * It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Critical and Negative.
  * Each message can have a Close button, so that it can be removed from the UI, if needed.
  *
  * ### Usage

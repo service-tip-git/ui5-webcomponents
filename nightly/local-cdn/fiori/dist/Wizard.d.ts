@@ -9,7 +9,7 @@ import WizardStep from "./WizardStep.js";
 type WizardStepChangeEventDetail = {
     step: WizardStep;
     previousStep: WizardStep;
-    changeWithClick: boolean;
+    withScroll: boolean;
 };
 type AccessibilityInformation = {
     ariaSetsize: number;
@@ -347,10 +347,10 @@ declare class Wizard extends UI5Element {
      * @param selectedStep the old step
      * @param stepToSelect the step to be selected
      * @param stepToSelectIndex the index of the newly selected step
-     * @param changeWithClick the selection changed due to user click in the step navigation
+     * @param withScroll the selection changed due to user scrolling
      * @private
      */
-    switchSelectionFromOldToNewStep(selectedStep: WizardStep | null, stepToSelect: WizardStep, stepToSelectIndex: number, changeWithClick: boolean): void;
+    switchSelectionFromOldToNewStep(selectedStep: WizardStep | null, stepToSelect: WizardStep, stepToSelectIndex: number, withScroll: boolean): void;
     /**
      * Sorter method for sorting an array in ascending order.
      * @private

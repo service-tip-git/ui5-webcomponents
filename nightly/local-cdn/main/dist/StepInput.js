@@ -168,7 +168,7 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
     _updateValueState() {
         const valid = !((this.min !== undefined && this.value < this.min) || (this.max !== undefined && this.value > this.max));
         const previousValueState = this.valueState;
-        this.valueState = valid ? ValueState.None : ValueState.Error;
+        this.valueState = valid ? ValueState.None : ValueState.Negative;
         const eventPrevented = !this.fireEvent("value-state-change", { valueState: this.valueState, valid }, true);
         if (eventPrevented) {
             this.valueState = previousValueState;

@@ -34,7 +34,7 @@ __decorate([
 ], Option.prototype, "selected", void 0);
 __decorate([
     property()
-], Option.prototype, "title", void 0);
+], Option.prototype, "tooltip", void 0);
 __decorate([
     property({ defaultValue: null })
 ], Option.prototype, "icon", void 0);

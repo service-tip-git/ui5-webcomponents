@@ -32,6 +32,7 @@ import Calendar from "./Calendar.js";
 import CalendarDateComponent from "./CalendarDate.js";
 import Input from "./Input.js";
 import InputType from "./types/InputType.js";
+import IconMode from "./types/IconMode.js";
 import DatePickerTemplate from "./generated/templates/DatePickerTemplate.lit.js";
 // default calendar for bundling
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";
@@ -271,7 +272,7 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
     _updateValueState() {
         const valid = this._checkValueValidity(this.value);
         const previousValueState = this.valueState;
-        this.valueState = valid ? ValueState.None : ValueState.Error;
+        this.valueState = valid ? ValueState.None : ValueState.Negative;
         const eventPrevented = !this.fireEvent("value-state-change", { valueState: this.valueState, valid }, true);
         if (eventPrevented) {
             this.valueState = previousValueState;
@@ -420,8 +421,8 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
      * Defines whether the value help icon is hidden
      * @private
      */
-    get _ariaHidden() {
-        return isDesktop();
+    get _iconMode() {
+        return isDesktop() ? IconMode.Decorative : IconMode.Interactive;
     }
     _respPopover() {
         return this.shadowRoot.querySelector("[ui5-responsive-popover]");

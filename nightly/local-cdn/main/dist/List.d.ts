@@ -6,6 +6,7 @@ import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
 import ListGrowingMode from "./types/ListGrowingMode.js";
+import ListAccessibleRole from "./types/ListAccessibleRole.js";
 import ListItemBase from "./ListItemBase.js";
 import DropIndicator from "./DropIndicator.js";
 import type { SelectionRequestEventDetail, PressEventDetail } from "./ListItem.js";
@@ -188,10 +189,10 @@ declare class List extends UI5Element {
     /**
      * Defines the accessible role of the component.
      * @public
-     * @default "list"
+     * @default "List"
      * @since 1.0.0-rc.15
      */
-    accessibleRole: string;
+    accessibleRole: `${ListAccessibleRole}`;
     /**
      * Defines if the entire list is in view port.
      * @private
@@ -272,6 +273,7 @@ declare class List extends UI5Element {
             position: string;
         };
     };
+    get listAccessibleRole(): string;
     get classes(): ClassMap;
     prepareListItems(): void;
     observeListEnd(): Promise<void>;

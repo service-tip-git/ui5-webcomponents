@@ -20,6 +20,7 @@ import TreeItem from "./TreeItem.js";
 import TreeItemCustom from "./TreeItemCustom.js";
 import TreeList from "./TreeList.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
+import ListAccessibleRole from "./types/ListAccessibleRole.js";
 // Template
 import TreeTemplate from "./generated/templates/TreeTemplate.lit.js";
 // Styles
@@ -89,7 +90,7 @@ let Tree = class Tree extends UI5Element {
         return this.getDomRef();
     }
     get _role() {
-        return "tree";
+        return ListAccessibleRole.Tree;
     }
     get _label() {
         return getEffectiveAriaLabelText(this);

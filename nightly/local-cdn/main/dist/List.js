@@ -29,6 +29,7 @@ import Orientation from "@ui5/webcomponents-base/dist/types/Orientation.js";
 import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
 import ListGrowingMode from "./types/ListGrowingMode.js";
+import ListAccessibleRole from "./types/ListAccessibleRole.js";
 import "./ListItemBase.js";
 import DropIndicator from "./DropIndicator.js";
 import ListSeparators from "./types/ListSeparators.js";
@@ -42,7 +43,7 @@ import browserScrollbarCSS from "./generated/themes/BrowserScrollbar.css.js";
 import { LOAD_MORE_TEXT, ARIA_LABEL_LIST_SELECTABLE, ARIA_LABEL_LIST_MULTISELECTABLE, ARIA_LABEL_LIST_DELETABLE, } from "./generated/i18n/i18n-defaults.js";
 import "./CheckBox.js";
 import "./RadioButton.js";
-import ListItemGroup from "./ListItemGroup.js";
+import ListItemGroup, { isInstanceOfListItemGroup } from "./ListItemGroup.js";
 const INFINITE_SCROLL_DEBOUNCE_RATE = 250; // ms
 const PAGE_UP_DOWN_SIZE = 10;
 /**
@@ -281,6 +282,9 @@ let List = List_1 = class List extends UI5Element {
             },
         };
     }
+    get listAccessibleRole() {
+        return this.accessibleRole.toLowerCase();
+    }
     get classes() {
         return {
             root: {
@@ -388,7 +392,7 @@ let List = List_1 = class List extends UI5Element {
         const items = [];
         const slottedItems = this.getSlottedNodes("items");
         slottedItems.forEach(item => {
-            if (item instanceof ListItemGroup) {
+            if (isInstanceOfListItemGroup(item)) {
                 const groupItems = [item.groupHeaderItem, ...item.items].filter(Boolean);
                 items.push(...groupItems);
             }
@@ -796,7 +800,7 @@ __decorate([
     property({ defaultValue: "" })
 ], List.prototype, "accessibleNameRef", void 0);
 __decorate([
-    property({ defaultValue: "list" })
+    property({ type: ListAccessibleRole, defaultValue: ListAccessibleRole.List })
 ], List.prototype, "accessibleRole", void 0);
 __decorate([
     property({ type: Boolean })

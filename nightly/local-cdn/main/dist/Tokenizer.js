@@ -458,7 +458,7 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
         });
     }
     get noValueStatePopover() {
-        return this.valueState === ValueState.None || this.valueState === ValueState.Success;
+        return this.valueState === ValueState.None || this.valueState === ValueState.Positive;
     }
     get valueStateMessageText() {
         return this.getSlottedNodes("valueStateMessage").map(el => el.cloneNode(true));
@@ -468,9 +468,9 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
      */
     get _valueStateMessageIcon() {
         const iconPerValueState = {
-            Error: "error",
-            Warning: "alert",
-            Success: "sys-enter-2",
+            Negative: "error",
+            Critical: "alert",
+            Positive: "sys-enter-2",
             Information: "information",
         };
         return this.valueState !== ValueState.None ? iconPerValueState[this.valueState] : "";
@@ -500,9 +500,9 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
             popoverValueState: {
                 "ui5-valuestatemessage-root": true,
                 "ui5-valuestatemessage-header": true,
-                "ui5-valuestatemessage--success": this.valueState === ValueState.Success,
-                "ui5-valuestatemessage--error": this.valueState === ValueState.Error,
-                "ui5-valuestatemessage--warning": this.valueState === ValueState.Warning,
+                "ui5-valuestatemessage--success": this.valueState === ValueState.Positive,
+                "ui5-valuestatemessage--error": this.valueState === ValueState.Negative,
+                "ui5-valuestatemessage--warning": this.valueState === ValueState.Critical,
                 "ui5-valuestatemessage--information": this.valueState === ValueState.Information,
             },
         };

@@ -23,7 +23,7 @@ var MessageStripDesign;
      * Message is a warning
      * @public
      */
-    MessageStripDesign["Warning"] = "Warning";
+    MessageStripDesign["Critical"] = "Critical";
     /**
     * Message uses custom color set 1
     * @public

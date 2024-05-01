@@ -8,6 +8,7 @@ import ButtonDesign from "./types/ButtonDesign.js";
 import ButtonType from "./types/ButtonType.js";
 import ButtonAccessibleRole from "./types/ButtonAccessibleRole.js";
 import HasPopup from "./types/HasPopup.js";
+import IconMode from "./types/IconMode.js";
 /**
  * Interface for components that may be used as a button inside numerous higher-order components
  * @public
@@ -222,7 +223,7 @@ declare class Button extends UI5Element implements IFormElement, IButton {
     _setActiveState(active: boolean): void;
     get _hasPopup(): string | undefined;
     get hasButtonType(): boolean;
-    get iconRole(): "" | "presentation";
+    get iconMode(): "" | IconMode.Decorative;
     get isIconOnly(): boolean;
     static typeTextMappings(): Record<string, I18nText>;
     get buttonTypeText(): string;

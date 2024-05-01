@@ -60,6 +60,9 @@ class SideNavigationItemBase extends UI5Element {
         }
         return element?.slot === "fixedItems";
     }
+    get isSideNavigationItemBase() {
+        return true;
+    }
 }
 __decorate([
     property()
@@ -79,5 +82,9 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], SideNavigationItemBase.prototype, "inPopover", void 0);
+const isInstanceOfSideNavigationItemBase = (object) => {
+    return "isSideNavigationItemBase" in object;
+};
 export default SideNavigationItemBase;
+export { isInstanceOfSideNavigationItemBase };
 //# sourceMappingURL=SideNavigationItemBase.js.map

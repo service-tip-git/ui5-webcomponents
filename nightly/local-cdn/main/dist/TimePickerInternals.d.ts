@@ -12,7 +12,7 @@ type TimePickerComponentIndexMap = {
 };
 type TimeSelectionPeriodProperties = {
     label: string;
-    pressed: boolean;
+    selected: boolean;
 };
 type TimeSelectionChangeEventDetail = {
     value: string | undefined;

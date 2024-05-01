@@ -221,8 +221,8 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
             },
             valueStateMsg: {
                 "ui5-valuestatemessage-header": true,
-                "ui5-valuestatemessage--error": this.valueState === ValueState.Error,
-                "ui5-valuestatemessage--warning": this.valueState === ValueState.Warning,
+                "ui5-valuestatemessage--error": this.valueState === ValueState.Negative,
+                "ui5-valuestatemessage--warning": this.valueState === ValueState.Critical,
                 "ui5-valuestatemessage--information": this.valueState === ValueState.Information,
             },
         };
@@ -269,7 +269,7 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
         return "";
     }
     get ariaInvalid() {
-        return this.valueState === "Error" ? "true" : null;
+        return this.valueState === ValueState.Negative ? "true" : null;
     }
     get openValueStateMsgPopover() {
         return !this._firstRendering && this._openValueStateMsgPopover && this.displayValueStateMessagePopover;
@@ -281,7 +281,7 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
         return !!this.valueStateMessage.length && this.hasValueState;
     }
     get hasValueState() {
-        return this.valueState === ValueState.Error || this.valueState === ValueState.Warning || this.valueState === ValueState.Information;
+        return this.valueState === ValueState.Negative || this.valueState === ValueState.Critical || this.valueState === ValueState.Information;
     }
     get valueStateMessageText() {
         return this.valueStateMessage.map(x => x.cloneNode(true));
@@ -294,27 +294,27 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
      */
     get _valueStateMessageIcon() {
         const iconPerValueState = {
-            Error: "error",
-            Warning: "alert",
-            Success: "sys-enter-2",
+            Negative: "error",
+            Critical: "alert",
+            Positive: "sys-enter-2",
             Information: "information",
         };
         return this.valueState !== ValueState.None ? iconPerValueState[this.valueState] : "";
     }
     get valueStateTextMappings() {
         return {
-            "Success": TextArea_1.i18nBundle.getText(VALUE_STATE_SUCCESS),
+            "Positive": TextArea_1.i18nBundle.getText(VALUE_STATE_SUCCESS),
             "Information": TextArea_1.i18nBundle.getText(VALUE_STATE_INFORMATION),
-            "Error": TextArea_1.i18nBundle.getText(VALUE_STATE_ERROR),
-            "Warning": TextArea_1.i18nBundle.getText(VALUE_STATE_WARNING),
+            "Negative": TextArea_1.i18nBundle.getText(VALUE_STATE_ERROR),
+            "Critical": TextArea_1.i18nBundle.getText(VALUE_STATE_WARNING),
         };
     }
     get valueStateTypeMappings() {
         return {
-            "Success": TextArea_1.i18nBundle.getText(VALUE_STATE_TYPE_SUCCESS),
+            "Positive": TextArea_1.i18nBundle.getText(VALUE_STATE_TYPE_SUCCESS),
             "Information": TextArea_1.i18nBundle.getText(VALUE_STATE_TYPE_INFORMATION),
-            "Error": TextArea_1.i18nBundle.getText(VALUE_STATE_TYPE_ERROR),
-            "Warning": TextArea_1.i18nBundle.getText(VALUE_STATE_TYPE_WARNING),
+            "Negative": TextArea_1.i18nBundle.getText(VALUE_STATE_TYPE_ERROR),
+            "Critical": TextArea_1.i18nBundle.getText(VALUE_STATE_TYPE_WARNING),
         };
     }
 };

@@ -272,16 +272,16 @@ declare class TextArea extends UI5Element implements IFormElement {
      */
     get _valueStateMessageIcon(): string;
     get valueStateTextMappings(): {
-        Success: string;
+        Positive: string;
         Information: string;
-        Error: string;
-        Warning: string;
+        Negative: string;
+        Critical: string;
     };
     get valueStateTypeMappings(): {
-        Success: string;
+        Positive: string;
         Information: string;
-        Error: string;
-        Warning: string;
+        Negative: string;
+        Critical: string;
     };
 }
 export default TextArea;

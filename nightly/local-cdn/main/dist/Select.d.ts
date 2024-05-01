@@ -21,7 +21,7 @@ import type { SelectMenuOptionClick, SelectMenuChange } from "./SelectMenu.js";
  */
 interface IOption extends UI5Element {
     selected: boolean;
-    title: string;
+    tooltip: string;
     icon?: string | null;
     value: string;
     additionalText?: string;
@@ -312,16 +312,16 @@ declare class Select extends UI5Element implements IFormElement {
     get hasCustomLabel(): boolean;
     _fireChangeEvent(selectedOption: IOption): void;
     get valueStateTextMappings(): {
-        Success: string;
+        Positive: string;
         Information: string;
-        Error: string;
-        Warning: string;
+        Negative: string;
+        Critical: string;
     };
     get valueStateTypeMappings(): {
-        Success: string;
+        Positive: string;
         Information: string;
-        Error: string;
-        Warning: string;
+        Negative: string;
+        Critical: string;
     };
     get valueStateText(): string;
     get valueStateDefaultText(): string;

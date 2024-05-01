@@ -7,6 +7,7 @@ import ListItemType from "./types/ListItemType.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
 import ListItemBase from "./ListItemBase.js";
 import type { IButton } from "./Button.js";
+import ListItemAccessibleRole from "./types/ListItemAccessibleRole.js";
 import HasPopup from "./types/HasPopup.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-right.js";
 interface IAccessibleListItem {
@@ -111,7 +112,7 @@ declare abstract class ListItem extends ListItemBase {
     title: string;
     /**
      * Defines the highlight state of the list items.
-     * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+     * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
      * @default "None"
      * @public
      * @since 1.24
@@ -125,11 +126,11 @@ declare abstract class ListItem extends ListItemBase {
     /**
      * Used to define the role of the list item.
      * @private
-     * @default ""
+     * @default "ListItem"
      * @since 1.3.0
      *
      */
-    accessibleRole: string;
+    accessibleRole: `${ListItemAccessibleRole}`;
     _selectionMode: `${ListSelectionMode}`;
     /**
      * Defines the availability and type of interactive popup element that can be triggered by the component on which the property is set.
@@ -189,6 +190,7 @@ declare abstract class ListItem extends ListItemBase {
     get typeNavigation(): boolean;
     get typeActive(): boolean;
     get _ariaSelected(): boolean | undefined;
+    get listItemAccessibleRole(): string;
     get ariaSelectedText(): string | undefined;
     get deleteText(): string;
     get hasDeleteButtonSlot(): boolean;

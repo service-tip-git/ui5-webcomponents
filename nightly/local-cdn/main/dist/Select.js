@@ -256,7 +256,7 @@ let Select = Select_1 = class Select extends UI5Element {
                 icon: opt.icon,
                 value: opt.value,
                 textContent: opt.textContent,
-                title: opt.title,
+                tooltip: opt.tooltip,
                 additionalText: opt.additionalText,
                 id: opt._id,
                 stableDomRef: opt.stableDomRef,
@@ -559,18 +559,18 @@ let Select = Select_1 = class Select extends UI5Element {
     }
     get valueStateTextMappings() {
         return {
-            [ValueState.Success]: Select_1.i18nBundle.getText(VALUE_STATE_SUCCESS),
+            [ValueState.Positive]: Select_1.i18nBundle.getText(VALUE_STATE_SUCCESS),
             [ValueState.Information]: Select_1.i18nBundle.getText(VALUE_STATE_INFORMATION),
-            [ValueState.Error]: Select_1.i18nBundle.getText(VALUE_STATE_ERROR),
-            [ValueState.Warning]: Select_1.i18nBundle.getText(VALUE_STATE_WARNING),
+            [ValueState.Negative]: Select_1.i18nBundle.getText(VALUE_STATE_ERROR),
+            [ValueState.Critical]: Select_1.i18nBundle.getText(VALUE_STATE_WARNING),
         };
     }
     get valueStateTypeMappings() {
         return {
-            [ValueState.Success]: Select_1.i18nBundle.getText(VALUE_STATE_TYPE_SUCCESS),
+            [ValueState.Positive]: Select_1.i18nBundle.getText(VALUE_STATE_TYPE_SUCCESS),
             [ValueState.Information]: Select_1.i18nBundle.getText(VALUE_STATE_TYPE_INFORMATION),
-            [ValueState.Error]: Select_1.i18nBundle.getText(VALUE_STATE_TYPE_ERROR),
-            [ValueState.Warning]: Select_1.i18nBundle.getText(VALUE_STATE_TYPE_WARNING),
+            [ValueState.Negative]: Select_1.i18nBundle.getText(VALUE_STATE_TYPE_ERROR),
+            [ValueState.Critical]: Select_1.i18nBundle.getText(VALUE_STATE_TYPE_WARNING),
         };
     }
     get valueStateText() {
@@ -614,9 +614,9 @@ let Select = Select_1 = class Select extends UI5Element {
     */
     get _valueStateMessageInputIcon() {
         const iconPerValueState = {
-            Error: "error",
-            Warning: "alert",
-            Success: "sys-enter-2",
+            Negative: "error",
+            Critical: "alert",
+            Positive: "sys-enter-2",
             Information: "information",
         };
         return this.valueState !== ValueState.None ? iconPerValueState[this.valueState] : "";
@@ -628,9 +628,9 @@ let Select = Select_1 = class Select extends UI5Element {
         return {
             popoverValueState: {
                 "ui5-valuestatemessage-root": true,
-                "ui5-valuestatemessage--success": this.valueState === ValueState.Success,
-                "ui5-valuestatemessage--error": this.valueState === ValueState.Error,
-                "ui5-valuestatemessage--warning": this.valueState === ValueState.Warning,
+                "ui5-valuestatemessage--success": this.valueState === ValueState.Positive,
+                "ui5-valuestatemessage--error": this.valueState === ValueState.Negative,
+                "ui5-valuestatemessage--warning": this.valueState === ValueState.Critical,
                 "ui5-valuestatemessage--information": this.valueState === ValueState.Information,
             },
             popover: {
@@ -662,7 +662,7 @@ let Select = Select_1 = class Select extends UI5Element {
         return !this.valueStateMessageText.length && this.hasValueStateText;
     }
     get hasValueStateText() {
-        return this.hasValueState && this.valueState !== ValueState.Success;
+        return this.hasValueState && this.valueState !== ValueState.Positive;
     }
     get shouldOpenValueStateMessagePopover() {
         return this.focused && this.hasValueStateText && !this._iconPressed

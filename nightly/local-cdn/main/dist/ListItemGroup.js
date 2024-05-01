@@ -41,6 +41,9 @@ let ListItemGroup = class ListItemGroup extends UI5Element {
     get hasFormattedHeader() {
         return !!this.header.length;
     }
+    get isListItemGroup() {
+        return true;
+    }
 };
 __decorate([
     property()
@@ -69,5 +72,9 @@ ListItemGroup = __decorate([
     })
 ], ListItemGroup);
 ListItemGroup.define();
+const isInstanceOfListItemGroup = (object) => {
+    return "isListItemGroup" in object;
+};
 export default ListItemGroup;
+export { isInstanceOfListItemGroup };
 //# sourceMappingURL=ListItemGroup.js.map

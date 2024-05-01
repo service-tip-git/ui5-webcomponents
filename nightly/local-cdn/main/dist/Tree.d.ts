@@ -4,6 +4,7 @@ import DropIndicator from "./DropIndicator.js";
 import type TreeItemBase from "./TreeItemBase.js";
 import TreeList from "./TreeList.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
+import ListAccessibleRole from "./types/ListAccessibleRole.js";
 import type { TreeItemBaseToggleEventDetail, TreeItemBaseStepInEventDetail, TreeItemBaseStepOutEventDetail } from "./TreeItemBase.js";
 import type { ListItemClickEventDetail, ListItemDeleteEventDetail, ListItemFocusEventDetail, ListSelectionChangeEventDetail } from "./List.js";
 type TreeMoveEventDetail = {
@@ -136,7 +137,7 @@ declare class Tree extends UI5Element {
     onAfterRendering(): void;
     get dropIndicatorDOM(): DropIndicator | null;
     get list(): TreeList;
-    get _role(): string;
+    get _role(): ListAccessibleRole;
     get _label(): string | undefined;
     get _hasHeader(): boolean;
     _ondragenter(e: DragEvent): void;

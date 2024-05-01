@@ -72,7 +72,7 @@ declare class TreeItemBase extends ListItem {
     /**
      * Defines the state of the `additionalText`.
      *
-     * Available options are: `"None"` (by default), `"Success"`, `"Warning"`, `"Information"` and `"Error"`.
+     * Available options are: `"None"` (by default), `"Positive"`, `"Critical"`, `"Information"` and `"Negative"`.
      * @default "None"
      * @public
      * @since 1.0.0-rc.15

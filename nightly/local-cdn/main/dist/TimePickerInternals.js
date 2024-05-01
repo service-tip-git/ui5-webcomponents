@@ -241,7 +241,7 @@ let TimePickerInternals = TimePickerInternals_1 = class TimePickerInternals exte
             this.periodsArray.forEach(item => {
                 this._periods.push({
                     "label": item,
-                    "pressed": this._period === item,
+                    "selected": this._period === item,
                 });
             });
         }

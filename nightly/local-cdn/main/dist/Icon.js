@@ -16,10 +16,10 @@ import { isSpace, isEnter } from "@ui5/webcomponents-base/dist/Keys.js";
 import executeTemplate from "@ui5/webcomponents-base/dist/renderer/executeTemplate.js";
 import IconTemplate from "./generated/templates/IconTemplate.lit.js";
 import IconDesign from "./types/IconDesign.js";
+import IconMode from "./types/IconMode.js";
 // Styles
 import iconCss from "./generated/themes/Icon.css.js";
 const ICON_NOT_FOUND = "ICON_NOT_FOUND";
-const PRESENTATION_ROLE = "presentation";
 /**
  * @class
  * ### Overview
@@ -78,7 +78,7 @@ const PRESENTATION_ROLE = "presentation";
  *
  * ### Keyboard Handling
  *
- * - [Space] / [Enter] or [Return] - Fires the `click` event if the `interactive` property is set to true.
+ * - [Space] / [Enter] or [Return] - Fires the `click` event if the `mode` property is set to `Interactive`.
  * - [Shift] - If [Space] / [Enter] or [Return] is pressed, pressing [Shift] releases the ui5-icon without triggering the click event.
  *
  * ### ES6 Module Import
@@ -92,7 +92,7 @@ const PRESENTATION_ROLE = "presentation";
  */
 let Icon = class Icon extends UI5Element {
     _onkeydown(e) {
-        if (!this.interactive) {
+        if (this.mode !== IconMode.Interactive) {
             return;
         }
         if (isEnter(e)) {
@@ -103,7 +103,7 @@ let Icon = class Icon extends UI5Element {
         }
     }
     _onkeyup(e) {
-        if (this.interactive && isSpace(e)) {
+        if (this.mode === IconMode.Interactive && isSpace(e)) {
             this.fireEvent("click");
         }
     }
@@ -114,28 +114,20 @@ let Icon = class Icon extends UI5Element {
         return this.ltr ? "ltr" : undefined;
     }
     get effectiveAriaHidden() {
-        if (this.ariaHidden === "") {
-            if (this.isDecorative) {
-                return true;
-            }
-            return;
-        }
-        return this.ariaHidden;
+        return this.mode === IconMode.Decorative ? "true" : undefined;
     }
     get _tabIndex() {
-        return this.interactive ? "0" : undefined;
-    }
-    get isDecorative() {
-        return this.effectiveAccessibleRole === PRESENTATION_ROLE;
+        return this.mode === IconMode.Interactive ? "0" : undefined;
     }
     get effectiveAccessibleRole() {
-        if (this.accessibleRole) {
-            return this.accessibleRole;
+        switch (this.mode) {
+            case IconMode.Interactive:
+                return "button";
+            case IconMode.Decorative:
+                return "presentation";
+            default:
+                return "img";
         }
-        if (this.interactive) {
-            return "button";
-        }
-        return this.effectiveAccessibleName ? "img" : PRESENTATION_ROLE;
     }
     onEnterDOM() {
         if (isDesktop()) {
@@ -192,9 +184,6 @@ __decorate([
     property({ type: IconDesign, defaultValue: IconDesign.Default })
 ], Icon.prototype, "design", void 0);
 __decorate([
-    property({ type: Boolean })
-], Icon.prototype, "interactive", void 0);
-__decorate([
     property()
 ], Icon.prototype, "name", void 0);
 __decorate([
@@ -204,11 +193,8 @@ __decorate([
     property({ type: Boolean })
 ], Icon.prototype, "showTooltip", void 0);
 __decorate([
-    property()
-], Icon.prototype, "accessibleRole", void 0);
-__decorate([
-    property()
-], Icon.prototype, "ariaHidden", void 0);
+    property({ type: IconMode, defaultValue: IconMode.Image })
+], Icon.prototype, "mode", void 0);
 __decorate([
     property({ multiple: true })
 ], Icon.prototype, "pathData", void 0);

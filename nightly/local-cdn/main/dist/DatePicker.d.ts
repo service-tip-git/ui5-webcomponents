@@ -10,6 +10,7 @@ import ResponsivePopover from "./ResponsivePopover.js";
 import type { CalendarSelectionChangeEventDetail } from "./Calendar.js";
 import Input from "./Input.js";
 import InputType from "./types/InputType.js";
+import IconMode from "./types/IconMode.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";
 type DatePickerChangeEventDetail = {
     value: string;
@@ -313,7 +314,7 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
      * Defines whether the value help icon is hidden
      * @private
      */
-    get _ariaHidden(): boolean;
+    get _iconMode(): IconMode.Decorative | IconMode.Interactive;
     _respPopover(): ResponsivePopover;
     _canOpenPicker(): boolean;
     get _calendarPickersMode(): CalendarPickersMode;

@@ -31,7 +31,6 @@ import SegmentedButtonCss from "./generated/themes/SegmentedButton.css.js";
  * one of the items, it stays in a pressed state. It automatically resizes the items
  * to fit proportionally within the component. When no width is set, the component uses the available width.
  *
- * **Note:** There can be just one selected `item` at a time.
  *
  * ### ES6 Module Import
  *
@@ -88,7 +87,7 @@ let SegmentedButton = SegmentedButton_1 = class SegmentedButton extends UI5Eleme
         switch (this.selectionMode) {
             case SegmentedButtonSelectionMode.Multiple:
                 if (e instanceof KeyboardEvent) {
-                    target.pressed = !target.pressed;
+                    target.selected = !target.selected;
                 }
                 break;
             default:
@@ -98,14 +97,13 @@ let SegmentedButton = SegmentedButton_1 = class SegmentedButton extends UI5Eleme
             selectedItems: this.selectedItems,
         });
         this._itemNavigation.setCurrentItem(target);
-        target.focus();
         return this;
     }
     _applySingleSelection(item) {
         this.items.forEach(currentItem => {
-            currentItem.pressed = false;
+            currentItem.selected = false;
         });
-        item.pressed = true;
+        item.selected = true;
         this._selectedItem = item;
     }
     _onclick(e) {
@@ -142,8 +140,8 @@ let SegmentedButton = SegmentedButton_1 = class SegmentedButton extends UI5Eleme
         // If the component is focused for the first time
         // focus the selected item if such is present
         if (this.selectedItems.length) {
-            this.selectedItems[0].focus();
             this._itemNavigation.setCurrentItem(this.selectedItems[0]);
+            this.selectedItems[0].focus();
             this.hasPreviouslyFocusedItem = true;
         }
     }
@@ -154,7 +152,7 @@ let SegmentedButton = SegmentedButton_1 = class SegmentedButton extends UI5Eleme
      * @default []
      */
     get selectedItems() {
-        return this.items.filter(item => item.pressed);
+        return this.items.filter(item => item.selected);
     }
     get ariaDescribedBy() {
         return SegmentedButton_1.i18nBundle.getText(SEGMENTEDBUTTON_ARIA_DESCRIBEDBY);

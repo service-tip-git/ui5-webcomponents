@@ -23,6 +23,7 @@ import RadioButton from "./RadioButton.js";
 import CheckBox from "./CheckBox.js";
 import Button from "./Button.js";
 import { DELETE, ARIA_LABEL_LIST_ITEM_CHECKBOX, ARIA_LABEL_LIST_ITEM_RADIO_BUTTON, LIST_ITEM_SELECTED, LIST_ITEM_NOT_SELECTED, } from "./generated/i18n/i18n-defaults.js";
+import ListItemAccessibleRole from "./types/ListItemAccessibleRole.js";
 // Styles
 import styles from "./generated/themes/ListItem.css.js";
 import HasPopup from "./types/HasPopup.js";
@@ -223,6 +224,9 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
         }
         return undefined;
     }
+    get listItemAccessibleRole() {
+        return this.accessibleRole.toLowerCase();
+    }
     get ariaSelectedText() {
         let ariaSelectedText;
         // Selected state needs to be supported separately since now the role mapping is list -> listitem[]
@@ -250,7 +254,7 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
     }
     get _accInfo() {
         return {
-            role: this.accessibleRole,
+            role: this.listItemAccessibleRole,
             ariaExpanded: undefined,
             ariaLevel: undefined,
             ariaLabel: ListItem_1.i18nBundle.getText(ARIA_LABEL_LIST_ITEM_CHECKBOX),
@@ -300,7 +304,7 @@ __decorate([
     property({ type: Boolean })
 ], ListItem.prototype, "actionable", void 0);
 __decorate([
-    property()
+    property({ type: ListItemAccessibleRole, defaultValue: ListItemAccessibleRole.ListItem })
 ], ListItem.prototype, "accessibleRole", void 0);
 __decorate([
     property({ type: ListSelectionMode, defaultValue: ListSelectionMode.None })

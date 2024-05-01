@@ -86,7 +86,7 @@ declare class Token extends UI5Element implements IToken {
     _keydown(e: KeyboardEvent): void;
     onBeforeRendering(): void;
     get tokenDeletableText(): string;
-    get iconURI(): "sys-cancel" | "decline";
+    get iconURI(): string;
     get textDom(): Element | null | undefined;
     get isTruncatable(): boolean;
     static onDefine(): Promise<void>;

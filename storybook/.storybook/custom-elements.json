@@ -393,148 +393,6 @@
         },
         {
             "kind": "javascript-module",
-            "path": "dist/types/BadgeDesign.js",
-            "declarations": [
-                {
-                    "kind": "enum",
-                    "name": "BadgeDesign",
-                    "description": "Defines badge design types.",
-                    "_ui5privacy": "public",
-                    "members": [
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Set1 of generic indication colors that are intended for industry-specific use cases",
-                            "default": "Set1",
-                            "name": "Set1",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Set2 of generic indication colors that are intended for industry-specific use cases",
-                            "default": "Set2",
-                            "name": "Set2",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Set3 of generic indication colors that are\nintended for industry-specific use cases. Used in SAP BTP design system.",
-                            "default": "Set3",
-                            "name": "Set3",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Neutral design",
-                            "default": "Neutral",
-                            "name": "Neutral",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Information design",
-                            "default": "Information",
-                            "name": "Information",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Positive design",
-                            "default": "Positive",
-                            "name": "Positive",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Negative design",
-                            "default": "Negative",
-                            "name": "Negative",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Critical design",
-                            "default": "Critical",
-                            "name": "Critical",
-                            "readonly": true
-                        }
-                    ],
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "BadgeDesign"
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "BadgeDesign",
-                        "module": "dist/types/BadgeDesign.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
-            "path": "dist/types/BadgeSize.js",
-            "declarations": [
-                {
-                    "kind": "enum",
-                    "name": "BadgeSize",
-                    "description": "Predefined sizes for the badge.",
-                    "_ui5privacy": "public",
-                    "members": [
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Small size of the badge",
-                            "default": "S",
-                            "name": "S",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Large size of the badge",
-                            "default": "L",
-                            "name": "L",
-                            "readonly": true
-                        }
-                    ],
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "BadgeSize"
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "BadgeSize",
-                        "module": "dist/types/BadgeSize.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
             "path": "dist/types/BarDesign.js",
             "declarations": [
                 {
@@ -3001,6 +2859,148 @@
         },
         {
             "kind": "javascript-module",
+            "path": "dist/types/TagDesign.js",
+            "declarations": [
+                {
+                    "kind": "enum",
+                    "name": "TagDesign",
+                    "description": "Defines tag design types.",
+                    "_ui5privacy": "public",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Set1 of generic indication colors that are intended for industry-specific use cases",
+                            "default": "Set1",
+                            "name": "Set1",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Set2 of generic indication colors that are intended for industry-specific use cases",
+                            "default": "Set2",
+                            "name": "Set2",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Set3 of generic indication colors that are\nintended for industry-specific use cases. Used in SAP BTP design system.",
+                            "default": "Set3",
+                            "name": "Set3",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Neutral design",
+                            "default": "Neutral",
+                            "name": "Neutral",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Information design",
+                            "default": "Information",
+                            "name": "Information",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Positive design",
+                            "default": "Positive",
+                            "name": "Positive",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Negative design",
+                            "default": "Negative",
+                            "name": "Negative",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Critical design",
+                            "default": "Critical",
+                            "name": "Critical",
+                            "readonly": true
+                        }
+                    ],
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "TagDesign"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "TagDesign",
+                        "module": "dist/types/TagDesign.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/types/TagSize.js",
+            "declarations": [
+                {
+                    "kind": "enum",
+                    "name": "TagSize",
+                    "description": "Predefined sizes for the tag.",
+                    "_ui5privacy": "public",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Small size of the tag",
+                            "default": "S",
+                            "name": "S",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Large size of the tag",
+                            "default": "L",
+                            "name": "L",
+                            "readonly": true
+                        }
+                    ],
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "TagSize"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "TagSize",
+                        "module": "dist/types/TagSize.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
             "path": "dist/types/TitleLevel.js",
             "declarations": [
                 {
@@ -3354,7 +3354,7 @@
                         },
                         {
                             "name": "badge",
-                            "description": "Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, please use `ui5-badge` with `ui5-icon`\nin the corresponding `icon` slot, without text nodes.",
+                            "description": "Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, you can use the `ui5-tag` with `ui5-icon`\nin the corresponding `icon` slot, without text nodes.",
                             "_ui5since": "1.7.0",
                             "_ui5type": {
                                 "text": "Array<HTMLElement>"
@@ -3701,176 +3701,6 @@
                     "declaration": {
                         "name": "AvatarGroup",
                         "module": "dist/AvatarGroup.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
-            "path": "dist/Badge.js",
-            "declarations": [
-                {
-                    "kind": "class",
-                    "description": "### Overview\n\nThe `ui5-badge` is a component which serves\nthe purpose to attract the user attention to some piece\nof information (state, quantity, condition, etc.).\nIt can contain icon and text information, and its design can be chosen from specific design types.\n\n### Usage Guidelines\n\n- If the text is longer than the width of the component, it can wrap, or it can show ellipsis, depending on the `wrappingType` property.\n- Colors can be semantic or not semantic.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Badge.js\";`",
-                    "name": "Badge",
-                    "slots": [
-                        {
-                            "name": "default",
-                            "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
-                            "_ui5propertyName": "text",
-                            "_ui5type": {
-                                "text": "Array<Node>"
-                            },
-                            "_ui5privacy": "public"
-                        },
-                        {
-                            "name": "icon",
-                            "description": "Defines the icon to be displayed in the component.",
-                            "_ui5type": {
-                                "text": "Array<IIcon>",
-                                "references": [
-                                    {
-                                        "name": "IIcon",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/Icon.js"
-                                    }
-                                ]
-                            },
-                            "_ui5privacy": "public"
-                        }
-                    ],
-                    "members": [
-                        {
-                            "kind": "field",
-                            "name": "design",
-                            "type": {
-                                "text": "BadgeDesign",
-                                "references": [
-                                    {
-                                        "name": "BadgeDesign",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/types/BadgeDesign.js"
-                                    }
-                                ]
-                            },
-                            "description": "Defines the design type of the component.",
-                            "default": "\"Neutral\"",
-                            "privacy": "public",
-                            "_ui5since": "1.22.0",
-                            "_ui5validator": "String"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "colorScheme",
-                            "type": {
-                                "text": "string"
-                            },
-                            "description": "Defines the color scheme of the component.\nThere are 10 predefined schemes.\nTo use one you can set a number from `\"1\"` to `\"10\"`. The `colorScheme` `\"1\"` will be set by default.",
-                            "default": "\"1\"",
-                            "privacy": "public",
-                            "_ui5validator": "String"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "hideStateIcon",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Defines if the default state icon is shown.",
-                            "default": "false",
-                            "privacy": "public",
-                            "_ui5since": "1.22.0",
-                            "_ui5validator": "Boolean"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "interactive",
-                            "type": {
-                                "text": "boolean"
-                            },
-                            "description": "Defines if the component is interactive (focusable and pressable).\n\n**Note:** The badge cannot be `interactive`\nwhen `design` property is `BadgeDesign.Set3`",
-                            "default": "false",
-                            "privacy": "public",
-                            "_ui5since": "1.22.0",
-                            "_ui5validator": "Boolean"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "wrappingType",
-                            "type": {
-                                "text": "WrappingType",
-                                "references": [
-                                    {
-                                        "name": "WrappingType",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/types/WrappingType.js"
-                                    }
-                                ]
-                            },
-                            "description": "Defines how the text of a component will be displayed when there is not enough space.\n\n**Note:** For option \"Normal\" the text will wrap and the\nwords will not be broken based on hyphenation.",
-                            "default": "\"None\"",
-                            "privacy": "public",
-                            "_ui5since": "1.22.0",
-                            "_ui5validator": "WrappingType"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "size",
-                            "type": {
-                                "text": "BadgeSize",
-                                "references": [
-                                    {
-                                        "name": "BadgeSize",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/types/BadgeSize.js"
-                                    }
-                                ]
-                            },
-                            "description": "Defines predefined size of the component.",
-                            "default": "\"S\"",
-                            "privacy": "public",
-                            "_ui5since": "2.0",
-                            "_ui5validator": "BadgeSize"
-                        }
-                    ],
-                    "events": [
-                        {
-                            "name": "click",
-                            "_ui5privacy": "public",
-                            "type": {
-                                "text": "CustomEvent"
-                            },
-                            "description": "Fired when the user clicks on an interactive badge.\n\n**Note:** The event will be fired if the `interactive` property is `true`",
-                            "_ui5since": "1.22.0"
-                        }
-                    ],
-                    "superclass": {
-                        "name": "UI5Element",
-                        "package": "@ui5/webcomponents-base",
-                        "module": "dist/UI5Element.js"
-                    },
-                    "tagName": "Badge",
-                    "customElement": true,
-                    "_ui5since": "0.12.0",
-                    "_ui5privacy": "public",
-                    "_ui5package": "@ui5/webcomponents"
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "Badge",
-                        "module": "dist/Badge.js"
-                    }
-                },
-                {
-                    "kind": "custom-element-definition",
-                    "name": "ui5-badge",
-                    "declaration": {
-                        "name": "Badge",
-                        "module": "dist/Badge.js"
                     }
                 }
             ]
@@ -17716,6 +17546,176 @@
                     "declaration": {
                         "name": "TabSeparator",
                         "module": "dist/TabSeparator.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/Tag.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "### Overview\n\nThe `ui5-tag` is a component which serves\nthe purpose to attract the user attention to some piece\nof information (state, quantity, condition, etc.).\nIt can contain icon and text information, and its design can be chosen from specific design types.\n\n### Usage Guidelines\n\n- If the text is longer than the width of the component, it can wrap, or it can show ellipsis, depending on the `wrappingType` property.\n- Colors can be semantic or not semantic.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Tag.js\";`",
+                    "name": "Tag",
+                    "slots": [
+                        {
+                            "name": "default",
+                            "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+                            "_ui5propertyName": "text",
+                            "_ui5type": {
+                                "text": "Array<Node>"
+                            },
+                            "_ui5privacy": "public"
+                        },
+                        {
+                            "name": "icon",
+                            "description": "Defines the icon to be displayed in the component.",
+                            "_ui5type": {
+                                "text": "Array<IIcon>",
+                                "references": [
+                                    {
+                                        "name": "IIcon",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Icon.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        }
+                    ],
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "design",
+                            "type": {
+                                "text": "TagDesign",
+                                "references": [
+                                    {
+                                        "name": "TagDesign",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/TagDesign.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines the design type of the component.",
+                            "default": "\"Neutral\"",
+                            "privacy": "public",
+                            "_ui5since": "1.22.0",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "colorScheme",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the color scheme of the component.\nThere are 10 predefined schemes.\nTo use one you can set a number from `\"1\"` to `\"10\"`. The `colorScheme` `\"1\"` will be set by default.",
+                            "default": "\"1\"",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "hideStateIcon",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines if the default state icon is shown.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "1.22.0",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "interactive",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines if the component is interactive (focusable and pressable).\n\n**Note:** The tag cannot be `interactive`\nwhen `design` property is `TagDesign.Set3`",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "1.22.0",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "wrappingType",
+                            "type": {
+                                "text": "WrappingType",
+                                "references": [
+                                    {
+                                        "name": "WrappingType",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/WrappingType.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines how the text of a component will be displayed when there is not enough space.\n\n**Note:** For option \"Normal\" the text will wrap and the\nwords will not be broken based on hyphenation.",
+                            "default": "\"None\"",
+                            "privacy": "public",
+                            "_ui5since": "1.22.0",
+                            "_ui5validator": "WrappingType"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "size",
+                            "type": {
+                                "text": "TagSize",
+                                "references": [
+                                    {
+                                        "name": "TagSize",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/TagSize.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines predefined size of the component.",
+                            "default": "\"S\"",
+                            "privacy": "public",
+                            "_ui5since": "2.0",
+                            "_ui5validator": "TagSize"
+                        }
+                    ],
+                    "events": [
+                        {
+                            "name": "click",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent"
+                            },
+                            "description": "Fired when the user clicks on an interactive tag.\n\n**Note:** The event will be fired if the `interactive` property is `true`",
+                            "_ui5since": "1.22.0"
+                        }
+                    ],
+                    "superclass": {
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base",
+                        "module": "dist/UI5Element.js"
+                    },
+                    "tagName": "Tag",
+                    "customElement": true,
+                    "_ui5since": "2.0.0",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "Tag",
+                        "module": "dist/Tag.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-tag",
+                    "declaration": {
+                        "name": "Tag",
+                        "module": "dist/Tag.js"
                     }
                 }
             ]

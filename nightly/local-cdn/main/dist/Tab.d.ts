@@ -150,7 +150,7 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
     get expandButtonTitle(): string;
     get _roleDescription(): string | undefined;
     get _ariaHasPopup(): "menu" | undefined;
-    get semanticIconName(): "sys-enter-2" | "error" | "alert" | null;
+    get semanticIconName(): "error" | "alert" | "sys-enter-2" | null;
     get _designDescription(): string | null;
     get semanticIconClasses(): string;
     get overflowClasses(): string;

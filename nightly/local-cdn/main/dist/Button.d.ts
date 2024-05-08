@@ -1,5 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { PassiveEventListenerObject } from "@ui5/webcomponents-base/dist/types.js";
+import type { AccessibilityAttributes, PassiveEventListenerObject } from "@ui5/webcomponents-base/dist/types.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { I18nText } from "@ui5/webcomponents-base/dist/i18nBundle.js";
@@ -7,7 +7,6 @@ import type { IFormElement } from "./features/InputElementsFormSupport.js";
 import ButtonDesign from "./types/ButtonDesign.js";
 import ButtonType from "./types/ButtonType.js";
 import ButtonAccessibleRole from "./types/ButtonAccessibleRole.js";
-import HasPopup from "./types/HasPopup.js";
 import IconMode from "./types/IconMode.js";
 /**
  * Interface for components that may be used as a button inside numerous higher-order components
@@ -16,11 +15,7 @@ import IconMode from "./types/IconMode.js";
 interface IButton extends HTMLElement, ITabbable {
     nonInteractive: boolean;
 }
-type AccessibilityAttributes = {
-    expanded?: "true" | "false" | boolean;
-    hasPopup?: `${HasPopup}`;
-    controls?: string;
-};
+type ButtonAccessibilityAttributes = Pick<AccessibilityAttributes, "expanded" | "hasPopup" | "controls">;
 /**
  * @class
  *
@@ -118,28 +113,23 @@ declare class Button extends UI5Element implements IFormElement, IButton {
      */
     accessibleNameRef: string;
     /**
-     * An object of strings that defines several additional accessibility attribute values
-     * for customization depending on the use case.
+     * Defines the additional accessibility attributes that will be applied to the component.
+     * The following fields are supported:
      *
-     * It supports the following fields:
+     * - **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.
+     * Accepts the following string values: `true` or `false`
      *
-     * - `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:
-     *	- `true`
-     *	- `false`
+     * - **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.
+     * Accepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.
      *
-     * - `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:
-     *	- `Dialog`
-     *	- `Grid`
-     *	- `ListBox`
-     *	- `Menu`
-     *	- `Tree`
+     * - **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.
+     * Accepts a lowercase string value.
      *
-     * - `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.
      * @public
      * @since 1.2.0
      * @default {}
      */
-    accessibilityAttributes: AccessibilityAttributes;
+    accessibilityAttributes: ButtonAccessibilityAttributes;
     /**
      * Defines whether the button has special form-related functionality.
      *
@@ -221,7 +211,7 @@ declare class Button extends UI5Element implements IFormElement, IButton {
     _onfocusout(): void;
     _onfocusin(e: FocusEvent): void;
     _setActiveState(active: boolean): void;
-    get _hasPopup(): string | undefined;
+    get _hasPopup(): ("dialog" | "menu" | "grid" | "listbox" | "tree") | undefined;
     get hasButtonType(): boolean;
     get iconMode(): "" | IconMode.Decorative;
     get isIconOnly(): boolean;
@@ -236,4 +226,4 @@ declare class Button extends UI5Element implements IFormElement, IButton {
     static onDefine(): Promise<void>;
 }
 export default Button;
-export type { AccessibilityAttributes, IButton, };
+export type { ButtonAccessibilityAttributes, IButton, };

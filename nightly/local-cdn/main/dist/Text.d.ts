@@ -26,7 +26,7 @@ import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
  * @extends UI5Element
  * @public
  * @slot {Array<Node>} default - Defines the text of the component.
- * @since 2.0
+ * @since 2.0.0
  */
 declare class Text extends UI5Element {
     /**

@@ -324,11 +324,10 @@ let Breadcrumbs = Breadcrumbs_1 = class Breadcrumbs extends UI5Element {
     get _isOverflowEmpty() {
         return this._overflowItemsData.length === 0;
     }
-    get _ariaHasPopup() {
-        if (!this._isOverflowEmpty) {
-            return "listbox";
-        }
-        return undefined;
+    get linkAccessibilityAttributes() {
+        return {
+            hasPopup: this._isOverflowEmpty ? undefined : "listbox",
+        };
     }
     get _isPickerOpen() {
         return !!this.responsivePopover && this.responsivePopover.open;

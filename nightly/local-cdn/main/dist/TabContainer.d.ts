@@ -1,5 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { StyleData } from "@ui5/webcomponents-base/dist/types.js";
+import type { AccessibilityAttributes, StyleData } from "@ui5/webcomponents-base/dist/types.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-up.js";
@@ -314,6 +314,7 @@ declare class TabContainer extends UI5Element {
     get overflowButtonText(): string;
     get popoverCancelButtonText(): string;
     get accInvisibleText(): string;
+    get overflowBtnAccessibilityAttributes(): Pick<AccessibilityAttributes, "hasPopup">;
     get tablistAriaDescribedById(): string | undefined;
     static onDefine(): Promise<void>;
 }

@@ -24,7 +24,6 @@ import ButtonType from "./types/ButtonType.js";
 import ButtonAccessibleRole from "./types/ButtonAccessibleRole.js";
 import ButtonTemplate from "./generated/templates/ButtonTemplate.lit.js";
 import Icon from "./Icon.js";
-import "./types/HasPopup.js";
 import IconMode from "./types/IconMode.js";
 import { BUTTON_ARIA_TYPE_ACCEPT, BUTTON_ARIA_TYPE_REJECT, BUTTON_ARIA_TYPE_EMPHASIZED } from "./generated/i18n/i18n-defaults.js";
 // Styles
@@ -177,7 +176,7 @@ let Button = Button_1 = class Button extends UI5Element {
         this.active = active;
     }
     get _hasPopup() {
-        return this.accessibilityAttributes.hasPopup?.toLowerCase();
+        return this.accessibilityAttributes.hasPopup;
     }
     get hasButtonType() {
         return this.design !== ButtonDesign.Default && this.design !== ButtonDesign.Transparent;

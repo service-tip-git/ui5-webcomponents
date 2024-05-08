@@ -925,6 +925,11 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
     get accInvisibleText() {
         return TabContainer_1.i18nBundle.getText(TABCONTAINER_SUBTABS_DESCRIPTION);
     }
+    get overflowBtnAccessibilityAttributes() {
+        return {
+            hasPopup: "menu",
+        };
+    }
     get tablistAriaDescribedById() {
         return this.hasItems ? `${this._id}-invisibleText` : undefined;
     }

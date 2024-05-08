@@ -391,18 +391,15 @@ let AvatarGroup = AvatarGroup_1 = class AvatarGroup extends UI5Element {
         }
     }
     _getAriaHasPopup() {
-        if (this.ariaHaspopup === "") {
-            return;
-        }
-        return this.ariaHaspopup;
+        return this.accessibilityAttributes.hasPopup;
     }
 };
 __decorate([
     property({ type: AvatarGroupType, defaultValue: AvatarGroupType.Group })
 ], AvatarGroup.prototype, "type", void 0);
 __decorate([
-    property()
-], AvatarGroup.prototype, "ariaHaspopup", void 0);
+    property({ type: Object })
+], AvatarGroup.prototype, "accessibilityAttributes", void 0);
 __decorate([
     property({ noAttribute: true })
 ], AvatarGroup.prototype, "_overflowButtonText", void 0);

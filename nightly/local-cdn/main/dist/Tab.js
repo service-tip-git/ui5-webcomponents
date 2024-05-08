@@ -97,6 +97,11 @@ let Tab = Tab_1 = class Tab extends UI5Element {
     get hasOwnContent() {
         return willShowContent(this.content);
     }
+    get expandBtnAccessibilityAttributes() {
+        return {
+            hasPopup: "menu",
+        };
+    }
     receiveStripInfo({ getElementInStrip, posinset, setsize, isInline, isTopLevelTab, mixedMode, }) {
         this._getElementInStrip = getElementInStrip;
         this._forcedPosinset = posinset;

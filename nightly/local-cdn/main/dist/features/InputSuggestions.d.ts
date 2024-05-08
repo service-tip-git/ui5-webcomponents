@@ -23,8 +23,8 @@ interface SuggestionComponent extends UI5Element {
     open: boolean;
     onItemMouseOver: (e: MouseEvent) => void;
     onItemMouseOut: (e: MouseEvent) => void;
-    onItemSelected: (pressedItem: SuggestionItem, keyboardUsed: boolean) => void;
-    onItemPreviewed: (item: SuggestionListItem) => void;
+    onItemSelected: (pressedItem: SuggestionItem, listItem: SuggestionListItem | null, keyboardUsed: boolean) => void;
+    onItemSelect: (item: SuggestionListItem) => void;
 }
 type InputSuggestion = {
     text: string;
@@ -87,7 +87,7 @@ declare class Suggestions {
     onItemMouseOver(e: MouseEvent): void;
     onItemMouseOut(e: MouseEvent): void;
     onItemSelected(selectedItem: SuggestionListItem | null, keyboardUsed: boolean): void;
-    onItemPreviewed(item: SuggestionListItem): void;
+    onItemSelect(item: SuggestionListItem): void;
     onItemPress(e: CustomEvent<ListItemClickEventDetail | ListSelectionChangeEventDetail>): void;
     _onOpen(): void;
     _onClose(): void;

@@ -15,6 +15,8 @@ import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import { getFeature } from "@ui5/webcomponents-base/dist/FeaturesRegistry.js";
 import AnimationMode from "@ui5/webcomponents-base/dist/types/AnimationMode.js";
+import "@ui5/webcomponents-base/dist/types/AriaRole.js";
+import AriaHasPopup from "@ui5/webcomponents-base/dist/types/AriaHasPopup.js";
 import { getAnimationMode } from "@ui5/webcomponents-base/dist/config/AnimationMode.js";
 import { isSpace, isEnter } from "@ui5/webcomponents-base/dist/Keys.js";
 import StandardListItem from "@ui5/webcomponents/dist/StandardListItem.js";
@@ -23,7 +25,6 @@ import Popover from "@ui5/webcomponents/dist/Popover.js";
 import Button from "@ui5/webcomponents/dist/Button.js";
 import "@ui5/webcomponents/dist/ToggleButton.js";
 import Icon from "@ui5/webcomponents/dist/Icon.js";
-import HasPopup from "@ui5/webcomponents/dist/types/HasPopup.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import { isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import "@ui5/webcomponents-icons/dist/search.js";
@@ -675,7 +676,7 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
         return ShellBar_1.i18nBundle.getText(SHELLBAR_LABEL);
     }
     get _logoText() {
-        return this.accessibilityTexts.logoTitle || ShellBar_1.i18nBundle.getText(SHELLBAR_LOGO);
+        return this.accessibilityAttributes.logo?.name || ShellBar_1.i18nBundle.getText(SHELLBAR_LOGO);
     }
     get _copilotText() {
         return ShellBar_1.i18nBundle.getText(SHELLBAR_COPILOT);
@@ -692,7 +693,7 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
         return ((size === "S") || searchBtnHidden);
     }
     get _profileText() {
-        return this.accessibilityTexts.profileButtonTitle || ShellBar_1.i18nBundle.getText(SHELLBAR_PROFILE);
+        return this.accessibilityAttributes.profile?.name || ShellBar_1.i18nBundle.getText(SHELLBAR_PROFILE);
     }
     get _productsText() {
         return ShellBar_1.i18nBundle.getText(SHELLBAR_PRODUCTS);
@@ -704,63 +705,48 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
         return ShellBar_1.i18nBundle.getText(SHELLBAR_OVERFLOW);
     }
     get accInfo() {
+        const searchExpanded = this.accessibilityAttributes.search?.expanded;
+        const overflowExpanded = this.accessibilityAttributes.overflow?.expanded;
         return {
             notifications: {
                 "title": this._notificationsText,
                 "accessibilityAttributes": {
-                    hasPopup: this._notificationsHasPopup,
+                    expanded: this.accessibilityAttributes.notifications?.expanded,
+                    hasPopup: this.accessibilityAttributes.notifications?.hasPopup,
                 },
             },
             profile: {
                 "title": this._profileText,
                 "accessibilityAttributes": {
-                    hasPopup: this._profileHasPopup,
+                    hasPopup: this.accessibilityAttributes.profile?.hasPopup,
+                    expanded: this.accessibilityAttributes.profile?.expanded,
                 },
             },
             products: {
                 "title": this._productsText,
                 "accessibilityAttributes": {
-                    hasPopup: this._productsHasPopup,
+                    hasPopup: this.accessibilityAttributes.product?.hasPopup,
+                    expanded: this.accessibilityAttributes.product?.expanded,
                 },
             },
             search: {
                 "title": this._searchText,
                 "accessibilityAttributes": {
-                    hasPopup: this._searchHasPopup,
-                    expanded: this.showSearchField,
+                    hasPopup: this.accessibilityAttributes.search?.hasPopup,
+                    expanded: searchExpanded === undefined ? this.showSearchField : searchExpanded,
                 },
             },
             overflow: {
                 "title": this._overflowText,
                 "accessibilityAttributes": {
-                    hasPopup: this._overflowHasPopup,
-                    expanded: this._overflowPopoverExpanded,
+                    hasPopup: this.accessibilityAttributes.overflow?.hasPopup || AriaHasPopup.Menu.toLowerCase(),
+                    expanded: overflowExpanded === undefined ? this._overflowPopoverExpanded : overflowExpanded,
                 },
             },
         };
     }
-    get _notificationsHasPopup() {
-        const notificationsAccAttributes = this.accessibilityAttributes.notifications;
-        return notificationsAccAttributes ? notificationsAccAttributes.ariaHasPopup?.toLowerCase() : null;
-    }
-    get _profileHasPopup() {
-        const profileAccAttributes = this.accessibilityAttributes.profile;
-        return profileAccAttributes ? profileAccAttributes.ariaHasPopup?.toLowerCase() : null;
-    }
-    get _productsHasPopup() {
-        const productsAccAttributes = this.accessibilityAttributes.product;
-        return productsAccAttributes ? productsAccAttributes.ariaHasPopup?.toLowerCase() : null;
-    }
-    get _searchHasPopup() {
-        const searcAccAttributes = this.accessibilityAttributes.search;
-        return searcAccAttributes ? searcAccAttributes.ariaHasPopup?.toLowerCase() : null;
-    }
-    get _overflowHasPopup() {
-        const overflowAccAttributes = this.accessibilityAttributes.overflow;
-        return overflowAccAttributes ? overflowAccAttributes.ariaHasPopup?.toLowerCase() : HasPopup.Menu.toLowerCase();
-    }
     get accLogoRole() {
-        return this.accessibilityRoles.logoRole || "button";
+        return this.accessibilityAttributes.logo?.role || "button";
     }
     static async onDefine() {
         ShellBar_1.i18nBundle = await getI18nBundle("@ui5/webcomponents-fiori");
@@ -787,12 +773,6 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], ShellBar.prototype, "showSearchField", void 0);
-__decorate([
-    property({ type: Object })
-], ShellBar.prototype, "accessibilityRoles", void 0);
-__decorate([
-    property({ type: Object })
-], ShellBar.prototype, "accessibilityTexts", void 0);
 __decorate([
     property({ type: Object })
 ], ShellBar.prototype, "accessibilityAttributes", void 0);

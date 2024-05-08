@@ -172,6 +172,13 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
      */
     hideWeekNumbers: boolean;
     /**
+     * Defines the open or closed state of the popover.
+     * @public
+     * @default false
+     * @since 2.0
+     */
+    open: boolean;
+    /**
      * Defines the aria-label attribute for the component.
      * @default ""
      * @public
@@ -185,7 +192,6 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
      * @since 1.0.0-rc.15
      */
     accessibleNameRef: string;
-    _isPickerOpen: boolean;
     _respPopoverConfig: object;
     _calendarCurrentPicker: string;
     liveValue?: string;
@@ -213,6 +219,7 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
      * @protected
      */
     onResponsivePopoverAfterClose(): void;
+    onResponsivePopoverBeforeOpen(): void;
     onBeforeRendering(): void;
     /**
      * Override in derivatives to change calendar selection mode
@@ -242,7 +249,6 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
     _modifyDateValue(amount: number, unit: string, preserveDate?: boolean): void;
     _updateValueAndFireEvents(value: string, normalizeValue: boolean, events: Array<string>, updateValue?: boolean): void;
     _updateValueState(): void;
-    _toggleAndFocusInput(): void;
     _getInput(): Input;
     /**
      * The ui5-input "submit" event handler - fire change event when the user presses enter
@@ -340,24 +346,8 @@ declare class DatePicker extends DateComponentBase implements IFormElement {
      * @returns The date as string
      */
     formatValue(date: Date): string;
-    /**
-     * Closes the picker.
-     * @public
-     */
-    closePicker(): void;
-    /**
-     * Opens the picker.
-     * @public
-     * @returns Resolves when the picker is open
-     */
-    openPicker(): Promise<void>;
-    togglePicker(): void;
-    /**
-     * Checks if the picker is open.
-     * @public
-     * @returns true if the picker is open, false otherwise
-     */
-    isOpen(): boolean;
+    _togglePicker(): void;
+    _toggleAndFocusInput(): void;
     /**
      * Currently selected date represented as a Local JavaScript Date instance.
      * @public

@@ -186,13 +186,13 @@ class Suggestions {
         if (item.type === "Inactive" || item.groupItem) {
             return;
         }
-        this._getComponent().onItemSelected(this._getRealItems()[this.selectedItemIndex], keyboardUsed);
+        this._getComponent().onItemSelected(this._getRealItems()[this.selectedItemIndex], item, keyboardUsed);
         item.selected = false;
         item.focused = false;
         this._getComponent().open = false;
     }
-    onItemPreviewed(item) {
-        this._getComponent().onItemPreviewed(item);
+    onItemSelect(item) {
+        this._getComponent().onItemSelect(item);
     }
     /* Private methods */
     // Note: Split into two separate handlers
@@ -326,7 +326,7 @@ class Suggestions {
             }
         }
         this.component.hasSuggestionItemSelected = true;
-        this.onItemPreviewed(currentItem);
+        this.onItemSelect(currentItem);
         if (!this._isItemIntoView(currentItem)) {
             this._scrollItemIntoView(currentItem);
         }

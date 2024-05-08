@@ -113,7 +113,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         this._selectedItemText = "";
         this._userTypedValue = "";
     }
-    onBeforeRendering() {
+    async onBeforeRendering() {
         const popover = this.valueStatePopover;
         this.FormSupport = getFeature("FormSupport");
         this._effectiveShowClearIcon = (this.showClearIcon && !!this.value && !this.readonly && !this.disabled);
@@ -130,6 +130,10 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         this._selectMatchingItem();
         this._initialRendering = false;
         this.style.setProperty(getScopedVarName("--_ui5-input-icons-count"), `${this.iconsCount}`);
+        const suggestionsPopover = await this._getPicker();
+        this.items.forEach(item => {
+            item._getRealDomRef = () => suggestionsPopover.querySelector(`*[data-ui5-stable=${item.stableDomRef}]`);
+        });
     }
     get iconsCount() {
         const slottedIconsCount = this.icon?.length || 0;

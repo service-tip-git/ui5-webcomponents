@@ -36,7 +36,6 @@ declare class Title extends UI5Element {
      * @public
      */
     level: `${TitleLevel}`;
-    get normalizedLevel(): string;
     get h1(): boolean;
     get h2(): boolean;
     get h3(): boolean;

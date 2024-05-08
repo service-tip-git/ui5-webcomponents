@@ -271,9 +271,6 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
     }
     get accessibilityInfo() {
         return {
-            // affects arrow button
-            ariaExpanded: this._splitButtonAccInfo && this._splitButtonAccInfo.ariaExpanded,
-            ariaHaspopup: this._splitButtonAccInfo && this._splitButtonAccInfo.ariaHaspopup,
             // affects root element
             description: SplitButton_1.i18nBundle.getText(SPLIT_BUTTON_DESCRIPTION),
             keyboardHint: SplitButton_1.i18nBundle.getText(SPLIT_BUTTON_KEYBOARD_HINT),
@@ -298,9 +295,6 @@ __decorate([
 __decorate([
     property({ defaultValue: undefined })
 ], SplitButton.prototype, "accessibleName", void 0);
-__decorate([
-    property({ type: Object })
-], SplitButton.prototype, "_splitButtonAccInfo", void 0);
 __decorate([
     property({ defaultValue: "0", noAttribute: true })
 ], SplitButton.prototype, "_tabIndex", void 0);

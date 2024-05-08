@@ -66,7 +66,7 @@ declare class MessageStrip extends UI5Element {
      *
      * @default "1"
      * @public
-     * @since 2.0
+     * @since 2.0.0
      */
     colorScheme: string;
     /**

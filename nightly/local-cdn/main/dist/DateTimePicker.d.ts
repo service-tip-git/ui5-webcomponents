@@ -109,13 +109,10 @@ declare class DateTimePicker extends DatePicker {
     onEnterDOM(): void;
     onExitDOM(): void;
     /**
-     * PUBLIC METHODS
+     * @override
+     * @private
      */
-    /**
-     * Opens the picker.
-     * @public
-     */
-    openPicker(): Promise<void>;
+    _togglePicker(): void;
     /**
      * Read-only getters
      */

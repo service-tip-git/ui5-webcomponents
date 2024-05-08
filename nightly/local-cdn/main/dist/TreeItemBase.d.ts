@@ -130,7 +130,7 @@ declare class TreeItemBase extends ListItem {
         ariaSelectedText: string | undefined;
         listItemAriaLabel: string | undefined;
         ariaOwns: string | undefined;
-        ariaHaspopup: "dialog" | "menu" | "grid" | "listbox" | "tree";
+        ariaHaspopup: ("dialog" | "menu" | "grid" | "listbox" | "tree") | undefined;
         ariaLabel: string;
         ariaLabelRadioButton: string;
         ariaSelected?: boolean | undefined;

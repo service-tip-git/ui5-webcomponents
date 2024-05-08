@@ -73,7 +73,7 @@ let TreeItemBase = TreeItemBase_1 = class TreeItemBase extends ListItem {
             ariaSelectedText: this.ariaSelectedText,
             listItemAriaLabel: !this.accessibleName ? this._ariaLabel : undefined,
             ariaOwns: this.expanded ? `${this._id}-subtree` : undefined,
-            ariaHaspopup: this.ariaHaspopup?.toLowerCase() || undefined,
+            ariaHaspopup: this.accessibilityAttributes.hasPopup,
         };
         return { ...super._accInfo, ...accInfoSettings };
     }

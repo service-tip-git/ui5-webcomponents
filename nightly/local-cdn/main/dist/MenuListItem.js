@@ -6,11 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
+import AriaHasPopup from "@ui5/webcomponents-base/dist/types/AriaHasPopup.js";
 import CustomListItem from "./CustomListItem.js";
 import Icon from "./Icon.js";
 import MenuListItemTemplate from "./generated/templates/MenuListItemTemplate.lit.js";
 import "./MenuItem.js";
-import HasPopup from "./types/HasPopup.js";
 // Styles
 import menuListItemCss from "./generated/themes/MenuListItem.css.js";
 /**
@@ -44,7 +44,7 @@ let MenuListItem = class MenuListItem extends CustomListItem {
     }
     get _accInfo() {
         const accInfoSettings = {
-            ariaHaspopup: this.associatedItem?.hasSubmenu ? HasPopup.Menu.toLowerCase() : undefined,
+            ariaHaspopup: this.associatedItem?.hasSubmenu ? AriaHasPopup.Menu.toLowerCase() : undefined,
         };
         return { ...super._accInfo, ...accInfoSettings };
     }

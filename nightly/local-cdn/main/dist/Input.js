@@ -47,7 +47,7 @@ var INPUT_EVENTS;
 (function (INPUT_EVENTS) {
     INPUT_EVENTS["CHANGE"] = "change";
     INPUT_EVENTS["INPUT"] = "input";
-    INPUT_EVENTS["SUGGESTION_ITEM_SELECT"] = "suggestion-item-select";
+    INPUT_EVENTS["SELECTION_CHANGE"] = "selection-change";
 })(INPUT_EVENTS || (INPUT_EVENTS = {}));
 // all user interactions
 var INPUT_ACTIONS;
@@ -80,8 +80,8 @@ var INPUT_ACTIONS;
  *
  * - [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.
  * - [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.
- * - [Down] - Focuses the next matching item in the suggestion list.
- * - [Up] - Focuses the previous matching item in the suggestion list.
+ * - [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.
+ * - [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.
  * - [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.
  * - [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.
  * - [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.
@@ -109,9 +109,7 @@ let Input = Input_1 = class Input extends UI5Element {
         // Represents the value before user moves selection between the suggestion items
         // and its value remains the same when the user navigates up or down the list.
         // Note: Used to cancel selection upon [Escape].
-        this.valueBeforeItemPreview = "";
-        // Indicates if the user selection has been canceled with [Escape].
-        this.suggestionSelectionCancelled = false;
+        this.valueBeforeSelectionStart = "";
         // tracks the value between focus in and focus out to detect that change event should be fired.
         this.previousValue = "";
         // Indicates, if the component is rendering for first time.
@@ -124,6 +122,8 @@ let Input = Input_1 = class Input extends UI5Element {
         this.isTyping = false;
         // Suggestions array initialization
         this.suggestionObjects = [];
+        // Indicates whether the value of the input is comming from a suggestion item
+        this._isLatestValueFromSuggestions = false;
         this._handleResizeBound = this._handleResize.bind(this);
         this._keepInnerValue = false;
         this._focusedAfterClear = false;
@@ -273,15 +273,19 @@ let Input = Input_1 = class Input extends UI5Element {
     _handleEnter(e) {
         const suggestionItemPressed = !!(this.Suggestions && this.Suggestions.onEnter(e));
         const innerInput = this.getInputDOMRefSync();
+        let matchingIndex = -1;
         // Check for autocompleted item
-        const matchingItem = this.suggestionItems.find(item => {
+        const matchingItem = this.suggestionItems.find((item, index) => {
+            matchingIndex = index;
             return (item.text && item.text === this.value) || (item.textContent === this.value);
         });
         if (matchingItem) {
             const itemText = matchingItem.text ? matchingItem.text : (matchingItem.textContent || "");
+            const listItem = this.Suggestions._getItems()[matchingIndex];
             innerInput.setSelectionRange(itemText.length, itemText.length);
             if (!suggestionItemPressed) {
-                this.selectSuggestion(matchingItem, true);
+                this.fireSelectionChange(matchingItem, listItem, true);
+                this.acceptSuggestion(matchingItem, true);
                 this.open = false;
             }
         }
@@ -335,10 +339,7 @@ let Input = Input_1 = class Input extends UI5Element {
         }
         if (isOpen && this.Suggestions._isItemOnTarget()) {
             // Restore the value.
-            this.value = this.typedInValue || this.valueBeforeItemPreview;
-            // Mark that the selection has been cancelled, so the popover can close
-            // and not reopen, due to receiving focus.
-            this.suggestionSelectionCancelled = true;
+            this.value = this.typedInValue || this.valueBeforeSelectionStart;
             this.focused = true;
             return;
         }
@@ -355,7 +356,7 @@ let Input = Input_1 = class Input extends UI5Element {
         if (!this._focusedAfterClear) {
             this.previousValue = this.value;
         }
-        this.valueBeforeItemPreview = this.value;
+        this.valueBeforeSelectionStart = this.value;
         this._inputIconFocused = !!e.target && e.target === this.querySelector("[ui5-icon]");
         this._focusedAfterClear = false;
     }
@@ -414,6 +415,7 @@ let Input = Input_1 = class Input extends UI5Element {
         this.value = "";
         this.fireEvent(INPUT_EVENTS.INPUT, { inputType: "" });
         if (!this._isPhone) {
+            this.fireResetSelectionChange();
             this.focus();
             this._focusedAfterClear = true;
         }
@@ -450,7 +452,6 @@ let Input = Input_1 = class Input extends UI5Element {
             "historyUndo",
         ];
         this._shouldAutocomplete = !allowedEventTypes.includes(eventType) && !this.noTypeahead;
-        this.suggestionSelectionCancelled = false;
         if (e instanceof InputEvent) {
             // ---- Special cases of numeric Input ----
             // ---------------- Start -----------------
@@ -600,85 +601,39 @@ let Input = Input_1 = class Input extends UI5Element {
             throw new Error(`You have to import "@ui5/webcomponents/dist/features/InputSuggestions.js" module to use ui5-input suggestions`);
         }
     }
-    selectSuggestion(item, keyboardUsed) {
+    acceptSuggestion(item, keyboardUsed) {
         if (item.groupItem) {
             return;
         }
         const value = this.typedInValue || this.value;
         const itemText = item.text || item.textContent || ""; // keep textContent for compatibility
-        const fireInput = keyboardUsed
+        const fireChange = keyboardUsed
             ? this.valueBeforeItemSelection !== itemText : value !== itemText;
         this.hasSuggestionItemSelected = true;
-        const valueOriginal = this.value;
-        const valueBeforeItemSelectionOriginal = this.valueBeforeItemSelection;
-        const lastConfirmedValueOriginal = this.lastConfirmedValue;
-        const performTextSelectionOriginal = this._performTextSelection;
-        const typedInValueOriginal = this.typedInValue;
-        const previousValueOriginal = this.previousValue;
-        if (fireInput) {
+        if (fireChange) {
             this.value = itemText;
             this.valueBeforeItemSelection = itemText;
             this.lastConfirmedValue = itemText;
             this._performTextSelection = true;
             this.fireEvent(INPUT_EVENTS.CHANGE);
-            if (isPhone()) {
-                this.fireEvent(INPUT_EVENTS.INPUT);
-            }
             // value might change in the change event handler
             this.typedInValue = this.value;
             this.previousValue = this.value;
         }
-        this.valueBeforeItemPreview = "";
-        this.suggestionSelectionCancelled = false;
-        // Fire suggestion-item-select event after input change events for backward compatibility, but revert all input properties set before suggestion was prevented.
-        // For v2.0 this code will be reworked.
-        const isCancelledByUser = !this.fireEvent(INPUT_EVENTS.SUGGESTION_ITEM_SELECT, { item }, true);
-        if (isCancelledByUser) {
-            this.Suggestions?._clearSelectedSuggestionAndAccInfo();
-            this.hasSuggestionItemSelected = false;
-            this.suggestionSelectionCancelled = true;
-            if (fireInput) {
-                // revert properties set during fireInput
-                if (itemText === this.value) { // If no chnages were made to the input value after suggestion-item-select was prevented - revert value to the original text
-                    this.value = valueOriginal;
-                }
-                this.valueBeforeItemSelection = valueBeforeItemSelectionOriginal;
-                this.lastConfirmedValue = lastConfirmedValueOriginal;
-                this._performTextSelection = performTextSelectionOriginal;
-                this.typedInValue = typedInValueOriginal;
-                this.previousValue = previousValueOriginal;
-            }
-        }
+        this.valueBeforeSelectionStart = "";
         this.isTyping = false;
         this.openOnMobile = false;
         this._forceOpen = false;
     }
-    previewSuggestion(item) {
-        this.valueBeforeItemSelection = this.value;
-        this.updateValueOnPreview(item);
-        this.announceSelectedItem();
-        this._previewItem = item;
-    }
     /**
-     * Updates the input value on item preview.
-     * @param item The item that is on preview
+     * Updates the input value on item select.
+     * @param item The item that is on select
      */
-    updateValueOnPreview(item) {
-        const noPreview = item.type === "Inactive" || item.groupItem;
-        const itemValue = noPreview ? this.valueBeforeItemPreview : (item.effectiveTitle || item.textContent || "");
+    updateValueOnSelect(item) {
+        const nonSelectable = item.type === "Inactive" || item.groupItem;
+        const itemValue = nonSelectable ? this.valueBeforeSelectionStart : (item.effectiveTitle || item.textContent || "");
         this.value = itemValue;
         this._performTextSelection = true;
-    }
-    /**
-     * The suggestion item on preview.
-     * @default null
-     * @public
-     */
-    get previewItem() {
-        if (!this._previewItem) {
-            return null;
-        }
-        return this.getSuggestionByListItem(this._previewItem);
     }
     fireEventByAction(action, e) {
         if (this.disabled || this.readonly) {
@@ -688,11 +643,12 @@ let Input = Input_1 = class Input extends UI5Element {
         const isUserInput = action === INPUT_ACTIONS.ACTION_ENTER;
         this.value = inputValue;
         this.typedInValue = inputValue;
-        this.valueBeforeItemPreview = inputValue;
+        this.valueBeforeSelectionStart = inputValue;
         if (isUserInput) { // input
             this.fireEvent(INPUT_EVENTS.INPUT, { inputType: e.inputType });
             // Angular two way data binding
             this.fireEvent("value-changed");
+            this.fireResetSelectionChange();
         }
     }
     getInputValue() {
@@ -760,15 +716,18 @@ let Input = Input_1 = class Input extends UI5Element {
     onItemMouseDown(e) {
         e.preventDefault();
     }
-    onItemSelected(item, keyboardUsed) {
-        this.selectSuggestion(item, keyboardUsed);
+    onItemSelected(suggestionItem, listItem, keyboardUsed) {
+        const shouldFireSelectionChange = !keyboardUsed && !listItem?.focused && this.valueBeforeItemSelection !== suggestionItem.text;
+        if (shouldFireSelectionChange) {
+            this.fireSelectionChange(suggestionItem, listItem, true);
+        }
+        this.acceptSuggestion(suggestionItem, keyboardUsed);
     }
-    onItemPreviewed(item) {
-        this.previewSuggestion(item);
-        this.fireEvent("suggestion-item-preview", {
-            item: this.getSuggestionByListItem(item),
-            targetRef: item,
-        });
+    onItemSelect(item) {
+        this.valueBeforeItemSelection = this.value;
+        this.updateValueOnSelect(item);
+        this.announceSelectedItem();
+        this.fireSelectionChange(this.getSuggestionByListItem(item), item, true);
     }
     get valueStateTypeMappings() {
         return {
@@ -789,6 +748,17 @@ let Input = Input_1 = class Input extends UI5Element {
     announceSelectedItem() {
         const invisibleText = this.shadowRoot.querySelector(`#selectionText`);
         invisibleText.textContent = this.itemSelectionAnnounce;
+    }
+    fireSelectionChange(item, targetRef, isValueFromSuggestions) {
+        if (this.Suggestions) {
+            this.fireEvent(INPUT_EVENTS.SELECTION_CHANGE, { item, targetRef });
+            this._isLatestValueFromSuggestions = isValueFromSuggestions;
+        }
+    }
+    fireResetSelectionChange() {
+        if (this._isLatestValueFromSuggestions) {
+            this.fireSelectionChange(null, null, false);
+        }
     }
     get _readonly() {
         return this.readonly && !this.disabled;
@@ -1151,30 +1121,15 @@ Input = Input_1 = __decorate([
     ,
     event("input")
     /**
-     * Fired when a suggestion item, that is displayed in the suggestion popup, is selected.
-     * @param {HTMLElement} item The selected item.
-     * @public
-     * @allowPreventDefault
-     */
-    ,
-    event("suggestion-item-select", {
-        detail: {
-            /**
-            * @public
-            */
-            item: { type: HTMLElement },
-        },
-    })
-    /**
      * Fired when the user navigates to a suggestion item via the ARROW keys,
      * as a preview, before the final selection.
      * @param {HTMLElement} item The previewed suggestion item.
      * @param {HTMLElement} targetRef The DOM ref of the suggestion item.
      * @public
-     * @since 1.0.0-rc.8
+     * @since 2.0.0
      */
     ,
-    event("suggestion-item-preview", {
+    event("selection-change", {
         detail: {
             /**
             * @public

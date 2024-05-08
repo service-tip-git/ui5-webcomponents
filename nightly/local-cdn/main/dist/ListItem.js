@@ -26,7 +26,6 @@ import { DELETE, ARIA_LABEL_LIST_ITEM_CHECKBOX, ARIA_LABEL_LIST_ITEM_RADIO_BUTTO
 import ListItemAccessibleRole from "./types/ListItemAccessibleRole.js";
 // Styles
 import styles from "./generated/themes/ListItem.css.js";
-import HasPopup from "./types/HasPopup.js";
 // Icons
 import "@ui5/webcomponents-icons/dist/slim-arrow-right.js";
 /**
@@ -260,10 +259,10 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
             ariaLabel: ListItem_1.i18nBundle.getText(ARIA_LABEL_LIST_ITEM_CHECKBOX),
             ariaLabelRadioButton: ListItem_1.i18nBundle.getText(ARIA_LABEL_LIST_ITEM_RADIO_BUTTON),
             ariaSelectedText: this.ariaSelectedText,
-            ariaHaspopup: this.ariaHaspopup?.toLowerCase() || undefined,
+            ariaHaspopup: this.accessibilityAttributes.hasPopup,
             setsize: this.accessibilityAttributes.ariaSetsize,
             posinset: this.accessibilityAttributes.ariaPosinset,
-            tooltip: this.tooltip || this.title,
+            tooltip: this.tooltip,
         };
     }
     get _hasHighlightColor() {
@@ -295,9 +294,6 @@ __decorate([
     property({ type: Boolean })
 ], ListItem.prototype, "active", void 0);
 __decorate([
-    property()
-], ListItem.prototype, "title", void 0);
-__decorate([
     property({ type: HighlightTypes, defaultValue: HighlightTypes.None })
 ], ListItem.prototype, "highlight", void 0);
 __decorate([
@@ -309,9 +305,6 @@ __decorate([
 __decorate([
     property({ type: ListSelectionMode, defaultValue: ListSelectionMode.None })
 ], ListItem.prototype, "_selectionMode", void 0);
-__decorate([
-    property({ type: HasPopup, noAttribute: true })
-], ListItem.prototype, "ariaHaspopup", void 0);
 __decorate([
     slot()
 ], ListItem.prototype, "deleteButton", void 0);

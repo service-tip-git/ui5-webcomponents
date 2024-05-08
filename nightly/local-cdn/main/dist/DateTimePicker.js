@@ -114,18 +114,17 @@ let DateTimePicker = DateTimePicker_1 = class DateTimePicker extends DatePicker 
         ResizeHandler.deregister(document.body, this._handleResizeBound);
     }
     /**
-     * PUBLIC METHODS
+     * @override
+     * @private
      */
-    /**
-     * Opens the picker.
-     * @public
-     */
-    async openPicker() {
-        await super.openPicker();
-        this._previewValues = {
-            ...this._previewValues,
-            timeSelectionValue: this.value || this.getFormat().format(UI5Date.getInstance()),
-        };
+    _togglePicker() {
+        super._togglePicker();
+        if (this.open) {
+            this._previewValues = {
+                ...this._previewValues,
+                timeSelectionValue: this.value || this.getFormat().format(UI5Date.getInstance()),
+            };
+        }
     }
     /**
      * Read-only getters
@@ -242,14 +241,14 @@ let DateTimePicker = DateTimePicker_1 = class DateTimePicker extends DatePicker 
         if (this.value !== value) {
             this._updateValueAndFireEvents(value, true, ["change", "value-changed"]);
         }
-        this.closePicker();
+        this._togglePicker();
     }
     /**
      * Handles clicking on the `cancel` button, within the picker`s footer,
      * that would disregard the user selection.
      */
     _cancelClick() {
-        this.closePicker();
+        this._togglePicker();
     }
     /**
      * Handles the date/time switch available in `phoneMode` to switch

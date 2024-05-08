@@ -87,11 +87,6 @@ declare class SplitButton extends UI5Element {
      */
     accessibleName?: string;
     /**
-     * Accessibility-related properties for inner elements of the Split Button
-     * @private
-     */
-    _splitButtonAccInfo: Record<string, boolean>;
-    /**
      * Defines the tabIndex of the component.
      * @default "0"
      * @private
@@ -188,8 +183,6 @@ declare class SplitButton extends UI5Element {
     get textButton(): Button | null | undefined;
     get arrowButton(): Button | null | undefined;
     get accessibilityInfo(): {
-        ariaExpanded: boolean;
-        ariaHaspopup: boolean;
         description: string;
         keyboardHint: string;
     };

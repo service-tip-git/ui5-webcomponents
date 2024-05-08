@@ -2,6 +2,7 @@ import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ChangeInfo } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
+import type { AccessibilityAttributes } from "@ui5/webcomponents-base/dist/types.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import BreadcrumbsDesign from "./types/BreadcrumbsDesign.js";
@@ -145,7 +146,7 @@ declare class Breadcrumbs extends UI5Element {
      */
     get _links(): Link[];
     get _isOverflowEmpty(): boolean;
-    get _ariaHasPopup(): "listbox" | undefined;
+    get linkAccessibilityAttributes(): Pick<AccessibilityAttributes, "hasPopup">;
     get _isPickerOpen(): boolean;
     get _accessibleNameText(): string;
     get _dropdownArrowAccessibleNameText(): string;

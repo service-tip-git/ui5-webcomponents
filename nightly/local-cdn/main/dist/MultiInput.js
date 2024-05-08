@@ -29,7 +29,8 @@ import "@ui5/webcomponents-icons/dist/value-help.js";
  * Fiori Guidelines say that user should create tokens when:
  *
  * - Type a value in the input and press enter or focus out the input field (`change` event is fired)
- * - Select a value from the suggestion list (`suggestion-item-select` event is fired)
+ * - Move between suggestion items (`selection-change` event is fired)
+ * - Clicking on a suggestion item (`selection-change` event is fired if the clicked item is different than the current value. Also `change` event is fired )
  *
  * ### ES6 Module Import
  *

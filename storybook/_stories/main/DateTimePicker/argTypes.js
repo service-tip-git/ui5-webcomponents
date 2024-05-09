@@ -44,19 +44,6 @@ export default {
             }
         }
     },
-    "openPicker": {
-        "description": "Opens the picker.",
-        "table": {
-            "category": "methods"
-        },
-        "UI5CustomData": {
-            "returnValue": {
-                "type": {
-                    "text": "Promise<void>"
-                }
-            }
-        }
-    },
     "isValid": {
         "description": "Checks if a value is valid against the current date format of the DatePicker.",
         "table": {
@@ -124,33 +111,6 @@ export default {
                     "text": "string"
                 },
                 "description": "The date as string"
-            }
-        }
-    },
-    "closePicker": {
-        "description": "Closes the picker.",
-        "table": {
-            "category": "methods"
-        },
-        "UI5CustomData": {
-            "returnValue": {
-                "type": {
-                    "text": "void"
-                }
-            }
-        }
-    },
-    "isOpen": {
-        "description": "Checks if the picker is open.",
-        "table": {
-            "category": "methods"
-        },
-        "UI5CustomData": {
-            "returnValue": {
-                "type": {
-                    "text": "boolean"
-                },
-                "description": "true if the picker is open, false otherwise"
             }
         }
     },

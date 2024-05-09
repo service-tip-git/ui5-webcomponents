@@ -1350,77 +1350,6 @@
         },
         {
             "kind": "javascript-module",
-            "path": "dist/types/HasPopup.js",
-            "declarations": [
-                {
-                    "kind": "enum",
-                    "name": "HasPopup",
-                    "description": "Different types of HasPopup.",
-                    "_ui5privacy": "public",
-                    "members": [
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Dialog popup type.",
-                            "default": "Dialog",
-                            "name": "Dialog",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Grid popup type.",
-                            "default": "Grid",
-                            "name": "Grid",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "ListBox popup type.",
-                            "default": "ListBox",
-                            "name": "ListBox",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Menu popup type.",
-                            "default": "Menu",
-                            "name": "Menu",
-                            "readonly": true
-                        },
-                        {
-                            "kind": "field",
-                            "static": true,
-                            "privacy": "public",
-                            "description": "Tree popup type.",
-                            "default": "Tree",
-                            "name": "Tree",
-                            "readonly": true
-                        }
-                    ],
-                    "_ui5package": "@ui5/webcomponents",
-                    "tagName": "HasPopup"
-                }
-            ],
-            "exports": [
-                {
-                    "kind": "js",
-                    "name": "default",
-                    "declaration": {
-                        "name": "HasPopup",
-                        "module": "dist/types/HasPopup.js"
-                    }
-                }
-            ]
-        },
-        {
-            "kind": "javascript-module",
             "path": "dist/types/HighlightTypes.js",
             "declarations": [
                 {
@@ -1598,7 +1527,7 @@
                             "kind": "field",
                             "static": true,
                             "privacy": "public",
-                            "description": "Image mode (by default)",
+                            "description": "Image mode (by default).\nConfigures the component to internally render role=\"img\".",
                             "default": "Image",
                             "name": "Image",
                             "readonly": true
@@ -1607,7 +1536,7 @@
                             "kind": "field",
                             "static": true,
                             "privacy": "public",
-                            "description": "Decorative mode",
+                            "description": "Decorative mode.\nConfigures the component to internally render role=\"button\".\nThis mode also supports focus and press handling to enhance interactivity.",
                             "default": "Decorative",
                             "name": "Decorative",
                             "readonly": true
@@ -1616,7 +1545,7 @@
                             "kind": "field",
                             "static": true,
                             "privacy": "public",
-                            "description": "Interactive mode",
+                            "description": "Interactive mode.\nConfigures the component to internally render role=\"presentation\" and aria-hidden=\"true\",\nmaking it purely decorative without semantic content or interactivity.",
                             "default": "Interactive",
                             "name": "Interactive",
                             "readonly": true
@@ -3483,6 +3412,25 @@
                             "privacy": "public",
                             "_ui5since": "1.0.0-rc.7",
                             "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "accessibilityAttributes",
+                            "type": {
+                                "text": "AvatarAccessibilityAttributes",
+                                "references": [
+                                    {
+                                        "name": "AvatarAccessibilityAttributes",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Avatar.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following field is supported:\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.",
+                            "privacy": "public",
+                            "default": "{}",
+                            "_ui5since": "2.0.0",
+                            "_ui5validator": "Object"
                         }
                     ],
                     "superclass": {
@@ -3591,6 +3539,25 @@
                             "default": "\"Group\"",
                             "privacy": "public",
                             "_ui5validator": "AvatarGroupType"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "accessibilityAttributes",
+                            "type": {
+                                "text": "AvatarGroupAccessibilityAttributes",
+                                "references": [
+                                    {
+                                        "name": "AvatarGroupAccessibilityAttributes",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/AvatarGroup.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following field is supported:\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.",
+                            "privacy": "public",
+                            "default": "{}",
+                            "_ui5since": "2.0.0",
+                            "_ui5validator": "Object"
                         },
                         {
                             "kind": "field",
@@ -4296,16 +4263,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ButtonAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ButtonAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/Button.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n- `true`\n- `false`\n\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n- `Dialog`\n- `Grid`\n- `ListBox`\n- `Menu`\n- `Tree`\n\n- `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.\nAccepts the following string values: `true` or `false`\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n- **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.\nAccepts a lowercase string value.",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -6651,16 +6618,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.15.0",
@@ -7011,6 +6978,18 @@
                         },
                         {
                             "kind": "field",
+                            "name": "open",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines the open or closed state of the popover.",
+                            "privacy": "public",
+                            "default": "false",
+                            "_ui5since": "2.0",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string"
@@ -7095,41 +7074,6 @@
                                 }
                             ],
                             "description": "Formats a Java Script date object into a string representing a locale date\naccording to the `formatPattern` property of the DatePicker instance",
-                            "privacy": "public"
-                        },
-                        {
-                            "kind": "method",
-                            "name": "closePicker",
-                            "return": {
-                                "type": {
-                                    "text": "void"
-                                }
-                            },
-                            "description": "Closes the picker.",
-                            "privacy": "public"
-                        },
-                        {
-                            "kind": "method",
-                            "name": "openPicker",
-                            "return": {
-                                "type": {
-                                    "text": "Promise<void>"
-                                },
-                                "description": "Resolves when the picker is open"
-                            },
-                            "description": "Opens the picker.",
-                            "privacy": "public"
-                        },
-                        {
-                            "kind": "method",
-                            "name": "isOpen",
-                            "return": {
-                                "type": {
-                                    "text": "boolean"
-                                },
-                                "description": "true if the picker is open, false otherwise"
-                            },
-                            "description": "Checks if the picker is open.",
                             "privacy": "public"
                         },
                         {
@@ -7571,6 +7515,22 @@
                         },
                         {
                             "kind": "field",
+                            "name": "open",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines the open or closed state of the popover.",
+                            "privacy": "public",
+                            "default": "false",
+                            "_ui5since": "2.0",
+                            "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "DatePicker",
+                                "module": "dist/DatePicker.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string"
@@ -7671,53 +7631,6 @@
                                 }
                             ],
                             "description": "Formats a Java Script date object into a string representing a locale date\naccording to the `formatPattern` property of the DatePicker instance",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "DatePicker",
-                                "module": "dist/DatePicker.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "closePicker",
-                            "return": {
-                                "type": {
-                                    "text": "void"
-                                }
-                            },
-                            "description": "Closes the picker.",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "DatePicker",
-                                "module": "dist/DatePicker.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "openPicker",
-                            "return": {
-                                "type": {
-                                    "text": "Promise<void>"
-                                },
-                                "description": "Resolves when the picker is open"
-                            },
-                            "description": "Opens the picker.",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "DatePicker",
-                                "module": "dist/DatePicker.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "isOpen",
-                            "return": {
-                                "type": {
-                                    "text": "boolean"
-                                },
-                                "description": "true if the picker is open, false otherwise"
-                            },
-                            "description": "Checks if the picker is open.",
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
@@ -7983,22 +7896,16 @@
                     "kind": "class",
                     "description": "### Overview\nThe `DateTimePicker` component alows users to select both date (day, month and year) and time (hours, minutes and seconds)\nand for the purpose it consists of input field and Date/Time picker.\n\n### Usage\n\nUse the `DateTimePicker` if you need a combined date and time input component.\nDon't use it if you want to use either date, or time value.\nIn this case, use the `DatePicker` or the `TimePicker` components instead.\n\nThe user can set date/time by:\n\n- using the calendar and the time selectors\n- typing in the input field\n\nProgrammatically, to set date/time for the `DateTimePicker`, use the `value` property\n\n### Formatting\n\nThe value entered by typing into the input field must fit to the used date/time format.\n\nSupported format options are pattern-based on Unicode LDML Date Format notation.\nFor more information, see [UTS #35: Unicode Locale Data Markup Language](https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).\n\n**Example:** the following format `dd/MM/yyyy, hh:mm:ss aa`\ncorresponds the `13/04/2020, 03:16:16 AM` value.\n\nThe small 'h' defines \"12\" hours format and the \"aa\" symbols - \"AM/PM\" time periods.\n\n**Example:** the following format `dd/MM/yyyy, HH:mm:ss`\ncorresponds the `13/04/2020, 15:16:16` value.\n\nThe capital 'H' indicates \"24\" hours format.\n\n**Note:** If the `formatPattern` does NOT include time,\nthe `DateTimePicker` will fallback to the default time format according to the locale.\n\n**Note:** If no placeholder is set to the `DateTimePicker`,\nthe current `formatPattern` is displayed as a placeholder.\nIf another placeholder is needed, it must be set or in case no placeholder is needed - it can be set to an empty string.\n\n**Note:** If the user input does NOT match the `formatPattern`,\nthe `DateTimePicker` makes an attempt to parse it based on the\nlocale settings.\n\n### Responsive behavior\n\nThe `DateTimePicker` is responsive and fully adapts to all devices.\nFor larger screens, such as tablet or desktop, it is displayed as a popover, while\non phone devices, it is displayed full screen.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DateTimePicker.js\";`",
                     "name": "DateTimePicker",
+                    "superclass": {
+                        "name": "DatePicker",
+                        "package": "@ui5/webcomponents",
+                        "module": "dist/DatePicker.js"
+                    },
+                    "tagName": "DateTimePicker",
+                    "customElement": true,
+                    "_ui5since": "1.0.0-rc.7",
+                    "_ui5privacy": "public",
                     "members": [
-                        {
-                            "kind": "method",
-                            "name": "openPicker",
-                            "return": {
-                                "type": {
-                                    "text": "Promise<void>"
-                                }
-                            },
-                            "description": "Opens the picker.",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "DatePicker",
-                                "module": "dist/DatePicker.js"
-                            }
-                        },
                         {
                             "kind": "field",
                             "name": "value",
@@ -8132,6 +8039,22 @@
                         },
                         {
                             "kind": "field",
+                            "name": "open",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines the open or closed state of the popover.",
+                            "privacy": "public",
+                            "default": "false",
+                            "_ui5since": "2.0",
+                            "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "DatePicker",
+                                "module": "dist/DatePicker.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string"
@@ -8232,37 +8155,6 @@
                                 }
                             ],
                             "description": "Formats a Java Script date object into a string representing a locale date\naccording to the `formatPattern` property of the DatePicker instance",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "DatePicker",
-                                "module": "dist/DatePicker.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "closePicker",
-                            "return": {
-                                "type": {
-                                    "text": "void"
-                                }
-                            },
-                            "description": "Closes the picker.",
-                            "privacy": "public",
-                            "inheritedFrom": {
-                                "name": "DatePicker",
-                                "module": "dist/DatePicker.js"
-                            }
-                        },
-                        {
-                            "kind": "method",
-                            "name": "isOpen",
-                            "return": {
-                                "type": {
-                                    "text": "boolean"
-                                },
-                                "description": "true if the picker is open, false otherwise"
-                            },
-                            "description": "Checks if the picker is open.",
                             "privacy": "public",
                             "inheritedFrom": {
                                 "name": "DatePicker",
@@ -8377,15 +8269,6 @@
                             }
                         }
                     ],
-                    "superclass": {
-                        "name": "DatePicker",
-                        "package": "@ui5/webcomponents",
-                        "module": "dist/DatePicker.js"
-                    },
-                    "tagName": "DateTimePicker",
-                    "customElement": true,
-                    "_ui5since": "1.0.0-rc.7",
-                    "_ui5privacy": "public",
                     "events": [
                         {
                             "name": "change",
@@ -9300,7 +9183,7 @@
                 },
                 {
                     "kind": "class",
-                    "description": "### Overview\n\nThe `ui5-input` component allows the user to enter and edit text or numeric values in one line.\n\nAdditionally, you can provide `suggestionItems`,\nthat are displayed in a popover right under the input.\n\nThe text field can be editable or read-only (`readonly` property),\nand it can be enabled or disabled (`disabled` property).\nTo visualize semantic states, such as \"error\" or \"warning\", the `valueState` property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n\n**Note:** If you are using the `ui5-input` as a single npm module,\ndon't forget to import the `InputSuggestions` module from\n\"@ui5/webcomponents/dist/features/InputSuggestions.js\"\nto enable the suggestions functionality.\n\n### Keyboard Handling\nThe `ui5-input` provides the following keyboard shortcuts:\n\n- [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.\n- [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.\n- [Down] - Focuses the next matching item in the suggestion list.\n- [Up] - Focuses the previous matching item in the suggestion list.\n- [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.\n- [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.\n- [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.\n- [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Input.js\";`\n\n`import \"@ui5/webcomponents/dist/features/InputSuggestions.js\";` (optional - for input suggestions support)",
+                    "description": "### Overview\n\nThe `ui5-input` component allows the user to enter and edit text or numeric values in one line.\n\nAdditionally, you can provide `suggestionItems`,\nthat are displayed in a popover right under the input.\n\nThe text field can be editable or read-only (`readonly` property),\nand it can be enabled or disabled (`disabled` property).\nTo visualize semantic states, such as \"error\" or \"warning\", the `valueState` property is provided.\nWhen the user makes changes to the text, the change event is fired,\nwhich enables you to react on any text change.\n\n**Note:** If you are using the `ui5-input` as a single npm module,\ndon't forget to import the `InputSuggestions` module from\n\"@ui5/webcomponents/dist/features/InputSuggestions.js\"\nto enable the suggestions functionality.\n\n### Keyboard Handling\nThe `ui5-input` provides the following keyboard shortcuts:\n\n- [Escape] - Closes the suggestion list, if open. If closed or not enabled, cancels changes and reverts to the value which the Input field had when it got the focus.\n- [Enter] or [Return] - If suggestion list is open takes over the current matching item and closes it. If value state or group header is focused, does nothing.\n- [Down] - Focuses the next matching item in the suggestion list. Selection-change event is fired.\n- [Up] - Focuses the previous matching item in the suggestion list. Selection-change event is fired.\n- [Home] - If focus is in the text input, moves caret before the first character. If focus is in the list, highlights the first item and updates the input accordingly.\n- [End] - If focus is in the text input, moves caret after the last character. If focus is in the list, highlights the last item and updates the input accordingly.\n- [Page Up] - If focus is in the list, moves highlight up by page size (10 items by default). If focus is in the input, does nothing.\n- [Page Down] - If focus is in the list, moves highlight down by page size (10 items by default). If focus is in the input, does nothing.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Input.js\";`\n\n`import \"@ui5/webcomponents/dist/features/InputSuggestions.js\";` (optional - for input suggestions support)",
                     "name": "Input",
                     "slots": [
                         {
@@ -9532,24 +9415,6 @@
                             "description": "Manually opens the suggestions popover, assuming suggestions are enabled. Items must be preloaded for it to open.",
                             "privacy": "public",
                             "_ui5since": "1.3.0"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "previewItem",
-                            "type": {
-                                "text": "IInputSuggestionItem | null",
-                                "references": [
-                                    {
-                                        "name": "IInputSuggestionItem",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/Input.js"
-                                    }
-                                ]
-                            },
-                            "description": "The suggestion item on preview.",
-                            "default": "null",
-                            "privacy": "public",
-                            "readonly": true
                         }
                     ],
                     "events": [
@@ -9570,46 +9435,20 @@
                             "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected."
                         },
                         {
-                            "name": "suggestion-item-select",
+                            "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent<InputSuggestionItemSelectEventDetail>",
+                                "text": "CustomEvent<InputSelectionChangeEventDetail>",
                                 "references": [
                                     {
-                                        "name": "InputSuggestionItemSelectEventDetail",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/Input.js"
-                                    }
-                                ]
-                            },
-                            "description": "Fired when a suggestion item, that is displayed in the suggestion popup, is selected.",
-                            "_ui5allowPreventDefault": true,
-                            "_ui5parameters": [
-                                {
-                                    "type": {
-                                        "text": "HTMLElement"
-                                    },
-                                    "name": "item",
-                                    "_ui5privacy": "public",
-                                    "description": "The selected item."
-                                }
-                            ]
-                        },
-                        {
-                            "name": "suggestion-item-preview",
-                            "_ui5privacy": "public",
-                            "type": {
-                                "text": "CustomEvent<InputSuggestionItemPreviewEventDetail>",
-                                "references": [
-                                    {
-                                        "name": "InputSuggestionItemPreviewEventDetail",
+                                        "name": "InputSelectionChangeEventDetail",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/Input.js"
                                     }
                                 ]
                             },
                             "description": "Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.",
-                            "_ui5since": "1.0.0-rc.8",
+                            "_ui5since": "2.0.0",
                             "_ui5parameters": [
                                 {
                                     "type": {
@@ -9800,7 +9639,7 @@
                             "description": "Defines the tooltip of the component.",
                             "default": "\"\"",
                             "privacy": "public",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "String"
                         },
                         {
@@ -9901,16 +9740,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "LinkAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "LinkAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/Link.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n- `true`\n- `false`\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n- `Dialog`\n- `Grid`\n- `ListBox`\n- `Menu`\n- `Tree`",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.1.0",
@@ -10465,16 +10304,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.15.0",
@@ -11267,7 +11106,7 @@
                             "description": "Defines the color scheme of the component.\nThere are 10 predefined schemes.\nTo use one you can set a number from `\"1\"` to `\"10\"`. The `colorScheme` `\"1\"` will be set by default.",
                             "default": "\"1\"",
                             "privacy": "public",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "String"
                         },
                         {
@@ -11839,7 +11678,7 @@
             "declarations": [
                 {
                     "kind": "class",
-                    "description": "### Overview\nA `ui5-multi-input` field allows the user to enter multiple values, which are displayed as `ui5-token`.\n\nUser can choose interaction for creating tokens.\nFiori Guidelines say that user should create tokens when:\n\n- Type a value in the input and press enter or focus out the input field (`change` event is fired)\n- Select a value from the suggestion list (`suggestion-item-select` event is fired)\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MultiInput.js\";`",
+                    "description": "### Overview\nA `ui5-multi-input` field allows the user to enter multiple values, which are displayed as `ui5-token`.\n\nUser can choose interaction for creating tokens.\nFiori Guidelines say that user should create tokens when:\n\n- Type a value in the input and press enter or focus out the input field (`change` event is fired)\n- Move between suggestion items (`selection-change` event is fired)\n- Clicking on a suggestion item (`selection-change` event is fired if the clicked item is different than the current value. Also `change` event is fired )\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MultiInput.js\";`",
                     "name": "MultiInput",
                     "slots": [
                         {
@@ -12157,28 +11996,6 @@
                                 "name": "Input",
                                 "module": "dist/Input.js"
                             }
-                        },
-                        {
-                            "kind": "field",
-                            "name": "previewItem",
-                            "type": {
-                                "text": "IInputSuggestionItem | null",
-                                "references": [
-                                    {
-                                        "name": "IInputSuggestionItem",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/Input.js"
-                                    }
-                                ]
-                            },
-                            "description": "The suggestion item on preview.",
-                            "default": "null",
-                            "privacy": "public",
-                            "readonly": true,
-                            "inheritedFrom": {
-                                "name": "Input",
-                                "module": "dist/Input.js"
-                            }
                         }
                     ],
                     "events": [
@@ -12240,50 +12057,20 @@
                             }
                         },
                         {
-                            "name": "suggestion-item-select",
+                            "name": "selection-change",
                             "_ui5privacy": "public",
                             "type": {
-                                "text": "CustomEvent<InputSuggestionItemSelectEventDetail>",
+                                "text": "CustomEvent<InputSelectionChangeEventDetail>",
                                 "references": [
                                     {
-                                        "name": "InputSuggestionItemSelectEventDetail",
-                                        "package": "@ui5/webcomponents",
-                                        "module": "dist/Input.js"
-                                    }
-                                ]
-                            },
-                            "description": "Fired when a suggestion item, that is displayed in the suggestion popup, is selected.",
-                            "_ui5allowPreventDefault": true,
-                            "_ui5parameters": [
-                                {
-                                    "type": {
-                                        "text": "HTMLElement"
-                                    },
-                                    "name": "item",
-                                    "_ui5privacy": "public",
-                                    "description": "The selected item."
-                                }
-                            ],
-                            "inheritedFrom": {
-                                "name": "Input",
-                                "module": "dist/Input.js"
-                            }
-                        },
-                        {
-                            "name": "suggestion-item-preview",
-                            "_ui5privacy": "public",
-                            "type": {
-                                "text": "CustomEvent<InputSuggestionItemPreviewEventDetail>",
-                                "references": [
-                                    {
-                                        "name": "InputSuggestionItemPreviewEventDetail",
+                                        "name": "InputSelectionChangeEventDetail",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/Input.js"
                                     }
                                 ]
                             },
                             "description": "Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.",
-                            "_ui5since": "1.0.0-rc.8",
+                            "_ui5since": "2.0.0",
                             "_ui5parameters": [
                                 {
                                     "type": {
@@ -15250,10 +15037,10 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
@@ -16196,16 +15983,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.15.0",
@@ -17758,7 +17545,7 @@
                     },
                     "tagName": "Text",
                     "customElement": true,
-                    "_ui5since": "2.0",
+                    "_ui5since": "2.0.0",
                     "_ui5privacy": "public",
                     "_ui5package": "@ui5/webcomponents"
                 }
@@ -18731,16 +18518,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ButtonAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ButtonAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/Button.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n- `true`\n- `false`\n\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n- `Dialog`\n- `Grid`\n- `ListBox`\n- `Menu`\n- `Tree`\n\n- `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.\nAccepts the following string values: `true` or `false`\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n- **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.\nAccepts a lowercase string value.",
                             "privacy": "public",
                             "default": "{}",
                             "_ui5since": "1.2.0",
@@ -19204,16 +18991,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ToolbarAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ToolbarAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
-                                        "module": "dist/ToolbarButton.js"
+                                        "module": "dist/Button.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\t- `true`\n\t- `false`\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button. Accepts the following string values:\n\t- `Dialog`\n\t- `Grid`\n\t- `ListBox`\n\t- `Menu`\n\t- `Tree`\n- `controls`: Identifies the element (or elements) whose contents or presence are controlled by the button element. Accepts a string value.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\n\nThe following fields are supported:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.\nAccepts the following string values: `true` or `false`\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n- **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.\nAccepts a lowercase string value.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5validator": "Object"
@@ -20354,16 +20141,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.15.0",
@@ -20679,16 +20466,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.15.0",
@@ -21023,16 +20810,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.15.0",
@@ -23624,40 +23411,21 @@
                         },
                         {
                             "kind": "field",
-                            "name": "accessibilityTexts",
+                            "name": "accessibilityAttributes",
                             "type": {
-                                "text": "FlexibleColumnLayoutAccessibilityTexts",
+                                "text": "FCLAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "FlexibleColumnLayoutAccessibilityTexts",
+                                        "name": "FCLAccessibilityAttributes",
                                         "package": "@ui5/webcomponents-fiori",
                                         "module": "dist/FlexibleColumnLayout.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility texts for even further customization.\n\nIt supports the following fields:\n - `startColumnAccessibleName`: the accessibility name for the `startColumn` region\n - `midColumnAccessibleName`: the accessibility name for the `midColumn` region\n - `endColumnAccessibleName`: the accessibility name for the `endColumn` region\n - `startArrowLeftText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the left\n - `startArrowRightText`: the text that the first arrow (between the `begin` and `mid` columns) will have when pointing to the right\n - `endArrowLeftText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the left\n - `endArrowRightText`: the text that the second arrow (between the `mid` and `end` columns) will have when pointing to the right\n - `startArrowContainerAccessibleName`: the text that the first arrow container (between the `begin` and `mid` columns) will have as `aria-label`\n - `endArrowContainerAccessibleName`: the text that the second arrow container (between the `mid` and `end` columns) will have as `aria-label`",
+                            "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n - **startColumn**: `startColumn.role` and `startColumn.name`.\n - **midColumn**: `midColumn.role` and `midColumn.name`.\n - **endColumn**: `endColumn.role` and `endColumn.name`.\n - **startArrowContainer**: `startArrowContainer.role` and `startArrowContainer.name`.\n - **endArrowContainer**: `endArrowContainerrole.role` and `endArrowContainer.name`.\n - **startArrowLeft**: `startArrowLeft.name`.\n - **startArrowRight**: `startArrowRight.name`.\n - **endArrowLeft**: `endArrowLeft.name`.\n - **endArrowRight**: `endArrowRight.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA landmark role of the area.\nAccepts the following values: `none`, `complementary`, `contentinfo`, `main` or `region`.\n\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
                             "default": "{}",
                             "privacy": "public",
-                            "_ui5since": "1.0.0-rc.11",
-                            "_ui5validator": "Object"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "accessibilityRoles",
-                            "type": {
-                                "text": "FlexibleColumnLayoutAccessibilityRoles",
-                                "references": [
-                                    {
-                                        "name": "FlexibleColumnLayoutAccessibilityRoles",
-                                        "package": "@ui5/webcomponents-fiori",
-                                        "module": "dist/FlexibleColumnLayout.js"
-                                    }
-                                ]
-                            },
-                            "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `startColumnRole`: the accessibility role for the `startColumn`\n - `startArrowContainerRole`: the accessibility role for the first arrow container (between the `begin` and `mid` columns)\n - `midColumnRole`: the accessibility role for the `midColumn`\n - `endArrowContainerRole`: the accessibility role for the second arrow container (between the `mid` and `end` columns)\n - `endColumnRole`: the accessibility role for the `endColumn`",
-                            "default": "{}",
-                            "privacy": "public",
-                            "_ui5since": "1.1.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Object"
                         },
                         {
@@ -25520,44 +25288,6 @@
                         },
                         {
                             "kind": "field",
-                            "name": "accessibilityRoles",
-                            "type": {
-                                "text": "ShellBarAccessibilityRoles",
-                                "references": [
-                                    {
-                                        "name": "ShellBarAccessibilityRoles",
-                                        "package": "@ui5/webcomponents-fiori",
-                                        "module": "dist/ShellBar.js"
-                                    }
-                                ]
-                            },
-                            "description": "An object of strings that defines additional accessibility roles for further customization.\n\nIt supports the following fields:\n - `logoRole`: the accessibility role for the `logo`",
-                            "default": "{}",
-                            "privacy": "public",
-                            "_ui5since": "1.6.0",
-                            "_ui5validator": "Object"
-                        },
-                        {
-                            "kind": "field",
-                            "name": "accessibilityTexts",
-                            "type": {
-                                "text": "ShellBarAccessibilityTexts",
-                                "references": [
-                                    {
-                                        "name": "ShellBarAccessibilityTexts",
-                                        "package": "@ui5/webcomponents-fiori",
-                                        "module": "dist/ShellBar.js"
-                                    }
-                                ]
-                            },
-                            "description": "An object of strings that defines several additional accessibility texts\nfor even further customization.\n\nIt supports the following fields:\n- `profileButtonTitle`: defines the tooltip for the profile button\n- `logoTitle`: defines the tooltip for the logo",
-                            "default": "{}",
-                            "privacy": "public",
-                            "_ui5since": "1.1.0",
-                            "_ui5validator": "Object"
-                        },
-                        {
-                            "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
                                 "text": "ShellBarAccessibilityAttributes",
@@ -25569,7 +25299,7 @@
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\nIt supports the following fields:\n\n- `expanded`: Indicates whether the anchor element, or another grouping element it controls, is currently expanded or collapsed. Accepts the following string values:\n\n- `true`\n- `false`\n\n- `hasPopup`: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the anchor element. Accepts the following string values:\n- `Dialog`\n- `Grid`\n- `ListBox`\n- `Menu`\n- `Tree`",
+                            "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.expanded` and `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.10.0",
@@ -26163,7 +25893,7 @@
                             "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
                             "default": "\"\"",
                             "privacy": "public",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "SideNavigationItemBase",
@@ -26403,7 +26133,7 @@
                             "description": "Defines the tooltip of the component.\n\nA tooltip attribute should be provided, in order to represent meaning/function, when the component is collapsed(icon only is visualized).",
                             "default": "\"\"",
                             "privacy": "public",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "String"
                         }
                     ],
@@ -27280,16 +27010,16 @@
                             "kind": "field",
                             "name": "accessibilityAttributes",
                             "type": {
-                                "text": "AccessibilityAttributes",
+                                "text": "ListItemAccessibilityAttributes",
                                 "references": [
                                     {
-                                        "name": "AccessibilityAttributes",
+                                        "name": "ListItemAccessibilityAttributes",
                                         "package": "@ui5/webcomponents",
                                         "module": "dist/ListItem.js"
                                     }
                                 ]
                             },
-                            "description": "An object of strings that defines several additional accessibility attribute values\nfor customization depending on the use case.\n\n It supports the following fields:\n\n- `ariaSetsize`: Defines the number of items in the current set of listitems or treeitems when not all items in the set are present in the DOM.\n\tThe value of each `aria-setsize` is an integer reflecting number of items in the complete set.\n\n\t**Note:** If the size of the entire set is unknown, set `aria-setsize=\"-1\"`.\n\t- `ariaPosinset`: Defines an element's number or position in the current set of listitems or treeitems when not all items are present in the DOM.\n\tThe value of each `aria-posinset` is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+                            "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
                             "default": "{}",
                             "privacy": "public",
                             "_ui5since": "1.15.0",
@@ -28795,6 +28525,154 @@
                     "declaration": {
                         "name": "AnimationMode",
                         "module": "dist/types/AnimationMode.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/types/AriaHasPopup.js",
+            "declarations": [
+                {
+                    "kind": "enum",
+                    "name": "AriaHasPopup",
+                    "description": "Different types of ARIA hasPopup.",
+                    "_ui5privacy": "public",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Dialog popup type.",
+                            "default": "Dialog",
+                            "name": "Dialog",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Grid popup type.",
+                            "default": "Grid",
+                            "name": "Grid",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "ListBox popup type.",
+                            "default": "ListBox",
+                            "name": "ListBox",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Menu popup type.",
+                            "default": "Menu",
+                            "name": "Menu",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Tree popup type.",
+                            "default": "Tree",
+                            "name": "Tree",
+                            "readonly": true
+                        }
+                    ],
+                    "_ui5package": "@ui5/webcomponents-base",
+                    "tagName": "AriaHasPopup"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "AriaHasPopup",
+                        "module": "dist/types/AriaHasPopup.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/types/AriaLandmarkRole.js",
+            "declarations": [],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "AriaLandmarkRole",
+                        "module": "dist/types/AriaLandmarkRole.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/types/AriaRole.js",
+            "declarations": [
+                {
+                    "kind": "enum",
+                    "name": "AriaRole",
+                    "description": "Types of ARIA roles.",
+                    "_ui5privacy": "public",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "The ARIA role \"alertdialog\".",
+                            "default": "AlertDialog",
+                            "name": "AlertDialog",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "The ARIA role \"button\".",
+                            "default": "Button",
+                            "name": "Button",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "The ARIA role \"dialog\".",
+                            "default": "Dialog",
+                            "name": "Dialog",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "The ARIA role \"link\".",
+                            "default": "Link",
+                            "name": "Link",
+                            "readonly": true
+                        }
+                    ],
+                    "_ui5package": "@ui5/webcomponents-base",
+                    "tagName": "AriaRole"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "AriaRole",
+                        "module": "dist/types/AriaRole.js"
                     }
                 }
             ]

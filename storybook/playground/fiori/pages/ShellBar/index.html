@@ -16,7 +16,7 @@
 
 
 	
-  <script type="module" crossorigin src="../../../../assets/bundle.esm-a2016d6d.js"></script>
+  <script type="module" crossorigin src="../../../../assets/bundle.esm-ff37484a.js"></script>
   <link rel="stylesheet" href="../../../../assets/ShellBar-fb23ecc4.css">
 </head>
 
@@ -53,7 +53,7 @@
 	<script>
 		sbAccAttr.accessibilityAttributes = {
 			notifications: {
-				ariaHasPopup: "Dialog"
+				hasPopup: "dialog"
 			},
 		};
 	</script>
@@ -242,7 +242,7 @@
 	</ui5-shellbar>
 
 	<script>
-		mySearch.addEventListener("ui5-suggestion-item-select", function (event) {
+		mySearch.addEventListener("ui5-selection-change", function (event) {
 			console.log(event);
 		});
 
@@ -326,13 +326,19 @@
 			});
 		});
 
-		sbAcc.accessibilityTexts = {
-			profileButtonTitle: "John Dow",
-			logoTitle: "Custom logo title",
+		sbAcc.accessibilityAttributes = {
+			profile: {
+				name:  "John Dow",
+			},
+			logo: {
+				name: "Custom logo title"
+			},
 		};
 
-		sb.accessibilityRoles = {
-			logoRole: "link"
+		sb.accessibilityAttributes = {
+			logo: {
+				role: "link"
+			},
 		};
 
 		sb.addEventListener("ui5-search-button-click", function(event) {

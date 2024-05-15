@@ -54,7 +54,7 @@ let Title = class Title extends UI5Element {
     }
 };
 __decorate([
-    property({ type: WrappingType, defaultValue: WrappingType.None })
+    property({ type: WrappingType, defaultValue: WrappingType.Normal })
 ], Title.prototype, "wrappingType", void 0);
 __decorate([
     property({ type: TitleLevel, defaultValue: TitleLevel.H2 })

@@ -417,7 +417,8 @@ let Wizard = Wizard_1 = class Wizard extends UI5Element {
             this._groupedTabs.push(tabs[i]);
         }
         const responsivePopover = this._respPopover();
-        responsivePopover.showAt(oDomTarget);
+        responsivePopover.opener = oDomTarget;
+        responsivePopover.open = true;
     }
     _onGroupedTabClick(e) {
         const eTarget = e.target;
@@ -441,7 +442,9 @@ let Wizard = Wizard_1 = class Wizard extends UI5Element {
     }
     _closeRespPopover() {
         const responsivePopover = this._respPopover();
-        responsivePopover && responsivePopover.close();
+        if (responsivePopover) {
+            responsivePopover.open = false;
+        }
     }
     _respPopover() {
         return this.shadowRoot.querySelector(`.ui5-wizard-responsive-popover`);

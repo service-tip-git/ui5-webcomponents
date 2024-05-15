@@ -262,7 +262,7 @@ let ViewSettingsDialog = ViewSettingsDialog_1 = class ViewSettingsDialog extends
             this._restoreSettings(this._confirmedSettings);
         }
         this.fireEvent("before-open", {}, true, false);
-        this._dialog.show(true);
+        this._dialog.open = true;
         this._dialog.querySelector("[ui5-list]")?.focusFirstItem();
     }
     _handleModeChange(e) {
@@ -297,7 +297,9 @@ let ViewSettingsDialog = ViewSettingsDialog_1 = class ViewSettingsDialog extends
      * Closes the dialog.
      */
     close() {
-        this._dialog && this._dialog.close();
+        if (this._dialog) {
+            this._dialog.open = false;
+        }
     }
     /**
      * Sets focus on recently used control within the dialog.
@@ -417,7 +419,7 @@ let ViewSettingsDialog = ViewSettingsDialog_1 = class ViewSettingsDialog extends
      * @public
      */
     setConfirmedSettings(settings) {
-        if (settings && this._dialog && !this._dialog.isOpen()) {
+        if (settings && this._dialog && !this._dialog.open) {
             const tempSettings = JSON.parse(JSON.stringify(this._confirmedSettings));
             if (settings.sortOrder) {
                 for (let i = 0; i < tempSettings.sortOrder.length; i++) {

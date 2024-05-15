@@ -12,7 +12,7 @@ import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import { isChrome, isSafari, isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
+import { isChrome, isSafari, isDesktop, isPhone, } from "@ui5/webcomponents-base/dist/Device.js";
 import { getFirstFocusableElement, getLastFocusableElement } from "@ui5/webcomponents-base/dist/util/FocusableElements.js";
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AriaLabelHelper.js";
 import getEffectiveScrollbarStyle from "@ui5/webcomponents-base/dist/util/getEffectiveScrollbarStyle.js";
@@ -46,7 +46,7 @@ const pageScrollingBlockers = new Set();
  * 1. The Popup class handles modality:
  *  - The "isModal" getter can be overridden by derivatives to provide their own conditions when they are modal or not
  *  - Derivatives may call the "blockPageScrolling" and "unblockPageScrolling" static methods to temporarily remove scrollbars on the html element
- *  - Derivatives may call the "open" and "close" methods which handle focus, manage the popup registry and for modal popups, manage the blocking layer
+ *  - Derivatives may call the "openPopup" and "closePopup" methods which handle focus, manage the popup registry and for modal popups, manage the blocking layer
  *
  *  2. Provides blocking layer (relevant for modal popups only):
  *   - It is in the static area
@@ -73,6 +73,10 @@ let Popup = Popup_1 = class Popup extends UI5Element {
             return this.shadowRoot.querySelector("[root-element]");
         };
     }
+    onBeforeRendering() {
+        this.onPhone = isPhone();
+        this.onDesktop = isDesktop();
+    }
     onAfterRendering() {
         renderFinished().then(() => {
             this._updateMediaRange();
@@ -86,7 +90,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         }
     }
     onExitDOM() {
-        if (this.isOpen()) {
+        if (this._opened) {
             Popup_1.unblockPageScrolling(this);
             this._removeOpenedPopup();
         }
@@ -99,22 +103,45 @@ let Popup = Popup_1 = class Popup extends UI5Element {
      * @since 1.2.0
      */
     set open(value) {
-        if (this._opened === value) {
+        if (this._open === value) {
             return;
         }
-        this._opened = value;
+        this._open = value;
         if (value) {
             this.openPopup();
         }
         else {
-            this.close();
+            this.closePopup();
         }
     }
     get open() {
-        return this._opened;
+        return this._open;
     }
     async openPopup() {
-        await this._open(false);
+        if (this._opened) {
+            return;
+        }
+        const prevented = !this.fireEvent("before-open", {}, true, false);
+        if (prevented || this._opened) {
+            return;
+        }
+        this._opened = true;
+        if (this.isModal) {
+            Popup_1.blockPageScrolling(this);
+        }
+        this._focusedElementBeforeOpen = getFocusedElement();
+        this._show();
+        if (this.getDomRef()) {
+            this._updateMediaRange();
+        }
+        this._addOpenedPopup();
+        this.open = true;
+        // initial focus, if focused element is statically created
+        await this.applyInitialFocus();
+        await renderFinished();
+        // initial focus, if focused element is dynamically created
+        await this.applyInitialFocus();
+        this.fireEvent("open", {}, false, false);
     }
     _resize() {
         this._updateMediaRange();
@@ -156,7 +183,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
     _onkeydown(e) {
         const isTabOutAttempt = e.target === this._root && isTabPrevious(e);
         // if the popup is closed, focus is already moved, so Enter keydown may result in click on the newly focused element
-        const isEnterOnClosedPopupChild = isEnter(e) && !this.isOpen();
+        const isEnterOnClosedPopupChild = isEnter(e) && !this.open;
         if (isTabOutAttempt || isEnterOnClosedPopupChild) {
             e.preventDefault();
         }
@@ -217,11 +244,12 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         }
     }
     /**
-     * Use this method to focus the element denoted by "initialFocus", if provided, or the first focusable element otherwise.
+     * Use this method to focus the element denoted by "initialFocus", if provided,
+     * or the first focusable element otherwise.
      * @protected
      */
-    async applyInitialFocus(preventInitialFocus) {
-        if (!this._disableInitialFocus && !preventInitialFocus) {
+    async applyInitialFocus() {
+        if (!this.preventInitialFocus) {
             await this.applyFocus();
         }
     }
@@ -249,45 +277,8 @@ let Popup = Popup_1 = class Popup extends UI5Element {
             element.focus();
         }
     }
-    /**
-     * Tells if the component is opened
-     * @public
-     */
-    isOpen() {
-        return this.open;
-    }
     isFocusWithin() {
         return isFocusedElementWithinNode(this._root);
-    }
-    /**
-     * Shows the block layer (for modal popups only) and sets the correct z-index for the purpose of popup stacking
-     * @protected
-     */
-    async _open(preventInitialFocus) {
-        if (this._isOpened) {
-            return;
-        }
-        const prevented = !this.fireEvent("before-open", {}, true, false);
-        if (prevented || this._isOpened) {
-            return;
-        }
-        this._isOpened = true;
-        if (this.isModal && !this.shouldHideBackdrop) {
-            Popup_1.blockPageScrolling(this);
-        }
-        this._focusedElementBeforeOpen = getFocusedElement();
-        this._show();
-        if (this.getDomRef()) {
-            this._updateMediaRange();
-        }
-        this._addOpenedPopup();
-        this.open = true;
-        // initial focus, if focused element is statically created
-        await this.applyInitialFocus(preventInitialFocus);
-        await renderFinished();
-        // initial focus, if focused element is dynamically created
-        await this.applyInitialFocus(preventInitialFocus);
-        this.fireEvent("after-open", {}, false, false);
     }
     _updateMediaRange() {
         this.mediaRange = MediaRange.getCurrentRange(MediaRange.RANGESETS.RANGE_4STEPS, this.getDomRef().offsetWidth);
@@ -301,17 +292,16 @@ let Popup = Popup_1 = class Popup extends UI5Element {
     }
     /**
      * Closes the popup.
-     * @public
      */
-    close(escPressed = false, preventRegistryUpdate = false, preventFocusRestore = false) {
-        if (!this._isOpened) {
+    closePopup(escPressed = false, preventRegistryUpdate = false, preventFocusRestore = false) {
+        if (!this._opened) {
             return;
         }
         const prevented = !this.fireEvent("before-close", { escPressed }, true, false);
         if (prevented) {
             return;
         }
-        this._isOpened = false;
+        this._opened = false;
         if (this.isModal) {
             Popup_1.unblockPageScrolling(this);
         }
@@ -323,7 +313,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         if (!this.preventFocusRestore && !preventFocusRestore) {
             this.resetFocus();
         }
-        this.fireEvent("after-close", {}, false, false);
+        this.fireEvent("close", {}, false, false);
     }
     /**
      * Removes the popup from the "opened popups registry"
@@ -417,13 +407,19 @@ __decorate([
 ], Popup.prototype, "mediaRange", void 0);
 __decorate([
     property({ type: Boolean })
-], Popup.prototype, "_disableInitialFocus", void 0);
+], Popup.prototype, "preventInitialFocus", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], Popup.prototype, "isTopModalPopup", void 0);
 __decorate([
     slot({ type: HTMLElement, "default": true })
 ], Popup.prototype, "content", void 0);
+__decorate([
+    property({ type: Boolean })
+], Popup.prototype, "onPhone", void 0);
+__decorate([
+    property({ type: Boolean })
+], Popup.prototype, "onDesktop", void 0);
 __decorate([
     property({ type: Boolean })
 ], Popup.prototype, "open", null);
@@ -445,7 +441,7 @@ Popup = Popup_1 = __decorate([
      * @public
      */
     ,
-    event("after-open")
+    event("open")
     /**
      * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
      * @public
@@ -468,7 +464,7 @@ Popup = Popup_1 = __decorate([
      * @public
      */
     ,
-    event("after-close")
+    event("close")
     /**
      * Fired whenever the popup content area is scrolled
      * @private

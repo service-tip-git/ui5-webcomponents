@@ -124,14 +124,6 @@ declare class Dialog extends Popup {
      * @since 1.0.0-rc.15
      */
     state: `${ValueState}`;
-    /**
-     * @private
-     */
-    onPhone: boolean;
-    /**
-     * @private
-     */
-    onDesktop: boolean;
     _screenResizeHandler: () => void;
     _dragMouseMoveHandler: (e: MouseEvent) => void;
     _dragMouseUpHandler: (e: MouseEvent) => void;
@@ -172,15 +164,7 @@ declare class Dialog extends Popup {
     constructor();
     static onDefine(): Promise<void>;
     static _isHeader(element: HTMLElement): boolean;
-    /**
-     * Shows the dialog.
-     * @param [preventInitialFocus=false] Prevents applying the focus inside the popup
-     * @public
-     * @returns Resolves when the dialog is open
-     */
-    show(preventInitialFocus?: boolean): Promise<void>;
     get isModal(): boolean;
-    get shouldHideBackdrop(): boolean;
     get _ariaLabelledBy(): string | undefined;
     get ariaRoleDescriptionHeaderText(): string | undefined;
     get effectiveAriaDescribedBy(): string | undefined;

@@ -176,7 +176,7 @@ let Breadcrumbs = Breadcrumbs_1 = class Breadcrumbs extends UI5Element {
         this._overflowSize = overflowSize;
         // if overflow was emptied while picker was open => close redundant popup
         if (this._isOverflowEmpty && this._isPickerOpen) {
-            this.responsivePopover.close();
+            this.responsivePopover.open = false;
         }
         // if the last focused link has done into the overflow =>
         // ensure the first visible link is focusable
@@ -215,7 +215,7 @@ let Breadcrumbs = Breadcrumbs_1 = class Breadcrumbs extends UI5Element {
         const listItem = e.detail.selectedItems[0], items = this._getItems(), item = items.find(x => `${x._id}-li` === listItem.id);
         if (this.fireEvent("item-click", { item }, true)) {
             window.open(item.href, item.target || "_self", "noopener,noreferrer");
-            this.responsivePopover.close();
+            this.responsivePopover.open = false;
         }
     }
     _respPopover() {
@@ -231,11 +231,14 @@ let Breadcrumbs = Breadcrumbs_1 = class Breadcrumbs extends UI5Element {
         }
     }
     _closeRespPopover() {
-        this.responsivePopover && this.responsivePopover.close();
+        if (this.responsivePopover) {
+            this.responsivePopover.open = false;
+        }
     }
     _openRespPopover() {
         this.responsivePopover = this._respPopover();
-        this.responsivePopover.showAt(this._dropdownArrowLink);
+        this.responsivePopover.opener = this._dropdownArrowLink;
+        this.responsivePopover.open = true;
     }
     _isItemVisible(item) {
         return !item.hidden && this._hasVisibleContent(item);

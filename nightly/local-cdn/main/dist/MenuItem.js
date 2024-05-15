@@ -40,7 +40,7 @@ let MenuItem = class MenuItem extends UI5Element {
         return this._siblingsWithIcon && !this.icon;
     }
     get subMenuOpened() {
-        return !!this._subMenu?._popover?.isOpen();
+        return !!this._subMenu?._popover?.open;
     }
     get _additionalText() {
         return this.hasSubmenu ? "" : this.additionalText;

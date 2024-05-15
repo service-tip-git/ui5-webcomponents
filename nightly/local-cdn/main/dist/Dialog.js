@@ -5,7 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var Dialog_1;
-import { isPhone, isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
@@ -128,20 +127,8 @@ let Dialog = Dialog_1 = class Dialog extends Popup {
     static _isHeader(element) {
         return element.classList.contains("ui5-popup-header-root") || element.getAttribute("slot") === "header";
     }
-    /**
-     * Shows the dialog.
-     * @param [preventInitialFocus=false] Prevents applying the focus inside the popup
-     * @public
-     * @returns Resolves when the dialog is open
-     */
-    async show(preventInitialFocus = false) {
-        await super._open(preventInitialFocus);
-    }
     get isModal() {
         return true;
-    }
-    get shouldHideBackdrop() {
-        return false;
     }
     get _ariaLabelledBy() {
         let ariaLabelledById;
@@ -214,8 +201,6 @@ let Dialog = Dialog_1 = class Dialog extends Popup {
     onBeforeRendering() {
         super.onBeforeRendering();
         this._isRTL = this.effectiveDir === "rtl";
-        this.onPhone = isPhone();
-        this.onDesktop = isDesktop();
     }
     onEnterDOM() {
         super.onEnterDOM();
@@ -449,12 +434,6 @@ __decorate([
 __decorate([
     property({ type: ValueState, defaultValue: ValueState.None })
 ], Dialog.prototype, "state", void 0);
-__decorate([
-    property({ type: Boolean })
-], Dialog.prototype, "onPhone", void 0);
-__decorate([
-    property({ type: Boolean })
-], Dialog.prototype, "onDesktop", void 0);
 __decorate([
     slot()
 ], Dialog.prototype, "header", void 0);

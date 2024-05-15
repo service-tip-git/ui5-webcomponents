@@ -258,11 +258,11 @@ let ColorPalette = ColorPalette_1 = class ColorPalette extends UI5Element {
     }
     _closeDialog() {
         const dialog = this._getDialog();
-        dialog.close();
+        dialog.open = false;
     }
     _openMoreColorsDialog() {
         const dialog = this._getDialog();
-        dialog.show();
+        dialog.open = true;
     }
     _onDefaultColorClick() {
         if (this.defaultColor) {

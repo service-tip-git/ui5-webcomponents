@@ -105,6 +105,12 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
             fetchCldr(getLocale().getLanguage(), getLocale().getRegion(), getLocale().getScript()),
         ]);
     }
+    async formElementAnchor() {
+        return this.getFocusDomRefAsync();
+    }
+    get formFormattedValue() {
+        return this.value || "";
+    }
     onBeforeRendering() {
         if (this.value) {
             this.value = this.normalizeValue(this.value) || this.value;
@@ -166,7 +172,8 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
     openPicker() {
         this.tempValue = this.value && this.isValid(this.value) ? this.value : this.getFormat().format(UI5Date.getInstance());
         const responsivePopover = this._getPopover();
-        responsivePopover.showAt(this);
+        responsivePopover.opener = this;
+        responsivePopover.open = true;
     }
     /**
      * Closes the picker
@@ -175,7 +182,7 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
      */
     closePicker() {
         const responsivePopover = this._getPopover();
-        responsivePopover.close();
+        responsivePopover.open = false;
         this._isPickerOpen = false;
     }
     togglePicker() {
@@ -213,7 +220,8 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
     openInputsPopover() {
         this.tempValue = this.value && this.isValid(this.value) ? this.value : this.getFormat().format(UI5Date.getInstance());
         const popover = this._getInputsPopover();
-        popover.showAt(this);
+        popover.opener = this;
+        popover.open = true;
         this._isInputsPopoverOpen = true;
     }
     /**
@@ -223,7 +231,7 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
      */
     closeInputsPopover() {
         const popover = this._getInputsPopover();
-        popover.close();
+        popover.open = false;
     }
     toggleInputsPopover() {
         if (this.isInputsPopoverOpen()) {
@@ -465,8 +473,11 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
     }
 };
 __decorate([
-    property({ defaultValue: undefined })
+    property({ type: String, defaultValue: undefined })
 ], TimePicker.prototype, "value", void 0);
+__decorate([
+    property()
+], TimePicker.prototype, "name", void 0);
 __decorate([
     property({ type: ValueState, defaultValue: ValueState.None })
 ], TimePicker.prototype, "valueState", void 0);
@@ -495,6 +506,7 @@ TimePicker = TimePicker_1 = __decorate([
     customElement({
         tag: "ui5-time-picker",
         languageAware: true,
+        formAssociated: true,
         renderer: litRender,
         template: TimePickerTemplate,
         styles: [

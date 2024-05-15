@@ -43,20 +43,12 @@ let ResponsivePopover = ResponsivePopover_1 = class ResponsivePopover extends Po
     constructor() {
         super();
     }
-    /**
-     * Shows popover on desktop and dialog on mobile.
-     * @param opener the element that the popover is shown at
-     * @param [preventInitialFocus=false] Prevents applying the focus inside the popup
-     * @public
-     * @returns Resolves when the responsive popover is open
-     */
-    async showAt(opener, preventInitialFocus = false) {
+    async openPopup() {
         if (!isPhone()) {
-            await super.showAt(opener, preventInitialFocus);
+            await super.openPopup();
         }
         else {
-            this.style.display = "contents";
-            await this._dialog.show(preventInitialFocus);
+            await this._dialog.openPopup();
         }
     }
     _show() {
@@ -66,28 +58,23 @@ let ResponsivePopover = ResponsivePopover_1 = class ResponsivePopover extends Po
     }
     /**
      * Closes the popover/dialog.
-     * @public
+     * @override
      */
-    close(escPressed = false, preventRegistryUpdate = false, preventFocusRestore = false) {
+    closePopup(escPressed = false, preventRegistryUpdate = false, preventFocusRestore = false) {
         if (!isPhone()) {
-            super.close(escPressed, preventRegistryUpdate, preventFocusRestore);
+            super.closePopup(escPressed, preventRegistryUpdate, preventFocusRestore);
         }
         else {
-            this._dialog?.close(escPressed, preventRegistryUpdate, preventFocusRestore);
+            this._dialog?.closePopup(escPressed, preventRegistryUpdate, preventFocusRestore);
         }
     }
     toggle(opener) {
-        if (this.isOpen()) {
-            return this.close();
+        if (this.open) {
+            this.closePopup();
+            return;
         }
-        this.showAt(opener);
-    }
-    /**
-     * Tells if the responsive popover is open.
-     * @public
-     */
-    isOpen() {
-        return (isPhone() && this._dialog) ? this._dialog.isOpen() : super.isOpen();
+        this.opener = opener;
+        this.open = true;
     }
     get classes() {
         const allClasses = super.classes;
@@ -116,12 +103,12 @@ let ResponsivePopover = ResponsivePopover_1 = class ResponsivePopover extends Po
         return ResponsivePopover_1.i18nBundle.getText(RESPONSIVE_POPOVER_CLOSE_DIALOG_BUTTON);
     }
     _beforeDialogOpen(e) {
-        this._isOpened = true;
+        this._opened = true;
         this.open = true;
         this._propagateDialogEvent(e);
     }
     _afterDialogClose(e) {
-        this._isOpened = false;
+        this._opened = false;
         this.open = false;
         this._propagateDialogEvent(e);
     }

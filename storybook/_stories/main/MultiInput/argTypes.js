@@ -7,7 +7,8 @@ export default {
             "Number",
             "Password",
             "Tel",
-            "URL"
+            "URL",
+            "Search"
         ]
     },
     "valueState": {

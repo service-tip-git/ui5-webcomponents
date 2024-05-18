@@ -12,7 +12,7 @@ const Template = (args) => html `<ui5-button
 	design="${ifDefined(args.design)}"
 	?disabled="${ifDefined(args.disabled)}"
 	icon="${ifDefined(args.icon)}"
-	?icon-end="${ifDefined(args.iconEnd)}"
+	end-icon="${ifDefined(args.endIcon)}"
 	tooltip="${ifDefined(args.tooltip)}"
 	accessible-name="${ifDefined(args.accessibleName)}"
 	accessible-name-ref="${ifDefined(args.accessibleNameRef)}"

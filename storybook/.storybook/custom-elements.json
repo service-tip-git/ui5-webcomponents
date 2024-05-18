@@ -1335,6 +1335,51 @@
         },
         {
             "kind": "javascript-module",
+            "path": "dist/types/FormItemSpacing.js",
+            "declarations": [
+                {
+                    "kind": "enum",
+                    "name": "FormItemSpacing",
+                    "description": "Different Button designs.",
+                    "_ui5privacy": "public",
+                    "_ui5since": "2.0.0",
+                    "members": [
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Normal spacing (smaller vertical space between form items).",
+                            "default": "Normal",
+                            "name": "Normal",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "description": "Large spacing (larger vertical space between form items).",
+                            "default": "Large",
+                            "name": "Large",
+                            "readonly": true
+                        }
+                    ],
+                    "_ui5package": "@ui5/webcomponents",
+                    "tagName": "FormItemSpacing"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "FormItemSpacing",
+                        "module": "dist/types/FormItemSpacing.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
             "path": "dist/types/HighlightTypes.js",
             "declarations": [
                 {
@@ -1613,6 +1658,16 @@
                             "description": "Used for input fields that should contain a URL address.",
                             "default": "URL",
                             "name": "URL",
+                            "readonly": true
+                        },
+                        {
+                            "kind": "field",
+                            "static": true,
+                            "privacy": "public",
+                            "_ui5since": "2.0.0",
+                            "description": "Used for input fields that should contain a search term.",
+                            "default": "Search",
+                            "name": "Search",
                             "readonly": true
                         }
                     ],
@@ -4232,14 +4287,14 @@
                         },
                         {
                             "kind": "field",
-                            "name": "iconEnd",
+                            "name": "endIcon",
                             "type": {
-                                "text": "boolean"
+                                "text": "string"
                             },
-                            "description": "Defines whether the icon should be displayed after the component text.",
-                            "default": "false",
+                            "description": "Defines the icon, displayed as graphical element within the component after the button text.\n\n**Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.\nUsage of `endIcon` only should be avoided.\n\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+                            "default": "\"\"",
                             "privacy": "public",
-                            "_ui5validator": "Boolean"
+                            "_ui5validator": "String"
                         },
                         {
                             "kind": "field",
@@ -6700,6 +6755,18 @@
                     "members": [
                         {
                             "kind": "field",
+                            "name": "movable",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the item is movable.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "2.0.0",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string"
@@ -7103,7 +7170,7 @@
                             "description": "Defines the open or closed state of the popover.",
                             "privacy": "public",
                             "default": "false",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean"
                         },
                         {
@@ -7640,7 +7707,7 @@
                             "description": "Defines the open or closed state of the popover.",
                             "privacy": "public",
                             "default": "false",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
@@ -8164,7 +8231,7 @@
                             "description": "Defines the open or closed state of the popover.",
                             "privacy": "public",
                             "default": "false",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "DatePicker",
@@ -8761,7 +8828,7 @@
                             "description": "Indicates whether initial focus should be prevented.",
                             "privacy": "public",
                             "default": "false",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
@@ -9116,6 +9183,301 @@
             "path": "dist/Filters.js",
             "declarations": [],
             "exports": []
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/Form.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "### Overview\n\nThe Form is a layout component that arranges labels and form fields (like input fields) pairs\ninto a specific number of columns.\n\n### Structure\n\n- **Form** (`ui5-form`) is the top-level container component, responsible for the content layout and responsiveness.\n- **FormGroup** (`ui5-form-group`) enables the grouping of the Form content.\n- **FormItem** (`ui5-form-item`) is a pair of label and form fields and can be used directly in a Form, or as part of a FormGroup.\n\nThe simplest Form (`ui5-form`) consists of a header area on top,\ndisplaying a header text (see the `headingText` property) and content below - an arbitrary number of FormItems (ui5-form-item),\nrepresenting the pairs of label and form fields.\n\nAnd, there is also \"grouping\" available to assist the implementation of richer UIs.\nThis is enabled by the FormGroup (`ui5-form-group`) component.\nIn this case, the Form is structured into FormGroups and each FormGroup consists of FormItems.\n\n ### Responsiveness\n\nThe Form component reacts and changes its layout on predefined breakpoints.\nDepending on its size, the Form content (FormGroups and FormItems) gets divided into one or more columns as follows:\n- **S** (< 600px) – 1 column is recommended (default: 1)\n- **M** (600px - 1022px) – up to 2 columns are recommended (default: 1)\n- **L** (1023px - 1439px) - up to 3 columns are recommended (default: 2)\n- **XL** (> 1439px) – up to 6 columns are recommended (default: 2)\n\nTo change the layout, use the `layout` property - f.e. layout=\"S1 M2 L3 XL6\".\n\n### Groups\n\nTo make better use of screen space, there is built-in logic to determine how many columns should a FormGroup occupy.\n\n- **Example #1** (perfect match):\n4 columns and 4 groups: each group will use 1 column.\n\n- **Example #2** (balanced distribution):\n4 columns and 2 groups: each group will use 2 columns.\n6 columns and 2 groups: each group will use 3 columns.\n\n- **Example #3** (unbalanced distribution):\n3 columns and 2 groups: the larger one will use 2 columns, the smaller 1 column.\n5 columns and 3 groups: two of the groups will use 2 columns each, the smallest 1 column.\n\n**Note:** The size of a group element is determined by the number of FormItems assigned to it.\nIn the case of equality, the first in the DOM will use more columns, and the last - fewer columns.\n\n- **Example #4** (more groups than columns):\n3 columns and 4 groups: each FormGroup uses only 1 column, the last FormGroup will wrap on the second row.\n\n### Groups Column Span\n\nTo influence the built-in group distribution, described in the previous section,\nyou can use the FormGroup's `columnSpan` property, that defines how many columns the group should expand to.\n\n### Items Column Span\n\nFormItem's columnSpan property defines how many columns the form item should expand to inside a form group or the form.\n\n### Items Label Span\n\nThe placement of the labels depends on the size of the used column.\nIf there is enough space, the labels are next to their associated fields, otherwise  - above the fields.\nBy default, the labels take 4/12 of the FormItem, leaving 8/12 parts to associated fields.\nYou can control what space the labels should take via the `labelSpan` property.\n\n**For example:** To always place the labels on top set: `labelSpan=\"S12 M12 L12 XL12\"` property.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/Form.js\";\n- import @ui5/webcomponents/dist/FormGroup.js\";\n- import @ui5/webcomponents/dist/FormItem.js\";",
+                    "name": "Form",
+                    "cssParts": [
+                        {
+                            "description": "Used to style the wrapper of the header.",
+                            "name": "_ui5header"
+                        },
+                        {
+                            "description": "Used to style the element defining the form column layout.",
+                            "name": "_ui5layout"
+                        },
+                        {
+                            "description": "Used to style a single column of the form column layout.",
+                            "name": "_ui5column"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "name": "header",
+                            "description": "Defines the component header area.\n\n**Note:** When a `header` is provided, the `headerText` property is ignored.",
+                            "_ui5type": {
+                                "text": "Array<HTMLElement>"
+                            },
+                            "_ui5privacy": "public"
+                        },
+                        {
+                            "name": "default",
+                            "description": "Defines the component content - FormGroups or FormItems.\n\n**Note:** Mixing FormGroups and standalone FormItems (not belonging to a group) is not supported.\nEither use FormGroups and make sure all FormItems are part of a FormGroup, or use just FormItems without any FormGroups.",
+                            "_ui5propertyName": "items",
+                            "_ui5type": {
+                                "text": "Array<IFormItem>",
+                                "references": [
+                                    {
+                                        "name": "IFormItem",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/Form.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        }
+                    ],
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "layout",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the number of columns to distribute the form content by breakpoint.\n\nSupported values:\n- `S` - 1 column by default (1 column is recommended)\n- `M` - 1 column by default (up to 2 columns are recommended)\n- `L` - 2 columns by default (up to 3 columns are recommended)\n- `XL` - 2 columns by default (up to 6 columns  are recommended)",
+                            "default": "\"S1 M1 L2 XL2\"",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "labelSpan",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the width proportion of the labels and fields of a FormItem by breakpoint.\n\nBy default, the labels take 4/12 (or 1/3) of the form item in M,L and XL sizes,\nand 12/12 in S size, e.g in S the label is on top of its associated field.\n\nThe supported values are between 1 and 12. Greater the number, more space the label will use.\n\n**Note:** If \"12\" is set, the label will be displayed on top of its assosiated field.",
+                            "default": "\"S12 M4 L4 XL4\"",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "headerText",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines the header text of the component.\n\n**Note:** The property gets overridden by the `header` slot.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "itemSpacing",
+                            "type": {
+                                "text": "FormItemSpacing",
+                                "references": [
+                                    {
+                                        "name": "FormItemSpacing",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/types/FormItemSpacing.js"
+                                    }
+                                ]
+                            },
+                            "description": "Defines the vertical spacing between form items.\n\n**Note:** If the Form is meant to be switched between \"non-edit\" and \"edit\" modes,\nwe recommend using \"Large\" item spacing in \"non-edit\" mode, and \"Normal\" - for \"edit\" mode,\nto avoid \"jumping\" effect, caused by the hight difference between texts in \"non-edit\" mode and the input fields in \"edit\" mode.",
+                            "default": "\"Normal\"",
+                            "privacy": "public",
+                            "_ui5validator": "FormItemSpacing"
+                        }
+                    ],
+                    "superclass": {
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base/dist/UI5Element.js"
+                    },
+                    "tagName": "Form",
+                    "customElement": true,
+                    "_ui5since": "2.0.0",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "Form",
+                        "module": "dist/Form.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-form",
+                    "declaration": {
+                        "name": "Form",
+                        "module": "dist/Form.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/FormGroup.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "### Overview\n\nThe FormGroup (ui5-form-group) represents a group inside the Form (ui5-form) component\nand it consists of FormItem (ui5-form-item) components.\n\nThe layout of the FormGroup is mostly defined and controlled by the overarching Form (ui5-form) component.\nStill, one can influence the layout via the FormGroup's `columnSpan` property,\nthat defines how many columns the group should expand to.\n\n### Usage\n\nТhe FormGroup (ui5-form-group) allows to split a Form into groups,\ne.g to group FormItems that logically belong together.\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/FormGroup.js\";",
+                    "name": "FormGroup",
+                    "slots": [
+                        {
+                            "name": "default",
+                            "description": "Defines the items of the component.",
+                            "_ui5propertyName": "items",
+                            "_ui5type": {
+                                "text": "Array<FormItem>",
+                                "references": [
+                                    {
+                                        "name": "FormItem",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/FormItem.js"
+                                    }
+                                ]
+                            },
+                            "_ui5privacy": "public"
+                        }
+                    ],
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "headerText",
+                            "type": {
+                                "text": "string"
+                            },
+                            "description": "Defines header text of the component.",
+                            "default": "\"\"",
+                            "privacy": "public",
+                            "_ui5validator": "String"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "columnSpan",
+                            "type": {
+                                "text": "number | undefined"
+                            },
+                            "description": "Defines column span of the component,\ne.g how many columns the group should span to.",
+                            "default": "undefined",
+                            "privacy": "public",
+                            "_ui5validator": "Integer"
+                        }
+                    ],
+                    "superclass": {
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base/dist/UI5Element.js"
+                    },
+                    "tagName": "FormGroup",
+                    "customElement": true,
+                    "_ui5since": "2.0.0",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "FormGroup",
+                        "module": "dist/FormGroup.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-form-group",
+                    "declaration": {
+                        "name": "FormGroup",
+                        "module": "dist/FormGroup.js"
+                    }
+                }
+            ]
+        },
+        {
+            "kind": "javascript-module",
+            "path": "dist/FormItem.js",
+            "declarations": [
+                {
+                    "kind": "class",
+                    "description": "### Overview\n\nThe FormItem (ui5-form-item) represents pair of a label and\none or more components (text or text fields), associated to it.\n\n### Usage\n\nThe FormItem is being used in FormGroup (ui5-form-group) or directly in Form (ui5-form).\n\n### ES6 Module Import\n\n- import @ui5/webcomponents/dist/FormItem.js\";",
+                    "name": "FormItem",
+                    "cssParts": [
+                        {
+                            "description": "Used to style the parent element of the label and content parts.",
+                            "name": "_ui5layout"
+                        },
+                        {
+                            "description": "Used to style the label part of the form item.",
+                            "name": "_ui5label"
+                        },
+                        {
+                            "description": "Used to style the content part of the form item.",
+                            "name": "_ui5content"
+                        }
+                    ],
+                    "slots": [
+                        {
+                            "name": "labelContent",
+                            "description": "Defines the label of the component.",
+                            "_ui5type": {
+                                "text": "Array<HTMLElement>"
+                            },
+                            "_ui5privacy": "public"
+                        },
+                        {
+                            "name": "default",
+                            "description": "Defines the content of the component,\nassociated to `labelContent`.",
+                            "_ui5propertyName": "content",
+                            "_ui5type": {
+                                "text": "Array<HTMLElement>"
+                            },
+                            "_ui5privacy": "public"
+                        }
+                    ],
+                    "members": [
+                        {
+                            "kind": "field",
+                            "name": "columnSpan",
+                            "type": {
+                                "text": "number | undefined"
+                            },
+                            "description": "Defines the column span of the component,\ne.g how many columns the component should span to.\n\n**Note:** The column span should be a number between 1 and the available columns of the FormGroup (when items are placed in a group)\nor the Form. The available columns can be affected by the FormGroup#columnSpan and/or the Form#layout.\nA number bigger than the available columns won't take effect.",
+                            "default": "undefined",
+                            "privacy": "public",
+                            "_ui5validator": "Integer"
+                        }
+                    ],
+                    "superclass": {
+                        "name": "UI5Element",
+                        "package": "@ui5/webcomponents-base/dist/UI5Element.js"
+                    },
+                    "tagName": "FormItem",
+                    "customElement": true,
+                    "_ui5since": "2.0.0",
+                    "_ui5privacy": "public",
+                    "_ui5package": "@ui5/webcomponents"
+                }
+            ],
+            "exports": [
+                {
+                    "kind": "js",
+                    "name": "default",
+                    "declaration": {
+                        "name": "FormItem",
+                        "module": "dist/FormItem.js"
+                    }
+                },
+                {
+                    "kind": "custom-element-definition",
+                    "name": "ui5-form-item",
+                    "declaration": {
+                        "name": "FormItem",
+                        "module": "dist/FormItem.js"
+                    }
+                }
+            ]
         },
         {
             "kind": "javascript-module",
@@ -10310,6 +10672,75 @@
                             },
                             "description": "Fired when the user scrolls to the bottom of the list.\n\n**Note:** The event is fired when the `growing='Scroll'` property is enabled.",
                             "_ui5since": "1.0.0-rc.6"
+                        },
+                        {
+                            "name": "move-over",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<ListMoveEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ListMoveEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/List.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5since": "2.0.0",
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "source",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the moved element under `element` property."
+                                },
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "destination",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                                }
+                            ]
+                        },
+                        {
+                            "name": "move",
+                            "_ui5privacy": "public",
+                            "type": {
+                                "text": "CustomEvent<ListMoveEventDetail>",
+                                "references": [
+                                    {
+                                        "name": "ListMoveEventDetail",
+                                        "package": "@ui5/webcomponents",
+                                        "module": "dist/List.js"
+                                    }
+                                ]
+                            },
+                            "description": "Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.",
+                            "_ui5allowPreventDefault": true,
+                            "_ui5parameters": [
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "source",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the moved element under `element` property."
+                                },
+                                {
+                                    "type": {
+                                        "text": "object"
+                                    },
+                                    "name": "destination",
+                                    "_ui5privacy": "public",
+                                    "description": "Contains information about the destination of the moved element. Has `element` and `placement` properties."
+                                }
+                            ]
                         }
                     ],
                     "superclass": {
@@ -10620,7 +11051,7 @@
                     },
                     "tagName": "ListItemGroup",
                     "customElement": true,
-                    "_ui5since": "2.0",
+                    "_ui5since": "2.0.0",
                     "_ui5privacy": "public",
                     "_ui5package": "@ui5/webcomponents"
                 }
@@ -12810,7 +13241,7 @@
                             "description": "Indicates whether initial focus should be prevented.",
                             "privacy": "public",
                             "default": "false",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
@@ -13045,7 +13476,7 @@
                             "description": "Indicates whether initial focus should be prevented.",
                             "privacy": "public",
                             "default": "false",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean"
                         },
                         {
@@ -14137,7 +14568,7 @@
                             "description": "Indicates whether initial focus should be prevented.",
                             "privacy": "public",
                             "default": "false",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "Popup",
@@ -15055,6 +15486,22 @@
                         },
                         {
                             "kind": "field",
+                            "name": "movable",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the item is movable.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "2.0.0",
+                            "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "CustomListItem",
+                                "module": "dist/CustomListItem.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
                             "name": "accessibleName",
                             "type": {
                                 "text": "string"
@@ -15953,6 +16400,18 @@
                             "privacy": "public",
                             "_ui5since": "1.0.0-rc.15",
                             "_ui5validator": "ValueState"
+                        },
+                        {
+                            "kind": "field",
+                            "name": "movable",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the item is movable.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "2.0.0",
+                            "_ui5validator": "Boolean"
                         },
                         {
                             "kind": "field",
@@ -17470,7 +17929,7 @@
                             "description": "Defines predefined size of the component.",
                             "default": "\"S\"",
                             "privacy": "public",
-                            "_ui5since": "2.0",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "TagSize"
                         }
                     ],
@@ -18458,14 +18917,14 @@
                         },
                         {
                             "kind": "field",
-                            "name": "iconEnd",
+                            "name": "endIcon",
                             "type": {
-                                "text": "boolean"
+                                "text": "string"
                             },
-                            "description": "Defines whether the icon should be displayed after the component text.",
-                            "default": "false",
+                            "description": "Defines the icon, displayed as graphical element within the component after the button text.\n\n**Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.\nUsage of `endIcon` only should be avoided.\n\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+                            "default": "\"\"",
                             "privacy": "public",
-                            "_ui5validator": "Boolean",
+                            "_ui5validator": "String",
                             "inheritedFrom": {
                                 "name": "Button",
                                 "module": "dist/Button.js"
@@ -18880,7 +19339,7 @@
                     ],
                     "tagName": "Tokenizer",
                     "customElement": true,
-                    "_ui5since": "2.0",
+                    "_ui5since": "2.0.0",
                     "_ui5privacy": "public",
                     "_ui5package": "@ui5/webcomponents"
                 }
@@ -20152,6 +20611,22 @@
                         },
                         {
                             "kind": "field",
+                            "name": "movable",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the item is movable.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "2.0.0",
+                            "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "TreeItemBase",
+                                "module": "dist/TreeItemBase.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
                             "name": "indeterminate",
                             "type": {
                                 "text": "boolean"
@@ -20497,6 +20972,18 @@
                         },
                         {
                             "kind": "field",
+                            "name": "movable",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the item is movable.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "2.0.0",
+                            "_ui5validator": "Boolean"
+                        },
+                        {
+                            "kind": "field",
                             "name": "indeterminate",
                             "type": {
                                 "text": "boolean"
@@ -20813,6 +21300,22 @@
                             "description": "Defines whether the tree list item will show a collapse or expand icon inside its toggle button.",
                             "default": "false",
                             "privacy": "public",
+                            "_ui5validator": "Boolean",
+                            "inheritedFrom": {
+                                "name": "TreeItemBase",
+                                "module": "dist/TreeItemBase.js"
+                            }
+                        },
+                        {
+                            "kind": "field",
+                            "name": "movable",
+                            "type": {
+                                "text": "boolean"
+                            },
+                            "description": "Defines whether the item is movable.",
+                            "default": "false",
+                            "privacy": "public",
+                            "_ui5since": "2.0.0",
                             "_ui5validator": "Boolean",
                             "inheritedFrom": {
                                 "name": "TreeItemBase",

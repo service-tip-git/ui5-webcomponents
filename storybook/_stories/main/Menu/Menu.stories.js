@@ -28,7 +28,7 @@ Basic.args = {
 <ui5-menu-item text="Exit" icon="journey-arrive"></ui5-menu-item>`,
 };
 Basic.decorators = [
-    (story) => html `<ui5-button id="btnOpenBasic" class="samples-margin" icon="slim-arrow-down" icon-end>Open Menu</ui5-button> <br/>
+    (story) => html `<ui5-button id="btnOpenBasic" class="samples-margin" end-icon="slim-arrow-down">Open Menu</ui5-button> <br/>
 	${story()}
 	<script>
 		btnOpenBasic.addEventListener("click", function(event) {
@@ -70,7 +70,7 @@ SubMenu.args = {
 <ui5-menu-item text="Exit" icon="journey-arrive"></ui5-menu-item>`,
 };
 SubMenu.decorators = [
-    (story) => html `<ui5-button id="btnOpenBasic" class="samples-margin" icon="slim-arrow-down" icon-end>Open Menu</ui5-button> <br/>
+    (story) => html `<ui5-button id="btnOpenBasic" class="samples-margin" end-icon="slim-arrow-down">Open Menu</ui5-button> <br/>
 	${story()}
 	<script>
 		btnOpenBasic.addEventListener("click", function(event) {
@@ -97,7 +97,7 @@ AditionalText.args = {
 <ui5-menu-item text="Exit" icon="journey-arrive" additional-text="Ctrl+X"></ui5-menu-item>`,
 };
 AditionalText.decorators = [
-    (story) => html `<ui5-button id="btnOpenAdditionalText" class="samples-margin" icon="slim-arrow-down" icon-end>Open Menu</ui5-button> <br/>
+    (story) => html `<ui5-button id="btnOpenAdditionalText" class="samples-margin" end-icon="slim-arrow-down">Open Menu</ui5-button> <br/>
 	${story()}
 	<script>
 		btnOpenAdditionalText.addEventListener("click", function(event) {

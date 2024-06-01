@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
+import { isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import "./Select.js";
 import ListItemBase from "./ListItemBase.js";
 // Template
@@ -31,6 +32,11 @@ import listItemAdditionalTextCss from "./generated/themes/ListItemAdditionalText
  * @public
  */
 let Option = class Option extends ListItemBase {
+    onEnterDOM() {
+        if (isDesktop()) {
+            this.setAttribute("desktop", "");
+        }
+    }
     get displayIconBegin() {
         return !!this.icon;
     }

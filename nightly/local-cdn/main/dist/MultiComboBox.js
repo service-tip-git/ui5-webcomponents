@@ -14,7 +14,6 @@ import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import { isShow, isDown, isUp, isSpace, isSpaceCtrl, isSpaceShift, isRight, isHome, isEnd, isTabNext, isTabPrevious, isUpShift, isDownShift, isLeftCtrl, isRightCtrl, isUpCtrl, isDownCtrl, isHomeCtrl, isEndCtrl, isCtrlA, isInsertShift, isBackSpace, isDelete, isEscape, isEnter, } from "@ui5/webcomponents-base/dist/Keys.js";
-import Integer from "@ui5/webcomponents-base/dist/types/Integer.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-down.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import { isPhone, isAndroid, isFirefox, } from "@ui5/webcomponents-base/dist/Device.js";
@@ -30,15 +29,15 @@ import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/Ari
 import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
 import { submitForm } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import MultiComboBoxItem, { isInstanceOfMultiComboBoxItem } from "./MultiComboBoxItem.js";
-import MultiComboBoxGroupItem from "./MultiComboBoxGroupItem.js";
-import ListItemGroupHeader from "./ListItemGroupHeader.js";
+import MultiComboBoxItemGroup, { isInstanceOfMultiComboBoxItemGroup } from "./MultiComboBoxItemGroup.js";
+import ListItemGroup from "./ListItemGroup.js";
 import Tokenizer, { getTokensCountText } from "./Tokenizer.js";
 import Token from "./Token.js";
 import Icon from "./Icon.js";
 import Popover from "./Popover.js";
 import ResponsivePopover from "./ResponsivePopover.js";
 import List from "./List.js";
-import StandardListItem from "./StandardListItem.js";
+import ListItemStandard from "./ListItemStandard.js";
 import ToggleButton from "./ToggleButton.js";
 import * as Filters from "./Filters.js";
 import Button from "./Button.js";
@@ -51,10 +50,8 @@ import ResponsivePopoverCommonCss from "./generated/themes/ResponsivePopoverComm
 import ValueStateMessageCss from "./generated/themes/ValueStateMessage.css.js";
 import SuggestionsCss from "./generated/themes/Suggestions.css.js";
 import MultiComboBoxPopover from "./generated/themes/MultiComboBoxPopover.css.js";
-import ComboBoxFilter from "./types/ComboBoxFilter.js";
 import CheckBox from "./CheckBox.js";
 import Input from "./Input.js";
-import "./types/PopoverHorizontalAlign.js";
 import SuggestionItem from "./SuggestionItem.js";
 /**
  * @class
@@ -111,7 +108,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     get formFormattedValue() {
         const selectedItems = (this.items || []).filter(item => item.selected);
-        if (selectedItems.length) {
+        if (selectedItems.length && this.name) {
             const formData = new FormData();
             formData.append(this.name, this.value);
             for (let i = 0; i < selectedItems.length; i++) {
@@ -123,6 +120,108 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     constructor() {
         super();
+        /**
+         * Defines the value of the component.
+         *
+         * **Note:** The property is updated upon typing.
+         * @default ""
+         * @formEvents change input
+         * @formProperty
+         * @public
+         */
+        this.value = "";
+        /**
+         * Defines whether the value will be autcompleted to match an item
+         * @default false
+         * @public
+         * @since 1.4.0
+         */
+        this.noTypeahead = false;
+        /**
+         * Defines a short hint intended to aid the user with data entry when the
+         * component has no value.
+         * @default ""
+         * @public
+         */
+        this.placeholder = "";
+        /**
+         * Defines if the user input will be prevented, if no matching item has been found
+         * @default false
+         * @public
+         */
+        this.noValidation = false;
+        /**
+         * Defines whether the component is in disabled state.
+         *
+         * **Note:** A disabled component is completely noninteractive.
+         * @default false
+         * @public
+         */
+        this.disabled = false;
+        /**
+         * Defines the value state of the component.
+         * @default "None"
+         * @public
+         */
+        this.valueState = "None";
+        /**
+         * Defines whether the component is read-only.
+         *
+         * **Note:** A read-only component is not editable,
+         * but still provides visual feedback upon user interaction.
+         * @default false
+         * @public
+         */
+        this.readonly = false;
+        /**
+         * Defines whether the component is required.
+         * @default false
+         * @public
+         * @since 1.0.0-rc.5
+         */
+        this.required = false;
+        /**
+         * Defines the filter type of the component.
+         * @default "StartsWithPerTerm"
+         * @public
+         */
+        this.filter = "StartsWithPerTerm";
+        /**
+         * Defines whether the clear icon of the multi-combobox will be shown.
+         * @default false
+         * @public
+         * @since 1.20.1
+         */
+        this.showClearIcon = false;
+        /**
+         * Determines if the select all checkbox is visible on top of suggestions.
+         * @default false
+         * @public
+         */
+        this.showSelectAll = false;
+        this._effectiveValueState = "None";
+        /**
+         * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
+         * @default false
+         * @private
+         */
+        this._open = false;
+        this._valueBeforeOpen = this.value;
+        this.filterSelected = false;
+        this.focused = false;
+        this._tokenizerFocused = false;
+        this._iconPressed = false;
+        this._inputWidth = 0;
+        this._listWidth = 0;
+        this._performingSelectionTwice = false;
+        this._allSelected = false;
+        this._effectiveShowClearIcon = false;
+        this._dialogInputValueState = "None";
+        /**
+         * Indicates whether the tokenizer has tokens
+         * @private
+         */
+        this.tokenizerAvailable = false;
         this._filteredItems = [];
         this.selectedItems = [];
         this._previouslySelectedItems = [];
@@ -171,7 +270,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     _mobileInputChange(e) {
         this._inputChange.call(this);
         const { value } = e.target;
-        const matchingItem = this.items.find(item => item.text === value);
+        const matchingItem = this._getItems().find(item => item.text === value);
         if (!matchingItem) {
             return;
         }
@@ -201,7 +300,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     filterSelectedItems(e) {
         this.filterSelected = e.target.pressed;
         const selectedItems = this._filteredItems.filter(item => item.selected);
-        this.selectedItems = this.items.filter((item, idx, allItems) => MultiComboBox_1._groupItemFilter(item, ++idx, allItems, selectedItems) || selectedItems.indexOf(item) !== -1);
+        this.selectedItems = this._getItems().filter((item, idx, allItems) => MultiComboBox_1._groupItemFilter(item, ++idx, allItems, selectedItems) || selectedItems.indexOf(item) !== -1);
     }
     /**
      * Indicates whether the dropdown is open. True if the dropdown is open, false otherwise.
@@ -388,7 +487,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     _handleTokenCreationUponPaste(pastedText, e) {
         const separatedText = pastedText.split(/\r\n|\r|\n|\t/g).filter(t => !!t);
-        const matchingItems = this.items.filter(item => separatedText.includes(item.text) && !item.selected);
+        const matchingItems = this._getItems().filter(item => separatedText.includes(item.text) && !item.selected);
         if (matchingItems.length > 1) {
             e.preventDefault();
             this._selectItems(matchingItems);
@@ -405,18 +504,18 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         this._handleTokenCreationUponPaste(pastedText, e);
     }
     _handleShow(e) {
-        const items = this.items;
+        const items = this._getItems();
         const selectedItem = this._getSelectedItems()[0];
         const focusedToken = this._tokenizer.tokens.find(token => token.focused);
         const value = this.value;
-        const matchingItem = this.items.find(item => item.text.localeCompare(value, undefined, { sensitivity: "base" }) === 0);
+        const matchingItem = this._getItems().find(item => item.text.localeCompare(value, undefined, { sensitivity: "base" }) === 0);
         e.preventDefault();
         if (this.readonly) {
             return;
         }
         this._isOpenedByKeyboard = true;
         this._shouldFilterItems = false;
-        this._filteredItems = this.items;
+        this._filteredItems = this._getItems();
         this._togglePopover();
         if (!focusedToken && matchingItem) {
             this._itemToFocus = matchingItem;
@@ -429,7 +528,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
             this._itemToFocus = items.find(item => item.text === focusedToken.text);
         }
         else {
-            this._itemToFocus = items[0];
+            this._itemToFocus = items.find(item => isInstanceOfMultiComboBoxItem(item));
         }
     }
     _handlePageUp(e) {
@@ -596,7 +695,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     _handleArrowNavigation(e, isDownControl) {
         const isArrowDown = isDownControl || isDown(e);
-        const hasSuggestions = this.items.length;
+        const hasSuggestions = this._getItems().length;
         const isOpen = this._getRespPopover().open;
         e.preventDefault();
         if (this.hasValueStateMessage && !this.valueStateHeader) {
@@ -635,7 +734,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         }
     }
     _handleItemRangeSelection(e) {
-        const items = this.items;
+        const items = this._getItems();
         const listItems = this.list?.items;
         const currentItemIdx = Number(listItems?.indexOf(e.target));
         const nextItemIdx = currentItemIdx + 1;
@@ -655,7 +754,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         }
     }
     _navigateToNextItem() {
-        const items = this.items;
+        const items = this._getItems();
         const itemsCount = items.length;
         const previousItemIdx = this.currentItemIdx;
         if (previousItemIdx > -1 && items[previousItemIdx].text !== this.value) {
@@ -664,9 +763,9 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         if (previousItemIdx >= itemsCount - 1) {
             return;
         }
-        let currentItem = this.items[++this.currentItemIdx];
+        let currentItem = this._getItems()[++this.currentItemIdx];
         while ((this.currentItemIdx < itemsCount - 1 && currentItem.selected) || currentItem.isGroupItem) {
-            currentItem = this.items[++this.currentItemIdx];
+            currentItem = this._getItems()[++this.currentItemIdx];
         }
         if (currentItem.selected === true || currentItem.isGroupItem) {
             this.currentItemIdx = previousItemIdx;
@@ -677,7 +776,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         this._innerInput.setSelectionRange(0, currentItem.text.length);
     }
     _navigateToPrevItem() {
-        const items = this.items;
+        const items = this._getItems();
         let previousItemIdx = this.currentItemIdx;
         if ((!this.value && previousItemIdx !== -1) || (previousItemIdx !== -1 && this.value && this.value !== items[previousItemIdx].text)) {
             previousItemIdx = -1;
@@ -689,9 +788,9 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
             this.currentItemIdx = 0;
             return;
         }
-        let currentItem = this.items[--this.currentItemIdx];
+        let currentItem = this._getItems()[--this.currentItemIdx];
         while ((currentItem && this.currentItemIdx > 0) && (currentItem.selected || currentItem.isGroupItem)) {
-            currentItem = this.items[--this.currentItemIdx];
+            currentItem = this._getItems()[--this.currentItemIdx];
         }
         if (!currentItem) {
             return;
@@ -706,7 +805,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     _handleEnter() {
         const lowerCaseValue = this.value.toLowerCase();
-        const matchingItem = this.items.find(item => (item.text.toLowerCase() === lowerCaseValue && !item.isGroupItem));
+        const matchingItem = this._getItems().find(item => (item.text.toLowerCase() === lowerCaseValue && !item.isGroupItem));
         const oldValueState = this.valueState;
         const innerInput = this._innerInput;
         if (this._internals?.form) {
@@ -769,10 +868,10 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         }
     }
     _filterItems(str) {
-        const itemsToFilter = this.items.filter(item => !item.isGroupItem);
+        const itemsToFilter = this._getItems().filter(item => !item.isGroupItem);
         const filteredItems = (Filters[this.filter] || Filters.StartsWithPerTerm)(str, itemsToFilter, "text");
         // Return the filtered items and their group items
-        return this.items.filter((item, idx, allItems) => MultiComboBox_1._groupItemFilter(item, ++idx, allItems, filteredItems) || filteredItems.indexOf(item) !== -1);
+        return this._getItems().filter((item, idx, allItems) => MultiComboBox_1._groupItemFilter(item, ++idx, allItems, filteredItems) || filteredItems.indexOf(item) !== -1);
     }
     /**
      * Returns true if the group header should be shown (if there is a filtered suggestion item for this group item)
@@ -804,11 +903,36 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     _toggle() {
         this._open = !this._open;
-        this.fireEvent("open-change");
+        // Fire event for the new state
+        if (this._open) {
+            this.fireEvent("open");
+        }
+        else {
+            this.fireEvent("close");
+        }
+    }
+    /**
+     * Retrieves a flat structure of all MultiComboBox items from the slotted nodes.
+     *
+     * @private
+     */
+    _getItems() {
+        const items = [];
+        const slottedItems = this.getSlottedNodes("items");
+        slottedItems.forEach(item => {
+            if (isInstanceOfMultiComboBoxItemGroup(item)) {
+                const groupItems = [item, ...item.items].filter(Boolean);
+                items.push(...groupItems);
+            }
+            else {
+                items.push(item);
+            }
+        });
+        return items;
     }
     _getSelectedItems() {
         // Angular 2 way data binding
-        this.selectedValues = this.items.filter(item => item.selected);
+        this.selectedValues = this._getItems().filter(item => item.selected);
         return this.selectedValues;
     }
     _listSelectionChange(e) {
@@ -848,7 +972,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     syncItems(listItems) {
         listItems.forEach(item => {
-            this.items.forEach(mcbItem => {
+            this._getItems().forEach(mcbItem => {
                 if (mcbItem._id === item.getAttribute("data-ui5-token-id")) {
                     mcbItem.selected = item.selected;
                 }
@@ -898,7 +1022,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         this.filterSelected = false;
     }
     _beforeOpen() {
-        this._itemsBeforeOpen = this.items.map(item => {
+        this._itemsBeforeOpen = this._getItems().map(item => {
             return {
                 ref: item,
                 selected: item.selected,
@@ -910,7 +1034,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         this._innerInput.value = this.value;
         if (this.filterSelected) {
             const selectedItems = this._filteredItems.filter(item => item.selected);
-            this.selectedItems = this.items.filter((item, idx, allItems) => MultiComboBox_1._groupItemFilter(item, ++idx, allItems, selectedItems) || selectedItems.indexOf(item) !== -1);
+            this.selectedItems = this._getItems().filter((item, idx, allItems) => MultiComboBox_1._groupItemFilter(item, ++idx, allItems, selectedItems) || selectedItems.indexOf(item) !== -1);
         }
     }
     _handleTypeAhead(item, filterValue) {
@@ -926,7 +1050,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         this._shouldAutocomplete = false;
     }
     _getFirstMatchingItem(current) {
-        if (!this.items.length) {
+        if (!this._getItems().length) {
             return;
         }
         const matchingItems = this._startsWithMatchingItems(current).filter(item => !item.isGroupItem && !item.selected);
@@ -935,7 +1059,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         }
     }
     _startsWithMatchingItems(str) {
-        return Filters.StartsWith(str, this.items, "text");
+        return Filters.StartsWith(str, this._getItems(), "text");
     }
     _revertSelection() {
         this._filteredItems.forEach(item => {
@@ -957,9 +1081,9 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         this._inputLastValue = value;
         if (input && !input.value) {
             this.valueBeforeAutoComplete = "";
-            this._filteredItems = this.items;
+            this._filteredItems = this._getItems();
         }
-        this.items.forEach(item => {
+        this._getItems().forEach(item => {
             item._getRealDomRef = () => this._getRespPopover().querySelector(`*[data-ui5-stable=${item.stableDomRef}]`);
         });
         this.tokenizerAvailable = this._getSelectedItems().length > 0;
@@ -979,7 +1103,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
             this._filteredItems = this._filterItems(this._shouldAutocomplete || !!autoCompletedChars ? this.valueBeforeAutoComplete : value);
         }
         else {
-            this._filteredItems = this.items;
+            this._filteredItems = this._getItems();
         }
     }
     async onAfterRendering() {
@@ -1265,7 +1389,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         return MultiComboBox_1.i18nBundle.getText(INPUT_CLEAR_ICON_ACC_NAME);
     }
     get selectAllCheckboxLabel() {
-        const items = this.items.filter(item => !item.isGroupItem);
+        const items = this._getItems().filter(item => !item.isGroupItem);
         const selected = items.filter(item => item.selected);
         return MultiComboBox_1.i18nBundle.getText(MCB_SELECTED_ITEMS, selected.length, items.length);
     }
@@ -1326,7 +1450,7 @@ __decorate([
     property({ type: Boolean })
 ], MultiComboBox.prototype, "disabled", void 0);
 __decorate([
-    property({ type: ValueState, defaultValue: ValueState.None })
+    property()
 ], MultiComboBox.prototype, "valueState", void 0);
 __decorate([
     property({ type: Boolean })
@@ -1335,7 +1459,7 @@ __decorate([
     property({ type: Boolean })
 ], MultiComboBox.prototype, "required", void 0);
 __decorate([
-    property({ type: ComboBoxFilter, defaultValue: ComboBoxFilter.StartsWithPerTerm })
+    property()
 ], MultiComboBox.prototype, "filter", void 0);
 __decorate([
     property({ type: Boolean })
@@ -1350,7 +1474,7 @@ __decorate([
     property({ type: Boolean })
 ], MultiComboBox.prototype, "showSelectAll", void 0);
 __decorate([
-    property({ type: ValueState, defaultValue: ValueState.None })
+    property()
 ], MultiComboBox.prototype, "_effectiveValueState", void 0);
 __decorate([
     property({ type: Boolean })
@@ -1359,10 +1483,10 @@ __decorate([
     property()
 ], MultiComboBox.prototype, "_valueBeforeOpen", void 0);
 __decorate([
-    property({ type: Object, noAttribute: true, multiple: true })
+    property({ type: Array })
 ], MultiComboBox.prototype, "_filteredItems", void 0);
 __decorate([
-    property({ type: Object, noAttribute: true, multiple: true })
+    property({ type: Array })
 ], MultiComboBox.prototype, "_previouslySelectedItems", void 0);
 __decorate([
     property({ type: Boolean })
@@ -1377,10 +1501,10 @@ __decorate([
     property({ type: Boolean, noAttribute: true })
 ], MultiComboBox.prototype, "_iconPressed", void 0);
 __decorate([
-    property({ validator: Integer, noAttribute: true })
+    property({ type: Number, noAttribute: true })
 ], MultiComboBox.prototype, "_inputWidth", void 0);
 __decorate([
-    property({ validator: Integer, noAttribute: true, defaultValue: 0 })
+    property({ type: Number, noAttribute: true })
 ], MultiComboBox.prototype, "_listWidth", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
@@ -1392,7 +1516,7 @@ __decorate([
     property({ type: Boolean, noAttribute: true })
 ], MultiComboBox.prototype, "_effectiveShowClearIcon", void 0);
 __decorate([
-    property({ type: ValueState, defaultValue: ValueState.None })
+    property()
 ], MultiComboBox.prototype, "_dialogInputValueState", void 0);
 __decorate([
     property({ type: Boolean })
@@ -1422,7 +1546,7 @@ MultiComboBox = MultiComboBox_1 = __decorate([
         ],
         dependencies: [
             MultiComboBoxItem,
-            MultiComboBoxGroupItem,
+            MultiComboBoxItemGroup,
             Tokenizer,
             Token,
             Icon,
@@ -1430,8 +1554,8 @@ MultiComboBox = MultiComboBox_1 = __decorate([
             ResponsivePopover,
             Popover,
             List,
-            StandardListItem,
-            ListItemGroupHeader,
+            ListItemStandard,
+            ListItemGroup,
             ToggleButton,
             Button,
             CheckBox,
@@ -1451,12 +1575,19 @@ MultiComboBox = MultiComboBox_1 = __decorate([
     ,
     event("input")
     /**
-     * Fired when the dropdown is opened or closed.
-     * @since 1.0.0-rc.5
+     * Fired when the dropdown is opened.
+     * @since 2.0.0
      * @public
      */
     ,
-    event("open-change")
+    event("open")
+    /**
+     * Fired when the dropdown is closed.
+     * @since 2.0.0
+     * @public
+     */
+    ,
+    event("close")
     /**
      * Fired when selection is changed by user interaction.
      * @param {IMultiComboBoxItem[]} items an array of the selected items.

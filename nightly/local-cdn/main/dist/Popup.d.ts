@@ -42,10 +42,13 @@ type PopupBeforeCloseEventDetail = {
 declare abstract class Popup extends UI5Element {
     /**
      * Defines the ID of the HTML Element, which will get the initial focus.
-     * @default ""
+     *
+     * **Note:** If an element with `autofocus` attribute is added inside the component,
+     * `initialFocus` won't take effect.
+     * @default undefined
      * @public
      */
-    initialFocus: string;
+    initialFocus?: string;
     /**
      * Defines if the focus should be returned to the previously focused element,
      * when the popup closes.
@@ -63,11 +66,11 @@ declare abstract class Popup extends UI5Element {
     accessibleName?: string;
     /**
      * Defines the IDs of the elements that label the component.
-     * @default ""
+     * @default undefined
      * @public
      * @since 1.1.0
      */
-    accessibleNameRef: string;
+    accessibleNameRef?: string;
     /**
      * Allows setting a custom role.
      * @default "Dialog"
@@ -79,7 +82,7 @@ declare abstract class Popup extends UI5Element {
      * Defines the current media query size.
      * @private
      */
-    mediaRange: string;
+    mediaRange?: string;
     /**
      * Indicates whether initial focus should be prevented.
      * @public

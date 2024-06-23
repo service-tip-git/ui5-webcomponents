@@ -6,7 +6,7 @@ import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ResponsivePopover from "./ResponsivePopover.js";
 import List from "./List.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
-import Token from "./Token.js";
+import type Token from "./Token.js";
 import type { IToken } from "./MultiInput.js";
 import type { TokenDeleteEventDetail } from "./Token.js";
 type TokenizerTokenDeleteEventDetail = {
@@ -55,9 +55,10 @@ declare enum ClipboardDataOperation {
  * `import "@ui5/webcomponents/dist/Tokenizer.js";`
  *
  * @constructor
- * @extends sap.ui.webc.base.UI5Element
+ * @extends UI5Element
  * @public
  * @since 2.0.0
+ * @experimental This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.
  */
 declare class Tokenizer extends UI5Element {
     /**
@@ -111,7 +112,7 @@ declare class Tokenizer extends UI5Element {
      * @private
      * @default ""
      */
-    opener: HTMLElement;
+    opener?: HTMLElement;
     /**
      * Sets the min-width of the nMore Popover.
      * **Note:** Used inside MultiInput and MultiComboBox components.

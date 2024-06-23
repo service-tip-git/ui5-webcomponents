@@ -4,7 +4,6 @@ import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import encodeXML from "@ui5/webcomponents-base/dist/sap/base/security/encodeXML.js";
 import generateHighlightedMarkup from "@ui5/webcomponents-base/dist/util/generateHighlightedMarkup.js";
 import List from "../List.js";
-import "../ResponsivePopover.js";
 import SuggestionItem from "../SuggestionItem.js";
 import SuggestionGroupItem from "../SuggestionGroupItem.js";
 import Button from "../Button.js";
@@ -390,7 +389,10 @@ class Suggestions {
         }
         const itemPositionText = Suggestions.i18nBundle.getText(LIST_ITEM_POSITION, this.accInfo.currentPos, this.accInfo.listSize);
         const groupItemText = Suggestions.i18nBundle.getText(LIST_ITEM_GROUP_HEADER);
-        return this.accInfo.isGroup ? `${groupItemText} ${this.accInfo.itemText}` : `${this.accInfo.description} ${this.accInfo.additionalText} ${itemPositionText}`;
+        if (this.accInfo.isGroup) {
+            return [groupItemText, this.accInfo.itemText].filter(Boolean).join(" ");
+        }
+        return [this.accInfo.description, this.accInfo.additionalText, itemPositionText].filter(Boolean).join(" ");
     }
     getRowText(suggestion) {
         return this.sanitizeText(suggestion.text || suggestion.textContent || "");

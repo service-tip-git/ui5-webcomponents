@@ -9,12 +9,11 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import "./ListItemBase.js";
 // Template
 import ListItemGroupTemplate from "./generated/templates/ListItemGroupTemplate.lit.js";
 // Styles
 import ListItemGroupCss from "./generated/themes/ListItemGroup.css.js";
-import StandardListItem from "./StandardListItem.js";
+import ListItemStandard from "./ListItemStandard.js";
 import ListItemGroupHeader from "./ListItemGroupHeader.js";
 /**
  * @class
@@ -32,6 +31,14 @@ import ListItemGroupHeader from "./ListItemGroupHeader.js";
  * @since 2.0.0
  */
 let ListItemGroup = class ListItemGroup extends UI5Element {
+    constructor() {
+        super(...arguments);
+        /**
+         * Indicates whether the header is focused
+         * @private
+         */
+        this.focused = false;
+    }
     get groupHeaderItem() {
         return this.shadowRoot.querySelector("[ui5-li-group-header]");
     }
@@ -49,7 +56,7 @@ __decorate([
     property()
 ], ListItemGroup.prototype, "headerText", void 0);
 __decorate([
-    property({ type: String })
+    property()
 ], ListItemGroup.prototype, "headerAccessibleName", void 0);
 __decorate([
     slot({
@@ -71,7 +78,7 @@ ListItemGroup = __decorate([
         languageAware: true,
         template: ListItemGroupTemplate,
         styles: [ListItemGroupCss],
-        dependencies: [StandardListItem, ListItemGroupHeader],
+        dependencies: [ListItemStandard, ListItemGroupHeader],
     })
 ], ListItemGroup);
 ListItemGroup.define();

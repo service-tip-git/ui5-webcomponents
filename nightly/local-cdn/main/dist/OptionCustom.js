@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import "./Select.js";
 import ListItemBase from "./ListItemBase.js";
 // Template
 import OptionCustomTemplate from "./generated/templates/OptionCustomTemplate.lit.js";
@@ -46,7 +45,7 @@ __decorate([
     slot({ type: Node, "default": true, invalidateOnChildChange: true })
 ], OptionCustom.prototype, "content", void 0);
 __decorate([
-    property({ type: String })
+    property()
 ], OptionCustom.prototype, "tooltip", void 0);
 OptionCustom = __decorate([
     customElement({

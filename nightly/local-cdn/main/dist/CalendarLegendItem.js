@@ -10,7 +10,6 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
-import "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import CalendarLegendItemType from "./types/CalendarLegendItemType.js";
 import { CAL_LEGEND_TODAY_TEXT, CAL_LEGEND_SELECTED_TEXT, CAL_LEGEND_WORKING_DAY_TEXT, CAL_LEGEND_NON_WORKING_DAY_TEXT, } from "./generated/i18n/i18n-defaults.js";
 import CalendarLegendItemTemplate from "./generated/templates/CalendarLegendItemTemplate.lit.js";
@@ -38,6 +37,20 @@ import CalendarLegendItemCss from "./generated/themes/CalendarLegendItem.css.js"
  * @public
  */
 let CalendarLegendItem = CalendarLegendItem_1 = class CalendarLegendItem extends UI5Element {
+    constructor() {
+        super(...arguments);
+        /**
+         * Defines the type of the Calendar Legend Item.
+         * @default "None"
+         * @public
+         */
+        this.type = "None";
+        /**
+         * Tab index of the component.
+         * @private
+         */
+        this.forcedTabIndex = "-1";
+    }
     static async onDefine() {
         CalendarLegendItem_1.i18nBundle = await getI18nBundle("@ui5/webcomponents");
     }
@@ -59,10 +72,10 @@ __decorate([
     property()
 ], CalendarLegendItem.prototype, "text", void 0);
 __decorate([
-    property({ type: CalendarLegendItemType, defaultValue: CalendarLegendItemType.None })
+    property()
 ], CalendarLegendItem.prototype, "type", void 0);
 __decorate([
-    property({ defaultValue: "-1", noAttribute: true })
+    property({ noAttribute: true })
 ], CalendarLegendItem.prototype, "forcedTabIndex", void 0);
 CalendarLegendItem = CalendarLegendItem_1 = __decorate([
     customElement({

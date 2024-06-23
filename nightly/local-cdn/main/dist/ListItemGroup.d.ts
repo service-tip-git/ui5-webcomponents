@@ -1,5 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import ListItemBase from "./ListItemBase.js";
+import type ListItemBase from "./ListItemBase.js";
 import ListItemGroupHeader from "./ListItemGroupHeader.js";
 /**
  * @class
@@ -20,15 +20,15 @@ declare class ListItemGroup extends UI5Element {
     /**
      * Defines the header text of the <code>ui5-li-group</code>.
      * @public
-     * @default ""
+     * @default undefined
      */
-    headerText: string;
+    headerText?: string;
     /**
      * Defines the accessible name of the header.
      * @public
-     * @default ""
+     * @default undefined
      */
-    headerAccessibleName: string;
+    headerAccessibleName?: string;
     /**
      * Defines the items of the <code>ui5-li-group</code>.
      * @public

@@ -11,7 +11,6 @@ import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
-import DOMReference from "@ui5/webcomponents-base/dist/types/DOMReference.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
@@ -19,8 +18,8 @@ import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/Ari
 import getActiveElement from "@ui5/webcomponents-base/dist/util/getActiveElement.js";
 import { getFocusedElement } from "@ui5/webcomponents-base/dist/util/PopupUtils.js";
 import ScrollEnablement from "@ui5/webcomponents-base/dist/delegate/ScrollEnablement.js";
-import Integer from "@ui5/webcomponents-base/dist/types/Integer.js";
 import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
+import DOMReferenceConverter from "@ui5/webcomponents-base/dist/converters/DOMReference.js";
 import { isSpace, isSpaceCtrl, isSpaceShift, isLeftCtrl, isRightCtrl, isUpCtrl, isDownCtrl, isUpShift, isDownShift, isLeftShift, isRightShift, isLeftShiftCtrl, isRightShiftCtrl, isDeleteShift, isInsertCtrl, isEnd, isHome, isHomeShift, isEndShift, isPageUpShift, isPageDownShift, isHomeCtrl, isEndCtrl, isRight, isLeft, isUp, isDown, isEscape, } from "@ui5/webcomponents-base/dist/Keys.js";
 import { isPhone } from "@ui5/webcomponents-base/dist/Device.js";
 import ResponsivePopover from "./ResponsivePopover.js";
@@ -29,8 +28,7 @@ import ListSelectionMode from "./types/ListSelectionMode.js";
 import Title from "./Title.js";
 import Button from "./Button.js";
 import Icon from "./Icon.js";
-import StandardListItem from "./StandardListItem.js";
-import "./Token.js";
+import ListItemStandard from "./ListItemStandard.js";
 import TokenizerTemplate from "./generated/templates/TokenizerTemplate.lit.js";
 import { MULTIINPUT_SHOW_MORE_TOKENS, TOKENIZER_ARIA_LABEL, TOKENIZER_POPOVER_REMOVE, TOKENIZER_ARIA_CONTAIN_TOKEN, TOKENIZER_ARIA_CONTAIN_ONE_TOKEN, TOKENIZER_ARIA_CONTAIN_SEVERAL_TOKENS, TOKENIZER_SHOW_ALL_ITEMS, } from "./generated/i18n/i18n-defaults.js";
 // Styles
@@ -39,7 +37,6 @@ import TokenizerPopoverCss from "./generated/themes/TokenizerPopover.css.js";
 import ResponsivePopoverCommonCss from "./generated/themes/ResponsivePopoverCommon.css.js";
 // reuse suggestions focus styling for NMore popup
 import SuggestionsCss from "./generated/themes/Suggestions.css.js";
-import "./ListItem.js";
 var ClipboardDataOperation;
 (function (ClipboardDataOperation) {
     ClipboardDataOperation["cut"] = "cut";
@@ -78,9 +75,10 @@ var ClipboardDataOperation;
  * `import "@ui5/webcomponents/dist/Tokenizer.js";`
  *
  * @constructor
- * @extends sap.ui.webc.base.UI5Element
+ * @extends UI5Element
  * @public
  * @since 2.0.0
+ * @experimental This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.
  */
 let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
     _handleResize() {
@@ -88,13 +86,70 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
     }
     constructor() {
         super();
+        /**
+         * Defines whether the component is read-only.
+         *
+         * **Note:** A read-only component is not editable,
+         * but still provides visual feedback upon user interaction.
+         * @default false
+         * @public
+         */
+        this.readonly = false;
+        /**
+         * Defines whether the component is disabled.
+         *
+         * **Note:** A disabled component is completely noninteractive.
+         * @default false
+         * @public
+         */
+        this.disabled = false;
+        /**
+         * Indicates if the tokenizer should show all tokens or n more label instead
+         * **Note:** Used inside MultiInput and MultiComboBox components.
+         * @default false
+         * @private
+         */
+        this.expanded = false;
+        /**
+         * Indicates if the nMore popover is open
+         * **Note:** Used inside MultiInput and MultiComboBox components.
+         * @default false
+         * @private
+         */
+        this.open = false;
+        /**
+         * Prevents tokens to be part of the tab chain.
+         * **Note:** Used inside MultiInput and MultiComboBox components.
+         * @default false
+         * @private
+         */
+        this.preventInitialFocus = false;
+        /**
+         * Prevent opening of n-more Popover when label is clicked
+         * **Note:** Used inside MultiComboBox component.
+         * @default false
+         * @private
+         */
+        this.preventPopoverOpen = false;
+        /**
+         * Hides the popover arrow.
+         * **Note:** Used inside MultiInput and MultiComboBox components.
+         * @default false
+         * @private
+         */
+        this.hidePopoverArrow = false;
+        this._nMoreCount = 0;
+        this._tokensCount = 0;
+        this._tokenDeleting = false;
+        this._preventCollapse = false;
+        this._skipTabIndex = false;
+        this._previousToken = null;
         this._resizeHandler = this._handleResize.bind(this);
         this._itemNav = new ItemNavigation(this, {
             currentIndex: -1,
             getItemsCallback: this._getVisibleTokens.bind(this),
         });
         this._scrollEnablement = new ScrollEnablement(this);
-        this._tokenDeleting = false;
         this._deletedDialogItems = [];
     }
     onBeforeRendering() {
@@ -609,7 +664,11 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
         return this.getSlottedNodes("tokens");
     }
     get morePopoverOpener() {
-        return Object.keys(this.opener).length === 0 ? this : this.opener;
+        // return this.opener ? this : this.opener;
+        if (this.opener) {
+            return this.opener;
+        }
+        return this;
     }
     get _nMoreText() {
         if (!this._nMoreCount) {
@@ -711,10 +770,10 @@ __decorate([
     property({ type: Boolean })
 ], Tokenizer.prototype, "disabled", void 0);
 __decorate([
-    property({ defaultValue: undefined })
+    property()
 ], Tokenizer.prototype, "accessibleName", void 0);
 __decorate([
-    property({ defaultValue: undefined })
+    property()
 ], Tokenizer.prototype, "accessibleNameRef", void 0);
 __decorate([
     property({ type: Boolean })
@@ -723,10 +782,12 @@ __decorate([
     property({ type: Boolean })
 ], Tokenizer.prototype, "open", void 0);
 __decorate([
-    property({ validator: DOMReference, defaultValue: "" })
+    property({
+        converter: DOMReferenceConverter,
+    })
 ], Tokenizer.prototype, "opener", void 0);
 __decorate([
-    property({ validator: Integer })
+    property({ type: Number })
 ], Tokenizer.prototype, "popoverMinWidth", void 0);
 __decorate([
     property({ type: Boolean })
@@ -738,10 +799,10 @@ __decorate([
     property({ type: Boolean })
 ], Tokenizer.prototype, "hidePopoverArrow", void 0);
 __decorate([
-    property({ validator: Integer })
+    property({ type: Number })
 ], Tokenizer.prototype, "_nMoreCount", void 0);
 __decorate([
-    property({ validator: Integer })
+    property({ type: Number })
 ], Tokenizer.prototype, "_tokensCount", void 0);
 __decorate([
     slot({
@@ -769,7 +830,7 @@ Tokenizer = Tokenizer_1 = __decorate([
         dependencies: [
             ResponsivePopover,
             List,
-            StandardListItem,
+            ListItemStandard,
             Title,
             Button,
             Icon,

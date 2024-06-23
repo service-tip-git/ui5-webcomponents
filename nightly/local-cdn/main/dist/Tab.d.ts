@@ -8,13 +8,13 @@ import "@ui5/webcomponents-icons/dist/sys-enter-2.js";
 import SemanticColor from "./types/SemanticColor.js";
 import ListItemType from "./types/ListItemType.js";
 import type { TabContainerStripInfo, TabContainerOverflowInfo, ITab } from "./TabContainer.js";
-import CustomListItem from "./CustomListItem.js";
+import ListItemCustom from "./ListItemCustom.js";
 import TabInStripTemplate from "./generated/templates/TabInStripTemplate.lit.js";
 import TabInOverflowTemplate from "./generated/templates/TabInOverflowTemplate.lit.js";
 interface TabInStrip extends HTMLElement {
     realTabReference: Tab;
 }
-interface TabInOverflow extends CustomListItem {
+interface TabInOverflow extends ListItemCustom {
     realTabReference: Tab;
 }
 /**
@@ -31,10 +31,10 @@ interface TabInOverflow extends CustomListItem {
 declare class Tab extends UI5Element implements ITabbable, ITab {
     /**
      * The text to be displayed for the item.
-     * @default ""
+     * @default undefined
      * @public
      */
-    text: string;
+    text?: string;
     /**
      * Disabled tabs can't be selected.
      * @default false
@@ -43,18 +43,18 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
     disabled: boolean;
     /**
      * Represents the "additionalText" text, which is displayed in the tab. In the cases when in the same time there are tabs with icons and tabs without icons, if a tab has no icon the "additionalText" is displayed larger.
-     * @default ""
+     * @default undefined
      * @public
      */
-    additionalText: string;
+    additionalText?: string;
     /**
      * Defines the icon source URI to be displayed as graphical element within the component.
      * The SAP-icons font provides numerous built-in icons.
      * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
-     * @default ""
+     * @default undefined
      * @public
      */
-    icon: string;
+    icon?: string;
     /**
      * Defines the component's design color.
      *
@@ -85,7 +85,7 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
      */
     movable: boolean;
     _isTopLevelTab: boolean;
-    _selectedTabReference: Tab;
+    _selectedTabReference?: Tab;
     /**
      * Holds the content associated with this tab.
      * @public
@@ -102,14 +102,14 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
     _forcedMixedMode?: boolean;
     _getElementInStrip?: () => HTMLElement | undefined;
     _getElementInOverflow?: () => HTMLElement | undefined;
-    _individualSlot: string;
+    _individualSlot?: string;
     _forcedPosinset?: number;
     _forcedSetsize?: number;
     _forcedStyleInOverflow?: Record<string, any>;
     static i18nBundle: I18nBundle;
     set forcedTabIndex(val: string);
     get forcedTabIndex(): string;
-    get displayText(): string;
+    get displayText(): string | undefined;
     get isSeparator(): boolean;
     get stripPresentation(): object;
     get overflowPresentation(): object;
@@ -118,7 +118,7 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
     get isSingleClickArea(): boolean;
     get isTwoClickArea(): boolean;
     get isOnSelectedTabPath(): boolean;
-    get _effectiveSlotName(): string;
+    get _effectiveSlotName(): string | undefined;
     get _defaultSlotName(): "" | "disabled-slot";
     get hasOwnContent(): boolean;
     get expandBtnAccessibilityAttributes(): Pick<AccessibilityAttributes, "hasPopup">;

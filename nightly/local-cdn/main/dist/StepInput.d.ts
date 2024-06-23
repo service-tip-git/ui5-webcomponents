@@ -1,7 +1,7 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
-import { Timeout } from "@ui5/webcomponents-base/dist/types.js";
+import type { Timeout } from "@ui5/webcomponents-base/dist/types.js";
 import type { IFormInputElement } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import "@ui5/webcomponents-icons/dist/less.js";
 import "@ui5/webcomponents-icons/dist/add.js";
@@ -115,10 +115,10 @@ declare class StepInput extends UI5Element implements IFormInputElement {
      * Determines the name by which the component will be identified upon submission in an HTML form.
      *
      * **Note:** This property is only applicable within the context of an HTML Form element.
-     * @default ""
+     * @default undefined
      * @public
      */
-    name: string;
+    name?: string;
     /**
      * Determines the number of digits after the decimal point of the component.
      * @default 0
@@ -127,18 +127,18 @@ declare class StepInput extends UI5Element implements IFormInputElement {
     valuePrecision: number;
     /**
      * Defines the accessible ARIA name of the component.
-     * @default ""
+     * @default undefined
      * @public
      * @since 1.0.0-rc.15
      */
-    accessibleName: string;
+    accessibleName?: string;
     /**
      * Receives id(or many ids) of the elements that label the component.
-     * @default ""
+     * @default undefined
      * @public
      * @since 1.0.0-rc.15
      */
-    accessibleNameRef: string;
+    accessibleNameRef?: string;
     _decIconDisabled: boolean;
     _incIconDisabled: boolean;
     focused: boolean;
@@ -146,8 +146,8 @@ declare class StepInput extends UI5Element implements IFormInputElement {
     _previousValue: number;
     _waitTimeout: number;
     _speed: number;
-    _btnDown: boolean;
-    _spinTimeoutId: Timeout;
+    _btnDown?: boolean;
+    _spinTimeoutId?: Timeout;
     _spinStarted: boolean;
     /**
      * Defines the value state message that will be displayed as pop up under the component.

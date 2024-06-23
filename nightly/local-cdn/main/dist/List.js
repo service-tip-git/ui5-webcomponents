@@ -15,7 +15,6 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import { isTabNext, isSpace, isEnter, isTabPrevious, } from "@ui5/webcomponents-base/dist/Keys.js";
-import Integer from "@ui5/webcomponents-base/dist/types/Integer.js";
 import DragRegistry from "@ui5/webcomponents-base/dist/util/dragAndDrop/DragRegistry.js";
 import findClosestPosition from "@ui5/webcomponents-base/dist/util/dragAndDrop/findClosestPosition.js";
 import NavigationMode from "@ui5/webcomponents-base/dist/types/NavigationMode.js";
@@ -29,8 +28,6 @@ import Orientation from "@ui5/webcomponents-base/dist/types/Orientation.js";
 import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
 import ListGrowingMode from "./types/ListGrowingMode.js";
-import ListAccessibleRole from "./types/ListAccessibleRole.js";
-import "./ListItemBase.js";
 import DropIndicator from "./DropIndicator.js";
 import ListSeparators from "./types/ListSeparators.js";
 import BusyIndicator from "./BusyIndicator.js";
@@ -41,8 +38,6 @@ import listCss from "./generated/themes/List.css.js";
 import browserScrollbarCSS from "./generated/themes/BrowserScrollbar.css.js";
 // Texts
 import { LOAD_MORE_TEXT, ARIA_LABEL_LIST_SELECTABLE, ARIA_LABEL_LIST_MULTISELECTABLE, ARIA_LABEL_LIST_DELETABLE, } from "./generated/i18n/i18n-defaults.js";
-import "./CheckBox.js";
-import "./RadioButton.js";
 import ListItemGroup, { isInstanceOfListItemGroup } from "./ListItemGroup.js";
 const INFINITE_SCROLL_DEBOUNCE_RATE = 250; // ms
 const PAGE_UP_DOWN_SIZE = 10;
@@ -92,9 +87,9 @@ const PAGE_UP_DOWN_SIZE = 10;
  *
  * `import "@ui5/webcomponents/dist/List.js";`
  *
- * `import "@ui5/webcomponents/dist/StandardListItem.js";` (for `ui5-li`)
+ * `import "@ui5/webcomponents/dist/ListItemStandard.js";` (for `ui5-li`)
  *
- * `import "@ui5/webcomponents/dist/CustomListItem.js";` (for `ui5-li-custom`)
+ * `import "@ui5/webcomponents/dist/ListItemCustom.js";` (for `ui5-li-custom`)
  *
  * `import "@ui5/webcomponents/dist/ListItemGroup.js";` (for `ui5-li-group`)
  * @constructor
@@ -107,6 +102,65 @@ let List = List_1 = class List extends UI5Element {
     }
     constructor() {
         super();
+        /**
+         * Determines whether the component is indented.
+         * @default false
+         * @public
+         */
+        this.indent = false;
+        /**
+         * Defines the selection mode of the component.
+         * @default "None"
+         * @public
+         */
+        this.selectionMode = "None";
+        /**
+         * Defines the item separator style that is used.
+         * @default "All"
+         * @public
+         */
+        this.separators = "All";
+        /**
+         * Defines whether the component will have growing capability either by pressing a `More` button,
+         * or via user scroll. In both cases `load-more` event is fired.
+         *
+         * **Restrictions:** `growing="Scroll"` is not supported for Internet Explorer,
+         * on IE the component will fallback to `growing="Button"`.
+         * @default "None"
+         * @since 1.0.0-rc.13
+         * @public
+         */
+        this.growing = "None";
+        /**
+         * Defines if the component would display a loading indicator over the list.
+         * @default false
+         * @public
+         * @since 1.0.0-rc.6
+         */
+        this.loading = false;
+        /**
+         * Defines the delay in milliseconds, after which the loading indicator will show up for this component.
+         * @default 1000
+         * @public
+         */
+        this.loadingDelay = 1000;
+        /**
+         * Defines the accessible role of the component.
+         * @public
+         * @default "List"
+         * @since 1.0.0-rc.15
+         */
+        this.accessibleRole = "List";
+        /**
+         * Defines if the entire list is in view port.
+         * @private
+         */
+        this._inViewport = false;
+        /**
+         * Defines the active state of the `More` button.
+         * @private
+         */
+        this._loadMoreActive = false;
         this._previouslyFocusedItem = null;
         // Indicates that the List is forwarding the focus before or after the internal ul.
         this._forwardingFocus = false;
@@ -773,16 +827,16 @@ __decorate([
     property({ type: Boolean })
 ], List.prototype, "indent", void 0);
 __decorate([
-    property({ type: ListSelectionMode, defaultValue: ListSelectionMode.None })
+    property()
 ], List.prototype, "selectionMode", void 0);
 __decorate([
     property()
 ], List.prototype, "noDataText", void 0);
 __decorate([
-    property({ type: ListSeparators, defaultValue: ListSeparators.All })
+    property()
 ], List.prototype, "separators", void 0);
 __decorate([
-    property({ type: ListGrowingMode, defaultValue: ListGrowingMode.None })
+    property()
 ], List.prototype, "growing", void 0);
 __decorate([
     property()
@@ -791,16 +845,16 @@ __decorate([
     property({ type: Boolean })
 ], List.prototype, "loading", void 0);
 __decorate([
-    property({ validator: Integer, defaultValue: 1000 })
+    property({ type: Number })
 ], List.prototype, "loadingDelay", void 0);
 __decorate([
     property()
 ], List.prototype, "accessibleName", void 0);
 __decorate([
-    property({ defaultValue: "" })
+    property()
 ], List.prototype, "accessibleNameRef", void 0);
 __decorate([
-    property({ type: ListAccessibleRole, defaultValue: ListAccessibleRole.List })
+    property()
 ], List.prototype, "accessibleRole", void 0);
 __decorate([
     property({ type: Boolean })
@@ -809,7 +863,11 @@ __decorate([
     property({ type: Boolean })
 ], List.prototype, "_loadMoreActive", void 0);
 __decorate([
-    slot({ type: HTMLElement, "default": true })
+    slot({
+        type: HTMLElement,
+        "default": true,
+        invalidateOnChildChange: true,
+    })
 ], List.prototype, "items", void 0);
 __decorate([
     slot()

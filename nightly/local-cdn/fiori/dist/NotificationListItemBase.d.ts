@@ -15,7 +15,7 @@ declare class NotificationListItemBase extends ListItemBase {
      * @default ""
      * @public
      */
-    titleText: string;
+    titleText?: string;
     /**
      * Defines if the `notification` is new or has been already read.
      *
@@ -42,7 +42,6 @@ declare class NotificationListItemBase extends ListItemBase {
     get hasTitleText(): boolean;
     get loadingText(): string;
     get isLoading(): boolean;
-    onEnterDOM(): void;
     /**
      * Event handlers
      */

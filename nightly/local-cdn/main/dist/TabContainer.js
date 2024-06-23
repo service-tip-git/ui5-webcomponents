@@ -15,7 +15,6 @@ import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.j
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import slideDown from "@ui5/webcomponents-base/dist/animations/slideDown.js";
 import slideUp from "@ui5/webcomponents-base/dist/animations/slideUp.js";
-import Integer from "@ui5/webcomponents-base/dist/types/Integer.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import { isDesktop, } from "@ui5/webcomponents-base/dist/Device.js";
 import { isSpace, isEnter, isDown, isRight, isLeft, isUp, } from "@ui5/webcomponents-base/dist/Keys.js";
@@ -35,11 +34,10 @@ import Button from "./Button.js";
 import Icon from "./Icon.js";
 import List from "./List.js";
 import DropIndicator from "./DropIndicator.js";
-import CustomListItem from "./CustomListItem.js";
+import ListItemCustom from "./ListItemCustom.js";
 import ResponsivePopover from "./ResponsivePopover.js";
 import TabContainerTabsPlacement from "./types/TabContainerTabsPlacement.js";
 import SemanticColor from "./types/SemanticColor.js";
-import BackgroundDesign from "./types/BackgroundDesign.js";
 import TabLayout from "./types/TabLayout.js";
 import OverflowMode from "./types/OverflowMode.js";
 // Templates
@@ -96,6 +94,65 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
     }
     constructor() {
         super();
+        /**
+         * Defines whether the tab content is collapsed.
+         * @default false
+         * @public
+         */
+        this.collapsed = false;
+        /**
+         * Defines the alignment of the content and the `additionalText` of a tab.
+         *
+         * **Note:**
+         * The content and the `additionalText` would be displayed vertically by default,
+         * but when set to `Inline`, they would be displayed horizontally.
+         * @default "Standard"
+         * @public
+         */
+        this.tabLayout = "Standard";
+        /**
+         * Defines the overflow mode of the header (the tab strip). If you have a large number of tabs, only the tabs that can fit on screen will be visible.
+         * All other tabs that can 't fit on the screen are available in an overflow tab "More".
+         *
+         * **Note:**
+         * Only one overflow at the end would be displayed by default,
+         * but when set to `StartAndEnd`, there will be two overflows on both ends, and tab order will not change on tab selection.
+         * @default "End"
+         * @since 1.1.0
+         * @public
+         */
+        this.overflowMode = "End";
+        /**
+         * Sets the background color of the Tab Container's header as `Solid`, `Transparent`, or `Translucent`.
+         * @default "Solid"
+         * @since 1.10.0
+         * @public
+         */
+        this.headerBackgroundDesign = "Solid";
+        /**
+         * Sets the background color of the Tab Container's content as `Solid`, `Transparent`, or `Translucent`.
+         * @default "Solid"
+         * @since 1.10.0
+         * @public
+         */
+        this.contentBackgroundDesign = "Solid";
+        /**
+         * Defines the placement of the tab strip relative to the actual tabs' content.
+         *
+         * **Note:** By default the tab strip is displayed above the tabs' content area and this is the recommended
+         * layout for most scenarios. Set to `Bottom` only when the component is at the
+         * bottom of the page and you want the tab strip to act as a menu.
+         * @default "Top"
+         * @since 1.0.0-rc.7
+         * @private
+         */
+        this.tabsPlacement = "Top";
+        this._animationRunning = false;
+        this._contentCollapsed = false;
+        this._startOverflowText = "0";
+        this._endOverflowText = "More";
+        this._popoverItemsFlat = [];
+        this._itemsFlat = [];
         this._hasScheduledPopoverOpen = false;
         this._handleResizeBound = this._handleResize.bind(this);
         // Init ItemNavigation
@@ -134,7 +191,9 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         this._setItemsForStrip();
         if (!this.shadowRoot.contains(document.activeElement)) {
             const focusStart = this._getRootTab(this._selectedTab);
-            this._itemNavigation.setCurrentItem(focusStart);
+            if (focusStart) {
+                this._itemNavigation.setCurrentItem(focusStart);
+            }
         }
         if (this.responsivePopover?.open) {
             const popoverItems = this._getPopoverItemsFor(this._getPopoverOwner(this.responsivePopover.opener));
@@ -202,6 +261,8 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         if (!e.dataTransfer || !(e.target instanceof HTMLElement)) {
             return;
         }
+        e.dataTransfer.dropEffect = "move";
+        e.dataTransfer.effectAllowed = "move";
         this._setDraggedElement(e.target.realTabReference);
     }
     _onHeaderDragEnter(e) {
@@ -435,7 +496,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         this._closePopover();
         await renderFinished();
         const selectedTopLevel = this._getRootTab(this._selectedTab);
-        selectedTopLevel.getDomRefInStrip().focus();
+        selectedTopLevel?.getDomRefInStrip().focus();
     }
     /**
      * Returns all slotted tabs and their subTabs in a flattened array.
@@ -566,7 +627,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         }
     }
     _getRootTab(tab) {
-        while (tab.hasAttribute("ui5-tab")) {
+        while (tab?.hasAttribute("ui5-tab")) {
             if (tab.parentElement.hasAttribute("ui5-tabcontainer")) {
                 break;
             }
@@ -578,7 +639,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         // show end overflow
         this._getEndOverflow().removeAttribute("hidden");
         const selectedTab = this._getRootTab(this._selectedTab);
-        const selectedTabDomRef = selectedTab.getDomRefInStrip();
+        const selectedTabDomRef = selectedTab?.getDomRefInStrip();
         const containerWidth = this._getTabStrip().offsetWidth;
         const selectedItemIndexAndWidth = this._getSelectedItemIndexAndWidth(itemsDomRefs, selectedTabDomRef);
         const lastVisibleTabIndex = this._findLastVisibleItem(itemsDomRefs, containerWidth, selectedItemIndexAndWidth.width);
@@ -591,7 +652,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
     _updateStartAndEndOverflow(itemsDomRefs) {
         let containerWidth = this._getTabStrip().offsetWidth;
         const selectedTab = this._getRootTab(this._selectedTab);
-        const selectedTabDomRef = selectedTab.getDomRefInStrip();
+        const selectedTabDomRef = selectedTab?.getDomRefInStrip();
         const selectedItemIndexAndWidth = this._getSelectedItemIndexAndWidth(itemsDomRefs, selectedTabDomRef);
         const hasStartOverflow = this._hasStartOverflow(containerWidth, itemsDomRefs, selectedItemIndexAndWidth);
         const hasEndOverflow = this._hasEndOverflow(containerWidth, itemsDomRefs, selectedItemIndexAndWidth);
@@ -684,6 +745,12 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         return itemDomRef.offsetWidth + margins;
     }
     _getSelectedItemIndexAndWidth(itemsDomRefs, selectedTabDomRef) {
+        if (!selectedTabDomRef) {
+            return {
+                index: 0,
+                width: 0,
+            };
+        }
         let index = itemsDomRefs.indexOf(selectedTabDomRef);
         let width = selectedTabDomRef.offsetWidth;
         let selectedSeparator;
@@ -946,19 +1013,19 @@ __decorate([
     property({ type: Boolean })
 ], TabContainer.prototype, "collapsed", void 0);
 __decorate([
-    property({ type: TabLayout, defaultValue: TabLayout.Standard })
+    property()
 ], TabContainer.prototype, "tabLayout", void 0);
 __decorate([
-    property({ type: OverflowMode, defaultValue: OverflowMode.End })
+    property()
 ], TabContainer.prototype, "overflowMode", void 0);
 __decorate([
-    property({ type: BackgroundDesign, defaultValue: BackgroundDesign.Solid })
+    property()
 ], TabContainer.prototype, "headerBackgroundDesign", void 0);
 __decorate([
-    property({ type: BackgroundDesign, defaultValue: BackgroundDesign.Solid })
+    property()
 ], TabContainer.prototype, "contentBackgroundDesign", void 0);
 __decorate([
-    property({ type: TabContainerTabsPlacement, defaultValue: TabContainerTabsPlacement.Top })
+    property()
 ], TabContainer.prototype, "tabsPlacement", void 0);
 __decorate([
     property()
@@ -973,16 +1040,16 @@ __decorate([
     property({ type: Boolean, noAttribute: true })
 ], TabContainer.prototype, "_contentCollapsed", void 0);
 __decorate([
-    property({ noAttribute: true, defaultValue: "0" })
+    property({ noAttribute: true })
 ], TabContainer.prototype, "_startOverflowText", void 0);
 __decorate([
-    property({ noAttribute: true, defaultValue: "More" })
+    property({ noAttribute: true })
 ], TabContainer.prototype, "_endOverflowText", void 0);
 __decorate([
-    property({ type: Object, multiple: true })
+    property({ type: Array })
 ], TabContainer.prototype, "_popoverItemsFlat", void 0);
 __decorate([
-    property({ validator: Integer, noAttribute: true })
+    property({ type: Number, noAttribute: true })
 ], TabContainer.prototype, "_width", void 0);
 __decorate([
     slot({
@@ -1022,7 +1089,7 @@ TabContainer = TabContainer_1 = __decorate([
             List,
             ResponsivePopover,
             DropIndicator,
-            CustomListItem,
+            ListItemCustom,
         ],
     })
     /**

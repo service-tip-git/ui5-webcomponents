@@ -17,6 +17,14 @@ import ComboBoxItem from "./ComboBoxItem.js";
  * @public
  */
 let MultiComboBoxItem = class MultiComboBoxItem extends ComboBoxItem {
+    constructor() {
+        super(...arguments);
+        /**
+         * Defines whether the item is filtered
+         * @private
+         */
+        this._isVisible = false;
+    }
     get isMultiComboBoxItem() {
         return true;
     }
@@ -24,6 +32,9 @@ let MultiComboBoxItem = class MultiComboBoxItem extends ComboBoxItem {
 __decorate([
     property({ type: Boolean })
 ], MultiComboBoxItem.prototype, "selected", void 0);
+__decorate([
+    property({ type: Boolean, noAttribute: true })
+], MultiComboBoxItem.prototype, "_isVisible", void 0);
 MultiComboBoxItem = __decorate([
     customElement("ui5-mcb-item")
 ], MultiComboBoxItem);

@@ -6,8 +6,8 @@ import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import "@ui5/webcomponents-icons/dist/overflow.js";
-import SideNavigationItemBase from "./SideNavigationItemBase.js";
-import SideNavigationSelectableItemBase from "./SideNavigationSelectableItemBase.js";
+import type SideNavigationItemBase from "./SideNavigationItemBase.js";
+import type SideNavigationSelectableItemBase from "./SideNavigationSelectableItemBase.js";
 import SideNavigationItem from "./SideNavigationItem.js";
 import SideNavigationSubItem from "./SideNavigationSubItem.js";
 import SideNavigationGroup from "./SideNavigationGroup.js";
@@ -103,10 +103,10 @@ declare class SideNavigation extends UI5Element {
      */
     _popoverContents: SideNavigationPopoverContents;
     inPopover: boolean;
+    _menuPopoverItems: Array<HTMLElement>;
     _isOverflow: boolean;
     _flexibleItemNavigation: ItemNavigation;
     _fixedItemNavigation: ItemNavigation;
-    _menuPopoverItems: Array<HTMLElement>;
     /**
      * @private
      */

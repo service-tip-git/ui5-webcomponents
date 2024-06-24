@@ -3,6 +3,7 @@ import { registerI18nLoader } from "@ui5/webcomponents-base/dist/asset-registrie
 const importMessageBundle = async (localeId) => {
     switch (localeId) {
         case "en": return (await import(/* webpackChunkName: "ui5-webcomponents-ai-messagebundle-en" */ "../assets/i18n/messagebundle_en.json")).default;
+        case "en_US_saprigi": return (await import(/* webpackChunkName: "ui5-webcomponents-ai-messagebundle-en_US_saprigi" */ "../assets/i18n/messagebundle_en_US_saprigi.json")).default;
         default: throw "unknown locale";
     }
 };
@@ -13,7 +14,8 @@ const importAndCheck = async (localeId) => {
     }
     return data;
 };
-const localeIds = ["en",];
+const localeIds = ["en",
+    "en_US_saprigi",];
 localeIds.forEach(localeId => {
     registerI18nLoader("@ui5/webcomponents-ai", localeId, importAndCheck);
 });

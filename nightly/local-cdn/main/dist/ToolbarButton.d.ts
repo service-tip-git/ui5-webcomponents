@@ -74,7 +74,7 @@ declare class ToolbarButton extends ToolbarItem {
     accessibleName?: string;
     /**
      * Receives id(or many ids) of the elements that label the component.
-     * @default ""
+     * @default undefined
      * @public
      */
     accessibleNameRef?: string;

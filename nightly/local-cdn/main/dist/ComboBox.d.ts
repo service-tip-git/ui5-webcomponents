@@ -177,14 +177,14 @@ declare class ComboBox extends UI5Element implements IFormInputElement {
     _isValueStateFocused: boolean;
     /**
      * Defines the accessible ARIA name of the component.
-     * @default ""
+     * @default undefined
      * @public
      * @since 1.0.0-rc.15
      */
     accessibleName?: string;
     /**
      * Receives id(or many ids) of the elements that label the component
-     * @default ""
+     * @default undefined
      * @public
      * @since 1.0.0-rc.15
      */

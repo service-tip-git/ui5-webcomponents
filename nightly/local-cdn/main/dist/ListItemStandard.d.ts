@@ -91,7 +91,7 @@ declare class ListItemStandard extends ListItem implements IAccessibleListItem {
      * @public
      * @since 1.0.0-rc.15
      */
-    accessibleName: string;
+    accessibleName?: string;
     /**
      * Defines if the text of the component should wrap, they truncate by default.
      *

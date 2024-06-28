@@ -138,13 +138,6 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
          */
         this.noTypeahead = false;
         /**
-         * Defines a short hint intended to aid the user with data entry when the
-         * component has no value.
-         * @default ""
-         * @public
-         */
-        this.placeholder = "";
-        /**
          * Defines if the user input will be prevented, if no matching item has been found
          * @default false
          * @public
@@ -378,7 +371,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         if (this._getSelectedItems().length) {
             return "";
         }
-        return this.placeholder;
+        return this.placeholder || "";
     }
     _handleArrowLeft() {
         const inputDomRef = this._inputDom;

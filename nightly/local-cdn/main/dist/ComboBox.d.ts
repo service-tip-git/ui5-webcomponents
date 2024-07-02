@@ -23,7 +23,8 @@ import type { InputEventDetail } from "./Input.js";
  * @public
  */
 interface IComboBoxItem extends UI5Element {
-    text: string;
+    text?: string;
+    headerText?: string;
     focused: boolean;
     isGroupItem?: boolean;
     selected?: boolean;

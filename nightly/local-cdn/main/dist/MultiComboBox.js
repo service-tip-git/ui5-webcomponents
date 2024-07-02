@@ -480,7 +480,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     _handleTokenCreationUponPaste(pastedText, e) {
         const separatedText = pastedText.split(/\r\n|\r|\n|\t/g).filter(t => !!t);
-        const matchingItems = this._getItems().filter(item => separatedText.includes(item.text) && !item.selected);
+        const matchingItems = this._getItems().filter(item => !item.isGroupItem && !item.selected && separatedText.includes(item.text));
         if (matchingItems.length > 1) {
             e.preventDefault();
             this._selectItems(matchingItems);
@@ -501,7 +501,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         const selectedItem = this._getSelectedItems()[0];
         const focusedToken = this._tokenizer.tokens.find(token => token.focused);
         const value = this.value;
-        const matchingItem = this._getItems().find(item => item.text.localeCompare(value, undefined, { sensitivity: "base" }) === 0);
+        const matchingItem = this._getItems().find(item => item.text?.localeCompare(value, undefined, { sensitivity: "base" }) === 0);
         e.preventDefault();
         if (this.readonly) {
             return;
@@ -798,7 +798,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     _handleEnter() {
         const lowerCaseValue = this.value.toLowerCase();
-        const matchingItem = this._getItems().find(item => (item.text.toLowerCase() === lowerCaseValue && !item.isGroupItem));
+        const matchingItem = this._getItems().find(item => (!item.isGroupItem && item.text.toLowerCase() === lowerCaseValue));
         const oldValueState = this.valueState;
         const innerInput = this._innerInput;
         if (this._internals?.form) {
@@ -1046,13 +1046,13 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         if (!this._getItems().length) {
             return;
         }
-        const matchingItems = this._startsWithMatchingItems(current).filter(item => !item.isGroupItem && !item.selected);
+        const matchingItems = this._startsWithMatchingItems(current).filter(item => !item.selected);
         if (matchingItems.length) {
             return matchingItems[0];
         }
     }
     _startsWithMatchingItems(str) {
-        return Filters.StartsWith(str, this._getItems(), "text");
+        return Filters.StartsWith(str, this._getItems().filter(item => !item.isGroupItem), "text");
     }
     _revertSelection() {
         this._filteredItems.forEach(item => {

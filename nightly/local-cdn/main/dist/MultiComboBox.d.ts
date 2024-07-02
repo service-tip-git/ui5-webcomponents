@@ -29,7 +29,8 @@ import type PopoverHorizontalAlign from "./types/PopoverHorizontalAlign.js";
  * @public
  */
 interface IMultiComboBoxItem extends UI5Element {
-    text: string;
+    text?: string;
+    headerText?: string;
     selected: boolean;
     isGroupItem?: boolean;
     stableDomRef: string;

@@ -132,7 +132,7 @@ declare class CheckBox extends UI5Element implements IFormInputElement {
      * @default ""
      * @public
      */
-    text?: string;
+    text: string;
     /**
      * Defines the value state of the component.
      * @default "None"

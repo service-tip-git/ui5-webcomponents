@@ -246,6 +246,11 @@ declare class Calendar extends CalendarPart {
      * @private
      */
     get _isHeaderMonthButtonHidden(): boolean;
+    /**
+     * The year button is hidden when the year picker is shown
+     * @private
+     */
+    get _isHeaderYearButtonHidden(): boolean;
     get _isDayPickerHidden(): boolean;
     get _isMonthPickerHidden(): boolean;
     get _isYearPickerHidden(): boolean;

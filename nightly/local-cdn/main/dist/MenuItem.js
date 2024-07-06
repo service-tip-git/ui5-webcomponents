@@ -47,12 +47,6 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
     constructor() {
         super(...arguments);
         /**
-         * Defines the text of the tree item.
-         * @default ""
-         * @public
-         */
-        this.text = "";
-        /**
          * Defines whether `ui5-menu-item` is in disabled state.
          *
          * **Note:** A disabled `ui5-menu-item` is noninteractive.
@@ -91,7 +85,7 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
         return this.effectiveDir === "rtl";
     }
     get hasSubmenu() {
-        return !!(this.items.length || this.loading);
+        return !!(this.items.length || this.loading) && !this.disabled;
     }
     get hasEndContent() {
         return !!(this.endContent.length);
@@ -174,6 +168,9 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
         this.selected = false;
         if (e.detail.escPressed) {
             this.focus();
+            if (isPhone()) {
+                this.fireEvent("close-menu", {});
+            }
         }
     }
     _afterPopoverClose() {

@@ -101,6 +101,14 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
     constructor() {
         super(...arguments);
         /**
+         * Defines a formatted time value.
+         * @default ""
+         * @formEvents change input
+         * @formProperty
+         * @public
+         */
+        this.value = "";
+        /**
          * Defines the value state of the component.
          * @default "None"
          * @public

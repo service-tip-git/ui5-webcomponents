@@ -29,7 +29,7 @@ interface IInputSuggestionItem extends UI5Element {
     items?: IInputSuggestionItem[];
 }
 interface IInputSuggestionItemSelectable extends IInputSuggestionItem {
-    text: string;
+    text?: string;
     selected: boolean;
 }
 type NativeInputAttributes = {

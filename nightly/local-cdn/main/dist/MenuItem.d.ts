@@ -36,10 +36,10 @@ declare class MenuItem extends ListItem implements IMenuItem {
     static onDefine(): Promise<void>;
     /**
      * Defines the text of the tree item.
-     * @default ""
+     * @default undefined
      * @public
      */
-    text: string;
+    text?: string;
     /**
      * Defines the `additionalText`, displayed in the end of the menu item.
      *
@@ -141,7 +141,7 @@ declare class MenuItem extends ListItem implements IMenuItem {
     get hasIcon(): boolean;
     get isSubMenuOpen(): boolean;
     get ariaLabelledByText(): string;
-    get menuHeaderTextPhone(): string;
+    get menuHeaderTextPhone(): string | undefined;
     get isPhone(): boolean;
     get labelBack(): string;
     get labelClose(): string;

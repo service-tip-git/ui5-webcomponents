@@ -51,7 +51,7 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
             const formData = new FormData();
             formData.append(this.name, this.value);
             for (let i = 0; i < tokens.length; i++) {
-                formData.append(this.name, tokens[i].text);
+                formData.append(this.name, (tokens[i].text || ""));
             }
             return formData;
         }

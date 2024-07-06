@@ -755,7 +755,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     }
     _selectItem(e) {
         const listItem = e.detail.item;
-        this._selectedItemText = listItem.mappedItem.text;
+        this._selectedItemText = listItem.mappedItem.text || "";
         this._selectionPerformed = true;
         const sameItemSelected = this.value === this._selectedItemText;
         const sameSelectionPerformed = this.value.toLowerCase() === this.filterValue.toLowerCase();

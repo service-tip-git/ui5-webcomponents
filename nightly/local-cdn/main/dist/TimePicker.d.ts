@@ -80,12 +80,12 @@ type TimePickerInputEventDetail = TimePickerChangeInputEventDetail;
 declare class TimePicker extends UI5Element implements IFormInputElement {
     /**
      * Defines a formatted time value.
-     * @default undefined
+     * @default ""
      * @formEvents change input
      * @formProperty
      * @public
      */
-    value?: string;
+    value: string;
     /**
      * Determines the name by which the component will be identified upon submission in an HTML form.
      *
@@ -170,7 +170,7 @@ declare class TimePicker extends UI5Element implements IFormInputElement {
      * @public
      * @default null
      */
-    get dateValue(): Date | Date[] | null;
+    get dateValue(): Date | null;
     /**
      * @protected
      */
@@ -180,7 +180,7 @@ declare class TimePicker extends UI5Element implements IFormInputElement {
      */
     get _formatPattern(): string | undefined;
     get _displayFormat(): string;
-    get _effectiveValue(): string | undefined;
+    get _effectiveValue(): string;
     get _timeSelectionValue(): string | undefined;
     get _isPhone(): boolean;
     onTimeSelectionChange(e: CustomEvent<TimeSelectionChangeEventDetail>): void;

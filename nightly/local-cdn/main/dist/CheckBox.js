@@ -149,12 +149,6 @@ let CheckBox = CheckBox_1 = class CheckBox extends UI5Element {
          */
         this.checked = false;
         /**
-         * Defines the text of the component.
-         * @default ""
-         * @public
-         */
-        this.text = "";
-        /**
          * Defines the value state of the component.
          * @default "None"
          * @public

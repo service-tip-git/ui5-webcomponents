@@ -271,7 +271,7 @@ let Input = Input_1 = class Input extends UI5Element {
         deregisterUI5Element(this);
     }
     _highlightSuggestionItem(item) {
-        item.markupText = this.typedInValue ? this.Suggestions?.hightlightInput((item.text), this.typedInValue) : encodeXML(item.text || "");
+        item.markupText = this.typedInValue ? this.Suggestions?.hightlightInput((item.text || ""), this.typedInValue) : encodeXML(item.text || "");
     }
     _isGroupItem(item) {
         return item.hasAttribute("ui5-suggestion-item-group");
@@ -418,7 +418,7 @@ let Input = Input_1 = class Input extends UI5Element {
             return item.text === this.value;
         });
         if (matchingItem) {
-            const itemText = matchingItem.text;
+            const itemText = matchingItem.text || "";
             innerInput.setSelectionRange(itemText.length, itemText.length);
             if (!suggestionItemPressed) {
                 this.fireSelectionChange(matchingItem, true);
@@ -757,7 +757,7 @@ let Input = Input_1 = class Input extends UI5Element {
      */
     updateValueOnSelect(item) {
         const itemValue = this._isGroupItem(item) ? this.valueBeforeSelectionStart : item.text;
-        this.value = itemValue;
+        this.value = itemValue || "";
         this._performTextSelection = true;
     }
     fireEventByAction(action, e) {

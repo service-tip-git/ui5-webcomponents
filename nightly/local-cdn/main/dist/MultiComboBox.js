@@ -41,7 +41,7 @@ import ListItemStandard from "./ListItemStandard.js";
 import ToggleButton from "./ToggleButton.js";
 import * as Filters from "./Filters.js";
 import Button from "./Button.js";
-import { VALUE_STATE_SUCCESS, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_INFORMATION, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS_TITLE, SELECT_OPTIONS, SHOW_SELECTED_BUTTON, MULTICOMBOBOX_DIALOG_OK_BUTTON, VALUE_STATE_ERROR_ALREADY_SELECTED, MCB_SELECTED_ITEMS, INPUT_CLEAR_ICON_ACC_NAME, FORM_MIXED_TEXTFIELD_REQUIRED, } from "./generated/i18n/i18n-defaults.js";
+import { VALUE_STATE_SUCCESS, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_INFORMATION, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS_TITLE, SELECT_OPTIONS, SHOW_SELECTED_BUTTON, MULTICOMBOBOX_DIALOG_OK_BUTTON, COMBOBOX_AVAILABLE_OPTIONS, VALUE_STATE_ERROR_ALREADY_SELECTED, MCB_SELECTED_ITEMS, INPUT_CLEAR_ICON_ACC_NAME, FORM_MIXED_TEXTFIELD_REQUIRED, } from "./generated/i18n/i18n-defaults.js";
 // Templates
 import MultiComboBoxTemplate from "./generated/templates/MultiComboBoxTemplate.lit.js";
 // Styles
@@ -247,7 +247,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         this._inputWidth = this.offsetWidth;
     }
     _handleMobileInput(e) {
-        if (!this.open) {
+        if (!this.open || this.readonly) {
             return;
         }
         const target = e.target;
@@ -1216,7 +1216,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         const responsivePopover = this._getResponsivePopover();
         const popover = this._getPopover();
         const focusIsGoingInPopover = [responsivePopover, popover].some(popup => popup?.contains(e.relatedTarget));
-        const focusIsGoingInValueStatePopup = popover?.contains(e.relatedTarget);
+        const focusIsGoingInValueStatePopup = this?.contains(e.relatedTarget);
         if (focusIsGoingInValueStatePopup) {
             e.stopImmediatePropagation();
             return;
@@ -1263,7 +1263,7 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         if (this.shouldDisplayDefaultValueStateMessage) {
             return `${text} ${this.valueStateDefaultText || ""}`;
         }
-        return `${text}`.concat(" ", this.valueStateMessageText.map(el => el.textContent).join(" "));
+        return `${text}`.concat(" ", this.valueStateMessage.map(el => el.textContent).join(" "));
     }
     get valueStateDefaultText() {
         const valueState = isPhone() ? this._dialogInputValueState : this.valueState;
@@ -1277,9 +1277,6 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
     }
     get valueStateTextId() {
         return this.hasValueState ? `ui5-multi-combobox-valueStateDesc` : undefined;
-    }
-    get valueStateMessageText() {
-        return this.getSlottedNodes("valueStateMessage").map(el => el.cloneNode(true));
     }
     get ariaLabelText() {
         return getEffectiveAriaLabelText(this);
@@ -1383,6 +1380,9 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         const items = this._getItems().filter(item => !item.isGroupItem);
         const selected = items.filter(item => item.selected);
         return MultiComboBox_1.i18nBundle.getText(MCB_SELECTED_ITEMS, selected.length, items.length);
+    }
+    get _popupLabel() {
+        return MultiComboBox_1.i18nBundle.getText(COMBOBOX_AVAILABLE_OPTIONS);
     }
     get classes() {
         return {

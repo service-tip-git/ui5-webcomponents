@@ -73,7 +73,7 @@ type InputSuggestionScrollEventDetail = {
  *
  * The text field can be editable or read-only (`readonly` property),
  * and it can be enabled or disabled (`disabled` property).
- * To visualize semantic states, such as "error" or "warning", the `valueState` property is provided.
+ * To visualize semantic states, such as "Negative" or "Critical", the `valueState` property is provided.
  * When the user makes changes to the text, the change event is fired,
  * which enables you to react on any text change.
  *
@@ -305,7 +305,7 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormInpu
      * **Note:** If not specified, a default text (in the respective language) will be displayed.
      *
      * **Note:** The `valueStateMessage` would be displayed,
-     * when the component is in `Information`, `Warning` or `Error` value state.
+     * when the component is in `Information`, `Critical` or `Negative` value state.
      *
      * **Note:** If the component has `suggestionItems`,
      * the `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.
@@ -370,6 +370,7 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormInpu
     _clear(): void;
     _iconMouseDown(): void;
     _scroll(e: CustomEvent<PopupScrollEventDetail>): void;
+    _handleSelect(): void;
     _handleInput(e: InputEvent | CustomEvent<InputEventDetail>): void;
     _startsWithMatchingItems(str: string): Array<IInputSuggestionItemSelectable>;
     _getFirstMatchingItem(current: string): IInputSuggestionItemSelectable | undefined;
@@ -433,6 +434,7 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormInpu
     get _readonly(): boolean;
     get _headerTitleText(): string;
     get clearIconAccessibleName(): string;
+    get _popupLabel(): string;
     get inputType(): string;
     get isTypeNumber(): boolean;
     get suggestionsTextId(): "" | "suggestionsText";

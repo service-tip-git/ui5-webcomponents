@@ -28,7 +28,7 @@ import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import { submitForm } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import { isBackSpace, isDelete, isShow, isUp, isDown, isEnter, isEscape, isTabNext, isTabPrevious, isPageUp, isPageDown, isHome, isEnd, } from "@ui5/webcomponents-base/dist/Keys.js";
 import * as Filters from "./Filters.js";
-import { VALUE_STATE_SUCCESS, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_INFORMATION, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS_TITLE, SELECT_OPTIONS, LIST_ITEM_POSITION, LIST_ITEM_GROUP_HEADER, INPUT_CLEAR_ICON_ACC_NAME, FORM_TEXTFIELD_REQUIRED, } from "./generated/i18n/i18n-defaults.js";
+import { VALUE_STATE_SUCCESS, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_INFORMATION, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS_TITLE, COMBOBOX_AVAILABLE_OPTIONS, SELECT_OPTIONS, LIST_ITEM_POSITION, LIST_ITEM_GROUP_HEADER, INPUT_CLEAR_ICON_ACC_NAME, FORM_TEXTFIELD_REQUIRED, } from "./generated/i18n/i18n-defaults.js";
 // Templates
 import ComboBoxTemplate from "./generated/templates/ComboBoxTemplate.lit.js";
 // Styles
@@ -275,7 +275,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         }
         this._fireChangeEvent();
         const focusedOutToItemsPicker = this.open && this._getPicker().contains(toBeFocused);
-        const focusedOutToValueState = this.valueStateOpen && this._getValueStatePopover().contains(toBeFocused);
+        const focusedOutToValueState = this.valueStateOpen && this.contains(toBeFocused);
         if (focusedOutToItemsPicker || focusedOutToValueState) {
             e.stopImmediatePropagation();
             return;
@@ -834,7 +834,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         }
     }
     _announceValueStateText() {
-        const valueStateText = this.shouldDisplayDefaultValueStateMessage ? this.valueStateDefaultText : this.valueStateMessageText.map(el => el.textContent).join(" ");
+        const valueStateText = this.shouldDisplayDefaultValueStateMessage ? this.valueStateDefaultText : this.valueStateMessage.map(el => el.textContent).join(" ");
         if (valueStateText) {
             announce(valueStateText, InvisibleMessageMode.Polite);
         }
@@ -844,6 +844,9 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     }
     get _iconAccessibleNameText() {
         return ComboBox_1.i18nBundle.getText(SELECT_OPTIONS);
+    }
+    get _popupLabel() {
+        return ComboBox_1.i18nBundle.getText(COMBOBOX_AVAILABLE_OPTIONS);
     }
     get inner() {
         return (isPhone() && this.open)
@@ -876,16 +879,13 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         if (this.shouldDisplayDefaultValueStateMessage) {
             return `${text} ${this.valueStateDefaultText || ""}`;
         }
-        return `${text}`.concat(" ", this.valueStateMessageText.map(el => el.textContent).join(" "));
+        return `${text}`.concat(" ", this.valueStateMessage.map(el => el.textContent).join(" "));
     }
     get valueStateDefaultText() {
         if (this.valueState === ValueState.None) {
             return;
         }
         return this.valueStateTextMappings[this.valueState];
-    }
-    get valueStateMessageText() {
-        return this.getSlottedNodes("valueStateMessage").map(el => el.cloneNode(true));
     }
     get valueStateTextMappings() {
         return {

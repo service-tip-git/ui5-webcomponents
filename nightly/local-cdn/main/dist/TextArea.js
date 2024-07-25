@@ -101,8 +101,8 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
          * Defines the value state of the component.
          *
          * **Note:** If `maxlength` property is set,
-         * the component turns into "Warning" state once the characters exceeds the limit.
-         * In this case, only the "Error" state is considered and can be applied.
+         * the component turns into "Critical" state once the characters exceeds the limit.
+         * In this case, only the "Negative" state is considered and can be applied.
          * @default "None"
          * @since 1.0.0-rc.7
          * @public
@@ -210,7 +210,7 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
     }
     _onfocusout(e) {
         const eTarget = e.relatedTarget;
-        const focusedOutToValueStateMessage = eTarget?.shadowRoot?.querySelector(".ui5-valuestatemessage-root");
+        const focusedOutToValueStateMessage = eTarget && this.contains(eTarget);
         this.focused = false;
         if (!focusedOutToValueStateMessage) {
             this._openValueStateMsgPopover = false;
@@ -356,7 +356,7 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
             return;
         }
         if (this.hasCustomValueState) {
-            return `${this.valueStateTypeMappings[this.valueState]}`.concat(" ", this.valueStateMessageText.map(el => el.textContent).join(" "));
+            return `${this.valueStateTypeMappings[this.valueState]}`.concat(" ", this.valueStateMessage.map(el => el.textContent).join(" "));
         }
         return `${this.valueStateTypeMappings[this.valueState]} ${this.valueStateDefaultText}`;
     }
@@ -380,9 +380,6 @@ let TextArea = TextArea_1 = class TextArea extends UI5Element {
     }
     get hasValueState() {
         return this.valueState === ValueState.Negative || this.valueState === ValueState.Critical || this.valueState === ValueState.Information;
-    }
-    get valueStateMessageText() {
-        return this.valueStateMessage.map(x => x.cloneNode(true));
     }
     get _valueStatePopoverHorizontalAlign() {
         return this.effectiveDir !== "rtl" ? "Start" : "End";

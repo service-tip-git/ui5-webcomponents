@@ -245,7 +245,7 @@ declare class MultiComboBox extends UI5Element implements IFormInputElement {
      * **Note:** If not specified, a default text (in the respective language) will be displayed.
      *
      * **Note:** The `valueStateMessage` would be displayed,
-     * when the component is in `Information`, `Warning` or `Error` value state.
+     * when the component is in `Information`, `Critical` or `Negative` value state.
      * @since 1.0.0-rc.9
      * @public
      */
@@ -380,7 +380,6 @@ declare class MultiComboBox extends UI5Element implements IFormInputElement {
     get ariaValueStateHiddenText(): string | undefined;
     get valueStateDefaultText(): string;
     get valueStateTextId(): "ui5-multi-combobox-valueStateDesc" | undefined;
-    get valueStateMessageText(): Node[];
     get ariaLabelText(): string | undefined;
     /**
      * This method is relevant for sap_horizon theme only
@@ -404,6 +403,7 @@ declare class MultiComboBox extends UI5Element implements IFormInputElement {
     get iconsCount(): number;
     get clearIconAccessibleName(): string;
     get selectAllCheckboxLabel(): string;
+    get _popupLabel(): string;
     get classes(): ClassMap;
     get styles(): {
         popoverValueStateMessage: {

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sap.github.io/ui5-webcomponents/nightly/blog</id>
     <title>UI5 Web Components Blog</title>
-    <updated>2024-07-05T01:53:15.000Z</updated>
+    <updated>2024-07-03T10:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sap.github.io/ui5-webcomponents/nightly/blog"/>
     <subtitle>UI5 Web Components Blog</subtitle>
@@ -11,7 +11,7 @@
         <title type="html"><![CDATA[Announcing UI5 Web Components 2.0! A New Era Begins!]]></title>
         <id>https://sap.github.io/ui5-webcomponents/nightly/blog/releases/announcing-v2</id>
         <link href="https://sap.github.io/ui5-webcomponents/nightly/blog/releases/announcing-v2"/>
-        <updated>2024-07-05T01:53:15.000Z</updated>
+        <updated>2024-07-03T10:00:00.000Z</updated>
         <summary type="html"><![CDATA[A Journey of Innovation and Growth]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_fF9Z" id="a-journey-of-innovation-and-growth">A Journey of Innovation and Growth<a href="https://sap.github.io/ui5-webcomponents/nightly/blog/releases/announcing-v2#a-journey-of-innovation-and-growth" class="hash-link" aria-label="Direct link to A Journey of Innovation and Growth" title="Direct link to A Journey of Innovation and Growth">​</a></h2>
 <p>Since the release of UI5 Web Components 1.0 in 2021, our journey has been marked by unwavering innovation and a commitment to excellence. Over the past three years, we have listened to our community, refined our technologies, and expanded our capabilities.</p>

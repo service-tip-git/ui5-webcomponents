@@ -36,7 +36,7 @@ import Icon from "./Icon.js";
 // Templates
 import InputTemplate from "./generated/templates/InputTemplate.lit.js";
 import { StartsWith } from "./Filters.js";
-import { VALUE_STATE_SUCCESS, VALUE_STATE_INFORMATION, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS, INPUT_SUGGESTIONS_TITLE, INPUT_SUGGESTIONS_ONE_HIT, INPUT_SUGGESTIONS_MORE_HITS, INPUT_SUGGESTIONS_NO_HIT, INPUT_CLEAR_ICON_ACC_NAME, FORM_TEXTFIELD_REQUIRED, } from "./generated/i18n/i18n-defaults.js";
+import { VALUE_STATE_SUCCESS, VALUE_STATE_INFORMATION, VALUE_STATE_ERROR, VALUE_STATE_WARNING, VALUE_STATE_TYPE_SUCCESS, VALUE_STATE_TYPE_INFORMATION, VALUE_STATE_TYPE_ERROR, VALUE_STATE_TYPE_WARNING, INPUT_SUGGESTIONS, INPUT_SUGGESTIONS_TITLE, INPUT_SUGGESTIONS_ONE_HIT, INPUT_SUGGESTIONS_MORE_HITS, INPUT_SUGGESTIONS_NO_HIT, INPUT_CLEAR_ICON_ACC_NAME, INPUT_AVALIABLE_VALUES, FORM_TEXTFIELD_REQUIRED, } from "./generated/i18n/i18n-defaults.js";
 // Styles
 import inputStyles from "./generated/themes/Input.css.js";
 import ResponsivePopoverCommonCss from "./generated/themes/ResponsivePopoverCommon.css.js";
@@ -67,7 +67,7 @@ var INPUT_ACTIONS;
  *
  * The text field can be editable or read-only (`readonly` property),
  * and it can be enabled or disabled (`disabled` property).
- * To visualize semantic states, such as "error" or "warning", the `valueState` property is provided.
+ * To visualize semantic states, such as "Negative" or "Critical", the `valueState` property is provided.
  * When the user makes changes to the text, the change event is fired,
  * which enables you to react on any text change.
  *
@@ -282,7 +282,7 @@ let Input = Input_1 = class Input extends UI5Element {
         }
         if (this.showSuggestions) {
             this.enableSuggestions();
-            this.suggestionItems.forEach(item => {
+            this._flattenItems.forEach(item => {
                 if (item.hasAttribute("ui5-suggestion-item")) {
                     this._highlightSuggestionItem(item);
                 }
@@ -295,7 +295,7 @@ let Input = Input_1 = class Input extends UI5Element {
         }
         this._effectiveShowClearIcon = (this.showClearIcon && !!this.value && !this.readonly && !this.disabled);
         this.style.setProperty(getScopedVarName("--_ui5-input-icons-count"), `${this.iconsCount}`);
-        const hasItems = !!this.suggestionItems.length;
+        const hasItems = !!this._flattenItems.length;
         const hasValue = !!this.value;
         const isFocused = this.shadowRoot.querySelector("input") === getActiveElement();
         if (this.shouldDisplayOnlyValueStateMessage) {
@@ -340,6 +340,7 @@ let Input = Input_1 = class Input extends UI5Element {
             if (this.typedInValue.length && this.value.length) {
                 innerInput.setSelectionRange(this.typedInValue.length, this.value.length);
             }
+            this.fireEvent("type-ahead");
         }
         this._performTextSelection = false;
     }
@@ -426,7 +427,7 @@ let Input = Input_1 = class Input extends UI5Element {
                 this.open = false;
             }
         }
-        if (this._isPhone && !this.suggestionItems.length && !this.isTypeNumber) {
+        if (this._isPhone && !this._flattenItems.length && !this.isTypeNumber) {
             innerInput.setSelectionRange(this.value.length, this.value.length);
         }
         if (!suggestionItemPressed) {
@@ -548,7 +549,7 @@ let Input = Input_1 = class Input extends UI5Element {
         };
         if (this.previousValue !== this.getInputDOMRefSync().value) {
             // if picker is open there might be a selected item, wait next tick to get the value applied
-            if (this.Suggestions?._getPicker().open && this.suggestionItems.some(item => item.hasAttribute("ui5-suggestion-item") && item.selected)) {
+            if (this.Suggestions?._getPicker().open && this._flattenItems.some(item => item.hasAttribute("ui5-suggestion-item") && item.selected)) {
                 this._changeToBeFired = true;
             }
             else {
@@ -573,6 +574,9 @@ let Input = Input_1 = class Input extends UI5Element {
             scrollTop: e.detail.scrollTop,
             scrollContainer: e.detail.targetRef,
         });
+    }
+    _handleSelect() {
+        this.fireEvent("select", {});
     }
     _handleInput(e) {
         const inputDomRef = this.getInputDOMRefSync();
@@ -640,10 +644,10 @@ let Input = Input_1 = class Input extends UI5Element {
         this.isTyping = true;
     }
     _startsWithMatchingItems(str) {
-        return StartsWith(str, Array.from(this.querySelectorAll("[ui5-suggestion-item], [ui5-suggestion-item-custom]")), "text");
+        return StartsWith(str, this._selectableItems, "text");
     }
     _getFirstMatchingItem(current) {
-        if (!this.suggestionItems.length) {
+        if (!this._flattenItems.length) {
             return;
         }
         const matchingItems = this._startsWithMatchingItems(current).filter(item => !this._isGroupItem(item));
@@ -655,7 +659,7 @@ let Input = Input_1 = class Input extends UI5Element {
         this.Suggestions?.onItemPress(e);
     }
     _handleTypeAhead(item) {
-        const value = item.text ? item.text : item.textContent || "";
+        const value = item.text ? item.text : "";
         this._innerValue = value;
         this.value = value;
         this._performTextSelection = true;
@@ -733,12 +737,12 @@ let Input = Input_1 = class Input extends UI5Element {
             return;
         }
         const value = this.typedInValue || this.value;
-        const itemText = item.text || item.textContent || ""; // keep textContent for compatibility
+        const itemText = item.text || "";
         const fireChange = keyboardUsed
             ? this.valueBeforeItemSelection !== itemText : value !== itemText;
         this.hasSuggestionItemSelected = true;
-        if (fireChange) {
-            this.value = itemText;
+        this.value = itemText;
+        if (fireChange && (this.previousValue !== itemText)) {
             this.valueBeforeItemSelection = itemText;
             this.lastConfirmedValue = itemText;
             this._performTextSelection = true;
@@ -837,10 +841,12 @@ let Input = Input_1 = class Input extends UI5Element {
         this.fireSelectionChange(item, true);
     }
     get _flattenItems() {
-        return Array.from(this.querySelectorAll("[ui5-suggestion-item], [ui5-suggestion-item-group], [ui5-suggestion-item-custom]"));
+        return this.getSlottedNodes("suggestionItems").flatMap(item => {
+            return this._isGroupItem(item) ? [item, ...item.items] : [item];
+        });
     }
     get _selectableItems() {
-        return Array.from(this.querySelectorAll("[ui5-suggestion-item], [ui5-suggestion-item-custom]"));
+        return this._flattenItems.filter(item => !this._isGroupItem(item));
     }
     get valueStateTypeMappings() {
         return {
@@ -883,6 +889,9 @@ let Input = Input_1 = class Input extends UI5Element {
     }
     get clearIconAccessibleName() {
         return Input_1.i18nBundle.getText(INPUT_CLEAR_ICON_ACC_NAME);
+    }
+    get _popupLabel() {
+        return Input_1.i18nBundle.getText(INPUT_AVALIABLE_VALUES);
     }
     get inputType() {
         return this.type.toLowerCase();
@@ -1228,6 +1237,14 @@ Input = Input_1 = __decorate([
     ,
     event("input")
     /**
+     * Fired when some text has been selected.
+     *
+     * @since 2.0.0
+     * @public
+     */
+    ,
+    event("select")
+    /**
      * Fired when the user navigates to a suggestion item via the ARROW keys,
      * as a preview, before the final selection.
      * @param {HTMLElement} item The previewed suggestion item.
@@ -1243,6 +1260,13 @@ Input = Input_1 = __decorate([
             item: { type: HTMLElement },
         },
     })
+    /**
+     * Fires when a suggestion item is autocompleted in the input.
+     *
+     * @private
+     */
+    ,
+    event("type-ahead")
     /**
      * Fired when the user scrolls the suggestion popover.
      * @param {Integer} scrollTop The current scroll position.

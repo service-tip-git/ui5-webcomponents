@@ -24,7 +24,7 @@
 
 	
 
-  <script type="module" crossorigin src="/ui5-webcomponents/nightly/assets/bundle.esm-663be91b.js"></script>
+  <script type="module" crossorigin src="/ui5-webcomponents/nightly/assets/bundle.esm-84d12455.js"></script>
   <link rel="stylesheet" href="/ui5-webcomponents/nightly/assets/TimePickerClock-9c31b552.css">
 </head>
 <body>
@@ -75,9 +75,9 @@
 			var clock = event.target;
 			event.detail.finalChange && eventCount++;
 			clockChangeId.value = clock.id;
-			clockChangeValue.value = clock.selectedValue;
-			clockChangeStringValue.value = clock._getStringValue(clock.selectedValue);
-			clockChangeEvent.value = eventCount;
+			clockChangeValue.value = `${clock.selectedValue}`;
+			clockChangeStringValue.value = `${clock._getStringValue(clock.selectedValue)}`;
+			clockChangeEvent.value = `${eventCount}`;
 		}
 
 	</script>

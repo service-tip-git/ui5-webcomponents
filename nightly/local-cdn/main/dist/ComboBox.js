@@ -491,7 +491,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         }
         this._isValueStateFocused = false;
         this._announceSelectedItem(indexOfItem);
-        this._scrollToItem(indexOfItem, isForward);
+        this._scrollToItem(indexOfItem);
         if (isGroupItem && this.open) {
             return;
         }
@@ -820,7 +820,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         }
         item._isVisible = true;
     }
-    _scrollToItem(indexOfItem, forward) {
+    _scrollToItem(indexOfItem) {
         const picker = this._getPicker();
         const list = this._getItemsList();
         const listItem = list?.listItems[indexOfItem];
@@ -829,7 +829,11 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
             const listItemRect = listItem.getBoundingClientRect();
             const isListItemInVisibleArea = listItemRect.top >= pickerRect.top && listItemRect.bottom <= pickerRect.bottom;
             if (!isListItemInVisibleArea) {
-                listItem.scrollIntoView({ behavior: "instant", block: forward ? "end" : "start", inline: "nearest" });
+                listItem.scrollIntoView({
+                    behavior: "auto",
+                    block: "nearest",
+                    inline: "nearest",
+                });
             }
         }
     }
@@ -930,6 +934,9 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     }
     get clearIconAccessibleName() {
         return ComboBox_1.i18nBundle.getText(INPUT_CLEAR_ICON_ACC_NAME);
+    }
+    get responsivePopoverId() {
+        return `${this._id}-popover`;
     }
     static async onDefine() {
         ComboBox_1.i18nBundle = await getI18nBundle("@ui5/webcomponents");

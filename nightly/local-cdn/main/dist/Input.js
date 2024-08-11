@@ -93,9 +93,13 @@ var INPUT_ACTIONS;
  * `import "@ui5/webcomponents/dist/Input.js";`
  *
  * `import "@ui5/webcomponents/dist/features/InputSuggestions.js";` (optional - for input suggestions support)
+ *
  * @constructor
  * @extends UI5Element
  * @public
+ * @csspart root - Used to style the root DOM element of the Input component
+ * @csspart input - Used to style the native input element
+ * @csspart clear-icon - Used to style the clear icon, which can be pressed to clear user input text
  */
 let Input = Input_1 = class Input extends UI5Element {
     get formValidityMessage() {
@@ -281,7 +285,7 @@ let Input = Input_1 = class Input extends UI5Element {
     }
     onBeforeRendering() {
         if (!this._keepInnerValue) {
-            this._innerValue = this.value;
+            this._innerValue = this.value === null ? "" : this.value;
         }
         if (this.showSuggestions) {
             this.enableSuggestions();

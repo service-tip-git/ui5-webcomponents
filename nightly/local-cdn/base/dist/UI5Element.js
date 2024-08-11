@@ -11,14 +11,14 @@ import { registerTag, isTagRegistered, recordTagRegistrationFailure } from "./Cu
 import { observeDOMNode, unobserveDOMNode } from "./DOMObserver.js";
 import { skipOriginalEvent } from "./config/NoConflict.js";
 import getEffectiveDir from "./locale/getEffectiveDir.js";
-import { kebabToCamelCase, camelToKebabCase } from "./util/StringHelper.js";
+import { kebabToCamelCase, camelToKebabCase, kebabToPascalCase } from "./util/StringHelper.js";
 import isValidPropertyName from "./util/isValidPropertyName.js";
 import { getSlotName, getSlottedNodesList } from "./util/SlotsHelper.js";
 import arraysAreEqual from "./util/arraysAreEqual.js";
 import { markAsRtlAware } from "./locale/RTLAwareRegistry.js";
 import executeTemplate, { getTagsToScope } from "./renderer/executeTemplate.js";
 import { attachFormElementInternals, setFormValue } from "./features/InputElementsFormSupport.js";
-import { subscribeForFeatureLoad } from "./FeaturesRegistry.js";
+import { getComponentFeature, subscribeForFeatureLoad } from "./FeaturesRegistry.js";
 const DEV_MODE = true;
 let autoId = 0;
 const elementTimeouts = new Map();
@@ -492,16 +492,20 @@ class UI5Element extends HTMLElement {
                 // eslint-disable-next-line
                 console.error(`[UI5-FWK] numeric value for property [${name}] of component [${tag}] is missing "{ type: Number }" in its property decorator. Attribute conversion will treat it as a string. If this is intended, pass the value converted to string, otherwise add the type to the property decorator`);
             }
+            if (typeof newValue === "string" && propData.type && propData.type !== String) {
+                // eslint-disable-next-line
+                console.error(`[UI5-FWK] string value for property [${name}] of component [${tag}] which has a non-string type [${propData.type}] in its property decorator. Attribute conversion will stop and keep the string value in the property.`);
+            }
         }
         const newAttrValue = converter.toAttribute(newValue, propData.type);
+        this._doNotSyncAttributes.add(attrName); // skip the attributeChangedCallback call for this attribute
         if (newAttrValue === null || newAttrValue === undefined) { // null means there must be no attribute for the current value of the property
-            this._doNotSyncAttributes.add(attrName); // skip the attributeChangedCallback call for this attribute
             this.removeAttribute(attrName); // remove the attribute safely (will not trigger synchronization to the property value due to the above line)
-            this._doNotSyncAttributes.delete(attrName); // enable synchronization again for this attribute
         }
         else {
-            this.setAttribute(attrName, newAttrValue);
+            this.setAttribute(attrName, newAttrValue); // setting attributes from properties should not trigger the property setter again
         }
+        this._doNotSyncAttributes.delete(attrName); // enable synchronization again for this attribute
     }
     /**
      * Returns a singleton event listener for the "change" event of a child in a given slot
@@ -629,15 +633,19 @@ class UI5Element extends HTMLElement {
         }
         // suppress invalidation to prevent state changes scheduling another rendering
         this._suppressInvalidation = true;
-        this.onBeforeRendering();
-        if (!this._rendered) {
-            // first time rendering, previous setters might have been initializers from the constructor - update attributes here
-            this.updateAttributes();
+        try {
+            this.onBeforeRendering();
+            if (!this._rendered) {
+                // first time rendering, previous setters might have been initializers from the constructor - update attributes here
+                this.updateAttributes();
+            }
+            // Intended for framework usage only. Currently ItemNavigation updates tab indexes after the component has updated its state but before the template is rendered
+            this._componentStateFinalizedEventProvider.fireEvent("componentStateFinalized");
         }
-        // Intended for framework usage only. Currently ItemNavigation updates tab indexes after the component has updated its state but before the template is rendered
-        this._componentStateFinalizedEventProvider.fireEvent("componentStateFinalized");
-        // resume normal invalidation handling
-        this._suppressInvalidation = false;
+        finally {
+            // always resume normal invalidation handling
+            this._suppressInvalidation = false;
+        }
         // Update the shadow root with the render result
         /*
         if (this._changedState.length) {
@@ -753,9 +761,13 @@ class UI5Element extends HTMLElement {
      */
     fireEvent(name, data, cancelable = false, bubbles = true) {
         const eventResult = this._fireEvent(name, data, cancelable, bubbles);
-        const camelCaseEventName = kebabToCamelCase(name);
-        if (camelCaseEventName !== name) {
-            return eventResult && this._fireEvent(camelCaseEventName, data, cancelable, bubbles);
+        const pascalCaseEventName = kebabToPascalCase(name);
+        // pascal events are more convinient for native react usage
+        // live-change:
+        //	 Before: onlive-change
+        //	 After: onLiveChange
+        if (pascalCaseEventName !== name) {
+            return eventResult && this._fireEvent(pascalCaseEventName, data, cancelable, bubbles);
         }
         return eventResult;
     }
@@ -990,6 +1002,9 @@ class UI5Element extends HTMLElement {
         const tag = this.getMetadata().getTag();
         const features = this.getMetadata().getFeatures();
         features.forEach(feature => {
+            if (getComponentFeature(feature)) {
+                this.cacheUniqueDependencies();
+            }
             subscribeForFeatureLoad(feature, this, this.cacheUniqueDependencies.bind(this));
         });
         const definedLocally = isTagRegistered(tag);

@@ -65,7 +65,7 @@ let WizardTab = class WizardTab extends UI5Element {
     }
     _onclick() {
         if (!this.disabled) {
-            this.fireEvent("selection-change-requested");
+            this.fireDecoratorEvent("selection-change-requested");
         }
     }
     _onkeyup(e) {
@@ -74,14 +74,20 @@ let WizardTab = class WizardTab extends UI5Element {
         }
         if ((isSpace(e) || isEnter(e)) && !isSpaceShift(e)) {
             e.preventDefault();
-            this.fireEvent("selection-change-requested");
+            this.fireDecoratorEvent("selection-change-requested");
         }
     }
-    _onfocusin() {
-        this.fireEvent("focused");
+    get effectiveTabIndex() {
+        if (this.disabled) {
+            return;
+        }
+        if (this.selected || this.forcedTabIndex === "0") {
+            return "0";
+        }
+        return "-1";
     }
-    get tabIndex() {
-        return Number(this.forcedTabIndex);
+    _onfocusin() {
+        this.fireDecoratorEvent("focused");
     }
     get hasTexts() {
         return this.titleText || this.subtitleText;
@@ -134,11 +140,21 @@ WizardTab = __decorate([
         dependencies: [Icon],
     })
     /**
+     * Fired when focus on a step.
+     * @private
+     */
+    ,
+    event("focused", {
+        bubbles: true,
+    })
+    /**
      * Fired when clicking on none disabled step.
      * @private
      */
     ,
-    event("selection-change-requested")
+    event("selection-change-requested", {
+        bubbles: true,
+    })
 ], WizardTab);
 WizardTab.define();
 export default WizardTab;

@@ -11,7 +11,7 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
-import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
+import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import willShowContent from "@ui5/webcomponents-base/dist/util/willShowContent.js";
 import EmptyIndicatorMode from "./types/TextEmptyIndicatorMode.js";
 // Template
@@ -45,7 +45,6 @@ import styles from "./generated/themes/Text.css.js";
  * @constructor
  * @extends UI5Element
  * @public
- * @slot {Array<Node>} default - Defines the text of the component.
  * @since 2.0.0
  */
 let Text = Text_1 = class Text extends UI5Element {
@@ -64,9 +63,6 @@ let Text = Text_1 = class Text extends UI5Element {
          * @public
          */
         this.emptyIndicatorMode = "Off";
-    }
-    static async onDefine() {
-        Text_1.i18nBundle = await getI18nBundle("@ui5/webcomponents");
     }
     onBeforeRendering() {
         this.style.setProperty(getScopedVarName("--_ui5_text_max_lines"), `${this.maxLines}`);
@@ -93,6 +89,9 @@ __decorate([
 __decorate([
     slot({ type: Node, "default": true })
 ], Text.prototype, "text", void 0);
+__decorate([
+    i18n("@ui5/webcomponents")
+], Text, "i18nBundle", void 0);
 Text = Text_1 = __decorate([
     customElement({
         tag: "ui5-text",

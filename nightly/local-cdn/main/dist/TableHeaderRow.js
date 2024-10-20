@@ -45,8 +45,7 @@ class TableHeaderRow extends TableRowBase {
         /**
          * Sticks the `ui5-table-header-row` to the top of a table.
          *
-         * Note: If used in combination with overflowMode "Scroll", the table needs a defined height
-         * or needs to be inside of a container with a defined height for the sticky header to work as expected.
+         * Note: If used in combination with overflowMode "Scroll", the table needs a defined height for the sticky header to work as expected.
          *
          * @default false
          * @public
@@ -80,7 +79,7 @@ __decorate([
         type: HTMLElement,
         "default": true,
         invalidateOnChildChange: {
-            properties: ["width", "_popin"],
+            properties: ["width", "_popin", "horizontalAlign"],
             slots: false,
         },
         individualSlots: true,

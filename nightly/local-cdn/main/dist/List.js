@@ -13,15 +13,15 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
+import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
-import { isTabNext, isSpace, isEnter, isTabPrevious, } from "@ui5/webcomponents-base/dist/Keys.js";
+import { isTabNext, isSpace, isEnter, isTabPrevious, isCtrl, } from "@ui5/webcomponents-base/dist/Keys.js";
 import DragRegistry from "@ui5/webcomponents-base/dist/util/dragAndDrop/DragRegistry.js";
-import findClosestPosition from "@ui5/webcomponents-base/dist/util/dragAndDrop/findClosestPosition.js";
+import { findClosestPosition, findClosestPositionsByKey } from "@ui5/webcomponents-base/dist/util/dragAndDrop/findClosestPosition.js";
 import NavigationMode from "@ui5/webcomponents-base/dist/types/NavigationMode.js";
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AriaLabelHelper.js";
 import getNormalizedTarget from "@ui5/webcomponents-base/dist/util/getNormalizedTarget.js";
 import getEffectiveScrollbarStyle from "@ui5/webcomponents-base/dist/util/getEffectiveScrollbarStyle.js";
-import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import debounce from "@ui5/webcomponents-base/dist/util/debounce.js";
 import isElementInView from "@ui5/webcomponents-base/dist/util/isElementInView.js";
 import Orientation from "@ui5/webcomponents-base/dist/types/Orientation.js";
@@ -35,7 +35,6 @@ import BusyIndicator from "./BusyIndicator.js";
 import ListTemplate from "./generated/templates/ListTemplate.lit.js";
 // Styles
 import listCss from "./generated/themes/List.css.js";
-import browserScrollbarCSS from "./generated/themes/BrowserScrollbar.css.js";
 // Texts
 import { LOAD_MORE_TEXT, ARIA_LABEL_LIST_SELECTABLE, ARIA_LABEL_LIST_MULTISELECTABLE, ARIA_LABEL_LIST_DELETABLE, } from "./generated/i18n/i18n-defaults.js";
 import ListItemGroup, { isInstanceOfListItemGroup } from "./ListItemGroup.js";
@@ -95,11 +94,10 @@ const PAGE_UP_DOWN_SIZE = 10;
  * @constructor
  * @extends UI5Element
  * @public
+ * @csspart growing-button - Used to style the button, that is used for growing of the component
+ * @csspart growing-button-inner - Used to style the button inner element
  */
 let List = List_1 = class List extends UI5Element {
-    static async onDefine() {
-        List_1.i18nBundle = await getI18nBundle("@ui5/webcomponents");
-    }
     constructor() {
         super();
         /**
@@ -169,7 +167,7 @@ let List = List_1 = class List extends UI5Element {
         // Indicates if the IntersectionObserver started observing the List
         this.listEndObserved = false;
         this._itemNavigation = new ItemNavigation(this, {
-            skipItemsSize: PAGE_UP_DOWN_SIZE,
+            skipItemsSize: PAGE_UP_DOWN_SIZE, // PAGE_UP and PAGE_DOWN will skip trough 10 items
             navigationMode: NavigationMode.Vertical,
             getItemsCallback: () => this.getEnabledItems(),
         });
@@ -264,6 +262,9 @@ let List = List_1 = class List extends UI5Element {
     get hasData() {
         return this.getItems().length !== 0;
     }
+    get showBusyIndicatorOverlay() {
+        return !this.growsWithButton && this.loading;
+    }
     get showNoDataText() {
         return !this.hasData && this.noDataText;
     }
@@ -330,7 +331,6 @@ let List = List_1 = class List extends UI5Element {
         return {
             root: {
                 "ui5-list-root": true,
-                "ui5-content-native-scrollbars": getEffectiveScrollbarStyle(),
             },
         };
     }
@@ -382,13 +382,13 @@ let List = List_1 = class List extends UI5Element {
             selectionChange = this[`handle${this.selectionMode}`](e.detail.item, !!e.detail.selected);
         }
         if (selectionChange) {
-            const changePrevented = !this.fireEvent("selection-change", {
+            const changePrevented = !this.fireDecoratorEvent("selection-change", {
                 selectedItems: this.getSelectedItems(),
                 previouslySelectedItems,
                 selectionComponentPressed: e.detail.selectionComponentPressed,
                 targetItem: e.detail.item,
                 key: e.detail.key,
-            }, true);
+            });
             if (changePrevented) {
                 this._revertSelection(previouslySelectedItems);
             }
@@ -416,7 +416,7 @@ let List = List_1 = class List extends UI5Element {
         return true;
     }
     handleDelete(item) {
-        this.fireEvent("item-delete", { item });
+        this.fireDecoratorEvent("item-delete", { item });
         return true;
     }
     deselectSelectedItems() {
@@ -461,8 +461,47 @@ let List = List_1 = class List extends UI5Element {
         });
     }
     _onkeydown(e) {
+        if (isCtrl(e)) {
+            this._moveItem(e.target, e);
+            return;
+        }
         if (isTabNext(e)) {
             this._handleTabNext(e);
+        }
+    }
+    _moveItem(item, e) {
+        if (!item || !item.movable) {
+            return;
+        }
+        const closestPositions = findClosestPositionsByKey(this.items, item, e);
+        if (!closestPositions.length) {
+            return;
+        }
+        e.preventDefault();
+        const acceptedPosition = closestPositions.find(({ element, placement }) => {
+            return !this.fireDecoratorEvent("move-over", {
+                originalEvent: e,
+                source: {
+                    element: item,
+                },
+                destination: {
+                    element,
+                    placement,
+                },
+            });
+        });
+        if (acceptedPosition) {
+            this.fireDecoratorEvent("move", {
+                originalEvent: e,
+                source: {
+                    element: item,
+                },
+                destination: {
+                    element: acceptedPosition.element,
+                    placement: acceptedPosition.placement,
+                },
+            });
+            item.focus();
         }
     }
     _onLoadMoreKeydown(e) {
@@ -506,7 +545,7 @@ let List = List_1 = class List extends UI5Element {
         this._inViewport = isElementInView(this.getDomRef());
     }
     loadMore() {
-        this.fireEvent("load-more");
+        this.fireDecoratorEvent("load-more");
     }
     /*
     * KEYBOARD SUPPORT
@@ -587,7 +626,8 @@ let List = List_1 = class List extends UI5Element {
             placements = placements.filter(placement => placement !== MovePlacement.On);
         }
         const placementAccepted = placements.some(placement => {
-            const beforeItemMovePrevented = !this.fireEvent("move-over", {
+            const beforeItemMovePrevented = !this.fireDecoratorEvent("move-over", {
+                originalEvent: e,
                 source: {
                     element: draggedElement,
                 },
@@ -595,7 +635,7 @@ let List = List_1 = class List extends UI5Element {
                     element: closestPosition.element,
                     placement,
                 },
-            }, true);
+            });
             if (beforeItemMovePrevented) {
                 e.preventDefault();
                 this.dropIndicatorDOM.targetReference = closestPosition.element;
@@ -611,7 +651,8 @@ let List = List_1 = class List extends UI5Element {
     _ondrop(e) {
         e.preventDefault();
         const draggedElement = DragRegistry.getDraggedElement();
-        this.fireEvent("move", {
+        this.fireDecoratorEvent("move", {
+            originalEvent: e,
             source: {
                 element: draggedElement,
             },
@@ -644,7 +685,7 @@ let List = List_1 = class List extends UI5Element {
         const target = e.target;
         e.stopPropagation();
         this._itemNavigation.setCurrentItem(target);
-        this.fireEvent("item-focused", { item: target });
+        this.fireDecoratorEvent("item-focused", { item: target });
         if (this.selectionMode === ListSelectionMode.SingleAuto) {
             const detail = {
                 item: target,
@@ -657,7 +698,7 @@ let List = List_1 = class List extends UI5Element {
     }
     onItemPress(e) {
         const pressedItem = e.detail.item;
-        if (!this.fireEvent("item-click", { item: pressedItem }, true)) {
+        if (!this.fireDecoratorEvent("item-click", { item: pressedItem })) {
             return;
         }
         if (!this._selectionRequested && this.selectionMode !== ListSelectionMode.Delete) {
@@ -677,11 +718,11 @@ let List = List_1 = class List extends UI5Element {
         const target = e.target;
         const shouldFireItemClose = target?.hasAttribute("ui5-li-notification") || target?.hasAttribute("ui5-li-notification-group");
         if (shouldFireItemClose) {
-            this.fireEvent("item-close", { item: e.detail?.item });
+            this.fireDecoratorEvent("item-close", { item: e.detail?.item });
         }
     }
     onItemToggle(e) {
-        this.fireEvent("item-toggle", { item: e.detail.item });
+        this.fireDecoratorEvent("item-toggle", { item: e.detail.item });
     }
     onForwardBefore(e) {
         this.setPreviouslyFocusedItem(e.target);
@@ -859,19 +900,24 @@ __decorate([
 __decorate([
     slot()
 ], List.prototype, "header", void 0);
+__decorate([
+    i18n("@ui5/webcomponents")
+], List, "i18nBundle", void 0);
 List = List_1 = __decorate([
     customElement({
         tag: "ui5-list",
         fastNavigation: true,
         renderer: litRender,
         template: ListTemplate,
-        styles: [browserScrollbarCSS, listCss],
+        styles: [
+            listCss,
+            getEffectiveScrollbarStyle(),
+        ],
         dependencies: [BusyIndicator, DropIndicator, ListItemGroup],
     })
     /**
      * Fired when an item is activated, unless the item's `type` property
      * is set to `Inactive`.
-     * @allowPreventDefault
      * @param {HTMLElement} item The clicked item.
      * @public
      */
@@ -883,6 +929,8 @@ List = List_1 = __decorate([
              */
             item: { type: HTMLElement },
         },
+        bubbles: true,
+        cancelable: true,
     })
     /**
      * Fired when the `Close` button of any item is clicked
@@ -901,6 +949,7 @@ List = List_1 = __decorate([
              */
             item: { type: HTMLElement },
         },
+        bubbles: true,
     })
     /**
      * Fired when the `Toggle` button of any item is clicked.
@@ -918,6 +967,7 @@ List = List_1 = __decorate([
              */
             item: { type: HTMLElement },
         },
+        bubbles: true,
     })
     /**
      * Fired when the Delete button of any item is pressed.
@@ -935,11 +985,11 @@ List = List_1 = __decorate([
              */
             item: { type: HTMLElement },
         },
+        bubbles: true,
     })
     /**
      * Fired when selection is changed by user interaction
      * in `Single`, `SingleStart`, `SingleEnd` and `Multiple` selection modes.
-     * @allowPreventDefault
      * @param {Array<ListItemBase>} selectedItems An array of the selected items.
      * @param {Array<ListItemBase>} previouslySelectedItems An array of the previously selected items.
      * @public
@@ -970,6 +1020,8 @@ List = List_1 = __decorate([
              */
             key: { type: String },
         },
+        bubbles: true,
+        cancelable: true,
     })
     /**
      * Fired when the user scrolls to the bottom of the list.
@@ -979,7 +1031,9 @@ List = List_1 = __decorate([
      * @since 1.0.0-rc.6
      */
     ,
-    event("load-more")
+    event("load-more", {
+        bubbles: true,
+    })
     /**
      * @private
      */
@@ -988,6 +1042,7 @@ List = List_1 = __decorate([
         detail: {
             item: { type: HTMLElement },
         },
+        bubbles: true,
     })
     /**
      * Fired when a movable list item is moved over a potential drop target during a dragging operation.
@@ -997,11 +1052,14 @@ List = List_1 = __decorate([
      * @param {object} destination Contains information about the destination of the moved element. Has `element` and `placement` properties.
      * @public
      * @since 2.0.0
-     * @allowPreventDefault
      */
     ,
     event("move-over", {
         detail: {
+            /**
+             * @public
+             */
+            originalEvent: { type: Event },
             /**
              * @public
              */
@@ -1011,6 +1069,8 @@ List = List_1 = __decorate([
              */
             destination: { type: Object },
         },
+        bubbles: true,
+        cancelable: true,
     })
     /**
      * Fired when a movable list item is dropped onto a drop target.
@@ -1019,11 +1079,14 @@ List = List_1 = __decorate([
      * @param {object} source Contains information about the moved element under `element` property.
      * @param {object} destination Contains information about the destination of the moved element. Has `element` and `placement` properties.
      * @public
-     * @allowPreventDefault
      */
     ,
     event("move", {
         detail: {
+            /**
+             * @public
+             */
+            originalEvent: { type: Event },
             /**
              * @public
              */
@@ -1033,6 +1096,7 @@ List = List_1 = __decorate([
              */
             destination: { type: Object },
         },
+        bubbles: true,
     })
 ], List);
 List.define();

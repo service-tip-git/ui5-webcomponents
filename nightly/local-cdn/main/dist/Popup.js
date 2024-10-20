@@ -15,7 +15,6 @@ import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import { isChrome, isDesktop, isPhone, } from "@ui5/webcomponents-base/dist/Device.js";
 import { getFirstFocusableElement, getLastFocusableElement } from "@ui5/webcomponents-base/dist/util/FocusableElements.js";
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AriaLabelHelper.js";
-import getEffectiveScrollbarStyle from "@ui5/webcomponents-base/dist/util/getEffectiveScrollbarStyle.js";
 import { hasStyle, createStyle } from "@ui5/webcomponents-base/dist/ManagedStyles.js";
 import { isEnter, isTabPrevious } from "@ui5/webcomponents-base/dist/Keys.js";
 import { getFocusedElement, isFocusedElementWithinNode } from "@ui5/webcomponents-base/dist/util/PopupUtils.js";
@@ -125,6 +124,9 @@ let Popup = Popup_1 = class Popup extends UI5Element {
             this.setAttribute("desktop", "");
         }
         this.tabIndex = -1;
+        if (this.open) {
+            this.showPopover();
+        }
     }
     onExitDOM() {
         if (this._opened) {
@@ -158,7 +160,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         if (this._opened) {
             return;
         }
-        const prevented = !this.fireEvent("before-open", {}, true, false);
+        const prevented = !this.fireDecoratorEvent("before-open", {});
         if (prevented || this._opened) {
             return;
         }
@@ -179,7 +181,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         // initial focus, if focused element is dynamically created
         await this.applyInitialFocus();
         if (this.isConnected) {
-            this.fireEvent("open", {}, false, false);
+            this.fireDecoratorEvent("open", {});
         }
     }
     _resize() {
@@ -214,7 +216,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         document.documentElement.classList.remove("ui5-popup-scroll-blocker");
     }
     _scroll(e) {
-        this.fireEvent("scroll", {
+        this.fireDecoratorEvent("scroll", {
             scrollTop: e.target.scrollTop,
             targetRef: e.target,
         });
@@ -334,7 +336,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         if (!this._opened) {
             return;
         }
-        const prevented = !this.fireEvent("before-close", { escPressed }, true, false);
+        const prevented = !this.fireDecoratorEvent("before-close", { escPressed });
         if (prevented) {
             return;
         }
@@ -350,7 +352,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         if (!this.preventFocusRestore && !preventFocusRestore) {
             this.resetFocus();
         }
-        this.fireEvent("close", {}, false, false);
+        this.fireDecoratorEvent("close", {});
     }
     /**
      * Removes the popup from the "opened popups registry"
@@ -416,7 +418,6 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         return {
             root: {
                 "ui5-popup-root": true,
-                "ui5-content-native-scrollbars": getEffectiveScrollbarStyle(),
             },
             content: {
                 "ui5-popup-content": true,
@@ -470,22 +471,22 @@ Popup = Popup_1 = __decorate([
         ],
     })
     /**
-     * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening. **This event does not bubble.**
+     * Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.
      * @public
-     * @allowPreventDefault
      */
     ,
-    event("before-open")
+    event("before-open", {
+        cancelable: true,
+    })
     /**
-     * Fired after the component is opened. **This event does not bubble.**
+     * Fired after the component is opened.
      * @public
      */
     ,
     event("open")
     /**
-     * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing. **This event does not bubble.**
+     * Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.
      * @public
-     * @allowPreventDefault
      * @param {boolean} escPressed Indicates that `ESC` key has triggered the event.
      */
     ,
@@ -498,9 +499,10 @@ Popup = Popup_1 = __decorate([
                 type: Boolean,
             },
         },
+        cancelable: true,
     })
     /**
-     * Fired after the component is closed. **This event does not bubble.**
+     * Fired after the component is closed.
      * @public
      */
     ,
@@ -510,7 +512,9 @@ Popup = Popup_1 = __decorate([
      * @private
      */
     ,
-    event("scroll")
+    event("scroll", {
+        bubbles: true,
+    })
 ], Popup);
 export default Popup;
 //# sourceMappingURL=Popup.js.map

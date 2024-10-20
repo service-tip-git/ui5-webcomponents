@@ -80,7 +80,7 @@ type UserDefinedColumnLayouts = {
  * The component would display 1 column for window size smaller than 599px, up to two columns between 599px and 1023px,
  * and 3 columns for sizes bigger than 1023px.
  *
- * **Note:** When the component displays more than one column, the minimal width of each column is 312px. Consequently, when the user drags a column separator to resize the columns, the minimal allowed width of any resized column is 312px.
+ * **Note:** When the component displays more than one column, the minimal width of each column is 248px. Consequently, when the user drags a column separator to resize the columns, the minimal allowed width of any resized column is 248px.
  *
  * ### Keyboard Handling
  *
@@ -176,6 +176,12 @@ declare class FlexibleColumnLayout extends UI5Element {
     */
     _visibleColumns: number;
     /**
+    * Defines if the user is currently resizing the columns by dragging their separator.
+    * @default false
+    * @private
+    */
+    _resizing: boolean;
+    /**
     * Allows the user to replace the whole layouts configuration
     * @private
     */
@@ -205,7 +211,6 @@ declare class FlexibleColumnLayout extends UI5Element {
     _ontouchstart: PassiveEventListenerObject;
     separatorMovementSession?: SeparatorMovementSession | null;
     constructor();
-    static onDefine(): Promise<void>;
     static get ANIMATION_DURATION(): 0 | 560;
     onEnterDOM(): void;
     onExitDOM(): void;
@@ -332,13 +337,13 @@ declare class FlexibleColumnLayout extends UI5Element {
     get endSeparatorGripVisibility(): boolean | undefined;
     get effectiveSeparatorsInfo(): {
         visible: boolean;
-        gripVisible?: boolean | undefined;
+        gripVisible?: boolean;
     }[];
     get effectiveLayout(): "OneColumn" | "TwoColumnsStartExpanded" | "TwoColumnsMidExpanded" | "ThreeColumnsMidExpanded" | "ThreeColumnsEndExpanded" | "ThreeColumnsStartExpandedEndHidden" | "ThreeColumnsMidExpandedEndHidden" | "MidColumnFullScreen" | "EndColumnFullScreen" | FCLLayout;
     get startSeparatorDOM(): HTMLElement;
     get endSeparatorDOM(): HTMLElement;
     get startSeparatorTabIndex(): 0 | undefined;
-    get endSeparatorTabIndex(): -1 | 0;
+    get endSeparatorTabIndex(): 0 | -1;
     get media(): MEDIA;
     get widthDOM(): number;
     get startColumnDOM(): HTMLElement;

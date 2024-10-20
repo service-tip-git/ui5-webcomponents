@@ -11,7 +11,7 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import DragRegistry from "@ui5/webcomponents-base/dist/util/dragAndDrop/DragRegistry.js";
-import findClosestPosition from "@ui5/webcomponents-base/dist/util/dragAndDrop/findClosestPosition.js";
+import { findClosestPosition } from "@ui5/webcomponents-base/dist/util/dragAndDrop/findClosestPosition.js";
 import Orientation from "@ui5/webcomponents-base/dist/types/Orientation.js";
 import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 import DropIndicator from "./DropIndicator.js";
@@ -90,7 +90,7 @@ let ListItemGroup = class ListItemGroup extends UI5Element {
             placements = placements.filter(placement => placement !== MovePlacement.On);
         }
         const placementAccepted = placements.some(placement => {
-            const beforeItemMovePrevented = !this.fireEvent("move-over", {
+            const beforeItemMovePrevented = !this.fireDecoratorEvent("move-over", {
                 source: {
                     element: draggedElement,
                 },
@@ -98,7 +98,7 @@ let ListItemGroup = class ListItemGroup extends UI5Element {
                     element: closestPosition.element,
                     placement,
                 },
-            }, true);
+            });
             if (beforeItemMovePrevented) {
                 e.preventDefault();
                 this.dropIndicatorDOM.targetReference = closestPosition.element;
@@ -113,7 +113,7 @@ let ListItemGroup = class ListItemGroup extends UI5Element {
     }
     _ondrop(e) {
         e.preventDefault();
-        this.fireEvent("move", {
+        this.fireDecoratorEvent("move", {
             source: {
                 element: DragRegistry.getDraggedElement(),
             },
@@ -161,7 +161,6 @@ ListItemGroup = __decorate([
      * @param {object} destination Contains information about the destination of the moved element. Has `element` and `placement` properties.
      * @public
      * @since 2.1.0
-     * @allowPreventDefault
      */
     ,
     event("move-over", {
@@ -175,6 +174,8 @@ ListItemGroup = __decorate([
              */
             destination: { type: Object },
         },
+        bubbles: true,
+        cancelable: true,
     })
     /**
      * Fired when a movable list item is dropped onto a drop target.
@@ -184,7 +185,6 @@ ListItemGroup = __decorate([
      * @param {object} destination Contains information about the destination of the moved element. Has `element` and `placement` properties.
      * @public
      * @since 2.1.0
-     * @allowPreventDefault
      */
     ,
     event("move", {
@@ -198,6 +198,7 @@ ListItemGroup = __decorate([
              */
             destination: { type: Object },
         },
+        bubbles: true,
     })
 ], ListItemGroup);
 ListItemGroup.define();

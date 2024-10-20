@@ -11,6 +11,7 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import AriaHasPopup from "@ui5/webcomponents-base/dist/types/AriaHasPopup.js";
@@ -20,7 +21,6 @@ import List from "@ui5/webcomponents/dist/List.js";
 import Popover from "@ui5/webcomponents/dist/Popover.js";
 import Button from "@ui5/webcomponents/dist/Button.js";
 import Icon from "@ui5/webcomponents/dist/Icon.js";
-import { getI18nBundle } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import { isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import "@ui5/webcomponents-icons/dist/search.js";
 import "@ui5/webcomponents-icons/dist/bell.js";
@@ -184,15 +184,15 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
         }, delay);
     }
     _menuItemPress(e) {
-        const shouldContinue = this.fireEvent("menu-item-click", {
+        const shouldContinue = this.fireDecoratorEvent("menu-item-click", {
             item: e.detail.selectedItems[0],
-        }, true);
+        });
         if (shouldContinue) {
             this.menuPopover.open = false;
         }
     }
     _logoPress() {
-        this.fireEvent("logo-click", {
+        this.fireDecoratorEvent("logo-click", {
             targetRef: this.shadowRoot.querySelector(".ui5-shellbar-logo"),
         });
     }
@@ -345,10 +345,10 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     }
     _handleSearchIconPress() {
         const searchButtonRef = this.shadowRoot.querySelector(".ui5-shellbar-search-button");
-        const defaultPrevented = !this.fireEvent("search-button-click", {
+        const defaultPrevented = !this.fireDecoratorEvent("search-button-click", {
             targetRef: searchButtonRef,
             searchFieldVisible: this.showSearchField,
-        }, true);
+        });
         if (defaultPrevented) {
             return;
         }
@@ -393,12 +393,12 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     }
     _handleNotificationsPress(e) {
         const notificationIconRef = this.shadowRoot.querySelector(".ui5-shellbar-bell-button"), target = e.target;
-        this._defaultItemPressPrevented = !this.fireEvent("notifications-click", {
+        this._defaultItemPressPrevented = !this.fireDecoratorEvent("notifications-click", {
             targetRef: notificationIconRef.classList.contains("ui5-shellbar-hidden-button") ? target : notificationIconRef,
-        }, true);
+        });
     }
     _handleProfilePress() {
-        this.fireEvent("profile-click", {
+        this.fireDecoratorEvent("profile-click", {
             targetRef: this.shadowRoot.querySelector(".ui5-shellbar-image-button"),
         });
     }
@@ -407,9 +407,9 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     }
     _handleProductSwitchPress(e) {
         const buttonRef = this.shadowRoot.querySelector(".ui5-shellbar-button-product-switch"), target = e.target;
-        this._defaultItemPressPrevented = !this.fireEvent("product-switch-click", {
+        this._defaultItemPressPrevented = !this.fireDecoratorEvent("product-switch-click", {
             targetRef: buttonRef.classList.contains("ui5-shellbar-hidden-button") ? target : buttonRef,
-        }, true);
+        });
     }
     /**
      * Returns the `logo` DOM ref.
@@ -752,9 +752,6 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     get accLogoRole() {
         return this.accessibilityAttributes.logo?.role || "button";
     }
-    static async onDefine() {
-        ShellBar_1.i18nBundle = await getI18nBundle("@ui5/webcomponents-fiori");
-    }
 };
 __decorate([
     property()
@@ -825,6 +822,9 @@ __decorate([
 __decorate([
     slot()
 ], ShellBar.prototype, "midContent", void 0);
+__decorate([
+    i18n("@ui5/webcomponents-fiori")
+], ShellBar, "i18nBundle", void 0);
 ShellBar = ShellBar_1 = __decorate([
     customElement({
         tag: "ui5-shellbar",
@@ -844,7 +844,6 @@ ShellBar = ShellBar_1 = __decorate([
     /**
      *
      * Fired, when the notification icon is activated.
-     * @allowPreventDefault
      * @param {HTMLElement} targetRef dom ref of the activated element
      * @public
      */
@@ -856,6 +855,8 @@ ShellBar = ShellBar_1 = __decorate([
              */
             targetRef: { type: HTMLElement },
         },
+        cancelable: true,
+        bubbles: true,
     })
     /**
      * Fired, when the profile slot is present.
@@ -870,12 +871,12 @@ ShellBar = ShellBar_1 = __decorate([
              */
             targetRef: { type: HTMLElement },
         },
+        bubbles: true,
     })
     /**
      * Fired, when the product switch icon is activated.
      *
      * **Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.
-     * @allowPreventDefault
      * @param {HTMLElement} targetRef dom ref of the activated element
      * @public
      */
@@ -887,6 +888,8 @@ ShellBar = ShellBar_1 = __decorate([
              */
             targetRef: { type: HTMLElement },
         },
+        cancelable: true,
+        bubbles: true,
     })
     /**
      * Fired, when the logo is activated.
@@ -902,6 +905,7 @@ ShellBar = ShellBar_1 = __decorate([
              */
             targetRef: { type: HTMLElement },
         },
+        bubbles: true,
     })
     /**
      * Fired, when a menu item is activated
@@ -919,12 +923,13 @@ ShellBar = ShellBar_1 = __decorate([
              */
             item: { type: HTMLElement },
         },
+        bubbles: true,
+        cancelable: true,
     })
     /**
      * Fired, when the search button is activated.
      *
      * **Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.
-     * @allowPreventDefault
      * @param {HTMLElement} targetRef dom ref of the activated element
      * @param {Boolean} searchFieldVisible whether the search field is visible
      * @public
@@ -935,6 +940,8 @@ ShellBar = ShellBar_1 = __decorate([
             targetRef: { type: HTMLElement },
             searchFieldVisible: { type: Boolean },
         },
+        cancelable: true,
+        bubbles: true,
     })
 ], ShellBar);
 ShellBar.define();

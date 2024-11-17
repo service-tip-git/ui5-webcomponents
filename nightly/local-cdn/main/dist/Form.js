@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
+import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 // Template
@@ -21,6 +22,7 @@ const StepColumn = {
     "L": 3,
     "XL": 6,
 };
+const breakpoints = ["S", "M", "L", "Xl"];
 /**
  * @class
  *
@@ -95,6 +97,47 @@ const StepColumn = {
  * You can control what space the labels should take via the `labelSpan` property.
  *
  * **For example:** To always place the labels on top set: `labelSpan="S12 M12 L12 XL12"` property.
+ *
+ * ### Navigation flow
+ *
+ * The Form component supports two layout options for keyboard navigation:
+ *
+ * #### Simple form
+ *
+ * In this "simple form" layout, each `ui5-form-item` acts as a standalone group
+ * with one item, so focus moves horizontally across the grid from one `ui5-form-item` to the next.
+ * This layout is ideal for simpler forms and supports custom arrangements, e.g.,
+ *
+ * ```
+ * | 1 | 2 |
+ * |   3   |
+ * | 4 | 5 |
+ * ```
+ *
+ * #### Complex form
+ *
+ * In this layout, items are grouped into `ui5-form-group` elements, allowing more complex configurations:
+ *
+ * - **Single-Column Group**: Focus moves vertically down from one item to the next.
+ *   ```
+ *   | 1 |
+ *   | 2 |
+ *   | 3 |
+ *   ```
+ *
+ * - **Multi-Column Group**: Focus moves horizontally within each row, advancing to the next row after completing the current one.
+ *   ```
+ *   | 1 | 4 |
+ *   | 2 | 5 |
+ *   | 3 | 6 |
+ *   ```
+ *
+ * ### Keyboard Handling
+ *
+ * - [Tab] - Moves the focus to the next interactive element within the Form/FormGroup (if available) or to the next element in the tab chain outside the Form
+ * - [Shift] + [Tab] - Moves the focus to the previous interactive element within the Form/FormGroup (if available) or to the previous element in the tab chain outside the Form
+ * - [F6] - Moves the focus to the first interactive element of the next FormGroup (if available) or to the next element in the tab chain outside the Form
+ * - [Shift] + [F6] - Moves the focus to the first interactive element of the previous FormGroup (if available) or to the previous element in the tab chain outside the Form
  *
  * ### ES6 Module Import
  *
@@ -174,6 +217,7 @@ let Form = class Form extends UI5Element {
     onAfterRendering() {
         // Create additional CSS for number of columns that are not supported by default.
         this.createAdditionalCSSStyleSheet();
+        this.setFastNavGroup();
     }
     setColumnLayout() {
         const layoutArr = this.layout.split(" ");
@@ -211,6 +255,14 @@ let Form = class Form extends UI5Element {
             item.labelSpan = this.labelSpan;
             item.itemSpacing = this.itemSpacing;
         });
+    }
+    setFastNavGroup() {
+        if (this.hasGroupItems) {
+            this.removeAttribute("data-sap-ui-fastnavgroup");
+        }
+        else {
+            this.setAttribute("data-sap-ui-fastnavgroup", "true");
+        }
     }
     setGroupsColSpan() {
         if (!this.hasGroupItems) {
@@ -261,13 +313,35 @@ let Form = class Form extends UI5Element {
     get hasCustomHeader() {
         return !!this.header.length;
     }
-    get ariaLabelledByID() {
+    get effectiveАccessibleNameRef() {
         return this.hasCustomHeader ? undefined : `${this._id}-header-text`;
+    }
+    get effectiveAccessibleRole() {
+        return this.hasGroupItems ? "region" : "form";
     }
     get groupItemsInfo() {
         return this.items.map((groupItem) => {
+            const items = this.getItemsInfo(Array.from(groupItem.children));
+            breakpoints.forEach(breakpoint => {
+                const cols = ((groupItem[`cols${breakpoint}`]) || 1);
+                const rows = Math.ceil(items.length / cols);
+                const total = cols * rows;
+                const lastRowColumns = (cols - (total - items.length) - 1); // all other indecies start from 0
+                let currentItem = 0;
+                for (let i = 0; i < total; i++) {
+                    const column = Math.floor(i / rows);
+                    const row = i % rows;
+                    if (row === rows - 1 && column > lastRowColumns) {
+                        // eslint-disable-next-line no-continue
+                        continue;
+                    }
+                    items[currentItem].item.style.setProperty(getScopedVarName(`--ui5-form-item-order-${breakpoint}`), `${column + row * cols}`);
+                    currentItem++;
+                }
+            });
             return {
                 groupItem,
+                accessibleNameRef: groupItem.headerText ? `${groupItem._id}-group-header-text` : undefined,
                 classes: `ui5-form-column-spanL-${groupItem.colsL} ui5-form-column-spanXL-${groupItem.colsXl} ui5-form-column-spanM-${groupItem.colsM} ui5-form-column-spanS-${groupItem.colsS}`,
                 items: this.getItemsInfo(Array.from(groupItem.children)),
             };

@@ -6,7 +6,7 @@ import type FormItemSpacing from "./types/FormItemSpacing.js";
  * @experimental
  * @since 2.0.0
  */
-interface IFormItem extends HTMLElement {
+interface IFormItem extends UI5Element {
     labelSpan: string;
     itemSpacing: `${FormItemSpacing}`;
     readonly isGroup: boolean;
@@ -20,6 +20,7 @@ type GroupItemsInfo = {
     groupItem: IFormItem;
     classes: string;
     items: Array<ItemsInfo>;
+    accessibleNameRef: string | undefined;
 };
 type ItemsInfo = {
     item: IFormItem;
@@ -99,6 +100,47 @@ type ItemsInfo = {
  * You can control what space the labels should take via the `labelSpan` property.
  *
  * **For example:** To always place the labels on top set: `labelSpan="S12 M12 L12 XL12"` property.
+ *
+ * ### Navigation flow
+ *
+ * The Form component supports two layout options for keyboard navigation:
+ *
+ * #### Simple form
+ *
+ * In this "simple form" layout, each `ui5-form-item` acts as a standalone group
+ * with one item, so focus moves horizontally across the grid from one `ui5-form-item` to the next.
+ * This layout is ideal for simpler forms and supports custom arrangements, e.g.,
+ *
+ * ```
+ * | 1 | 2 |
+ * |   3   |
+ * | 4 | 5 |
+ * ```
+ *
+ * #### Complex form
+ *
+ * In this layout, items are grouped into `ui5-form-group` elements, allowing more complex configurations:
+ *
+ * - **Single-Column Group**: Focus moves vertically down from one item to the next.
+ *   ```
+ *   | 1 |
+ *   | 2 |
+ *   | 3 |
+ *   ```
+ *
+ * - **Multi-Column Group**: Focus moves horizontally within each row, advancing to the next row after completing the current one.
+ *   ```
+ *   | 1 | 4 |
+ *   | 2 | 5 |
+ *   | 3 | 6 |
+ *   ```
+ *
+ * ### Keyboard Handling
+ *
+ * - [Tab] - Moves the focus to the next interactive element within the Form/FormGroup (if available) or to the next element in the tab chain outside the Form
+ * - [Shift] + [Tab] - Moves the focus to the previous interactive element within the Form/FormGroup (if available) or to the previous element in the tab chain outside the Form
+ * - [F6] - Moves the focus to the first interactive element of the next FormGroup (if available) or to the next element in the tab chain outside the Form
+ * - [Shift] + [F6] - Moves the focus to the first interactive element of the previous FormGroup (if available) or to the previous element in the tab chain outside the Form
  *
  * ### ES6 Module Import
  *
@@ -192,12 +234,14 @@ declare class Form extends UI5Element {
     onAfterRendering(): void;
     setColumnLayout(): void;
     setLabelSpan(): void;
+    setFastNavGroup(): void;
     setGroupsColSpan(): void;
     getGroupsColSpan(cols: number, groups: number, index: number, group: IFormItem): number;
     get hasGroupItems(): boolean;
     get hasHeader(): boolean;
     get hasCustomHeader(): boolean;
-    get ariaLabelledByID(): string | undefined;
+    get effectiveАccessibleNameRef(): string | undefined;
+    get effectiveAccessibleRole(): string | undefined;
     get groupItemsInfo(): Array<GroupItemsInfo>;
     get itemsInfo(): Array<ItemsInfo>;
     getItemsInfo(items?: Array<IFormItem>): Array<ItemsInfo>;

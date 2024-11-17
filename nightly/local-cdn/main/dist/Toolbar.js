@@ -14,7 +14,7 @@ import executeTemplate from "@ui5/webcomponents-base/dist/renderer/executeTempla
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
-import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AriaLabelHelper.js";
+import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import "@ui5/webcomponents-icons/dist/overflow.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
@@ -214,6 +214,7 @@ let Toolbar = Toolbar_1 = class Toolbar extends UI5Element {
     onBeforeRendering() {
         this.detachListeners();
         this.attachListeners();
+        this.preprocessItems();
     }
     async onAfterRendering() {
         await renderFinished();
@@ -442,6 +443,12 @@ let Toolbar = Toolbar_1 = class Toolbar extends UI5Element {
     }
     getRegisteredToolbarItemByID(id) {
         return this.itemsDOM.querySelector(`[data-ui5-external-action-item-id="${id}"]`);
+    }
+    preprocessItems() {
+        this.items.forEach(item => {
+            item._getRealDomRef = () => this.getDomRef().querySelector(`[data-ui5-stable*=${item.stableDomRef}]`)
+                ?? this.getOverflowPopover().querySelector(`[data-ui5-stable*=${item.stableDomRef}]`);
+        });
     }
 };
 __decorate([

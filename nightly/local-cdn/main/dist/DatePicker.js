@@ -8,7 +8,7 @@ var DatePicker_1;
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import CalendarDate from "@ui5/webcomponents-localization/dist/dates/CalendarDate.js";
 import modifyDateBy from "@ui5/webcomponents-localization/dist/dates/modifyDateBy.js";
@@ -18,11 +18,9 @@ import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import { submitForm } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import { isPageUp, isPageDown, isPageUpShift, isPageDownShift, isPageUpShiftCtrl, isPageDownShiftCtrl, isShow, isF4, isEnter, isTabNext, isTabPrevious, isF6Next, isF6Previous, } from "@ui5/webcomponents-base/dist/Keys.js";
-import AriaHasPopup from "@ui5/webcomponents-base/dist/types/AriaHasPopup.js";
 import { isPhone, isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import CalendarPickersMode from "./types/CalendarPickersMode.js";
 import "@ui5/webcomponents-icons/dist/appointment-2.js";
-import "@ui5/webcomponents-icons/dist/decline.js";
 import { DATEPICKER_OPEN_ICON_TITLE, DATEPICKER_DATE_DESCRIPTION, INPUT_SUGGESTIONS_TITLE, FORM_TEXTFIELD_REQUIRED, DATEPICKER_POPOVER_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
 import DateComponentBase from "./DateComponentBase.js";
 import Icon from "./Icon.js";
@@ -33,7 +31,7 @@ import CalendarDateComponent from "./CalendarDate.js";
 import Input from "./Input.js";
 import InputType from "./types/InputType.js";
 import IconMode from "./types/IconMode.js";
-import DatePickerTemplate from "./generated/templates/DatePickerTemplate.lit.js";
+import DatePickerTemplate from "./DatePickerTemplate.js";
 // default calendar for bundling
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";
 // Styles
@@ -328,7 +326,7 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
             this.value = value;
             this._updateValueState(); // Change the value state to Error/None, but only if needed
         }
-        events.forEach((e) => {
+        events.forEach(e => {
             if (!this.fireDecoratorEvent(e, { value, valid })) {
                 executeEvent = false;
             }
@@ -451,7 +449,7 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
     get accInfo() {
         return {
             "ariaRoledescription": this.dateAriaDescription,
-            "ariaHasPopup": AriaHasPopup.Grid.toLowerCase(),
+            "ariaHasPopup": "grid",
             "ariaRequired": this.required,
             "ariaLabel": getEffectiveAriaLabelText(this),
         };
@@ -650,20 +648,6 @@ DatePicker = DatePicker_1 = __decorate([
      */
     ,
     event("change", {
-        detail: {
-            /**
-             * @public
-             */
-            value: {
-                type: String,
-            },
-            /**
-             * @public
-             */
-            valid: {
-                type: Boolean,
-            },
-        },
         bubbles: true,
         cancelable: true,
     })
@@ -675,20 +659,6 @@ DatePicker = DatePicker_1 = __decorate([
      */
     ,
     event("input", {
-        detail: {
-            /**
-             * @public
-             */
-            value: {
-                type: String,
-            },
-            /**
-             * @public
-             */
-            valid: {
-                type: Boolean,
-            },
-        },
         bubbles: true,
         cancelable: true,
     })
@@ -702,20 +672,6 @@ DatePicker = DatePicker_1 = __decorate([
      */
     ,
     event("value-state-change", {
-        detail: {
-            /**
-             * @public
-             */
-            valueState: {
-                type: String,
-            },
-            /**
-             * @public
-             */
-            valid: {
-                type: Boolean,
-            },
-        },
         bubbles: true,
         cancelable: true,
     })

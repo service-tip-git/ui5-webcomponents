@@ -8,11 +8,11 @@ var TableGroupRow_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
-import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
+import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import CheckBox from "@ui5/webcomponents/dist/CheckBox.js";
-import TableGroupRowTemplate from "./generated/templates/TableGroupRowTemplate.lit.js";
+import TableGroupRowTemplate from "./TableGroupRowTemplate.js";
 import TableMode from "./types/TableMode.js";
 // Texts
 import { TABLE_GROUP_ROW_ARIA_LABEL, } from "./generated/i18n/i18n-defaults.js";
@@ -96,7 +96,7 @@ TableGroupRow = TableGroupRow_1 = __decorate([
     customElement({
         tag: "ui5-table-group-row",
         styles: tableGroupRowStyles,
-        renderer: litRender,
+        renderer: jsxRenderer,
         template: TableGroupRowTemplate,
         dependencies: [
             CheckBox,

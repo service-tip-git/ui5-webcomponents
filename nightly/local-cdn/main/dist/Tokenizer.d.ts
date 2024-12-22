@@ -5,6 +5,7 @@ import ScrollEnablement from "@ui5/webcomponents-base/dist/delegate/ScrollEnable
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ResponsivePopover from "./ResponsivePopover.js";
 import List from "./List.js";
+import type { ListItemDeleteEventDetail } from "./List.js";
 import ListSelectionMode from "./types/ListSelectionMode.js";
 import type Token from "./Token.js";
 import type { IToken } from "./MultiInput.js";
@@ -61,6 +62,12 @@ declare enum ClipboardDataOperation {
  * @experimental This component is availabe since 2.0 under an experimental flag and its API and behaviour are subject to change.
  */
 declare class Tokenizer extends UI5Element {
+    eventDetails: {
+        "token-delete": TokenizerTokenDeleteEventDetail;
+        "selection-change": TokenizerSelectionChangeEventDetail;
+        "show-more-items-press": void;
+        "before-more-popover-open": void;
+    };
     /**
      * Defines whether the component is read-only.
      *
@@ -192,7 +199,7 @@ declare class Tokenizer extends UI5Element {
      * @param forwardFocusToPrevious Indicates whether the focus will be forwarded to previous or next token after deletion.
      */
     deleteToken(token: Token, forwardFocusToPrevious?: boolean): void;
-    itemDelete(e: CustomEvent): Promise<void>;
+    itemDelete(e: CustomEvent<ListItemDeleteEventDetail>): Promise<void>;
     handleBeforeClose(): void;
     handleBeforeOpen(): void;
     handleAfterClose(): void;
@@ -260,6 +267,7 @@ declare class Tokenizer extends UI5Element {
      */
     _focusLastToken(): void;
     getPopover(): ResponsivePopover;
+    getTokenByRefId(refId: string): Token;
 }
 declare const getTokensCountText: (iTokenCount: number) => string;
 export default Tokenizer;

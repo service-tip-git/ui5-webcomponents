@@ -1,7 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
-import type { PassiveEventListenerObject } from "@ui5/webcomponents-base/dist/types.js";
-import "@ui5/webcomponents-icons/dist/direction-arrows.js";
 type StateStorage = {
     [key: string]: number | undefined;
 };
@@ -11,6 +9,10 @@ type DirectionStart = "left" | "right";
  * @public
  */
 declare abstract class SliderBase extends UI5Element {
+    eventDetails: {
+        "change": void;
+        "input": void;
+    };
     /**
      * Defines the minimum value of the slider.
      * @default 0
@@ -102,7 +104,6 @@ declare abstract class SliderBase extends UI5Element {
     _moveHandler: (e: TouchEvent | MouseEvent) => void;
     _upHandler: (e: TouchEvent | MouseEvent) => void;
     _stateStorage: StateStorage;
-    _ontouchstart: PassiveEventListenerObject;
     notResized: boolean;
     _isUserInteraction: boolean;
     _isInnerElementFocusing: boolean;
@@ -120,10 +121,10 @@ declare abstract class SliderBase extends UI5Element {
     _handleActionKeyPress(e: Event): void;
     _updateInputValue(): void;
     abstract styles: {
-        label: object;
-        labelContainer: object;
+        label: Record<string, string>;
+        labelContainer: Record<string, string>;
     };
-    abstract tickmarksObject: any;
+    abstract tickmarksObject: Array<boolean>;
     abstract _ariaLabelledByText: string;
     static get ACTION_KEYS(): ((event: KeyboardEvent) => boolean)[];
     static get MIN_SPACE_BETWEEN_TICKMARKS(): number;
@@ -132,7 +133,7 @@ declare abstract class SliderBase extends UI5Element {
         HIDDEN: string;
     };
     static get renderer(): import("@ui5/webcomponents-base/dist/UI5Element.js").Renderer;
-    static get styles(): import("@ui5/webcomponents-base/dist/types.js").StyleData;
+    static get styles(): string;
     get classes(): {
         root: {
             "ui5-slider-root-phone": boolean;
@@ -307,7 +308,7 @@ declare abstract class SliderBase extends UI5Element {
     get _effectiveStep(): number;
     get _effectiveMin(): number;
     get _effectiveMax(): number;
-    get _tabIndex(): "-1" | "0";
+    get _tabIndex(): 0 | -1;
     get _ariaDescribedByHandleText(): "ui5-slider-InputDesc" | undefined;
     get _ariaLabelledByHandleText(): "ui5-slider-accName ui5-slider-sliderDesc" | "ui5-slider-sliderDesc";
     get _ariaDescribedByInputText(): string;

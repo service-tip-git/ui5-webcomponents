@@ -74,6 +74,14 @@ type SelectLiveChangeEventDetail = {
  * @since 0.8.0
  */
 declare class Select extends UI5Element implements IFormInputElement {
+    eventDetails: {
+        "change": SelectChangeEventDetail;
+        "live-change": SelectLiveChangeEventDetail;
+        "open": void;
+        "close": void;
+        "selected-item-changed": void;
+        "input": void;
+    };
     static i18nBundle: I18nBundle;
     /**
      * Defines whether the component is in disabled state.
@@ -276,7 +284,7 @@ declare class Select extends UI5Element implements IFormInputElement {
     get isDisabled(): true | undefined;
     get _headerTitleText(): string;
     get _currentlySelectedOption(): IOption;
-    get _effectiveTabIndex(): "-1" | "0";
+    get _effectiveTabIndex(): "0" | "-1";
     /**
     * This method is relevant for sap_horizon theme only
     */

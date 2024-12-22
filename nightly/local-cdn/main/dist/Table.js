@@ -10,7 +10,7 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
@@ -22,10 +22,12 @@ import TableHeaderRow from "./TableHeaderRow.js";
 import TableExtension from "./TableExtension.js";
 import TableOverflowMode from "./types/TableOverflowMode.js";
 import TableNavigation from "./TableNavigation.js";
+import DropIndicator from "./DropIndicator.js";
 import { TABLE_NO_DATA, } from "./generated/i18n/i18n-defaults.js";
 import BusyIndicator from "./BusyIndicator.js";
 import TableCell from "./TableCell.js";
 import { findVerticalScrollContainer, scrollElementIntoView, isFeature } from "./TableUtils.js";
+import TableDragAndDrop from "./TableDragAndDrop.js";
 /**
  * @class
  *
@@ -143,7 +145,7 @@ let Table = Table_1 = class Table extends UI5Element {
         this.stickyTop = "0";
         this._invalidate = 0;
         this._renderNavigated = false;
-        this._events = ["keydown", "keyup", "click", "focusin", "focusout"];
+        this._events = ["keydown", "keyup", "click", "focusin", "focusout", "dragenter", "dragleave", "dragover", "drop"];
         this._poppedIn = [];
         this._containerWidth = 0;
         this._onResizeBound = this._onResize.bind(this);
@@ -156,10 +158,12 @@ let Table = Table_1 = class Table extends UI5Element {
         this._events.forEach(eventType => this.addEventListener(eventType, this._onEventBound));
         this.features.forEach(feature => feature.onTableActivate(this));
         this._tableNavigation = new TableNavigation(this);
+        this._tableDragAndDrop = new TableDragAndDrop(this);
     }
     onExitDOM() {
         this._tableNavigation = undefined;
-        this._events.forEach(eventType => this.addEventListener(eventType, this._onEventBound));
+        this._tableDragAndDrop = undefined;
+        this._events.forEach(eventType => this.removeEventListener(eventType, this._onEventBound));
         if (this.overflowMode === TableOverflowMode.Popin) {
             ResizeHandler.deregister(this, this._onResizeBound);
         }
@@ -176,15 +180,18 @@ let Table = Table_1 = class Table extends UI5Element {
         this._refreshPopinState();
     }
     onAfterRendering() {
-        this.features.forEach(feature => feature.onTableRendered?.());
+        this.features.forEach(feature => feature.onTableAfterRendering?.());
     }
     _getSelection() {
         return this.features.find(feature => isFeature(feature, "TableSelection"));
     }
+    _getVirtualizer() {
+        return this.features.find(feature => isFeature(feature, "TableVirtualizer"));
+    }
     _onEvent(e) {
         const composedPath = e.composedPath();
         const eventOrigin = composedPath[0];
-        const elements = [this._tableNavigation, ...composedPath, ...this.features];
+        const elements = [this._tableNavigation, this._tableDragAndDrop, ...composedPath, ...this.features];
         elements.forEach(element => {
             if (element instanceof TableExtension || (element instanceof HTMLElement && element.localName.includes("ui5-table"))) {
                 const eventHandlerName = `_on${e.type}`;
@@ -228,6 +235,9 @@ let Table = Table_1 = class Table extends UI5Element {
         }
     }
     _onfocusin(e) {
+        if (e.target === this) {
+            return;
+        }
         // Handles focus in the table, when the focus is below a sticky element
         scrollElementIntoView(this._scrollContainer, e.target, this._stickyElements, this.effectiveDir === "rtl");
     }
@@ -269,7 +279,7 @@ let Table = Table_1 = class Table extends UI5Element {
         });
     }
     _isFeature(feature) {
-        return Boolean(feature.onTableActivate && feature.onTableRendered);
+        return Boolean(feature.onTableActivate && feature.onTableAfterRendering);
     }
     _isGrowingFeature(feature) {
         return Boolean(feature.loadMore && feature.hasGrowingComponent && this._isFeature(feature));
@@ -278,6 +288,7 @@ let Table = Table_1 = class Table extends UI5Element {
         this.fireDecoratorEvent("row-click", { row });
     }
     get styles() {
+        const virtualizer = this._getVirtualizer();
         const headerStyleMap = this.headerRow?.[0]?.cells?.reduce((headerStyles, headerCell) => {
             if (headerCell.horizontalAlign !== undefined && !headerCell._popin) {
                 headerStyles[`--horizontal-align-${headerCell._individualSlot}`] = headerCell.horizontalAlign;
@@ -287,7 +298,12 @@ let Table = Table_1 = class Table extends UI5Element {
         return {
             table: {
                 "grid-template-columns": this._gridTemplateColumns,
+                "--row-height": virtualizer ? `${virtualizer.rowHeight}px` : "auto",
                 ...headerStyleMap,
+            },
+            spacer: {
+                "transform": virtualizer?._getTransform(),
+                "will-change": virtualizer && "transform",
             },
         };
     }
@@ -339,6 +355,9 @@ let Table = Table_1 = class Table extends UI5Element {
     get _ariaLabel() {
         return getEffectiveAriaLabelText(this) || undefined;
     }
+    get _ariaRowCount() {
+        return this._getVirtualizer()?.rowCount || undefined;
+    }
     get _ariaMultiSelectable() {
         const selection = this._getSelection();
         return (selection?.isSelectable() && this.rows.length) ? selection.isMultiSelect() : undefined;
@@ -355,10 +374,13 @@ let Table = Table_1 = class Table extends UI5Element {
         return [...stickyRows, ...stickyColumns];
     }
     get _scrollContainer() {
-        return findVerticalScrollContainer(this._tableElement);
+        return this._getVirtualizer() ? this._tableElement : findVerticalScrollContainer(this);
     }
     get isTable() {
         return true;
+    }
+    get dropIndicatorDOM() {
+        return this.shadowRoot.querySelector("[ui5-drop-indicator]");
     }
 };
 __decorate([
@@ -366,7 +388,7 @@ __decorate([
         type: HTMLElement,
         "default": true,
         invalidateOnChildChange: {
-            properties: ["navigated"],
+            properties: ["navigated", "position"],
             slots: false,
         },
     })
@@ -422,6 +444,7 @@ Table = Table_1 = __decorate([
             TableHeaderRow,
             TableCell,
             TableRow,
+            DropIndicator,
         ],
     })
     /**
@@ -432,12 +455,43 @@ Table = Table_1 = __decorate([
      */
     ,
     event("row-click", {
-        detail: {
-            /**
-             * @public
-             */
-            row: { type: TableRow },
-        },
+        bubbles: true,
+    })
+    /**
+     * Fired when a movable item is moved over a potential drop target during a dragging operation.
+     *
+     * If the new position is valid, prevent the default action of the event using `preventDefault()`.
+     *
+     * **Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+     * the `source` parameter will be `null`.
+     *
+     * @param {Event} originalEvent The original `dragover` event
+     * @param {object} source The source object
+     * @param {object} destination The destination object
+     * @public
+     */
+    ,
+    event("move-over", {
+        cancelable: true,
+        bubbles: true,
+    })
+    /**
+     * Fired when a movable list item is dropped onto a drop target.
+     *
+     * **Notes:**
+     *
+     * The `move` event is fired only if there was a preceding `move-over` with prevented default action.
+     *
+     * If the dragging operation is a cross-browser operation or files are moved to a potential drop target,
+     * the `source` parameter will be `null`.
+     *
+     * @param {Event} originalEvent The original `drop` event
+     * @param {object} source The source object
+     * @param {object} destination The destination object
+     * @public
+     */
+    ,
+    event("move", {
         bubbles: true,
     })
 ], Table);

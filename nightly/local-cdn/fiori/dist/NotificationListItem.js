@@ -10,7 +10,7 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import query from "@ui5/webcomponents-base/dist/decorators/query.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import Button from "@ui5/webcomponents/dist/Button.js";
 import BusyIndicator from "@ui5/webcomponents/dist/BusyIndicator.js";
@@ -20,6 +20,7 @@ import Icon from "@ui5/webcomponents/dist/Icon.js";
 import WrappingType from "@ui5/webcomponents/dist/types/WrappingType.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import willShowContent from "@ui5/webcomponents-base/dist/util/willShowContent.js";
+import litRenderer from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import NotificationListItemImportance from "./types/NotificationListItemImportance.js";
 import NotificationListItemBase from "./NotificationListItemBase.js";
 // Icons
@@ -337,6 +338,7 @@ let NotificationListItem = NotificationListItem_1 = class NotificationListItem e
             return;
         }
         const navItems = list.getEnabledItems();
+        // @ts-expect-error TOFIX strictEvents
         const index = navItems.indexOf(this) + (isUp(e) ? -1 : 1);
         const nextItem = navItems[index];
         if (!nextItem) {
@@ -391,6 +393,10 @@ let NotificationListItem = NotificationListItem_1 = class NotificationListItem e
         if (this.getFocusDomRef().matches(":has(:focus-within)")) {
             return;
         }
+        // NotificationListItem will never be assigned to a variable of type ListItemBase
+        // typescipt complains here, if that is the case, the parameter to the _press event handler could be a ListItemBase item,
+        // but this is never the case, all components are used by their class and never assigned to a variable with a type of ListItemBase
+        // @ts-expect-error
         this.fireDecoratorEvent("_press", { item: this });
     }
     onResize() {
@@ -460,6 +466,7 @@ NotificationListItem = NotificationListItem_1 = __decorate([
         styles: [
             NotificationListItemCss,
         ],
+        renderer: litRenderer,
         template: NotificationListItemTemplate,
         dependencies: [
             Button,
@@ -479,14 +486,6 @@ NotificationListItem = NotificationListItem_1 = __decorate([
      */
     ,
     event("close", {
-        detail: {
-            /**
-             * @public
-             */
-            item: {
-                type: HTMLElement,
-            },
-        },
         bubbles: true,
     })
 ], NotificationListItem);

@@ -7,10 +7,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var Popup_1;
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
+import jsxRender from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import { isChrome, isDesktop, isPhone, } from "@ui5/webcomponents-base/dist/Device.js";
 import { getFirstFocusableElement, getLastFocusableElement } from "@ui5/webcomponents-base/dist/util/FocusableElements.js";
@@ -20,8 +20,9 @@ import { isEnter, isTabPrevious } from "@ui5/webcomponents-base/dist/Keys.js";
 import { getFocusedElement, isFocusedElementWithinNode } from "@ui5/webcomponents-base/dist/util/PopupUtils.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import MediaRange from "@ui5/webcomponents-base/dist/MediaRange.js";
+import toLowercaseEnumValue from "@ui5/webcomponents-base/dist/util/toLowercaseEnumValue.js";
 import Title from "./Title.js";
-import PopupTemplate from "./generated/templates/PopupTemplate.lit.js";
+import PopupTemplate from "./PopupTemplate.js";
 import PopupAccessibleRole from "./types/PopupAccessibleRole.js";
 import { addOpenedPopup, removeOpenedPopup } from "./popup-utils/OpenedPopupsRegistry.js";
 // Styles
@@ -126,6 +127,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         this.tabIndex = -1;
         if (this.open) {
             this.showPopover();
+            this.openPopup();
         }
     }
     onExitDOM() {
@@ -160,7 +162,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         if (this._opened) {
             return;
         }
-        const prevented = !this.fireDecoratorEvent("before-open", {});
+        const prevented = !this.fireDecoratorEvent("before-open");
         if (prevented || this._opened) {
             return;
         }
@@ -181,7 +183,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         // initial focus, if focused element is dynamically created
         await this.applyInitialFocus();
         if (this.isConnected) {
-            this.fireDecoratorEvent("open", {});
+            this.fireDecoratorEvent("open");
         }
     }
     _resize() {
@@ -352,7 +354,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         if (!this.preventFocusRestore && !preventFocusRestore) {
             this.resetFocus();
         }
-        this.fireDecoratorEvent("close", {});
+        this.fireDecoratorEvent("close");
     }
     /**
      * Removes the popup from the "opened popups registry"
@@ -400,7 +402,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         return this.shadowRoot.querySelector(".ui5-popup-root");
     }
     get _role() {
-        return (this.accessibleRole === PopupAccessibleRole.None) ? undefined : this.accessibleRole.toLowerCase();
+        return (this.accessibleRole === PopupAccessibleRole.None) ? undefined : toLowercaseEnumValue(this.accessibleRole);
     }
     get _ariaModal() {
         return this.accessibleRole === PopupAccessibleRole.None ? undefined : "true";
@@ -463,7 +465,7 @@ __decorate([
 ], Popup.prototype, "open", null);
 Popup = Popup_1 = __decorate([
     customElement({
-        renderer: litRender,
+        renderer: jsxRender,
         styles: [popupStlyes, popupBlockLayerStyles],
         template: PopupTemplate,
         dependencies: [
@@ -491,14 +493,6 @@ Popup = Popup_1 = __decorate([
      */
     ,
     event("before-close", {
-        detail: {
-            /**
-             * @public
-             */
-            escPressed: {
-                type: Boolean,
-            },
-        },
         cancelable: true,
     })
     /**

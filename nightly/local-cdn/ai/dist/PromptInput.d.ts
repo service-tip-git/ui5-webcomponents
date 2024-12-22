@@ -1,7 +1,6 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
-import "@ui5/webcomponents-icons/dist/paper-plane.js";
 import type { IInputSuggestionItem, InputEventDetail } from "@ui5/webcomponents/dist/Input.js";
 /**
  * @class
@@ -21,6 +20,11 @@ import type { IInputSuggestionItem, InputEventDetail } from "@ui5/webcomponents/
  * @experimental The **@ui5/webcomponents-ai** package is under development and considered experimental - components' APIs are subject to change.
  */
 declare class PromptInput extends UI5Element {
+    eventDetails: {
+        submit: void;
+        input: void;
+        change: void;
+    };
     /**
      * Defines the value of the component.
      *

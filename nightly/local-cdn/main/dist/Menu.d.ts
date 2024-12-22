@@ -1,9 +1,9 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { UI5CustomEvent } from "@ui5/webcomponents-base";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-right.js";
 import type { Timeout } from "@ui5/webcomponents-base/dist/types.js";
 import ResponsivePopover from "./ResponsivePopover.js";
-import type { ResponsivePopoverBeforeCloseEventDetail } from "./ResponsivePopover.js";
 import MenuItem from "./MenuItem.js";
 import type { ListItemClickEventDetail } from "./List.js";
 /**
@@ -62,6 +62,13 @@ type MenuBeforeCloseEventDetail = {
  * @public
  */
 declare class Menu extends UI5Element {
+    eventDetails: {
+        "item-click": MenuItemClickEventDetail;
+        "before-open": MenuBeforeOpenEventDetail;
+        "open": void;
+        "before-close": MenuBeforeCloseEventDetail;
+        "close": void;
+    };
     /**
      * Defines the header text of the menu (displayed on mobile).
      * @default undefined
@@ -118,12 +125,13 @@ declare class Menu extends UI5Element {
     _openItemSubMenu(item: MenuItem): void;
     _closeItemSubMenu(item: MenuItem): void;
     _itemMouseOver(e: MouseEvent): void;
+    focus(focusOptions?: FocusOptions): Promise<void>;
     _startOpenTimeout(item: MenuItem): void;
     _itemClick(e: CustomEvent<ListItemClickEventDetail>): void;
     _itemKeyDown(e: KeyboardEvent): void;
     _beforePopoverOpen(e: CustomEvent): void;
     _afterPopoverOpen(): void;
-    _beforePopoverClose(e: CustomEvent<ResponsivePopoverBeforeCloseEventDetail>): void;
+    _beforePopoverClose(e: UI5CustomEvent<ResponsivePopover, "before-close">): void;
     _afterPopoverClose(): void;
 }
 export default Menu;

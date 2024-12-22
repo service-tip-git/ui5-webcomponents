@@ -38,6 +38,9 @@ import TableGrowingMode from "./types/TableGrowingMode.js";
  * @experimental This web component is available since 2.0 with an experimental flag and its API and behavior are subject to change.
  */
 declare class TableGrowing extends UI5Element implements ITableGrowing {
+    eventDetails: {
+        "load-more": void;
+    };
     /**
      * Defines the mode of the <code>ui5-table</code> growing.
      *
@@ -70,13 +73,6 @@ declare class TableGrowing extends UI5Element implements ITableGrowing {
      */
     growingSubText?: string;
     /**
-     * Disables the growing feature.
-     *
-     * @default false
-     * @public
-     */
-    disabled: boolean;
-    /**
      * Defines the active state of the growing button.
      * Used for keyboard interaction.
      * @private
@@ -86,13 +82,12 @@ declare class TableGrowing extends UI5Element implements ITableGrowing {
     readonly identifier = "TableGrowing";
     _table?: Table;
     _observer?: IntersectionObserver;
-    _individualSlot?: string;
     _currentLastRow?: HTMLElement;
     _shouldFocusRow?: boolean;
     _renderContent: boolean;
     static i18nBundle: I18nBundle;
     onTableActivate(table: Table): void;
-    onTableRendered(): void;
+    onTableAfterRendering(): void;
     onExitDOM(): void;
     onBeforeRendering(): void;
     hasGrowingComponent(): boolean;

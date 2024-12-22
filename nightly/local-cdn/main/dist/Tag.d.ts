@@ -32,6 +32,9 @@ import type TagSize from "./types/TagSize.js";
  * @public
  */
 declare class Tag extends UI5Element {
+    eventDetails: {
+        click: void;
+    };
     /**
      * Defines the design type of the component.
      * @default "Neutral"
@@ -111,7 +114,7 @@ declare class Tag extends UI5Element {
     get iconOnly(): boolean;
     get _title(): string | undefined;
     get tagDescription(): string | undefined;
-    get _semanticIconName(): "error" | "alert" | "sys-enter-2" | "information" | "sys-help-2" | null;
+    get _semanticIconName(): "alert" | "error" | "sys-enter-2" | "information" | "sys-help-2" | null;
     _onclick(): void;
 }
 export default Tag;

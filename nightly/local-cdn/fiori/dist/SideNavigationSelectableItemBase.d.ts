@@ -6,6 +6,9 @@ import SideNavigationItemBase from "./SideNavigationItemBase.js";
  * @public
  */
 declare class SideNavigationSelectableItemBase extends SideNavigationItemBase {
+    eventDetails: SideNavigationItemBase["eventDetails"] & {
+        "click": void;
+    };
     /**
      * Defines the icon of the item.
      *
@@ -67,11 +70,11 @@ declare class SideNavigationSelectableItemBase extends SideNavigationItemBase {
     get _ariaCurrent(): "page" | undefined;
     _onkeydown(e: KeyboardEvent): void;
     _onkeyup(e: KeyboardEvent): void;
-    _onclick(e: PointerEvent): void;
+    _onclick(e: MouseEvent): void;
     _onfocusin(e: FocusEvent): void;
-    _activate(e: KeyboardEvent | PointerEvent): void;
+    _activate(e: KeyboardEvent | MouseEvent): void;
     get isSideNavigationSelectableItemBase(): boolean;
 }
 declare const isInstanceOfSideNavigationSelectableItemBase: (object: any) => object is SideNavigationSelectableItemBase;
 export default SideNavigationSelectableItemBase;
-export { isInstanceOfSideNavigationSelectableItemBase };
+export { isInstanceOfSideNavigationSelectableItemBase, };

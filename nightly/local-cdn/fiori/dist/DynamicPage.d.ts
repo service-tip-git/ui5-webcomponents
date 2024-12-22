@@ -66,6 +66,10 @@ import DynamicPageHeaderActions from "./DynamicPageHeaderActions.js";
  * @csspart footer - Used to style the footer of the component
  */
 declare class DynamicPage extends UI5Element {
+    eventDetails: {
+        "pin-button-toggle": void;
+        "title-toggle": void;
+    };
     /**
      * Defines if the pin button is hidden.
      *
@@ -137,7 +141,7 @@ declare class DynamicPage extends UI5Element {
     get _headerLabel(): string;
     get _headerExpanded(): boolean;
     get _accAttributesForHeaderActions(): {
-        controls: string;
+        controls: Lowercase<string>;
     };
     get headerTabIndex(): 0 | -1;
     get headerAriaHidden(): boolean;

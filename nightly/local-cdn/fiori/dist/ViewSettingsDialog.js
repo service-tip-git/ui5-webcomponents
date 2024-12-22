@@ -8,10 +8,10 @@ var ViewSettingsDialog_1;
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import { isPhone } from "@ui5/webcomponents-base/dist/Device.js";
-import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
+import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import Dialog from "@ui5/webcomponents/dist/Dialog.js";
 import Button from "@ui5/webcomponents/dist/Button.js";
@@ -28,7 +28,7 @@ import "@ui5/webcomponents-icons/dist/filter.js";
 import "@ui5/webcomponents-icons/dist/nav-back.js";
 import { VSD_DIALOG_TITLE_SORT, VSD_SUBMIT_BUTTON, VSD_CANCEL_BUTTON, VSD_RESET_BUTTON, VSD_SORT_ORDER, VSD_SORT_BY, VSD_ORDER_ASCENDING, VSD_ORDER_DESCENDING, VSD_FILTER_BY, } from "./generated/i18n/i18n-defaults.js";
 // Template
-import ViewSettingsDialogTemplate from "./generated/templates/ViewSettingsDialogTemplate.lit.js";
+import ViewSettingsDialogTemplate from "./ViewSettingsDialogTemplate.js";
 // Styles
 import viewSettingsDialogCSS from "./generated/themes/ViewSettingsDialog.css.js";
 /**
@@ -296,7 +296,7 @@ let ViewSettingsDialog = ViewSettingsDialog_1 = class ViewSettingsDialog extends
         else {
             this._restoreSettings(this._confirmedSettings);
         }
-        this.fireDecoratorEvent("before-open", {});
+        this.fireDecoratorEvent("before-open");
     }
     afterDialogOpen() {
         this._dialog?.querySelector("[ui5-list]")?.focusFirstItem();
@@ -307,7 +307,7 @@ let ViewSettingsDialog = ViewSettingsDialog_1 = class ViewSettingsDialog extends
         this.fireDecoratorEvent("close");
     }
     _handleModeChange(e) {
-        const mode = e.detail.selectedItems[0].getAttribute("mode");
+        const mode = e.detail.selectedItems[0].getAttribute("data-mode");
         this._currentMode = ViewSettingsDialogMode[mode];
     }
     _handleFilterValueItemClick(e) {
@@ -546,7 +546,7 @@ __decorate([
 ViewSettingsDialog = ViewSettingsDialog_1 = __decorate([
     customElement({
         tag: "ui5-view-settings-dialog",
-        renderer: litRender,
+        renderer: jsxRenderer,
         styles: viewSettingsDialogCSS,
         template: ViewSettingsDialogTemplate,
         dependencies: [
@@ -572,28 +572,6 @@ ViewSettingsDialog = ViewSettingsDialog_1 = __decorate([
      */
     ,
     event("confirm", {
-        detail: {
-            /**
-             * @public
-             */
-            sortOrder: { type: String },
-            /**
-             * @public
-             */
-            sortBy: { type: String },
-            /**
-             * @public
-             */
-            sortByItem: { type: HTMLElement },
-            /**
-             * @public
-             */
-            sortDescending: { type: Boolean },
-            /**
-             * @public
-             */
-            filters: { type: Array },
-        },
         bubbles: true,
     })
     /**
@@ -607,28 +585,6 @@ ViewSettingsDialog = ViewSettingsDialog_1 = __decorate([
      */
     ,
     event("cancel", {
-        detail: {
-            /**
-             * @public
-             */
-            sortOrder: { type: String },
-            /**
-             * @public
-             */
-            sortBy: { type: String },
-            /**
-             * @public
-             */
-            sortByItem: { type: HTMLElement },
-            /**
-             * @public
-             */
-            sortDescending: { type: Boolean },
-            /**
-             * @public
-             */
-            filters: { type: Array },
-        },
         bubbles: true,
     })
     /**

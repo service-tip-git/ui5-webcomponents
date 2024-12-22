@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js"; // default calendar for bundling
 import { isDown, isUp, isDownAlt, isUpAlt, isPageUp, isPageDown, isPageUpShift, isPageDownShift, isPageUpShiftCtrl, isPageDownShiftCtrl, isSpace, isEnter, isKeyA, isKeyP, isNumber, isColon, } from "@ui5/webcomponents-base/dist/Keys.js";
 import TimePickerInternals from "./TimePickerInternals.js";
@@ -15,7 +15,7 @@ import ToggleSpinButton from "./ToggleSpinButton.js";
 import SegmentedButton from "./SegmentedButton.js";
 import SegmentedButtonItem from "./SegmentedButtonItem.js";
 // Template
-import TimeSelectionClocksTemplate from "./generated/templates/TimeSelectionClocksTemplate.lit.js";
+import TimeSelectionClocksTemplate from "./TimeSelectionClocksTemplate.js";
 // Styles
 import TimeSelectionClocksCss from "./generated/themes/TimeSelectionClocks.css.js";
 /**

@@ -5,19 +5,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var MenuItem_1;
+import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import { isPhone } from "@ui5/webcomponents-base/dist/Device.js";
-import AriaHasPopup from "@ui5/webcomponents-base/dist/types/AriaHasPopup.js";
+import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import "@ui5/webcomponents-icons/dist/nav-back.js";
 import ListItem from "./ListItem.js";
 import ResponsivePopover from "./ResponsivePopover.js";
 import List from "./List.js";
 import Icon from "./Icon.js";
 import BusyIndicator from "./BusyIndicator.js";
-import MenuItemTemplate from "./generated/templates/MenuItemTemplate.lit.js";
+import MenuItemTemplate from "./MenuItemTemplate.js";
 import { MENU_BACK_BUTTON_ARIA_LABEL, MENU_CLOSE_BUTTON_ARIA_LABEL, MENU_POPOVER_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
 // Styles
 import menuItemCss from "./generated/themes/MenuItem.css.js";
@@ -129,10 +130,18 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
         return false;
     }
     onBeforeRendering() {
+        super.onBeforeRendering();
         const siblingsWithIcon = this._menuItems.some(menuItem => !!menuItem.icon);
         this._menuItems.forEach(item => {
             item._siblingsWithIcon = siblingsWithIcon;
         });
+    }
+    async focus(focusOptions) {
+        await renderFinished();
+        if (this.hasSubmenu && this.isSubMenuOpen) {
+            return this._menuItems[0].focus(focusOptions);
+        }
+        return super.focus(focusOptions);
     }
     get _focusable() {
         return true;
@@ -140,7 +149,7 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
     get _accInfo() {
         const accInfoSettings = {
             role: this.accessibilityAttributes.role || "menuitem",
-            ariaHaspopup: this.hasSubmenu ? AriaHasPopup.Menu.toLowerCase() : undefined,
+            ariaHaspopup: this.hasSubmenu ? "menu" : undefined,
             ariaKeyShortcuts: this.accessibilityAttributes.ariaKeyShortcuts,
             ariaHidden: !!this.additionalText && !!this.accessibilityAttributes.ariaKeyShortcuts ? true : undefined,
         };
@@ -235,6 +244,7 @@ __decorate([
 MenuItem = MenuItem_1 = __decorate([
     customElement({
         tag: "ui5-menu-item",
+        renderer: jsxRenderer,
         template: MenuItemTemplate,
         styles: [ListItem.styles, menuItemCss],
         dependencies: [...ListItem.dependencies, ResponsivePopover, List, BusyIndicator, Icon],

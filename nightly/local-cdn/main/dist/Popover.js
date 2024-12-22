@@ -11,9 +11,7 @@ import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import { isIOS } from "@ui5/webcomponents-base/dist/Device.js";
 import { getClosedPopupParent } from "@ui5/webcomponents-base/dist/util/PopupUtils.js";
 import clamp from "@ui5/webcomponents-base/dist/util/clamp.js";
-import isElementContainingBlock from "@ui5/webcomponents-base/dist/util/isElementContainingBlock.js";
 import getEffectiveScrollbarStyle from "@ui5/webcomponents-base/dist/util/getEffectiveScrollbarStyle.js";
-import getParentElement from "@ui5/webcomponents-base/dist/util/getParentElement.js";
 import DOMReferenceConverter from "@ui5/webcomponents-base/dist/converters/DOMReference.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import Popup from "./Popup.js";
@@ -22,7 +20,7 @@ import PopoverVerticalAlign from "./types/PopoverVerticalAlign.js";
 import PopoverHorizontalAlign from "./types/PopoverHorizontalAlign.js";
 import { addOpenedPopover, removeOpenedPopover } from "./popup-utils/PopoverRegistry.js";
 // Template
-import PopoverTemplate from "./generated/templates/PopoverTemplate.lit.js";
+import PopoverTemplate from "./PopoverTemplate.js";
 // Styles
 import PopupsCommonCss from "./generated/themes/PopupsCommon.css.js";
 import PopoverCss from "./generated/themes/Popover.css.js";
@@ -156,7 +154,6 @@ let Popover = Popover_1 = class Popover extends Popup {
         }
         const opener = this.getOpenerHTMLElement(this.opener);
         if (!opener) {
-            console.warn("Valid opener id is required. It must be defined before opening the popover."); // eslint-disable-line
             return;
         }
         if (this.isOpenerOutsideViewport(opener.getBoundingClientRect())) {
@@ -194,13 +191,22 @@ let Popover = Popover_1 = class Popover extends Popup {
         removeOpenedPopover(this);
     }
     getOpenerHTMLElement(opener) {
-        if (opener === undefined || opener instanceof HTMLElement) {
+        if (opener === undefined) {
             return opener;
         }
-        const rootNode = this.getRootNode();
-        const openerHTMLElement = rootNode instanceof Document ? rootNode.getElementById(opener) : document.getElementById(opener);
+        if (opener instanceof HTMLElement) {
+            return this._isUI5Element(opener) ? opener.getFocusDomRef() : opener;
+        }
+        let rootNode = this.getRootNode();
+        if (rootNode === this) {
+            rootNode = document;
+        }
+        let openerHTMLElement = rootNode.getElementById(opener);
+        if (rootNode instanceof ShadowRoot && !openerHTMLElement) {
+            openerHTMLElement = document.getElementById(opener);
+        }
         if (openerHTMLElement && this._isUI5Element(openerHTMLElement)) {
-            return openerHTMLElement.getFocusDomRef();
+            return openerHTMLElement.getFocusDomRef() || openerHTMLElement;
         }
         return openerHTMLElement;
     }
@@ -316,16 +322,6 @@ let Popover = Popover_1 = class Popover extends Popup {
         const actualTop = Math.ceil(this.getBoundingClientRect().top);
         return top + (Number.parseInt(this.style.top || "0") - actualTop);
     }
-    _getContainingBlockClientLocation() {
-        let parentElement = getParentElement(this);
-        while (parentElement) {
-            if (isElementContainingBlock(parentElement)) {
-                return parentElement.getBoundingClientRect();
-            }
-            parentElement = getParentElement(parentElement);
-        }
-        return { left: 0, top: 0 };
-    }
     getPopoverSize() {
         const rect = this.getBoundingClientRect(), width = rect.width, height = rect.height;
         return { width, height };
@@ -430,12 +426,16 @@ let Popover = Popover_1 = class Popover extends Popup {
         }
         const borderRadius = Number.parseInt(window.getComputedStyle(this).getPropertyValue("border-radius"));
         const arrowPos = this.getArrowPosition(targetRect, popoverSize, left, top, isVertical, borderRadius);
+        this._left += this.getRTLCorrectionLeft();
         return {
             arrow: arrowPos,
             top: this._top,
             left: this._left,
             placement,
         };
+    }
+    getRTLCorrectionLeft() {
+        return parseFloat(window.getComputedStyle(this).left) - this.getBoundingClientRect().left;
     }
     /**
      * Calculates the position for the arrow.

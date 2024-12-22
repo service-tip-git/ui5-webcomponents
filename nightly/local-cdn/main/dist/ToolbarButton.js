@@ -6,11 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import Button from "./Button.js";
 import ToolbarItem from "./ToolbarItem.js";
-import ToolbarButtonTemplate from "./generated/templates/ToolbarButtonTemplate.lit.js";
-import ToolbarPopoverButtonTemplate from "./generated/templates/ToolbarPopoverButtonTemplate.lit.js";
+import ToolbarButtonTemplate from "./ToolbarButtonTemplate.js";
+import ToolbarPopoverButtonTemplate from "./ToolbarPopoverButtonTemplate.js";
 import ToolbarButtonPopoverCss from "./generated/themes/ToolbarButtonPopover.css.js";
 import { registerToolbarItem } from "./ToolbarRegistry.js";
 /**
@@ -130,7 +130,10 @@ ToolbarButton = __decorate([
      * @public
      */
     ,
-    event("click")
+    event("click", {
+        bubbles: true,
+        cancelable: true,
+    })
 ], ToolbarButton);
 registerToolbarItem(ToolbarButton);
 ToolbarButton.define();

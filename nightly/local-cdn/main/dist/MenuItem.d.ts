@@ -1,11 +1,10 @@
-import type { AccessibilityAttributes } from "@ui5/webcomponents-base/dist/types.js";
+import type { AccessibilityAttributes, UI5CustomEvent } from "@ui5/webcomponents-base";
 import "@ui5/webcomponents-icons/dist/nav-back.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { ListItemAccessibilityAttributes } from "./ListItem.js";
 import ListItem from "./ListItem.js";
 import ResponsivePopover from "./ResponsivePopover.js";
 import type PopoverPlacement from "./types/PopoverPlacement.js";
-import type { ResponsivePopoverBeforeCloseEventDetail } from "./ResponsivePopover.js";
 import type { IMenuItem } from "./Menu.js";
 type MenuBeforeOpenEventDetail = {
     item?: MenuItem;
@@ -166,10 +165,11 @@ declare class MenuItem extends ListItem implements IMenuItem {
     get acessibleNameText(): string;
     get isSeparator(): boolean;
     onBeforeRendering(): void;
+    focus(focusOptions?: FocusOptions): Promise<void>;
     get _focusable(): boolean;
     get _accInfo(): {
-        role: string;
-        ariaHaspopup: "dialog" | "grid" | "listbox" | "menu" | "tree" | undefined;
+        role: import("@ui5/webcomponents-base/dist/thirdparty/preact/jsx.js").JSXInternal.AriaRole;
+        ariaHaspopup: "menu" | undefined;
         ariaKeyShortcuts: string | undefined;
         ariaHidden: boolean | undefined;
         ariaExpanded?: boolean;
@@ -191,7 +191,7 @@ declare class MenuItem extends ListItem implements IMenuItem {
     _close(): void;
     _beforePopoverOpen(e: CustomEvent): void;
     _afterPopoverOpen(): void;
-    _beforePopoverClose(e: CustomEvent<ResponsivePopoverBeforeCloseEventDetail>): void;
+    _beforePopoverClose(e: UI5CustomEvent<ResponsivePopover, "before-close">): void;
     _afterPopoverClose(): void;
 }
 export default MenuItem;

@@ -9,18 +9,20 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import DragRegistry from "@ui5/webcomponents-base/dist/util/dragAndDrop/DragRegistry.js";
+import handleDragOver from "@ui5/webcomponents-base/dist/util/dragAndDrop/handleDragOver.js";
+import handleDrop from "@ui5/webcomponents-base/dist/util/dragAndDrop/handleDrop.js";
 import { findClosestPosition } from "@ui5/webcomponents-base/dist/util/dragAndDrop/findClosestPosition.js";
 import Orientation from "@ui5/webcomponents-base/dist/types/Orientation.js";
 import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
-import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
+import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import DropIndicator from "./DropIndicator.js";
 import TreeItem from "./TreeItem.js";
 import TreeItemCustom from "./TreeItemCustom.js";
 import TreeList from "./TreeList.js";
 import ListAccessibleRole from "./types/ListAccessibleRole.js";
 // Template
-import TreeTemplate from "./generated/templates/TreeTemplate.lit.js";
+import TreeTemplate from "./TreeTemplate.js";
 // Styles
 import TreeCss from "./generated/themes/Tree.css.js";
 /**
@@ -126,50 +128,22 @@ let Tree = class Tree extends UI5Element {
             this.dropIndicatorDOM.targetReference = null;
             return;
         }
-        let placements = closestPosition.placements;
         closestPosition.element = closestPosition.element.getRootNode().host;
         if (draggedElement.contains(closestPosition.element)) {
             return;
         }
         if (closestPosition.element === draggedElement) {
-            placements = placements.filter(placement => placement !== MovePlacement.On);
+            closestPosition.placements = closestPosition.placements.filter(placement => placement !== MovePlacement.On);
         }
-        const placementAccepted = placements.some(placement => {
-            const closestElement = closestPosition.element;
-            const beforeItemMovePrevented = !this.fireDecoratorEvent("move-over", {
-                source: {
-                    element: draggedElement,
-                },
-                destination: {
-                    element: closestElement,
-                    placement,
-                },
-            });
-            if (beforeItemMovePrevented) {
-                e.preventDefault();
-                this.dropIndicatorDOM.targetReference = closestElement;
-                this.dropIndicatorDOM.placement = placement;
-                return true;
-            }
-            return false;
-        });
-        if (!placementAccepted) {
-            this.dropIndicatorDOM.targetReference = null;
-        }
+        const { targetReference, placement } = handleDragOver(e, this, closestPosition, closestPosition.element);
+        this.dropIndicatorDOM.targetReference = targetReference;
+        this.dropIndicatorDOM.placement = placement;
     }
     _ondrop(e) {
-        e.preventDefault();
-        const draggedElement = DragRegistry.getDraggedElement();
-        this.fireDecoratorEvent("move", {
-            source: {
-                element: draggedElement,
-            },
-            destination: {
-                element: this.dropIndicatorDOM.targetReference,
-                placement: this.dropIndicatorDOM.placement,
-            },
-        });
-        draggedElement.focus();
+        if (!this.dropIndicatorDOM?.targetReference || !this.dropIndicatorDOM?.placement) {
+            return;
+        }
+        handleDrop(e, this, this.dropIndicatorDOM.targetReference, this.dropIndicatorDOM.placement);
         this.dropIndicatorDOM.targetReference = null;
     }
     _onListItemStepIn(e) {
@@ -317,7 +291,7 @@ __decorate([
 Tree = __decorate([
     customElement({
         tag: "ui5-tree",
-        renderer: litRender,
+        renderer: jsxRenderer,
         styles: TreeCss,
         template: TreeTemplate,
         dependencies: [
@@ -338,12 +312,6 @@ Tree = __decorate([
      */
     ,
     event("item-toggle", {
-        detail: {
-            /**
-             * @public
-             */
-            item: { type: HTMLElement },
-        },
         bubbles: true,
         cancelable: true,
     })
@@ -355,12 +323,6 @@ Tree = __decorate([
      */
     ,
     event("item-mouseover", {
-        detail: {
-            /**
-             * @public
-             */
-            item: { type: HTMLElement },
-        },
         bubbles: true,
     })
     /**
@@ -371,12 +333,6 @@ Tree = __decorate([
      */
     ,
     event("item-mouseout", {
-        detail: {
-            /**
-             * @public
-             */
-            item: { type: HTMLElement },
-        },
         bubbles: true,
     })
     /**
@@ -386,12 +342,6 @@ Tree = __decorate([
      */
     ,
     event("item-click", {
-        detail: {
-            /**
-             * @public
-             */
-            item: { type: HTMLElement },
-        },
         bubbles: true,
         cancelable: true,
     })
@@ -405,12 +355,6 @@ Tree = __decorate([
      */
     ,
     event("item-delete", {
-        detail: {
-            /**
-             * @public
-             */
-            item: { type: HTMLElement },
-        },
         bubbles: true,
     })
     /**
@@ -420,9 +364,6 @@ Tree = __decorate([
      */
     ,
     event("item-focus", {
-        detail: {
-            item: { type: HTMLElement },
-        },
         bubbles: true,
     })
     /**
@@ -435,34 +376,12 @@ Tree = __decorate([
      */
     ,
     event("selection-change", {
-        detail: {
-            /**
-             * @public
-             */
-            selectedItems: { type: Array },
-            /**
-             * @public
-             */
-            previouslySelectedItems: { type: Array },
-            /**
-             * @public
-             */
-            targetItem: { type: HTMLElement },
-        },
         bubbles: true,
     }),
     event("move", {
-        detail: {
-            source: { type: Object },
-            destination: { type: Object },
-        },
         bubbles: true,
     }),
     event("move-over", {
-        detail: {
-            source: { type: Object },
-            destination: { type: Object },
-        },
         bubbles: true,
         cancelable: true,
     })

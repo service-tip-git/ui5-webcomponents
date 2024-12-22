@@ -42,6 +42,13 @@ let TableRow = class TableRow extends TableRowBase {
          */
         this.rowKey = "";
         /**
+         * Defines the position of the row respect to the total number of rows within the table when the <code>ui5-table-virtualizer</code> feature is used.
+         *
+         * @default -1
+         * @public
+         */
+        this.position = -1;
+        /**
          * Defines the interactive state of the row.
          *
          * @default false
@@ -55,16 +62,32 @@ let TableRow = class TableRow extends TableRowBase {
          * @public
          */
         this.navigated = false;
+        /**
+         * Defines whether the row is movable.
+         *
+         * @default false
+         * @public
+         */
+        this.movable = false;
         this._renderNavigated = false;
     }
     onBeforeRendering() {
         super.onBeforeRendering();
         this.toggleAttribute("_interactive", this._isInteractive);
+        if (this.position !== -1) {
+            this.setAttribute("aria-rowindex", `${this.position + 1}`);
+        }
         if (this._renderNavigated && this.navigated) {
             this.setAttribute("aria-current", "true");
         }
         else {
             this.removeAttribute("aria-current");
+        }
+        if (this.movable) {
+            this.setAttribute("draggable", "true");
+        }
+        else {
+            this.removeAttribute("draggable");
         }
     }
     async focus(focusOptions) {
@@ -112,11 +135,17 @@ __decorate([
     property()
 ], TableRow.prototype, "rowKey", void 0);
 __decorate([
+    property({ type: Number })
+], TableRow.prototype, "position", void 0);
+__decorate([
     property({ type: Boolean })
 ], TableRow.prototype, "interactive", void 0);
 __decorate([
     property({ type: Boolean })
 ], TableRow.prototype, "navigated", void 0);
+__decorate([
+    property({ type: Boolean })
+], TableRow.prototype, "movable", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], TableRow.prototype, "_renderNavigated", void 0);

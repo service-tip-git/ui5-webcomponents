@@ -1,12 +1,16 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
+import type { MoveEventDetail as TableMoveEventDetail } from "@ui5/webcomponents-base/dist/util/dragAndDrop/DragRegistry.js";
 import TableRow from "./TableRow.js";
 import TableHeaderRow from "./TableHeaderRow.js";
 import type TableHeaderCell from "./TableHeaderCell.js";
 import type TableSelection from "./TableSelection.js";
 import TableOverflowMode from "./types/TableOverflowMode.js";
 import TableNavigation from "./TableNavigation.js";
+import DropIndicator from "./DropIndicator.js";
+import TableDragAndDrop from "./TableDragAndDrop.js";
+import type TableVirtualizer from "./TableVirtualizer.js";
 /**
  * Interface for components that can be slotted inside the <code>features</code> slot of the <code>ui5-table</code>.
  *
@@ -23,7 +27,7 @@ interface ITableFeature extends UI5Element {
     /**
      * Called when the table finished rendering.
      */
-    onTableRendered?(): void;
+    onTableAfterRendering?(): void;
 }
 /**
  * Interface for components that can be slotted inside the <code>features</code> slot of the <code>ui5-table</code>
@@ -132,6 +136,11 @@ type TableRowClickEventDetail = {
  * Keep in mind that you can use either the compat/Table, or the main/Table - you can't use them both as they both define the `ui5-table` tag name.
  */
 declare class Table extends UI5Element {
+    eventDetails: {
+        "row-click": TableRowClickEventDetail;
+        "move-over": TableMoveEventDetail;
+        "move": TableMoveEventDetail;
+    };
     /**
      * Defines the rows of the component.
      *
@@ -218,6 +227,7 @@ declare class Table extends UI5Element {
     _onEventBound: (e: Event) => void;
     _onResizeBound: ResizeObserverCallback;
     _tableNavigation?: TableNavigation;
+    _tableDragAndDrop?: TableDragAndDrop;
     _poppedIn: Array<{
         col: TableHeaderCell;
         width: float;
@@ -229,6 +239,7 @@ declare class Table extends UI5Element {
     onBeforeRendering(): void;
     onAfterRendering(): void;
     _getSelection(): TableSelection | undefined;
+    _getVirtualizer(): TableVirtualizer | undefined;
     _onEvent(e: Event): void;
     _onResize(): void;
     _onfocusin(e: FocusEvent): void;
@@ -248,6 +259,11 @@ declare class Table extends UI5Element {
     get styles(): {
         table: {
             "grid-template-columns": string | undefined;
+            "--row-height": string;
+        };
+        spacer: {
+            transform: string | undefined;
+            "will-change": string | undefined;
         };
     };
     get _gridTemplateColumns(): string | undefined;
@@ -260,12 +276,14 @@ declare class Table extends UI5Element {
     get _loadingElement(): HTMLElement;
     get _effectiveNoDataText(): string;
     get _ariaLabel(): string | undefined;
+    get _ariaRowCount(): number | undefined;
     get _ariaMultiSelectable(): boolean | undefined;
     get _shouldRenderGrowing(): boolean | 0;
     get _growing(): ITableGrowing;
     get _stickyElements(): (TableHeaderCell | TableHeaderRow)[];
     get _scrollContainer(): HTMLElement;
     get isTable(): boolean;
+    get dropIndicatorDOM(): DropIndicator | null;
 }
 export default Table;
-export type { ITableFeature, ITableGrowing, TableRowClickEventDetail, };
+export type { ITableFeature, ITableGrowing, TableRowClickEventDetail, TableMoveEventDetail as TableTableMoveEventDetail, };

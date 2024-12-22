@@ -1,6 +1,6 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ITimelineItem } from "./Timeline.js";
-import TimelineLayout from "./types/TimelineLayout.js";
+import type TimelineLayout from "./types/TimelineLayout.js";
 /**
  * @class
  *
@@ -13,6 +13,9 @@ import TimelineLayout from "./types/TimelineLayout.js";
  * @public
  */
 declare class TimelineItem extends UI5Element implements ITimelineItem {
+    eventDetails: {
+        "name-click": void;
+    };
     /**
      * Defines the icon to be displayed as graphical element within the `ui5-timeline-item`.
      * SAP-icons font provides numerous options.
@@ -95,18 +98,6 @@ declare class TimelineItem extends UI5Element implements ITimelineItem {
      * Focus the internal link.
      */
     focusLink(): void;
-    get classes(): {
-        indicator: {
-            "ui5-tli-indicator": boolean;
-            "ui5-tli-indicator-short-line": boolean;
-            "ui5-tli-indicator-large-line": boolean;
-        };
-        bubbleArrowPosition: {
-            "ui5-tli-bubble-arrow": boolean;
-            "ui5-tli-bubble-arrow--left": boolean;
-            "ui5-tli-bubble-arrow--top": boolean;
-        };
-    };
     get isGroupItem(): boolean;
 }
 export default TimelineItem;

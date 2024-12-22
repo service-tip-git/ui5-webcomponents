@@ -8,10 +8,10 @@ var Table_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
-import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
+import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import NavigationMode from "@ui5/webcomponents-base/dist/types/NavigationMode.js";
@@ -28,7 +28,7 @@ import TableMode from "./types/TableMode.js";
 // Texts
 import { LOAD_MORE_TEXT, ARIA_LABEL_SELECT_ALL_CHECKBOX, TABLE_HEADER_ROW_INFORMATION, TABLE_ROW_POSITION, } from "./generated/i18n/i18n-defaults.js";
 // Template
-import TableTemplate from "./generated/templates/TableTemplate.lit.js";
+import TableTemplate from "./TableTemplate.js";
 // Styles
 import tableStyles from "./generated/themes/Table.css.js";
 const GROWING_WITH_SCROLL_DEBOUNCE_RATE = 250; // ms
@@ -867,7 +867,7 @@ Table = Table_1 = __decorate([
         tag: "ui5-table",
         fastNavigation: true,
         styles: tableStyles,
-        renderer: litRender,
+        renderer: jsxRenderer,
         template: TableTemplate,
         dependencies: [BusyIndicator, CheckBox],
     })
@@ -877,12 +877,6 @@ Table = Table_1 = __decorate([
      */
     ,
     event("row-click", {
-        detail: {
-            /**
-            * @public
-            */
-            row: { type: HTMLElement },
-        },
         bubbles: true,
     })
     /**
@@ -893,14 +887,6 @@ Table = Table_1 = __decorate([
      */
     ,
     event("popin-change", {
-        detail: {
-            /**
-            * @public
-            */
-            poppedColumns: {
-                type: Array,
-            },
-        },
         bubbles: true,
     })
     /**
@@ -924,16 +910,6 @@ Table = Table_1 = __decorate([
      */
     ,
     event("selection-change", {
-        detail: {
-            /**
-             * @public
-             */
-            selectedRows: { type: Array },
-            /**
-             * @public
-             */
-            previouslySelectedRows: { type: Array },
-        },
         bubbles: true,
     })
 ], Table);

@@ -10,11 +10,10 @@ import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
-import event from "@ui5/webcomponents-base/dist/decorators/event.js";
+import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import litRender from "@ui5/webcomponents-base/dist/renderer/LitRenderer.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
-import AriaHasPopup from "@ui5/webcomponents-base/dist/types/AriaHasPopup.js";
 import { isSpace, isEnter } from "@ui5/webcomponents-base/dist/Keys.js";
 import ListItemStandard from "@ui5/webcomponents/dist/ListItemStandard.js";
 import List from "@ui5/webcomponents/dist/List.js";
@@ -743,7 +742,7 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
             overflow: {
                 "title": this._overflowText,
                 "accessibilityAttributes": {
-                    hasPopup: this.accessibilityAttributes.overflow?.hasPopup || AriaHasPopup.Menu.toLowerCase(),
+                    hasPopup: this.accessibilityAttributes.overflow?.hasPopup || "menu",
                     expanded: overflowExpanded === undefined ? this._overflowPopoverExpanded : overflowExpanded,
                 },
             },
@@ -849,12 +848,6 @@ ShellBar = ShellBar_1 = __decorate([
      */
     ,
     event("notifications-click", {
-        detail: {
-            /**
-             * @public
-             */
-            targetRef: { type: HTMLElement },
-        },
         cancelable: true,
         bubbles: true,
     })
@@ -865,12 +858,6 @@ ShellBar = ShellBar_1 = __decorate([
      */
     ,
     event("profile-click", {
-        detail: {
-            /**
-             * @public
-             */
-            targetRef: { type: HTMLElement },
-        },
         bubbles: true,
     })
     /**
@@ -882,12 +869,6 @@ ShellBar = ShellBar_1 = __decorate([
      */
     ,
     event("product-switch-click", {
-        detail: {
-            /**
-             * @public
-             */
-            targetRef: { type: HTMLElement },
-        },
         cancelable: true,
         bubbles: true,
     })
@@ -899,12 +880,6 @@ ShellBar = ShellBar_1 = __decorate([
      */
     ,
     event("logo-click", {
-        detail: {
-            /**
-             * @public
-             */
-            targetRef: { type: HTMLElement },
-        },
         bubbles: true,
     })
     /**
@@ -917,12 +892,6 @@ ShellBar = ShellBar_1 = __decorate([
      */
     ,
     event("menu-item-click", {
-        detail: {
-            /**
-             * @public
-             */
-            item: { type: HTMLElement },
-        },
         bubbles: true,
         cancelable: true,
     })
@@ -936,10 +905,6 @@ ShellBar = ShellBar_1 = __decorate([
      */
     ,
     event("search-button-click", {
-        detail: {
-            targetRef: { type: HTMLElement },
-            searchFieldVisible: { type: Boolean },
-        },
         cancelable: true,
         bubbles: true,
     })

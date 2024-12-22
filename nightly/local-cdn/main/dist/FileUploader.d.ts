@@ -39,6 +39,10 @@ type FileUploaderChangeEventDetail = {
  * @public
  */
 declare class FileUploader extends UI5Element implements IFormInputElement {
+    eventDetails: {
+        "change": FileUploaderChangeEventDetail;
+        "file-size-exceed": FileUploaderFileSizeExceedEventDetail;
+    };
     /**
      * Comma-separated list of file types that the component should accept.
      *
@@ -180,20 +184,6 @@ declare class FileUploader extends UI5Element implements IFormInputElement {
      * This method is relevant for sap_horizon theme only
      */
     get _valueStateMessageInputIcon(): string;
-    get classes(): {
-        popoverValueState: {
-            "ui5-valuestatemessage-root": boolean;
-            "ui5-valuestatemessage--success": boolean;
-            "ui5-valuestatemessage--error": boolean;
-            "ui5-valuestatemessage--warning": boolean;
-            "ui5-valuestatemessage--information": boolean;
-        };
-    };
-    get styles(): {
-        popoverHeader: {
-            width: string;
-        };
-    };
     get ui5Input(): Input | null;
 }
 export default FileUploader;

@@ -1,12 +1,11 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { AccessibilityAttributes, PassiveEventListenerObject } from "@ui5/webcomponents-base/dist/types.js";
+import type { AccessibilityAttributes, AriaRole } from "@ui5/webcomponents-base";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { I18nText } from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ButtonDesign from "./types/ButtonDesign.js";
 import ButtonType from "./types/ButtonType.js";
 import type ButtonAccessibleRole from "./types/ButtonAccessibleRole.js";
-import IconMode from "./types/IconMode.js";
 /**
  * Interface for components that may be used as a button inside numerous higher-order components
  * @public
@@ -47,6 +46,9 @@ type ButtonAccessibilityAttributes = Pick<AccessibilityAttributes, "expanded" | 
  * @public
  */
 declare class Button extends UI5Element implements IButton {
+    eventDetails: {
+        "active-state-change": void;
+    };
     /**
      * Defines the component design.
      * @default "Default"
@@ -137,6 +139,13 @@ declare class Button extends UI5Element implements IButton {
      */
     accessibilityAttributes: ButtonAccessibilityAttributes;
     /**
+     * Defines the accessible description of the component.
+     * @default undefined
+     * @public
+     * @since 2.5.0
+     */
+    accessibleDescription?: string;
+    /**
      * Defines whether the button has special form-related functionality.
      *
      * **Note:** This property is only applicable within the context of an HTML Form element.
@@ -208,9 +217,9 @@ declare class Button extends UI5Element implements IButton {
      */
     text: Array<Node>;
     _deactivate: () => void;
-    _ontouchstart: PassiveEventListenerObject;
     static i18nBundle: I18nBundle;
     constructor();
+    _ontouchstart(): void;
     onEnterDOM(): void;
     onBeforeRendering(): Promise<void>;
     _onclick(): void;
@@ -220,19 +229,18 @@ declare class Button extends UI5Element implements IButton {
     _onkeyup(e: KeyboardEvent): void;
     _onfocusout(): void;
     _setActiveState(active: boolean): void;
-    get _hasPopup(): ("dialog" | "grid" | "listbox" | "menu" | "tree") | undefined;
+    get _hasPopup(): import("@ui5/webcomponents-base").AriaHasPopup | undefined;
     get hasButtonType(): boolean;
-    get iconMode(): "" | IconMode.Decorative;
-    get endIconMode(): "" | IconMode.Decorative;
     get isIconOnly(): boolean;
     static typeTextMappings(): Record<string, I18nText>;
     getDefaultTooltip(): Promise<string | undefined> | undefined;
     get buttonTypeText(): string;
-    get effectiveAccRole(): string;
-    get tabIndexValue(): string | undefined;
+    get effectiveAccRole(): AriaRole;
+    get tabIndexValue(): number | undefined;
     get showIconTooltip(): boolean;
     get ariaLabelText(): string | undefined;
     get ariaDescribedbyText(): "ui5-button-hiddenText-type" | undefined;
+    get ariaDescriptionText(): string | undefined;
     get _isSubmit(): boolean;
     get _isReset(): boolean;
 }

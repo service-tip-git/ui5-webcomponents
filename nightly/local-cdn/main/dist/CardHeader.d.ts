@@ -24,6 +24,9 @@ import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
  * @csspart additional-text - Used to style the additional text of the CardHeader
  */
 declare class CardHeader extends UI5Element {
+    eventDetails: {
+        click: void;
+    };
     /**
      * Defines the title text.
      * @default undefined
@@ -70,17 +73,9 @@ declare class CardHeader extends UI5Element {
     action: Array<HTMLElement>;
     static i18nBundle: I18nBundle;
     onEnterDOM(): void;
-    get classes(): {
-        root: {
-            "ui5-card-header": boolean;
-            "ui5-card-header--interactive": boolean;
-            "ui5-card-header--active": boolean;
-            "ui5-card-header-ff": boolean;
-        };
-    };
     get _root(): HTMLElement;
     get ariaRoleDescription(): string;
-    get ariaRoleFocusableElement(): "button" | null;
+    get ariaRoleFocusableElement(): "button" | undefined;
     get ariaCardAvatarLabel(): string;
     get ariaLabelledBy(): string | undefined;
     get hasAvatar(): boolean;

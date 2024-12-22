@@ -1,17 +1,11 @@
 import "@ui5/webcomponents-base/dist/ssr-dom.js";
+import type { JSX } from "./jsx-runtime.js";
 import UI5ElementMetadata from "./UI5ElementMetadata.js";
 import type { Slot, SlotValue, State, PropertyValue, Metadata } from "./UI5ElementMetadata.js";
 import EventProvider from "./EventProvider.js";
-import type { TemplateFunction, TemplateFunctionResult } from "./renderer/executeTemplate.js";
+import type { TemplateFunction } from "./renderer/executeTemplate.js";
 import type { AccessibilityInfo, PromiseResolve, ComponentStylesData, ClassMap } from "./types.js";
-type Renderer = (templateResult: TemplateFunctionResult, container: HTMLElement | DocumentFragment, options: RendererOptions) => void;
-type RendererOptions = {
-    /**
-     * An object to use as the `this` value for event listeners. It's often
-     * useful to set this to the host component rendering a template.
-     */
-    host?: object;
-};
+type Renderer = (instance: UI5Element, container: HTMLElement | DocumentFragment) => void;
 type ChangeInfo = {
     type: "property" | "slot";
     name: string;
@@ -26,6 +20,17 @@ type InvalidationInfo = ChangeInfo & {
 };
 type ChildChangeListener = (param: InvalidationInfo) => void;
 type SlotChangeListener = (this: HTMLSlotElement, ev: Event) => void;
+type SlottedChild = Record<string, any>;
+type NotEqual<X, Y> = true extends Equal<X, Y> ? false : true;
+type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends (<T>() => T extends Y ? 1 : 2) ? true : false;
+type IsAny<T, Y, N> = 0 extends (1 & T) ? Y : N;
+type KebabToCamel<T extends string> = T extends `${infer H}-${infer J}${infer K}` ? `${Uncapitalize<H>}${Capitalize<J>}${KebabToCamel<K>}` : T;
+type KebabToPascal<T extends string> = Capitalize<KebabToCamel<T>>;
+type GlobalHTMLAttributeNames = "accesskey" | "autocapitalize" | "autofocus" | "autocomplete" | "contenteditable" | "contextmenu" | "class" | "dir" | "draggable" | "enterkeyhint" | "hidden" | "id" | "inputmode" | "lang" | "nonce" | "part" | "exportparts" | "pattern" | "slot" | "spellcheck" | "style" | "tabIndex" | "tabindex" | "title" | "translate" | "ref";
+type ElementProps<I> = Partial<Omit<I, keyof HTMLElement>>;
+type Convert<T> = {
+    [Property in keyof T as `on${KebabToPascal<string & Property>}`]: IsAny<T[Property], any, (e: CustomEvent<T[Property]>) => void>;
+};
 /**
  * @class
  * Base class for all UI5 Web Components
@@ -34,6 +39,13 @@ type SlotChangeListener = (this: HTMLSlotElement, ev: Event) => void;
  * @public
  */
 declare abstract class UI5Element extends HTMLElement {
+    eventDetails: NotEqual<this, UI5Element> extends true ? object : {
+        [k: string]: any;
+    };
+    _jsxEvents: Omit<JSX.DOMAttributes<this>, keyof Convert<this["eventDetails"]> | "onClose" | "onToggle" | "onChange" | "onSelect" | "onInput"> & Convert<this["eventDetails"]>;
+    _jsxProps: Pick<JSX.AllHTMLAttributes<HTMLElement>, GlobalHTMLAttributeNames> & ElementProps<this> & Partial<this["_jsxEvents"]> & {
+        key?: any;
+    };
     __id?: string;
     _suppressInvalidation: boolean;
     _changedState: Array<ChangeInfo>;
@@ -50,6 +62,7 @@ declare abstract class UI5Element extends HTMLElement {
     _doNotSyncAttributes: Set<string>;
     _state: State;
     _internals: ElementInternals;
+    _individualSlot?: string;
     _getRealDomRef?: () => HTMLElement;
     static template?: TemplateFunction;
     static _metadata: UI5ElementMetadata;
@@ -273,12 +286,12 @@ declare abstract class UI5Element extends HTMLElement {
      * @param data - additional data for the event
      * @returns false, if the event was cancelled (preventDefault called), true otherwise
      */
-    fireDecoratorEvent<T>(name: string, data?: T): boolean;
+    fireDecoratorEvent<N extends keyof this["eventDetails"]>(name: N, data?: this["eventDetails"][N] | undefined): boolean;
     _fireEvent<T>(name: string, data?: T, cancelable?: boolean, bubbles?: boolean): boolean;
     getEventData(name: string): {
-        detail: Record<string, object>;
-        cancelable: boolean;
-        bubbles: boolean;
+        detail?: Record<string, object>;
+        cancelable?: boolean;
+        bubbles?: boolean;
     };
     /**
      * Returns the actual children, associated with a slot.
@@ -325,6 +338,12 @@ declare abstract class UI5Element extends HTMLElement {
      * @private
      */
     static get observedAttributes(): string[];
+    /**
+     * Returns all tags, used inside component's template subject to scoping.
+     * returns {Array[]} // TODO add @
+     * @private
+     */
+    static get tagsToScope(): Array<string>;
     /**
      * @private
      */
@@ -391,4 +410,4 @@ declare abstract class UI5Element extends HTMLElement {
 declare const instanceOfUI5Element: (object: any) => object is UI5Element;
 export default UI5Element;
 export { instanceOfUI5Element, };
-export type { ChangeInfo, InvalidationInfo, Renderer, RendererOptions, };
+export type { ChangeInfo, InvalidationInfo, Renderer, SlottedChild, };

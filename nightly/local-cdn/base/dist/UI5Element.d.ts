@@ -26,7 +26,7 @@ type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends (<T>() => T extends Y 
 type IsAny<T, Y, N> = 0 extends (1 & T) ? Y : N;
 type KebabToCamel<T extends string> = T extends `${infer H}-${infer J}${infer K}` ? `${Uncapitalize<H>}${Capitalize<J>}${KebabToCamel<K>}` : T;
 type KebabToPascal<T extends string> = Capitalize<KebabToCamel<T>>;
-type GlobalHTMLAttributeNames = "accesskey" | "autocapitalize" | "autofocus" | "autocomplete" | "contenteditable" | "contextmenu" | "class" | "dir" | "draggable" | "enterkeyhint" | "hidden" | "id" | "inputmode" | "lang" | "nonce" | "part" | "exportparts" | "pattern" | "slot" | "spellcheck" | "style" | "tabIndex" | "tabindex" | "title" | "translate" | "ref";
+type GlobalHTMLAttributeNames = "accesskey" | "autocapitalize" | "autofocus" | "autocomplete" | "contenteditable" | "contextmenu" | "class" | "dir" | "draggable" | "enterkeyhint" | "hidden" | "id" | "inputmode" | "lang" | "nonce" | "part" | "exportparts" | "pattern" | "slot" | "spellcheck" | "style" | "tabIndex" | "tabindex" | "title" | "translate" | "ref" | "inert";
 type ElementProps<I> = Partial<Omit<I, keyof HTMLElement>>;
 type Convert<T> = {
     [Property in keyof T as `on${KebabToPascal<string & Property>}`]: IsAny<T[Property], any, (e: CustomEvent<T[Property]>) => void>;
@@ -364,9 +364,10 @@ declare abstract class UI5Element extends HTMLElement {
     static styles: ComponentStylesData;
     /**
      * Returns an array with the dependencies for this UI5 Web Component, which could be:
-     *  - composed components (used in its shadow root or static area item)
+     *  - composed components (used in its shadow root)
      *  - slotted components that the component may need to communicate with
      *
+     * @deprecated no longer necessary for jsxRenderer-enabled components
      * @protected
      */
     static get dependencies(): Array<typeof UI5Element>;

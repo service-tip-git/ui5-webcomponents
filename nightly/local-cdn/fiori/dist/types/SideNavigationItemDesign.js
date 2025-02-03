@@ -16,8 +16,6 @@ var SideNavigationItemDesign;
      *
      * **Note:** Items with this design must not have sub-items.
      *
-     * **Note:** Items that open a dialog must set `hasPopup="dialog"` via `accessibilityAttributes` property.
-     *
      * @public
      */
     SideNavigationItemDesign["Action"] = "Action";

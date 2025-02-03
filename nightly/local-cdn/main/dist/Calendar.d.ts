@@ -43,7 +43,6 @@ type CalendarSelectionChangeEventDetail = {
 type SpecialCalendarDateT = {
     specialDateTimestamp: number;
     type: `${CalendarLegendItemType}`;
-    tooltip?: string;
 };
 /**
  * @class

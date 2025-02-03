@@ -17,7 +17,6 @@ type Day = {
     selected: boolean;
     _isSecondaryCalendarType: boolean;
     classes: string;
-    tooltip?: string;
     ariaLabel: string;
     ariaSelected: boolean;
     ariaDisabled: boolean | undefined;
@@ -221,7 +220,6 @@ declare class DayPicker extends CalendarPart implements ICalendarPicker {
     get shouldHideWeekNumbers(): boolean;
     _isWeekend(oDate: CalendarDate): boolean;
     _isDayPressed(target: HTMLElement): boolean;
-    _isDefaultCalendarLegendType(type: string): boolean;
     _getSecondaryDay(tempDate: CalendarDate): CalendarDate;
     _getFirstDay(): CalendarDate;
     _getFirstDayOfWeek(): number;

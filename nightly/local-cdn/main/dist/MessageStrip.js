@@ -181,7 +181,9 @@ MessageStrip = MessageStrip_1 = __decorate([
      * @public
      */
     ,
-    event("close")
+    event("close", {
+        bubbles: true,
+    })
 ], MessageStrip);
 MessageStrip.define();
 export default MessageStrip;

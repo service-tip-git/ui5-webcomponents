@@ -271,10 +271,6 @@ let Calendar = Calendar_1 = class Calendar extends CalendarPart {
                 : true;
             return isTypeMatch && dateValue && this._isValidCalendarDate(dateValue);
         });
-        validSpecialDates.forEach(date => {
-            const refLegendItem = this.calendarLegend.length ? this.calendarLegend[0].items.find(item => item.type === date.type) : undefined;
-            date._tooltip = refLegendItem?.text || "";
-        });
         const uniqueDates = new Set();
         const uniqueSpecialDates = [];
         validSpecialDates.forEach(date => {
@@ -284,8 +280,7 @@ let Calendar = Calendar_1 = class Calendar extends CalendarPart {
                 uniqueDates.add(timestamp);
                 const specialDateTimestamp = CalendarDateComponent.fromLocalJSDate(dateFromValue).valueOf() / 1000;
                 const type = date.type;
-                const tooltip = date._tooltip;
-                uniqueSpecialDates.push({ specialDateTimestamp, type, tooltip });
+                uniqueSpecialDates.push({ specialDateTimestamp, type });
             }
         });
         return uniqueSpecialDates;
@@ -411,7 +406,7 @@ let Calendar = Calendar_1 = class Calendar extends CalendarPart {
         const secondYearFormat = DateFormat.getDateInstance({ format: "y", calendarType: this._secondaryCalendarType });
         const dateInSecType = transformDateToSecondaryType(this._primaryCalendarType, this._secondaryCalendarType, this._timestamp);
         const secondMonthInfo = convertMonthNumbersToMonthNames(dateInSecType.firstDate.getMonth(), dateInSecType.lastDate.getMonth(), this._secondaryCalendarType);
-        const secondYearText = secondYearFormat.format(localDate);
+        const secondYearText = secondYearFormat.format(localDate, true);
         return {
             yearButtonText: secondYearText,
             monthButtonText: secondMonthInfo.text,
@@ -618,7 +613,7 @@ __decorate([
     property({ noAttribute: true })
 ], Calendar.prototype, "_pickersMode", void 0);
 __decorate([
-    slot({ type: HTMLElement, invalidateOnChildChange: true })
+    slot({ type: HTMLElement })
 ], Calendar.prototype, "calendarLegend", void 0);
 __decorate([
     slot({ type: HTMLElement, invalidateOnChildChange: true, "default": true })

@@ -30,7 +30,6 @@ class SideNavigationItemBase extends UI5Element {
          * @since 1.19.0
          */
         this.disabled = false;
-        this.forcedTabIndex = "-1";
         this.sideNavCollapsed = false;
         this.inPopover = false;
     }

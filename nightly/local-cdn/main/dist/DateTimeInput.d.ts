@@ -16,6 +16,5 @@ declare class DateTimeInput extends Input {
      * @override
      */
     get hasValueStateMessage(): boolean;
-    get _isMobileDevice(): boolean;
 }
 export default DateTimeInput;

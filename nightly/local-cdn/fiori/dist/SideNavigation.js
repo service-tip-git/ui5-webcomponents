@@ -317,18 +317,16 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
                 return;
             }
             let itemDomRef;
-            if (isInstanceOfSideNavigationItemBase(item) && item.getDomRef()) {
+            if (isInstanceOfSideNavigationItemBase(item)) {
                 itemDomRef = item.getDomRef();
             }
             else {
                 itemDomRef = item;
             }
-            if (itemDomRef) {
-                const { marginTop, marginBottom } = window.getComputedStyle(itemDomRef);
-                itemsHeight += itemDomRef.offsetHeight + parseFloat(marginTop) + parseFloat(marginBottom);
-                if (itemsHeight > listHeight) {
-                    item.classList.add("ui5-sn-item-hidden");
-                }
+            const { marginTop, marginBottom } = window.getComputedStyle(itemDomRef);
+            itemsHeight += itemDomRef.offsetHeight + parseFloat(marginTop) + parseFloat(marginBottom);
+            if (itemsHeight > listHeight) {
+                item.classList.add("ui5-sn-item-hidden");
             }
         });
         this._flexibleItemNavigation._init();

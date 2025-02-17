@@ -8,7 +8,6 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 // Styles
 import Input from "./Input.js";
 import { property } from "@ui5/webcomponents-base/dist/decorators.js";
-import { isDesktop, isPhone, isTablet } from "@ui5/webcomponents-base/dist/Device.js";
 /**
  * Extention of the UI5 Input, so we do not modify Input's private properties within the datetime components.
  * Intended to be used for the DateTime components.
@@ -29,10 +28,7 @@ let DateTimeInput = class DateTimeInput extends Input {
      * @override
      */
     get hasValueStateMessage() {
-        return this._shouldOpenValueStatePopover && super.hasValueStateMessage && !this._isMobileDevice;
-    }
-    get _isMobileDevice() {
-        return !isDesktop() && (isPhone() || isTablet());
+        return this._shouldOpenValueStatePopover && super.hasValueStateMessage;
     }
 };
 __decorate([

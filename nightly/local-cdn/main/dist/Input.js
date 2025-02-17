@@ -720,6 +720,7 @@ let Input = Input_1 = class Input extends UI5Element {
         this._handlePickerAfterClose();
     }
     _handlePickerAfterOpen() {
+        this.Suggestions?._onOpen();
         this.fireDecoratorEvent("open");
     }
     _handlePickerAfterClose() {

@@ -209,17 +209,11 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
     get _isMobileDevice() {
         return !isDesktop() && (isPhone() || isTablet());
     }
-    get shouldDisplayValueStateMessageInResponsivePopover() {
-        return this.hasValueStateText && !this._inputsPopover?.open;
-    }
     onTimeSelectionChange(e) {
         this.tempValue = e.detail.value; // every time the user changes the time selection -> update tempValue
     }
     _togglePicker() {
         this.open = !this.open;
-        if (this._isMobileDevice) {
-            this._inputsPopover.open = false;
-        }
     }
     submitPickers() {
         this._updateValueAndFireEvents(this.tempValue, true, ["change", "value-changed"]);
@@ -246,7 +240,7 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
      */
     openInputsPopover() {
         this.tempValue = this.value && this.isValid(this.value) ? this.value : this.getFormat().format(UI5Date.getInstance());
-        const popover = this._inputsPopover;
+        const popover = this._getInputsPopover();
         popover.opener = this;
         popover.open = true;
         this._isInputsPopoverOpen = true;
@@ -257,7 +251,7 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
      * @returns Resolves when the Inputs popover is closed
      */
     closeInputsPopover() {
-        const popover = this._inputsPopover;
+        const popover = this._getInputsPopover();
         popover.open = false;
     }
     toggleInputsPopover() {
@@ -280,7 +274,7 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
         this.closeInputsPopover();
     }
     onInputsPopoverAfterOpen() {
-        const popover = this._inputsPopover;
+        const popover = this._getInputsPopover();
         popover.querySelector("[ui5-time-selection-inputs]")._addNumericAttributes();
     }
     onInputsPopoverAfterClose() {
@@ -343,8 +337,17 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
     _canOpenInputsPopover() {
         return !this.disabled && this._isMobileDevice;
     }
+    _getPopover() {
+        return this.shadowRoot.querySelector("[ui5-responsive-popover]");
+    }
+    _getInputsPopover() {
+        return this.shadowRoot.querySelector("[ui5-popover]");
+    }
+    _getDateTimeInput() {
+        return this.shadowRoot.querySelector("[ui5-datetime-input]");
+    }
     _getInputField() {
-        const input = this._dateTimeInput;
+        const input = this._getDateTimeInput();
         return input && input.getInputDOMRef();
     }
     _onkeydown(e) {
@@ -356,7 +359,7 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
             this._togglePicker();
         }
         const target = e.target;
-        if (target && this.open && this._dateTimeInput.id === target.id && (isTabNext(e) || isTabPrevious(e) || isF6Next(e) || isF6Previous(e))) {
+        if (target && this.open && this._getDateTimeInput().id === target.id && (isTabNext(e) || isTabPrevious(e) || isF6Next(e) || isF6Previous(e))) {
             this._togglePicker();
         }
         if (this.open) {
@@ -467,14 +470,14 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
      * Hides mobile device keyboard by temporary setting the input to readonly state.
      */
     _hideMobileKeyboard() {
-        this._dateTimeInput.readonly = true;
-        setTimeout(() => { this._dateTimeInput.readonly = false; }, 0);
+        this._getDateTimeInput().readonly = true;
+        setTimeout(() => { this._getDateTimeInput().readonly = false; }, 0);
     }
     _onfocusin(e) {
         if (this._isMobileDevice) {
             this._hideMobileKeyboard();
             if (this._isInputsPopoverOpen) {
-                const popover = this._inputsPopover;
+                const popover = this._getInputsPopover();
                 popover.applyFocus();
             }
             e.preventDefault();
@@ -508,9 +511,6 @@ let TimePicker = TimePicker_1 = class TimePicker extends UI5Element {
     }
     get hasValueState() {
         return this.valueState !== ValueState.None;
-    }
-    get shouldDisplayValueStateMessageOnDesktop() {
-        return this.valueStateMessage.length > 0 && !this.open && !this._isMobileDevice;
     }
     get classes() {
         return {
@@ -578,12 +578,6 @@ __decorate([
 __decorate([
     query("[ui5-time-selection-clocks]")
 ], TimePicker.prototype, "_timeSelectionClocks", void 0);
-__decorate([
-    query("[ui5-popover]")
-], TimePicker.prototype, "_inputsPopover", void 0);
-__decorate([
-    query("[ui5-datetime-input]")
-], TimePicker.prototype, "_dateTimeInput", void 0);
 __decorate([
     i18n("@ui5/webcomponents")
 ], TimePicker, "i18nBundle", void 0);

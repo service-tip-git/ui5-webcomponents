@@ -720,7 +720,6 @@ let Input = Input_1 = class Input extends UI5Element {
         this._handlePickerAfterClose();
     }
     _handlePickerAfterOpen() {
-        this.Suggestions?._onOpen();
         this.fireDecoratorEvent("open");
     }
     _handlePickerAfterClose() {
@@ -1328,9 +1327,7 @@ Input = Input_1 = __decorate([
      * @since 2.0.0
      */
     ,
-    event("close", {
-        bubbles: true,
-    })
+    event("close")
 ], Input);
 Input.define();
 export default Input;

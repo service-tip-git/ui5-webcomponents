@@ -1,4 +1,8 @@
 import TableCellBase from "./TableCellBase.js";
+import SortOrder from "@ui5/webcomponents-base/dist/types/SortOrder.js";
+import type TableHeaderCellActionBase from "./TableHeaderCellActionBase.js";
+import "@ui5/webcomponents-icons/dist/sort-ascending.js";
+import "@ui5/webcomponents-icons/dist/sort-descending.js";
 /**
  * @class
  *
@@ -65,10 +69,39 @@ declare class TableHeaderCell extends TableCellBase {
      * @public
      */
     popinText?: string;
+    /**
+     * Defines the sort indicator of the column.
+     *
+     * @default "None"
+     * @since 2.8.0
+     * @public
+     */
+    sortIndicator: `${SortOrder}`;
+    /**
+     * Defines if the column is hidden in the popin.
+     *
+     * **Note:** Please be aware that hiding the column in the popin might lead to accessibility issues as
+     * users might not be able to access the content of the column on small screens.
+     *
+     * @default false
+     * @since 2.8.0
+     * @public
+     */
+    popinHidden: boolean;
+    /**
+     * Defines the action of the column.
+     *
+     * **Note:** While multiple actions are technically possible, this is not supported.
+     *
+     * @public
+     * @since 2.8.0
+     */
+    action: Array<TableHeaderCellActionBase>;
     _popin: boolean;
     protected ariaRole: string;
     _popinWidth: number;
     onEnterDOM(): void;
     onBeforeRendering(): void;
+    get _sortIcon(): string | undefined;
 }
 export default TableHeaderCell;

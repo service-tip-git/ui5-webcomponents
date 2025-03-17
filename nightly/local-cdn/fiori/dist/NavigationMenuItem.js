@@ -60,7 +60,7 @@ let NavigationMenuItem = class NavigationMenuItem extends MenuItem {
         result.main["ui5-navigation-menu-item-root"] = true;
         return result;
     }
-    get acessibleNameText() {
+    get accSideNavigationPopoverHiddenText() {
         return NavigationMenu.i18nBundle.getText(NAVIGATION_MENU_POPOVER_HIDDEN_TEXT);
     }
 };

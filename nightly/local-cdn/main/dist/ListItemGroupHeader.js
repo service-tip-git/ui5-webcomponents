@@ -59,7 +59,7 @@ __decorate([
     slot()
 ], ListItemGroupHeader.prototype, "subItems", void 0);
 __decorate([
-    i18n("@ui5/webcomponents")
+    i18n("@ui5/wezbcomponents")
 ], ListItemGroupHeader, "i18nBundle", void 0);
 ListItemGroupHeader = ListItemGroupHeader_1 = __decorate([
     customElement({

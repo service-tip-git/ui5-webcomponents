@@ -176,8 +176,7 @@ let Tag = Tag_1 = class Tag extends UI5Element {
                 return null;
         }
     }
-    _onclick(e) {
-        e.stopPropagation();
+    _onclick() {
         this.fireDecoratorEvent("click");
     }
 };

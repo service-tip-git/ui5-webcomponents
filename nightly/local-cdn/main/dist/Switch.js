@@ -203,6 +203,7 @@ Switch = Switch_1 = __decorate([
         styles: switchCss,
         renderer: jsxRenderer,
         template: SwitchTemplate,
+        shadowRootOptions: { delegatesFocus: true },
     })
     /**
      * Fired when the component checked state changes.

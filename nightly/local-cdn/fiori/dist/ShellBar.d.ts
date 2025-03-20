@@ -9,6 +9,7 @@ import type { ClassMap, AccessibilityAttributes, AriaRole } from "@ui5/webcompon
 import type ListItemBase from "@ui5/webcomponents/dist/ListItemBase.js";
 import type PopoverHorizontalAlign from "@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js";
 import type ShellBarItem from "./ShellBarItem.js";
+import type { ShellBarItemAccessibilityAttributes } from "./ShellBarItem.js";
 type ShellBarLogoAccessibilityAttributes = {
     role?: Extract<AriaRole, "button" | "link">;
     name?: string;
@@ -62,6 +63,7 @@ interface IShelBarItemInfo extends IShellBarHidableItem {
     order?: number;
     profile?: boolean;
     tooltip?: string;
+    accessibilityAttributes?: ShellBarItemAccessibilityAttributes;
 }
 interface IShellBarContentItem extends IShellBarHidableItem {
     hideOrder: number;
@@ -385,8 +387,11 @@ declare class ShellBar extends UI5Element {
     get contentItemsSorted(): UI5Element[];
     get contentItemsWrappersSorted(): HTMLElement[];
     get autoSearchField(): boolean;
-    get showStartSeparatorInWrapper(): boolean;
-    get showEndSeparatorInWrapper(): boolean;
+    get startContentInfoSorted(): IShellBarContentItem[];
+    get endContentInfoSorted(): IShellBarContentItem[];
+    get showStartSeparator(): boolean;
+    get showEndSeparator(): boolean;
+    shouldIncludeSeparator(itemInfo: IShellBarContentItem | undefined, contentInfo: IShellBarContentItem[]): boolean;
     get classes(): ClassMap;
     get styles(): {
         searchField: {

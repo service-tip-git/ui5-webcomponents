@@ -461,6 +461,9 @@ __decorate([
     property()
 ], SideNavigation.prototype, "design", void 0);
 __decorate([
+    property()
+], SideNavigation.prototype, "accessibleName", void 0);
+__decorate([
     slot({ type: HTMLElement, invalidateOnChildChange: true, "default": true })
 ], SideNavigation.prototype, "items", void 0);
 __decorate([

@@ -1,6 +1,7 @@
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import type { IFormInputElement } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import "@ui5/webcomponents-icons/dist/date-time.js";
+import type ResponsivePopover from "./ResponsivePopover.js";
 import type { SegmentedButtonSelectionChangeEventDetail } from "./SegmentedButton.js";
 import type { CalendarSelectionChangeEventDetail } from "./Calendar.js";
 import DatePicker from "./DatePicker.js";
@@ -114,6 +115,21 @@ declare class DateTimePicker extends DatePicker implements IFormInputElement {
      * @private
      */
     _togglePicker(): void;
+    /**
+     * Read-only getters
+     */
+    get classes(): {
+        picker: {
+            "ui5-dt-picker-content--phone": boolean;
+        };
+        dateTimeView: {
+            "ui5-dt-cal--hidden": boolean;
+            "ui5-dt-time--hidden": boolean;
+        };
+        footer: {
+            "ui5-dt-picker-footer-time-hidden": boolean;
+        };
+    };
     get _formatPattern(): string;
     get _calendarTimestamp(): number;
     get _calendarSelectedDates(): string[];
@@ -126,7 +142,7 @@ declare class DateTimePicker extends DatePicker implements IFormInputElement {
     get showFooter(): boolean;
     get showDateView(): boolean;
     get showTimeView(): boolean;
-    get _phoneView(): boolean;
+    get phone(): boolean;
     /**
      * @override
      */
@@ -172,6 +188,7 @@ declare class DateTimePicker extends DatePicker implements IFormInputElement {
      * @override
      */
     _modifyDateValue(amount: number, unit: string, preserveDate: boolean): void;
+    getPicker(): ResponsivePopover;
     getSelectedDateTime(): Date;
     getFormat(): import("sap/ui/core/format/DateFormat").default;
     /**

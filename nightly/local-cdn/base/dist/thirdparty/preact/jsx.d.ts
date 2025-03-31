@@ -9,7 +9,7 @@ import {
 	FunctionComponent,
 	PreactDOMAttributes,
 	VNode
-} from './preact.module.js';
+} from './preact.module.d.ts';
 
 type Defaultize<Props, Defaults> =
 	// Distribute over unions

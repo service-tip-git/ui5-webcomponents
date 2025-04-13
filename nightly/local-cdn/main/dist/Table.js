@@ -158,7 +158,7 @@ let Table = Table_1 = class Table extends UI5Element {
         if (this.overflowMode === TableOverflowMode.Popin) {
             ResizeHandler.register(this, this._onResizeBound);
         }
-        this._events.forEach(eventType => this.addEventListener(eventType, this._onEventBound));
+        this._events.forEach(eventType => this.addEventListener(eventType, this._onEventBound, { capture: true }));
         this.features.forEach(feature => feature.onTableActivate?.(this));
         this._tableNavigation = new TableNavigation(this);
         this._tableDragAndDrop = new TableDragAndDrop(this);
@@ -382,7 +382,7 @@ __decorate([
 ], Table.prototype, "headerRow", void 0);
 __decorate([
     slot()
-], Table.prototype, "nodata", void 0);
+], Table.prototype, "noData", void 0);
 __decorate([
     slot({ type: HTMLElement, individualSlots: true })
 ], Table.prototype, "features", void 0);
@@ -420,8 +420,8 @@ __decorate([
     query("[ui5-drop-indicator]")
 ], Table.prototype, "dropIndicatorDOM", void 0);
 __decorate([
-    query("#nodata-row")
-], Table.prototype, "_nodataRow", void 0);
+    query("#no-data-row")
+], Table.prototype, "_noDataRow", void 0);
 __decorate([
     query("#table-end-row")
 ], Table.prototype, "_endRow", void 0);

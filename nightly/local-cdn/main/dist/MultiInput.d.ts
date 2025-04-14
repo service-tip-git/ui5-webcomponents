@@ -95,9 +95,7 @@ declare class MultiInput extends Input implements IFormInputElement {
     get tokenizer(): Tokenizer;
     get tokenizerExpanded(): boolean;
     get _tokensCountText(): string;
-    get _valueHelpText(): string;
     get _tokensCountTextId(): string;
-    get _valueHelpTextId(): "" | "hiddenText-value-help";
     /**
      * Returns the placeholder value when there are no tokens.
      * @protected

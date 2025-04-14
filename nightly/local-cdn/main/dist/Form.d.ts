@@ -273,7 +273,6 @@ declare class Form extends UI5Element {
     getGroupsColSpan(cols: number, groups: number, index: number, group: IFormItem): number;
     get hasGroupItems(): boolean;
     get hasHeader(): boolean;
-    get hasHeaderText(): boolean;
     get hasCustomHeader(): boolean;
     get effectiveАccessibleNameRef(): string | undefined;
     get effectiveAccessibleRole(): "form" | "region";

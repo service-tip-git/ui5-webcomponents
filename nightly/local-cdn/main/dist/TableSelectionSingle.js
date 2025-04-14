@@ -40,11 +40,11 @@ let TableSelectionSingle = class TableSelectionSingle extends TableSelectionBase
         const rowKey = this.getRowKey(row);
         return rowKey ? this.selected === rowKey : false;
     }
-    setSelected(row, selected, fireEvent = false) {
+    setSelected(row, selected, _fireEvent = false) {
         const rowKey = this.getRowKey(row);
         if (rowKey) {
             this.selected = selected ? rowKey : undefined;
-            fireEvent && this.fireDecoratorEvent("change");
+            _fireEvent && this.fireDecoratorEvent("change");
         }
     }
     /**

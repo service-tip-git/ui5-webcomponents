@@ -4,20 +4,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var Search_1;
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
-import { isPhone } from "@ui5/webcomponents-base/dist/Device.js";
+import SearchPopupMode from "@ui5/webcomponents/dist/types/SearchPopupMode.js";
 import { isUp, isDown, isEnter, isBackSpace, isDelete, isEscape, isTabNext, isPageUp, isPageDown, isHome, isEnd, isRight, isTabPrevious, } from "@ui5/webcomponents-base/dist/Keys.js";
 import SearchTemplate from "./SearchTemplate.js";
 import SearchCss from "./generated/themes/Search.css.js";
 import SearchField from "./SearchField.js";
 import { StartsWith, StartsWithPerTerm } from "@ui5/webcomponents/dist/Filters.js";
+import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
-import { SEARCH_CANCEL_BUTTON, SEARCH_SUGGESTIONS } from "./generated/i18n/i18n-defaults.js";
-import { i18n } from "@ui5/webcomponents-base/dist/decorators.js";
 /**
  * @class
  *
@@ -30,6 +28,7 @@ import { i18n } from "@ui5/webcomponents-base/dist/decorators.js";
  * - Input field - for user input value
  * - Clear button - gives the possibility for deleting the entered value
  * - Search button - a primary button for performing search, when the user has entered a search term
+ * - Expand/Collapse button - when there is no search term, the search button behaves as an expand/collapse button for the `ui5-search` component
  * - Suggestions - a list with available search suggestions
  *
  * ### ES6 Module Import
@@ -42,15 +41,16 @@ import { i18n } from "@ui5/webcomponents-base/dist/decorators.js";
  * @since 2.9.0
  * @experimental
  */
-let Search = Search_1 = class Search extends SearchField {
+let Search = class Search extends SearchField {
     constructor() {
         super();
         /**
-         * Indicates whether a loading indicator should be shown in the popup.
-         * @default false
+         * Defines the visualisation mode of the search component.
+         *
+         * @default "List"
          * @public
          */
-        this.loading = false;
+        this.popupMode = "List";
         /**
          * Defines whether the value will be autcompleted to match an item.
          * @default false
@@ -58,14 +58,44 @@ let Search = Search_1 = class Search extends SearchField {
          */
         this.noTypeahead = false;
         /**
+         * Defines the header text to be placed in the search suggestions popup.
+         * @public
+         */
+        this.headerText = "";
+        /**
+         * Defines the subheader text to be placed in the search suggestions popup.
+         * @public
+         */
+        this.subheaderText = "";
+        /**
+         * Defines whether the popup footer action button is shown.
+         * Note: The footer action button is displayed only when the `popupMode` is set to `List`.
+         * @default false
+         * @public
+         */
+        this.showPopupAction = false;
+        /**
+         * Defines the popup footer action button text.
+         * @public
+         */
+        this.popupActionText = "";
+        /**
          * Indicates whether the items picker is open.
          * @public
          */
         this.open = false;
+        /**
+         * Defines the inner stored value of the component.
+         *
+         * **Note:** The property is updated upon typing.
+         * @default ""
+         * @private
+         */
+        this._innerValue = "";
         // The typed in value.
         this._typedInValue = "";
         this._matchedPerTerm = false;
-        this._valueBeforeOpen = this.getAttribute("value") || "";
+        this._openPickerOnInput = false;
     }
     onBeforeRendering() {
         super.onBeforeRendering();
@@ -87,14 +117,6 @@ let Search = Search_1 = class Search extends SearchField {
         else {
             this._typedInValue = this.value;
         }
-        if (isPhone() && this.open) {
-            const item = this._getFirstMatchingItem(this.value);
-            this._proposedItem = item;
-            this._deselectItems();
-            if (item && this._performItemSelectionOnMobile) {
-                item.selected = true;
-            }
-        }
         this._flattenItems.forEach(item => {
             item.highlightText = this._typedInValue;
         });
@@ -102,43 +124,17 @@ let Search = Search_1 = class Search extends SearchField {
     }
     onAfterRendering() {
         const innerInput = this.nativeInput;
-        if (this._performTextSelection && innerInput && innerInput.value !== this._innerValue) {
-            innerInput.value = this._innerValue || "";
+        if (this._performTextSelection && innerInput.value !== this._innerValue) {
+            innerInput.value = this._innerValue;
         }
         if (this._performTextSelection && this._typedInValue.length && this.value.length) {
-            innerInput?.setSelectionRange(this._typedInValue.length, this.value.length);
+            innerInput.setSelectionRange(this._typedInValue.length, this.value.length);
         }
         this._performTextSelection = false;
-        if (!this.collapsed) {
-            this.style.setProperty("--search_width", `${this.getBoundingClientRect().width}px`);
-        }
-    }
-    _handleMobileInput(e) {
-        this.value = e.target.value;
-        this._performItemSelectionOnMobile = this._shouldPerformSelectionOnMobile(e);
-        this.fireDecoratorEvent("input");
-    }
-    _shouldPerformSelectionOnMobile(e) {
-        const eventType = e.detail.inputType;
-        const allowedEventTypes = [
-            "deleteWordBackward",
-            "deleteWordForward",
-            "deleteSoftLineBackward",
-            "deleteSoftLineForward",
-            "deleteEntireSoftLine",
-            "deleteHardLineBackward",
-            "deleteHardLineForward",
-            "deleteByDrag",
-            "deleteByCut",
-            "deleteContent",
-            "deleteContentBackward",
-            "deleteContentForward",
-            "historyUndo",
-        ];
-        return !this.noTypeahead && !allowedEventTypes.includes(eventType || "");
+        this.style.setProperty("--search_width", `${this.getBoundingClientRect().width}px`);
     }
     _handleTypeAhead(item) {
-        const originalValue = item.text || "";
+        const originalValue = item.headingText || "";
         let displayValue = originalValue;
         if (!originalValue.toLowerCase().startsWith(this.value.toLowerCase())) {
             this._matchedPerTerm = true;
@@ -153,10 +149,10 @@ let Search = Search_1 = class Search extends SearchField {
         this.value = displayValue;
     }
     _startsWithMatchingItems(str) {
-        return StartsWith(str, this._flattenItems.filter(item => !this._isGroupItem(item)), "text");
+        return StartsWith(str, this._flattenItems.filter(item => !this._isGroupItem(item)), "headingText");
     }
     _startsWithPerTermMatchingItems(str) {
-        return StartsWithPerTerm(str, this._flattenItems.filter(item => !this._isGroupItem(item)), "text");
+        return StartsWithPerTerm(str, this._flattenItems.filter(item => !this._isGroupItem(item)), "headingText");
     }
     _isGroupItem(item) {
         return item.hasAttribute("ui5-search-item-group");
@@ -166,18 +162,22 @@ let Search = Search_1 = class Search extends SearchField {
             item.selected = false;
         });
     }
-    _handleDown(e) {
+    async _handleDown(e) {
         if (this.open) {
             e.preventDefault();
-            this._handleArrowDown();
+            await this._handleArrowDown();
         }
     }
-    _handleArrowDown() {
+    async _handleArrowDown() {
         const firstListItem = this._getItemsList()?.getSlottedNodes("items")[0];
+        const focusRef = firstListItem && this._isGroupItem(firstListItem) ? firstListItem.getFocusDomRef() : firstListItem;
         if (this.open) {
             this._deselectItems();
+            firstListItem && focusRef && this._getItemsList()?._itemNavigation.setCurrentItem(focusRef);
             this.value = this._typedInValue || this.value;
             this._innerValue = this.value;
+            // wait item navigation to apply correct tabindex
+            await renderFinished();
             firstListItem?.focus();
         }
     }
@@ -189,19 +189,6 @@ let Search = Search_1 = class Search extends SearchField {
             this._proposedItem = undefined;
         }
     }
-    _handleInnerClick() {
-        if (isPhone()) {
-            this.open = true;
-        }
-    }
-    _handleSearchIconPress() {
-        if (isPhone()) {
-            this.open = true;
-        }
-        else {
-            super._handleSearchIconPress();
-        }
-    }
     _handleEnter() {
         const prevented = !this.fireDecoratorEvent("search", { item: this._proposedItem });
         if (prevented) {
@@ -209,20 +196,14 @@ let Search = Search_1 = class Search extends SearchField {
         }
         const innerInput = this.nativeInput;
         if (this._matchedPerTerm) {
-            this.value = this._proposedItem?.text || this.value;
+            this.value = this._proposedItem?.headingText || this.value;
             this._innerValue = this.value;
             this._typedInValue = this.value;
             this._matchedPerTerm = false;
         }
         innerInput.setSelectionRange(this.value.length, this.value.length);
         this.open = false;
-    }
-    _onMobileInputKeydown(e) {
-        if (isEnter(e)) {
-            this.value = this.mobileInput?.value || this.value;
-            this._handleEnter();
-            this.blur();
-        }
+        this._openPickerOnInput = true;
     }
     _handleSearchEvent() {
         this.fireDecoratorEvent("search", { item: this._proposedItem });
@@ -230,13 +211,15 @@ let Search = Search_1 = class Search extends SearchField {
     _handleEscape() {
         this.value = this._typedInValue || this.value;
         this._innerValue = this.value;
+        this._openPickerOnInput = true;
     }
     _handleInput(e) {
         super._handleInput(e);
-        this.open = !isPhone() && (e.currentTarget.value.length > 0) && this._popoupHasAnyContent();
-    }
-    _popoupHasAnyContent() {
-        return this.items.length > 0 || this.illustration.length > 0 || this.messageArea.length > 0 || this.loading || this.action.length > 0;
+        if (!this._openPickerOnInput) {
+            return;
+        }
+        this.open = true;
+        this._openPickerOnInput = false;
     }
     _onFooterButtonKeyDown(e) {
         if (isUp(e)) {
@@ -265,22 +248,17 @@ let Search = Search_1 = class Search extends SearchField {
         const item = e.detail.item;
         const prevented = !this.fireDecoratorEvent("search", { item });
         if (prevented) {
-            if (isPhone()) {
-                this.open = false;
-            }
             return;
         }
-        this.value = item.text;
+        this.value = item.headingText;
         this._innerValue = this.value;
         this._typedInValue = this.value;
         this.open = false;
+        this._openPickerOnInput = true;
         this.focus();
     }
     _onkeydown(e) {
         super._onkeydown(e);
-        if (this.loading) {
-            return;
-        }
         this._shouldAutocomplete = !this.noTypeahead
             && !(isBackSpace(e) || isDelete(e) || isEscape(e) || isUp(e) || isDown(e) || isTabNext(e) || isEnter(e) || isPageUp(e) || isPageDown(e) || isHome(e) || isEnd(e) || isEscape(e));
         if (isRight(e)) {
@@ -293,6 +271,17 @@ let Search = Search_1 = class Search extends SearchField {
             this._handleEscape();
         }
     }
+    _onfocusin() {
+        super._onfocusin();
+        if (this._openPickerOnInput) {
+            return;
+        }
+        // prevent opening of empty picker on List Mode
+        if (this.popupMode === SearchPopupMode.List && !this.items.length) {
+            return;
+        }
+        this.open = true;
+    }
     _onfocusout() {
         super._onfocusout();
         if (this._matchedPerTerm) {
@@ -301,40 +290,17 @@ let Search = Search_1 = class Search extends SearchField {
         }
         this._matchedPerTerm = false;
     }
-    _onFocusOutSearch(e) {
-        const target = e.relatedTarget;
-        if (this._getPicker().contains(target) || this.contains(target)) {
-            return;
+    _onFocusOutSearch() {
+        if (!this.matches(":focus-within")) {
+            this.open = false;
         }
-        this.open = false;
-    }
-    _handleBeforeClose(e) {
-        if (e.detail.escPressed) {
-            this.focus();
-        }
-    }
-    _handleCancel() {
-        this._handleClose();
-        this.value = this._valueBeforeOpen;
-        this.fireDecoratorEvent("input");
     }
     _handleClose() {
         this.open = false;
         this.fireDecoratorEvent("close");
     }
-    _handleBeforeOpen() {
-        if (isPhone() && this.mobileInput) {
-            this.mobileInput.value = this.value;
-        }
-    }
     _handleOpen() {
-        this._valueBeforeOpen = this.value;
         this.fireDecoratorEvent("open");
-    }
-    _handleActionKeydown(e) {
-        if (isUp(e)) {
-            this._flattenItems[this._flattenItems.length - 1].focus();
-        }
     }
     _onFooterButtonClick() {
         this.fireDecoratorEvent("popup-action-press");
@@ -362,7 +328,7 @@ let Search = Search_1 = class Search extends SearchField {
         return this._getPicker().querySelector(".ui5-search-list");
     }
     _getFooterButton() {
-        return this.action[0];
+        return this._getPicker().querySelector(".ui5-search-footer-button");
     }
     get _flattenItems() {
         return this.getSlottedNodes("items").flatMap(item => {
@@ -373,52 +339,50 @@ let Search = Search_1 = class Search extends SearchField {
         const domRef = this.getDomRef();
         return domRef ? domRef.querySelector(`input`) : null;
     }
-    get mobileInput() {
-        const domRef = this.shadowRoot;
-        return domRef ? domRef.querySelector(`[ui5-input]`) : null;
+    get _showIllustration() {
+        return !!this.illustration && this.popupMode === SearchPopupMode.Illustration;
     }
-    get cancelButtonText() {
-        return Search_1.i18nBundle.getText(SEARCH_CANCEL_BUTTON);
+    get _showLoading() {
+        return this.popupMode === SearchPopupMode.Loading;
     }
-    get suggestionsText() {
-        return Search_1.i18nBundle.getText(SEARCH_SUGGESTIONS);
+    get _showHeader() {
+        return !!this.headerText;
     }
-    get scopeSelect() {
-        const domRef = this.shadowRoot;
-        return domRef ? domRef.querySelector(`[ui5-select]`) : null;
+    get _showFooter() {
+        return !!this.showPopupAction && this.popupMode === SearchPopupMode.List;
     }
 };
 __decorate([
-    property({ type: Boolean })
-], Search.prototype, "loading", void 0);
+    property()
+], Search.prototype, "popupMode", void 0);
 __decorate([
     property({ type: Boolean })
 ], Search.prototype, "noTypeahead", void 0);
+__decorate([
+    property()
+], Search.prototype, "headerText", void 0);
+__decorate([
+    property()
+], Search.prototype, "subheaderText", void 0);
+__decorate([
+    property({ type: Boolean })
+], Search.prototype, "showPopupAction", void 0);
+__decorate([
+    property()
+], Search.prototype, "popupActionText", void 0);
 __decorate([
     slot({ type: HTMLElement, "default": true })
 ], Search.prototype, "items", void 0);
 __decorate([
     slot()
-], Search.prototype, "action", void 0);
-__decorate([
-    slot()
 ], Search.prototype, "illustration", void 0);
-__decorate([
-    slot()
-], Search.prototype, "messageArea", void 0);
 __decorate([
     property({ type: Boolean })
 ], Search.prototype, "open", void 0);
 __decorate([
     property({ noAttribute: true })
 ], Search.prototype, "_innerValue", void 0);
-__decorate([
-    property({ type: Boolean })
-], Search.prototype, "_performItemSelectionOnMobile", void 0);
-__decorate([
-    i18n("@ui5/webcomponents-fiori")
-], Search, "i18nBundle", void 0);
-Search = Search_1 = __decorate([
+Search = __decorate([
     customElement({
         tag: "ui5-search",
         languageAware: true,
@@ -429,6 +393,13 @@ Search = Search_1 = __decorate([
             SearchCss,
         ],
     })
+    /**
+     * Fired when load more button is pressed.
+     *
+     * @public
+     */
+    ,
+    event("popup-action-press")
     /**
      * Fired when the popup is opened.
      *

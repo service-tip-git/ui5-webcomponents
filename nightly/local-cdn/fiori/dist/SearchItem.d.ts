@@ -24,7 +24,7 @@ declare class SearchItem extends ListItemBase {
      * Defines the heading text of the search item.
      * @public
      */
-    text: string;
+    headingText: string;
     /**
      * Defines the icon name of the search item.
      * @public

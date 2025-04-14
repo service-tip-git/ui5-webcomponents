@@ -43,6 +43,7 @@ declare abstract class TableSelectionBase extends UI5Element implements ITableFe
      * Returns the unique key associated with the table row.
      *
      * @param row The row instance
+     * @public
      */
     getRowKey(row: TableRow): string;
     /**
@@ -56,6 +57,7 @@ declare abstract class TableSelectionBase extends UI5Element implements ITableFe
      * Determines whether the specified table row is currently selected.
      *
      * @param row The row instance
+     * @public
      */
     abstract isSelected(row: TableRowBase): boolean;
     /**
@@ -63,9 +65,9 @@ declare abstract class TableSelectionBase extends UI5Element implements ITableFe
      *
      * @param row The row instance
      * @param selected Whether the row is selected
-     * @param fireEvent Whether the change event should be fired
+     * @public
      */
-    abstract setSelected(row: TableRowBase, selected: boolean, fireEvent: boolean): void;
+    abstract setSelected(row: TableRowBase, selected: boolean, _fireEvent: boolean): void;
     /**
      * Invalidates the table and its rows to re-evaluate the selection.
      *

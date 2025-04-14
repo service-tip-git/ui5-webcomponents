@@ -185,7 +185,7 @@ declare class Table extends UI5Element {
      *
      * @public
      */
-    noData: Array<HTMLElement>;
+    nodata: Array<HTMLElement>;
     /**
      * Defines the features of the component.
      *
@@ -258,7 +258,7 @@ declare class Table extends UI5Element {
     _invalidate: number;
     _renderNavigated: boolean;
     dropIndicatorDOM: DropIndicator;
-    _noDataRow?: TableRow;
+    _nodataRow?: TableRow;
     _endRow: TableRow;
     _tableElement: HTMLElement;
     _beforeElement: HTMLElement;

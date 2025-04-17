@@ -250,6 +250,8 @@ let Form = class Form extends UI5Element {
         this.setFormItemLayout();
         // Define how many columns a group should take.
         this.setGroupsColSpan();
+        // Set item spacing
+        this.setItemSpacing();
     }
     onAfterRendering() {
         // Create additional CSS for number of columns that are not supported by default.
@@ -389,17 +391,25 @@ let Form = class Form extends UI5Element {
         // 7 cols & 3 groups => 3, 2, 2
         return index === 0 ? MIN_COL_SPAN + (delta - groups) + 1 : MIN_COL_SPAN + 1;
     }
+    setItemSpacing() {
+        this.items.forEach((item) => {
+            item.itemSpacing = this.itemSpacing;
+        });
+    }
     get hasGroupItems() {
         return this.items.some((item) => item.isGroup);
     }
     get hasHeader() {
-        return this.hasCustomHeader || !!this.headerText;
+        return this.hasCustomHeader || this.hasHeaderText;
+    }
+    get hasHeaderText() {
+        return !!this.headerText;
     }
     get hasCustomHeader() {
         return !!this.header.length;
     }
     get effectiveАccessibleNameRef() {
-        return this.hasCustomHeader ? undefined : `${this._id}-header-text`;
+        return this.hasHeaderText && !this.hasCustomHeader ? `${this._id}-header-text` : undefined;
     }
     get effectiveAccessibleRole() {
         return this.hasGroupItems ? "region" : "form";

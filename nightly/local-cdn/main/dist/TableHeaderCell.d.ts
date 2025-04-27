@@ -23,34 +23,31 @@ import type TableHeaderCellActionBase from "./TableHeaderCellActionBase.js";
  */
 declare class TableHeaderCell extends TableCellBase {
     /**
-     * Defines the width of the column.
+     * Defines the width of column.
      *
-     * By default, the column will grow and shrink according to the available space.
-     * This will distribute the space proportionally among all columns with no specific width set.
-     *
-     * See [\<length\>](https://developer.mozilla.org/en-US/docs/Web/CSS/length) and
-     * [\<percentage\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) for possible width values.
-     *
-     * @default undefined
+     * @default "auto"
      * @public
      */
-    width?: string;
+    width: string;
     /**
      * Defines the minimum width of the column.
      *
      * If the table is in `Popin` mode and the minimum width does not fit anymore,
      * the column will move into the popin.
      *
-     * By default, the table prevents the column from becoming too small.
-     * Changing this value to a small value might lead to accessibility issues.
+     * **Note:** If `minWidth` has the `auto` value, the table ensures that the column is wider than at least `3rem`.
      *
-     * **Note:** This property only takes effect for columns with a [\<percentage\>](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) value
-     * or the default width.
-     *
+     * @default "auto"
      * @public
-     * @default undefined
      */
-    minWidth?: string;
+    minWidth: string;
+    /**
+     * Defines the maximum width of the column.
+     *
+     * @default "auto"
+     * @public
+     */
+    maxWidth: string;
     /**
      * Defines the importance of the column.
      *
@@ -101,6 +98,7 @@ declare class TableHeaderCell extends TableCellBase {
     _popin: boolean;
     protected ariaRole: string;
     _popinWidth: number;
+    onEnterDOM(): void;
     onBeforeRendering(): void;
 }
 export default TableHeaderCell;

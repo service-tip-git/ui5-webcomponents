@@ -46,9 +46,6 @@ type ShellBarSearchButtonEventDetail = {
     targetRef: HTMLElement;
     searchFieldVisible: boolean;
 };
-type ShellBarSearchFieldToggleEventDetail = {
-    expanded: boolean;
-};
 interface IShellBarHidableItem {
     classes: string;
     id: string;
@@ -112,25 +109,8 @@ declare class ShellBar extends UI5Element {
         "logo-click": ShellBarLogoClickEventDetail;
         "menu-item-click": ShellBarMenuItemClickEventDetail;
         "search-button-click": ShellBarSearchButtonEventDetail;
-        "search-field-toggle": ShellBarSearchFieldToggleEventDetail;
         "content-item-visibility-change": ShellBarContentItemVisibilityChangeEventDetail;
     };
-    /**
-     * Defines the visibility state of the search button.
-     *
-     * **Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.
-     * @default false
-     * @public
-     */
-    hideSearchButton: boolean;
-    /**
-     * Disables the automatic search field expansion/collapse when the available space is not enough.
-     *
-     * **Note:** The `disableAutoSearchField` property is in an experimental state and is a subject to change.
-     * @default false
-     * @public
-     */
-    disableAutoSearchField: boolean;
     /**
      * Defines the `primaryTitle`.
      *
@@ -166,6 +146,14 @@ declare class ShellBar extends UI5Element {
      * @public
      */
     showProductSwitch: boolean;
+    /**
+     * Defines, if the Search Field would be displayed when there is a valid `searchField` slot.
+     *
+     * **Note:** By default the Search Field is not displayed.
+     * @default false
+     * @public
+     */
+    showSearchField: boolean;
     /**
      * Defines additional accessibility attributes on different areas of the component.
      *
@@ -298,7 +286,6 @@ declare class ShellBar extends UI5Element {
     _observableContent: Array<HTMLElement>;
     _autoRestoreSearchField: boolean;
     _headerPress: () => void;
-    _showSearchField: boolean;
     static get FIORI_3_BREAKPOINTS(): number[];
     static get FIORI_3_BREAKPOINTS_MAP(): Record<string, string>;
     constructor();
@@ -319,22 +306,9 @@ declare class ShellBar extends UI5Element {
     _logoKeyup(e: KeyboardEvent): void;
     _logoKeydown(e: KeyboardEvent): void;
     _calculateCSSREMValue(styleSet: CSSStyleDeclaration, propertyName: string): number;
+    _parsePxValue(styleSet: CSSStyleDeclaration, propertyName: string): number;
     domCalculatedValues(cssVar: string): number;
     onBeforeRendering(): void;
-    /**
-     * Defines, if the Search Field would be displayed when there is a valid `searchField` slot.
-     *
-     * **Note:** By default the Search Field is not displayed.
-     * @default false
-     * @public
-     */
-    set showSearchField(value: boolean);
-    get showSearchField(): boolean;
-    /**
-     * Use this method to change the state of the search filed according to internal logic.
-     * An event is fired to notify the change.
-     */
-    setSearchState(expanded: boolean): void;
     onAfterRendering(): void;
     onInitialRendering(): Promise<void>;
     /**
@@ -397,13 +371,6 @@ declare class ShellBar extends UI5Element {
      * @since 1.0.0-rc.16
      */
     get productSwitchDomRef(): HTMLElement | null;
-    /**
-     * Returns the `search` icon DOM ref.
-     * @public
-     * @default null
-     * @since 2.10.0
-     */
-    get searchButtonDomRef(): HTMLElement | null;
     _getContentInfo(): Array<IShellBarContentItem>;
     /**
      * Returns all items that will be placed in the right of the bar as icons / dom elements.
@@ -428,7 +395,9 @@ declare class ShellBar extends UI5Element {
     shouldIncludeSeparator(itemInfo: IShellBarContentItem | undefined, contentInfo: IShellBarContentItem[]): boolean;
     get classes(): ClassMap;
     get styles(): {
-        searchField: {};
+        searchField: {
+            display: string;
+        };
     };
     get customItemsInfo(): IShelBarItemInfo[];
     get hasLogo(): boolean;
@@ -447,10 +416,9 @@ declare class ShellBar extends UI5Element {
     get _notificationsText(): string;
     get _cancelBtnText(): string;
     get _logoAreaText(): string;
-    get _contentItemsText(): string | undefined;
+    get _contentItemsText(): string;
     get _searchFieldDescription(): string;
     get _contentItemsRole(): "group" | undefined;
-    get _enableContentAreaAccessibility(): boolean;
     get contentItems(): UI5Element[];
     get startContent(): UI5Element[];
     get endContent(): UI5Element[];
@@ -458,6 +426,7 @@ declare class ShellBar extends UI5Element {
     get _searchFieldText(): string;
     get _searchBtnOpen(): string;
     get _productSwitchBtnText(): string;
+    get isSearchFieldVisible(): number;
     get _profileText(): string;
     get _productsText(): string;
     get _searchText(): string;
@@ -506,11 +475,6 @@ declare class ShellBar extends UI5Element {
     };
     get accLogoRole(): "link" | "button";
     get isSBreakPoint(): boolean;
-    get hasSelfCollapsibleSearch(): boolean;
-    get search(): Input | null;
-}
-interface IShellBarSelfCollapsibleSearch {
-    collapsed: boolean;
 }
 export default ShellBar;
-export type { ShellBarContentItemVisibilityChangeEventDetail, ShellBarNotificationsClickEventDetail, ShellBarProfileClickEventDetail, ShellBarProductSwitchClickEventDetail, ShellBarLogoClickEventDetail, ShellBarMenuItemClickEventDetail, ShellBarAccessibilityAttributes, ShellBarSearchButtonEventDetail, ShellBarSearchFieldToggleEventDetail, IShellBarSelfCollapsibleSearch, };
+export type { ShellBarContentItemVisibilityChangeEventDetail, ShellBarNotificationsClickEventDetail, ShellBarProfileClickEventDetail, ShellBarProductSwitchClickEventDetail, ShellBarLogoClickEventDetail, ShellBarMenuItemClickEventDetail, ShellBarAccessibilityAttributes, ShellBarSearchButtonEventDetail, };

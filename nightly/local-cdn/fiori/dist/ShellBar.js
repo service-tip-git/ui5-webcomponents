@@ -104,11 +104,11 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
         /**
          * Disables the automatic search field expansion/collapse when the available space is not enough.
          *
-         * **Note:** The `disableAutoSearchField` property is in an experimental state and is a subject to change.
+         * **Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.
          * @default false
          * @public
          */
-        this.disableAutoSearchField = false;
+        this.disableSearchCollapse = false;
         /**
          * Defines, if the notification icon would be displayed.
          * @default false
@@ -133,6 +133,7 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
          * - **product** - `product.expanded` and `product.hasPopup`.
          * - **search** - `search.hasPopup`.
          * - **overflow** - `overflow.expanded` and `overflow.hasPopup`.
+         * - **branding** - `branding.name`.
          *
          * The accessibility attributes support the following values:
          *
@@ -365,8 +366,9 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
      * Use this method to change the state of the search filed according to internal logic.
      * An event is fired to notify the change.
      */
-    setSearchState(expanded) {
+    async setSearchState(expanded) {
         this.showSearchField = expanded;
+        await renderFinished();
         this.fireDecoratorEvent("search-field-toggle", { expanded });
     }
     onAfterRendering() {
@@ -584,11 +586,12 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     }
     /**
      * Returns the `search` icon DOM ref.
+     * @returns The search icon DOM ref
      * @public
-     * @default null
      * @since 2.10.0
      */
-    get searchButtonDomRef() {
+    async getSearchButtonDomRef() {
+        await renderFinished();
         return this.shadowRoot.querySelector(`*[data-ui5-stable="toggle-search"]`);
     }
     _getContentInfo() {
@@ -778,8 +781,8 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     get autoSearchField() {
         const onFocus = document.activeElement === this.searchField[0];
         const hasValue = this.searchField[0]?.value?.length > 0;
-        const disableAutoSearchField = this.disableAutoSearchField || onFocus || hasValue;
-        if (disableAutoSearchField) {
+        const disableSearchCollapse = this.disableSearchCollapse || onFocus || hasValue;
+        if (disableSearchCollapse) {
             return false;
         }
         return this.showSearchField || this._autoRestoreSearchField;
@@ -964,6 +967,9 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     get _overflowText() {
         return ShellBar_1.i18nBundle.getText(SHELLBAR_OVERFLOW);
     }
+    get _brandingText() {
+        return this.accessibilityAttributes.branding?.name || this.primaryTitle;
+    }
     get hasContentItems() {
         return this.contentItems.length > 0;
     }
@@ -1055,6 +1061,12 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
                     expanded: overflowExpanded === undefined ? this._overflowPopoverExpanded : overflowExpanded,
                 },
             },
+            branding: {
+                "title": this._brandingText,
+                "accessibilityAttributes": {
+                    name: this.accessibilityAttributes.branding?.name,
+                },
+            },
         };
     }
     get accLogoRole() {
@@ -1075,7 +1087,7 @@ __decorate([
 ], ShellBar.prototype, "hideSearchButton", void 0);
 __decorate([
     property({ type: Boolean })
-], ShellBar.prototype, "disableAutoSearchField", void 0);
+], ShellBar.prototype, "disableSearchCollapse", void 0);
 __decorate([
     property()
 ], ShellBar.prototype, "primaryTitle", void 0);

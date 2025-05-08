@@ -6,8 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { customElement, slot, property } from "@ui5/webcomponents-base/dist/decorators.js";
 import { isEnter } from "@ui5/webcomponents-base/dist/Keys.js";
-import { toggleAttribute } from "./TableUtils.js";
 import getActiveElement from "@ui5/webcomponents-base/dist/util/getActiveElement.js";
+import { toggleAttribute } from "./TableUtils.js";
 import TableRowTemplate from "./TableRowTemplate.js";
 import TableRowBase from "./TableRowBase.js";
 import TableRowCss from "./generated/themes/TableRow.css.js";
@@ -91,6 +91,7 @@ let TableRow = class TableRow extends TableRowBase {
     _onOverflowButtonClick(e) {
         const ctor = this.actions[0].constructor;
         ctor.showMenu(this._overflowActions, e.target);
+        e.stopPropagation();
     }
     get _isInteractive() {
         return this.interactive;

@@ -42,7 +42,7 @@ declare class SideNavigationGroup extends SideNavigationItemBase {
     get _groupId(): string | undefined;
     get _expanded(): boolean | undefined;
     get belowGroupClassName(): "" | "ui5-sn-item-group-below-group";
-    get accDescription(): string;
+    get _arrowTooltip(): string;
     _onkeydown(e: KeyboardEvent): void;
     _onclick(): void;
     _onfocusin(e: FocusEvent): void;

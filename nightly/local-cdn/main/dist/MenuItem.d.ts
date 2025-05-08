@@ -169,7 +169,6 @@ declare class MenuItem extends ListItem implements IMenuItem {
     get hasEndContent(): boolean;
     get hasIcon(): boolean;
     get isSubMenuOpen(): boolean;
-    get ariaLabelledByText(): string;
     get menuHeaderTextPhone(): string | undefined;
     get isPhone(): boolean;
     get labelBack(): string;

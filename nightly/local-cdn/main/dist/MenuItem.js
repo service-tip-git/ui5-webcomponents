@@ -116,9 +116,6 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
     get isSubMenuOpen() {
         return this._popover?.open;
     }
-    get ariaLabelledByText() {
-        return `${this.text} ${this.accessibleName}`.trim();
-    }
     get menuHeaderTextPhone() {
         return this.text;
     }

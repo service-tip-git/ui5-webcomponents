@@ -22,7 +22,7 @@ import { isInstanceOfSideNavigationSelectableItemBase } from "./SideNavigationSe
 import { isInstanceOfSideNavigationItemBase } from "./SideNavigationItemBase.js";
 import { isInstanceOfSideNavigationItem } from "./SideNavigationItem.js";
 import SideNavigationTemplate from "./SideNavigationTemplate.js";
-import { SIDE_NAVIGATION_POPOVER_HIDDEN_TEXT, SIDE_NAVIGATION_COLLAPSED_LIST_ARIA_ROLE_DESC, SIDE_NAVIGATION_LIST_ARIA_ROLE_DESC, SIDE_NAVIGATION_OVERFLOW_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
+import { SIDE_NAVIGATION_POPOVER_HIDDEN_TEXT, SIDE_NAVIGATION_COLLAPSED_LIST_ARIA_ROLE_DESC, SIDE_NAVIGATION_LIST_ARIA_ROLE_DESC, SIDE_NAVIGATION_OVERFLOW_ACCESSIBLE_NAME, SIDE_NAVIGATION_FLEXIBLE_LIST_LABEL, SIDE_NAVIGATION_FIXED_LIST_LABEL, } from "./generated/i18n/i18n-defaults.js";
 // Styles
 import SideNavigationCss from "./generated/themes/SideNavigation.css.js";
 import SideNavigationPopoverCss from "./generated/themes/SideNavigationPopover.css.js";
@@ -155,6 +155,12 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
             key = SIDE_NAVIGATION_COLLAPSED_LIST_ARIA_ROLE_DESC;
         }
         return SideNavigation_1.i18nBundle.getText(key);
+    }
+    get navigationMenuPrimaryHiddenText() {
+        return SideNavigation_1.i18nBundle.getText(SIDE_NAVIGATION_FLEXIBLE_LIST_LABEL);
+    }
+    get navigationMenuFooterHiddenText() {
+        return SideNavigation_1.i18nBundle.getText(SIDE_NAVIGATION_FIXED_LIST_LABEL);
     }
     get overflowAccessibleName() {
         return SideNavigation_1.i18nBundle.getText(SIDE_NAVIGATION_OVERFLOW_ACCESSIBLE_NAME);

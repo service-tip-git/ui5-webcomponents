@@ -44,6 +44,25 @@ let SideNavigationGroup = SideNavigationGroup_1 = class SideNavigationGroup exte
          * @default false
          */
         this.expanded = false;
+        this._initialChildDisabledStates = new Map();
+    }
+    onBeforeRendering() {
+        this.allItems.forEach(item => {
+            if (!this._initialChildDisabledStates.has(item)) {
+                this._initialChildDisabledStates.set(item, item.disabled);
+            }
+        });
+        this._updateChildItemsDisabledState();
+    }
+    _updateChildItemsDisabledState() {
+        this.allItems.forEach(item => {
+            if (this.disabled) {
+                item.disabled = true;
+            }
+            else {
+                item.disabled = this._initialChildDisabledStates.get(item);
+            }
+        });
     }
     get overflowItems() {
         const separator1 = this.shadowRoot.querySelector(".ui5-sn-item-separator:first-child");
@@ -113,7 +132,9 @@ let SideNavigationGroup = SideNavigationGroup_1 = class SideNavigationGroup exte
         this.sideNavigation?.focusItem(this);
     }
     _toggle() {
-        this.expanded = !this.expanded;
+        if (!this.disabled) {
+            this.expanded = !this.expanded;
+        }
     }
     get isSideNavigationGroup() {
         return true;

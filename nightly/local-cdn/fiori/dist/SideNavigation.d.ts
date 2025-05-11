@@ -137,6 +137,8 @@ declare class SideNavigation extends UI5Element {
     _onBeforeMenuClose(): void;
     get accSideNavigationPopoverHiddenText(): string;
     get ariaRoleDescNavigationList(): string;
+    get navigationMenuPrimaryHiddenText(): string;
+    get navigationMenuFooterHiddenText(): string;
     get overflowAccessibleName(): string;
     handlePopupItemClick(e: KeyboardEvent | PointerEvent): void;
     handleOverflowItemClick(e: CustomEvent<NavigationMenuClickEventDetail>): void;

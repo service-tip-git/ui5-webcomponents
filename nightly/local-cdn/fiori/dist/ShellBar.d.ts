@@ -170,6 +170,14 @@ declare class ShellBar extends UI5Element {
      */
     showProductSwitch: boolean;
     /**
+     * Defines, if the Search Field would be displayed when there is a valid `searchField` slot.
+     *
+     * **Note:** By default the Search Field is not displayed.
+     * @default false
+     * @public
+     */
+    showSearchField: boolean;
+    /**
      * Defines additional accessibility attributes on different areas of the component.
      *
      * The accessibilityAttributes object has the following fields,
@@ -302,7 +310,9 @@ declare class ShellBar extends UI5Element {
     _observableContent: Array<HTMLElement>;
     _autoRestoreSearchField: boolean;
     _headerPress: () => void;
-    _showSearchField: boolean;
+    onSearchOpen: () => void;
+    onSearchClose: () => void;
+    onSearch: () => void;
     static get FIORI_3_BREAKPOINTS(): number[];
     static get FIORI_3_BREAKPOINTS_MAP(): Record<string, string>;
     constructor();
@@ -325,15 +335,6 @@ declare class ShellBar extends UI5Element {
     _calculateCSSREMValue(styleSet: CSSStyleDeclaration, propertyName: string): number;
     domCalculatedValues(cssVar: string): number;
     onBeforeRendering(): void;
-    /**
-     * Defines, if the Search Field would be displayed when there is a valid `searchField` slot.
-     *
-     * **Note:** By default the Search Field is not displayed.
-     * @default false
-     * @public
-     */
-    set showSearchField(value: boolean);
-    get showSearchField(): boolean;
     /**
      * Use this method to change the state of the search filed according to internal logic.
      * An event is fired to notify the change.
@@ -522,6 +523,7 @@ declare class ShellBar extends UI5Element {
 }
 interface IShellBarSelfCollapsibleSearch {
     collapsed: boolean;
+    open: boolean;
 }
 export default ShellBar;
 export type { ShellBarContentItemVisibilityChangeEventDetail, ShellBarNotificationsClickEventDetail, ShellBarProfileClickEventDetail, ShellBarProductSwitchClickEventDetail, ShellBarLogoClickEventDetail, ShellBarMenuItemClickEventDetail, ShellBarAccessibilityAttributes, ShellBarSearchButtonEventDetail, ShellBarSearchFieldToggleEventDetail, IShellBarSelfCollapsibleSearch, };

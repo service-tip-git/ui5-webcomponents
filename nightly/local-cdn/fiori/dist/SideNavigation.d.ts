@@ -130,6 +130,7 @@ declare class SideNavigation extends UI5Element {
     constructor();
     _handleResizeBound: () => void;
     onBeforeRendering(): void;
+    initGroupsSettings(items: Array<SideNavigationItemBase>): void;
     _onAfterPopoverOpen(): void;
     _onBeforePopoverOpen(): void;
     _onBeforePopoverClose(): void;

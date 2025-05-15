@@ -44,6 +44,7 @@ let SideNavigationGroup = SideNavigationGroup_1 = class SideNavigationGroup exte
          * @default false
          */
         this.expanded = false;
+        this.belowGroup = false;
         this._initialChildDisabledStates = new Map();
     }
     onBeforeRendering() {
@@ -106,10 +107,7 @@ let SideNavigationGroup = SideNavigationGroup_1 = class SideNavigationGroup exte
         return this.expanded;
     }
     get belowGroupClassName() {
-        if (isInstanceOfSideNavigationGroup(this.previousElementSibling)) {
-            return "ui5-sn-item-group-below-group";
-        }
-        return "";
+        return this.belowGroup ? "ui5-sn-item-group-below-group" : "";
     }
     get _arrowTooltip() {
         return this.expanded ? SideNavigationGroup_1.i18nBundle.getText(SIDE_NAVIGATION_ICON_COLLAPSE)

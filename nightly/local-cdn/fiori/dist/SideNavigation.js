@@ -21,6 +21,7 @@ import NavigationMode from "@ui5/webcomponents-base/dist/types/NavigationMode.js
 import { isInstanceOfSideNavigationSelectableItemBase } from "./SideNavigationSelectableItemBase.js";
 import { isInstanceOfSideNavigationItemBase } from "./SideNavigationItemBase.js";
 import { isInstanceOfSideNavigationItem } from "./SideNavigationItem.js";
+import { isInstanceOfSideNavigationGroup } from "./SideNavigationGroup.js";
 import SideNavigationTemplate from "./SideNavigationTemplate.js";
 import { SIDE_NAVIGATION_POPOVER_HIDDEN_TEXT, SIDE_NAVIGATION_COLLAPSED_LIST_ARIA_ROLE_DESC, SIDE_NAVIGATION_LIST_ARIA_ROLE_DESC, SIDE_NAVIGATION_OVERFLOW_ACCESSIBLE_NAME, SIDE_NAVIGATION_FLEXIBLE_LIST_LABEL, SIDE_NAVIGATION_FIXED_LIST_LABEL, } from "./generated/i18n/i18n-defaults.js";
 // Styles
@@ -115,6 +116,18 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
             item.sideNavCollapsed = this.collapsed;
             item.inPopover = this.inPopover;
             item.sideNavigation = this;
+        });
+        this.initGroupsSettings(this.items);
+        this.initGroupsSettings(this.fixedItems);
+    }
+    initGroupsSettings(items) {
+        let isPreviousItemGroup = false;
+        items.forEach(item => {
+            const isGroup = isInstanceOfSideNavigationGroup(item);
+            if (isGroup) {
+                item.belowGroup = isPreviousItemGroup;
+            }
+            isPreviousItemGroup = isGroup;
         });
     }
     _onAfterPopoverOpen() {

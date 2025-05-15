@@ -255,8 +255,9 @@ declare class Button extends UI5Element implements IButton {
     get buttonTypeText(): string;
     get effectiveAccRole(): AriaRole;
     get tabIndexValue(): number | undefined;
-    get ariaLabelText(): string | undefined;
+    get ariaLabelText(): string;
     get ariaDescriptionText(): string | undefined;
+    get effectiveBadgeDescriptionText(): string;
     get _isSubmit(): boolean;
     get _isReset(): boolean;
     get shouldRenderBadge(): boolean;

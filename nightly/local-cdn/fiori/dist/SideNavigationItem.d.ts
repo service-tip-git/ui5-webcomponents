@@ -44,6 +44,7 @@ declare class SideNavigationItem extends SideNavigationSelectableItemBase {
     items: Array<SideNavigationSubItem>;
     static i18nBundle: I18nBundle;
     get overflowItems(): Array<SideNavigationItem>;
+    get hasSubItems(): boolean;
     get selectableItems(): Array<SideNavigationSelectableItemBase>;
     get focusableItems(): Array<SideNavigationItemBase>;
     get allItems(): Array<SideNavigationItemBase>;
@@ -55,6 +56,7 @@ declare class SideNavigationItem extends SideNavigationSelectableItemBase {
     get classesArray(): string[];
     get _selected(): boolean;
     get _arrowTooltip(): string;
+    get _ariaLabel(): string | undefined;
     applyInitialFocusInPopover(): void;
     _onToggleClick(e: CustomEvent): void;
     _onkeydown(e: KeyboardEvent): void;

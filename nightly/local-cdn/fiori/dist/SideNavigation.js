@@ -184,17 +184,7 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
             return;
         }
         e.stopPropagation();
-        const altKey = e.detail?.altKey, ctrlKey = e.detail?.ctrlKey, metaKey = e.detail?.metaKey, shiftKey = e.detail?.shiftKey;
-        const executeEvent = associatedItem.fireDecoratorEvent("click", {
-            altKey,
-            ctrlKey,
-            metaKey,
-            shiftKey,
-        });
-        if (!executeEvent) {
-            e.preventDefault();
-            return;
-        }
+        associatedItem.fireEvent("click");
         if (associatedItem.selected) {
             this.closePicker();
             return;
@@ -202,6 +192,26 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
         this._selectItem(associatedItem);
         this.closePicker();
         this._popoverContents.item?.getDomRef().classList.add("ui5-sn-item-no-hover-effect");
+    }
+    handleOverflowItemClick(e) {
+        const associatedItem = e.detail?.item.associatedItem;
+        associatedItem.fireEvent("click");
+        if (associatedItem.selected) {
+            this.closeMenu();
+            return;
+        }
+        this._selectItem(associatedItem);
+        this.closeMenu();
+        // When subitem is selected in collapsed mode parent element should be focused
+        if (associatedItem.nodeName.toLowerCase() === "ui5-side-navigation-sub-item") {
+            const parent = associatedItem.parentElement;
+            this.focusItem(parent);
+            parent?.focus();
+        }
+        else {
+            this.focusItem(associatedItem);
+            associatedItem?.focus();
+        }
     }
     getOverflowPopover() {
         return this.shadowRoot.querySelector(".ui5-side-navigation-overflow-menu");
@@ -378,16 +388,7 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
     }
     _handleItemClick(e, item) {
         if (item.selected && !this.collapsed) {
-            const { altKey, ctrlKey, metaKey, shiftKey, } = e;
-            const executeEvent = item.fireDecoratorEvent("click", {
-                altKey,
-                ctrlKey,
-                metaKey,
-                shiftKey,
-            });
-            if (!executeEvent) {
-                e.preventDefault();
-            }
+            item.fireDecoratorEvent("click");
             return;
         }
         if (this.collapsed && isInstanceOfSideNavigationItem(item) && item.items.length) {
@@ -400,17 +401,7 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
             this.openPicker(item.getFocusDomRef());
         }
         else {
-            const { altKey, ctrlKey, metaKey, shiftKey, } = e;
-            const executeEvent = item.fireDecoratorEvent("click", {
-                altKey,
-                ctrlKey,
-                metaKey,
-                shiftKey,
-            });
-            if (!executeEvent) {
-                e.preventDefault();
-                return;
-            }
+            item.fireDecoratorEvent("click");
             if (!item.selected) {
                 this._selectItem(item);
             }

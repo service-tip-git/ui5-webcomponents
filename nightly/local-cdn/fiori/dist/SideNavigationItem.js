@@ -12,7 +12,7 @@ import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import { isLeft, isRight, isSpace, isEnter, isMinus, isPlus, } from "@ui5/webcomponents-base/dist/Keys.js";
 import SideNavigationSelectableItemBase from "./SideNavigationSelectableItemBase.js";
-import { SIDE_NAVIGATION_ICON_COLLAPSE, SIDE_NAVIGATION_ICON_EXPAND, SIDE_NAVIGATION_OVERFLOW_ITEM_LABEL, } from "./generated/i18n/i18n-defaults.js";
+import { SIDE_NAVIGATION_ICON_COLLAPSE, SIDE_NAVIGATION_ICON_EXPAND, } from "./generated/i18n/i18n-defaults.js";
 // Templates
 import SideNavigationItemTemplate from "./SideNavigationItemTemplate.js";
 // Styles
@@ -56,9 +56,6 @@ let SideNavigationItem = SideNavigationItem_1 = class SideNavigationItem extends
     }
     get overflowItems() {
         return [this];
-    }
-    get hasSubItems() {
-        return this.items.length > 0;
     }
     get selectableItems() {
         if (this.inPopover && this.unselectable && this.items.length) {
@@ -134,12 +131,6 @@ let SideNavigationItem = SideNavigationItem_1 = class SideNavigationItem extends
         return this.expanded ? SideNavigationItem_1.i18nBundle.getText(SIDE_NAVIGATION_ICON_COLLAPSE)
             : SideNavigationItem_1.i18nBundle.getText(SIDE_NAVIGATION_ICON_EXPAND);
     }
-    get _ariaLabel() {
-        if (this.isOverflow) {
-            return SideNavigationItem_1.i18nBundle.getText(SIDE_NAVIGATION_OVERFLOW_ITEM_LABEL);
-        }
-        return undefined;
-    }
     applyInitialFocusInPopover() {
         if (this.unselectable && this.items.length) {
             this.items[0]?.focus();
@@ -153,28 +144,11 @@ let SideNavigationItem = SideNavigationItem_1 = class SideNavigationItem extends
         this._toggle();
     }
     _onkeydown(e) {
-        const isRTL = this.effectiveDir === "rtl";
-        if (this.sideNavigation.classList.contains("ui5-side-navigation-in-popover") || this.sideNavCollapsed) {
-            super._onkeydown(e);
-            return;
-        }
-        if (isLeft(e)) {
-            e.preventDefault();
-            this.expanded = isRTL;
-            return;
-        }
-        if (isRight(e)) {
-            e.preventDefault();
-            this.expanded = !isRTL;
-            return;
-        }
-        if (isMinus(e)) {
-            e.preventDefault();
+        if (isLeft(e) || isMinus(e)) {
             this.expanded = false;
             return;
         }
-        if (isPlus(e)) {
-            e.preventDefault();
+        if (isRight(e) || isPlus(e)) {
             this.expanded = true;
             return;
         }

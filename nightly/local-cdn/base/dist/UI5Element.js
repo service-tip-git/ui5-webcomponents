@@ -94,7 +94,6 @@ function getPropertyDescriptor(proto, name) {
 class UI5Element extends HTMLElement {
     constructor() {
         super();
-        this.__shouldHydrate = false;
         // used to differentiate whether a setter is called from the constructor (from an initializer) or later
         // setters from the constructor should not set attributes, this is delegated after the first rendering but is async
         // setters after the constructor can set attributes synchronously for more convinient development
@@ -132,14 +131,7 @@ class UI5Element extends HTMLElement {
         const ctor = this.constructor;
         if (ctor._needsShadowDOM()) {
             const defaultOptions = { mode: "open" };
-            if (!this.shadowRoot) {
-                this.attachShadow({ ...defaultOptions, ...ctor.getMetadata().getShadowRootOptions() });
-            }
-            else {
-                // The shadow root is initially rendered. This applies to case where the component's template
-                // is inserted into the DOM declaratively using a <template> tag.
-                this.__shouldHydrate = true;
-            }
+            this.attachShadow({ ...defaultOptions, ...ctor.getMetadata().getShadowRootOptions() });
             const slotsAreManaged = ctor.getMetadata().slotsAreManaged();
             if (slotsAreManaged) {
                 this.shadowRoot.addEventListener("slotchange", this._onShadowRootSlotChange.bind(this));

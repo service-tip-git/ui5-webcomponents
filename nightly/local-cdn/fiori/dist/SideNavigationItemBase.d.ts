@@ -1,12 +1,6 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type SideNavigation from "./SideNavigation.js";
-type SideNavigationItemClickEventDetail = {
-    altKey: boolean;
-    ctrlKey: boolean;
-    metaKey: boolean;
-    shiftKey: boolean;
-};
 /**
  * @class
  * Base class for the items that are accepted by the `ui5-side-navigation` component.
@@ -19,7 +13,7 @@ type SideNavigationItemClickEventDetail = {
  */
 declare class SideNavigationItemBase extends UI5Element implements ITabbable {
     eventDetails: {
-        click: SideNavigationItemClickEventDetail;
+        click: void;
     };
     /**
      * Defines the text of the item.
@@ -55,7 +49,6 @@ declare class SideNavigationItemBase extends UI5Element implements ITabbable {
     _sideNavigation: SideNavigation;
     onEnterDOM(): void;
     get _tooltip(): string | undefined;
-    get hasSubItems(): boolean;
     get classesArray(): string[];
     get _classes(): string;
     get effectiveTabIndex(): string | undefined;
@@ -70,5 +63,4 @@ declare class SideNavigationItemBase extends UI5Element implements ITabbable {
 }
 declare const isInstanceOfSideNavigationItemBase: (object: any) => object is SideNavigationItemBase;
 export default SideNavigationItemBase;
-export type { SideNavigationItemClickEventDetail, };
 export { isInstanceOfSideNavigationItemBase };

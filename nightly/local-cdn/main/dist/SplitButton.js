@@ -96,11 +96,17 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
          */
         this._tabIndex = 0;
         /**
-         * Indicates if there is Shift or Escape key pressed while Space key is down.
+         * Indicates if there is Space key pressed
          * @default false
          * @private
          */
-        this._shiftOrEscapePressedDuringSpace = false;
+        this._spacePressed = false;
+        /**
+         * Indicates if there is SHIFT or ESCAPE key pressed
+         * @default false
+         * @private
+         */
+        this._shiftOrEscapePressed = false;
         /**
          * Defines the active state of the text button
          * @default false
@@ -120,6 +126,8 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
          * @private
          */
         this._hideArrowButton = false;
+        this._isDefaultActionPressed = false;
+        this._isKeyDownOperation = false;
     }
     onBeforeRendering() {
         if (this.disabled) {
@@ -133,8 +141,14 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         if (this.disabled || this.getFocusDomRef().matches(":has(:focus-within)")) {
             return;
         }
-        this._resetActionButtonStates();
+        this._shiftOrEscapePressed = false;
         this._setTabIndexValue();
+    }
+    _onFocusIn() {
+        if (this.disabled || this.getFocusDomRef().matches(":has(:focus-within)")) {
+            return;
+        }
+        this._shiftOrEscapePressed = false;
     }
     handleTouchStart(e) {
         e.stopPropagation();
@@ -148,54 +162,54 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         target.focus();
     }
     _onKeyDown(e) {
+        this._isKeyDownOperation = true;
         if (this._isArrowKeyAction(e)) {
             this._handleArrowButtonAction(e);
             this._activeArrowButton = true;
-            return;
         }
-        if (this._isDefaultAction(e)) {
+        else if (this._isDefaultAction(e)) {
             this._handleDefaultAction(e);
-            return;
+            this._isDefaultActionPressed = true;
         }
-        if ((isShift(e) || isEscape(e)) && this._textButtonActive) {
-            e.preventDefault();
-            this._shiftOrEscapePressedDuringSpace = true;
+        if (this._spacePressed && this._isShiftOrEscape(e)) {
+            this._handleShiftOrEscapePressed();
         }
-        if (isEscape(e) && !this._textButtonActive) {
-            this._resetActionButtonStates();
+        // Handles button freeze issue when pressing Enter/Space and navigating with Tab/Shift+Tab simultaneously.
+        if (this._isDefaultActionPressed && (isTabNext(e) || isTabPrevious(e))) {
+            this._activeArrowButton = false;
+            this._textButtonActive = false;
         }
         this._tabIndex = -1;
     }
     _onKeyUp(e) {
-        const target = e.target;
+        this._isKeyDownOperation = false;
         if (this._isArrowKeyAction(e)) {
             e.preventDefault();
             this._activeArrowButton = false;
-            return;
-        }
-        if (isSpace(e)) {
-            e.preventDefault();
-            e.stopPropagation();
             this._textButtonActive = false;
-            if (!this._shiftOrEscapePressedDuringSpace && target !== this.arrowButton) { // Do not fire click if Arrow button is focused by mouse and Space is pressed afterwards
+        }
+        else if (this._isDefaultAction(e)) {
+            this._isDefaultActionPressed = false;
+            this._textButtonActive = false;
+            if (isSpace(e)) {
+                e.preventDefault();
+                e.stopPropagation();
                 this._fireClick();
+                this._spacePressed = false;
+                this._textButtonActive = false;
             }
-            this._shiftOrEscapePressedDuringSpace = false;
-            return;
         }
-        const shouldToggleTextButtonActiveStateOff = isEnter(e) || (isShift(e) && this._textButtonActive);
-        if (shouldToggleTextButtonActiveStateOff) {
-            this._textButtonActive = false;
+        if (this._isShiftOrEscape(e)) {
+            this._handleShiftOrEscapePressed();
         }
-    }
-    _resetActionButtonStates() {
-        this._activeArrowButton = false;
-        this._textButtonActive = false;
-        this._shiftOrEscapePressedDuringSpace = false;
+        this._tabIndex = -1;
     }
     _fireClick(e) {
         e?.stopPropagation();
-        this.fireDecoratorEvent("click");
+        if (!this._shiftOrEscapePressed) {
+            this.fireDecoratorEvent("click");
+        }
+        this._shiftOrEscapePressed = false;
     }
     _fireArrowClick(e) {
         e?.stopPropagation();
@@ -241,6 +255,14 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
         return isSpace(e) || isEnter(e);
     }
     /**
+     * Checks if the pressed key is an escape key or shift key.
+     * @param e - keyboard event
+     * @private
+     */
+    _isShiftOrEscape(e) {
+        return isEscape(e) || isShift(e);
+    }
+    /**
      * Handles the click event and the focus on the arrow button.
      * @param e - keyboard event
      * @private
@@ -248,6 +270,9 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
     _handleArrowButtonAction(e) {
         e.preventDefault();
         this._fireArrowClick(e);
+        if (isSpace(e)) {
+            this._spacePressed = true;
+        }
     }
     /**
      * Handles the default action and the active state of the respective button.
@@ -256,20 +281,29 @@ let SplitButton = SplitButton_1 = class SplitButton extends UI5Element {
      */
     _handleDefaultAction(e) {
         e.preventDefault();
+        const wasSpacePressed = isSpace(e);
         const target = e.target;
         if (this.arrowButton && target === this.arrowButton) {
             this._activeArrowButton = true;
             this._fireArrowClick();
-            return;
+            if (wasSpacePressed) {
+                this._spacePressed = true;
+                this._textButtonActive = false;
+            }
         }
-        this._textButtonActive = true;
-        if (isEnter(e)) {
-            this._fireClick(e);
-            return;
+        else {
+            this._textButtonActive = true;
+            if (wasSpacePressed) {
+                this._spacePressed = true;
+                return;
+            }
+            this._fireClick();
         }
-        if (isTabPrevious(e) || isTabNext(e)) {
-            this._resetActionButtonStates();
-        }
+    }
+    _handleShiftOrEscapePressed() {
+        this._shiftOrEscapePressed = true;
+        this._textButtonActive = false;
+        this._isKeyDownOperation = false;
     }
     get effectiveActiveArrowButton() {
         return this.activeArrowButton || this._activeArrowButton;
@@ -328,7 +362,10 @@ __decorate([
 ], SplitButton.prototype, "_tabIndex", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
-], SplitButton.prototype, "_shiftOrEscapePressedDuringSpace", void 0);
+], SplitButton.prototype, "_spacePressed", void 0);
+__decorate([
+    property({ type: Boolean, noAttribute: true })
+], SplitButton.prototype, "_shiftOrEscapePressed", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], SplitButton.prototype, "_textButtonActive", void 0);

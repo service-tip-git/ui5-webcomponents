@@ -123,14 +123,8 @@ let Avatar = Avatar_1 = class Avatar extends UI5Element {
          * @default {}
          */
         this.accessibilityAttributes = {};
-        /**
-         * @private
-         */
         this._hasImage = false;
         this._handleResizeBound = this.handleResize.bind(this);
-    }
-    onBeforeRendering() {
-        this._hasImage = this.hasImage;
     }
     get tabindex() {
         if (this.forcedTabIndex) {
@@ -181,7 +175,8 @@ let Avatar = Avatar_1 = class Avatar extends UI5Element {
         return this.initials ? `${defaultLabel} ${this.initials}`.trim() : defaultLabel;
     }
     get hasImage() {
-        return !!this.image.length;
+        this._hasImage = !!this.image.length;
+        return this._hasImage;
     }
     get initialsContainer() {
         return this.getDomRef().querySelector(".ui5-avatar-initials");

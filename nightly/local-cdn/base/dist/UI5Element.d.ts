@@ -67,7 +67,6 @@ declare abstract class UI5Element extends HTMLElement {
         _deferredResolve?: PromiseResolve;
     };
     _doNotSyncAttributes: Set<string>;
-    __shouldHydrate: boolean;
     _state: State;
     _internals: ElementInternals;
     _individualSlot?: string;

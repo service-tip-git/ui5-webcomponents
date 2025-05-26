@@ -40,7 +40,6 @@ import listCss from "./generated/themes/List.css.js";
 // Texts
 import { LIST_ROLE_LIST_GROUP_DESCRIPTION, LIST_ROLE_LISTBOX_GROUP_DESCRIPTION, LOAD_MORE_TEXT, ARIA_LABEL_LIST_SELECTABLE, ARIA_LABEL_LIST_MULTISELECTABLE, ARIA_LABEL_LIST_DELETABLE, } from "./generated/i18n/i18n-defaults.js";
 import { isInstanceOfListItemGroup } from "./ListItemGroup.js";
-import { findVerticalScrollContainer } from "./TableUtils.js";
 const INFINITE_SCROLL_DEBOUNCE_RATE = 250; // ms
 const PAGE_UP_DOWN_SIZE = 10;
 /**
@@ -902,10 +901,9 @@ let List = List_1 = class List extends UI5Element {
     }
     getIntersectionObserver() {
         if (!this.growingIntersectionObserver) {
-            const scrollContainer = this.scrollContainer || findVerticalScrollContainer(this.getDomRef());
             this.growingIntersectionObserver = new IntersectionObserver(this.onInteresection.bind(this), {
-                root: scrollContainer,
-                rootMargin: "5px",
+                root: null,
+                rootMargin: "0px",
                 threshold: 1.0,
             });
         }

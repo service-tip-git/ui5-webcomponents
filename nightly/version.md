@@ -1,7 +1,5 @@
-commit 0646069fd563ab6aef43d85fc28d9a82ac1b395f
-Author: service-tip-git <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Sun May 25 09:03:20 2025 +0000
+commit c3725a4b8ef6f9bd887065a78a9bb898ea366370
+Author: ilhan orhan <ilhan.orhan007@gmail.com>
+Date:   Tue May 27 14:35:01 2025 +0300
 
-    [INTERNAL] Translation delivery: commit by LX Lab
-    
-    Change-Id: I5f24a1dcfad44399275f831620ca7ae69faf94a3
+    Merge branch 'main' into main

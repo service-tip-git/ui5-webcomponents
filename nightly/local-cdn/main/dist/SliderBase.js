@@ -11,7 +11,7 @@ import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import jsxRender from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import { isPhone, supportsTouch } from "@ui5/webcomponents-base/dist/Device.js";
-import { isEscape, isHome, isEnd, isUp, isDown, isRight, isLeft, isUpCtrl, isDownCtrl, isRightCtrl, isLeftCtrl, isPlus, isMinus, isPageUp, isPageDown, isF2, } from "@ui5/webcomponents-base/dist/Keys.js";
+import { isEscape, isHome, isEnd, isUp, isDown, isRight, isLeft, isUpCtrl, isDownCtrl, isRightCtrl, isLeftCtrl, isPlus, isMinus, isPageUp, isPageDown, isF2, isEnter, } from "@ui5/webcomponents-base/dist/Keys.js";
 // Styles
 import sliderBaseStyles from "./generated/themes/SliderBase.css.js";
 import { getAssociatedLabelForTexts } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
@@ -101,7 +101,7 @@ class SliderBase extends UI5Element {
         /**
          * @private
          */
-        this._tooltipsOpen = false;
+        this._tooltipVisibility = "hidden";
         this._labelsOverlapping = false;
         this._hiddenTickmarks = false;
         this._isInputValueValid = false;
@@ -123,6 +123,7 @@ class SliderBase extends UI5Element {
     _handleUp(e) { } // eslint-disable-line
     _onmousedown(e) { } // eslint-disable-line
     _handleActionKeyPress(e) { } // eslint-disable-line
+    _updateInputValue() { }
     static get ACTION_KEYS() {
         return [
             isLeft,
@@ -184,7 +185,9 @@ class SliderBase extends UI5Element {
      * @private
      */
     _onmouseover() {
-        this._tooltipsOpen = this.showTooltip;
+        if (this.showTooltip) {
+            this._tooltipVisibility = SliderBase_1.TOOLTIP_VISIBILITY.VISIBLE;
+        }
     }
     /**
      * Hides the tooltip(s) if the `showTooltip` property is set to true
@@ -192,35 +195,49 @@ class SliderBase extends UI5Element {
      */
     _onmouseout() {
         if (this.showTooltip && !this.shadowRoot.activeElement) {
-            this._tooltipsOpen = false;
+            this._tooltipVisibility = SliderBase_1.TOOLTIP_VISIBILITY.HIDDEN;
         }
     }
     _onkeydown(e) {
         const target = e.target;
         if (isF2(e) && target.classList.contains("ui5-slider-handle")) {
-            target.parentNode.querySelector("[ui5-slider-tooltip]").focus();
+            target.parentNode.querySelector(".ui5-slider-handle-container ui5-input").focus();
         }
         if (this.disabled || this._effectiveStep === 0 || target.hasAttribute("ui5-slider-handle")) {
             return;
         }
-        if (SliderBase_1._isActionKey(e) && target && !target.hasAttribute("ui5-slider-tooltip")) {
+        if (SliderBase_1._isActionKey(e) && target && !target.hasAttribute("ui5-input")) {
             e.preventDefault();
             this._isUserInteraction = true;
             this._handleActionKeyPress(e);
         }
     }
-    _onTooltipChange(e) {
-        const value = e.detail.value;
-        this._updateValueFromInput(value);
+    _onInputKeydown(e) {
+        const target = e.target;
+        if (isF2(e) && target.hasAttribute("ui5-input")) {
+            target.parentNode.parentNode.querySelector(".ui5-slider-handle").focus();
+        }
+        if (isEnter(e)) {
+            this._updateInputValue();
+            this._updateValueFromInput(e);
+        }
     }
-    _updateValueFromInput(fieldValue) {
-        const value = parseFloat(fieldValue);
+    _onInputChange() {
+        if (this._valueOnInteractionStart !== this.value) {
+            this.fireDecoratorEvent("change");
+        }
+    }
+    _onInputInput() {
+        this.fireDecoratorEvent("input");
+    }
+    _updateValueFromInput(e) {
+        const input = e.target;
+        const value = parseFloat(input.value);
         this._isInputValueValid = value >= this._effectiveMin && value <= this._effectiveMax;
         if (!this._isInputValueValid) {
             return;
         }
         this.value = value;
-        this.fireDecoratorEvent("change");
     }
     _onKeyupBase() {
         if (this.disabled) {
@@ -646,8 +663,8 @@ __decorate([
     property({ type: Number })
 ], SliderBase.prototype, "value", void 0);
 __decorate([
-    property({ type: Boolean })
-], SliderBase.prototype, "_tooltipsOpen", void 0);
+    property()
+], SliderBase.prototype, "_tooltipVisibility", void 0);
 __decorate([
     property({ type: Boolean })
 ], SliderBase.prototype, "_labelsOverlapping", void 0);

@@ -10,20 +10,14 @@ export default function SelectTemplate() {
                         _jsx(Icon, { mode: "Decorative", class: "ui5-select-option-icon", name: this.selectedOptionIcon }), _jsx("div", { class: "ui5-select-label-root", "data-sap-focus-ref": true, tabindex: this._effectiveTabIndex, role: "combobox", "aria-haspopup": "listbox", "aria-label": this.ariaLabelText, "aria-describedby": this.valueStateTextId, "aria-disabled": this.isDisabled, "aria-required": this.required, "aria-readonly": this.readonly, "aria-expanded": this._isPickerOpen, "aria-roledescription": this._ariaRoleDescription, onKeyDown: this._onkeydown, onKeyPress: this._handleKeyboardNavigation, onKeyUp: this._onkeyup, onFocusIn: this._onfocusin, onFocusOut: this._onfocusout, children: this.hasCustomLabel
                             ? _jsx("slot", { name: "label" })
                             : this.text }), this.icon &&
-                        _jsx("div", { class: {
-                                "ui5-select-icon-root": true,
+                        _jsx(Icon, { name: this.icon, class: {
                                 "inputIcon": true,
                                 "inputIcon--pressed": this._iconPressed,
-                            }, children: _jsx(Icon, { name: this.icon, class: {
-                                    "ui5-select-icon": true,
-                                } }) }), !this.icon && !this.readonly &&
-                        _jsx("div", { class: {
-                                "ui5-select-icon-root": true,
+                            } }), !this.icon && !this.readonly &&
+                        _jsx(Icon, { part: "icon", name: slimArrowDown, class: {
                                 "inputIcon": true,
                                 "inputIcon--pressed": this._iconPressed,
-                            }, children: _jsx(Icon, { part: "icon", name: slimArrowDown, class: {
-                                    "ui5-select-icon": true,
-                                } }) }), this.hasValueState &&
+                            } }), this.hasValueState &&
                         _jsx("span", { id: `${this._id}-valueStateDesc`, class: "ui5-hidden-text", children: this.valueStateText })] }), SelectPopoverTemplate.call(this)] }));
 }
 //# sourceMappingURL=SelectTemplate.js.map

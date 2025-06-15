@@ -13,7 +13,7 @@
 
 
 
-  <script type="module" crossorigin src="/ui5-webcomponents/nightly/assets/bundle.esm-Bl3-89AL.js"></script>
+  <script type="module" crossorigin src="/ui5-webcomponents/nightly/assets/bundle.esm-BetS6CRk.js"></script>
   <link rel="stylesheet" crossorigin href="/ui5-webcomponents/nightly/assets/Button-Bw9Fygit.css">
 </head>
 
@@ -327,7 +327,7 @@
 		var clickCount = 0;
 
 		[button, disabledButton, disabledButtonIconOnly, disabledButtonWithoutIcon].forEach(function (el) {
-			el.addEventListener("ui5-click", function(event) {
+			el.addEventListener("click", function(event) {
 				clickCount += 1;
 				clickCounter.value = clickCount;
 			});
@@ -337,7 +337,7 @@
 			expanded: "true"
 		};
 
-		button.addEventListener("ui5-click", function(event) {
+		button.addEventListener("click", function(event) {
 			button.accessibilityAttributes = {
 				expanded: button.accessibilityAttributes.expanded === "true" ? "false" : "true"
 			};
@@ -352,11 +352,11 @@
 			controls: dialog.id,
 		}
 
-		dialogOpener.addEventListener("ui5-click", function() {
+		dialogOpener.addEventListener("click", function() {
 			dialog.open = true;
 		});
 
-		dialogCloser.addEventListener("ui5-click", function() {
+		dialogCloser.addEventListener("click", function() {
 			dialog.open = false;
 		});
 
@@ -365,19 +365,19 @@
 			menu.open = true;
 		}
 
-		menuButtonText.addEventListener("ui5-click", function(event) {
+		menuButtonText.addEventListener("click", function(event) {
 			showMenu(event.target);
 		});
 
-		menuButtonIcon.addEventListener("ui5-click", function(event) {
+		menuButtonIcon.addEventListener("click", function(event) {
 			showMenu(event.target);
 		});
 
-		menuButtonTextIcon.addEventListener("ui5-click", function(event) {
+		menuButtonTextIcon.addEventListener("click", function(event) {
 			showMenu(event.target);
 		});
 
-		menuButtonIconEnd.addEventListener("ui5-click", function(event) {
+		menuButtonIconEnd.addEventListener("click", function(event) {
 			showMenu(event.target);
 		});
 	</script>

@@ -97,7 +97,20 @@ let NavigationMenuItem = class NavigationMenuItem extends MenuItem {
             sideNav?._selectItem(item);
         }
         if (!this.hasSubmenu) {
-            sideNav?.closeMenu(shouldSelect);
+            sideNav?.closeMenu();
+            this._handleFocus(item);
+        }
+    }
+    _handleFocus(associatedItem) {
+        const sideNavigation = associatedItem.sideNavigation;
+        if (associatedItem.nodeName.toLowerCase() === "ui5-side-navigation-sub-item") {
+            const parent = associatedItem.parentElement;
+            sideNavigation?.focusItem(parent);
+            parent?.focus();
+        }
+        else {
+            sideNavigation?.focusItem(associatedItem);
+            associatedItem?.focus();
         }
     }
     async _onkeydown(e) {

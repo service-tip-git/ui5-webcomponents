@@ -113,22 +113,6 @@ declare class AvatarGroup extends UI5Element {
      */
     _overflowButtonText?: string;
     /**
-    * Defines the accessible name of the AvatarGroup.
-    * When provided, this will override the default aria-label text.
-    * @default undefined
-    * @public
-    * @since 2.12.0
-    */
-    accessibleName?: string;
-    /**
-    * Receives id(s) of the elements that describe the AvatarGroup.
-    * When provided, this will be used as aria-labelledby instead of aria-label.
-    * @default undefined
-    * @public
-    * @since 2.12.0
-    */
-    accessibleNameRef?: string;
-    /**
      * Defines the items of the component. Use the `ui5-avatar` component as an item.
      *
      * **Note:** The UX guidelines recommends using avatars with "Circle" shape.
@@ -167,7 +151,7 @@ declare class AvatarGroup extends UI5Element {
      */
     get colorScheme(): AvatarColorScheme[];
     get _customOverflowButton(): IButton | undefined;
-    get _ariaLabelText(): string | undefined;
+    get _ariaLabelText(): string;
     get _overflowButtonAriaLabelText(): string | undefined;
     get _containerAriaHasPopup(): import("@ui5/webcomponents-base/dist/types.js").AriaHasPopup | undefined;
     get _overflowButtonAccAttributes(): {
@@ -209,7 +193,6 @@ declare class AvatarGroup extends UI5Element {
      */
     _prepareAvatars(): void;
     _onfocusin(e: FocusEvent): void;
-    getFocusDomRef(): HTMLElement | undefined;
     /**
      * Returns the total width to item excluding the item width
      * RTL/LTR aware

@@ -59,7 +59,6 @@ let ToggleButton = class ToggleButton extends Button {
             shiftKey,
         });
         if (prevented) {
-            e.preventDefault();
             // value should be restored if click is prevented
             this.pressed = oldValue;
             return;

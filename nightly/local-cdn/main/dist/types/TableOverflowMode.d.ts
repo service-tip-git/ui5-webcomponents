@@ -1,5 +1,5 @@
 /**
- * Overflow mode of the &lt;ui5-table&gt; component.
+ * Column mode of the &lt;ui5-table&gt; component.
  *
  * @public
  * @experimental

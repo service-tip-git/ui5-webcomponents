@@ -195,7 +195,6 @@ let Link = Link_1 = class Link extends UI5Element {
     _onkeydown(e) {
         if (isEnter(e) && !this.href) {
             this._onclick(e);
-            e.preventDefault();
         }
         else if (isSpace(e)) {
             e.preventDefault();

@@ -41,14 +41,6 @@ import { isUpShift } from "@ui5/webcomponents-base/dist/Keys.js";
 let TableSelectionMulti = class TableSelectionMulti extends TableSelectionBase {
     constructor() {
         super(...arguments);
-        /**
-         * Defines the selector of the header row.
-         *
-         * @default "SelectAll"
-         * @public
-         * @since 2.12
-         */
-        this.headerSelector = "SelectAll";
         this._rowsLength = 0;
     }
     onTableBeforeRendering() {
@@ -62,7 +54,7 @@ let TableSelectionMulti = class TableSelectionMulti extends TableSelectionBase {
     }
     isSelected(row) {
         if (row.isHeaderRow()) {
-            return this.headerSelector === "ClearAll" ? true : this.areAllRowsSelected();
+            return this.areAllRowsSelected();
         }
         const rowKey = this.getRowKey(row);
         return this.getSelectedAsSet().has(rowKey);
@@ -73,19 +65,12 @@ let TableSelectionMulti = class TableSelectionMulti extends TableSelectionBase {
         }
         const tableRows = row.isHeaderRow() ? this._table.rows : [row];
         const selectedSet = this.getSelectedAsSet();
-        const selectionChanged = tableRows.reduce((selectedSetChanged, tableRow) => {
+        tableRows.forEach(tableRow => {
             const rowKey = this.getRowKey(tableRow);
-            if (!rowKey) {
-                return selectedSetChanged;
-            }
-            const setSize = selectedSet.size;
             selectedSet[selected ? "add" : "delete"](rowKey);
-            return selectedSetChanged || setSize !== selectedSet.size;
-        }, false);
-        if (selectionChanged) {
-            this.setSelectedAsSet(selectedSet);
-            fireEvent && this.fireDecoratorEvent("change");
-        }
+        });
+        this.setSelectedAsSet(selectedSet);
+        fireEvent && this.fireDecoratorEvent("change");
     }
     /**
      * Returns an array of the selected rows.
@@ -257,9 +242,6 @@ let TableSelectionMulti = class TableSelectionMulti extends TableSelectionBase {
 __decorate([
     property()
 ], TableSelectionMulti.prototype, "selected", void 0);
-__decorate([
-    property()
-], TableSelectionMulti.prototype, "headerSelector", void 0);
 TableSelectionMulti = __decorate([
     customElement({ tag: "ui5-table-selection-multi" })
 ], TableSelectionMulti);

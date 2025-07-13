@@ -78,7 +78,7 @@ let TableRow = class TableRow extends TableRowBase {
     }
     _onclick() {
         if (this === getActiveElement()) {
-            if (this._isSelectable && !this._hasSelector) {
+            if (this._isSelectable && !this._hasRowSelector) {
                 this._onSelectionChange();
             }
             else if (this.interactive) {
@@ -98,7 +98,7 @@ let TableRow = class TableRow extends TableRowBase {
         e.stopPropagation();
     }
     get _isInteractive() {
-        return this.interactive || (this._isSelectable && !this._hasSelector);
+        return this.interactive || (this._isSelectable && !this._hasRowSelector);
     }
     get _hasOverflowActions() {
         let renderedActionsCount = 0;

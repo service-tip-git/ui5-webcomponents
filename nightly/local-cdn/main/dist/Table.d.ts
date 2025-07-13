@@ -305,7 +305,6 @@ declare class Table extends UI5Element {
         };
     };
     get _gridTemplateColumns(): string | undefined;
-    get _isRowSelectorRequired(): boolean | undefined;
     get _scrollContainer(): HTMLElement;
     get _stickyElements(): (TableHeaderRow | TableHeaderCell)[];
     get _effectiveNoDataText(): string;

@@ -239,6 +239,7 @@ let Button = Button_1 = class Button extends UI5Element {
             shiftKey,
         });
         if (prevented) {
+            e.preventDefault();
             return;
         }
         if (this._isSubmit) {

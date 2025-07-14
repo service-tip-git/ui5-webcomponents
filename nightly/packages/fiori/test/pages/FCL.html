@@ -10,7 +10,7 @@
 
 
 
-  <script type="module" crossorigin src="/ui5-webcomponents/nightly/assets/bundle.esm-Dng_bdKL.js"></script>
+  <script type="module" crossorigin src="/ui5-webcomponents/nightly/assets/bundle.esm-BiaCIcyS.js"></script>
   <link rel="stylesheet" crossorigin href="/ui5-webcomponents/nightly/assets/FCL-DOLCAmUE.css">
 </head>
 
@@ -26,6 +26,10 @@
 	<div>
 		<ui5-label show-colon>Switch RTL: </ui5-label>
 		<ui5-switch id="swRTL"></ui5-switch>
+	</div>
+	<div>
+		<ui5-label show-colon>Switch Animations: </ui5-label>
+		<ui5-switch id="swAnimations" checked></ui5-switch>
 	</div>
 	<br><br>
 
@@ -1045,6 +1049,13 @@
 			} else {
 				setDir("ltr");
 			}
+		});
+
+		const animationsSwitch = document.getElementById("swAnimations");
+
+		animationsSwitch.addEventListener("ui5-change", (e) => {
+			const newMode = e.target.checked ? "full" : "none";
+			window["sap-ui-webcomponents-bundle"].configuration.setAnimationMode(newMode);
 		});
 	</script>
 </body>

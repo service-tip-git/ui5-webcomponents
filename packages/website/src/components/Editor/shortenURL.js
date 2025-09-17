@@ -1,12 +1,16 @@
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
 const URL_SHORTEN_API = "https://linkshortener.int.sap/api/url";
 
 export default async function shortenURL(longUrl) {
 	if (process.env.NODE_ENV === 'development' ) {
 		return;
 	}
+	
+	const { siteConfig } = useDocusaurusContext();
+	const URL_SHORTEN_API_KEY = siteConfig.customFields.urlShortenerApiKey;
 
-	const URL_API_KEY = process.env.URL_SHORTENER_API_KEY;
-	if (!URL_API_KEY) {
+	if (!URL_SHORTEN_API_KEY) {
 		console.warn("URL shortener API key not available.");
 		return "";
 	}
@@ -21,7 +25,7 @@ export default async function shortenURL(longUrl) {
 			headers: {
 				"Content-Type": "application/json",
 				"Accept": "application/json",
-				"ApiKey": URL_API_KEY,
+				"ApiKey": URL_SHORTEN_API_KEY,
 				"X-Requested-With": "XMLHttpRequest"
 			},
 			body: JSON.stringify(payload),

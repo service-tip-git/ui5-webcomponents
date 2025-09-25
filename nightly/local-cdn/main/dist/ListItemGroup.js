@@ -10,7 +10,6 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import DragRegistry from "@ui5/webcomponents-base/dist/util/dragAndDrop/DragRegistry.js";
 import DragAndDropHandler from "./delegate/DragAndDropHandler.js";
 import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 // Template
@@ -66,12 +65,6 @@ let ListItemGroup = class ListItemGroup extends UI5Element {
             filterPlacements: this._filterPlacements.bind(this),
         });
     }
-    onEnterDOM() {
-        DragRegistry.subscribe(this);
-    }
-    onExitDOM() {
-        DragRegistry.unsubscribe(this);
-    }
     get groupHeaderItem() {
         return this.shadowRoot.querySelector("[ui5-li-group-header]");
     }
@@ -105,6 +98,9 @@ let ListItemGroup = class ListItemGroup extends UI5Element {
             return placements.filter(placement => placement !== MovePlacement.On);
         }
         return placements;
+    }
+    getFocusDomRef() {
+        return this.groupHeaderItem || this.items.at(0);
     }
 };
 __decorate([

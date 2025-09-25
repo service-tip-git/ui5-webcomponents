@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0-rc.2](https://github.com/UI5/webcomponents/compare/v2.15.0-rc.1...v2.15.0-rc.2) (2025-09-25)
+
+
+### Bug Fixes
+
+* **ui5-dynamic-page:** add dynamic aria-label based on header state ([#12333](https://github.com/UI5/webcomponents/issues/12333)) ([529e765](https://github.com/UI5/webcomponents/commit/529e7656511422a64d5f6df6a81c1a7864858322)), closes [#12274](https://github.com/UI5/webcomponents/issues/12274)
+
+
+
+
+
 # [2.15.0-rc.1](https://github.com/UI5/webcomponents/compare/v2.15.0-rc.0...v2.15.0-rc.1) (2025-09-25)
 
 

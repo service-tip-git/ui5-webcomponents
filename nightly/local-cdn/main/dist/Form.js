@@ -432,7 +432,7 @@ let Form = Form_1 = class Form extends UI5Element {
         return this.hasGroupItems ? "region" : "form";
     }
     get groupItemsInfo() {
-        return this.items.map((groupItem, index) => {
+        return this.items.map((groupItem) => {
             const items = this.getItemsInfo(Array.from(groupItem.children));
             breakpoints.forEach(breakpoint => {
                 const cols = ((groupItem[`cols${breakpoint}`]) || 1);
@@ -453,8 +453,7 @@ let Form = Form_1 = class Form extends UI5Element {
             });
             return {
                 groupItem,
-                accessibleName: groupItem.getEffectiveAccessibleName(index),
-                accessibleNameRef: groupItem.effectiveАccessibleNameRef,
+                accessibleNameRef: groupItem.headerText ? `${groupItem._id}-group-header-text` : undefined,
                 items: this.getItemsInfo(Array.from(groupItem.children)),
             };
         });

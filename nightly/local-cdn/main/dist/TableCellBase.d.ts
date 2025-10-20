@@ -26,9 +26,10 @@ declare abstract class TableCellBase extends UI5Element {
     horizontalAlign?: `${TableCellHorizontalAlign}`;
     _popin: boolean;
     _popinHidden: boolean;
-    ariaRole: string;
+    protected ariaRole: string;
     static i18nBundle: I18nBundle;
     onEnterDOM(): void;
+    onBeforeRendering(): void;
     getFocusDomRef(): this;
     isTableCellBase(): boolean;
 }

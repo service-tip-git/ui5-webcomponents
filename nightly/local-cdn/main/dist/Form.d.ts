@@ -22,7 +22,6 @@ type GroupItemsInfo = {
     groupItem: IFormItem;
     items: Array<ItemsInfo>;
     accessibleNameRef: string | undefined;
-    accessibleName: string | undefined;
 };
 type ItemsInfo = {
     item: IFormItem;

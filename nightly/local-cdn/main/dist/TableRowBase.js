@@ -28,10 +28,9 @@ let TableRowBase = TableRowBase_1 = class TableRowBase extends UI5Element {
         this._invalidate = 0;
         this._rowActionCount = 0;
         this._renderNavigated = false;
-        this._alternate = false;
     }
     onEnterDOM() {
-        !this.role && this.setAttribute("role", "row");
+        this.setAttribute("role", "row");
         this.toggleAttribute("ui5-table-row-base", true);
     }
     onBeforeRendering() {
@@ -98,9 +97,6 @@ __decorate([
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], TableRowBase.prototype, "_renderNavigated", void 0);
-__decorate([
-    property({ type: Boolean, noAttribute: true })
-], TableRowBase.prototype, "_alternate", void 0);
 __decorate([
     query("#selection-cell")
 ], TableRowBase.prototype, "_selectionCell", void 0);

@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type FormItem from "./FormItem.js";
 import type { IFormItem } from "./Form.js";
 import type FormItemSpacing from "./types/FormItemSpacing.js";
@@ -55,13 +54,6 @@ declare class FormGroup extends UI5Element implements IFormItem {
      */
     columnSpan?: number;
     /**
-     * Defines the accessible ARIA name of the component.
-     * @default undefined
-     * @public
-     * @since 2.16.0
-     */
-    accessibleName?: string;
-    /**
      * Defines the items of the component.
      * @public
      */
@@ -74,11 +66,8 @@ declare class FormGroup extends UI5Element implements IFormItem {
     colsL: number;
     colsXl: number;
     itemSpacing: `${FormItemSpacing}`;
-    static i18nBundle: I18nBundle;
     onBeforeRendering(): void;
     processFormItems(): void;
-    getEffectiveAccessibleName(index: number): string | undefined;
-    get effectiveАccessibleNameRef(): string | undefined;
     get isGroup(): boolean;
 }
 export default FormGroup;

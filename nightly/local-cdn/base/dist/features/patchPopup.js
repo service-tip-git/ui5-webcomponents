@@ -54,11 +54,11 @@ const isNativePopoverOpen = (root = document) => {
 };
 const patchPopupBasedControl = (PopupBasedControl) => {
     const origOnsapescape = PopupBasedControl.prototype.onsapescape;
-    PopupBasedControl.prototype.onsapescape = function onsapescape(...args) {
+    PopupBasedControl.prototype.onsapescape = function onsapescape(e) {
         if (hasWebComponentPopupAbove(this.oPopup)) {
             return;
         }
-        origOnsapescape.apply(this, args);
+        origOnsapescape.call(this, e);
     };
 };
 const patchOpen = (Popup) => {
@@ -96,9 +96,9 @@ const patchClosed = (Popup) => {
 };
 const patchFocusEvent = (Popup) => {
     const origFocusEvent = Popup.prototype.onFocusEvent;
-    Popup.prototype.onFocusEvent = function onFocusEvent(...args) {
+    Popup.prototype.onFocusEvent = function onFocusEvent(e) {
         if (!hasWebComponentPopupAbove(this)) {
-            origFocusEvent.apply(this, args);
+            origFocusEvent.call(this, e);
         }
     };
 };

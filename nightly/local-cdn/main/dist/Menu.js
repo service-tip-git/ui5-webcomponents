@@ -81,13 +81,6 @@ let Menu = Menu_1 = class Menu extends UI5Element {
          */
         this.open = false;
         /**
-         * Determines on which side the component is placed at.
-         * @default "Bottom"
-         * @public
-         * @since 2.16.0
-         */
-        this.placement = "Bottom";
-        /**
          * Determines the horizontal alignment of the menu relative to its opener control.
          * @default "Start"
          * @public
@@ -308,9 +301,6 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], Menu.prototype, "open", void 0);
-__decorate([
-    property()
-], Menu.prototype, "placement", void 0);
 __decorate([
     property()
 ], Menu.prototype, "horizontalAlign", void 0);

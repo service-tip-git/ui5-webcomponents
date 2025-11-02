@@ -1,4 +1,4 @@
-const getDefaultLayoutsByMedia = () => {
+const getLayoutsByMedia = () => {
     return {
         desktop: {
             "OneColumn": {
@@ -267,5 +267,5 @@ const getNextLayoutByArrowPress = () => {
         "ThreeColumnsStartHiddenEndExpanded": "ThreeColumnsEndExpanded",
     };
 };
-export { getDefaultLayoutsByMedia, getNextLayoutByArrowPress, };
+export { getLayoutsByMedia, getNextLayoutByArrowPress, };
 //# sourceMappingURL=FCLLayout.js.map

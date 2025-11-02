@@ -44,7 +44,7 @@ declare class WritingAssistant extends UI5Element {
      */
     loading: boolean;
     /**
-     * Defines the prompt description of the Writing Assistant.
+     * Defines the action text of the AI Writing Assistant.
      *
      * This text is displayed in the toolbar to indicate the current or last
      * performed AI action (e.g., "Generated text", "Simplified text").
@@ -52,25 +52,25 @@ declare class WritingAssistant extends UI5Element {
      * @default ""
      * @public
      */
-    promptDescription: string;
+    actionText: string;
     /**
      * Indicates the index of the currently displayed result version.
      *
-     * The index is **0-based** (i.e. `0` represents the first result).
+     * The index is **1-based** (i.e. `1` represents the first result).
      * This property is synchronized with the parent AI TextArea component.
      *
-     * @default 0
+     * @default 1
      * @public
      * @since 2.16.0
      */
-    currentVersion: number;
+    currentVersionIndex: number;
     /**
      * Indicates the total number of result versions available.
      *
      * This property determines whether version navigation controls are displayed.
-     * When totalVersions > 0, previous/next buttons become available.
+     * When totalVersions > 1, previous/next buttons become available.
      *
-     * @default 0
+     * @default 1
      * @public
      */
     totalVersions: number;

@@ -134,7 +134,8 @@ let Menu = Menu_1 = class Menu extends UI5Element {
     /** Returns all menu items (including those in groups */
     get _allMenuItems() {
         const items = [];
-        this.items.forEach(item => {
+        const slottedItems = this.getSlottedNodes("items");
+        slottedItems.forEach(item => {
             if (isInstanceOfMenuItemGroup(item)) {
                 items.push(...item._menuItems);
             }

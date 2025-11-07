@@ -170,7 +170,7 @@ jobs:
 
       # Release Comments
       - name: Publish Release Comments
-        if: ${{ github.event.inputs.release_type == 'stable' }} || ${{ github.event.inputs.release_type == 'rc'}}
+        if: ${{ github.event.inputs.release_type == 'stable' || github.event.inputs.release_type == 'rc' }}
         uses: actions/github-script@v7
         env:
             NODE_OPTIONS: '--max-old-space-size=12096'

@@ -92,8 +92,8 @@ jobs:
         if: ${{ github.event.inputs.release_type == 'experimental' }}
         run: |
           git_hash=$(git rev-parse --short "${{ github.sha }}")
-          yarn lerna publish from-git \
-          -exact \
+          yarn lerna version "0.0.0-${git_hash}" \
+          --exact \
           --no-push \
           --yes \
           --allow-branch ${{ github.ref_name }} \

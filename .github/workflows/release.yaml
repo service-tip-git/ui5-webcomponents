@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       release_type:
-        description: 'Release Type'
+        description: 'type'
         required: true
         type: choice
         options:
@@ -20,7 +20,7 @@ on:
         default: ''
         type: string
       npm_tag:
-          description: 'NPM tag (hotfix only)'
+          description: 'tag (hotfix only)'
           required: false
           default: ''
           type: string

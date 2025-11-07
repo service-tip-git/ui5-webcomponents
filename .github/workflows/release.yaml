@@ -86,6 +86,12 @@ jobs:
           git config user.email "${{ secrets.UI5_WEBCOMP_BOT_EMAIL }}"
           yarn lerna version ${{ github.event.inputs.version_bump || '' }} --conventional-graduate --force-conventional-graduate --yes --exact --create-release github
 
+      - name: Version - Experimental
+        if: ${{ github.event.inputs.release_type == 'experimental' }}
+        run: |
+          git_hash=$(git rev-parse --short "${{ github.sha }}")
+          yarn lerna version "0.0.0-${git_hash}" --exact --no-push --allow-branch ${{ github.ref_name }}
+
       # Build
       - name: Build
         run: yarn ci:releasebuild
@@ -126,7 +132,7 @@ jobs:
       - name: Publish Experimental
         if: ${{ github.event.inputs.release_type == 'experimental' }}
         run: |
-          node ./.github/actions/release.cjs
+          yarn lerna publish from-git --yes --dist-tag experimental
 
       - name: Publish Hotfix
         if: ${{ github.event.inputs.release_type == 'hotfix' }}

@@ -1,4 +1,4 @@
-name: Release Stable Version
+name: Release
 
 on:
   # Manual releases
@@ -15,7 +15,7 @@ on:
           - 'experimental'
         default: 'rc'
       version_bump:
-        description: 'Version Bump (stable only: patch|minor|major or auto)'
+        description: 'Version Bump (patch|minor|major or specific number)'
         required: false
         default: ''
       npm_tag:
@@ -64,17 +64,15 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.UI5_WEBCOMP_BOT_GH_TOKEN }}
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
           git config user.name "${{ secrets.UI5_WEBCOMP_BOT_NAME }}"
           git config user.email "${{ secrets.UI5_WEBCOMP_BOT_EMAIL }}"
-          yarn lerna version --conventional-graduate --force-conventional-graduate --yes --exact --create-release github
+          yarn lerna version ${{ github.event.inputs.version_bump || '' }} --conventional-graduate --force-conventional-graduate --yes --exact --create-release github
 
       - name: Version Bump - RC
         if: ${{ github.event.inputs.release_type == 'rc' }}
         env:
           GH_TOKEN: ${{ secrets.UI5_WEBCOMP_BOT_GH_TOKEN }}
         run: |
-          npm config set //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
           git config user.name "${{ secrets.UI5_WEBCOMP_BOT_NAME }}"
           git config user.email "${{ secrets.UI5_WEBCOMP_BOT_EMAIL }}"
           yarn lerna version --conventional-prerelease --force-publish --yes --exact --create-release github

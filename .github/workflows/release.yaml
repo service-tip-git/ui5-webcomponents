@@ -92,7 +92,15 @@ jobs:
         if: ${{ github.event.inputs.release_type == 'experimental' }}
         run: |
           git_hash=$(git rev-parse --short "${{ github.sha }}")
-          yarn lerna version "0.0.0-${git_hash}" --exact --no-push --allow-branch ${{ github.ref_name }}
+          yarn lerna publish from-git \
+          -exact \
+          --no-push \
+          --yes \
+          --allow-branch ${{ github.ref_name }} \
+          --dist-tag experimental \
+          --ignore @ui5/webcomponents-website \
+          --ignore @ui5/webcomponents-cypress-internal \
+          --ignore @ui5/webcomponents-cypress-ct \
 
       # Build
       - name: Build

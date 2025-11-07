@@ -97,9 +97,9 @@ jobs:
           --no-push \
           --yes \
           --allow-branch ${{ github.ref_name }} \
-          --ignore @ui5/webcomponents-website \
-          --ignore @ui5/webcomponents-cypress-internal \
-          --ignore @ui5/webcomponents-cypress-ct \
+          --ignore-changes @ui5/webcomponents-website \
+          --ignore-changes @ui5/webcomponents-cypress-internal \
+          --ignore-changes @ui5/webcomponents-cypress-ct \
 
       # Build
       - name: Build

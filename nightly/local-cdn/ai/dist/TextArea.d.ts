@@ -1,8 +1,5 @@
 import { BaseTextArea } from "@ui5/webcomponents/dist/TextArea.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
-type TextAreaVersionChangeEventDetail = {
-    backwards: boolean;
-};
 /**
  * @class
  *
@@ -31,8 +28,10 @@ type TextAreaVersionChangeEventDetail = {
  */
 declare class TextArea extends BaseTextArea {
     eventDetails: BaseTextArea["eventDetails"] & {
-        "version-change": TextAreaVersionChangeEventDetail;
-        "stop-generation": void;
+        "version-change": {
+            backwards: boolean;
+        };
+        "stop-generation": object;
     };
     private _keydownHandler?;
     /**
@@ -114,5 +113,4 @@ declare class TextArea extends BaseTextArea {
      */
     handleStopGeneration: () => void;
 }
-export type { TextAreaVersionChangeEventDetail };
 export default TextArea;

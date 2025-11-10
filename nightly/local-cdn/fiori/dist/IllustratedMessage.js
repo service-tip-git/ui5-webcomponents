@@ -14,7 +14,6 @@ import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.j
 import { getIllustrationDataSync, getIllustrationData } from "@ui5/webcomponents-base/dist/asset-registries/Illustrations.js";
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
-import executeTemplate from "@ui5/webcomponents-base/dist/renderer/executeTemplate.js";
 import IllustrationMessageDesign from "./types/IllustrationMessageDesign.js";
 import IllustrationMessageType from "./types/IllustrationMessageType.js";
 import "./illustrations/BeforeSearch.js";
@@ -165,32 +164,10 @@ let IllustratedMessage = IllustratedMessage_1 = class IllustratedMessage extends
         if (illustrationData === undefined) {
             illustrationData = await getIllustrationData(effectiveName);
         }
-        // Check if illustration uses templates (safe variant)
-        if (illustrationData && "dotTemplate" in illustrationData && illustrationData.dotTemplate) {
-            this.dotTemplate = executeTemplate(illustrationData.dotTemplate, this);
-        }
-        if (illustrationData && "spotTemplate" in illustrationData && illustrationData.spotTemplate) {
-            this.spotTemplate = executeTemplate(illustrationData.spotTemplate, this);
-        }
-        if (illustrationData && "dialogTemplate" in illustrationData && illustrationData.dialogTemplate) {
-            this.dialogTemplate = executeTemplate(illustrationData.dialogTemplate, this);
-        }
-        if (illustrationData && "sceneTemplate" in illustrationData && illustrationData.sceneTemplate) {
-            this.sceneTemplate = executeTemplate(illustrationData.sceneTemplate, this);
-        }
-        // Check if illustration uses SVG strings (unsafe variant)
-        if (illustrationData && "dotSvg" in illustrationData) {
-            this.dotSvg = illustrationData.dotSvg;
-        }
-        if (illustrationData && "spotSvg" in illustrationData) {
-            this.spotSvg = illustrationData.spotSvg;
-        }
-        if (illustrationData && "dialogSvg" in illustrationData) {
-            this.dialogSvg = illustrationData.dialogSvg;
-        }
-        if (illustrationData && "sceneSvg" in illustrationData) {
-            this.sceneSvg = illustrationData.sceneSvg;
-        }
+        this.dotSvg = illustrationData.dotSvg;
+        this.spotSvg = illustrationData.spotSvg;
+        this.dialogSvg = illustrationData.dialogSvg;
+        this.sceneSvg = illustrationData.sceneSvg;
         this.illustrationTitle = IllustratedMessage_1.i18nBundle.getText(illustrationData.title);
         this.illustrationSubtitle = IllustratedMessage_1.i18nBundle.getText(illustrationData.subtitle);
         if (this.design !== IllustrationMessageDesign.Auto) {
@@ -317,13 +294,13 @@ let IllustratedMessage = IllustratedMessage_1 = class IllustratedMessage extends
     get effectiveIllustration() {
         switch (this.media) {
             case IllustratedMessage_1.MEDIA.DOT:
-                return this.dotTemplate || this.dotSvg;
+                return this.dotSvg;
             case IllustratedMessage_1.MEDIA.SPOT:
-                return this.spotTemplate || this.spotSvg;
+                return this.spotSvg;
             case IllustratedMessage_1.MEDIA.DIALOG:
-                return this.dialogTemplate || this.dialogSvg;
+                return this.dialogSvg;
             case IllustratedMessage_1.MEDIA.SCENE:
-                return this.sceneTemplate || this.sceneSvg;
+                return this.sceneSvg;
             default:
                 return "";
         }
@@ -381,18 +358,6 @@ __decorate([
 __decorate([
     property({ noAttribute: true })
 ], IllustratedMessage.prototype, "dialogSvg", void 0);
-__decorate([
-    property({ noAttribute: true })
-], IllustratedMessage.prototype, "dotTemplate", void 0);
-__decorate([
-    property({ noAttribute: true })
-], IllustratedMessage.prototype, "spotTemplate", void 0);
-__decorate([
-    property({ noAttribute: true })
-], IllustratedMessage.prototype, "sceneTemplate", void 0);
-__decorate([
-    property({ noAttribute: true })
-], IllustratedMessage.prototype, "dialogTemplate", void 0);
 __decorate([
     property()
 ], IllustratedMessage.prototype, "media", void 0);

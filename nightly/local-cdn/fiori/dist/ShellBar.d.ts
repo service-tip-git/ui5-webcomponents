@@ -474,7 +474,7 @@ declare class ShellBar extends UI5Element {
     get hasMidContent(): boolean;
     get hasProfile(): boolean;
     get hasMenuItems(): boolean;
-    get imageBtnText(): string;
+    get imageBtnText(): string | undefined;
     get _shellbarText(): string;
     get _logoText(): string;
     get _notificationsText(): string;

@@ -174,8 +174,15 @@ let Input = Input_1 = class Input extends BaseInput {
     _handleNextButtonClick() {
         this._handleVersionChange(new CustomEvent("version-change", { detail: { backwards: false } }));
     }
-    _onMenuIconClick(e) {
-        this.fireDecoratorEvent("item-click", e.detail);
+    _onMenuIconClick() {
+        this.menu?.addEventListener("item-click", (e) => {
+            const customEvent = e;
+            this.dispatchEvent(new CustomEvent("item-click", {
+                detail: customEvent.detail,
+                bubbles: true,
+                composed: true,
+            }));
+        });
     }
     /**
      * Handles keydown events for keyboard shortcuts.
@@ -221,7 +228,7 @@ let Input = Input_1 = class Input extends BaseInput {
         return Input_1.i18nBundle.getText(INPUT_VERSIONING_PREVIOUS_BUTTON_TOOLTIP);
     }
     get menu() {
-        return this.shadowRoot?.querySelector("[ui5-menu]");
+        return this.shadowRoot?.querySelector("ui5-menu");
     }
 };
 __decorate([
@@ -263,11 +270,6 @@ Input = Input_1 = __decorate([
     event("button-click", {
         cancelable: true,
     })
-    /** Fired when an item from the AI actions menu is clicked.
-     * @public
-     */
-    ,
-    event("item-click")
     /**
      * Fired when the user selects the "Stop" button to stop ongoing AI text generation.
      * @public

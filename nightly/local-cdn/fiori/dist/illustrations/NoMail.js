@@ -1,4 +1,4 @@
-import { unsafeRegisterIllustration } from "@ui5/webcomponents-base/dist/asset-registries/Illustrations.js";
+import { registerIllustration } from "@ui5/webcomponents-base/dist/asset-registries/Illustrations.js";
 import dialogSvg from "./sapIllus-Dialog-NoMail.js";
 import sceneSvg from "./sapIllus-Scene-NoMail.js";
 import spotSvg from "./sapIllus-Spot-NoMail.js";
@@ -13,7 +13,7 @@ const collection = "V4";
 const title = IM_TITLE_NOMAIL;
 const subtitle = IM_SUBTITLE_NOMAIL;
 
-unsafeRegisterIllustration(name, {
+registerIllustration(name, {
 	dialogSvg,
 	sceneSvg,
 	spotSvg,

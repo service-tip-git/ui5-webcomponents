@@ -135,30 +135,6 @@ declare class IllustratedMessage extends UI5Element {
     */
     dialogSvg?: string;
     /**
-    * Template function for the Dot design (safe variant).
-    * @private
-    * @since 2.16.0
-    */
-    dotTemplate?: object;
-    /**
-    * Template function for the Spot design (safe variant).
-    * @private
-    * @since 2.16.0
-    */
-    spotTemplate?: object;
-    /**
-    * Template function for the Scene design (safe variant).
-    * @private
-    * @since 2.16.0
-    */
-    sceneTemplate?: object;
-    /**
-    * Template function for the Dialog design (safe variant).
-    * @private
-    * @since 2.16.0
-    */
-    dialogTemplate?: object;
-    /**
     * Determinates what is the current media of the component based on its width.
     * @private
     */
@@ -238,7 +214,7 @@ declare class IllustratedMessage extends UI5Element {
      */
     _handleCustomSize(): void;
     get ariaLabelText(): string | undefined;
-    get effectiveIllustration(): string | object | undefined;
+    get effectiveIllustration(): string | undefined;
     get hasFormattedSubtitle(): boolean;
     get hasFormattedTitle(): boolean;
     get effectiveTitleText(): string | undefined;

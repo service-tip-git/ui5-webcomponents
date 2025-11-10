@@ -1,4 +1,4 @@
-import { unsafeRegisterIllustration } from "@ui5/webcomponents-base/dist/asset-registries/Illustrations.js";
+import { registerIllustration } from "@ui5/webcomponents-base/dist/asset-registries/Illustrations.js";
 import dialogSvg from "./tnt-Dialog-Avatar.js";
 import sceneSvg from "./tnt-Scene-Avatar.js";
 import spotSvg from "./tnt-Spot-Avatar.js";
@@ -8,7 +8,7 @@ const name = "Avatar";
 const set = "tnt";
 const collection = "V4";
 
-unsafeRegisterIllustration(name, {
+registerIllustration(name, {
 	dialogSvg,
 	sceneSvg,
 	spotSvg,

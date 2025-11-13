@@ -160,9 +160,11 @@ jobs:
             --force-publish \
             --yes \
             --exact \
-            --dry-run
-          
-          yarn lerna publish --dry-run
+            --no-git-tag-version \
+            --no-push \
+            --loglevel verbose
+
+          yarn lerna publish --no-push --no-git-tag-version --loglevel verbose
 
       - name: Version Bump
         env:

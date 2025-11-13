@@ -8027,6 +8027,12 @@
           "kind": "class",
           "description": "### Overview\nThe `ui5-view-settings-dialog` component helps the user to sort data within a list or a table.\nIt consists of several lists like `Sort order` which is built-in and `Sort By` and `Filter By` lists,\nfor which you must be provide items(`ui5-sort-item` & `ui5-filter-item` respectively)\nThese options can be used to create sorters for a table.\n\nThe `ui5-view-settings-dialog` interrupts the current application processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe `ui5-view-settings-dialog` is modal, which means that user action is required before returning to the parent window is possible.\n\n### Structure\nA `ui5-view-settings-dialog` consists of a header, content, and a footer for action buttons.\nThe `ui5-view-settings-dialog` is usually displayed at the center of the screen.\n\n### Responsive Behavior\n`ui5-view-settings-dialog` stretches on full screen on phones.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js\";`",
           "name": "ViewSettingsDialog",
+          "cssParts": [
+            {
+              "description": "Used to style the header.",
+              "name": "header"
+            }
+          ],
           "slots": [
             {
               "name": "sortItems",

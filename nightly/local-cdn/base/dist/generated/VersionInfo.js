@@ -1,11 +1,11 @@
 const VersionInfo = {
-    version: "2.16.0",
+    version: "2.17.0-rc.1",
     major: 2,
-    minor: 16,
+    minor: 17,
     patch: 0,
-    suffix: "",
+    suffix: "-rc.1",
     isNext: false,
-    buildTime: 1762912723,
+    buildTime: 1762995653,
 };
 export default VersionInfo;
 //# sourceMappingURL=VersionInfo.js.map

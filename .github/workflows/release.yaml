@@ -58,17 +58,6 @@ jobs:
       - name: Build
         run: yarn ci:releasebuild
 
-      - name: Dry Run
-        run: |
-          yarn lerna version ${{ github.event.inputs.new_version || '' }}  \
-            --conventional-graduate \
-            --force-conventional-graduate \
-            --yes \
-            --exact \
-            --dry-run
-
-          yarn lerna publish --dry-run
-
       - name: Version Bump
         env:
           GH_TOKEN: ${{ secrets.UI5_WEBCOMP_BOT_GH_TOKEN }}
@@ -153,19 +142,6 @@ jobs:
       - name: Build
         run: yarn ci:releasebuild
 
-      - name: Dry Run
-        run: |
-          yarn lerna version \
-            --conventional-prerelease \
-            --force-publish \
-            --yes \
-            --exact \
-            --no-git-tag-version \
-            --no-push \
-            --loglevel verbose
-
-          yarn lerna publish --no-push --no-git-tag-version --loglevel verbose
-
       - name: Version Bump
         env:
           GH_TOKEN: ${{ secrets.UI5_WEBCOMP_BOT_GH_TOKEN }}
@@ -234,17 +210,6 @@ jobs:
       - name: Build
         run: yarn ci:releasebuild
 
-      - name: Dry Run
-        run: |
-          yarn lerna version ${{ github.event.inputs.new_version || '' }} \
-            --conventional-graduate \
-            --force-conventional-graduate \
-            --yes \
-            --exact \
-            --dry-run
-
-          yarn lerna publish --dry-run
-          
       - name: Version Bump
         env:
           GH_TOKEN: ${{ secrets.UI5_WEBCOMP_BOT_GH_TOKEN }}

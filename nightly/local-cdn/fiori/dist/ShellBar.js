@@ -956,6 +956,9 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     get showMenuButton() {
         return this.primaryTitle || this.showLogoInMenuButton;
     }
+    get popoverHorizontalAlign() {
+        return this.effectiveDir === "rtl" ? "Start" : "End";
+    }
     get hasAssistant() {
         return !!this.assistant.length;
     }

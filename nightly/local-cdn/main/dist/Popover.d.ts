@@ -11,23 +11,11 @@ type ArrowPosition = {
     x: number;
     y: number;
 };
-declare enum PopoverActualHorizontalAlign {
-    Center = "Center",
-    Left = "Left",
-    Right = "Right",
-    Stretch = "Stretch"
-}
-declare enum PopoverActualPlacement {
-    Left = "Left",
-    Right = "Right",
-    Top = "Top",
-    Bottom = "Bottom"
-}
 type CalculatedPlacement = {
     arrow: ArrowPosition;
     top: number;
     left: number;
-    actualPlacement: `${PopoverActualPlacement}`;
+    placement: `${PopoverPlacement}`;
 };
 /**
  * @class
@@ -128,7 +116,7 @@ declare class Popover extends Popup {
      * Returns the calculated placement depending on the free space
      * @private
      */
-    actualPlacement: `${PopoverActualPlacement}`;
+    actualPlacement: `${PopoverPlacement}`;
     _maxHeight?: number;
     _maxWidth?: number;
     /**
@@ -174,7 +162,7 @@ declare class Popover extends Popup {
      */
     _removeOpenedPopup(): void;
     getOpenerHTMLElement(opener: HTMLElement | string | null | undefined): HTMLElement | null | undefined;
-    shouldCloseDueToOverflow(placement: `${PopoverActualPlacement}`, openerRect: DOMRect): boolean;
+    shouldCloseDueToOverflow(placement: `${PopoverPlacement}`, openerRect: DOMRect): boolean;
     shouldCloseDueToNoOpener(openerRect: DOMRect): boolean;
     isOpenerOutsideViewport(openerRect: DOMRect): boolean;
     /**
@@ -220,8 +208,8 @@ declare class Popover extends Popup {
      * Fallbacks to new placement, prioritizing `Left` and `Right` placements.
      * @private
      */
-    fallbackPlacement(clientWidth: number, clientHeight: number, targetRect: DOMRect, popoverSize: PopoverSize): PopoverActualPlacement | undefined;
-    getActualPlacement(targetRect: DOMRect): `${PopoverActualPlacement}`;
+    fallbackPlacement(clientWidth: number, clientHeight: number, targetRect: DOMRect, popoverSize: PopoverSize): PopoverPlacement | undefined;
+    getActualPlacement(targetRect: DOMRect): `${PopoverPlacement}`;
     getVerticalLeft(targetRect: DOMRect, popoverSize: PopoverSize): number;
     getHorizontalTop(targetRect: DOMRect, popoverSize: PopoverSize): number;
     get isModal(): boolean;
@@ -245,8 +233,7 @@ declare class Popover extends Popup {
      * Hook for descendants to hide footer.
      */
     get _displayFooter(): boolean;
-    get isRtl(): boolean;
-    get _actualHorizontalAlign(): PopoverActualHorizontalAlign;
+    get _actualHorizontalAlign(): "Start" | "End" | "Center" | "Stretch" | PopoverHorizontalAlign.Start | PopoverHorizontalAlign.End;
 }
 declare const instanceOfPopover: (object: any) => object is Popover;
 export default Popover;

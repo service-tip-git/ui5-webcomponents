@@ -61,20 +61,6 @@ declare class Bar extends UI5Element {
      */
     accessibleRole: `${BarAccessibleRole}`;
     /**
-     * Defines the accessible ARIA name of the component.
-     * @default undefined
-     * @since 2.16.0
-     * @public
-     */
-    accessibleName?: string;
-    /**
-     * Receives id(or many ids) of the elements that label the bar.
-     * @default undefined
-     * @since 2.16.0
-     * @public
-     */
-    accessibleNameRef?: string;
-    /**
     * Defines the content at the start of the bar.
     * @public
     */
@@ -91,10 +77,9 @@ declare class Bar extends UI5Element {
     endContent: Array<HTMLElement>;
     _handleResizeBound: () => void;
     get accInfo(): {
-        label: string | undefined;
+        label: "Header" | "Subheader" | "Footer" | "FloatingFooter";
         role: import("@ui5/webcomponents-base/dist/thirdparty/preact/jsx.js").JSXInternal.AriaRole | undefined;
     };
-    get ariaLabelText(): string | undefined;
     constructor();
     handleResize(): void;
     onEnterDOM(): void;

@@ -1283,6 +1283,9 @@ let Input = Input_1 = class Input extends UI5Element {
         }
         return "";
     }
+    get _valueStatePopoverHorizontalAlign() {
+        return this.effectiveDir !== "rtl" ? "Start" : "End";
+    }
     /**
      * This method is relevant for sap_horizon theme only
      */

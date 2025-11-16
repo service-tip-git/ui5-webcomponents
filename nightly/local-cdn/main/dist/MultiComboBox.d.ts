@@ -21,6 +21,7 @@ import type { ListSelectionChangeEventDetail } from "./List.js";
 import ToggleButton from "./ToggleButton.js";
 import type ComboBoxFilter from "./types/ComboBoxFilter.js";
 import type { InputEventDetail } from "./Input.js";
+import type PopoverHorizontalAlign from "./types/PopoverHorizontalAlign.js";
 import type InputComposition from "./features/InputComposition.js";
 /**
  * Interface for components that may be slotted inside a `ui5-multi-combobox` as items
@@ -436,6 +437,7 @@ declare class MultiComboBox extends UI5Element implements IFormInputElement {
     get _dialogOkButton(): string;
     get _dialogCancelButton(): string;
     get _tokenizerExpanded(): boolean;
+    get _valueStatePopoverHorizontalAlign(): `${PopoverHorizontalAlign}`;
     get iconsCount(): number;
     get clearIconAccessibleName(): string;
     get selectAllCheckboxLabel(): string;

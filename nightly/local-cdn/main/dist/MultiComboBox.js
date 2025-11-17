@@ -1538,9 +1538,6 @@ let MultiComboBox = MultiComboBox_1 = class MultiComboBox extends UI5Element {
         const shouldBeExpanded = this.focused || this.open || isCurrentlyExpanded;
         return shouldBeExpanded;
     }
-    get _valueStatePopoverHorizontalAlign() {
-        return this.effectiveDir !== "rtl" ? "Start" : "End";
-    }
     get iconsCount() {
         const slottedIconsCount = this.icon?.length || 0;
         const clearIconCount = Number(this._effectiveShowClearIcon) ?? 0;

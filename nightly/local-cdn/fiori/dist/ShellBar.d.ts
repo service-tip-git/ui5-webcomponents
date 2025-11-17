@@ -7,7 +7,6 @@ import type { IButton } from "@ui5/webcomponents/dist/Button.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { ClassMap, AccessibilityAttributes, AriaRole, UI5CustomEvent } from "@ui5/webcomponents-base";
 import type ListItemBase from "@ui5/webcomponents/dist/ListItemBase.js";
-import type PopoverHorizontalAlign from "@ui5/webcomponents/dist/types/PopoverHorizontalAlign.js";
 import type ShellBarItem from "./ShellBarItem.js";
 import type { ShellBarItemAccessibilityAttributes } from "./ShellBarItem.js";
 import type ShellBarBranding from "./ShellBarBranding.js";
@@ -467,7 +466,6 @@ declare class ShellBar extends UI5Element {
     get showLogoInMenuButton(): boolean;
     get showTitleInMenuButton(): boolean | "" | undefined;
     get showMenuButton(): string | boolean;
-    get popoverHorizontalAlign(): `${PopoverHorizontalAlign}`;
     get hasAssistant(): boolean;
     get hasBranding(): boolean;
     get hasSearchField(): boolean;

@@ -28816,7 +28816,8 @@
               },
               "default": "false",
               "description": "Defines whether the button text should only be displayed in the overflow popover.\n\nWhen set to `true`, the button appears as icon-only in the main toolbar,\nbut shows both icon and text when moved to the overflow popover.\n\n**Note:** This property only takes effect when the `text` property is also set.",
-              "privacy": "public"
+              "privacy": "public",
+              "_ui5since": "2.17.0"
             },
             {
               "kind": "field",

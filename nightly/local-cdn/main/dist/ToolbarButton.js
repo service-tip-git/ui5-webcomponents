@@ -71,6 +71,7 @@ let ToolbarButton = class ToolbarButton extends ToolbarItem {
          *
          * @default false
          * @public
+         * @since 2.17.0
          */
         this.showOverflowText = false;
     }

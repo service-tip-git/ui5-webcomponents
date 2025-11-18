@@ -1358,6 +1358,33 @@
       "references": []
     },
     {
+      "name": "ui5-user-settings-account-view",
+      "description": "### Overview\n\nThe `ui5-user-settings-account-view` represents a view displayed in the `ui5-user-settings-item`.\n\n\n---\n\n\n\n\n### **Events:**\n - **edit-accounts-click** - Fired when the `Edit Accounts` button is selected.\n- **manage-account-click** - Fired when the `Manage Account` button is selected.\n\n### **Slots:**\n - **account** - Defines the user account.\n- **default** - Defines the content of the view.",
+      "attributes": [
+        {
+          "name": "show-manage-account",
+          "description": "Defines if the User Menu shows the `Manage Account` option.",
+          "values": []
+        },
+        {
+          "name": "text",
+          "description": "Defines the title text of the user settings view.",
+          "values": []
+        },
+        {
+          "name": "selected",
+          "description": "Defines whether the view is selected. There can be just one selected view at a time.",
+          "values": []
+        },
+        {
+          "name": "secondary",
+          "description": "Indicates whether the view is secondary. It is relevant only if the view is used in `pages` slot of `ui5-user-settings-item`\nand controls the visibility of the back button.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "ui5-user-settings-dialog",
       "description": "### Overview\n\nThe `ui5-user-settings-dialog` is an SAP Fiori-specific web component used in the `ui5-user-menu`.\nIt allows the user to easily view information and settings for an account.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserSettingsDialog.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **selection-change** - Fired when an item is selected.\n- **open** - Fired when a settings dialog is open.\n- **before-close** - Fired before the settings dialog is closed.\n- **close** - Fired when a settings dialog is closed.\n\n### **Slots:**\n - **default** - Defines the user settings items.\n\n**Note:**  If no setting item is set as `selected`, the first one will be selected.\n- **fixedItems** - Defines the fixed user settings items.",
       "attributes": [

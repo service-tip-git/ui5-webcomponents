@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.18.0-rc.3](https://github.com/UI5/webcomponents/compare/v2.18.0-rc.2...v2.18.0-rc.3) (2026-01-01)
+
+
+### Bug Fixes
+
+* **ui5-multi-combo-box:** unskip test ([#12829](https://github.com/UI5/webcomponents/issues/12829)) ([b62c313](https://github.com/UI5/webcomponents/commit/b62c313d4ba1f2baa1feb048066eb90c5c4f7571))
+* **ui5-search-item:** update search item gap with design spec ([#12831](https://github.com/UI5/webcomponents/issues/12831)) ([1a65306](https://github.com/UI5/webcomponents/commit/1a653065b586817e505f03a950ae83d15ba9cf41))
+
+
+
+
+
 # [2.18.0-rc.2](https://github.com/UI5/webcomponents/compare/v2.18.0-rc.1...v2.18.0-rc.2) (2025-12-25)
 
 

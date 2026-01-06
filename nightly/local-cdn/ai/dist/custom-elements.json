@@ -439,7 +439,7 @@
             }
           ],
           "superclass": {
-            "name": "BaseInput",
+            "name": "Input",
             "package": "@ui5/webcomponents",
             "module": "dist/Input.js"
           },
@@ -854,7 +854,7 @@
             }
           ],
           "superclass": {
-            "name": "BaseTextArea",
+            "name": "TextArea",
             "package": "@ui5/webcomponents",
             "module": "dist/TextArea.js"
           },

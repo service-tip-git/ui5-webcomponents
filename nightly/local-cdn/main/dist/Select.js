@@ -774,6 +774,17 @@ let Select = Select_1 = class Select extends UI5Element {
         const ids = [this.valueStateTextId, this.ariaDescriptionTextId].filter(Boolean);
         return ids.length ? ids.join(" ") : undefined;
     }
+    get accessibilityInfo() {
+        return {
+            role: "combobox",
+            type: this._ariaRoleDescription,
+            description: this.text,
+            label: this.ariaLabelText,
+            readonly: this.readonly,
+            required: this.required,
+            disabled: this.disabled,
+        };
+    }
     _updateAssociatedLabelsTexts() {
         this._associatedDescriptionRefTexts = getAllAccessibleDescriptionRefTexts(this);
     }

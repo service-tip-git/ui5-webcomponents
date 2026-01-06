@@ -1,7 +1,5 @@
-commit 10c997363c0ca2831a841e7c5ab85330d8f5c1bd
-Author: service-tip-git <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Sun Jan 4 10:02:19 2026 +0000
+commit 974129d1b01c9d867692d909b5e86dbb3a22fcfb
+Author: ilhan orhan <ilhan.myumyun@sap.com>
+Date:   Mon Jan 5 19:22:11 2026 +0200
 
-    [INTERNAL] Translation delivery: commit by LX Lab
-    
-    Change-Id: I9eb17066bd2447572580839e56f30027b7be6496
+    chore: update ColorPicker.cy.tsx

@@ -101,12 +101,7 @@ let ToolbarSelect = class ToolbarSelect extends ToolbarItem {
     _syncOptions(selectedOption) {
         const selectedOptionIndex = Number(selectedOption?.getAttribute("data-ui5-external-action-item-index"));
         this.options.forEach((option, index) => {
-            if (index === selectedOptionIndex) {
-                option.setAttribute("selected", "");
-            }
-            else {
-                option.removeAttribute("selected");
-            }
+            option.selected = index === selectedOptionIndex;
         });
     }
     get styles() {
@@ -125,6 +120,7 @@ __decorate([
     slot({
         "default": true,
         type: HTMLElement,
+        invalidateOnChildChange: true,
     })
 ], ToolbarSelect.prototype, "options", void 0);
 __decorate([

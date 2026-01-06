@@ -231,7 +231,9 @@ declare class CheckBox extends UI5Element implements IFormInputElement {
     get isDisplayOnly(): boolean;
     get accessibilityInfo(): {
         role: import("@ui5/webcomponents-base/dist/thirdparty/preact/jsx.js").JSXInternal.AriaRole | undefined;
+        type: string;
         description: string;
+        label: string | undefined;
         disabled: boolean;
         readonly: boolean;
         required: boolean | undefined;

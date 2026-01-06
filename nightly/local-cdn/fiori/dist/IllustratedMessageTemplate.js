@@ -1,7 +1,7 @@
 import { jsx as _jsx, jsxs as _jsxs } from "@ui5/webcomponents-base/jsx-runtime";
 import Title from "@ui5/webcomponents/dist/Title.js";
 export default function IllustratedMessageTemplate() {
-    return (_jsxs("div", { class: "ui5-illustrated-message-root", children: [_jsxs("div", { class: "ui5-illustrated-message-inner", children: [_jsx("div", { class: "ui5-illustrated-message-illustration", children: renderIllustration.call(this) }), _jsxs("div", { class: "ui5-illustrated-message-text-and-actions-container", children: [this.hasTitle &&
+    return (_jsxs("div", { class: "ui5-illustrated-message-root", children: [_jsxs("div", { class: "ui5-illustrated-message-inner", children: [_jsx("div", { class: "ui5-illustrated-message-illustration", role: this.decorative ? "presentation" : "img", "aria-hidden": this.decorative ? true : undefined, "aria-label": !this.decorative ? this.name : undefined, children: renderIllustration.call(this) }), _jsxs("div", { class: "ui5-illustrated-message-text-and-actions-container", children: [this.hasTitle &&
                                 _jsx("div", { part: "title", class: "ui5-illustrated-message-title", children: this.hasFormattedTitle ?
                                         _jsx("slot", { name: "title" })
                                         :

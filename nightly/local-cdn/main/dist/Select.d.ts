@@ -6,7 +6,7 @@ import "@ui5/webcomponents-icons/dist/alert.js";
 import "@ui5/webcomponents-icons/dist/sys-enter-2.js";
 import "@ui5/webcomponents-icons/dist/information.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
-import type { Timeout } from "@ui5/webcomponents-base/dist/types.js";
+import type { Timeout, AriaRole } from "@ui5/webcomponents-base/dist/types.js";
 import type { IFormInputElement } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import type { ListItemClickEventDetail } from "./List.js";
 import ResponsivePopover from "./ResponsivePopover.js";
@@ -427,6 +427,15 @@ declare class Select extends UI5Element implements IFormInputElement {
     get ariaDescriptionText(): string | undefined;
     get ariaDescriptionTextId(): "" | "accessibleDescription";
     get ariaDescribedByIds(): string | undefined;
+    get accessibilityInfo(): {
+        role: AriaRole;
+        type: string;
+        description: string;
+        label: string | undefined;
+        readonly: boolean;
+        required: boolean;
+        disabled: boolean;
+    };
     _updateAssociatedLabelsTexts(): void;
     _getPopover(): Popover | null;
 }

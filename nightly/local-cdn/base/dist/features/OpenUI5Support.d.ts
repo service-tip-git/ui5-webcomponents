@@ -19,9 +19,9 @@ declare class OpenUI5Support {
         animationMode: string;
         language: string;
         theme: string;
-        themeRoot: string;
+        themeRoot: string | undefined;
         rtl: string;
-        timezone: string;
+        timezone: string | undefined;
         calendarType: string;
         formatSettings: {
             firstDayOfWeek: number | undefined;
@@ -34,6 +34,6 @@ declare class OpenUI5Support {
     static cssVariablesLoaded(): boolean | undefined;
     static addOpenedPopup(popupInfo: PopupInfo): void;
     static removeOpenedPopup(popup: object): void;
-    static getTopmostPopup(): object;
+    static getTopmostPopup(): object | null;
 }
 export default OpenUI5Support;

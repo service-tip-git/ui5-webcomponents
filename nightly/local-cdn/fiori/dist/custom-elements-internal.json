@@ -3508,6 +3508,21 @@
             },
             {
               "kind": "field",
+              "name": "fieldLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "privacy": "public",
+              "_ui5since": "2.19.0",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "showClearIcon",
               "type": {
                 "text": "boolean"
@@ -3704,6 +3719,19 @@
               "fieldName": "open",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "name": "field-loading",
+              "default": "false",
+              "fieldName": "fieldLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
               }
             },
             {
@@ -5447,6 +5475,21 @@
             },
             {
               "kind": "field",
+              "name": "fieldLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "privacy": "public",
+              "_ui5since": "2.19.0",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "showClearIcon",
               "type": {
                 "text": "boolean"
@@ -5578,6 +5621,19 @@
               "inheritedFrom": {
                 "name": "Search",
                 "module": "dist/Search.js"
+              }
+            },
+            {
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "name": "field-loading",
+              "default": "false",
+              "fieldName": "fieldLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
               }
             },
             {

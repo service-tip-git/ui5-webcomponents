@@ -42,6 +42,13 @@ declare class SearchField extends UI5Element {
         "scope-change": SearchFieldScopeSelectionChangeDetails;
     };
     /**
+     * Indicates whether a loading indicator should be shown in the input field.
+     * @default false
+     * @since 2.19.0
+     * @public
+     */
+    fieldLoading: boolean;
+    /**
      * Defines whether the clear icon of the search will be shown.
      * @default false
      * @public

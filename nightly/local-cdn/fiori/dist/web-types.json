@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@ui5/webcomponents-fiori",
-  "version": "2.18.0",
+  "version": "2.19.0-rc.0",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -1246,6 +1246,11 @@
               "value": { "type": "boolean", "default": "false" }
             },
             {
+              "name": "field-loading",
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
               "name": "show-clear-icon",
               "description": "Defines whether the clear icon of the search will be shown.",
               "value": { "type": "boolean", "default": "false" }
@@ -1339,6 +1344,11 @@
               {
                 "name": "open",
                 "description": "Indicates whether the items picker is open.",
+                "value": { "type": "boolean" }
+              },
+              {
+                "name": "field-loading",
+                "description": "Indicates whether a loading indicator should be shown in the input field.",
                 "value": { "type": "boolean" }
               },
               {
@@ -2029,6 +2039,11 @@
               "value": { "type": "boolean", "default": "false" }
             },
             {
+              "name": "field-loading",
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
               "name": "show-clear-icon",
               "description": "Defines whether the clear icon of the search will be shown.",
               "value": { "type": "boolean", "default": "false" }
@@ -2127,6 +2142,11 @@
               {
                 "name": "open",
                 "description": "Indicates whether the items picker is open.",
+                "value": { "type": "boolean" }
+              },
+              {
+                "name": "field-loading",
+                "description": "Indicates whether a loading indicator should be shown in the input field.",
                 "value": { "type": "boolean" }
               },
               {

@@ -9812,10 +9812,6 @@
             {
               "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
               "name": "default"
-            },
-            {
-              "name": "default",
-              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design."
             }
           ],
           "members": [
@@ -14899,7 +14895,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component should close when\nclicking/tapping outside of the popover.\nIf enabled, it blocks any interaction with the background.",
+              "description": "Defines whether the component should close when\nclicking/tapping outside the popover.\nIf enabled, it blocks any interaction with the background.",
               "privacy": "public"
             },
             {
@@ -14920,6 +14916,16 @@
               },
               "default": "false",
               "description": "Determines if there is no enough space, the component can be placed\nover the target.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "resizable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines whether the component is resizable.\n**Note:** This property is effective only on desktop devices.",
               "privacy": "public"
             },
             {
@@ -15120,7 +15126,7 @@
               }
             },
             {
-              "description": "Defines whether the component should close when\nclicking/tapping outside of the popover.\nIf enabled, it blocks any interaction with the background.",
+              "description": "Defines whether the component should close when\nclicking/tapping outside the popover.\nIf enabled, it blocks any interaction with the background.",
               "name": "modal",
               "default": "false",
               "fieldName": "modal",
@@ -15142,6 +15148,15 @@
               "name": "allow-target-overlap",
               "default": "false",
               "fieldName": "allowTargetOverlap",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Determines whether the component is resizable.\n**Note:** This property is effective only on desktop devices.",
+              "name": "resizable",
+              "default": "false",
+              "fieldName": "resizable",
               "type": {
                 "text": "boolean"
               }
@@ -15350,6 +15365,21 @@
           "declaration": {
             "name": "Popover",
             "module": "dist/Popover.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/PopoverResize.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "PopoverResize",
+            "module": "dist/PopoverResize.js"
           }
         }
       ]
@@ -16799,7 +16829,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines whether the component should close when\nclicking/tapping outside of the popover.\nIf enabled, it blocks any interaction with the background.",
+              "description": "Defines whether the component should close when\nclicking/tapping outside the popover.\nIf enabled, it blocks any interaction with the background.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "Popover",
@@ -16828,6 +16858,20 @@
               },
               "default": "false",
               "description": "Determines if there is no enough space, the component can be placed\nover the target.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "resizable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines whether the component is resizable.\n**Note:** This property is effective only on desktop devices.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "Popover",
@@ -17085,7 +17129,7 @@
               }
             },
             {
-              "description": "Defines whether the component should close when\nclicking/tapping outside of the popover.\nIf enabled, it blocks any interaction with the background.",
+              "description": "Defines whether the component should close when\nclicking/tapping outside the popover.\nIf enabled, it blocks any interaction with the background.",
               "name": "modal",
               "default": "false",
               "fieldName": "modal",
@@ -17115,6 +17159,19 @@
               "name": "allow-target-overlap",
               "default": "false",
               "fieldName": "allowTargetOverlap",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Popover",
+                "module": "dist/Popover.js"
+              }
+            },
+            {
+              "description": "Determines whether the component is resizable.\n**Note:** This property is effective only on desktop devices.",
+              "name": "resizable",
+              "default": "false",
+              "fieldName": "resizable",
               "type": {
                 "text": "boolean"
               },

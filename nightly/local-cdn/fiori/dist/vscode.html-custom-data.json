@@ -493,11 +493,6 @@
           "values": []
         },
         {
-          "name": "field-loading",
-          "description": "Indicates whether a loading indicator should be shown in the input field.",
-          "values": []
-        },
-        {
           "name": "show-clear-icon",
           "description": "Defines whether the clear icon of the search will be shown.",
           "values": []
@@ -772,11 +767,6 @@
         {
           "name": "open",
           "description": "Indicates whether the items picker is open.",
-          "values": []
-        },
-        {
-          "name": "field-loading",
-          "description": "Indicates whether a loading indicator should be shown in the input field.",
           "values": []
         },
         {

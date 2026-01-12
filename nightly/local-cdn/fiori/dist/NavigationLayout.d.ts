@@ -29,6 +29,7 @@ import type SideNavigation from "./SideNavigation.js";
  * @public
  */
 declare class NavigationLayout extends UI5Element {
+    _defaultSideCollapsed: boolean;
     /**
      * Specifies the navigation layout mode.
      * @default "Auto"

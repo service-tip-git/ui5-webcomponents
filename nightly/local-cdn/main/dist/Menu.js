@@ -22,7 +22,7 @@ import { isInstanceOfMenuItem } from "./MenuItem.js";
 import { isInstanceOfMenuItemGroup } from "./MenuItemGroup.js";
 import { isInstanceOfMenuSeparator } from "./MenuSeparator.js";
 import menuTemplate from "./MenuTemplate.js";
-import { MENU_CLOSE_BUTTON_ARIA_LABEL, MENU_POPOVER_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
+import { MENU_CANCEL_BUTTON_TEXT, MENU_POPOVER_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
 // Styles
 import menuCss from "./generated/themes/Menu.css.js";
 const MENU_OPEN_DELAY = 300;
@@ -111,8 +111,8 @@ let Menu = Menu_1 = class Menu extends UI5Element {
     get isRtl() {
         return this.effectiveDir === "rtl";
     }
-    get labelClose() {
-        return Menu_1.i18nBundle.getText(MENU_CLOSE_BUTTON_ARIA_LABEL);
+    get labelCancel() {
+        return Menu_1.i18nBundle.getText(MENU_CANCEL_BUTTON_TEXT);
     }
     get isPhone() {
         return isPhone();

@@ -141,7 +141,7 @@ declare class Menu extends UI5Element {
     static i18nBundle: I18nBundle;
     _timeout?: Timeout;
     get isRtl(): boolean;
-    get labelClose(): string;
+    get labelCancel(): string;
     get isPhone(): boolean;
     get _popover(): ResponsivePopover;
     get _list(): List | null;

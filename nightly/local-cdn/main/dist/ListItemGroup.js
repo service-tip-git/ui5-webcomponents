@@ -16,6 +16,7 @@ import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 import ListItemGroupTemplate from "./ListItemGroupTemplate.js";
 // Styles
 import ListItemGroupCss from "./generated/themes/ListItemGroup.css.js";
+import WrappingType from "./types/WrappingType.js";
 /**
  * @class
  * ### Overview
@@ -102,6 +103,7 @@ let ListItemGroup = class ListItemGroup extends UI5Element {
     getFocusDomRef() {
         return this.groupHeaderItem || this.items.at(0);
     }
+    getGroupHeaderWrapping() { return WrappingType.None; }
 };
 __decorate([
     property()

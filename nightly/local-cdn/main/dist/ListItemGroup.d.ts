@@ -4,7 +4,7 @@ import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 import type DropIndicator from "./DropIndicator.js";
 import type ListItemBase from "./ListItemBase.js";
 import type ListItemGroupHeader from "./ListItemGroupHeader.js";
-import type WrappingType from "./types/WrappingType.js";
+import WrappingType from "./types/WrappingType.js";
 type ListItemGroupMoveEventDetail = {
     source: {
         element: HTMLElement;
@@ -94,6 +94,7 @@ declare class ListItemGroup extends UI5Element {
     _ondrop(e: DragEvent): void;
     _filterPlacements(placements: MovePlacement[], draggedElement: HTMLElement, targetElement: HTMLElement): MovePlacement[];
     getFocusDomRef(): ListItemGroupHeader;
+    getGroupHeaderWrapping(): WrappingType;
 }
 declare const isInstanceOfListItemGroup: (object: any) => object is ListItemGroup;
 export default ListItemGroup;

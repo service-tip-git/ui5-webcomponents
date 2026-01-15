@@ -1,7 +1,7 @@
-commit 5d07a2e4e43c1b95b9bc4614f4343b99c591d831
+commit 03796dbb8955cbd7eee67d51918a32b9326fee2c
 Author: service-tip-git <tmsatsls+github.com_service-tip-git@sap.com>
-Date:   Sun Jan 11 10:02:08 2026 +0000
+Date:   Wed Jan 14 18:07:18 2026 +0000
 
     [INTERNAL] Translation delivery: commit by LX Lab
     
-    Change-Id: I7d283c5bcca6c3ea76cfaec3873c31ef7ec2f0ef
+    Change-Id: I6971c733b6e9f98d5adad9cebfd9a3836e788064

@@ -23,7 +23,7 @@ import ListItem from "./ListItem.js";
 import { isInstanceOfMenuSeparator } from "./MenuSeparator.js";
 import { isInstanceOfMenuItemGroup } from "./MenuItemGroup.js";
 import MenuItemTemplate from "./MenuItemTemplate.js";
-import { MENU_BACK_BUTTON_ARIA_LABEL, MENU_CLOSE_BUTTON_ARIA_LABEL, MENU_POPOVER_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
+import { MENU_BACK_BUTTON_ARIA_LABEL, MENU_CANCEL_BUTTON_TEXT, MENU_POPOVER_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
 // Styles
 import menuItemCss from "./generated/themes/MenuItem.css.js";
 /**
@@ -152,8 +152,8 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
     get labelBack() {
         return MenuItem_1.i18nBundle.getText(MENU_BACK_BUTTON_ARIA_LABEL);
     }
-    get labelClose() {
-        return MenuItem_1.i18nBundle.getText(MENU_CLOSE_BUTTON_ARIA_LABEL);
+    get labelCancel() {
+        return MenuItem_1.i18nBundle.getText(MENU_CANCEL_BUTTON_TEXT);
     }
     get accessibleNameText() {
         return MenuItem_1.i18nBundle.getText(MENU_POPOVER_ACCESSIBLE_NAME);

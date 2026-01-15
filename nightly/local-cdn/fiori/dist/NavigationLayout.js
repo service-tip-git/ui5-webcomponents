@@ -45,7 +45,6 @@ const SCREEN_WIDTH_BREAKPOINT = 600;
 let NavigationLayout = class NavigationLayout extends UI5Element {
     constructor() {
         super(...arguments);
-        this._defaultSideCollapsed = window.innerWidth < SCREEN_WIDTH_BREAKPOINT;
         /**
          * Specifies the navigation layout mode.
          * @default "Auto"
@@ -55,7 +54,7 @@ let NavigationLayout = class NavigationLayout extends UI5Element {
         /**
          * @private
          */
-        this.sideCollapsed = this._defaultSideCollapsed;
+        this.sideCollapsed = window.innerWidth < SCREEN_WIDTH_BREAKPOINT;
         /**
          * @private
          */
@@ -79,7 +78,7 @@ let NavigationLayout = class NavigationLayout extends UI5Element {
     }
     calcSideCollapsed() {
         if (this.mode === NavigationLayoutMode.Auto) {
-            this.sideCollapsed = this._defaultSideCollapsed;
+            this.sideCollapsed = window.innerWidth < SCREEN_WIDTH_BREAKPOINT;
         }
         else {
             this.sideCollapsed = this.mode === NavigationLayoutMode.Collapsed;

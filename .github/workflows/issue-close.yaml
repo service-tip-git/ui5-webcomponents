@@ -22,5 +22,5 @@ jobs:
         # The message to post on the issue when closing it. If none provided, will not comment when closing an issue.
         close-issue-message: >
           Hello, everyone!
-          The issue has been inactive for 28 days, so I am closing the issue. 
+          The issue has been inactive for 21 days, so I am closing the issue. 
         any-of-issue-labels: 'author action,wontfix,stale'

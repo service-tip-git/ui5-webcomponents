@@ -4,7 +4,7 @@ import Input from "./Input.js";
 import less from "@ui5/webcomponents-icons/dist/less.js";
 import add from "@ui5/webcomponents-icons/dist/add.js";
 export default function StepInputTemplate() {
-    return (_jsxs("div", { id: `${this._id}`, class: "ui5-step-input-root", onKeyDown: this._onkeydown, onFocusIn: this._onfocusin, onFocusOut: this._onfocusout, children: [!this.readonly &&
+    return (_jsxs("div", { id: `${this._id}`, class: "ui5-step-input-root", onKeyDown: this._onkeydown, onFocusIn: this._onfocusin, onFocusOut: this._onfocusout, onWheel: this._onMouseWheel, children: [!this.readonly &&
                 _jsx("div", { class: "ui5-step-icon ui5-step-dec", title: this.decIconTitle, children: _jsx(Icon, { id: `${this._id}-dec`, name: less, tabindex: -1, accessibleName: this.decIconTitle, onClick: this._decValue, onFocusOut: this._onButtonFocusOut, onMouseDown: this._decSpin, onMouseUp: this._resetSpin, onMouseOut: this._resetSpinOut, class: {
                             "inputIcon": true,
                             "ui5-step-input-icon--clickable": this._decIconClickable,

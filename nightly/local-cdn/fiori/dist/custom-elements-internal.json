@@ -2123,7 +2123,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn larger screens (screen width of 600px or more), the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn small screens (screen width of 599px or less), the side navigation is hidden by\ndefault and can be displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
+          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn larger screens with a width of 600px or more, excluding mobile phone devices, the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn mobile phone devices and screens with a width of 599px or less, the side navigation is hidden by\ndefault and can be displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
           "name": "NavigationLayout",
           "slots": [
             {

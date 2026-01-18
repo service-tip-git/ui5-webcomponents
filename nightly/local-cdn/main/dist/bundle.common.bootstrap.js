@@ -1,7 +1,7 @@
 import { setRuntimeAlias } from "@ui5/webcomponents-base/dist/Runtimes.js";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // OpenUI5 integration
-import "@ui5/webcomponents-base/dist/features/OpenUI5Support.js";
+import OpenUI5Support from "@ui5/webcomponents-base/dist/features/OpenUI5Support.js";
 // Assets
 import "./Assets.js";
 // Icons
@@ -62,6 +62,7 @@ import { ignoreCustomElements, shouldIgnoreCustomElement } from "@ui5/webcompone
 import { startMultipleDrag } from "@ui5/webcomponents-base/dist/DragAndDrop.js";
 import getElementSelection from "@ui5/webcomponents-base/dist/util/SelectionAssistant.js";
 import * as defaultTexts from "./generated/i18n/i18n-defaults.js";
+// OpenUI5Support.enablePolling = true;
 setRuntimeAlias("UI5 Web Components Playground");
 // @ts-ignore
 window.sanitizeHTML = sanitizeHTML;

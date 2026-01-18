@@ -806,7 +806,6 @@ let Input = Input_1 = class Input extends UI5Element {
         this._handlePickerAfterOpen();
     }
     _afterClosePicker() {
-        this.announceSelectedItem();
         // close device's keyboard and prevent further typing
         if (isPhone()) {
             this.blur();
@@ -824,6 +823,10 @@ let Input = Input_1 = class Input extends UI5Element {
         this.isTyping = false;
         if (this.hasSuggestionItemSelected) {
             this.focus();
+        }
+        const invisibleText = this.shadowRoot.querySelector(`#selectionText`);
+        if (invisibleText) {
+            invisibleText.textContent = "";
         }
         this._handlePickerAfterClose();
     }

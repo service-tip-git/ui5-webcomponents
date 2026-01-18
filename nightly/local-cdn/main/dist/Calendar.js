@@ -331,7 +331,7 @@ let Calendar = Calendar_1 = class Calendar extends CalendarPart {
     onBeforeRendering() {
         this._normalizeCurrentPicker();
         if (!this._valueIsProcessed) {
-            if (this._selectedDatesTimestamps) {
+            if (this._selectedDatesTimestamps.length) {
                 this.timestamp = this._selectedDatesTimestamps[0];
             }
             this._valueIsProcessed = true;

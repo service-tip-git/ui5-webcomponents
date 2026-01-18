@@ -11,7 +11,7 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
-import { isUp, isDown, isUpCtrl, isDownCtrl, isUpShift, isDownShift, isUpShiftCtrl, isDownShiftCtrl, isPageUpShift, isPageDownShift, isEscape, isEnter, } from "@ui5/webcomponents-base/dist/Keys.js";
+import { isUp, isDown, isUpCtrl, isDownCtrl, isUpShift, isDownShift, isUpShiftCtrl, isDownShiftCtrl, isPageUpShift, isPageDownShift, isEscape, isEnter, isMinus, } from "@ui5/webcomponents-base/dist/Keys.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
@@ -20,8 +20,11 @@ import { STEPINPUT_DEC_ICON_TITLE, STEPINPUT_INC_ICON_TITLE, STEPINPUT_PATTER_MI
 import "@ui5/webcomponents-icons/dist/less.js";
 import "@ui5/webcomponents-icons/dist/add.js";
 import InputType from "./types/InputType.js";
+import NumberFormat from "@ui5/webcomponents-localization/dist/NumberFormat.js";
 // Styles
 import StepInputCss from "./generated/themes/StepInput.css.js";
+import getCachedLocaleDataInstance from "@ui5/webcomponents-localization/dist/getCachedLocaleDataInstance.js";
+import getLocale from "@ui5/webcomponents-base/dist/locale/getLocale.js";
 // Spin variables
 const INITIAL_WAIT_TIMEOUT = 500; // milliseconds
 const ACCELERATION = 0.8;
@@ -148,7 +151,7 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
         return this.value.toString();
     }
     get type() {
-        return InputType.Number;
+        return InputType.Text;
     }
     // icons-related
     get decIconTitle() {
@@ -167,13 +170,15 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
         return this.focused;
     }
     get _displayValue() {
+        // For the cases when there is set value precision but the input value is not with correct precision we don't need to format it
+        const value = this.input?.value && !this._isValueWithCorrectPrecision ? this.input.value : this._formatNumber(this.value);
         if ((this.value === 0) || (Number.isInteger(this.value))) {
-            return this.value.toFixed(this.valuePrecision);
+            return value;
         }
-        if (this.input && this.value === Number(this.input.value)) { // For the cases where the number is fractional and is ending with 0s.
+        if (this.input && this.value === this._parseNumber(this.input.value)) { // For the cases where the number is fractional and is ending with 0s.
             return this.input.value;
         }
-        return this.value.toString();
+        return value;
     }
     get accInfo() {
         return {
@@ -190,6 +195,14 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
     }
     onBeforeRendering() {
         this._setButtonState();
+    }
+    get formatter() {
+        if (!this._formatter) {
+            this._formatter = NumberFormat.getFloatInstance({
+                decimals: this.valuePrecision,
+            });
+        }
+        return this._formatter;
     }
     get input() {
         return this.shadowRoot.querySelector("[ui5-input]");
@@ -220,6 +233,17 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
         this._inputFocused = false;
         this._onInputChange();
     }
+    _onMouseWheel(e) {
+        if (this.disabled || this.readonly) {
+            return;
+        }
+        if (this._isFocused) {
+            e.preventDefault();
+        }
+        const isScrollUp = e.deltaY < 0;
+        const modifier = isScrollUp ? this.step : -this.step;
+        this._modifyValue(modifier, true);
+    }
     _setButtonState() {
         this._decIconDisabled = this.min !== undefined && this.value <= this.min;
         this._incIconDisabled = this.max !== undefined && this.value >= this.max;
@@ -231,8 +255,8 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
         this._updateValueState();
     }
     _updateValueState() {
-        const isWithinRange = (this.min === undefined || Number(this.input.value) >= this.min)
-            && (this.max === undefined || Number(this.input.value) <= this.max);
+        const isWithinRange = (this.min === undefined || this._parseNumber(this.input.value) >= this.min)
+            && (this.max === undefined || this._parseNumber(this.input.value) <= this.max);
         const isValueWithCorrectPrecision = this._isValueWithCorrectPrecision;
         const previousValueState = this.valueState;
         const isValid = isWithinRange && isValueWithCorrectPrecision;
@@ -274,7 +298,7 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
         value = this._preciseValue(value);
         if (value !== this.value) {
             this.value = value;
-            this.input.value = value.toFixed(this.valuePrecision);
+            this.input.value = this._formatNumber(value);
             this._validate();
             this._setButtonState();
             this.focused = true;
@@ -286,6 +310,20 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
                 this.input.focus();
             }
         }
+    }
+    /**
+     * Formats a number with thousands separator based on current locale
+     * @private
+     */
+    _formatNumber(value) {
+        return this.formatter.format(value);
+    }
+    /**
+     * Parses formatted number string back to numeric value
+     * @private
+    */
+    _parseNumber(formattedValue) {
+        return this.formatter.parse(formattedValue);
     }
     _incValue() {
         if (this._incIconClickable && !this.disabled && !this.readonly) {
@@ -302,26 +340,28 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
     get _isValueWithCorrectPrecision() {
         // check if the value will be displayed with correct precision
         // _displayValue has special formatting logic
-        if ((this.value === 0) || (Number.isInteger(this.value))) {
-            // integers and zero will be formatted with toFixed, so they're always valid
+        if (this.valuePrecision === 0 && ((this.value === 0) || (Number.isInteger(this.value)))) {
+            // integers and zero will be formatted with toFixed, so thex y're always valid
             return true;
         }
+        const localeData = getCachedLocaleDataInstance(getLocale());
         // gets either "." or "," as delimiter which is based on locale, and splits the number by it
-        const delimiter = this.input?.value?.includes(".") ? "." : ",";
+        const delimiter = localeData?.getNumberSymbol("decimal") || ".";
         const numberParts = this.input?.value?.split(delimiter);
         const decimalPartLength = numberParts?.length > 1 ? numberParts[1].length : 0;
         return decimalPartLength === this.valuePrecision;
     }
     _onInputChange() {
         this._setDefaultInputValueIfNeeded();
-        const inputValue = Number(this.input.value);
+        const inputValue = this._parseNumber(this.input.value);
         if (this._isValueChanged(inputValue)) {
-            this._updateValueAndValidate(inputValue);
+            this._updateValueAndValidate(Number.isNaN(inputValue) ? this.min || 0 : inputValue);
+            this.innerInput.value = this.input.value;
         }
     }
     _setDefaultInputValueIfNeeded() {
         if (this.input.value === "") {
-            const defaultValue = (this.min || 0).toFixed(this.valuePrecision);
+            const defaultValue = this._formatNumber(this.min || 0);
             this.input.value = defaultValue;
             this.innerInput.value = defaultValue; // we need to update inner input value as well, to avoid empty input scenario
         }
@@ -335,7 +375,8 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
             || this.value !== inputValue
             || inputValue === 0
             || !isValueWithCorrectPrecision
-            || isPrecisionCorrectButValueStateError;
+            || isPrecisionCorrectButValueStateError
+            || Number.isNaN(inputValue);
     }
     _updateValueAndValidate(inputValue) {
         this.value = inputValue;
@@ -387,9 +428,29 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
         else if (!isUpCtrl(e) && !isDownCtrl(e) && !isUpShift(e) && !isDownShift(e)) {
             preventDefault = false;
         }
-        if (preventDefault) {
+        if (e.key && e.key.length !== 1) {
+            return;
+        }
+        const caretPosition = this._getCaretPosition();
+        const inputValue = this.innerInput.value;
+        const typedValue = this._getValueOnkeyDown(e, inputValue, caretPosition);
+        const parsedValue = this._parseNumber(typedValue);
+        const isValidTypedValue = this._isInputValueValid(typedValue, parsedValue);
+        if (preventDefault || !isValidTypedValue) {
             e.preventDefault();
         }
+        if (caretPosition === 0 && isMinus(e)) {
+            this._updateValueAndValidate(parsedValue);
+        }
+    }
+    _getCaretPosition() {
+        return this.input.getDomRef().querySelector("input").selectionStart;
+    }
+    _getValueOnkeyDown(e, inputValue, cursorPosition) {
+        return `${inputValue.substring(0, cursorPosition)}${e.key}${inputValue.substring(cursorPosition)}`;
+    }
+    _isInputValueValid(typedValue, parsedValue) {
+        return !Number.isNaN(parsedValue) && !/, {2,}/.test(typedValue);
     }
     _decSpin() {
         if (!this._decIconDisabled) {
@@ -532,10 +593,12 @@ __decorate([
 StepInput = StepInput_1 = __decorate([
     customElement({
         tag: "ui5-step-input",
+        cldr: true,
         formAssociated: true,
         renderer: jsxRenderer,
         styles: StepInputCss,
         template: StepInputTemplate,
+        languageAware: true,
     })
     /**
      * Fired when the input operation has finished by pressing Enter or on focusout.

@@ -91,6 +91,7 @@ let SegmentedButtonItem = SegmentedButtonItem_1 = class SegmentedButtonItem exte
         if (this.disabled) {
             e.preventDefault();
             e.stopPropagation();
+            return;
         }
         this.selected = !this.selected;
     }

@@ -331,7 +331,7 @@ class Suggestions {
             return `${Suggestions.i18nBundle.getText(LIST_ITEM_GROUP_HEADER)} ${this.accInfo.itemText}`;
         }
         const itemPositionText = Suggestions.i18nBundle.getText(LIST_ITEM_POSITION, this.accInfo.currentPos || 0, this.accInfo.listSize || 0);
-        return `${this.accInfo.additionalText} ${itemPositionText}`.trim();
+        return `${this.accInfo.additionalText} ${itemPositionText}`;
     }
     hightlightInput(text, input) {
         return generateHighlightedMarkup(text, input);

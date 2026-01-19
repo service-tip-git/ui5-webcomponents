@@ -7,5 +7,4 @@ declare const isBooted: () => boolean;
  */
 declare const attachBoot: (listener: () => void) => void;
 declare const boot: () => Promise<void>;
-declare const secondaryBoot: () => Promise<void>;
-export { boot, secondaryBoot, attachBoot, isBooted, };
+export { boot, attachBoot, isBooted, };

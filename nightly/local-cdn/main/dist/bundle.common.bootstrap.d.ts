@@ -1,3 +1,4 @@
+import "@ui5/webcomponents-base/dist/features/OpenUI5Support.js";
 import "./Assets.js";
 import "@ui5/webcomponents-icons/dist/Assets.js";
 import "@ui5/webcomponents-icons/dist/AllIcons.js";

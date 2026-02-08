@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var UserMenu_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import { customElement, slot, eventStrict as event, property, } from "@ui5/webcomponents-base/dist/decorators.js";
+import { customElement, slotStrict as slot, eventStrict as event, property, } from "@ui5/webcomponents-base/dist/decorators.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import query from "@ui5/webcomponents-base/dist/decorators/query.js";
 import DOMReferenceConverter from "@ui5/webcomponents-base/dist/converters/DOMReference.js";

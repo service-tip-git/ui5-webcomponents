@@ -13,7 +13,7 @@ import toLowercaseEnumValue from "@ui5/webcomponents-base/dist/util/toLowercaseE
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import getActiveElement from "@ui5/webcomponents-base/dist/util/getActiveElement.js";

@@ -9,14 +9,13 @@ import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import { isPhone, isAndroid, isMac } from "@ui5/webcomponents-base/dist/Device.js";
 import InvisibleMessageMode from "@ui5/webcomponents-base/dist/types/InvisibleMessageMode.js";
 import { getEffectiveAriaLabelText, getAssociatedLabelForTexts } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import announce from "@ui5/webcomponents-base/dist/util/InvisibleMessage.js";
-import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-down.js";
 import "@ui5/webcomponents-icons/dist/decline.js";
 import "@ui5/webcomponents-icons/dist/error.js";
@@ -250,7 +249,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         }
         this._selectMatchingItem();
         this._initialRendering = false;
-        this.style.setProperty(getScopedVarName("--_ui5-input-icons-count"), `${this.iconsCount}`);
+        this.style.setProperty("--_ui5-input-icons-count", `${this.iconsCount}`);
     }
     get iconsCount() {
         const slottedIconsCount = this.icon?.length || 0;
@@ -485,9 +484,6 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         if (this.focused && isOpen && (isUp(e) || isPageUp(e) || isPageDown(e))) {
             return;
         }
-        if (allItems.length - 1 === indexOfItem && isDown(e)) {
-            return;
-        }
         this._isKeyNavigation = true;
         if (e.key === "ArrowDown"
             || e.key === "ArrowUp"
@@ -539,7 +535,15 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         if (this.focused && indexOfItem === -1 && isOpen) {
             this.focused = false;
         }
-        this._handleItemNavigation(e, ++indexOfItem, true /* isForward */);
+        const allItems = this._getItems();
+        const currentItem = allItems[indexOfItem];
+        const isLastItem = indexOfItem === allItems.length - 1;
+        // We don't want to navigate further if the current item is the last one and either is already focused or the popover is closed
+        if (isLastItem && ((isOpen && currentItem.focused) || !isOpen)) {
+            return;
+        }
+        const itemIndexToBeFocused = isLastItem ? indexOfItem : indexOfItem + 1;
+        this._handleItemNavigation(e, itemIndexToBeFocused, true /* isForward */);
     }
     _handleArrowUp(e, indexOfItem) {
         const isOpen = this.open;

@@ -26,6 +26,14 @@ class UserMenuAccount extends UI5Element {
     constructor() {
         super(...arguments);
         /**
+         * Defines the background color of the desired image.
+         * If `avatarColorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.
+         *
+         * @default "Auto"
+         * @public
+         */
+        this.avatarColorScheme = "Auto";
+        /**
          * Defines the title text of the user.
          *
          * @default ""
@@ -78,6 +86,9 @@ __decorate([
 __decorate([
     property({ type: String })
 ], UserMenuAccount.prototype, "avatarInitials", void 0);
+__decorate([
+    property()
+], UserMenuAccount.prototype, "avatarColorScheme", void 0);
 __decorate([
     property({ type: String })
 ], UserMenuAccount.prototype, "titleText", void 0);

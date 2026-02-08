@@ -1,4 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { AccessibilityAttributes, AriaRole } from "@ui5/webcomponents-base/dist/types.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
@@ -163,17 +164,16 @@ declare class Avatar extends UI5Element implements ITabbable, IAvatarGroupItem {
      * @public
      * @since 1.0.0-rc.15
      */
-    image: Array<HTMLElement>;
+    image: DefaultSlot<HTMLElement>;
     /**
      * Defines the optional badge that will be used for visual affordance.
      *
      * **Note:** While the slot allows for custom badges, to achieve
-     * the Fiori design, you can use the `ui5-tag` with `ui5-icon`
-     * in the corresponding `icon` slot, without text nodes.
+     * the Fiori design, use the `ui5-avatar-badge` component.
      * @public
      * @since 1.7.0
      */
-    badge: Array<HTMLElement>;
+    badge: Slot<HTMLElement>;
     static i18nBundle: I18nBundle;
     _handleResizeBound: ResizeObserverCallback;
     _onImageLoadBound: (e: Event) => void;

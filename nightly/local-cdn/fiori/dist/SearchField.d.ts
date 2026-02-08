@@ -1,4 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type Button from "@ui5/webcomponents/dist/Button.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { SelectChangeEventDetail } from "@ui5/webcomponents/dist/Select.js";
@@ -104,7 +105,7 @@ declare class SearchField extends UI5Element {
      * Defines the component scope options.
      * @public
      */
-    scopes: Array<ISearchScope>;
+    scopes: Slot<ISearchScope>;
     /**
      * Defines the filter button slot, used to display an additional filtering button.
      * This slot is intended for passing a `ui5-button` with a filter icon to provide extended filtering options.
@@ -113,7 +114,7 @@ declare class SearchField extends UI5Element {
      * @public
      * @since 2.11.0
      */
-    filterButton: Array<Button>;
+    filterButton: Slot<Button>;
     /**
      * @private
      */

@@ -1,4 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type ResponsivePopover from "@ui5/webcomponents/dist/ResponsivePopover.js";
 import type NavigationMenu from "./NavigationMenu.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
@@ -8,7 +9,6 @@ import type SideNavigationItemBase from "./SideNavigationItemBase.js";
 import type SideNavigationSelectableItemBase from "./SideNavigationSelectableItemBase.js";
 import type SideNavigationItem from "./SideNavigationItem.js";
 import type SideNavigationSubItem from "./SideNavigationSubItem.js";
-import type SideNavigationGroup from "./SideNavigationGroup.js";
 type SideNavigationPopoverContents = {
     item: SideNavigationItem;
     subItems: Array<SideNavigationSubItem>;
@@ -93,7 +93,7 @@ declare class SideNavigation extends UI5Element {
      *
      * @public
      */
-    items: Array<SideNavigationItemBase>;
+    items: DefaultSlot<SideNavigationItemBase>;
     /**
      * Defines the fixed items at the bottom of the component.
      *
@@ -101,7 +101,7 @@ declare class SideNavigation extends UI5Element {
      *
      * @public
      */
-    fixedItems: Array<SideNavigationItemBase>;
+    fixedItems: Slot<SideNavigationItemBase>;
     /**
      * Defines the header of the `ui5-side-navigation`.
      *
@@ -110,7 +110,7 @@ declare class SideNavigation extends UI5Element {
      * @public
      * @since 1.0.0-rc.11
      */
-    header: Array<HTMLElement>;
+    header: Slot<HTMLElement>;
     /**
      * @private
      */
@@ -151,18 +151,18 @@ declare class SideNavigation extends UI5Element {
     get _rootRole(): "none" | undefined;
     getEnabledFixedItems(): Array<ITabbable>;
     getEnabledFlexibleItems(): Array<ITabbable>;
-    getEnabledItems(items: Array<SideNavigationItem | SideNavigationGroup>): Array<ITabbable>;
+    getEnabledItems(items: Array<SideNavigationItemBase>): Array<ITabbable>;
     focusItem(item: SideNavigationItemBase): void;
     onAfterRendering(): void;
     onEnterDOM(): void;
     onExitDOM(): void;
     handleResize(): void;
     _updateOverflowItems(): null | undefined;
-    _findFocusedItem(items: Array<SideNavigationItem | SideNavigationGroup>): SideNavigationItemBase | undefined;
-    _getSelectableItems(items: Array<SideNavigationItem | SideNavigationGroup>): Array<SideNavigationSelectableItemBase>;
-    _getFocusableItems(items: Array<SideNavigationItem | SideNavigationGroup>): Array<SideNavigationItemBase>;
-    _getAllItems(items: Array<SideNavigationItem | SideNavigationGroup>): Array<SideNavigationItemBase>;
-    _findSelectedItem(items: Array<SideNavigationItem | SideNavigationGroup>): SideNavigationSelectableItemBase | undefined;
+    _findFocusedItem(items: Array<SideNavigationItemBase>): SideNavigationItemBase | undefined;
+    _getSelectableItems(items: Array<SideNavigationItemBase>): Array<SideNavigationSelectableItemBase>;
+    _getFocusableItems(items: Array<SideNavigationItemBase>): Array<SideNavigationItemBase>;
+    _getAllItems(items: Array<SideNavigationItemBase>): Array<SideNavigationItemBase>;
+    _findSelectedItem(items: Array<SideNavigationItemBase>): SideNavigationSelectableItemBase | undefined;
     get overflowItems(): Array<HTMLElement>;
     _handleItemClick(e: KeyboardEvent | MouseEvent, item: SideNavigationSelectableItemBase): void;
     _handleOverflowClick(): void;

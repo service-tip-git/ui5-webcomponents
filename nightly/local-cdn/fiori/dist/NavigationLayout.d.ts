@@ -1,6 +1,7 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import NavigationLayoutMode from "./types/NavigationLayoutMode.js";
 import type SideNavigation from "./SideNavigation.js";
+import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -15,9 +16,9 @@ import type SideNavigation from "./SideNavigation.js";
  *
  * ### Responsive Behavior
  *
- * On larger screens (screen width of 600px or more), the side navigation is visible
+ * On larger screens with a width of 600px or more, excluding mobile phone devices, the side navigation is visible
  * by default and can be expanded or collapsed using the `mode` property.
- * On small screens (screen width of 599px or less), the side navigation is hidden by
+ * On mobile phone devices and screens with a width of 599px or less, the side navigation is hidden by
  * default and can be displayed using the `mode` property.
  *
  * ### ES6 Module Import
@@ -44,6 +45,10 @@ declare class NavigationLayout extends UI5Element {
      */
     hasSideNavigation: boolean;
     /**
+     * @private
+     */
+    isPhone: boolean;
+    /**
      * Gets whether the side navigation is collapsed.
      * @public
      */
@@ -52,17 +57,17 @@ declare class NavigationLayout extends UI5Element {
      * Defines the header.
      * @public
      */
-    header: Array<HTMLElement>;
+    header: Slot<HTMLElement>;
     /**
      * Defines the side content.
      * @public
      */
-    sideContent: Array<SideNavigation>;
+    sideContent: Slot<SideNavigation>;
     /**
      * Defines the content.
      * @public
      */
-    content: Array<HTMLElement>;
+    content: DefaultSlot<HTMLElement>;
     onBeforeRendering(): void;
     calcSideCollapsed(): void;
 }

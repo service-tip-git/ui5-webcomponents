@@ -1,4 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-right.js";
 import type { Timeout } from "@ui5/webcomponents-base/dist/types.js";
@@ -137,7 +138,7 @@ declare class Menu extends UI5Element {
      * **Note:** Use `ui5-menu-item` and `ui5-menu-separator` for their intended design.
      * @public
      */
-    items: Array<IMenuItem>;
+    items: DefaultSlot<IMenuItem>;
     static i18nBundle: I18nBundle;
     _timeout?: Timeout;
     get isRtl(): boolean;

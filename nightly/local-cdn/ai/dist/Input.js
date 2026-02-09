@@ -8,7 +8,7 @@ var Input_1;
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import { isEscape, isF4Shift, } from "@ui5/webcomponents-base/dist/Keys.js";
 import BaseInput from "@ui5/webcomponents/dist/Input.js";

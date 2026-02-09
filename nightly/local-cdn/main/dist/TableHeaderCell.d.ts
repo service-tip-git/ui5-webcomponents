@@ -1,7 +1,6 @@
 import TableCellBase from "./TableCellBase.js";
 import SortOrder from "@ui5/webcomponents-base/dist/types/SortOrder.js";
 import type TableHeaderCellActionBase from "./TableHeaderCellActionBase.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -97,7 +96,8 @@ declare class TableHeaderCell extends TableCellBase {
      * @public
      * @since 2.8.0
      */
-    action: Slot<TableHeaderCellActionBase>;
+    action: Array<TableHeaderCellActionBase>;
+    _popin: boolean;
     _defaultSlot: HTMLSlotElement;
     _actionSlot: HTMLSlotElement;
     ariaRole: string;

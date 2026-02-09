@@ -6,14 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var SideNavigation_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import { createMultiInstanceChecker } from "@ui5/webcomponents-base/dist/util/createMultiInstanceChecker.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import jsxRender from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import NavigationMode from "@ui5/webcomponents-base/dist/types/NavigationMode.js";
 import { isInstanceOfSideNavigationSelectableItemBase } from "./SideNavigationSelectableItemBase.js";
@@ -378,17 +377,17 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
         return this._getFocusableItems(items).find(item => item.forcedTabIndex === "0");
     }
     _getSelectableItems(items) {
-        return items.filter(instanceOfItemOrGroup).reduce((result, item) => {
+        return items.reduce((result, item) => {
             return result.concat(item.selectableItems);
         }, new Array());
     }
     _getFocusableItems(items) {
-        return items.filter(instanceOfItemOrGroup).reduce((result, item) => {
+        return items.reduce((result, item) => {
             return result.concat(item.focusableItems);
         }, new Array());
     }
     _getAllItems(items) {
-        return items.filter(instanceOfItemOrGroup).reduce((result, item) => {
+        return items.reduce((result, item) => {
             return result.concat(item.allItems);
         }, new Array());
     }
@@ -396,7 +395,7 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
         return this._getSelectableItems(items).find(item => item._selected);
     }
     get overflowItems() {
-        return this.items.filter(instanceOfItemOrGroup).reduce((result, item) => {
+        return this.items.reduce((result, item) => {
             return result.concat(item.overflowItems);
         }, new Array());
     }
@@ -537,7 +536,6 @@ SideNavigation = SideNavigation_1 = __decorate([
         cancelable: true,
     })
 ], SideNavigation);
-const instanceOfItemOrGroup = createMultiInstanceChecker(["isSideNavigationItem", "isSideNavigationGroup"]);
 SideNavigation.define();
 export default SideNavigation;
 //# sourceMappingURL=SideNavigation.js.map

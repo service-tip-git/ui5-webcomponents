@@ -3,7 +3,6 @@ import ListItem from "./ListItem.js";
 import type { IAccessibleListItem } from "./ListItem.js";
 import type WrappingType from "./types/WrappingType.js";
 import type { ExpandableTextTemplateParams } from "./types/ExpandableTextTemplateParams.js";
-import type { DefaultSlot, Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 type ExpandableTextTemplate = (this: ListItemStandard, params: ExpandableTextTemplateParams) => JSX.Element;
 /**
  * @class
@@ -131,7 +130,7 @@ declare class ListItemStandard extends ListItem implements IAccessibleListItem {
      * If both `text` and `default` slot are used, the `text` property takes precedence.
      * @public
      */
-    content: DefaultSlot<Node>;
+    content: Array<Node>;
     /**
      * **Note:** While the slot allows option for setting custom avatar, to match the
      * design guidelines, please use the `ui5-avatar` with it's default size - S.
@@ -141,7 +140,7 @@ declare class ListItemStandard extends ListItem implements IAccessibleListItem {
      * @since 2.0.0
      * @public
      */
-    image: Slot<HTMLElement>;
+    image: Array<HTMLElement>;
     onBeforeRendering(): void;
     /**
      * Returns the content text, either from text property or from the default slot

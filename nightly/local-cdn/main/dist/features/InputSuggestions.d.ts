@@ -72,7 +72,6 @@ declare class Suggestions {
     _handleItemNavigation(forward: boolean, index: number): void;
     _selectNextItem(): void;
     _selectPreviousItem(): void;
-    get visibleItems(): IInputSuggestionItem[];
     _moveItemSelection(previousIdx: number, nextIdx: number): void;
     _deselectItems(): void;
     _clearItemFocus(): void;

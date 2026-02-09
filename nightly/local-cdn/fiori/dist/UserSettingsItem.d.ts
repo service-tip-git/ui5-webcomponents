@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot, Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { TabContainerTabSelectEventDetail } from "@ui5/webcomponents/dist/TabContainer.js";
 import type UserSettingsView from "./UserSettingsView.js";
 type UserSettingsItemViewSelectEventDetail = {
@@ -106,13 +105,13 @@ declare class UserSettingsItem extends UI5Element {
      *
      * @public
      */
-    pages: DefaultSlot<UserSettingsView>;
+    pages: Array<UserSettingsView>;
     /**
      * Defines the tab views of the user settings item.
      *
      * @public
      */
-    tabs: Slot<UserSettingsView>;
+    tabs: Array<UserSettingsView>;
     /**
      * Indicates whether any of the element siblings have icon.
      */

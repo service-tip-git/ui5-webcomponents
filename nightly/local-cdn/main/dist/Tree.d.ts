@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import DragAndDropHandler from "./delegate/DragAndDropHandler.js";
 import MovePlacement from "@ui5/webcomponents-base/dist/types/MovePlacement.js";
 import type DropIndicator from "./DropIndicator.js";
@@ -151,7 +150,7 @@ declare class Tree extends UI5Element {
      * **Note:** Use `ui5-tree-item` for the intended design.
      * @public
      */
-    items: DefaultSlot<TreeItemBase>;
+    items: Array<TreeItemBase>;
     /**
      * Defines the component header.
      *
@@ -159,7 +158,7 @@ declare class Tree extends UI5Element {
      * `headerText` property is ignored.
      * @public
      */
-    header: Slot<HTMLElement>;
+    header: Array<HTMLElement>;
     _dragAndDropHandler: DragAndDropHandler;
     constructor();
     onBeforeRendering(): void;
@@ -210,6 +209,7 @@ declare class Tree extends UI5Element {
     _transformElement(element: HTMLElement): HTMLElement;
     _validateDraggedElement(draggedElement: HTMLElement, targetElement: HTMLElement): boolean;
     _filterPlacements(placements: MovePlacement[], draggedElement: HTMLElement, targetElement: HTMLElement): MovePlacement[];
+    _isInstanceOfTreeItemBase(object: any): object is TreeItemBase;
 }
 export default Tree;
 export type { TreeMoveEventDetail, TreeItemToggleEventDetail, TreeItemMouseoverEventDetail, TreeItemMouseoutEventDetail, TreeItemClickEventDetail, TreeItemDeleteEventDetail, TreeItemFocusEventDetail, TreeSelectionChangeEventDetail, WalkCallback, };

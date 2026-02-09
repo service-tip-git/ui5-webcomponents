@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { AccessibilityAttributes } from "@ui5/webcomponents-base/dist/types.js";
@@ -92,14 +91,14 @@ declare class Tab extends UI5Element implements ITabbable, ITab {
      * Holds the content associated with this tab.
      * @public
      */
-    content: DefaultSlot<Node>;
+    content: Array<Node>;
     /**
      * Defines hierarchies with nested sub tabs.
      *
      * **Note:** Use `ui5-tab` and `ui5-tab-separator` for the intended design.
      * @public
      */
-    items: Slot<ITab>;
+    items: Array<ITab>;
     _isInline?: boolean;
     _forcedMixedMode?: boolean;
     _getElementInStrip?: () => HTMLElement | undefined;

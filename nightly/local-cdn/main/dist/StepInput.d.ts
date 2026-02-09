@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import type { Timeout } from "@ui5/webcomponents-base/dist/types.js";
@@ -9,7 +8,6 @@ import "@ui5/webcomponents-icons/dist/add.js";
 import type Input from "./Input.js";
 import type { InputAccInfo, InputEventDetail } from "./Input.js";
 import InputType from "./types/InputType.js";
-import NumberFormat from "@ui5/webcomponents-localization/dist/NumberFormat.js";
 type StepInputValueStateChangeEventDetail = {
     valueState: `${ValueState}`;
     valid: boolean;
@@ -166,11 +164,8 @@ declare class StepInput extends UI5Element implements IFormInputElement {
      * when the component is in `Information`, `Critical` or `Negative` value state.
      * @public
      */
-    valueStateMessage: Slot<HTMLElement>;
+    valueStateMessage: Array<HTMLElement>;
     _initialValueState?: `${ValueState}`;
-    _formatter?: NumberFormat;
-    _languageChangeHandler?: (lang: string) => Promise<void>;
-    _languageChanged?: boolean;
     static i18nBundle: I18nBundle;
     formElementAnchor(): Promise<HTMLElement | undefined>;
     get formValidityMessage(): string;
@@ -190,11 +185,6 @@ declare class StepInput extends UI5Element implements IFormInputElement {
         step: number;
     };
     onBeforeRendering(): void;
-    onEnterDOM(): void;
-    onExitDOM(): void;
-    _setupLanguageChangeHandler(): void;
-    _cleanupLanguageChangeHandler(): void;
-    get formatter(): NumberFormat;
     get input(): Input;
     get innerInput(): HTMLInputElement;
     get inputOuter(): Element;
@@ -202,7 +192,6 @@ declare class StepInput extends UI5Element implements IFormInputElement {
     _onInput(e: CustomEvent<InputEventDetail>): void;
     _onInputFocusIn(): void;
     _onInputFocusOut(): void;
-    _onMouseWheel(e: WheelEvent): void;
     _setButtonState(): void;
     _validate(): void;
     _updateValueState(): void;
@@ -216,16 +205,6 @@ declare class StepInput extends UI5Element implements IFormInputElement {
      * @param fireChangeEvent if `true`, fires `change` event when the value is changed
      */
     _modifyValue(modifier: number, fireChangeEvent?: boolean): void;
-    /**
-     * Formats a number with thousands separator based on current locale
-     * @private
-     */
-    _formatNumber(value: number): string;
-    /**
-     * Parses formatted number string back to numeric value
-     * @private
-    */
-    _parseNumber(formattedValue: string): number;
     _incValue(): void;
     _decValue(): void;
     get _isValueWithCorrectPrecision(): boolean;
@@ -235,11 +214,7 @@ declare class StepInput extends UI5Element implements IFormInputElement {
     _updateValueAndValidate(inputValue: number): void;
     _onfocusin(): void;
     _onfocusout(): void;
-    _onInputRequestSubmit(): void;
     _onkeydown(e: KeyboardEvent): void;
-    _getCaretPosition(): number | null;
-    _getValueOnkeyDown(e: KeyboardEvent, inputValue: string, cursorPosition?: number): string;
-    _isInputValueValid(typedValue: string, parsedValue: number): boolean;
     _decSpin(): void;
     _incSpin(): void;
     /**

@@ -113,6 +113,10 @@ declare class DateRangePicker extends DatePicker implements IFormInputElement {
     /**
      * @override
      */
+    _onInputSubmit(): Promise<void>;
+    /**
+     * @override
+     */
     onResponsivePopoverAfterClose(): void;
     /**
      * Checks if a value is valid against the current date format of the DatePicker.

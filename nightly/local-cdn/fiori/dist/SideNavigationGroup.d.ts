@@ -2,7 +2,6 @@ import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import SideNavigationItemBase from "./SideNavigationItemBase.js";
 import type SideNavigationSelectableItemBase from "./SideNavigationSelectableItemBase.js";
 import type SideNavigationItem from "./SideNavigationItem.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -35,7 +34,7 @@ declare class SideNavigationGroup extends SideNavigationItemBase {
      *
      * @public
      */
-    items: DefaultSlot<SideNavigationItem>;
+    items: Array<SideNavigationItem>;
     static i18nBundle: I18nBundle;
     onBeforeRendering(): void;
     get overflowItems(): Array<HTMLElement>;
@@ -52,5 +51,6 @@ declare class SideNavigationGroup extends SideNavigationItemBase {
     _toggle(): void;
     get isSideNavigationGroup(): boolean;
 }
-export declare const isInstanceOfSideNavigationGroup: (object: any) => object is SideNavigationGroup;
+declare const isInstanceOfSideNavigationGroup: (object: any) => object is SideNavigationGroup;
 export default SideNavigationGroup;
+export { isInstanceOfSideNavigationGroup };

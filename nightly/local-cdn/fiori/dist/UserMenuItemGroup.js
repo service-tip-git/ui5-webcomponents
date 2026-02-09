@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import MenuItemGroup from "@ui5/webcomponents/dist/MenuItemGroup.js";
 import UserMenuItemGroupTemplate from "./UserMenuItemGroupTemplate.js";
-import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInstanceChecker.js";
 /**
  * @class
  *
@@ -46,7 +45,10 @@ UserMenuItemGroup = __decorate([
         template: UserMenuItemGroupTemplate,
     })
 ], UserMenuItemGroup);
+const isInstanceOfUserMenuItemGroup = (object) => {
+    return "isGroup" in object;
+};
 UserMenuItemGroup.define();
 export default UserMenuItemGroup;
-export const isInstanceOfUserMenuItemGroup = createInstanceChecker("isGroup");
+export { isInstanceOfUserMenuItemGroup, };
 //# sourceMappingURL=UserMenuItemGroup.js.map

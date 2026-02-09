@@ -1,4 +1,3 @@
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { IComboBoxItem } from "./ComboBox.js";
 import ListItemGroup from "./ListItemGroup.js";
 import type ComboBoxItem from "./ComboBoxItem.js";
@@ -19,9 +18,10 @@ declare class ComboBoxItemGroup extends ListItemGroup implements IComboBoxItem {
      * Defines the items of the <code>ui5-cb-item-group</code>.
      * @public
      */
-    items: DefaultSlot<ComboBoxItem>;
+    items: Array<ComboBoxItem>;
     get isGroupItem(): boolean;
     get _isVisible(): boolean;
 }
-export declare const isInstanceOfComboBoxItemGroup: (object: any) => object is ComboBoxItemGroup;
+declare const isInstanceOfComboBoxItemGroup: (object: any) => object is ComboBoxItemGroup;
+export { isInstanceOfComboBoxItemGroup };
 export default ComboBoxItemGroup;

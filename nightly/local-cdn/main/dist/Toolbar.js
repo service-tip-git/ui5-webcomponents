@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var Toolbar_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
@@ -16,6 +16,7 @@ import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.j
 import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import "@ui5/webcomponents-icons/dist/overflow.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
+import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
 import { TOOLBAR_OVERFLOW_BUTTON_ARIA_LABEL, TOOLBAR_POPOVER_AVAILABLE_VALUES, } from "./generated/i18n/i18n-defaults.js";
 import ToolbarTemplate from "./ToolbarTemplate.js";
 import ToolbarCss from "./generated/themes/Toolbar.css.js";
@@ -92,8 +93,8 @@ let Toolbar = Toolbar_1 = class Toolbar extends UI5Element {
     }
     get padding() {
         const toolbarComputedStyle = getComputedStyle(this.getDomRef());
-        return calculateCSSREMValue(toolbarComputedStyle, "--_ui5-toolbar-padding-left")
-            + calculateCSSREMValue(toolbarComputedStyle, "--_ui5-toolbar-padding-right");
+        return calculateCSSREMValue(toolbarComputedStyle, getScopedVarName("--_ui5-toolbar-padding-left"))
+            + calculateCSSREMValue(toolbarComputedStyle, getScopedVarName("--_ui5-toolbar-padding-right"));
     }
     get alwaysOverflowItems() {
         return this.items.filter((item) => item.overflowPriority === ToolbarItemOverflowBehavior.AlwaysOverflow);
@@ -344,7 +345,7 @@ let Toolbar = Toolbar_1 = class Toolbar extends UI5Element {
         }
         const id = item._id;
         // Measure rendered width for spacers with width, and for normal items
-        const renderedItem = this.shadowRoot.querySelector(`#${item._individualSlot}`);
+        const renderedItem = this.shadowRoot.querySelector(`#${item.slot}`);
         let itemWidth = 0;
         if (renderedItem && !renderedItem.classList.contains("ui5-tb-popover-item") && renderedItem.offsetWidth && item._isRendering === false) {
             const ItemCSSStyleSet = getComputedStyle(renderedItem);

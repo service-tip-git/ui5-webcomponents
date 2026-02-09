@@ -13,7 +13,6 @@ import type { InputAccInfo } from "./Input.js";
 import InputType from "./types/InputType.js";
 import IconMode from "./types/IconMode.js";
 import "@ui5/webcomponents-localization/dist/features/calendar/Gregorian.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 type ValueStateAnnouncement = Record<Exclude<ValueState, ValueState.None>, string>;
 type DatePickerChangeEventDetail = {
     value: string;
@@ -228,7 +227,7 @@ declare class DatePicker extends DateComponentBase implements IFormInputElement 
      * @since 1.0.0-rc.7
      * @public
      */
-    valueStateMessage: Slot<HTMLElement>;
+    valueStateMessage: Array<HTMLElement>;
     responsivePopover?: ResponsivePopover;
     _dateTimeInput: DateTimeInput;
     _calendar: Calendar;
@@ -278,7 +277,7 @@ declare class DatePicker extends DateComponentBase implements IFormInputElement 
      * The ui5-input "submit" event handler - fire change event when the user presses enter
      * @protected
      */
-    _onInputRequestSubmit(): void;
+    _onInputSubmit(): void;
     /**
      * The ui5-input "change" event handler - fire change event when the user focuses out of the input
      * @protected
@@ -407,20 +406,11 @@ declare class DatePicker extends DateComponentBase implements IFormInputElement 
     _toggleAndFocusInput(): void;
     /**
      * Currently selected date represented as a Local JavaScript Date instance.
-     * Note: this getter can only be reliably used after the component is fully defined. Use dateValueAsync which resolves only when this condition is met.
      * @public
      * @default null
-     * @deprecated Use dateValueAsync instead
      */
     get dateValue(): Date | null;
-    /**
-     * Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.
-     * @public
-     * @default Promise
-     */
-    get dateValueAsync(): Promise<Date | null>;
     get dateValueUTC(): Date | null;
-    get dateValueUTCAsync(): Promise<Date | null>;
     get styles(): {
         main: {
             width: string;

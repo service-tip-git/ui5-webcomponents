@@ -7,9 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import UserSettingsView from "./UserSettingsView.js";
 import UserSettingsAppearanceViewTemplate from "./UserSettingsAppearanceViewTemplate.js";
 import UserSettingViewCss from "./generated/themes/UserSettingsView.css.js";
-import { isInstanceOfUserSettingsAppearanceViewItem } from "./UserSettingsAppearanceViewItem.js";
-import { isInstanceOfUserSettingsAppearanceViewGroup } from "./UserSettingsAppearanceViewGroup.js";
-import { customElement, slotStrict as slot, eventStrict as event, } from "@ui5/webcomponents-base/dist/decorators.js";
+import { customElement, slot, eventStrict as event, } from "@ui5/webcomponents-base/dist/decorators.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 let UserSettingsAppearanceView = 
 /**
@@ -32,15 +30,16 @@ class UserSettingsAppearanceView extends UserSettingsView {
         super(...arguments);
         this._handleItemClick = (e) => {
             const listItem = e.detail.item;
-            if (isInstanceOfUserSettingsAppearanceViewItem(listItem)) {
+            if (listItem.tagName === "UI5-USER-SETTINGS-APPEARANCE-VIEW-ITEM") {
+                const item = listItem;
                 const eventPrevented = !this.fireDecoratorEvent("selection-change", {
-                    item: listItem,
+                    item,
                 });
                 if (!eventPrevented) {
                     this._getAllItems().forEach(viewItem => {
                         viewItem.selected = false;
                     });
-                    listItem.selected = true;
+                    item.selected = true;
                 }
             }
         };
@@ -48,11 +47,12 @@ class UserSettingsAppearanceView extends UserSettingsView {
     _getAllItems() {
         const allItems = [];
         this.items.forEach(item => {
-            if (isInstanceOfUserSettingsAppearanceViewGroup(item)) {
-                const groupItems = Array.from(item.children).filter(isInstanceOfUserSettingsAppearanceViewItem);
+            if (item.tagName === "UI5-USER-SETTINGS-APPEARANCE-VIEW-GROUP") {
+                const group = item;
+                const groupItems = Array.from(group.children).filter(child => child.tagName === "UI5-USER-SETTINGS-APPEARANCE-VIEW-ITEM");
                 allItems.push(...groupItems);
             }
-            else if (isInstanceOfUserSettingsAppearanceViewItem(item)) {
+            else if (item.tagName === "UI5-USER-SETTINGS-APPEARANCE-VIEW-ITEM") {
                 allItems.push(item);
             }
         });

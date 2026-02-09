@@ -1,7 +1,6 @@
 import BaseInput from "@ui5/webcomponents/dist/Input.js";
 import type Menu from "@ui5/webcomponents/dist/Menu.js";
 import type { MenuItemClickEventDetail } from "@ui5/webcomponents/dist/Menu.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 type InputVersionChangeEventDetail = {
     backwards: boolean;
 };
@@ -82,7 +81,7 @@ declare class Input extends BaseInput {
      * Defines the items of the menu for the component.
      * @public
      */
-    actions: Slot<HTMLElement>;
+    actions: Array<HTMLElement>;
     _previousCurrentStep: number;
     _previousTotalSteps: number;
     isFocused: boolean;

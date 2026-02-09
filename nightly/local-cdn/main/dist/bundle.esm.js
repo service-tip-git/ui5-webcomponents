@@ -25,7 +25,6 @@ import { getAllRegisteredTags } from "@ui5/webcomponents-base/dist/CustomElement
 // or for custom icon collection
 // setDefaultIconCollection("sap_fiori_3", "my-custom-icons");
 import Avatar from "./Avatar.js";
-import AvatarBadge from "./AvatarBadge.js";
 import AvatarGroup from "./AvatarGroup.js";
 import Bar from "./Bar.js";
 import Breadcrumbs from "./Breadcrumbs.js";

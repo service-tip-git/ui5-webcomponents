@@ -1,7 +1,6 @@
 import UserSettingsView from "./UserSettingsView.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type UserMenuAccount from "./UserMenuAccount.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 declare class UserSettingsAccountView extends UserSettingsView {
     eventDetails: {
         "edit-accounts-click": void;
@@ -12,7 +11,7 @@ declare class UserSettingsAccountView extends UserSettingsView {
      *
      * @public
      */
-    account: Slot<UserMenuAccount>;
+    account?: Array<UserMenuAccount>;
     /**
      * Defines if the User Menu shows the `Manage Account` option.
      *
@@ -25,6 +24,6 @@ declare class UserSettingsAccountView extends UserSettingsView {
     _handleManageAccountClick(): void;
     get _manageAccountButtonText(): string;
     get _editAvatarTooltip(): string;
-    get _account(): UserMenuAccount;
+    get _account(): UserMenuAccount | undefined;
 }
 export default UserSettingsAccountView;

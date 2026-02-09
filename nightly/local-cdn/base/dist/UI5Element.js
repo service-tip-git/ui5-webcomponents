@@ -23,7 +23,6 @@ import { getI18nBundle } from "./i18nBundle.js";
 import { fetchCldr } from "./asset-registries/LocaleData.js";
 import getLocale from "./locale/getLocale.js";
 import { getLanguageChangePending } from "./config/Language.js";
-import createInstanceChecker from "./util/createInstanceChecker.js";
 const DEV_MODE = true;
 let autoId = 0;
 const elementTimeouts = new Map();
@@ -206,7 +205,7 @@ class UI5Element extends HTMLElement {
             await this._processChildren();
         }
         if (!ctor.asyncFinished) {
-            await ctor._definePromise;
+            await ctor.definePromise;
         }
         if (!this._inDOM) { // Component removed from DOM while _processChildren was running
             return;
@@ -215,13 +214,6 @@ class UI5Element extends HTMLElement {
         this._domRefReadyPromise._deferredResolve();
         this._fullyConnected = true;
         this.onEnterDOM();
-    }
-    get definePromise() {
-        const ctor = this.constructor;
-        if (!ctor.asyncFinished && ctor._definePromise) {
-            return ctor._definePromise;
-        }
-        return Promise.resolve();
     }
     /**
      * Do not call this method from derivatives of UI5Element, use "onExitDOM" only
@@ -314,7 +306,7 @@ class UI5Element extends HTMLElement {
         }
         const autoIncrementMap = new Map();
         const slottedChildrenMap = new Map();
-        domChildren.forEach((child, idx) => {
+        const allChildrenUpgraded = domChildren.map(async (child, idx) => {
             // Determine the type of the child (mainly by the slot attribute)
             const slotName = getSlotName(child);
             const slotData = slotsMap[slotName];
@@ -324,28 +316,6 @@ class UI5Element extends HTMLElement {
                     const validValues = Object.keys(slotsMap).join(", ");
                     console.warn(`Unknown slotName: ${slotName}, ignoring`, child, `Valid values are: ${validValues}`); // eslint-disable-line
                 }
-                return;
-            }
-            const propertyName = slotData.propertyName || slotName;
-            if (slottedChildrenMap.has(propertyName)) {
-                slottedChildrenMap.get(propertyName).push({ child, idx });
-            }
-            else {
-                slottedChildrenMap.set(propertyName, [{ child, idx }]);
-            }
-        });
-        // Distribute the child in the _state object, keeping the Light DOM order,
-        // not the order elements are defined.
-        slottedChildrenMap.forEach((children, propertyName) => {
-            this._state[propertyName] = children.sort((a, b) => a.idx - b.idx).map(_ => _.child);
-            this._state[kebabToCamelCase(propertyName)] = this._state[propertyName];
-        });
-        const allChildrenUpgraded = domChildren.map(async (child) => {
-            // Determine the type of the child (mainly by the slot attribute)
-            const slotName = getSlotName(child);
-            const slotData = slotsMap[slotName];
-            // Check if the slotName is supported
-            if (slotData === undefined) {
                 return;
             }
             // For children that need individual slots, calculate them
@@ -382,8 +352,21 @@ class UI5Element extends HTMLElement {
             if (child instanceof HTMLSlotElement) {
                 this._attachSlotChange(child, slotName, !!slotData.invalidateOnChildChange);
             }
+            const propertyName = slotData.propertyName || slotName;
+            if (slottedChildrenMap.has(propertyName)) {
+                slottedChildrenMap.get(propertyName).push({ child, idx });
+            }
+            else {
+                slottedChildrenMap.set(propertyName, [{ child, idx }]);
+            }
         });
         await Promise.all(allChildrenUpgraded);
+        // Distribute the child in the _state object, keeping the Light DOM order,
+        // not the order elements are defined.
+        slottedChildrenMap.forEach((children, propertyName) => {
+            this._state[propertyName] = children.sort((a, b) => a.idx - b.idx).map(_ => _.child);
+            this._state[kebabToCamelCase(propertyName)] = this._state[propertyName];
+        });
         // Compare the content of each slot with the cached values and invalidate for the ones that changed
         let invalidated = false;
         for (const [slotName, slotData] of Object.entries(slotsMap)) { // eslint-disable-line
@@ -1104,7 +1087,7 @@ class UI5Element extends HTMLElement {
             });
             this.asyncFinished = true;
         };
-        this._definePromise = defineSequence();
+        this.definePromise = defineSequence();
         const tag = this.getMetadata().getTag();
         const definedLocally = isTagRegistered(tag);
         const definedGlobally = customElements.get(tag);
@@ -1156,7 +1139,9 @@ UI5Element.i18nBundleStorage = {};
 /**
  * Always use duck-typing to cover all runtimes on the page.
  */
-const instanceOfUI5Element = createInstanceChecker("isUI5Element");
+const instanceOfUI5Element = (object) => {
+    return "isUI5Element" in object;
+};
 export default UI5Element;
 export { instanceOfUI5Element, };
 //# sourceMappingURL=UI5Element.js.map

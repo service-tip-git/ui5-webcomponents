@@ -1,6 +1,5 @@
 import ListItemBase from "@ui5/webcomponents/dist/ListItemBase.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -68,7 +67,7 @@ declare class SearchItem extends ListItemBase {
      * @public
      * @since 2.12.0
      */
-    image: Slot<HTMLElement>;
+    image: Array<HTMLElement>;
     /**
      * Defines the actionable elements.
      * This slot allows placing additional interactive elements (such as buttons, icons, or tags)
@@ -80,7 +79,7 @@ declare class SearchItem extends ListItemBase {
      * @public
      * @since 2.16.0
      */
-    actions: Slot<HTMLElement>;
+    actions: Array<HTMLElement>;
     _markupText: string;
     static i18nBundle: I18nBundle;
     _onfocusin(e: FocusEvent): void;

@@ -8,7 +8,7 @@ var Popover_1;
 import { instanceOfUI5Element } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import { isIOS } from "@ui5/webcomponents-base/dist/Device.js";
 import { isClickInRect, getClosedPopupParent } from "@ui5/webcomponents-base/dist/util/PopupUtils.js";
 import clamp from "@ui5/webcomponents-base/dist/util/clamp.js";
@@ -25,7 +25,6 @@ import PopoverTemplate from "./PopoverTemplate.js";
 // Styles
 import PopupsCommonCss from "./generated/themes/PopupsCommon.css.js";
 import PopoverCss from "./generated/themes/Popover.css.js";
-import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInstanceChecker.js";
 const ARROW_SIZE = 8;
 var PopoverActualHorizontalAlign;
 (function (PopoverActualHorizontalAlign) {
@@ -145,8 +144,6 @@ let Popover = Popover_1 = class Popover extends Popup {
          * @private
          */
         this.actualPlacement = "Right";
-        // for instance checks
-        this.isPopover = true;
         this._popoverResize = new PopoverResize(this);
     }
     /**
@@ -777,10 +774,10 @@ __decorate([
     property({ noAttribute: true })
 ], Popover.prototype, "_resizeHandlePlacement", void 0);
 __decorate([
-    slot()
+    slot({ type: HTMLElement })
 ], Popover.prototype, "header", void 0);
 __decorate([
-    slot()
+    slot({ type: HTMLElement })
 ], Popover.prototype, "footer", void 0);
 __decorate([
     property({ converter: DOMReferenceConverter })
@@ -796,8 +793,10 @@ Popover = Popover_1 = __decorate([
         template: PopoverTemplate,
     })
 ], Popover);
+const instanceOfPopover = (object) => {
+    return "opener" in object;
+};
 Popover.define();
 export default Popover;
-export const instanceOfPopover = createInstanceChecker("isPopover");
-export { PopoverActualPlacement, PopoverActualHorizontalAlign };
+export { instanceOfPopover, PopoverActualPlacement, PopoverActualHorizontalAlign };
 //# sourceMappingURL=Popover.js.map

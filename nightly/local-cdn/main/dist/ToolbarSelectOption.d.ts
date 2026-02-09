@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -27,6 +26,6 @@ declare class ToolbarSelectOption extends UI5Element {
      * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
      * @public
      */
-    text: DefaultSlot<Node>;
+    text: Array<Node>;
 }
 export default ToolbarSelectOption;

@@ -6,7 +6,6 @@ import type Token from "./Token.js";
 import type Tokenizer from "./Tokenizer.js";
 import type { TokenizerTokenDeleteEventDetail } from "./Tokenizer.js";
 import type { InputSelectionChangeEventDetail as MultiInputSelectionChangeEventDetail } from "./Input.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 interface IToken extends UI5Element, ITabbable {
     text?: string;
     readonly: boolean;
@@ -80,7 +79,7 @@ declare class MultiInput extends Input implements IFormInputElement {
      * Defines the component tokens.
      * @public
      */
-    tokens: Slot<IToken>;
+    tokens: Array<IToken>;
     _skipOpenSuggestions: boolean;
     _valueHelpIconPressed: boolean;
     get formValidityMessage(): string;

@@ -12,7 +12,6 @@ import type { InputEventDetail } from "@ui5/webcomponents/dist/Input.js";
 import type Input from "@ui5/webcomponents/dist/Input.js";
 import type { PopupBeforeCloseEventDetail } from "@ui5/webcomponents/dist/Popup.js";
 import type Select from "@ui5/webcomponents/dist/Select.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 interface ISearchSuggestionItem extends UI5Element {
     selected: boolean;
     text: string;
@@ -69,25 +68,25 @@ declare class Search extends SearchField {
      *
      * @public
      */
-    items: DefaultSlot<SearchItem | SearchItemGroup>;
+    items: Array<SearchItem | SearchItemGroup>;
     /**
      * Defines the popup footer action button.
      *
      * @public
      */
-    action: Slot<Button>;
+    action: Array<Button>;
     /**
      * Defines the illustrated message to be shown in the popup.
      *
      * @public
      */
-    illustration: Slot<IllustratedMessage>;
+    illustration: Array<IllustratedMessage>;
     /**
      * Defines the illustrated message to be shown in the popup.
      *
      * @public
      */
-    messageArea: Slot<SearchMessageArea>;
+    messageArea: Array<SearchMessageArea>;
     /**
      * Indicates whether the items picker is open.
      * @public

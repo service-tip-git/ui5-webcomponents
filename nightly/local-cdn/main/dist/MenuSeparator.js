@@ -9,7 +9,6 @@ import jsxRendererer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js"
 import menuSeparatorTemplate from "./MenuSeparatorTemplate.js";
 import menuSeparatorCss from "./generated/themes/MenuSeparator.css.js";
 import ListItemBase from "./ListItemBase.js";
-import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInstanceChecker.js";
 /**
  * @class
  * The `ui5-menu-separator` represents a horizontal line to separate menu items inside a `ui5-menu`.
@@ -51,7 +50,10 @@ MenuSeparator = __decorate([
         template: menuSeparatorTemplate,
     })
 ], MenuSeparator);
+const isInstanceOfMenuSeparator = (object) => {
+    return "isSeparator" in object;
+};
 MenuSeparator.define();
 export default MenuSeparator;
-export const isInstanceOfMenuSeparator = createInstanceChecker("isSeparator");
+export { isInstanceOfMenuSeparator, };
 //# sourceMappingURL=MenuSeparator.js.map

@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type Title from "@ui5/webcomponents/dist/Title.js";
 import type Button from "@ui5/webcomponents/dist/Button.js";
 import type { ListItemClickEventDetail } from "@ui5/webcomponents/dist/List.js";
@@ -92,7 +91,7 @@ declare class UserMenu extends UI5Element {
      * Defines the menu items.
      * @public
      */
-    menuItems: DefaultSlot<UserMenuItem>;
+    menuItems: Array<UserMenuItem>;
     /**
      * Defines the user accounts.
      *
@@ -100,7 +99,7 @@ declare class UserMenu extends UI5Element {
      * there is an item with `selected` property set to `true`.
      * @public
      */
-    accounts: Slot<UserMenuAccount>;
+    accounts: Array<UserMenuAccount>;
     static i18nBundle: I18nBundle;
     /**
      * @default false
@@ -148,7 +147,7 @@ declare class UserMenu extends UI5Element {
     _handlePopoverAfterClose(): void;
     _openItemSubMenu(item: UserMenuItem): void;
     _closeUserMenu(): void;
-    get _otherAccounts(): Slot<UserMenuAccount>;
+    get _otherAccounts(): UserMenuAccount[];
     get _manageAccountButtonText(): string;
     get _otherAccountsButtonText(): string;
     get _signOutButtonText(): string;

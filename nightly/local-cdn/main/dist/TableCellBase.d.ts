@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type TableCellHorizontalAlign from "./types/TableCellHorizontalAlign.js";
 /**
@@ -17,7 +16,7 @@ declare abstract class TableCellBase extends UI5Element {
      *
      * @public
      */
-    content: DefaultSlot<Node>;
+    content: Array<Node>;
     /**
      * Determines the horizontal alignment of table cells.
      *

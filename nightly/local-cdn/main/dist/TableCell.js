@@ -33,8 +33,8 @@ let TableCell = class TableCell extends TableCellBase {
         if (this.horizontalAlign) {
             this.style.justifyContent = this.horizontalAlign;
         }
-        else if (this._headerCell) {
-            this.style.justifyContent = `var(--halign-${this._headerCell._id})`;
+        else if (this._individualSlot) {
+            this.style.justifyContent = `var(--horizontal-align-${this._individualSlot})`;
         }
     }
     _injectHeaderNodes(ref) {
@@ -44,23 +44,21 @@ let TableCell = class TableCell extends TableCellBase {
     }
     get _headerCell() {
         const row = this.parentElement;
-        const table = row?.parentElement;
-        const index = row?.cells?.indexOf(this) ?? -1;
-        return (index !== -1) ? table?.headerRow?.[0]?.cells?.[index] : null;
+        const table = row.parentElement;
+        const index = row.cells.indexOf(this);
+        return table.headerRow[0].cells[index];
     }
     get _popinHeaderNodes() {
         const nodes = [];
         const headerCell = this._headerCell;
-        if (headerCell) {
-            if (headerCell.popinText) {
-                nodes.push(document.createTextNode(headerCell.popinText));
-            }
-            else {
-                nodes.push(...headerCell.content.map(node => node.cloneNode(true)));
-            }
-            if (headerCell.action[0]) {
-                nodes.push(headerCell.action[0].cloneNode(true));
-            }
+        if (headerCell.popinText) {
+            nodes.push(document.createTextNode(headerCell.popinText));
+        }
+        else {
+            nodes.push(...this._headerCell.content.map(node => node.cloneNode(true)));
+        }
+        if (headerCell.action[0]) {
+            nodes.push(headerCell.action[0].cloneNode(true));
         }
         return nodes;
     }

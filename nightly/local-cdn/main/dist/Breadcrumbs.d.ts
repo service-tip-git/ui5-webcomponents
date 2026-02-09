@@ -1,5 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { ChangeInfo, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { ChangeInfo } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { AccessibilityAttributes } from "@ui5/webcomponents-base/dist/types.js";
@@ -86,7 +86,7 @@ declare class Breadcrumbs extends UI5Element {
      * **Note:** Use the `ui5-breadcrumbs-item` component to define the desired items.
      * @public
      */
-    items: DefaultSlot<BreadcrumbsItem>;
+    items: Array<BreadcrumbsItem>;
     _itemNavigation: ItemNavigation;
     _onResizeHandler: ResizeObserverCallback;
     _breadcrumbItemWidths: WeakMap<BreadcrumbsItem, number>;

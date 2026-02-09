@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type FormItem from "./FormItem.js";
 import type { IFormItem } from "./Form.js";
@@ -73,7 +72,7 @@ declare class FormGroup extends UI5Element implements IFormItem {
      * Defines the items of the component.
      * @public
      */
-    items: DefaultSlot<FormItem>;
+    items: Array<FormItem>;
     /**
      * @private
      */

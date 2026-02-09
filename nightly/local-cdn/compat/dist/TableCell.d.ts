@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 /**
  * @class
@@ -30,7 +29,7 @@ declare class TableCell extends UI5Element {
      * Specifies the content of the component.
      * @public
      */
-    content: DefaultSlot<HTMLElement>;
+    content?: Array<HTMLElement>;
     static i18nBundle: I18nBundle;
     get cellContent(): Array<HTMLElement>;
     get ariaLabelEmptyCellText(): string;

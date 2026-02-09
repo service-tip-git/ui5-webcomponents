@@ -148,7 +148,6 @@ declare class DynamicDateRange extends UI5Element {
      */
     get _iconMode(): IconMode.Decorative | IconMode.Interactive;
     get tooltipNavigationIcon(): string;
-    get popoverAccessibleName(): string;
     _togglePicker(): void;
     _selectOption(e: CustomEvent): void;
     getOption(operator?: string): IDynamicDateRangeOption | undefined;

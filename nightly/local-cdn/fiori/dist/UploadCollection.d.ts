@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type TitleLevel from "@ui5/webcomponents/dist/types/TitleLevel.js";
 import type { ListSelectionChangeEventDetail } from "@ui5/webcomponents/dist/List.js";
@@ -91,7 +90,7 @@ declare class UploadCollection extends UI5Element {
      * **Note:** Use `ui5-upload-collection-item` for the intended design.
      * @public
      */
-    items: DefaultSlot<UploadCollectionItem>;
+    items: Array<UploadCollectionItem>;
     /**
      * Defines the `ui5-upload-collection` header.
      *
@@ -100,7 +99,7 @@ declare class UploadCollection extends UI5Element {
      * `accessibleName` should be used.
      * @public
      */
-    header: Slot<HTMLElement>;
+    header: Array<HTMLElement>;
     _bodyDnDHandler: DnDEventListener;
     static i18nBundle: I18nBundle;
     constructor();

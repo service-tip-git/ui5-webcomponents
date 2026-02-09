@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { InputEventDetail } from "@ui5/webcomponents/dist/Input.js";
 import type { ListItemClickEventDetail } from "@ui5/webcomponents/dist/List.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
@@ -60,13 +59,13 @@ declare class UserSettingsDialog extends UI5Element {
      * **Note:**  If no setting item is set as `selected`, the first one will be selected.
      * @public
      */
-    items: DefaultSlot<UserSettingsItem>;
+    items: Array<UserSettingsItem>;
     /**
      * Defines the fixed user settings items.
      *
      * @public
      */
-    fixedItems: Slot<UserSettingsItem>;
+    fixedItems: Array<UserSettingsItem>;
     static i18nBundle: I18nBundle;
     /**
      * @private

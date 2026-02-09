@@ -91,11 +91,6 @@ declare class ColorPicker extends UI5Element implements IFormInputElement {
      */
     _alpha: number;
     /**
-     * this is the alpha value in the input only while editing, since it can container invalid/empty values temporarily
-     * @private
-     */
-    _alphaTemp?: string;
-    /**
      * @private
      */
     _hue: number;

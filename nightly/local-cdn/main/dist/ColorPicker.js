@@ -12,6 +12,7 @@ import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import { isEnter } from "@ui5/webcomponents-base/dist/Keys.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
+import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
 import { getRGBColor, getAlpha, } from "@ui5/webcomponents-base/dist/util/ColorConversion.js";
 import "@ui5/webcomponents-icons/dist/expand.js";
 import ColorValue from "./colorpicker-utils/ColorValue.js";
@@ -123,7 +124,7 @@ let ColorPicker = ColorPicker_1 = class ColorPicker extends UI5Element {
         }
         const tempColor = this._colorValue.toRGBString();
         this._updateColorGrid();
-        this.style.setProperty("--ui5_Color_Picker_Progress_Container_Color", tempColor);
+        this.style.setProperty(getScopedVarName("--ui5_Color_Picker_Progress_Container_Color"), tempColor);
     }
     _handleMouseDown(e) {
         this.mouseDown = true;
@@ -177,7 +178,6 @@ let ColorPicker = ColorPicker_1 = class ColorPicker extends UI5Element {
     }
     _handleAlphaInput(e) {
         const aphaInputValue = String(e.currentTarget.value);
-        this._alphaTemp = aphaInputValue;
         this._alpha = parseFloat(aphaInputValue);
         if (Number.isNaN(this._alpha)) {
             this._alpha = 1;
@@ -308,14 +308,6 @@ let ColorPicker = ColorPicker_1 = class ColorPicker extends UI5Element {
         }
     }
     _handleAlphaChange() {
-        // parse the input value if valid or fallback to default
-        this._alpha = this._alphaTemp ? parseFloat(this._alphaTemp) : 1;
-        if (Number.isNaN(this._alpha)) {
-            this._alpha = 1;
-        }
-        // reset input value so _alpha is rendered
-        this._alphaTemp = undefined;
-        // normalize range
         this._alpha = this._alpha < 0 ? 0 : this._alpha;
         this._alpha = this._alpha > 1 ? 1 : this._alpha;
         this._colorValue.Alpha = this._alpha;
@@ -528,9 +520,6 @@ __decorate([
 __decorate([
     property({ type: Number })
 ], ColorPicker.prototype, "_alpha", void 0);
-__decorate([
-    property()
-], ColorPicker.prototype, "_alphaTemp", void 0);
 __decorate([
     property({ type: Number })
 ], ColorPicker.prototype, "_hue", void 0);

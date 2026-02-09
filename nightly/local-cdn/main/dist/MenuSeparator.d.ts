@@ -23,5 +23,6 @@ declare class MenuSeparator extends ListItemBase implements IMenuItem {
      */
     get _pressable(): boolean;
 }
+declare const isInstanceOfMenuSeparator: (object: any) => object is MenuSeparator;
 export default MenuSeparator;
-export declare const isInstanceOfMenuSeparator: (object: any) => object is MenuSeparator;
+export { isInstanceOfMenuSeparator, };

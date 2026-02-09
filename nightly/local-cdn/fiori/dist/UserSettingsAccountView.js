@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var UserSettingsAccountView_1;
 import UserSettingsView from "./UserSettingsView.js";
 import UserSettingsAccountViewTemplate from "./UserSettingsAccountViewTemplate.js";
-import { customElement, slotStrict as slot, eventStrict as event, property, } from "@ui5/webcomponents-base/dist/decorators.js";
+import { customElement, slot, eventStrict as event, property, } from "@ui5/webcomponents-base/dist/decorators.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import UserSettingViewCss from "./generated/themes/UserSettingsView.css.js";
 import UserSettingsAccountViewCss from "./generated/themes/UserSettingsAccountView.css.js";

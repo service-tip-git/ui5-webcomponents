@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type MessageStripDesign from "./types/MessageStripDesign.js";
 import type { IIcon } from "./Icon.js";
@@ -95,7 +94,7 @@ declare class MessageStrip extends UI5Element {
      * See all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).
      * @public
      */
-    icon: Slot<IIcon>;
+    icon: Array<IIcon>;
     static i18nBundle: I18nBundle;
     _closeClick(): void;
     static designAnnouncementMappings(): DesignTypeAnnouncemnt;

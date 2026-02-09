@@ -3,7 +3,6 @@ import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import DynamicPageHeader from "./DynamicPageHeader.js";
 import DynamicPageTitle from "./DynamicPageTitle.js";
 import type DynamicPageHeaderActions from "./DynamicPageHeaderActions.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -96,25 +95,25 @@ declare class DynamicPage extends UI5Element {
      *
      * @public
      */
-    content: DefaultSlot<HTMLElement>;
+    content: HTMLElement[];
     /**
      * Defines the title HTML Element.
      *
      * @public
      */
-    titleArea: Slot<DynamicPageTitle>;
+    titleArea: Array<DynamicPageTitle>;
     /**
      * Defines the header HTML Element.
      *
      * @public
      */
-    headerArea: Slot<DynamicPageHeader>;
+    headerArea: Array<DynamicPageHeader>;
     /**
      * Defines the footer HTML Element.
      *
      * @public
      */
-    footerArea: Slot<HTMLElement>;
+    footerArea: HTMLElement[];
     static i18nBundle: I18nBundle;
     skipSnapOnScroll: boolean;
     showHeaderInStickArea: boolean;

@@ -328,7 +328,7 @@
     },
     {
       "name": "ui5-navigation-layout",
-      "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn larger screens with a width of 600px or more, excluding mobile phone devices, the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn mobile phone devices and screens with a width of 599px or less, the side navigation is hidden by\ndefault and can be displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`\n\n\n---\n\n\n\n\n### **Methods:**\n - **isSideCollapsed(): _boolean_** - Gets whether the side navigation is collapsed.\n\n### **Slots:**\n - **header** - Defines the header.\n- **sideContent** - Defines the side content.\n- **default** - Defines the content.",
+      "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn larger screens (screen width of 600px or more), the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn small screens (screen width of 599px or less), the side navigation is hidden by\ndefault and can be displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`\n\n\n---\n\n\n\n\n### **Methods:**\n - **isSideCollapsed(): _boolean_** - Gets whether the side navigation is collapsed.\n\n### **Slots:**\n - **header** - Defines the header.\n- **sideContent** - Defines the side content.\n- **default** - Defines the content.",
       "attributes": [
         {
           "name": "mode",
@@ -873,7 +873,7 @@
         },
         {
           "name": "icon",
-          "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+          "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
           "values": []
         },
         {
@@ -952,7 +952,7 @@
       "attributes": [
         {
           "name": "icon",
-          "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+          "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
           "values": []
         },
         {
@@ -1009,7 +1009,7 @@
       "attributes": [
         {
           "name": "icon",
-          "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+          "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
           "values": []
         },
         {
@@ -1331,25 +1331,6 @@
           "name": "avatar-initials",
           "description": "Defines the avatar initials of the user.",
           "values": []
-        },
-        {
-          "name": "avatar-color-scheme",
-          "description": "Defines the background color of the desired image.\nIf `avatarColorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.",
-          "values": [
-            { "name": "Auto" },
-            { "name": "Transparent" },
-            { "name": "Accent1" },
-            { "name": "Accent2" },
-            { "name": "Accent3" },
-            { "name": "Accent4" },
-            { "name": "Accent5" },
-            { "name": "Accent6" },
-            { "name": "Accent7" },
-            { "name": "Accent8" },
-            { "name": "Accent9" },
-            { "name": "Accent10" },
-            { "name": "Placeholder" }
-          ]
         },
         {
           "name": "title-text",

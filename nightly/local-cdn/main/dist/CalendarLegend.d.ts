@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import CalendarLegendItemType from "./types/CalendarLegendItemType.js";
@@ -58,7 +57,7 @@ declare class CalendarLegend extends UI5Element {
      * Defines the items of the component.
      * @public
      */
-    items: DefaultSlot<CalendarLegendItem>;
+    items: Array<CalendarLegendItem>;
     _itemNavigation: ItemNavigation;
     _lastFocusedItemIndex: number | null;
     static i18nBundle: I18nBundle;

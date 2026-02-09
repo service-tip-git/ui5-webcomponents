@@ -5,8 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
-import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInstanceChecker.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import MultiComboBoxItemGroupTemplate from "./MultiComboBoxItemGroupTemplate.js";
 import ComboBoxItemGroup from "./ComboBoxItemGroup.js";
 /**
@@ -52,6 +51,9 @@ MultiComboBoxItemGroup = __decorate([
     })
 ], MultiComboBoxItemGroup);
 MultiComboBoxItemGroup.define();
+const isInstanceOfMultiComboBoxItemGroup = (object) => {
+    return "isGroupItem" in object;
+};
 export default MultiComboBoxItemGroup;
-export const isInstanceOfMultiComboBoxItemGroup = createInstanceChecker("isGroupItem");
+export { isInstanceOfMultiComboBoxItemGroup };
 //# sourceMappingURL=MultiComboBoxItemGroup.js.map

@@ -5,8 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
-import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInstanceChecker.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import ListItemGroup from "./ListItemGroup.js";
 import ComboBoxItemGroupTemplate from "./ComboBoxItemGroupTemplate.js";
 /**
@@ -43,6 +42,9 @@ ComboBoxItemGroup = __decorate([
     })
 ], ComboBoxItemGroup);
 ComboBoxItemGroup.define();
-export const isInstanceOfComboBoxItemGroup = createInstanceChecker("isGroupItem");
+const isInstanceOfComboBoxItemGroup = (object) => {
+    return "isGroupItem" in object;
+};
+export { isInstanceOfComboBoxItemGroup };
 export default ComboBoxItemGroup;
 //# sourceMappingURL=ComboBoxItemGroup.js.map

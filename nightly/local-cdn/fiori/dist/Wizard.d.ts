@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { UI5CustomEvent } from "@ui5/webcomponents-base";
@@ -169,7 +168,7 @@ declare class Wizard extends UI5Element {
      * **Note:** Use the available `ui5-wizard-step` component.
      * @public
      */
-    steps: DefaultSlot<WizardStep>;
+    steps: Array<WizardStep>;
     static i18nBundle: I18nBundle;
     stepScrollOffsets: Array<number>;
     selectedStepIndex: number;

@@ -4,7 +4,6 @@ import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delega
 import type Toolbar from "@ui5/webcomponents/dist/Toolbar.js";
 import type { ToolbarMinWidthChangeEventDetail } from "@ui5/webcomponents/dist/Toolbar.js";
 import type Title from "@ui5/webcomponents/dist/Title.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -85,13 +84,13 @@ declare class DynamicPageTitle extends UI5Element {
      *
      * @public
      */
-    heading: Slot<HTMLElement>;
+    heading: HTMLElement[];
     /**
      * Defines the heading that is shown only when the header is snapped.
      *
      * @public
      */
-    snappedHeading: Slot<HTMLElement>;
+    snappedHeading: HTMLElement[];
     /**
      * Defines the content of the snapped title on mobile devices.
      *
@@ -105,43 +104,43 @@ declare class DynamicPageTitle extends UI5Element {
      * @public
      * @since 2.3.0
      */
-    snappedTitleOnMobile: Slot<Title>;
+    snappedTitleOnMobile: Array<Title>;
     /**
      * Defines the bar with actions in the Dynamic page title.
      *
      * @public
      */
-    actionsBar: Slot<HTMLElement>;
+    actionsBar: HTMLElement[];
     /**
      * Defines the bar with navigation actions in the Dynamic page title.
      *
      * @public
      */
-    navigationBar: Slot<Toolbar>;
+    navigationBar: Array<Toolbar>;
     /**
      * Defines the content of the Dynamic page title.
      *
      * @public
      */
-    content: DefaultSlot<HTMLElement>;
+    content: HTMLElement[];
     /**
      * Defines the content of the title that is shown only when the header is not snapped.
      *
      * @public
      */
-    subheading: Slot<HTMLElement>;
+    subheading: HTMLElement[];
     /**
      * Defines the content of the title that is shown only when the header is snapped.
      *
      * @public
      */
-    snappedSubheading: Slot<HTMLElement>;
+    snappedSubheading: HTMLElement[];
     /**
      * Defines the content of the breadcrumbs inside Dynamic Page Title.
      *
      * @public
      */
-    breadcrumbs: Slot<HTMLElement>;
+    breadcrumbs: HTMLElement[];
     /**
      * @private
      */

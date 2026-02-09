@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type CardHeader from "./CardHeader.js";
 /**
@@ -45,7 +44,7 @@ declare class Card extends UI5Element {
      * Defines the content of the component.
      * @public
     */
-    content: DefaultSlot<HTMLElement>;
+    content: Array<HTMLElement>;
     /**
      * Defines the header of the component.
      *
@@ -53,7 +52,7 @@ declare class Card extends UI5Element {
      * @since 1.0.0-rc.15
      * @public
     */
-    header: Slot<CardHeader>;
+    header: Array<CardHeader>;
     /**
      * Defines if a loading indicator would be displayed over the card.
      * @default false

@@ -11,7 +11,7 @@ import ResizeHandler from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.j
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import { isEnter, isSpace, } from "@ui5/webcomponents-base/dist/Keys.js";
@@ -43,7 +43,7 @@ const offsets = {
     },
     [AvatarSize.L]: {
         [AvatarGroupType.Individual]: "0.125rem",
-        [AvatarGroupType.Group]: "-2rem",
+        [AvatarGroupType.Group]: " -2rem",
     },
     [AvatarSize.XL]: {
         [AvatarGroupType.Individual]: "0.25rem",

@@ -18,8 +18,8 @@
 
 
 
-  <script type="module" crossorigin src="/webcomponents/nightly/assets/test/pages/ComboBox.html-DdirQE5S.js"></script>
-  <link rel="modulepreload" crossorigin href="/webcomponents/nightly/assets/bundle.esm-3d83hDKu.js">
+  <script type="module" crossorigin src="/webcomponents/nightly/assets/test/pages/ComboBox.html-Cc_Yd5HG.js"></script>
+  <link rel="modulepreload" crossorigin href="/webcomponents/nightly/assets/bundle.esm-BdEAKKdJ.js">
   <link rel="stylesheet" crossorigin href="/webcomponents/nightly/assets/ComboBox-LkZexEaJ.css">
 </head>
 
@@ -191,20 +191,6 @@
 
 		Selected item: <span id="selection-change-placeholder"></span><br>
 		SelectionChange call count: <span id="selection-change-count">0</span><br>
-	</div>
-
-	<div class="demo-section">
-		<span>Toggle Loading State</span>
-
-		<br />
-		<br />
-
-		<ui5-combobox id="toggle-loading-cb" class="combobox2auto">
-			<ui5-cb-item text="Item 1"></ui5-cb-item>
-			<ui5-cb-item text="Item 2"></ui5-cb-item>
-			<ui5-cb-item text="Item 3"></ui5-cb-item>
-		</ui5-combobox>
-		<ui5-button id="toggle-loading-btn">Toggle Loading</ui5-button>
 	</div>
 
 	<div class="demo-section">
@@ -518,11 +504,6 @@
 
 		document.getElementById("combo-focus").addEventListener("click", function () {
 			document.getElementById("combo").focus();
-		});
-
-		document.getElementById("toggle-loading-btn").addEventListener("click", function () {
-			const combo = document.getElementById("toggle-loading-cb");
-			combo.loading = !combo.loading;
 		});
 	</script>
 

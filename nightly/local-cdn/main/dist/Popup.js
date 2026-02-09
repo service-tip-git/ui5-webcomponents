@@ -8,7 +8,7 @@ var Popup_1;
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import jsxRender from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
@@ -145,8 +145,7 @@ let Popup = Popup_1 = class Popup extends UI5Element {
             Popup_1.unblockPageScrolling(this);
             this._removeOpenedPopup();
         }
-        this._deregisterResizeHandler();
-        this._detachBrowserEvents();
+        ResizeHandler.deregister(this, this._resizeHandler);
         deregisterUI5Element(this);
     }
     /**
@@ -179,7 +178,6 @@ let Popup = Popup_1 = class Popup extends UI5Element {
             this.open = false;
             return;
         }
-        this._attachBrowserEvents();
         if (this.isModal) {
             Popup_1.blockPageScrolling(this);
         }
@@ -206,10 +204,6 @@ let Popup = Popup_1 = class Popup extends UI5Element {
      */
     _preventBlockLayerFocus(e) {
         e.preventDefault();
-    }
-    _attachBrowserEvents() {
-    }
-    _detachBrowserEvents() {
     }
     /**
      * Temporarily removes scrollbars from the html element
@@ -368,7 +362,6 @@ let Popup = Popup_1 = class Popup extends UI5Element {
         }
         this.hide();
         this.open = false;
-        this._detachBrowserEvents();
         if (!preventRegistryUpdate) {
             this._removeOpenedPopup();
         }

@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { IIcon } from "./Icon.js";
 import "@ui5/webcomponents-icons/dist/sys-help-2.js";
@@ -100,12 +99,12 @@ declare class Tag extends UI5Element {
      * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
      * @public
      */
-    text: DefaultSlot<Node>;
+    text: Array<Node>;
     /**
      * Defines the icon to be displayed in the component.
      * @public
      */
-    icon: Slot<IIcon>;
+    icon: Array<IIcon>;
     static i18nBundle: I18nBundle;
     onEnterDOM(): void;
     onBeforeRendering(): void;

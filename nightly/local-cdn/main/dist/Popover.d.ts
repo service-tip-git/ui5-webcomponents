@@ -1,4 +1,3 @@
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import Popup from "./Popup.js";
 import PopoverPlacement from "./types/PopoverPlacement.js";
@@ -147,12 +146,12 @@ declare class Popover extends Popup {
      * Defines the header HTML Element.
      * @public
      */
-    header: Slot<HTMLElement>;
+    header: Array<HTMLElement>;
     /**
      * Defines the footer HTML Element.
      * @public
      */
-    footer: Slot<HTMLElement>;
+    footer: Array<HTMLElement>;
     _opener?: HTMLElement | string | null | undefined;
     _openerRect?: DOMRect;
     _preventRepositionAndClose?: boolean;
@@ -269,8 +268,7 @@ declare class Popover extends Popup {
     get _showResizeHandle(): boolean;
     get resizeHandlePlacement(): "TopLeft" | "TopRight" | "BottomLeft" | "BottomRight" | undefined;
     _onResizeMouseDown(e: MouseEvent): void;
-    readonly isPopover = true;
 }
+declare const instanceOfPopover: (object: any) => object is Popover;
 export default Popover;
-export declare const instanceOfPopover: (object: any) => object is Popover;
-export { PopoverActualPlacement, PopoverActualHorizontalAlign };
+export { instanceOfPopover, PopoverActualPlacement, PopoverActualHorizontalAlign };

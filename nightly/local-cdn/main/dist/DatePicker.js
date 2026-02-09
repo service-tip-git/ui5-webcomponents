@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var DatePicker_1;
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
 import query from "@ui5/webcomponents-base/dist/decorators/query.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
@@ -20,7 +20,7 @@ import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import { getEffectiveAriaLabelText, getAssociatedLabelForTexts, getAllAccessibleNameRefTexts, getEffectiveAriaDescriptionText, getAllAccessibleDescriptionRefTexts, } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import { submitForm } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import willShowContent from "@ui5/webcomponents-base/dist/util/willShowContent.js";
-import { isPageUp, isPageDown, isPageUpShift, isPageDownShift, isPageUpShiftCtrl, isPageDownShiftCtrl, isShow, isF4, isTabNext, isTabPrevious, isF6Next, isF6Previous, } from "@ui5/webcomponents-base/dist/Keys.js";
+import { isPageUp, isPageDown, isPageUpShift, isPageDownShift, isPageUpShiftCtrl, isPageDownShiftCtrl, isShow, isF4, isEnter, isTabNext, isTabPrevious, isF6Next, isF6Previous, } from "@ui5/webcomponents-base/dist/Keys.js";
 import { isPhone, isDesktop } from "@ui5/webcomponents-base/dist/Device.js";
 import CalendarPickersMode from "./types/CalendarPickersMode.js";
 import "@ui5/webcomponents-icons/dist/appointment-2.js";
@@ -286,7 +286,12 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
         if (this.open) {
             return;
         }
-        if (isPageUpShiftCtrl(e)) {
+        if (isEnter(e)) {
+            if (this._internals.form) {
+                submitForm(this);
+            }
+        }
+        else if (isPageUpShiftCtrl(e)) {
             e.preventDefault();
             this._modifyDateValue(1, "year");
         }
@@ -378,11 +383,7 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
      * The ui5-input "submit" event handler - fire change event when the user presses enter
      * @protected
      */
-    _onInputRequestSubmit() {
-        if (this._internals.form) {
-            submitForm(this);
-        }
-    }
+    _onInputSubmit() { }
     /**
      * The ui5-input "change" event handler - fire change event when the user focuses out of the input
      * @protected
@@ -710,31 +711,14 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
     }
     /**
      * Currently selected date represented as a Local JavaScript Date instance.
-     * Note: this getter can only be reliably used after the component is fully defined. Use dateValueAsync which resolves only when this condition is met.
      * @public
      * @default null
-     * @deprecated Use dateValueAsync instead
      */
     get dateValue() {
         return this.liveValue ? this.getValueFormat().parse(this.liveValue) : this.getValueFormat().parse(this.value);
     }
-    /**
-     * Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.
-     * @public
-     * @default Promise
-     */
-    get dateValueAsync() {
-        return this.definePromise.then(() => {
-            return this.dateValue;
-        });
-    }
     get dateValueUTC() {
         return this.liveValue ? this.getValueFormat().parse(this.liveValue, true) : this.getValueFormat().parse(this.value);
-    }
-    get dateValueUTCAsync() {
-        return this.definePromise.then(() => {
-            return this.dateValueUTC;
-        });
     }
     get styles() {
         return {
@@ -793,7 +777,7 @@ __decorate([
     property()
 ], DatePicker.prototype, "_calendarCurrentPicker", void 0);
 __decorate([
-    slot()
+    slot({ type: HTMLElement })
 ], DatePicker.prototype, "valueStateMessage", void 0);
 __decorate([
     query("[ui5-datetime-input]")

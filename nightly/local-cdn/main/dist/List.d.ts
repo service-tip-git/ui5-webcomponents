@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { ClassMap } from "@ui5/webcomponents-base/dist/types.js";
@@ -284,7 +283,7 @@ declare class List extends UI5Element {
      * **Note:** Use `ui5-li`, `ui5-li-custom`, and `ui5-li-group` for the intended design.
      * @public
      */
-    items: DefaultSlot<ListItemBase | ListItemGroup>;
+    items: Array<ListItemBase | ListItemGroup>;
     /**
      * Defines the component header.
      *
@@ -292,7 +291,7 @@ declare class List extends UI5Element {
      * `headerText` property is ignored.
      * @public
      */
-    header: Slot<HTMLElement>;
+    header: Array<HTMLElement>;
     static i18nBundle: I18nBundle;
     _previouslyFocusedItem: ListItemBase | null;
     _forwardingFocus: boolean;

@@ -7,7 +7,6 @@ import { attachCustomThemeStylesToHead, getThemeRoot } from "../config/ThemeRoot
 import { setBaseTheme } from "../config/Theme.js";
 import { DEFAULT_THEME } from "../generated/AssetParameters.js";
 import { getCurrentRuntimeIndex } from "../Runtimes.js";
-import { updateComponentStyles } from "./componentStyles.js";
 // eslint-disable-next-line
 export let _lib = "ui5";
 // eslint-disable-next-line
@@ -32,18 +31,13 @@ const deleteThemeBase = () => {
 };
 const loadComponentPackages = async (theme, externalThemeName) => {
     const registeredPackages = getRegisteredPackages();
-    const packagesStylesPromises = [...registeredPackages.entries()].map(async ([packageName, { cssVariablesTarget }]) => {
+    const packagesStylesPromises = [...registeredPackages].map(async (packageName) => {
         if (packageName === BASE_THEME_PACKAGE) {
             return;
         }
         const cssData = await getThemeProperties(packageName, theme, externalThemeName);
         if (cssData) {
-            if (cssVariablesTarget === "root") {
-                createOrUpdateStyle(cssData, `data-ui5-component-properties-${getCurrentRuntimeIndex()}`, packageName);
-            }
-            else if (cssVariablesTarget === "host") {
-                updateComponentStyles(packageName, cssData);
-            }
+            createOrUpdateStyle(cssData, `data-ui5-component-properties-${getCurrentRuntimeIndex()}`, packageName);
         }
     });
     return Promise.all(packagesStylesPromises);

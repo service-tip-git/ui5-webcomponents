@@ -1,6 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type PageBackgroundDesign from "./types/PageBackgroundDesign.js";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -64,17 +63,17 @@ declare class Page extends UI5Element {
      * Defines the header HTML Element.
      * @public
      */
-    header: Slot<HTMLElement>;
+    header: Array<HTMLElement>;
     /**
      * Defines the content HTML Element.
      * @public
      */
-    content: DefaultSlot<Node>;
+    content: Array<Node>;
     /**
      * Defines the footer HTML Element.
      * @public
      */
-    footer: Slot<HTMLElement>;
+    footer: Array<HTMLElement>;
     constructor();
     onEnterDOM(): void;
     get _contentBottom(): "0" | "2.75rem";

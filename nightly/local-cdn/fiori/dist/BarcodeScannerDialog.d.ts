@@ -3,7 +3,6 @@ import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type Dialog from "@ui5/webcomponents/dist/Dialog.js";
 import type { Result, Exception } from "@zxing/library";
 import type { Interval } from "@ui5/webcomponents-base/dist/types.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 declare const BrowserMultiFormatReader: typeof import("@zxing/library").BrowserMultiFormatReader;
 type BarcodeScannerDialogScanSuccessEventDetail = {
     text: string;
@@ -46,7 +45,7 @@ declare class BarcodeScannerDialog extends UI5Element {
      * @public
      * @since 2.4.0
      */
-    header: Slot<HTMLElement>;
+    header: Array<HTMLElement>;
     /**
      * Defines the footer HTML Element.
      *
@@ -60,7 +59,7 @@ declare class BarcodeScannerDialog extends UI5Element {
      * @public
      * @since 2.4.0
      */
-    footer: Slot<HTMLElement>;
+    footer: Array<HTMLElement>;
     /**
      * Indicates whether the dialog is open.
      *

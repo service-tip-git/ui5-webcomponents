@@ -3,7 +3,6 @@ import type TableCell from "./TableCell.js";
 import type TableRowActionBase from "./TableRowActionBase.js";
 import type Button from "./Button.js";
 import type { UI5CustomEvent } from "@ui5/webcomponents-base";
-import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -28,7 +27,7 @@ declare class TableRow extends TableRowBase<TableCell> {
      *
      * @public
      */
-    cells: DefaultSlot<TableCell>;
+    cells: Array<TableCell>;
     /**
      * Defines the actions of the component.
      *
@@ -37,7 +36,7 @@ declare class TableRow extends TableRowBase<TableCell> {
      * @since 2.7.0
      * @public
      */
-    actions: Slot<TableRowActionBase>;
+    actions: Array<TableRowActionBase>;
     /**
      * Unique identifier of the row.
      *

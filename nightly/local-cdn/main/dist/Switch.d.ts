@@ -135,7 +135,6 @@ declare class Switch extends UI5Element implements IFormInputElement {
      */
     value: string;
     _cancelAction: boolean;
-    _isSpacePressed: boolean;
     static i18nBundle: I18nBundle;
     get formValidityMessage(): string;
     get formValidity(): ValidityStateFlags;

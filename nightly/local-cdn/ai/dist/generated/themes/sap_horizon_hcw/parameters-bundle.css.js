@@ -1,2 +1,2 @@
-export default `:host {}`;
+export default ``;
 //# sourceMappingURL=parameters-bundle.css.js.map

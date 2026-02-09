@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { UI5CustomEvent } from "@ui5/webcomponents-base";
 import type TitleLevel from "./types/TitleLevel.js";
@@ -147,7 +146,7 @@ declare class Panel extends UI5Element {
      * **Note:** When a header is provided, the `headerText` property is ignored.
      * @public
      */
-    header: Slot<HTMLElement>;
+    header: Array<HTMLElement>;
     static i18nBundle: I18nBundle;
     onBeforeRendering(): void;
     shouldToggle(element: HTMLElement): boolean;

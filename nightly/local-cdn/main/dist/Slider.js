@@ -299,8 +299,8 @@ let Slider = Slider_1 = class Slider extends SliderBase {
     get styles() {
         return {
             progress: {
-                "width": `${this._handlePositionFromStart}%`,
-                "border": this._handlePositionFromStart === 0 ? "none" : "",
+                "transform": `scaleX(${this._progressPercentage})`,
+                "transform-origin": `${this.directionStart} top`,
             },
             handle: {
                 [this.directionStart]: `${this._handlePositionFromStart}%`,

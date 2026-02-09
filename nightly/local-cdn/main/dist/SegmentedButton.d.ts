@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type { ITabbable } from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
@@ -93,13 +92,12 @@ declare class SegmentedButton extends UI5Element {
      * **Note:** Use the `ui5-segmented-button-item` for the intended design.
      * @public
      */
-    items: DefaultSlot<ISegmentedButtonItem>;
+    items: Array<ISegmentedButtonItem>;
     static i18nBundle: I18nBundle;
     _itemNavigation: ItemNavigation;
     hasPreviouslyFocusedItem: boolean;
     _selectedItem?: ISegmentedButtonItem;
-    _cancelAction: boolean;
-    _isSpacePressed: boolean;
+    _actionCanceled: boolean;
     constructor();
     onBeforeRendering(): void;
     normalizeSelection(): void;

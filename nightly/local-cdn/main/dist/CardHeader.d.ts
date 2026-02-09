@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 /**
  * @class
@@ -66,12 +65,12 @@ declare class CardHeader extends UI5Element {
      * Defines an avatar image, displayed in the left most part of the header.
      * @public
     */
-    avatar: Slot<HTMLElement>;
+    avatar: Array<HTMLElement>;
     /**
      * Defines an action, displayed in the right most part of the header.
      * @public
     */
-    action: Slot<HTMLElement>;
+    action: Array<HTMLElement>;
     static i18nBundle: I18nBundle;
     onEnterDOM(): void;
     get _root(): HTMLElement;

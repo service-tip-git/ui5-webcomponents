@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import "@ui5/webcomponents-icons/dist/vertical-grip.js";
 import type { PassiveEventListenerObject, AriaLandmarkRole } from "@ui5/webcomponents-base";
@@ -229,17 +228,17 @@ declare class FlexibleColumnLayout extends UI5Element {
     * Defines the content in the start column.
     * @public
     */
-    startColumn: Slot<HTMLElement>;
+    startColumn: Array<HTMLElement>;
     /**
     * Defines the content in the middle column.
     * @public
     */
-    midColumn: Slot<HTMLElement>;
+    midColumn: Array<HTMLElement>;
     /**
     * Defines the content in the end column.
     * @public
     */
-    endColumn: Slot<HTMLElement>;
+    endColumn: Array<HTMLElement>;
     initialRendering: boolean;
     _handleResize: () => void;
     _onSeparatorMove: (e: TouchEvent | MouseEvent) => void;

@@ -1,6 +1,5 @@
 import type { IOption } from "./Select.js";
 import ListItemBase from "./ListItemBase.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -24,7 +23,7 @@ declare class Option extends ListItemBase implements IOption {
      * **Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.
      * @public
      */
-    text: DefaultSlot<Node>;
+    text: Array<Node>;
     /**
      * Defines the value of the `ui5-select` inside an HTML Form element when this component is selected.
      * For more information on HTML Form support, see the `name` property of `ui5-select`.

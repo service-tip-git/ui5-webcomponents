@@ -1,5 +1,4 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import TextEmptyIndicatorMode from "./types/TextEmptyIndicatorMode.js";
 /**
@@ -48,7 +47,7 @@ declare class Text extends UI5Element {
      * Defines the text of the component.
      * @public
      */
-    text: DefaultSlot<Node>;
+    text: Array<Node>;
     static i18nBundle: I18nBundle;
     onBeforeRendering(): void;
     get hasText(): boolean;

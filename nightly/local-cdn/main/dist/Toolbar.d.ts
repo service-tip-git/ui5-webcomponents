@@ -1,5 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { ChangeInfo } from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { ChangeInfo, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { UI5CustomEvent } from "@ui5/webcomponents-base";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import "@ui5/webcomponents-icons/dist/overflow.js";
@@ -87,7 +87,7 @@ declare class Toolbar extends UI5Element {
      * **Note:** Currently only `ui5-toolbar-button`, `ui5-toolbar-select`, `ui5-toolbar-separator` and `ui5-toolbar-spacer` are allowed here.
      * @public
      */
-    items: Array<ToolbarItem>;
+    items: DefaultSlot<ToolbarItem>;
     _onResize: ResizeObserverCallback;
     _onCloseOverflow: EventListener;
     itemsToOverflow: Array<ToolbarItem>;

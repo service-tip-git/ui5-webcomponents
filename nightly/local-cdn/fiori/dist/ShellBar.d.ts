@@ -1,4 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ListItemClickEventDetail } from "@ui5/webcomponents/dist/List.js";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import Popover from "@ui5/webcomponents/dist/Popover.js";
@@ -241,7 +242,7 @@ declare class ShellBar extends UI5Element {
      * @since 2.0.0
      * @public
      */
-    assistant: Array<IButton>;
+    assistant: Slot<IButton>;
     /**
      * Defines the branding slot.
      * The `ui5-shellbar-branding` component is intended to be placed inside this slot.
@@ -252,7 +253,7 @@ declare class ShellBar extends UI5Element {
      * @since 2.12.0
      * @public
      */
-    branding: Array<ShellBarBranding>;
+    branding: Slot<ShellBarBranding>;
     /**
      * Defines the `ui5-shellbar` additional items.
      *
@@ -260,7 +261,7 @@ declare class ShellBar extends UI5Element {
      * You can use the `<ui5-shellbar-item></ui5-shellbar-item>`.
      * @public
      */
-    items: Array<ShellBarItem>;
+    items: DefaultSlot<ShellBarItem>;
     /**
      * You can pass `ui5-avatar` to set the profile image/icon.
      * If no profile slot is set - profile will be excluded from actions.
@@ -270,14 +271,14 @@ declare class ShellBar extends UI5Element {
      * @since 1.0.0-rc.6
      * @public
      */
-    profile: Array<HTMLElement>;
+    profile: Slot<HTMLElement>;
     /**
      * Defines the logo of the `ui5-shellbar`.
      * For example, you can use `ui5-avatar` or `img` elements as logo.
      * @since 1.0.0-rc.8
      * @public
      */
-    logo: Array<HTMLElement>;
+    logo: Slot<HTMLElement>;
     /**
      * Defines the items displayed in menu after a click on a start button.
      *
@@ -285,26 +286,26 @@ declare class ShellBar extends UI5Element {
      * @since 0.10
      * @public
      */
-    menuItems: Array<ListItemBase>;
+    menuItems: Slot<ListItemBase>;
     /**
      * Defines the `ui5-input`, that will be used as a search field.
      * @public
      */
-    searchField: Array<IShellBarSearchField>;
+    searchField: Slot<IShellBarSearchField>;
     /**
      * Defines a `ui5-button` in the bar that will be placed in the beginning.
      * We encourage this slot to be used for a menu button.
      * It gets overstyled to match ShellBar's styling.
      * @public
      */
-    startButton: Array<IButton>;
+    startButton: Slot<IButton>;
     /**
      * The container is positioned in the center of the `ui5-shellbar` and occupies one-third of the total length of the `ui5-shellbar`.
      *
      * **Note:** If set, the `searchField` slot is not rendered.
      * @private
      */
-    midContent: Array<HTMLElement>;
+    midContent: Slot<HTMLElement>;
     /**
      * Define the items displayed in the content area.
      *
@@ -316,7 +317,7 @@ declare class ShellBar extends UI5Element {
      * @public
      * @since 2.7.0
      */
-    content: Array<HTMLElement>;
+    content: Slot<HTMLElement>;
     static i18nBundle: I18nBundle;
     overflowPopover?: Popover | null;
     menuPopover?: Popover | null;

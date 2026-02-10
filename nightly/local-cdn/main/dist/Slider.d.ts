@@ -127,8 +127,8 @@ declare class Slider extends SliderBase implements IFormInputElement {
     get tooltip(): SliderTooltip | null | undefined;
     get styles(): {
         progress: {
-            transform: string;
-            "transform-origin": string;
+            width: string;
+            border: string;
         };
         handle: {
             [x: string]: string;

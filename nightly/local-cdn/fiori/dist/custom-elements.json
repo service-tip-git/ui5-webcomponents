@@ -1680,7 +1680,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn larger screens (screen width of 600px or more), the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn small screens (screen width of 599px or less), the side navigation is hidden by\ndefault and can be displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
+          "description": "### Overview\n\nThe `ui5-navigation-layout` is a container component that can be used to\ncreate a layout with a header, a side navigation and a content area.\n\n### Usage\n\nUse the `ui5-navigation-layout` to create whole screen of an application with vertical navigation.\n\n### Responsive Behavior\n\nOn larger screens with a width of 600px or more, excluding mobile phone devices, the side navigation is visible\nby default and can be expanded or collapsed using the `mode` property.\nOn mobile phone devices and screens with a width of 599px or less, the side navigation is hidden by\ndefault and can be displayed using the `mode` property.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents-fiori/dist/NavigationLayout.js\";`",
           "name": "NavigationLayout",
           "slots": [
             {
@@ -5115,7 +5115,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "undefined",
               "inheritedFrom": {
@@ -5275,7 +5275,7 @@
               }
             },
             {
-              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "name": "icon",
               "default": "undefined",
               "fieldName": "icon",
@@ -5556,7 +5556,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "undefined"
             },
@@ -5695,7 +5695,7 @@
           ],
           "attributes": [
             {
-              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "name": "icon",
               "default": "undefined",
               "fieldName": "icon",
@@ -5831,7 +5831,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "privacy": "public",
               "default": "undefined",
               "inheritedFrom": {
@@ -5989,7 +5989,7 @@
           "customElement": true,
           "attributes": [
             {
-              "description": "Defines the icon of the item.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "description": "Defines the icon of the item.\n\n**Note:** Icons on second-level (child) navigation items are not recommended according to the design specification.\n\nThe SAP-icons font provides numerous options.\n\nSee all the available icons in the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
               "name": "icon",
               "default": "undefined",
               "fieldName": "icon",
@@ -7404,6 +7404,23 @@
             },
             {
               "kind": "field",
+              "name": "avatarColorScheme",
+              "type": {
+                "text": "AvatarColorScheme",
+                "references": [
+                  {
+                    "name": "AvatarColorScheme",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/AvatarColorScheme.js"
+                  }
+                ]
+              },
+              "default": "\"Auto\"",
+              "description": "Defines the background color of the desired image.\nIf `avatarColorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
               "name": "titleText",
               "type": {
                 "text": "string"
@@ -7480,6 +7497,15 @@
               "fieldName": "avatarInitials",
               "type": {
                 "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the background color of the desired image.\nIf `avatarColorScheme` is set to `Auto`, the avatar will be displayed with the `Accent6` color.",
+              "name": "avatar-color-scheme",
+              "default": "\"Auto\"",
+              "fieldName": "avatarColorScheme",
+              "type": {
+                "text": "\"Auto\" | \"Transparent\" | \"Accent1\" | \"Accent2\" | \"Accent3\" | \"Accent4\" | \"Accent5\" | \"Accent6\" | \"Accent7\" | \"Accent8\" | \"Accent9\" | \"Accent10\" | \"Placeholder\""
               }
             },
             {

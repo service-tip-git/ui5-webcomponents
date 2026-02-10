@@ -8,7 +8,7 @@ var ShellBar_1;
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import { renderFinished } from "@ui5/webcomponents-base/dist/Render.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
@@ -31,7 +31,6 @@ import bell from "@ui5/webcomponents-icons/dist/bell.js";
 import overflow from "@ui5/webcomponents-icons/dist/overflow.js";
 import grid from "@ui5/webcomponents-icons/dist/grid.js";
 import throttle from "@ui5/webcomponents-base/dist/util/throttle.js";
-import { getScopedVarName } from "@ui5/webcomponents-base/dist/CustomElementsScope.js";
 import getActiveElement from "@ui5/webcomponents-base/dist/util/getActiveElement.js";
 // Templates
 import ShellBarTemplate from "./ShellBarTemplate.js";
@@ -389,7 +388,7 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
     }
     domCalculatedValues(cssVar) {
         const shellbarComputerStyle = getComputedStyle(this.getDomRef());
-        return this._calculateCSSREMValue(shellbarComputerStyle, getScopedVarName(cssVar)); // px
+        return this._calculateCSSREMValue(shellbarComputerStyle, cssVar); // px
     }
     onBeforeRendering() {
         this.withLogo = this.hasLogo;

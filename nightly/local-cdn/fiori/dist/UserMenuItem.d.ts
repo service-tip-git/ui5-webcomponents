@@ -1,4 +1,5 @@
 import MenuItem from "@ui5/webcomponents/dist/MenuItem.js";
+import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 /**
  * @class
  *
@@ -29,7 +30,7 @@ declare class UserMenuItem extends MenuItem {
      * **Note:** Use `ui5-user-menu-item` for the intended design.
      * @public
      */
-    items: Array<UserMenuItem>;
+    items: DefaultSlot<UserMenuItem>;
     get _menuItems(): UserMenuItem[];
 }
 export default UserMenuItem;

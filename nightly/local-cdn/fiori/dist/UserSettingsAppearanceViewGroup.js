@@ -6,7 +6,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import ListItemGroup from "@ui5/webcomponents/dist/ListItemGroup.js";
 import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
-import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
+import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInstanceChecker.js";
 /**
  * @class
  * ### Overview
@@ -25,6 +26,9 @@ import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
  * @since 2.17.0
  */
 let UserSettingsAppearanceViewGroup = class UserSettingsAppearanceViewGroup extends ListItemGroup {
+    get isUserSettingsAppearanceViewGroup() {
+        return true;
+    }
 };
 __decorate([
     slot({
@@ -39,5 +43,6 @@ UserSettingsAppearanceViewGroup = __decorate([
     })
 ], UserSettingsAppearanceViewGroup);
 UserSettingsAppearanceViewGroup.define();
+export const isInstanceOfUserSettingsAppearanceViewGroup = createInstanceChecker("isUserSettingsAppearanceViewGroup");
 export default UserSettingsAppearanceViewGroup;
 //# sourceMappingURL=UserSettingsAppearanceViewGroup.js.map

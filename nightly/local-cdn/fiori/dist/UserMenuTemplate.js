@@ -29,7 +29,7 @@ export default function UserMenuTemplate() {
 }
 function headerContent() {
     return (_jsx(_Fragment, { children: this._selectedAccount &&
-            _jsxs("div", { class: "ui5-user-menu-selected-account", "aria-label": this._ariaLabelledByAccountInformationText, children: [_jsxs(Avatar, { size: "L", onClick: this._handleAvatarClick, initials: this._selectedAccount._initials, fallbackIcon: personPlaceholder, class: "ui5-user-menu--selected-account-avatar", interactive: true, children: [this._selectedAccount.avatarSrc &&
+            _jsxs("div", { class: "ui5-user-menu-selected-account", "aria-label": this._ariaLabelledByAccountInformationText, children: [_jsxs(Avatar, { size: "L", onClick: this._handleAvatarClick, initials: this._selectedAccount._initials, colorScheme: this._selectedAccount.avatarColorScheme, fallbackIcon: personPlaceholder, class: "ui5-user-menu-selected-account-avatar", interactive: true, children: [this._selectedAccount.avatarSrc &&
                                 _jsx("img", { src: this._selectedAccount.avatarSrc, title: this.showEditButton ? this._editAvatarTooltip : undefined }), this.showEditButton &&
                                 _jsx(Tag, { slot: "badge", wrappingType: "None", design: "Set1", colorScheme: "5", children: _jsx(Icon, { slot: "icon", name: edit }) })] }), this._selectedAccount.titleText &&
                         _jsx(Text, { id: "selected-account-title", class: "ui5-user-menu-selected-account-title", children: this._selectedAccount.titleText }), this._selectedAccount.subtitleText &&
@@ -47,7 +47,7 @@ function otherAccountsList() {
     return (_jsx(_Fragment, { children: _jsx(List, { onItemClick: this._handleAccountSwitch, "aria-label": this._ariaLabelledByActions, loadingDelay: 0, loading: this._otherAccounts.some(account => account.loading === true), children: this._otherAccounts.map((account, index) => _jsx(ListItemCustom, { ref: this.captureRef.bind(account), accessibilityAttributes: {
                     "ariaPosinset": index + 1,
                     "ariaSetsize": this._otherAccounts.length
-                }, "aria-label": account.titleText, children: _jsxs("div", { class: "ui5-user-menu-other-accounts-content", children: [_jsx(Avatar, { slot: "image", size: "S", initials: account._initials, fallbackIcon: personPlaceholder, children: account.avatarSrc &&
+                }, "aria-label": account.titleText, children: _jsxs("div", { class: "ui5-user-menu-other-accounts-content", children: [_jsx(Avatar, { slot: "image", size: "S", initials: account._initials, fallbackIcon: personPlaceholder, colorScheme: account.avatarColorScheme, children: account.avatarSrc &&
                                 _jsx("img", { src: account.avatarSrc }) }), _jsxs("div", { class: "ui5-user-menu-other-accounts-info", children: [account.titleText &&
                                     _jsx(Title, { class: "ui5-user-menu-other-accounts-title", children: account.titleText }), account.subtitleText &&
                                     _jsx(Label, { class: "ui5-user-menu-other-accounts-additional-info", children: account.subtitleText }), account.description &&

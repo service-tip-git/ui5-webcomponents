@@ -1300,6 +1300,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/decorators/slot-strict.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "slot",
+            "module": "dist/decorators/slot-strict.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/decorators/slot.js",
       "declarations": [],
       "exports": [
@@ -1793,6 +1808,12 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/theming/componentStyles.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/theming/getConstructableStyle.js",
       "declarations": [],
       "exports": [
@@ -2153,6 +2174,21 @@
     },
     {
       "kind": "javascript-module",
+      "path": "dist/util/createInstanceChecker.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "createChecker",
+            "module": "dist/util/createInstanceChecker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "dist/util/createLinkInHead.js",
       "declarations": [],
       "exports": [
@@ -2162,6 +2198,21 @@
           "declaration": {
             "name": "createLinkInHead",
             "module": "dist/util/createLinkInHead.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/util/createMultiInstanceChecker.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "createMultiInstanceChecker",
+            "module": "dist/util/createMultiInstanceChecker.js"
           }
         }
       ]

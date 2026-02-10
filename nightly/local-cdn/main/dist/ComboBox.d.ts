@@ -1,4 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-down.js";
 import "@ui5/webcomponents-icons/dist/decline.js";
@@ -230,7 +231,7 @@ declare class ComboBox extends UI5Element implements IFormInputElement {
      * Defines the component items.
      * @public
      */
-    items: Array<IComboBoxItem>;
+    items: DefaultSlot<IComboBoxItem>;
     /**
      * Defines the value state message that will be displayed as pop up under the component.
      * The value state message slot should contain only one root element.
@@ -242,13 +243,13 @@ declare class ComboBox extends UI5Element implements IFormInputElement {
      * @since 1.0.0-rc.9
      * @public
      */
-    valueStateMessage: Array<HTMLElement>;
+    valueStateMessage: Slot<HTMLElement>;
     /**
      * Defines the icon to be displayed in the input field.
      * @public
      * @since 1.0.0-rc.9
      */
-    icon: Array<IIcon>;
+    icon: Slot<IIcon>;
     _initialRendering: boolean;
     _itemFocused: boolean;
     _autocomplete: boolean;

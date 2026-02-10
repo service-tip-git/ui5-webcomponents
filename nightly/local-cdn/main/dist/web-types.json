@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@ui5/webcomponents",
-  "version": "2.19.0-rc.0",
+  "version": "2.19.0",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
           "name": "ui5-avatar",
-          "description": "### Overview\n\nAn image-like component that has different display options for representing images and icons\nin different shapes and sizes, depending on the use case.\n\nThe shape can be circular or square. There are several predefined sizes, as well as an option to\nset a custom size.\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `interactive` property is set to true.\n- [Shift] - If [Space] is pressed, pressing [Shift] releases the component without triggering the click event.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Avatar.js\";`\n---\n\n\n### **Events:**\n - **click** - Fired on mouseup, space and enter if avatar is interactive\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.\n\n### **Slots:**\n - **default** - Receives the desired `<img>` tag\n\n**Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>\n`ui5-avatar:not(:defined) {`<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>\n`}`\n- **badge** - Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, you can use the `ui5-tag` with `ui5-icon`\nin the corresponding `icon` slot, without text nodes.",
+          "description": "### Overview\n\nAn image-like component that has different display options for representing images and icons\nin different shapes and sizes, depending on the use case.\n\nThe shape can be circular or square. There are several predefined sizes, as well as an option to\nset a custom size.\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `interactive` property is set to true.\n- [Shift] - If [Space] is pressed, pressing [Shift] releases the component without triggering the click event.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Avatar.js\";`\n---\n\n\n### **Events:**\n - **click** - Fired on mouseup, space and enter if avatar is interactive\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.\n\n### **Slots:**\n - **default** - Receives the desired `<img>` tag\n\n**Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>\n`ui5-avatar:not(:defined) {`<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>\n`}`\n- **badge** - Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, use the `ui5-avatar-badge` component.",
           "doc-url": "",
           "attributes": [
             {
@@ -81,7 +81,7 @@
             },
             {
               "name": "badge",
-              "description": "Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, you can use the `ui5-tag` with `ui5-icon`\nin the corresponding `icon` slot, without text nodes."
+              "description": "Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, use the `ui5-avatar-badge` component."
             }
           ],
           "events": [
@@ -151,6 +151,44 @@
                 "description": "Fired on mouseup, space and enter if avatar is interactive\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`."
               }
             ]
+          }
+        },
+        {
+          "name": "ui5-avatar-badge",
+          "description": "### Overview\n\nThe `ui5-avatar-badge` component is used to display a badge on top of `ui5-avatar` component.\nThe badge can display an icon and supports different states for visual affordance.\n\n### Usage\n\nThe badge should be used as a child element of `ui5-avatar` in the `badge` slot.\n\n```html\n<ui5-avatar>\n  <ui5-avatar-badge icon=\"edit\" slot=\"badge\"></ui5-avatar-badge>\n</ui5-avatar>\n```\n\n### Keyboard Handling\n\nThe badge does not receive keyboard focus.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/AvatarBadge.js\";`\n---\n",
+          "doc-url": "",
+          "attributes": [
+            {
+              "name": "icon",
+              "description": "Defines the icon name to be displayed inside the badge.\n\n**Note:** You should import the desired icon first, then use its name as \"icon\".\n\n`import \"@ui5/webcomponents-icons/dist/{icon_name}.js\"`",
+              "value": { "type": "string | undefined", "default": "undefined" }
+            },
+            {
+              "name": "state",
+              "description": "Defines the state of the badge, which determines its styling.\n\nAvailable options:\n- `None` (default) - Standard appearance\n- `Positive` - Green, used for success/approved states\n- `Critical` - Orange, used for warning states\n- `Negative` - Red, used for error/rejected states\n- `Information` - Blue, used for informational states",
+              "value": {
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
+                "default": "\"None\""
+              }
+            }
+          ],
+          "events": [],
+          "js": {
+            "properties": [
+              {
+                "name": "icon",
+                "description": "Defines the icon name to be displayed inside the badge.\n\n**Note:** You should import the desired icon first, then use its name as \"icon\".\n\n`import \"@ui5/webcomponents-icons/dist/{icon_name}.js\"`",
+                "value": { "type": "string | undefined" }
+              },
+              {
+                "name": "state",
+                "description": "Defines the state of the badge, which determines its styling.\n\nAvailable options:\n- `None` (default) - Standard appearance\n- `Positive` - Green, used for success/approved states\n- `Critical` - Orange, used for warning states\n- `Negative` - Red, used for error/rejected states\n- `Information` - Blue, used for informational states",
+                "value": {
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
+                }
+              }
+            ],
+            "events": []
           }
         },
         {
@@ -277,7 +315,7 @@
               "name": "accessible-role",
               "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:**\n\n- Set accessibleRole to \"toolbar\" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.\n\n- If there is only one or no active element, it is recommended to avoid using the \"toolbar\" role, as it implies a grouping of multiple interactive controls.",
               "value": {
-                "type": "\"Toolbar\" | \"None\"",
+                "type": "\"None\" | \"Toolbar\"",
                 "default": "\"Toolbar\""
               }
             },
@@ -319,7 +357,7 @@
               {
                 "name": "accessible-role",
                 "description": "Specifies the ARIA role applied to the component for accessibility purposes.\n\n**Note:**\n\n- Set accessibleRole to \"toolbar\" only when the component contains two or more active, interactive elements (such as buttons, links, or input fields) within the bar.\n\n- If there is only one or no active element, it is recommended to avoid using the \"toolbar\" role, as it implies a grouping of multiple interactive controls.",
-                "value": { "type": "\"Toolbar\" | \"None\"" }
+                "value": { "type": "\"None\" | \"Toolbar\"" }
               },
               {
                 "name": "accessible-name",
@@ -522,7 +560,7 @@
               "name": "design",
               "description": "Defines the component design.",
               "value": {
-                "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\"",
+                "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\"",
                 "default": "\"Default\""
               }
             },
@@ -620,7 +658,7 @@
                 "name": "design",
                 "description": "Defines the component design.",
                 "value": {
-                  "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\""
+                  "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\""
                 }
               },
               {
@@ -1405,7 +1443,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -1485,7 +1523,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -1609,6 +1647,14 @@
                 "type": "string | HTMLElement | null | undefined",
                 "default": "undefined"
               }
+            },
+            {
+              "name": "placement",
+              "description": "Determines on which side the component is placed at.",
+              "value": {
+                "type": "\"Top\" | \"Bottom\" | \"Start\" | \"End\"",
+                "default": "\"Bottom\""
+              }
             }
           ],
           "slots": [
@@ -1658,6 +1704,13 @@
                 "name": "opener",
                 "description": "Defines the ID or DOM Reference of the element that the popover is shown at.\nWhen using this attribute in a declarative way, you must only use the `id` (as a string) of the element at which you want to show the popover.\nYou can only set the `opener` attribute to a DOM Reference when using JavaScript.",
                 "value": { "type": "string | HTMLElement | null | undefined" }
+              },
+              {
+                "name": "placement",
+                "description": "Determines on which side the component is placed at.",
+                "value": {
+                  "type": "\"Top\" | \"Bottom\" | \"Start\" | \"End\""
+                }
               }
             ],
             "events": [
@@ -1762,7 +1815,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -1877,7 +1930,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -2068,7 +2121,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -2129,8 +2182,13 @@
             },
             {
               "name": "date-value",
-              "description": "Currently selected date represented as a Local JavaScript Date instance.",
+              "description": "Currently selected date represented as a Local JavaScript Date instance.\nNote: this getter can only be reliably used after the component is fully defined. Use dateValueAsync which resolves only when this condition is met.",
               "value": { "type": "any", "default": "null" }
+            },
+            {
+              "name": "date-value-async",
+              "description": "Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.",
+              "value": { "type": "any", "default": "Promise" }
             },
             {
               "name": "primary-calendar-type",
@@ -2221,7 +2279,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -2281,7 +2339,12 @@
               },
               {
                 "name": "date-value",
-                "description": "Currently selected date represented as a Local JavaScript Date instance.",
+                "description": "Currently selected date represented as a Local JavaScript Date instance.\nNote: this getter can only be reliably used after the component is fully defined. Use dateValueAsync which resolves only when this condition is met.",
+                "value": { "type": "any" }
+              },
+              {
+                "name": "date-value-async",
+                "description": "Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.",
                 "value": { "type": "any" }
               },
               {
@@ -2394,7 +2457,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -2452,6 +2515,11 @@
               "name": "accessible-description-ref",
               "description": "Receives id(or many ids) of the elements that describe the input.",
               "value": { "type": "string | undefined", "default": "undefined" }
+            },
+            {
+              "name": "date-value-async",
+              "description": "Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.",
+              "value": { "type": "any", "default": "Promise" }
             },
             {
               "name": "primary-calendar-type",
@@ -2567,7 +2635,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -2624,6 +2692,11 @@
                 "name": "accessible-description-ref",
                 "description": "Receives id(or many ids) of the elements that describe the input.",
                 "value": { "type": "string | undefined" }
+              },
+              {
+                "name": "date-value-async",
+                "description": "Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.",
+                "value": { "type": "any" }
               },
               {
                 "name": "primary-calendar-type",
@@ -2710,7 +2783,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -2771,8 +2844,13 @@
             },
             {
               "name": "date-value",
-              "description": "Currently selected date represented as a Local JavaScript Date instance.",
+              "description": "Currently selected date represented as a Local JavaScript Date instance.\nNote: this getter can only be reliably used after the component is fully defined. Use dateValueAsync which resolves only when this condition is met.",
               "value": { "type": "any", "default": "null" }
+            },
+            {
+              "name": "date-value-async",
+              "description": "Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.",
+              "value": { "type": "any", "default": "Promise" }
             },
             {
               "name": "primary-calendar-type",
@@ -2863,7 +2941,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -2923,7 +3001,12 @@
               },
               {
                 "name": "date-value",
-                "description": "Currently selected date represented as a Local JavaScript Date instance.",
+                "description": "Currently selected date represented as a Local JavaScript Date instance.\nNote: this getter can only be reliably used after the component is fully defined. Use dateValueAsync which resolves only when this condition is met.",
+                "value": { "type": "any" }
+              },
+              {
+                "name": "date-value-async",
+                "description": "Promise that resolves to the currently selected date represented as a Local JavaScript Date instance.",
                 "value": { "type": "any" }
               },
               {
@@ -3026,7 +3109,7 @@
               "name": "state",
               "description": "Defines the state of the `Dialog`.\n\n**Note:** If `\"Negative\"` and `\"Critical\"` states is set, it will change the\naccessibility role to \"alertdialog\", if the accessibleRole property is set to `\"Dialog\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -3137,7 +3220,7 @@
                 "name": "state",
                 "description": "Defines the state of the `Dialog`.\n\n**Note:** If `\"Negative\"` and `\"Critical\"` states is set, it will change the\naccessibility role to \"alertdialog\", if the accessibleRole property is set to `\"Dialog\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -3357,7 +3440,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -3458,7 +3541,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -3744,7 +3827,7 @@
               "name": "design",
               "description": "Defines the component semantic design.",
               "value": {
-                "type": "\"Default\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"Contrast\" | \"Neutral\" | \"NonInteractive\"",
+                "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Information\" | \"Default\" | \"Contrast\" | \"Neutral\" | \"NonInteractive\"",
                 "default": "\"Default\""
               }
             },
@@ -3784,7 +3867,7 @@
                 "name": "design",
                 "description": "Defines the component semantic design.",
                 "value": {
-                  "type": "\"Default\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"Contrast\" | \"Neutral\" | \"NonInteractive\""
+                  "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Information\" | \"Default\" | \"Contrast\" | \"Neutral\" | \"NonInteractive\""
                 }
               },
               {
@@ -3865,7 +3948,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -3913,6 +3996,14 @@
               "name": "open",
               "description": "Defines whether the suggestions picker is open.\nThe picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.\nThe picker will close automatically and `close` event will be fired if the input is not in the viewport.",
               "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "filter",
+              "description": "Defines the filter type of the component.",
+              "value": {
+                "type": "\"None\" | \"StartsWithPerTerm\" | \"StartsWith\" | \"Contains\"",
+                "default": "\"None\""
+              }
             }
           ],
           "slots": [
@@ -3998,7 +4089,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -4045,6 +4136,13 @@
                 "name": "open",
                 "description": "Defines whether the suggestions picker is open.\nThe picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.\nThe picker will close automatically and `close` event will be fired if the input is not in the viewport.",
                 "value": { "type": "boolean" }
+              },
+              {
+                "name": "filter",
+                "description": "Defines the filter type of the component.",
+                "value": {
+                  "type": "\"None\" | \"StartsWithPerTerm\" | \"StartsWith\" | \"Contains\""
+                }
               }
             ],
             "events": [
@@ -4654,7 +4752,7 @@
               "name": "highlight",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -4718,7 +4816,7 @@
                 "name": "highlight",
                 "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -4843,7 +4941,7 @@
               "name": "additional-text-state",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -4895,7 +4993,7 @@
               "name": "highlight",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -4956,7 +5054,7 @@
                 "name": "additional-text-state",
                 "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -5000,7 +5098,7 @@
                 "name": "highlight",
                 "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -5236,7 +5334,7 @@
               "name": "highlight",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -5354,7 +5452,7 @@
                 "name": "highlight",
                 "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -5440,7 +5538,7 @@
               "name": "design",
               "description": "Defines the component type.",
               "value": {
-                "type": "\"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"ColorSet1\" | \"ColorSet2\"",
+                "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Information\" | \"ColorSet1\" | \"ColorSet2\"",
                 "default": "\"Information\""
               }
             },
@@ -5482,7 +5580,7 @@
                 "name": "design",
                 "description": "Defines the component type.",
                 "value": {
-                  "type": "\"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"ColorSet1\" | \"ColorSet2\""
+                  "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Information\" | \"ColorSet1\" | \"ColorSet2\""
                 }
               },
               {
@@ -5511,7 +5609,7 @@
         },
         {
           "name": "ui5-multi-combobox",
-          "description": "### Overview\n\nThe `ui5-multi-combobox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.\n\nThe drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.\nThe options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.\n### Structure\nThe `ui5-multi-combobox` consists of the following elements:\n\n-  Tokenizer - a list of tokens with selected options.\n-  Input field - displays the selected option/s as token/s. Users can type to filter the list.\n-  Drop-down arrow - expands\\collapses the option list.\n-  Option list - the list of available options.\n\n### Keyboard Handling\n\nThe `ui5-multi-combobox` provides advanced keyboard handling.\n\n#### Picker\nIf the `ui5-multi-combobox` is focused,\nyou can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.\nOnce the drop-down is opened, you can use the `UP` and `DOWN` arrow keys\nto navigate through the available options and select one by pressing the `Space` or `Enter` keys.\n[Ctrl]+[Alt]+[F8] or [Command]+[Option]+[F8] - Focuses the first link in the value state message, if available. Pressing [Tab] moves the focus to the next link in the value state message, or closes the value state message if there are no more links.\n\n#### Tokens\n\n-  Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).\n-  Delete -  deletes the token and focuses the previous token.\n-  Backspace -  deletes the token and focus the next token.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MultiComboBox.js\";`\n---\n\n\n### **Events:**\n - **change** - Fired when the input operation has finished by pressing Enter or on focusout.\n- **input** - Fired when the value of the component changes at each keystroke or clear icon is pressed.\n- **open** - Fired when the dropdown is opened.\n- **close** - Fired when the dropdown is closed.\n- **selection-change** - Fired when selection is changed by user interaction.\n\n### **Slots:**\n - **default** - Defines the component items.\n- **icon** - Defines the icon to be displayed in the component.\n- **valueStateMessage** - Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n### **CSS Parts:**\n - **token-\\{index\\}** - Used to style each token(where `token-0` corresponds to the first item)",
+          "description": "### Overview\n\nThe `ui5-multi-combobox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.\n\nThe drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.\nThe options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.\n### Structure\nThe `ui5-multi-combobox` consists of the following elements:\n\n-  Tokenizer - a list of tokens with selected options.\n-  Input field - displays the selected option/s as token/s. Users can type to filter the list.\n-  Drop-down arrow - expands\\collapses the option list.\n-  Option list - the list of available options.\n\n### Keyboard Handling\n\nThe `ui5-multi-combobox` provides advanced keyboard handling.\n\n#### Picker\nIf the `ui5-multi-combobox` is focused,\nyou can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.\nOnce the drop-down is opened, you can use the `UP` and `DOWN` arrow keys\nto navigate through the available options and select one by pressing the `Space` or `Enter` keys.\n[Ctrl]+[Alt]+[F8] or [Command]+[Option]+[F8] - Focuses the first link in the value state message, if available. Pressing [Tab] moves the focus to the next link in the value state message, or closes the value state message if there are no more links.\n\n#### Tokens\n\n-  Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).\n-  Delete -  deletes the token and focuses the previous token.\n-  Backspace -  deletes the token and focus the next token.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MultiComboBox.js\";`\n---\n\n\n### **Events:**\n - **change** - Fired when the input operation has finished by pressing Enter or on focusout.\n- **input** - Fired when the value of the component changes at each keystroke or clear icon is pressed.\n- **open** - Fired when the dropdown is opened.\n- **close** - Fired when the dropdown is closed.\n- **selection-change** - Fired when selection is changed by user interaction.\n- **value-state-change** - Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.\n\n### **Slots:**\n - **default** - Defines the component items.\n- **icon** - Defines the icon to be displayed in the component.\n- **valueStateMessage** - Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n### **CSS Parts:**\n - **token-\\{index\\}** - Used to style each token(where `token-0` corresponds to the first item)",
           "doc-url": "",
           "attributes": [
             {
@@ -5548,7 +5646,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -5560,6 +5658,11 @@
             {
               "name": "required",
               "description": "Defines whether the component is required.",
+              "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "loading",
+              "description": "Indicates whether a loading indicator should be shown in the picker.",
               "value": { "type": "boolean", "default": "false" }
             },
             {
@@ -5630,6 +5733,10 @@
             {
               "name": "selection-change",
               "description": "Fired when selection is changed by user interaction."
+            },
+            {
+              "name": "value-state-change",
+              "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state."
             }
           ],
           "js": {
@@ -5668,7 +5775,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -5679,6 +5786,11 @@
               {
                 "name": "required",
                 "description": "Defines whether the component is required.",
+                "value": { "type": "boolean" }
+              },
+              {
+                "name": "loading",
+                "description": "Indicates whether a loading indicator should be shown in the picker.",
                 "value": { "type": "boolean" }
               },
               {
@@ -5734,6 +5846,10 @@
               {
                 "name": "selection-change",
                 "description": "Fired when selection is changed by user interaction."
+              },
+              {
+                "name": "value-state-change",
+                "description": "Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state."
               }
             ]
           }
@@ -5912,7 +6028,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -5955,6 +6071,14 @@
               "name": "open",
               "description": "Defines whether the suggestions picker is open.\nThe picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.\nThe picker will close automatically and `close` event will be fired if the input is not in the viewport.",
               "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "filter",
+              "description": "Defines the filter type of the component.",
+              "value": {
+                "type": "\"None\" | \"StartsWithPerTerm\" | \"StartsWith\" | \"Contains\"",
+                "default": "\"None\""
+              }
             }
           ],
           "slots": [
@@ -6062,7 +6186,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -6104,6 +6228,13 @@
                 "name": "open",
                 "description": "Defines whether the suggestions picker is open.\nThe picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.\nThe picker will close automatically and `close` event will be fired if the input is not in the viewport.",
                 "value": { "type": "boolean" }
+              },
+              {
+                "name": "filter",
+                "description": "Defines the filter type of the component.",
+                "value": {
+                  "type": "\"None\" | \"StartsWithPerTerm\" | \"StartsWith\" | \"Contains\""
+                }
               }
             ],
             "events": [
@@ -6679,7 +6810,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             }
@@ -6711,7 +6842,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               }
             ],
@@ -6752,7 +6883,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -6822,7 +6953,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -7059,6 +7190,22 @@
               "name": "tooltip",
               "description": "Defines the tooltip of the component.",
               "value": { "type": "string | undefined", "default": "undefined" }
+            },
+            {
+              "name": "icon-selected",
+              "description": "Defines the icon to be displayed for the selected (filled) rating symbol.",
+              "value": {
+                "type": "string | undefined",
+                "default": "\"favorite\""
+              }
+            },
+            {
+              "name": "icon-unselected",
+              "description": "Defines the icon to be displayed for the unselected (empty) rating symbol.",
+              "value": {
+                "type": "string | undefined",
+                "default": "\"unfavorite\""
+              }
             }
           ],
           "events": [
@@ -7112,6 +7259,16 @@
               {
                 "name": "tooltip",
                 "description": "Defines the tooltip of the component.",
+                "value": { "type": "string | undefined" }
+              },
+              {
+                "name": "icon-selected",
+                "description": "Defines the icon to be displayed for the selected (filled) rating symbol.",
+                "value": { "type": "string | undefined" }
+              },
+              {
+                "name": "icon-unselected",
+                "description": "Defines the icon to be displayed for the unselected (empty) rating symbol.",
                 "value": { "type": "string | undefined" }
               }
             ],
@@ -7602,7 +7759,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -7708,7 +7865,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -7980,7 +8137,7 @@
               "name": "design",
               "description": "Defines the component design.",
               "value": {
-                "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\"",
+                "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\"",
                 "default": "\"Default\""
               }
             },
@@ -8035,7 +8192,7 @@
                 "name": "design",
                 "description": "Defines the component design.",
                 "value": {
-                  "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\""
+                  "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\""
                 }
               },
               {
@@ -8095,7 +8252,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -8186,7 +8343,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -8547,7 +8704,7 @@
               "name": "design",
               "description": "Defines the component's design color.\n\nThe design is applied to:\n\n- the component icon\n- the `text` when the component overflows\n- the tab selection line\n\nAvailable designs are: `\"Default\"`, `\"Neutral\"`, `\"Positive\"`, `\"Critical\"` and `\"Negative\"`.\n\n**Note:** The design depends on the current theme.",
               "value": {
-                "type": "\"Default\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Neutral\"",
+                "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Default\" | \"Neutral\"",
                 "default": "\"Default\""
               }
             },
@@ -8599,7 +8756,7 @@
                 "name": "design",
                 "description": "Defines the component's design color.\n\nThe design is applied to:\n\n- the component icon\n- the `text` when the component overflows\n- the tab selection line\n\nAvailable designs are: `\"Default\"`, `\"Neutral\"`, `\"Positive\"`, `\"Critical\"` and `\"Negative\"`.\n\n**Note:** The design depends on the current theme.",
                 "value": {
-                  "type": "\"Default\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Neutral\""
+                  "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Default\" | \"Neutral\""
                 }
               },
               {
@@ -8774,7 +8931,7 @@
         },
         {
           "name": "ui5-table",
-          "description": "### Overview\n\nThe `ui5-table` component provides a set of sophisticated features for displaying and dealing with vast amounts of data in a responsive manner.\nTo render the `ui5-table`, you need to define the columns and rows. You can use the provided `ui5-table-header-row` and `ui5-table-row` components for this purpose.\n\n### Features\n\nThe `ui5-table` can be enhanced in its functionalities by applying different features.\nFeatures can be slotted into the `features` slot, to enable them in the component.\nFeatures need to be imported separately, as they are not enabled by default.\n\nThe following features are currently available:\n\n* [TableSelectionMulti](../TableSelectionMulti) - adds multi-selection capabilities to the table\n* [TableSelectionSingle](../TableSelectionSingle) - adds single-selection capabilities to the table\n* [TableGrowing](../TableGrowing) - provides growing capabilities to load more data\n* [TableVirtualizer](../TableVirtualizer) - adds virtualization capabilities to the table\n\n### Keyboard Handling\n\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\nFurthermore, you can interact with `ui5-table` via the following keys:\n\nIf the focus is on a row, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Selects the first cell of the row\n* <kbd>Space</kbd> - Toggles the selection of the row\n* <kbd>Ctrl/Cmd + A</kbd> - In multi selection mode, toggles the selection of all rows\n* <kbd>Home</kbd> - Navigates to the first row, if the focus is on the first row, navigates to the header row\n* <kbd>End</kbd> - Navigates to the last row, if the focus is on the last row, navigates to the growing button\n* <kbd>Page Up</kbd> - Navigates one page up, if the focus is on the first row, navigates to the header row\n* <kbd>Page Down</kbd> - Navigates one page down, if the focus is on the last row, navigates to the growing button\n* <kbd>F2</kbd> - Focuses the first tabbable element in the row\n* <kbd>F7</kbd> - If focus position is remembered, moves focus to the corresponding focus position row, otherwise to the first tabbable element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\nIf the focus is on a cell, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Navigates right\n* <kbd>Left</kbd> - Navigates left, if the focus is on the first cell of the row, the focus is moved to the row.\n* <kbd>Home</kbd> - Navigates to the first cell of the current row, if the focus is on the first cell, navigates to the corresponding row\n* <kbd>End</kbd> - Navigates to the last cell of the current row, if the focus is on the last cell, navigates to the corresponding row\n* <kbd>Page Up</kbd> - Navigates one page up while keeping the focus in same column\n* <kbd>Page Down</kbd> - Navigates one page down while keeping the focus in same column\n* <kbd>F2</kbd> - Toggles the focus between the first tabbable cell content and the cell\n* <kbd>Enter</kbd> - Focuses the first tabbable cell content\n* <kbd>F7</kbd> - If the focus is on an interactive element inside a row, moves focus to the corresponding row and remembers the focus position of the element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\nIf the focus is on an interactive cell content, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Move the focus to the interactive element in the same column of the previous row, unless the focused element prevents the default\n* <kbd>Up</kbd> - Move the focus to the interactive element in the same column of the next row, unless the focused element prevents the default\n* <kbd>[Shift]Tab</kbd> - Move the focus to the element in the tab chain\n\n### Accessibility\n\nThe `ui5-table` follows the [ARIA grid design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/grid/).\nThis pattern enables cell-based keyboard navigation and, as explained above, we also support row-based keyboard navigation.\nSince the grid design pattern does not inherently provide row-based keyboard behavior, if the focus is on a row, not only the row information but also the corresponding column headers for each cell must be announced.\nThis can only be achieved through a custom accessibility announcement.\nTo support this, UI5 Web Components expose its own accessibility metadata via the `accessibilityInfo` property.\nThe `ui5-table` uses this information to create the required custom announcements dynamically.\nIf you include custom web components inside table cells that are not part of the standard UI5 Web Components set, their accessibility information can be provided using the `data-ui5-table-acc-text` attribute.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Table.js\";` (`ui5-table`)\\\n`import \"@ui5/webcomponents/dist/TableRow.js\";` (`ui5-table-row`)\\\n`import \"@ui5/webcomponents/dist/TableCell.js\";` (`ui5-table-cell`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderRow.js\";` (`ui5-table-header-row`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderCell.js\";` (`ui5-table-header-cell`)\n---\n\n\n### **Events:**\n - **row-click** - Fired when an interactive row is clicked.\n\n**Note:** This event is not fired if the `behavior` property of the selection component is set to `RowOnly`.\nIn that case, use the `change` event of the selection component instead.\n- **move-over** - Fired when a movable item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n\n**Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Notes:**\n\nThe `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\nIf the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.\n- **row-action-click** - Fired when a row action is clicked.\n\n### **Slots:**\n - **default** - Defines the rows of the component.\n\n**Note:** Use `ui5-table-row` for the intended design.\n- **headerRow** - Defines the header row of the component.\n\n**Note:** Use `ui5-table-header-row` for the intended design.\n- **noData** - Defines the custom visualization if there is no data available.\n- **features** - Defines the features of the component.",
+          "description": "### Overview\n\nThe `ui5-table` component provides a set of sophisticated features for displaying and dealing with vast amounts of data in a responsive manner.\nTo render the `ui5-table`, you need to define the columns and rows. You can use the provided `ui5-table-header-row` and `ui5-table-row` components for this purpose.\n\n### Features\n\nThe `ui5-table` can be enhanced in its functionalities by applying different features.\nFeatures can be slotted into the `features` slot, to enable them in the component.\nFeatures need to be imported separately, as they are not enabled by default.\n\nThe following features are currently available:\n\n* [TableSelectionMulti](../TableSelectionMulti) - adds multi-selection capabilities to the table\n* [TableSelectionSingle](../TableSelectionSingle) - adds single-selection capabilities to the table\n* [TableGrowing](../TableGrowing) - provides growing capabilities to load more data\n* [TableVirtualizer](../TableVirtualizer) - adds virtualization capabilities to the table\n\n### Keyboard Handling\n\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\nFurthermore, you can interact with `ui5-table` via the following keys:\n\nIf the focus is on a row, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Selects the first cell of the row\n* <kbd>Space</kbd> - Toggles the selection of the row\n* <kbd>Ctrl/Cmd + A</kbd> - In multi selection mode, toggles the selection of all rows\n* <kbd>Home</kbd> - Navigates to the first row, if the focus is on the first row, navigates to the header row\n* <kbd>End</kbd> - Navigates to the last row, if the focus is on the last row, navigates to the growing button\n* <kbd>Page Up</kbd> - Navigates one page up, if the focus is on the first row, navigates to the header row\n* <kbd>Page Down</kbd> - Navigates one page down, if the focus is on the last row, navigates to the growing button\n* <kbd>F2</kbd> - Focuses the first tabbable element in the row\n* <kbd>F7</kbd> - If focus position is remembered, moves focus to the corresponding focus position row, otherwise to the first tabbable element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\nIf the focus is on a cell, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Navigates down\n* <kbd>Up</kbd> - Navigates up\n* <kbd>Right</kbd> - Navigates right\n* <kbd>Left</kbd> - Navigates left, if the focus is on the first cell of the row, the focus is moved to the row.\n* <kbd>Home</kbd> - Navigates to the first cell of the current row, if the focus is on the first cell, navigates to the corresponding row\n* <kbd>End</kbd> - Navigates to the last cell of the current row, if the focus is on the last cell, navigates to the corresponding row\n* <kbd>Page Up</kbd> - Navigates one page up while keeping the focus in same column\n* <kbd>Page Down</kbd> - Navigates one page down while keeping the focus in same column\n* <kbd>F2</kbd> - Toggles the focus between the first tabbable cell content and the cell\n* <kbd>Enter</kbd> - Focuses the first tabbable cell content\n* <kbd>F7</kbd> - If the focus is on an interactive element inside a row, moves focus to the corresponding row and remembers the focus position of the element within the row\n* <kbd>[Shift]Tab</kbd> - Move focus to the element in the tab chain outside the table\n\nIf the focus is on an interactive cell content, the following keyboard shortcuts are available:\n* <kbd>Down</kbd> - Move the focus to the interactive element in the same column of the previous row, unless the focused element prevents the default\n* <kbd>Up</kbd> - Move the focus to the interactive element in the same column of the next row, unless the focused element prevents the default\n* <kbd>[Shift]Tab</kbd> - Move the focus to the element in the tab chain\n\n### Accessibility\n\nThe `ui5-table` follows the [ARIA grid design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/grid/).\nThis pattern enables cell-based keyboard navigation and, as explained above, we also support row-based keyboard navigation.\nSince the grid design pattern does not inherently provide row-based keyboard behavior, if the focus is on a row, not only the row information but also the corresponding column headers for each cell must be announced.\nThis can only be achieved through a custom accessibility announcement.\nTo support this, UI5 Web Components expose its own accessibility metadata via the `accessibilityInfo` property.\nThe `ui5-table` uses this information to create the required custom announcements dynamically.\nIf you include custom web components inside table cells that are not part of the standard UI5 Web Components set, their accessibility information can be provided using the `data-ui5-acc-text` attribute.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Table.js\";` (`ui5-table`)\\\n`import \"@ui5/webcomponents/dist/TableRow.js\";` (`ui5-table-row`)\\\n`import \"@ui5/webcomponents/dist/TableCell.js\";` (`ui5-table-cell`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderRow.js\";` (`ui5-table-header-row`)\\\n`import \"@ui5/webcomponents/dist/TableHeaderCell.js\";` (`ui5-table-header-cell`)\n---\n\n\n### **Events:**\n - **row-click** - Fired when an interactive row is clicked.\n\n**Note:** This event is not fired if the `behavior` property of the selection component is set to `RowOnly`.\nIn that case, use the `change` event of the selection component instead.\n- **move-over** - Fired when a movable item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n\n**Note:** If the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Notes:**\n\nThe `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\nIf the dragging operation is a cross-browser operation or files are moved to a potential drop target,\nthe `source` parameter will be `null`.\n- **row-action-click** - Fired when a row action is clicked.\n\n### **Slots:**\n - **default** - Defines the rows of the component.\n\n**Note:** Use `ui5-table-row` for the intended design.\n- **headerRow** - Defines the header row of the component.\n\n**Note:** Use `ui5-table-header-row` for the intended design.\n- **noData** - Defines the custom visualization if there is no data available.\n- **features** - Defines the features of the component.",
           "doc-url": "",
           "attributes": [
             {
@@ -9543,7 +9700,7 @@
               "name": "design",
               "description": "Defines the design type of the component.",
               "value": {
-                "type": "\"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"Neutral\" | \"Set1\" | \"Set2\"",
+                "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Information\" | \"Neutral\" | \"Set1\" | \"Set2\"",
                 "default": "\"Neutral\""
               }
             },
@@ -9598,7 +9755,7 @@
                 "name": "design",
                 "description": "Defines the design type of the component.",
                 "value": {
-                  "type": "\"Positive\" | \"Negative\" | \"Critical\" | \"Information\" | \"Neutral\" | \"Set1\" | \"Set2\""
+                  "type": "\"Positive\" | \"Critical\" | \"Negative\" | \"Information\" | \"Neutral\" | \"Set1\" | \"Set2\""
                 }
               },
               {
@@ -9708,7 +9865,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.\n\n**Note:** If `maxlength` property is set,\nthe component turns into \"Critical\" state once the characters exceeds the limit.\nIn this case, only the \"Negative\" state is considered and can be applied.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -9818,7 +9975,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.\n\n**Note:** If `maxlength` property is set,\nthe component turns into \"Critical\" state once the characters exceeds the limit.\nIn this case, only the \"Negative\" state is considered and can be applied.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -9911,7 +10068,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -10011,7 +10168,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -10230,7 +10387,7 @@
               "name": "design",
               "description": "Defines the component design.",
               "value": {
-                "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\"",
+                "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\"",
                 "default": "\"Default\""
               }
             },
@@ -10333,7 +10490,7 @@
                 "name": "design",
                 "description": "Defines the component design.",
                 "value": {
-                  "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\""
+                  "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\""
                 }
               },
               {
@@ -10632,7 +10789,7 @@
               "name": "design",
               "description": "Defines the action design.",
               "value": {
-                "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\"",
+                "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\"",
                 "default": "\"Default\""
               }
             },
@@ -10715,7 +10872,7 @@
                 "name": "design",
                 "description": "Defines the action design.",
                 "value": {
-                  "type": "\"Transparent\" | \"Default\" | \"Positive\" | \"Negative\" | \"Emphasized\" | \"Attention\""
+                  "type": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\""
                 }
               },
               {
@@ -10798,7 +10955,7 @@
               "name": "value-state",
               "description": "Defines the value state of the component.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -10871,7 +11028,7 @@
                 "name": "value-state",
                 "description": "Defines the value state of the component.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -11256,7 +11413,7 @@
               "name": "additional-text-state",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -11295,7 +11452,7 @@
               "name": "highlight",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -11366,7 +11523,7 @@
                 "name": "additional-text-state",
                 "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -11400,7 +11557,7 @@
                 "name": "highlight",
                 "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -11456,7 +11613,7 @@
               "name": "additional-text-state",
               "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -11495,7 +11652,7 @@
               "name": "highlight",
               "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
               "value": {
-                "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\"",
+                "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\"",
                 "default": "\"None\""
               }
             },
@@ -11565,7 +11722,7 @@
                 "name": "additional-text-state",
                 "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {
@@ -11599,7 +11756,7 @@
                 "name": "highlight",
                 "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
                 "value": {
-                  "type": "\"None\" | \"Positive\" | \"Negative\" | \"Critical\" | \"Information\""
+                  "type": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
                 }
               },
               {

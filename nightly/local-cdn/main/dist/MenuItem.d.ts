@@ -1,3 +1,4 @@
+import type { DefaultSlot, Slot } from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { AccessibilityAttributes, AriaHasPopup, AriaRole } from "@ui5/webcomponents-base";
 import "@ui5/webcomponents-icons/dist/nav-back.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
@@ -166,7 +167,7 @@ declare class MenuItem extends ListItem implements IMenuItem {
      * sub-menu arrow (if there are items added in `items` slot) -> components added in `endContent` -> text set to `additionalText`.
      * @public
      */
-    items: Array<IMenuItem>;
+    items: DefaultSlot<IMenuItem>;
     /**
      * Defines the components that should be displayed at the end of the menu item.
      *
@@ -184,7 +185,7 @@ declare class MenuItem extends ListItem implements IMenuItem {
      * @public
      * @since 2.0.0
      */
-    endContent: Array<HTMLElement>;
+    endContent: Slot<HTMLElement>;
     static i18nBundle: I18nBundle;
     _itemNavigation: ItemNavigation;
     _shiftPressed: boolean;
@@ -254,7 +255,6 @@ declare class MenuItem extends ListItem implements IMenuItem {
     get isMenuItem(): boolean;
     _updateCheckedState(): void;
 }
-declare const isInstanceOfMenuItem: (object: any) => object is MenuItem;
 export default MenuItem;
 export type { MenuBeforeCloseEventDetail, MenuBeforeOpenEventDetail, MenuItemAccessibilityAttributes, };
-export { isInstanceOfMenuItem, };
+export declare const isInstanceOfMenuItem: (object: any) => object is MenuItem;

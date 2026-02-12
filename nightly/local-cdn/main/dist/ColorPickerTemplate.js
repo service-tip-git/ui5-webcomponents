@@ -4,7 +4,7 @@ import Slider from "./Slider.js";
 import Input from "./Input.js";
 import Button from "./Button.js";
 export default function ColorPickerTemplate() {
-    return (_jsxs("section", { class: "ui5-color-picker-root", role: "group", "aria-label": this.colorPickerLabel, children: [_jsx("div", { class: "ui5-color-picker-main-color", role: "presentation", style: { "background-color": `rgb(${this._mainValue.r}, ${this._mainValue.g}, ${this._mainValue.b})` }, onMouseDown: this._handleMouseDown, onMouseUp: this._handleMouseUp, onMouseMove: this._handleMouseMove, onMouseOut: this._handleMouseOut, children: _jsx("div", { class: "ui5-color-picker-circle", style: {
+    return (_jsxs("div", { class: "ui5-color-picker-root", role: "group", "aria-label": this.colorPickerLabel, children: [_jsx("div", { class: "ui5-color-picker-main-color", role: "presentation", style: { "background-color": `rgb(${this._mainValue.r}, ${this._mainValue.g}, ${this._mainValue.b})` }, onMouseDown: this._handleMouseDown, onMouseUp: this._handleMouseUp, onMouseMove: this._handleMouseMove, onMouseOut: this._handleMouseOut, children: _jsx("div", { class: "ui5-color-picker-circle", style: {
                         left: `${this._selectedCoordinates.x}px`,
                         top: `${this._selectedCoordinates.y}px`,
                     } }) }), _jsxs("div", { class: "ui5-color-picker-sliders-wrapper", role: "group", "aria-label": this.sliderGroupLabel, children: [_jsx(Slider, { disabled: this.inputsDisabled, class: "ui5-color-picker-hue-slider", min: 0, max: 360, step: 1, value: this._hue, accessibleName: this.hueSliderLabel, showTooltip: true, onInput: this._handleHueInput }), this._isDefaultPickerMode &&

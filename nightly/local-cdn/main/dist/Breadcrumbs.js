@@ -52,6 +52,7 @@ import breadcrumbsPopoverCss from "./generated/themes/BreadcrumbsPopover.css.js"
  * - [End] - Navigates to the last item.
  * @constructor
  * @extends UI5Element
+ * @implements {IOverflowToolbarItem}
  * @public
  * @since 1.0.0-rc.15
  */
@@ -451,6 +452,9 @@ let Breadcrumbs = Breadcrumbs_1 = class Breadcrumbs extends UI5Element {
     }
     get _cancelButtonText() {
         return Breadcrumbs_1.i18nBundle.getText(BREADCRUMBS_CANCEL_BUTTON);
+    }
+    get hasOverflow() {
+        return true;
     }
 };
 __decorate([

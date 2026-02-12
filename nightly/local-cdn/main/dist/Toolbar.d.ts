@@ -1,6 +1,5 @@
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import type { ChangeInfo, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
-import type { UI5CustomEvent } from "@ui5/webcomponents-base";
 import type { ResizeObserverCallback } from "@ui5/webcomponents-base/dist/delegate/ResizeHandler.js";
 import "@ui5/webcomponents-icons/dist/overflow.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
@@ -143,6 +142,7 @@ declare class Toolbar extends UI5Element {
     onInvalidation(changeInfo: ChangeInfo): void;
     onBeforeRendering(): void;
     onAfterRendering(): Promise<void>;
+    addItemsAdditionalProperties(item: ToolbarItem): void;
     /**
      * Returns if the overflow popup is open.
      * @public
@@ -165,7 +165,6 @@ declare class Toolbar extends UI5Element {
      * Event Handlers
      */
     onOverflowPopoverClosed(): void;
-    onBeforeClose(e: UI5CustomEvent<Popover, "before-close">): void;
     onOverflowPopoverOpened(): void;
     onResize(): void;
     /**

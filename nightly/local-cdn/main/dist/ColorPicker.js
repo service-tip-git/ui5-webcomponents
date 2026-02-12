@@ -12,6 +12,7 @@ import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import { isEnter } from "@ui5/webcomponents-base/dist/Keys.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
+import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import { getRGBColor, getAlpha, } from "@ui5/webcomponents-base/dist/util/ColorConversion.js";
 import "@ui5/webcomponents-icons/dist/expand.js";
 import ColorValue from "./colorpicker-utils/ColorValue.js";
@@ -389,7 +390,10 @@ let ColorPicker = ColorPicker_1 = class ColorPicker extends UI5Element {
             && this._colorValue.B === value.b;
     }
     get colorPickerLabel() {
-        return ColorPicker_1.i18nBundle.getText(COLORPICKER_LABEL);
+        const effectiveLabel = getEffectiveAriaLabelText(this);
+        return effectiveLabel
+            ? `${ColorPicker_1.i18nBundle.getText(COLORPICKER_LABEL)} ${effectiveLabel}`
+            : ColorPicker_1.i18nBundle.getText(COLORPICKER_LABEL);
     }
     get sliderGroupLabel() {
         return ColorPicker_1.i18nBundle.getText(COLORPICKER_SLIDER_GROUP);
@@ -516,6 +520,12 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], ColorPicker.prototype, "simplified", void 0);
+__decorate([
+    property()
+], ColorPicker.prototype, "accessibleName", void 0);
+__decorate([
+    property()
+], ColorPicker.prototype, "accessibleNameRef", void 0);
 __decorate([
     property({ type: Object })
 ], ColorPicker.prototype, "_mainValue", void 0);

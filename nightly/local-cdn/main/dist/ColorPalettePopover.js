@@ -151,6 +151,12 @@ __decorate([
     property()
 ], ColorPalettePopover.prototype, "defaultColor", void 0);
 __decorate([
+    property()
+], ColorPalettePopover.prototype, "accessibleName", void 0);
+__decorate([
+    property()
+], ColorPalettePopover.prototype, "accessibleNameRef", void 0);
+__decorate([
     property({ type: Boolean })
 ], ColorPalettePopover.prototype, "open", void 0);
 __decorate([

@@ -14,7 +14,7 @@ import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import { isUp, isDown, isUpCtrl, isDownCtrl, isUpShift, isDownShift, isUpShiftCtrl, isDownShiftCtrl, isPageUpShift, isPageDownShift, isEscape, isEnter, isMinus, } from "@ui5/webcomponents-base/dist/Keys.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import ValueState from "@ui5/webcomponents-base/dist/types/ValueState.js";
-import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
+import { getEffectiveAriaLabelText, getAssociatedLabelForTexts } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import { submitForm } from "@ui5/webcomponents-base/dist/features/InputElementsFormSupport.js";
 import StepInputTemplate from "./StepInputTemplate.js";
 import { STEPINPUT_DEC_ICON_TITLE, STEPINPUT_INC_ICON_TITLE, STEPINPUT_PATTER_MISSMATCH, STEPINPUT_RANGEOVERFLOW, STEPINPUT_RANGEUNDERFLOW, } from "./generated/i18n/i18n-defaults.js";
@@ -191,7 +191,7 @@ let StepInput = StepInput_1 = class StepInput extends UI5Element {
     get accInfo() {
         return {
             "ariaRequired": this.required,
-            "ariaLabel": getEffectiveAriaLabelText(this),
+            "ariaLabel": getEffectiveAriaLabelText(this) || getAssociatedLabelForTexts(this),
         };
     }
     get inputAttributes() {

@@ -12,7 +12,7 @@ import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import { isSpace, isEnter, isShift, isEscape, isSpaceShift, } from "@ui5/webcomponents-base/dist/Keys.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
-import { getEffectiveAriaLabelText } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
+import { getEffectiveAriaLabelText, getAssociatedLabelForTexts } from "@ui5/webcomponents-base/dist/util/AccessibilityTextsHelper.js";
 import "@ui5/webcomponents-icons/dist/accept.js";
 import "@ui5/webcomponents-icons/dist/decline.js";
 import "@ui5/webcomponents-icons/dist/less.js";
@@ -189,7 +189,7 @@ let Switch = Switch_1 = class Switch extends UI5Element {
         return this.checked ? this.accessibilityOnText : this.accessibilityOffText;
     }
     get ariaLabelText() {
-        return [getEffectiveAriaLabelText(this), this.hiddenText].join(" ").trim();
+        return [getEffectiveAriaLabelText(this) || getAssociatedLabelForTexts(this), this.hiddenText].join(" ").trim();
     }
 };
 __decorate([

@@ -9000,7 +9000,6 @@
           },
           "tagName": "ui5-user-menu",
           "customElement": true,
-          "_ui5experimental": true,
           "_ui5since": "2.5.0",
           "_ui5privacy": "public"
         }
@@ -9222,7 +9221,6 @@
           },
           "tagName": "ui5-user-menu-account",
           "customElement": true,
-          "_ui5experimental": true,
           "_ui5since": "2.5.0",
           "_ui5privacy": "public"
         }
@@ -9279,7 +9277,6 @@
           },
           "tagName": "ui5-user-menu-item",
           "customElement": true,
-          "_ui5experimental": true,
           "_ui5since": "2.5.0",
           "_ui5privacy": "public"
         }
@@ -9318,7 +9315,6 @@
           },
           "tagName": "ui5-user-menu-item-group",
           "customElement": true,
-          "_ui5experimental": true,
           "_ui5since": "2.12.0",
           "_ui5privacy": "public"
         }

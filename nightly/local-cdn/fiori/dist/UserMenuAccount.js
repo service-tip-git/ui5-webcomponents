@@ -18,7 +18,6 @@ let UserMenuAccount =
  *
  * @constructor
  * @extends UI5Element
- * @experimental
  * @public
  * @since 2.5.0
  */
@@ -122,7 +121,6 @@ UserMenuAccount = __decorate([
      *
      * @constructor
      * @extends UI5Element
-     * @experimental
      * @public
      * @since 2.5.0
      */

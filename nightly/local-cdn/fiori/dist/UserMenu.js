@@ -31,7 +31,6 @@ import { USER_MENU_OTHER_ACCOUNT_BUTTON_TXT, USER_MENU_MANAGE_ACCOUNT_BUTTON_TXT
  *
  * @constructor
  * @extends UI5Element
- * @experimental
  * @public
  * @since 2.5.0
  */

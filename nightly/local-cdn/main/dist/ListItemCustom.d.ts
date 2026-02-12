@@ -1,3 +1,4 @@
+import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type { ClassMap } from "@ui5/webcomponents-base/dist/types.js";
 import ListItem from "./ListItem.js";
 /**
@@ -19,6 +20,7 @@ import ListItem from "./ListItem.js";
  * @public
  */
 declare class ListItemCustom extends ListItem {
+    static i18nBundle: I18nBundle;
     /**
      * Defines whether the item is movable.
      * @default false
@@ -37,6 +39,36 @@ declare class ListItemCustom extends ListItem {
     accessibleName?: string;
     _onkeydown(e: KeyboardEvent): void;
     _onkeyup(e: KeyboardEvent): void;
+    get _accessibleNameRef(): string;
+    _onfocusin(e: FocusEvent): void;
+    _onfocusout(e: FocusEvent): void;
+    /**
+     * Checks if this element is currently being dragged
+     * @returns {boolean} True if this element is being dragged
+     * @private
+     */
+    _isDragging(): boolean;
+    onAfterRendering(): void;
+    /**
+     * Returns the invisible text span element used for accessibility announcements
+     * @returns {HTMLElement | null} The HTMLElement representing the invisible text span used for accessibility announcements, or null if the element is not found in the shadow DOM
+     * @private
+     */
+    private get _invisibleTextSpan();
+    private _updateInvisibleTextContent;
+    private _clearInvisibleTextContent;
+    /**
+     * Gets accessibility description by processing content nodes and delete buttons
+     * @returns {string[]} Array of accessibility text strings
+     * @private
+     */
+    private _getAccessibilityDescription;
+    /**
+     * Gets delete button nodes to process for accessibility
+     * @returns {Node[]} Array of nodes to process
+     * @private
+     */
+    private _getDeleteButtonNodes;
     get classes(): ClassMap;
 }
 export default ListItemCustom;

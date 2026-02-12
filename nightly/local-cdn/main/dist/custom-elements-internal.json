@@ -1023,7 +1023,14 @@
           "tagName": "ui5-breadcrumbs",
           "customElement": true,
           "_ui5since": "1.0.0-rc.15",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IOverflowToolbarItem",
+              "package": "@ui5/webcomponents",
+              "module": "dist/ToolbarItem.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -4111,6 +4118,30 @@
               "_ui5privacy": "public"
             }
           ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
+            }
+          ],
           "events": [
             {
               "name": "item-click",
@@ -4140,6 +4171,26 @@
                   "description": "the selected color"
                 }
               ]
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the accessible name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              }
             }
           ],
           "superclass": {
@@ -4329,6 +4380,28 @@
             },
             {
               "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
+            },
+            {
+              "kind": "field",
               "name": "open",
               "type": {
                 "text": "boolean"
@@ -4448,6 +4521,24 @@
               }
             },
             {
+              "description": "Defines the accessible name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
               "description": "Defines the open | closed state of the popover.",
               "name": "open",
               "default": "false",
@@ -4545,6 +4636,28 @@
               "description": "When set to `true`, the alpha slider and inputs for RGB values will not be displayed.",
               "privacy": "public",
               "_ui5since": "2.5.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
             }
           ],
           "events": [
@@ -4586,6 +4699,24 @@
               "fieldName": "simplified",
               "type": {
                 "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the accessible name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
               }
             }
           ],
@@ -5668,7 +5799,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nThe `ui5-date-picker` component provides an input field with assigned calendar which opens on user action.\nThe `ui5-date-picker` allows users to select a localized date using touch,\nmouse, or keyboard input. It consists of two parts: the date input field and the\ndate picker.\n\n### Usage\n\nThe user can enter a date by:\n\n- Using the calendar that opens in a popup\n- Typing it in directly in the input field\n\nWhen the user makes an entry and presses the enter key, the calendar shows the corresponding date.\nWhen the user directly triggers the calendar display, the actual date is displayed.\n\n### Formatting\n\nIf a date is entered by typing it into\nthe input field, it must fit to the used date format.\n\nSupported format options are pattern-based on Unicode LDML Date Format notation.\nFor more information, see [UTS #35: Unicode Locale Data Markup Language](https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).\n\nFor example, if the `format-pattern` is \"yyyy-MM-dd\",\na valid value string is \"2015-07-30\" and the same is displayed in the input.\n\n### Keyboard Handling\nThe `ui5-date-picker` provides advanced keyboard handling.\nIf the `ui5-date-picker` is focused,\nyou can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.\nOnce the drop-down is opened, you can use the [Up], [Down], [Left] or [Right] arrow keys\nto navigate through the dates and select one by pressing the `Space` or `Enter` keys. Moreover you can\nuse TAB to reach the buttons for changing month and year.\n\nIf the `ui5-date-picker` input field is focused and its corresponding picker dialog is not opened,\nthen users can increment or decrement the date referenced by `dateValue` property\nby using the following shortcuts:\n\n- [Page Down] - Decrements the corresponding day of the month by one\n- [Shift] + [Page Down] - Decrements the corresponding month by one\n- [Shift] + [Ctrl] + [Page Down] - Decrements the corresponding year by one\n- [Page Up] - Increments the corresponding day of the month by one\n- [Shift] + [Page Up] - Increments the corresponding month by one\n- [Shift] + [Ctrl] + [Page Up] - Increments the corresponding year by one\n\n### Calendar types\nThe component supports several calendar types - Gregorian, Buddhist, Islamic, Japanese and Persian.\nBy default the Gregorian Calendar is used. In order to use the Buddhist, Islamic, Japanese or Persian calendar,\nyou need to set the `primaryCalendarType` property and import one or more of the following modules:\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js\";`\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Islamic.js\";`\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Japanese.js\";`\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Persian.js\";`\n\nOr, you can use the global configuration and set the `calendarType` key:\n\n```html\n<script data-id=\"sap-ui-config\" type=\"application/json\">\n\t{\n\t\t\"calendarType\": \"Japanese\"\n\t}\n<script>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DatePicker.js\";`",
+          "description": "### Overview\n\nThe `ui5-date-picker` component provides an input field with assigned calendar which opens on user action.\nThe `ui5-date-picker` allows users to select a localized date using touch,\nmouse, or keyboard input. It consists of two parts: the date input field and the\ndate picker.\n\n### Usage\n\nThe user can enter a date by:\n\n- Using the calendar that opens in a popup\n- Typing it in directly in the input field\n\nWhen the user makes an entry and presses the enter key, the calendar shows the corresponding date.\nWhen the user directly triggers the calendar display, the actual date is displayed.\n\n### Formatting\n\nIf a date is entered by typing it into\nthe input field, it must fit to the used date format.\n\nSupported format options are pattern-based on Unicode LDML Date Format notation.\nFor more information, see [UTS #35: Unicode Locale Data Markup Language](https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).\n\nFor example, if the valueFormat is \"yyyy-MM-dd\", the displayFormat is \"MMM d, y\", and the used locale is English, a valid value string is \"2015-07-30\", which leads to an output of \"Jul 30, 2015\".\nIf no placeholder is set to the DatePicker, the used displayFormat is displayed as a placeholder. If another placeholder is needed, it must be set.\n\n### Keyboard Handling\nThe `ui5-date-picker` provides advanced keyboard handling.\nIf the `ui5-date-picker` is focused,\nyou can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.\nOnce the drop-down is opened, you can use the [Up], [Down], [Left] or [Right] arrow keys\nto navigate through the dates and select one by pressing the `Space` or `Enter` keys. Moreover you can\nuse TAB to reach the buttons for changing month and year.\n\nIf the `ui5-date-picker` input field is focused and its corresponding picker dialog is not opened,\nthen users can increment or decrement the date referenced by `dateValue` property\nby using the following shortcuts:\n\n- [Page Down] - Decrements the corresponding day of the month by one\n- [Shift] + [Page Down] - Decrements the corresponding month by one\n- [Shift] + [Ctrl] + [Page Down] - Decrements the corresponding year by one\n- [Page Up] - Increments the corresponding day of the month by one\n- [Shift] + [Page Up] - Increments the corresponding month by one\n- [Shift] + [Ctrl] + [Page Up] - Increments the corresponding year by one\n\n### Calendar types\nThe component supports several calendar types - Gregorian, Buddhist, Islamic, Japanese and Persian.\nBy default the Gregorian Calendar is used. In order to use the Buddhist, Islamic, Japanese or Persian calendar,\nyou need to set the `primaryCalendarType` property and import one or more of the following modules:\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js\";`\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Islamic.js\";`\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Japanese.js\";`\n\n`import \"@ui5/webcomponents-localization/dist/features/calendar/Persian.js\";`\n\nOr, you can use the global configuration and set the `calendarType` key:\n\n```html\n<script data-id=\"sap-ui-config\" type=\"application/json\">\n\t{\n\t\t\"calendarType\": \"Japanese\"\n\t}\n<script>\n```\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DatePicker.js\";`",
           "name": "DatePicker",
           "cssParts": [
             {
@@ -29358,6 +29489,22 @@
               "_ui5Cancelable": true,
               "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true
+            },
+            {
+              "name": "close-overflow",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the overflow popover is closed.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "1.17.0",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
             }
           ],
           "attributes": [
@@ -29496,7 +29643,30 @@
           "customElement": true,
           "_ui5since": "1.17.0",
           "_ui5privacy": "public",
-          "_ui5abstract": true
+          "_ui5abstract": true,
+          "slots": [
+            {
+              "name": "default",
+              "description": "Wrapped component slot.",
+              "_ui5since": "2.20.0",
+              "_ui5propertyName": "item",
+              "_ui5type": {
+                "text": "Array<IOverflowToolbarItem>",
+                "references": [
+                  {
+                    "name": "IOverflowToolbarItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ToolbarItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -29526,6 +29696,25 @@
           "kind": "class",
           "description": "Represents an abstract class for items, used in the `ui5-toolbar`.",
           "name": "ToolbarItem",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Wrapped component slot.",
+              "_ui5since": "2.20.0",
+              "_ui5propertyName": "item",
+              "_ui5type": {
+                "text": "Array<IOverflowToolbarItem>",
+                "references": [
+                  {
+                    "name": "IOverflowToolbarItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ToolbarItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -29555,6 +29744,20 @@
               "privacy": "public"
             }
           ],
+          "events": [
+            {
+              "name": "close-overflow",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the overflow popover is closed.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "1.17.0"
+            }
+          ],
           "attributes": [
             {
               "description": "Property used to define the access of the item to the overflow Popover. If \"NeverOverflow\" option is set,\nthe item never goes in the Popover, if \"AlwaysOverflow\" - it never comes out of it.",
@@ -29580,16 +29783,25 @@
             "package": "@ui5/webcomponents-base",
             "module": "dist/UI5Element.js"
           },
+          "tagName": "ui5-toolbar-item",
           "customElement": true,
+          "_ui5experimental": "This module is experimental and its API might change significantly in future.",
           "_ui5since": "1.17.0",
-          "_ui5privacy": "public",
-          "_ui5abstract": true
+          "_ui5privacy": "public"
         }
       ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "ToolbarItem",
+            "module": "dist/ToolbarItem.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-toolbar-item",
           "declaration": {
             "name": "ToolbarItem",
             "module": "dist/ToolbarItem.js"
@@ -29620,7 +29832,11 @@
                   }
                 ]
               },
-              "_ui5privacy": "public"
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
             },
             {
               "name": "label",
@@ -29787,6 +30003,22 @@
               "_ui5Cancelable": false,
               "_ui5allowPreventDefault": false,
               "_ui5Bubbles": false
+            },
+            {
+              "name": "close-overflow",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the overflow popover is closed.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "1.17.0",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
             }
           ],
           "attributes": [
@@ -30030,6 +30262,29 @@
           "_ui5since": "1.17.0",
           "_ui5privacy": "public",
           "_ui5abstract": true,
+          "slots": [
+            {
+              "name": "default",
+              "description": "Wrapped component slot.",
+              "_ui5since": "2.20.0",
+              "_ui5propertyName": "item",
+              "_ui5type": {
+                "text": "Array<IOverflowToolbarItem>",
+                "references": [
+                  {
+                    "name": "IOverflowToolbarItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ToolbarItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ],
           "attributes": [
             {
               "description": "Property used to define the access of the item to the overflow Popover. If \"NeverOverflow\" option is set,\nthe item never goes in the Popover, if \"AlwaysOverflow\" - it never comes out of it.",
@@ -30052,6 +30307,24 @@
               "type": {
                 "text": "boolean"
               },
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "close-overflow",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the overflow popover is closed.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "1.17.0",
               "inheritedFrom": {
                 "name": "ToolbarItem",
                 "module": "dist/ToolbarItem.js"
@@ -30180,7 +30453,48 @@
           "customElement": true,
           "_ui5since": "1.17.0",
           "_ui5privacy": "public",
-          "_ui5abstract": true
+          "_ui5abstract": true,
+          "slots": [
+            {
+              "name": "default",
+              "description": "Wrapped component slot.",
+              "_ui5since": "2.20.0",
+              "_ui5propertyName": "item",
+              "_ui5type": {
+                "text": "Array<IOverflowToolbarItem>",
+                "references": [
+                  {
+                    "name": "IOverflowToolbarItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ToolbarItem.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "close-overflow",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the overflow popover is closed.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "1.17.0",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ]
         }
       ],
       "exports": [

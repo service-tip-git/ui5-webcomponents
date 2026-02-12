@@ -7,6 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
+import slot from "@ui5/webcomponents-base/dist/decorators/slot.js";
+import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
+import customElement from "@ui5/webcomponents-base/dist/decorators/customElement.js";
+import ToolbarItemTemplate from "./ToolbarItemTemplate.js";
+import ToolbarItemCss from "./generated/themes/ToolbarItem.css.js";
+/**
+ * Fired when the overflow popover is closed.
+ * @public
+ * @since 1.17.0
+ */
 let ToolbarItem = 
 /**
  * @class
@@ -14,8 +24,8 @@ let ToolbarItem =
  * Represents an abstract class for items, used in the `ui5-toolbar`.
  * @constructor
  * @extends UI5Element
- * @abstract
  * @public
+ * @experimental This module is experimental and its API might change significantly in future.
  * @since 1.17.0
  */
 class ToolbarItem extends UI5Element {
@@ -43,9 +53,73 @@ class ToolbarItem extends UI5Element {
          */
         this.isOverflowed = false;
         this._isRendering = true;
+        this._maxWidth = 0;
+        this._wrapperChecked = false;
+        this.fireCloseOverflowRef = this.fireCloseOverflow.bind(this);
+        this.closeOverflowSet = {
+            "ui5-button": ["click"],
+            "ui5-select": ["change"],
+            "ui5-combobox": ["change"],
+            "ui5-multi-combobox": ["selection-change"],
+            "ui5-date-picker": ["change"],
+            "ui5-switch": ["change"],
+        };
+        this.predefinedWrapperSet = {
+            "ui5-button": "ToolbarButton",
+            "ui5-select": "ToolbarSelect",
+        };
+    }
+    onBeforeRendering() {
+        this.checkForWrapper();
+        this.attachCloseOverflowHandlers();
     }
     onAfterRendering() {
         this._isRendering = false;
+    }
+    onExitDOM() {
+        this.detachCloseOverflowHandlers();
+    }
+    // Method called by ui5-toolbar to inform about the existing toolbar wrapper
+    checkForWrapper() {
+        if (this._wrapperChecked) {
+            return;
+        }
+        this._wrapperChecked = true;
+        const tagName = this.itemTagName;
+        const ctor = this.constructor;
+        const wrapperName = ctor?.getMetadata ? ctor.getMetadata().getPureTag() : this.tagName;
+        if (wrapperName === "ui5-toolbar-item"
+            && this.predefinedWrapperSet[tagName]) {
+            // eslint-disable-next-line no-console
+            console.warn(`This UI5 web component has its predefined toolbar wrapper called ${this.predefinedWrapperSet[tagName]}.`);
+        }
+    }
+    // We want to close the overflow popover, when closing event is being executed
+    getClosingEvents() {
+        const item = Array.isArray(this.item) ? this.item[0] : this.item;
+        const closeEvents = this.closeOverflowSet[this.itemTagName] || [];
+        if (!item) {
+            return [...closeEvents];
+        }
+        const overflowCloseEvents = Array.isArray(item.overflowCloseEvents) ? item.overflowCloseEvents : [];
+        return [...closeEvents, ...overflowCloseEvents];
+    }
+    attachCloseOverflowHandlers() {
+        const closingEvents = this.getClosingEvents();
+        closingEvents.forEach(clEvent => {
+            if (!this.preventOverflowClosing) {
+                this.addEventListener(clEvent, this.fireCloseOverflowRef);
+            }
+        });
+    }
+    detachCloseOverflowHandlers() {
+        const closingEvents = this.getClosingEvents();
+        closingEvents.forEach(clEvent => {
+            this.removeEventListener(clEvent, this.fireCloseOverflowRef);
+        });
+    }
+    fireCloseOverflow() {
+        this.fireDecoratorEvent("close-overflow");
     }
     /**
     * Defines if the width of the item should be ignored in calculating the whole width of the toolbar
@@ -70,6 +144,13 @@ class ToolbarItem extends UI5Element {
      */
     get isInteractive() {
         return true;
+    }
+    get itemTagName() {
+        const ctor = this.getSlottedNodes("item")[0]?.constructor;
+        return ctor?.getMetadata ? ctor.getMetadata().getPureTag() : this.getSlottedNodes("item")[0]?.tagName;
+    }
+    get hasOverflow() {
+        return this.item[0]?.hasOverflow ?? false;
     }
     /**
      * Returns if the item is separator.
@@ -99,9 +180,22 @@ __decorate([
 __decorate([
     property({ type: Boolean })
 ], ToolbarItem.prototype, "isOverflowed", void 0);
+__decorate([
+    slot({
+        "default": true, type: HTMLElement, invalidateOnChildChange: true,
+    })
+], ToolbarItem.prototype, "item", void 0);
 ToolbarItem = __decorate([
     event("close-overflow", {
         bubbles: true,
+        cancelable: true,
+    }),
+    customElement({
+        tag: "ui5-toolbar-item",
+        languageAware: true,
+        renderer: jsxRenderer,
+        template: ToolbarItemTemplate,
+        styles: ToolbarItemCss,
     })
     /**
      * @class
@@ -109,10 +203,11 @@ ToolbarItem = __decorate([
      * Represents an abstract class for items, used in the `ui5-toolbar`.
      * @constructor
      * @extends UI5Element
-     * @abstract
      * @public
+     * @experimental This module is experimental and its API might change significantly in future.
      * @since 1.17.0
      */
 ], ToolbarItem);
+ToolbarItem.define();
 export default ToolbarItem;
 //# sourceMappingURL=ToolbarItem.js.map

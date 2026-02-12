@@ -6,6 +6,15 @@ type IEventOptions = {
 type ToolbarItemEventDetail = {
     targetRef: HTMLElement;
 };
+interface IOverflowToolbarItem extends HTMLElement {
+    overflowCloseEvents?: string[] | undefined;
+    hasOverflow?: boolean | undefined;
+}
+/**
+ * Fired when the overflow popover is closed.
+ * @public
+ * @since 1.17.0
+ */
 declare class ToolbarItem extends UI5Element {
     eventDetails: {
         click: ToolbarItemEventDetail;
@@ -33,7 +42,35 @@ declare class ToolbarItem extends UI5Element {
      */
     isOverflowed: boolean;
     _isRendering: boolean;
+    _maxWidth: number;
+    _wrapperChecked: boolean;
+    fireCloseOverflowRef: () => void;
+    closeOverflowSet: {
+        "ui5-button": string[];
+        "ui5-select": string[];
+        "ui5-combobox": string[];
+        "ui5-multi-combobox": string[];
+        "ui5-date-picker": string[];
+        "ui5-switch": string[];
+    };
+    predefinedWrapperSet: {
+        "ui5-button": string;
+        "ui5-select": string;
+    };
+    onBeforeRendering(): void;
     onAfterRendering(): void;
+    onExitDOM(): void;
+    /**
+     * Wrapped component slot.
+     * @public
+     * @since 2.20.0
+     */
+    item: IOverflowToolbarItem[];
+    checkForWrapper(): void;
+    getClosingEvents(): string[];
+    attachCloseOverflowHandlers(): void;
+    detachCloseOverflowHandlers(): void;
+    fireCloseOverflow(): void;
     /**
     * Defines if the width of the item should be ignored in calculating the whole width of the toolbar
     * @protected
@@ -52,6 +89,8 @@ declare class ToolbarItem extends UI5Element {
      * @protected
      */
     get isInteractive(): boolean;
+    get itemTagName(): string;
+    get hasOverflow(): boolean;
     /**
      * Returns if the item is separator.
      * @protected
@@ -65,5 +104,5 @@ declare class ToolbarItem extends UI5Element {
         };
     };
 }
-export type { IEventOptions, ToolbarItemEventDetail, };
+export type { IEventOptions, ToolbarItemEventDetail, IOverflowToolbarItem, };
 export default ToolbarItem;

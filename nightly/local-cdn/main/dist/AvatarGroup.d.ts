@@ -158,6 +158,11 @@ declare class AvatarGroup extends UI5Element {
     _colorIndex: number;
     _hiddenItems: number;
     _itemNavigation: ItemNavigation;
+    /**
+     * Returns the actual avatar items, handling transitive slotting.
+     * @private
+     */
+    get _slottedItems(): IAvatarGroupItem[];
     constructor();
     /**
      * Returns an array containing the `ui5-avatar` instances that are currently not displayed due to lack of space.

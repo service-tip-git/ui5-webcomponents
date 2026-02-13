@@ -28,7 +28,6 @@ let UserSettingsAppearanceViewItem =
  *
  * @constructor
  * @extends ListItemCustom
- * @experimental
  * @public
  * @since 2.17.0
  */
@@ -97,7 +96,6 @@ UserSettingsAppearanceViewItem = __decorate([
      *
      * @constructor
      * @extends ListItemCustom
-     * @experimental
      * @public
      * @since 2.17.0
      */

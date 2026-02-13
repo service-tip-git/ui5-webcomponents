@@ -8,7 +8,6 @@ import type { DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
  *
  * @constructor
  * @extends UI5Element
- * @experimental
  * @public
  * @since 2.8.0
  */

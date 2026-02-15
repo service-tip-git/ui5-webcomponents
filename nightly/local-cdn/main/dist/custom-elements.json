@@ -4713,6 +4713,14 @@
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
               }
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
             }
           ],
           "attributes": [
@@ -11603,6 +11611,10 @@
             {
               "description": "Used to style the header item of the group",
               "name": "header"
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title"
             }
           ],
           "slots": [
@@ -13865,6 +13877,14 @@
             {
               "description": "Used to style the header item of the group",
               "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -20035,6 +20055,14 @@
             {
               "description": "Used to style the header item of the group",
               "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"

@@ -100,7 +100,6 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
          */
         this._checkMode = "None";
         this._shiftPressed = false;
-        this._openedByMouse = false;
         this._itemNavigation = new ItemNavigation(this, {
             navigationMode: NavigationMode.Horizontal,
             behavior: ItemNavigationBehavior.Static,
@@ -267,7 +266,7 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
         if (!isInstanceOfMenuItem(item)) {
             return;
         }
-        item.getFocusDomRef()?.focus();
+        item.focus();
         this._closeOtherSubMenus(item);
     }
     _isSpace(e) {
@@ -337,9 +336,7 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
         }
     }
     _afterPopoverOpen() {
-        if (!this._openedByMouse) {
-            this._allMenuItems[0]?.focus();
-        }
+        this._allMenuItems[0]?.focus();
         this.fireDecoratorEvent("open");
     }
     _beforePopoverClose(e) {
@@ -357,7 +354,6 @@ let MenuItem = MenuItem_1 = class MenuItem extends ListItem {
         }
     }
     _afterPopoverClose() {
-        this._openedByMouse = false;
         this.fireDecoratorEvent("close");
     }
     get isMenuItem() {

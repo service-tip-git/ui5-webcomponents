@@ -162,10 +162,6 @@ declare class Toolbar extends UI5Element {
     setSeperatorsVisibilityInOverflow(): void;
     shouldShowSeparatorInOverflow(separatorIdx: number, overflowItems: Array<ToolbarItem>): boolean;
     /**
-     * Adds AlwaysOverflow items to overflow to ensure they are never rendered outside overflow (and visual flash is prevented)
-     */
-    prePopulateAlwaysOverflowItems(): void;
-    /**
      * Event Handlers
      */
     onOverflowPopoverClosed(): void;

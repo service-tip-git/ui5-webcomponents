@@ -23,6 +23,7 @@ let UserSettingsAccountView = UserSettingsAccountView_1 =
  *
  * @constructor
  * @extends UserSettingsView
+ * @experimental
  * @public
  * @since 2.17.0
  */
@@ -97,6 +98,7 @@ UserSettingsAccountView = UserSettingsAccountView_1 = __decorate([
      *
      * @constructor
      * @extends UserSettingsView
+     * @experimental
      * @public
      * @since 2.17.0
      */

@@ -189,7 +189,6 @@ declare class MenuItem extends ListItem implements IMenuItem {
     static i18nBundle: I18nBundle;
     _itemNavigation: ItemNavigation;
     _shiftPressed: boolean;
-    _openedByMouse: boolean;
     constructor();
     get _list(): List | null;
     get _navigableItems(): Array<HTMLElement>;

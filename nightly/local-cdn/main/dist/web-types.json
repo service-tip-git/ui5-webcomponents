@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@ui5/webcomponents",
-  "version": "2.20.0-rc.0",
+  "version": "2.19.0",
   "description-markup": "markdown",
   "contributions": {
     "html": {
@@ -2097,7 +2097,7 @@
         },
         {
           "name": "ui5-cb-item-group",
-          "description": "The `ui5-cb-group-item` is type of suggestion item,\nthat can be used to split the `ui5-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-cb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
+          "description": "The `ui5-cb-group-item` is type of suggestion item,\nthat can be used to split the `ui5-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-cb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
           "doc-url": "",
           "attributes": [
             {
@@ -4897,7 +4897,7 @@
         },
         {
           "name": "ui5-li-group",
-          "description": "### Overview\nThe `ui5-li-group` is a special list item, used only to create groups of list items.\n\nThis is the item to use inside a `ui5-list`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";`\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-li-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
+          "description": "### Overview\nThe `ui5-li-group` is a special list item, used only to create groups of list items.\n\nThis is the item to use inside a `ui5-list`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";`\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-li-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
           "doc-url": "",
           "attributes": [
             {
@@ -5961,7 +5961,7 @@
         },
         {
           "name": "ui5-mcb-item-group",
-          "description": "The `ui5-mcb-item-group` is type of suggestion item,\nthat can be used to split the `ui5-multi-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-mcb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
+          "description": "The `ui5-mcb-item-group` is type of suggestion item,\nthat can be used to split the `ui5-multi-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-mcb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
           "doc-url": "",
           "attributes": [
             {
@@ -8529,7 +8529,7 @@
         },
         {
           "name": "ui5-suggestion-item-group",
-          "description": "The `ui5-suggestion-item-group` is type of suggestion item,\nthat can be used to split the `ui5-input` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-suggestion-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
+          "description": "The `ui5-suggestion-item-group` is type of suggestion item,\nthat can be used to split the `ui5-input` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-suggestion-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
           "doc-url": "",
           "attributes": [
             {
@@ -12077,10 +12077,6 @@
           "description": "Used to style the header item of the group"
         },
         {
-          "name": "part(title)",
-          "description": "Used to style the title of the group header"
-        },
-        {
           "name": "part(input)",
           "description": "Used to style the input element. This part is forwarded to the underlying ui5-input element."
         },
@@ -12190,10 +12186,6 @@
         },
         {
           "name": "part(title)",
-          "description": "Used to style the title of the group header"
-        },
-        {
-          "name": "part(title)",
           "description": "Used to style the title of the list item"
         },
         {
@@ -12239,10 +12231,6 @@
         {
           "name": "part(header)",
           "description": "Used to style the header item of the group"
-        },
-        {
-          "name": "part(title)",
-          "description": "Used to style the title of the group header"
         },
         {
           "name": "part(root)",
@@ -12347,10 +12335,6 @@
         {
           "name": "part(header)",
           "description": "Used to style the header item of the group"
-        },
-        {
-          "name": "part(title)",
-          "description": "Used to style the title of the group header"
         },
         {
           "name": "part(slider)",

@@ -23,6 +23,7 @@ let UserSettingsAppearanceView =
  *
  * @constructor
  * @extends UserSettingsView
+ * @experimental
  * @public
  * @since 2.17.0
  */
@@ -97,6 +98,7 @@ UserSettingsAppearanceView = __decorate([
      *
      * @constructor
      * @extends UserSettingsView
+     * @experimental
      * @public
      * @since 2.17.0
      */

@@ -27,6 +27,7 @@ import { USER_SETTINGS_DIALOG_ACCESSIBLE_NAME, USER_SETTINGS_LIST_ARIA_ROLE_DESC
  *
  * @constructor
  * @extends UI5Element
+ * @experimental
  * @public
  * @since 2.8.0
  */

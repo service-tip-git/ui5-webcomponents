@@ -21,6 +21,7 @@ import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInsta
  *
  * @constructor
  * @extends ListItemGroup
+ * @experimental
  * @public
  * @since 2.17.0
  */

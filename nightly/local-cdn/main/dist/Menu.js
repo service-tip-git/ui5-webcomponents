@@ -181,7 +181,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
     _close() {
         this.open = false;
     }
-    _openItemSubMenu(item, openedByMouse = false) {
+    _openItemSubMenu(item) {
         clearTimeout(this._timeout);
         if (!item._popover || item._popover.open) {
             return;
@@ -192,7 +192,6 @@ let Menu = Menu_1 = class Menu extends UI5Element {
         item._popover.opener = item;
         item._popover.open = true;
         item.selected = true;
-        item._openedByMouse = openedByMouse;
     }
     _itemMouseOver(e) {
         if (!isDesktop()) {
@@ -202,7 +201,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
         if (!isInstanceOfMenuItem(item)) {
             return;
         }
-        item.getFocusDomRef()?.focus();
+        item.focus();
         // Opens submenu with 300ms delay
         this._startOpenTimeout(item);
     }
@@ -229,7 +228,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
         clearTimeout(this._timeout);
         this._timeout = setTimeout(() => {
             this._closeOtherSubMenus(item);
-            this._openItemSubMenu(item, true);
+            this._openItemSubMenu(item);
         }, MENU_OPEN_DELAY);
     }
     _itemClick(e) {
@@ -263,7 +262,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
             item._navigateToEndContent(isLeft(e));
         }
         if (shouldOpenMenu) {
-            this._openItemSubMenu(item, false);
+            this._openItemSubMenu(item);
         }
         else if (isTabNextPrevious) {
             this._close();

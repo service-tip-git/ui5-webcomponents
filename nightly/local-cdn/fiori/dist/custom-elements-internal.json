@@ -9511,6 +9511,7 @@
           },
           "tagName": "ui5-user-settings-account-view",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.17.0",
           "_ui5privacy": "public"
         }
@@ -9653,6 +9654,7 @@
           },
           "tagName": "ui5-user-settings-appearance-view",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.17.0",
           "_ui5privacy": "public",
           "attributes": [
@@ -9750,6 +9752,7 @@
           },
           "tagName": "ui5-user-settings-appearance-view-group",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.17.0",
           "_ui5privacy": "public"
         }
@@ -9868,6 +9871,7 @@
           },
           "tagName": "ui5-user-settings-appearance-view-item",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.17.0",
           "_ui5privacy": "public"
         }
@@ -10070,6 +10074,7 @@
           },
           "tagName": "ui5-user-settings-dialog",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.8.0",
           "_ui5privacy": "public"
         }
@@ -10353,6 +10358,7 @@
           },
           "tagName": "ui5-user-settings-item",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.8.0",
           "_ui5privacy": "public"
         }
@@ -10463,6 +10469,7 @@
           },
           "tagName": "ui5-user-settings-view",
           "customElement": true,
+          "_ui5experimental": true,
           "_ui5since": "2.8.0",
           "_ui5privacy": "public"
         }

@@ -188,15 +188,9 @@ let DynamicPage = DynamicPage_1 = class DynamicPage extends UI5Element {
      * @public
      */
     set headerSnapped(snapped) {
-        if (snapped === this._headerSnapped) {
-            return;
+        if (snapped !== this._headerSnapped) {
+            this._toggleHeader();
         }
-        if (!this.scrollContainer) {
-            this._headerSnapped = snapped;
-            this.showHeaderInStickArea = snapped;
-            return;
-        }
-        this._toggleHeader();
     }
     snapOnScroll() {
         debounce(() => this.snapTitleByScroll(), SCROLL_DEBOUNCE_RATE);

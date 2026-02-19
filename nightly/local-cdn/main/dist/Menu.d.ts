@@ -146,6 +146,7 @@ declare class Menu extends UI5Element {
     get isPhone(): boolean;
     get _popover(): ResponsivePopover;
     get _list(): List | null;
+    get _opener(): HTMLElement | null | undefined;
     /** Returns menu item groups */
     get _menuItemGroups(): import("./MenuItemGroup.js").default[];
     /** Returns menu items */
@@ -159,7 +160,7 @@ declare class Menu extends UI5Element {
     getFocusDomRef(): HTMLElement | undefined;
     _setupItemNavigation(): void;
     _close(): void;
-    _openItemSubMenu(item: MenuItem): void;
+    _openItemSubMenu(item: MenuItem, openedByMouse?: boolean): void;
     _itemMouseOver(e: MouseEvent): void;
     focus(focusOptions?: FocusOptions): Promise<void>;
     _closeOtherSubMenus(item: MenuItem): void;

@@ -100,6 +100,14 @@ declare class UserMenu extends UI5Element {
      * @public
      */
     accounts: Slot<UserMenuAccount>;
+    /**
+     * Defines custom footer content.
+     *
+     * **Note:** When provided, replaces the default "Sign Out" button. Use an empty element to hide the footer completely.
+     * @public
+     * @since 2.19.0
+     */
+    footer: Slot<HTMLElement>;
     static i18nBundle: I18nBundle;
     /**
      * @default false
@@ -157,6 +165,8 @@ declare class UserMenu extends UI5Element {
     get accessibleNameText(): string;
     get _ariaLabelledByAccountInformationText(): string;
     get _ariaLabelledByActions(): string;
+    get _hasCustomFooter(): boolean;
+    get _showDefaultFooter(): boolean;
     getAccountDescriptionText(account: UserMenuAccount): string;
     getAccountByRefId(refId: string): UserMenuAccount;
     captureRef(ref: HTMLElement & {

@@ -26,7 +26,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "### Overview\n\nAn image-like component that has different display options for representing images and icons\nin different shapes and sizes, depending on the use case.\n\nThe shape can be circular or square. There are several predefined sizes, as well as an option to\nset a custom size.\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `interactive` property is set to true.\n- [Shift] - If [Space] is pressed, pressing [Shift] releases the component without triggering the click event.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Avatar.js\";`",
+          "description": "### Overview\n\nAn image-like component that has different display options for representing images and icons\nin different shapes and sizes, depending on the use case.\n\nThe shape can be circular or square. There are several predefined sizes, as well as an option to\nset a custom size.\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `mode` is set to `Interactive` or the deprecated `interactive` property is set to true.\n- [Shift] - If [Space] is pressed, pressing [Shift] releases the component without triggering the click event.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Avatar.js\";`",
           "name": "Avatar",
           "slots": [
             {
@@ -67,8 +67,27 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
-              "privacy": "public"
+              "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** When set to `true`, this property takes precedence over the `mode` property,\nand the avatar will be rendered as interactive (role=\"button\", focusable) regardless of the `mode` value.\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
+              "privacy": "public",
+              "deprecated": "Set `mode=\"Interactive\"` instead for the same functionality with proper accessibility."
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "type": {
+                "text": "AvatarMode",
+                "references": [
+                  {
+                    "name": "AvatarMode",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/AvatarMode.js"
+                  }
+                ]
+              },
+              "default": "\"Image\"",
+              "description": "Defines the mode of the component.\n\n**Note:**\n- `Image` (default) - renders with role=\"img\"\n- `Decorative` - renders with role=\"presentation\" and aria-hidden=\"true\", making it purely decorative\n- `Interactive` - renders with role=\"button\", focusable (tabindex=\"0\"), and supports keyboard interaction\n\n**Note:** This property is ignored when the `interactive` property is set to `true`.\nIn that case, the avatar will always be rendered as interactive.",
+              "privacy": "public",
+              "_ui5since": "2.20"
             },
             {
               "kind": "field",
@@ -206,12 +225,22 @@
               }
             },
             {
-              "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
+              "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** When set to `true`, this property takes precedence over the `mode` property,\nand the avatar will be rendered as interactive (role=\"button\", focusable) regardless of the `mode` value.\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
               "name": "interactive",
               "default": "false",
               "fieldName": "interactive",
               "type": {
                 "text": "boolean"
+              },
+              "deprecated": "Set `mode=\"Interactive\"` instead for the same functionality with proper accessibility."
+            },
+            {
+              "description": "Defines the mode of the component.\n\n**Note:**\n- `Image` (default) - renders with role=\"img\"\n- `Decorative` - renders with role=\"presentation\" and aria-hidden=\"true\", making it purely decorative\n- `Interactive` - renders with role=\"button\", focusable (tabindex=\"0\"), and supports keyboard interaction\n\n**Note:** This property is ignored when the `interactive` property is set to `true`.\nIn that case, the avatar will always be rendered as interactive.",
+              "name": "mode",
+              "default": "\"Image\"",
+              "fieldName": "mode",
+              "type": {
+                "text": "\"Image\" | \"Decorative\" | \"Interactive\""
               }
             },
             {
@@ -5421,6 +5450,14 @@
             {
               "description": "Used to style the header item of the group",
               "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -13252,6 +13289,10 @@
             {
               "description": "Used to style the header item of the group",
               "name": "header"
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title"
             }
           ],
           "slots": [
@@ -16002,6 +16043,14 @@
             {
               "description": "Used to style the header item of the group",
               "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -22857,6 +22906,14 @@
             {
               "description": "Used to style the header item of the group",
               "name": "header",
+              "inheritedFrom": {
+                "name": "ListItemGroup",
+                "module": "dist/ListItemGroup.js"
+              }
+            },
+            {
+              "description": "Used to style the title of the group header",
+              "name": "title",
               "inheritedFrom": {
                 "name": "ListItemGroup",
                 "module": "dist/ListItemGroup.js"
@@ -33156,6 +33213,60 @@
           "declaration": {
             "name": "AvatarGroupType",
             "module": "dist/types/AvatarGroupType.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/types/AvatarMode.js",
+      "declarations": [
+        {
+          "kind": "enum",
+          "name": "AvatarMode",
+          "description": "Different Avatar modes.",
+          "_ui5privacy": "public",
+          "members": [
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "_ui5since": "2.20",
+              "description": "Image mode (by default).\nConfigures the component to internally render role=\"img\".",
+              "default": "Image",
+              "name": "Image",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "_ui5since": "2.20",
+              "description": "Decorative mode.\nConfigures the component to internally render role=\"presentation\" and aria-hidden=\"true\",\nmaking it purely decorative without semantic content or interactivity.",
+              "default": "Decorative",
+              "name": "Decorative",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "static": true,
+              "privacy": "public",
+              "_ui5since": "2.20",
+              "description": "Interactive mode.\nConfigures the component to internally render role=\"button\".\nThis mode also supports focus and enables keyboard interaction.",
+              "default": "Interactive",
+              "name": "Interactive",
+              "readonly": true
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "AvatarMode",
+            "module": "dist/types/AvatarMode.js"
           }
         }
       ]

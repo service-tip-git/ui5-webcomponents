@@ -179,6 +179,7 @@ let Toolbar = Toolbar_1 = class Toolbar extends UI5Element {
             const lastItem = this.interactiveItems.at(-1);
             lastItem?.focus();
         }
+        this.prePopulateAlwaysOverflowItems();
     }
     async onAfterRendering() {
         await renderFinished();
@@ -322,6 +323,16 @@ let Toolbar = Toolbar_1 = class Toolbar extends UI5Element {
             }
         });
         return foundPrevNonSeparatorItem && foundNextNonSeperatorItem;
+    }
+    /**
+     * Adds AlwaysOverflow items to overflow to ensure they are never rendered outside overflow (and visual flash is prevented)
+     */
+    prePopulateAlwaysOverflowItems() {
+        this.alwaysOverflowItems.forEach(item => {
+            if (!this.itemsToOverflow.includes(item)) {
+                this.itemsToOverflow.push(item);
+            }
+        });
     }
     /**
      * Event Handlers

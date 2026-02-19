@@ -626,28 +626,8 @@
     },
     {
       "name": "ui5-shellbar",
-      "description": "### Overview\n\nThe `ui5-shellbar` is meant to serve as an application header\nand includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.\n\n### Stable DOM Refs\n\nYou can use the following stable DOM refs for the `ui5-shellbar`:\n\n- logo\n- notifications\n- overflow\n- profile\n- product-switch\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBar.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **notifications-click** - Fired, when the notification icon is activated.\n- **profile-click** - Fired, when the profile slot is present.\n- **product-switch-click** - Fired, when the product switch icon is activated.\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.\n- **logo-click** - Fired, when the logo is activated.\n- **menu-item-click** - Fired, when a menu item is activated\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.\n- **search-button-click** - Fired, when the search button is activated.\n\n**Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.\n- **search-field-toggle** - Fired, when the search field is expanded or collapsed.\n- **search-field-clear** - Fired, when the search cancel button is activated.\n\n**Note:** You can prevent the default behavior (clearing the search field value) by calling `event.preventDefault()`. The search will still be closed.\n**Note:** The `search-field-clear` event is in an experimental state and is a subject to change.\n- **content-item-visibility-change** - Fired, when an item from the content slot is hidden or shown.\n**Note:** The `content-item-visibility-change` event is in an experimental state and is a subject to change.\n\n### **Methods:**\n - **closeOverflow(): _void_** - Closes the overflow area.\nUseful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event\n- **getSearchButtonDomRef(): _Promise<HTMLElement | null>_** - Returns the `search` icon DOM ref.\n\n### **Slots:**\n - **assistant** - Defines the assistant slot.\n- **branding** - Defines the branding slot.\nThe `ui5-shellbar-branding` component is intended to be placed inside this slot.\nContent placed here takes precedence over the `primaryTitle` property and the `logo` content slot.\n\n**Note:** The `branding` slot is in an experimental state and is a subject to change.\n- **default** - Defines the `ui5-shellbar` additional items.\n\n**Note:**\nYou can use the `<ui5-shellbar-item></ui5-shellbar-item>`.\n- **profile** - You can pass `ui5-avatar` to set the profile image/icon.\nIf no profile slot is set - profile will be excluded from actions.\n\n**Note:** We recommend not using the `size` attribute of `ui5-avatar` because\nit should have specific size by design in the context of `ui5-shellbar` profile.\n- **logo** - Defines the logo of the `ui5-shellbar`.\nFor example, you can use `ui5-avatar` or `img` elements as logo.\n- **menuItems** - Defines the items displayed in menu after a click on a start button.\n\n**Note:** You can use the  `<ui5-li></ui5-li>` and its ancestors.\n- **searchField** - Defines the `ui5-input`, that will be used as a search field.\n- **startButton** - Defines a `ui5-button` in the bar that will be placed in the beginning.\nWe encourage this slot to be used for a menu button.\nIt gets overstyled to match ShellBar's styling.\n- **content** - Define the items displayed in the content area.\n\nUse the `data-hide-order` attribute with numeric value to specify the order of the items to be hidden when the space is not enough.\nLower values will be hidden first.\n\n**Note:** The `content` slot is in an experimental state and is a subject to change.\n\n### **CSS Parts:**\n - **root** - Used to style the outermost wrapper of the `ui5-shellbar`",
+      "description": "### Overview\n\nThe `ui5-shellbar` is meant to serve as an application header\nand includes numerous built-in features, such as: logo, profile image/icon, title, search field, notifications and so on.\n\n### Stable DOM Refs\n\nYou can use the following stable DOM refs for the `ui5-shellbar`:\n\n- logo\n- notifications\n- overflow\n- profile\n- product-switch\n\n### Keyboard Handling\n\n#### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBar.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **notifications-click** - Fired, when the notification icon is activated.\n- **profile-click** - Fired, when the profile slot is present.\n- **product-switch-click** - Fired, when the product switch icon is activated.\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.\n- **logo-click** - Fired, when the logo is activated.\n- **menu-item-click** - Fired, when a menu item is activated\n\n**Note:** You can prevent closing of overflow popover by calling `event.preventDefault()`.\n- **search-button-click** - Fired, when the search button is activated.\n\n**Note:** You can prevent expanding/collapsing of the search field by calling `event.preventDefault()`.\n- **search-field-toggle** - Fired, when the search field is expanded or collapsed.\n- **search-field-clear** - Fired, when the search cancel button is activated.\n\n**Note:** You can prevent the default behavior (clearing the search field value) by calling `event.preventDefault()`. The search will still be closed.\n**Note:** The `search-field-clear` event is in an experimental state and is a subject to change.\n- **content-item-visibility-change** - Fired, when an item from the content slot is hidden or shown.\n**Note:** The `content-item-visibility-change` event is in an experimental state and is a subject to change.\n\n### **Methods:**\n - **closeOverflow(): _void_** - Closes the overflow popover.\n- **getSearchButtonDomRef(): _Promise<HTMLElement | null>_** - Returns the search button DOM reference.\n\n### **Slots:**\n - **startButton** - Defines a `ui5-button` in the bar that will be placed in the beginning.\nWe encourage this slot to be used for a menu button.\nIt gets overstyled to match ShellBar's styling.\n- **branding** - Defines the branding slot.\nThe `ui5-shellbar-branding` component is intended to be placed inside this slot.\nContent placed here takes precedence over the `primaryTitle` property and the `logo` content slot.\n\n**Note:** The `branding` slot is in an experimental state and is a subject to change.\n- **content** - Define the items displayed in the content area.\n\nUse the `data-hide-order` attribute with numeric value to specify the order of the items to be hidden when the space is not enough.\nLower values will be hidden first.\n\n**Note:** The `content` slot is in an experimental state and is a subject to change.\n- **searchField** - Defines the `ui5-input`, that will be used as a search field.\n- **assistant** - Defines the assistant slot.\n- **default** - Defines the `ui5-shellbar` additional items.\n\n**Note:**\nYou can use the `<ui5-shellbar-item></ui5-shellbar-item>`.\n- **profile** - You can pass `ui5-avatar` to set the profile image/icon.\nIf no profile slot is set - profile will be excluded from actions.\n\n**Note:** We recommend not using the `size` attribute of `ui5-avatar` because\nit should have specific size by design in the context of `ui5-shellbar` profile.\n- **logo** - Defines the logo of the `ui5-shellbar`.\nFor example, you can use `ui5-avatar` or `img` elements as logo.\n- **menuItems** - Defines the items displayed in menu after a click on a start button.\n\n**Note:** You can use the  `<ui5-li></ui5-li>` and its ancestors.\n\n### **CSS Parts:**\n - **root** - Used to style the outermost wrapper of the `ui5-shellbar`",
       "attributes": [
-        {
-          "name": "hide-search-button",
-          "description": "Defines the visibility state of the search button.\n\n**Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.",
-          "values": []
-        },
-        {
-          "name": "disable-search-collapse",
-          "description": "Disables the automatic search field expansion/collapse when the available space is not enough.\n\n**Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.",
-          "values": []
-        },
-        {
-          "name": "primary-title",
-          "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
-          "values": []
-        },
-        {
-          "name": "secondary-title",
-          "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
-          "values": []
-        },
         {
           "name": "notifications-count",
           "description": "Defines the `notificationsCount`,\ndisplayed in the notification icon top-right corner.",
@@ -672,6 +652,26 @@
           "name": "accessibility-attributes",
           "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n- **branding** - `branding.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
           "values": [{ "name": "ShellBarAccessibilityAttributes" }]
+        },
+        {
+          "name": "hide-search-button",
+          "description": "Defines the visibility state of the search button.\n\n**Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.",
+          "values": []
+        },
+        {
+          "name": "disable-search-collapse",
+          "description": "Disables the automatic search field expansion/collapse when the available space is not enough.\n\n**Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.",
+          "values": []
+        },
+        {
+          "name": "primary-title",
+          "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
+          "values": []
+        },
+        {
+          "name": "secondary-title",
+          "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
+          "values": []
         },
         {
           "name": "logo-dom-ref",
@@ -725,26 +725,26 @@
     },
     {
       "name": "ui5-shellbar-item",
-      "description": "The `ui5-shellbar-item` represents a custom item, that\nmight be added to the `ui5-shellbar`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBarItem.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **click** - Fired, when the item is pressed.",
+      "description": "The `ui5-shellbar-item` represents a custom item for `ui5-shellbar`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBarItem.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **click** - Fired when the item is clicked.",
       "attributes": [
         {
           "name": "icon",
-          "description": "Defines the name of the item's icon.",
+          "description": "Defines the item's icon.",
           "values": []
         },
         {
           "name": "text",
-          "description": "Defines the item text.\n\n**Note:** The text is only displayed inside the overflow popover list view.",
+          "description": "Defines the item text.",
           "values": []
         },
         {
           "name": "count",
-          "description": "Defines the count displayed in the top-right corner.",
+          "description": "Defines the count displayed in badge.",
           "values": []
         },
         {
           "name": "accessibility-attributes",
-          "description": "Defines additional accessibility attributes on Shellbar Items.\n\nThe accessibility attributes support the following values:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\n- **controls**: Identifies the element (or elements) whose contents\nor presence are controlled by the component.\nAccepts a lowercase string value, referencing the ID of the element it controls.",
+          "description": "Defines accessibility attributes.",
           "values": [{ "name": "ShellBarItemAccessibilityAttributes" }]
         }
       ],
@@ -752,65 +752,15 @@
     },
     {
       "name": "ui5-shellbar-search",
-      "description": "Search field for the ShellBar component.\n\n\n---\n\n\n\n\n### **Events:**\n - **open** - Fired when the popup is opened.\n- **close** - Fired when the popup is closed.\n- **input** - Fired when typing in input or clear icon is pressed.\n- **scope-change** - Fired when the scope has changed.\n- **search** - Fired when the user has triggered search with Enter key or Search Button press.\n\n### **Slots:**\n - **default** - Defines the Search suggestion items.\n- **action** - Defines the popup footer action button.\n- **illustration** - Defines the illustrated message to be shown in the popup.\n- **messageArea** - Defines the illustrated message to be shown in the popup.\n- **scopes** - Defines the component scope options.\n- **filterButton** - Defines the filter button slot, used to display an additional filtering button.\nThis slot is intended for passing a `ui5-button` with a filter icon to provide extended filtering options.\n\n**Note:** Scope button and Filter button are mutually exclusive.",
+      "description": "Search field for the ShellBar component.\n\n\n---\n\n\n",
       "attributes": [
         {
           "name": "auto-open",
           "description": "Indicates whether the suggestions popover should be opened on focus.",
           "values": []
-        },
-        {
-          "name": "loading",
-          "description": "Indicates whether a loading indicator should be shown in the popup.",
-          "values": []
-        },
-        {
-          "name": "no-typeahead",
-          "description": "Defines whether the value will be autcompleted to match an item.",
-          "values": []
-        },
-        {
-          "name": "open",
-          "description": "Indicates whether the items picker is open.",
-          "values": []
-        },
-        {
-          "name": "field-loading",
-          "description": "Indicates whether a loading indicator should be shown in the input field.",
-          "values": []
-        },
-        {
-          "name": "show-clear-icon",
-          "description": "Defines whether the clear icon of the search will be shown.",
-          "values": []
-        },
-        {
-          "name": "value",
-          "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
-          "values": []
-        },
-        {
-          "name": "placeholder",
-          "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
-          "values": []
-        },
-        {
-          "name": "accessible-name",
-          "description": "Defines the accessible ARIA name of the component.",
-          "values": []
-        },
-        {
-          "name": "accessible-description",
-          "description": "Defines the accessible ARIA description of the field.",
-          "values": []
-        },
-        {
-          "name": "scope-value",
-          "description": "Defines the value of the component:\n\nApplications are responsible for setting the correct scope value.\n\n**Note:** If the given value does not match any existing scopes,\nno scope will be selected and the SearchField scope component will be displayed as empty.",
-          "values": []
         }
       ],
-      "references": []
+      "references": [null]
     },
     {
       "name": "ui5-shellbar-spacer",
@@ -1283,7 +1233,7 @@
     },
     {
       "name": "ui5-user-menu",
-      "description": "### Overview\n\nThe `ui5-user-menu` is an SAP Fiori specific web component that is used in `ui5-shellbar`\nand allows the user to easily see information and settings for the current user and all other logged in accounts.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserMenu.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/UserMenuItem.js\";` (for `ui5-user-menu-item`)\n\n\n---\n\n\n\n\n### **Events:**\n - **avatar-click** - Fired when the account avatar is selected.\n- **manage-account-click** - Fired when the \"Manage Account\" button is selected.\n- **edit-accounts-click** - Fired when the \"Edit Accounts\" button is selected.\n- **change-account** - Fired when the account is switched to a different one.\n- **item-click** - Fired when a menu item is selected.\n- **open** - Fired when a user menu is open.\n- **close** - Fired when a user menu is close.\n- **sign-out-click** - Fired when the \"Sign Out\" button is selected.\n\n### **Slots:**\n - **default** - Defines the menu items.\n- **accounts** - Defines the user accounts.\n\n**Note:** If one item is used, it will be shown as the selected one. If more than one item is used, the first one will be shown as selected unless\nthere is an item with `selected` property set to `true`.",
+      "description": "### Overview\n\nThe `ui5-user-menu` is an SAP Fiori specific web component that is used in `ui5-shellbar`\nand allows the user to easily see information and settings for the current user and all other logged in accounts.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/UserMenu.js\";`\n\n`import \"@ui5/webcomponents-fiori/dist/UserMenuItem.js\";` (for `ui5-user-menu-item`)\n\n\n---\n\n\n\n\n### **Events:**\n - **avatar-click** - Fired when the account avatar is selected.\n- **manage-account-click** - Fired when the \"Manage Account\" button is selected.\n- **edit-accounts-click** - Fired when the \"Edit Accounts\" button is selected.\n- **change-account** - Fired when the account is switched to a different one.\n- **item-click** - Fired when a menu item is selected.\n- **open** - Fired when a user menu is open.\n- **close** - Fired when a user menu is close.\n- **sign-out-click** - Fired when the \"Sign Out\" button is selected.\n\n### **Slots:**\n - **default** - Defines the menu items.\n- **accounts** - Defines the user accounts.\n\n**Note:** If one item is used, it will be shown as the selected one. If more than one item is used, the first one will be shown as selected unless\nthere is an item with `selected` property set to `true`.\n- **footer** - Defines custom footer content.\n\n**Note:** When provided, replaces the default \"Sign Out\" button. Use an empty element to hide the footer completely.",
       "attributes": [
         {
           "name": "open",

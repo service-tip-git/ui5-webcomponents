@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/JetBrains/web-types/master/schema/web-types.json",
   "name": "@ui5/webcomponents",
-  "version": "2.19.0",
+  "version": "2.20.0-rc.0",
   "description-markup": "markdown",
   "contributions": {
     "html": {
       "elements": [
         {
           "name": "ui5-avatar",
-          "description": "### Overview\n\nAn image-like component that has different display options for representing images and icons\nin different shapes and sizes, depending on the use case.\n\nThe shape can be circular or square. There are several predefined sizes, as well as an option to\nset a custom size.\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `interactive` property is set to true.\n- [Shift] - If [Space] is pressed, pressing [Shift] releases the component without triggering the click event.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Avatar.js\";`\n---\n\n\n### **Events:**\n - **click** - Fired on mouseup, space and enter if avatar is interactive\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.\n\n### **Slots:**\n - **default** - Receives the desired `<img>` tag\n\n**Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>\n`ui5-avatar:not(:defined) {`<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>\n`}`\n- **badge** - Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, use the `ui5-avatar-badge` component.",
+          "description": "### Overview\n\nAn image-like component that has different display options for representing images and icons\nin different shapes and sizes, depending on the use case.\n\nThe shape can be circular or square. There are several predefined sizes, as well as an option to\nset a custom size.\n\n### Keyboard Handling\n\n- [Space] / [Enter] or [Return] - Fires the `click` event if the `mode` is set to `Interactive` or the deprecated `interactive` property is set to true.\n- [Shift] - If [Space] is pressed, pressing [Shift] releases the component without triggering the click event.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/Avatar.js\";`\n---\n\n\n### **Events:**\n - **click** - Fired on mouseup, space and enter if avatar is interactive\n\n**Note:** The event will not be fired if the `disabled`\nproperty is set to `true`.\n\n### **Slots:**\n - **default** - Receives the desired `<img>` tag\n\n**Note:** If you experience flickering of the provided image, you can hide the component until it is defined with the following CSS:<br/>\n`ui5-avatar:not(:defined) {`<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;`visibility: hidden;`<br/>\n`}`\n- **badge** - Defines the optional badge that will be used for visual affordance.\n\n**Note:** While the slot allows for custom badges, to achieve\nthe Fiori design, use the `ui5-avatar-badge` component.",
           "doc-url": "",
           "attributes": [
             {
@@ -18,8 +18,16 @@
             },
             {
               "name": "interactive",
-              "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
+              "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** When set to `true`, this property takes precedence over the `mode` property,\nand the avatar will be rendered as interactive (role=\"button\", focusable) regardless of the `mode` value.\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
               "value": { "type": "boolean", "default": "false" }
+            },
+            {
+              "name": "mode",
+              "description": "Defines the mode of the component.\n\n**Note:**\n- `Image` (default) - renders with role=\"img\"\n- `Decorative` - renders with role=\"presentation\" and aria-hidden=\"true\", making it purely decorative\n- `Interactive` - renders with role=\"button\", focusable (tabindex=\"0\"), and supports keyboard interaction\n\n**Note:** This property is ignored when the `interactive` property is set to `true`.\nIn that case, the avatar will always be rendered as interactive.",
+              "value": {
+                "type": "\"Image\" | \"Decorative\" | \"Interactive\"",
+                "default": "\"Image\""
+              }
             },
             {
               "name": "icon",
@@ -99,8 +107,15 @@
               },
               {
                 "name": "interactive",
-                "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
+                "description": "Defines if the avatar is interactive (focusable and pressable).\n\n**Note:** When set to `true`, this property takes precedence over the `mode` property,\nand the avatar will be rendered as interactive (role=\"button\", focusable) regardless of the `mode` value.\n\n**Note:** This property won't have effect if the `disabled`\nproperty is set to `true`.",
                 "value": { "type": "boolean" }
+              },
+              {
+                "name": "mode",
+                "description": "Defines the mode of the component.\n\n**Note:**\n- `Image` (default) - renders with role=\"img\"\n- `Decorative` - renders with role=\"presentation\" and aria-hidden=\"true\", making it purely decorative\n- `Interactive` - renders with role=\"button\", focusable (tabindex=\"0\"), and supports keyboard interaction\n\n**Note:** This property is ignored when the `interactive` property is set to `true`.\nIn that case, the avatar will always be rendered as interactive.",
+                "value": {
+                  "type": "\"Image\" | \"Decorative\" | \"Interactive\""
+                }
               },
               {
                 "name": "icon",
@@ -2097,7 +2112,7 @@
         },
         {
           "name": "ui5-cb-item-group",
-          "description": "The `ui5-cb-group-item` is type of suggestion item,\nthat can be used to split the `ui5-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-cb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
+          "description": "The `ui5-cb-group-item` is type of suggestion item,\nthat can be used to split the `ui5-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-cb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
           "doc-url": "",
           "attributes": [
             {
@@ -4897,7 +4912,7 @@
         },
         {
           "name": "ui5-li-group",
-          "description": "### Overview\nThe `ui5-li-group` is a special list item, used only to create groups of list items.\n\nThis is the item to use inside a `ui5-list`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";`\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-li-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
+          "description": "### Overview\nThe `ui5-li-group` is a special list item, used only to create groups of list items.\n\nThis is the item to use inside a `ui5-list`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents/dist/ListItemGroup.js\";`\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-li-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
           "doc-url": "",
           "attributes": [
             {
@@ -5961,7 +5976,7 @@
         },
         {
           "name": "ui5-mcb-item-group",
-          "description": "The `ui5-mcb-item-group` is type of suggestion item,\nthat can be used to split the `ui5-multi-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-mcb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
+          "description": "The `ui5-mcb-item-group` is type of suggestion item,\nthat can be used to split the `ui5-multi-combobox` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-mcb-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
           "doc-url": "",
           "attributes": [
             {
@@ -8529,7 +8544,7 @@
         },
         {
           "name": "ui5-suggestion-item-group",
-          "description": "The `ui5-suggestion-item-group` is type of suggestion item,\nthat can be used to split the `ui5-input` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-suggestion-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group",
+          "description": "The `ui5-suggestion-item-group` is type of suggestion item,\nthat can be used to split the `ui5-input` suggestions into groups.\n---\n\n\n### **Events:**\n - **move-over** - Fired when a movable list item is moved over a potential drop target during a dragging operation.\n\nIf the new position is valid, prevent the default action of the event using `preventDefault()`.\n- **move** - Fired when a movable list item is dropped onto a drop target.\n\n**Note:** `move` event is fired only if there was a preceding `move-over` with prevented default action.\n\n### **Slots:**\n - **default** - Defines the items of the <code>ui5-suggestion-item-group</code>.\n- **header** - Defines the header of the component.\n\n**Note:** Using this slot, the default header text of group and the value of `headerText` property will be overwritten.\n\n### **CSS Parts:**\n - **header** - Used to style the header item of the group\n- **title** - Used to style the title of the group header",
           "doc-url": "",
           "attributes": [
             {
@@ -12077,6 +12092,10 @@
           "description": "Used to style the header item of the group"
         },
         {
+          "name": "part(title)",
+          "description": "Used to style the title of the group header"
+        },
+        {
           "name": "part(input)",
           "description": "Used to style the input element. This part is forwarded to the underlying ui5-input element."
         },
@@ -12186,6 +12205,10 @@
         },
         {
           "name": "part(title)",
+          "description": "Used to style the title of the group header"
+        },
+        {
+          "name": "part(title)",
           "description": "Used to style the title of the list item"
         },
         {
@@ -12231,6 +12254,10 @@
         {
           "name": "part(header)",
           "description": "Used to style the header item of the group"
+        },
+        {
+          "name": "part(title)",
+          "description": "Used to style the title of the group header"
         },
         {
           "name": "part(root)",
@@ -12335,6 +12362,10 @@
         {
           "name": "part(header)",
           "description": "Used to style the header item of the group"
+        },
+        {
+          "name": "part(title)",
+          "description": "Used to style the title of the group header"
         },
         {
           "name": "part(slider)",

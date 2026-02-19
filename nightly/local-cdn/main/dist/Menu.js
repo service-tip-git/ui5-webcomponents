@@ -10,7 +10,7 @@ import customElement from "@ui5/webcomponents-base/dist/decorators/customElement
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
 import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
-import { isLeft, isRight, isEnter, isTabNext, isTabPrevious, } from "@ui5/webcomponents-base/dist/Keys.js";
+import { isLeft, isRight, isEnter, isTabNext, isTabPrevious, isShow, } from "@ui5/webcomponents-base/dist/Keys.js";
 import { isPhone, isDesktop, } from "@ui5/webcomponents-base/dist/Device.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import "@ui5/webcomponents-icons/dist/slim-arrow-right.js";
@@ -21,6 +21,7 @@ import DOMReferenceConverter from "@ui5/webcomponents-base/dist/converters/DOMRe
 import { isInstanceOfMenuItem } from "./MenuItem.js";
 import { isInstanceOfMenuItemGroup } from "./MenuItemGroup.js";
 import { isInstanceOfMenuSeparator } from "./MenuSeparator.js";
+import { isInstanceOfSplitButton } from "./SplitButton.js";
 import menuTemplate from "./MenuTemplate.js";
 import { MENU_CANCEL_BUTTON_TEXT, MENU_POPOVER_ACCESSIBLE_NAME, } from "./generated/i18n/i18n-defaults.js";
 // Styles
@@ -123,6 +124,9 @@ let Menu = Menu_1 = class Menu extends UI5Element {
     get _list() {
         return this.shadowRoot.querySelector("[ui5-list]");
     }
+    get _opener() {
+        return typeof this.opener === "string" ? document.getElementById(this.opener) : this.opener;
+    }
     /** Returns menu item groups */
     get _menuItemGroups() {
         return this.items.filter(isInstanceOfMenuItemGroup);
@@ -181,7 +185,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
     _close() {
         this.open = false;
     }
-    _openItemSubMenu(item) {
+    _openItemSubMenu(item, openedByMouse = false) {
         clearTimeout(this._timeout);
         if (!item._popover || item._popover.open) {
             return;
@@ -192,6 +196,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
         item._popover.opener = item;
         item._popover.open = true;
         item.selected = true;
+        item._openedByMouse = openedByMouse;
     }
     _itemMouseOver(e) {
         if (!isDesktop()) {
@@ -201,7 +206,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
         if (!isInstanceOfMenuItem(item)) {
             return;
         }
-        item.focus();
+        item.getFocusDomRef()?.focus();
         // Opens submenu with 300ms delay
         this._startOpenTimeout(item);
     }
@@ -228,7 +233,7 @@ let Menu = Menu_1 = class Menu extends UI5Element {
         clearTimeout(this._timeout);
         this._timeout = setTimeout(() => {
             this._closeOtherSubMenus(item);
-            this._openItemSubMenu(item);
+            this._openItemSubMenu(item, true);
         }, MENU_OPEN_DELAY);
     }
     _itemClick(e) {
@@ -249,22 +254,24 @@ let Menu = Menu_1 = class Menu extends UI5Element {
     }
     _itemKeyDown(e) {
         const isTabNextPrevious = isTabNext(e) || isTabPrevious(e);
+        const isShowKey = isShow(e);
+        const isSplitButton = this._opener && isInstanceOfSplitButton(this._opener);
         const item = e.target;
         if (!isInstanceOfMenuItem(item)) {
             return;
         }
         const isEndContentNavigation = isRight(e) || isLeft(e);
         const shouldOpenMenu = this.isRtl ? isLeft(e) : isRight(e);
-        if (isEnter(e) || isTabNextPrevious) {
+        if (isEnter(e) || isTabNextPrevious || (isShowKey && isSplitButton)) {
             e.preventDefault();
         }
         if (isEndContentNavigation) {
             item._navigateToEndContent(isLeft(e));
         }
         if (shouldOpenMenu) {
-            this._openItemSubMenu(item);
+            this._openItemSubMenu(item, false);
         }
-        else if (isTabNextPrevious) {
+        else if (isTabNextPrevious || (isShowKey && isSplitButton)) {
             this._close();
         }
     }

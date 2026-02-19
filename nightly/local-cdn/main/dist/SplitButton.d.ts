@@ -225,7 +225,9 @@ declare class SplitButton extends UI5Element {
         description: string;
     };
     get arrowButtonTooltip(): string;
+    get isSplitButton(): boolean;
     get ariaLabelText(): string;
 }
 export default SplitButton;
 export type { SplitButtonAccessibilityAttributes, };
+export declare const isInstanceOfSplitButton: (object: any) => object is SplitButton;

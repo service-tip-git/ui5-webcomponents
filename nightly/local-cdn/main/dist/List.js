@@ -520,9 +520,6 @@ let List = List_1 = class List extends UI5Element {
                 // subtract group itself for proper group header item count
                 groupItemCount += groupItems.length - 1;
             }
-            else if (hasListItems(item)) {
-                item.assignedSlot && items.push(...item.listItems);
-            }
             else {
                 item.assignedSlot && items.push(item);
             }
@@ -1210,8 +1207,5 @@ List = List_1 = __decorate([
     })
 ], List);
 List.define();
-const hasListItems = (item) => {
-    return "hasListItems" in item && item.hasListItems;
-};
 export default List;
 //# sourceMappingURL=List.js.map

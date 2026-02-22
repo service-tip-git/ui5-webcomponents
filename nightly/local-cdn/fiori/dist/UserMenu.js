@@ -225,12 +225,6 @@ let UserMenu = UserMenu_1 = class UserMenu extends UI5Element {
     get _ariaLabelledByActions() {
         return UserMenu_1.i18nBundle.getText(USER_MENU_ACTIONS_TXT);
     }
-    get _hasCustomFooter() {
-        return this.footer.length > 0 && this.footer[0]?.innerHTML.trim() !== "";
-    }
-    get _showDefaultFooter() {
-        return this.footer.length === 0;
-    }
     getAccountDescriptionText(account) {
         return `${account.subtitleText} ${account.description} ${account.selected ? UserMenu_1.i18nBundle.getText(USER_MENU_POPOVER_ACCESSIBLE_ACCOUNT_SELECTED_TXT) : ""}`;
     }
@@ -279,9 +273,6 @@ __decorate([
         },
     })
 ], UserMenu.prototype, "accounts", void 0);
-__decorate([
-    slot()
-], UserMenu.prototype, "footer", void 0);
 __decorate([
     property({ type: Boolean })
 ], UserMenu.prototype, "_titleMovedToHeader", void 0);

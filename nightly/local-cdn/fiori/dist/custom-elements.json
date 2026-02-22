@@ -3599,24 +3599,12 @@
           ],
           "slots": [
             {
-              "name": "startButton",
-              "description": "Defines a `ui5-button` in the bar that will be placed in the beginning.\nWe encourage this slot to be used for a menu button.\nIt gets overstyled to match ShellBar's styling."
+              "name": "assistant",
+              "description": "Defines the assistant slot."
             },
             {
               "name": "branding",
               "description": "Defines the branding slot.\nThe `ui5-shellbar-branding` component is intended to be placed inside this slot.\nContent placed here takes precedence over the `primaryTitle` property and the `logo` content slot.\n\n**Note:** The `branding` slot is in an experimental state and is a subject to change."
-            },
-            {
-              "name": "content",
-              "description": "Define the items displayed in the content area.\n\nUse the `data-hide-order` attribute with numeric value to specify the order of the items to be hidden when the space is not enough.\nLower values will be hidden first.\n\n**Note:** The `content` slot is in an experimental state and is a subject to change."
-            },
-            {
-              "name": "searchField",
-              "description": "Defines the `ui5-input`, that will be used as a search field."
-            },
-            {
-              "name": "assistant",
-              "description": "Defines the assistant slot."
             },
             {
               "name": "default",
@@ -3633,9 +3621,61 @@
             {
               "name": "menuItems",
               "description": "Defines the items displayed in menu after a click on a start button.\n\n**Note:** You can use the  `<ui5-li></ui5-li>` and its ancestors."
+            },
+            {
+              "name": "searchField",
+              "description": "Defines the `ui5-input`, that will be used as a search field."
+            },
+            {
+              "name": "startButton",
+              "description": "Defines a `ui5-button` in the bar that will be placed in the beginning.\nWe encourage this slot to be used for a menu button.\nIt gets overstyled to match ShellBar's styling."
+            },
+            {
+              "name": "content",
+              "description": "Define the items displayed in the content area.\n\nUse the `data-hide-order` attribute with numeric value to specify the order of the items to be hidden when the space is not enough.\nLower values will be hidden first.\n\n**Note:** The `content` slot is in an experimental state and is a subject to change."
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "hideSearchButton",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the visibility state of the search button.\n\n**Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "disableSearchCollapse",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disables the automatic search field expansion/collapse when the available space is not enough.\n\n**Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "primaryTitle",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "secondaryTitle",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
+              "default": "undefined",
+              "privacy": "public"
+            },
             {
               "kind": "field",
               "name": "notificationsCount",
@@ -3685,52 +3725,12 @@
                   {
                     "name": "ShellBarAccessibilityAttributes",
                     "package": "@ui5/webcomponents-fiori",
-                    "module": "dist/shellbar/ShellBarAccessibility.js"
+                    "module": "dist/ShellBar.js"
                   }
                 ]
               },
               "default": "{}",
               "description": "Defines additional accessibility attributes on different areas of the component.\n\nThe accessibilityAttributes object has the following fields,\nwhere each field is an object supporting one or more accessibility attributes:\n\n- **logo** - `logo.role` and `logo.name`.\n- **notifications** - `notifications.expanded` and `notifications.hasPopup`.\n- **profile** - `profile.expanded`, `profile.hasPopup` and `profile.name`.\n- **product** - `product.expanded` and `product.hasPopup`.\n- **search** - `search.hasPopup`.\n- **overflow** - `overflow.expanded` and `overflow.hasPopup`.\n- **branding** - `branding.name`.\n\nThe accessibility attributes support the following values:\n\n- **role**: Defines the accessible ARIA role of the logo area.\nAccepts the following string values: `button` or `link`.\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n- **name**: Defines the accessible ARIA name of the area.\nAccepts any string.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "hideSearchButton",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Defines the visibility state of the search button.\n\n**Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "disableSearchCollapse",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Disables the automatic search field expansion/collapse when the available space is not enough.\n\n**Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "primaryTitle",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
-              "default": "undefined",
-              "privacy": "public"
-            },
-            {
-              "kind": "field",
-              "name": "secondaryTitle",
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
-              "default": "undefined",
               "privacy": "public"
             },
             {
@@ -3741,7 +3741,7 @@
                   "text": "void"
                 }
               },
-              "description": "Closes the overflow popover.",
+              "description": "Closes the overflow area.\nUseful to manually close the overflow after having suppressed automatic closing with preventDefault() of ShellbarItem's press event",
               "privacy": "public"
             },
             {
@@ -3805,9 +3805,10 @@
               "return": {
                 "type": {
                   "text": "Promise<HTMLElement | null>"
-                }
+                },
+                "description": "The search icon DOM ref"
               },
-              "description": "Returns the search button DOM reference.",
+              "description": "Returns the `search` icon DOM ref.",
               "privacy": "public"
             }
           ],
@@ -3941,6 +3942,42 @@
           ],
           "attributes": [
             {
+              "description": "Defines the visibility state of the search button.\n\n**Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.",
+              "name": "hide-search-button",
+              "default": "false",
+              "fieldName": "hideSearchButton",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Disables the automatic search field expansion/collapse when the available space is not enough.\n\n**Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.",
+              "name": "disable-search-collapse",
+              "default": "false",
+              "fieldName": "disableSearchCollapse",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
+              "name": "primary-title",
+              "default": "undefined",
+              "fieldName": "primaryTitle",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
+              "name": "secondary-title",
+              "default": "undefined",
+              "fieldName": "secondaryTitle",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
               "description": "Defines the `notificationsCount`,\ndisplayed in the notification icon top-right corner.",
               "name": "notifications-count",
               "default": "undefined",
@@ -3983,42 +4020,6 @@
               "fieldName": "accessibilityAttributes",
               "type": {
                 "text": "ShellBarAccessibilityAttributes"
-              }
-            },
-            {
-              "description": "Defines the visibility state of the search button.\n\n**Note:** The `hideSearchButton` property is in an experimental state and is a subject to change.",
-              "name": "hide-search-button",
-              "default": "false",
-              "fieldName": "hideSearchButton",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Disables the automatic search field expansion/collapse when the available space is not enough.\n\n**Note:** The `disableSearchCollapse` property is in an experimental state and is a subject to change.",
-              "name": "disable-search-collapse",
-              "default": "false",
-              "fieldName": "disableSearchCollapse",
-              "type": {
-                "text": "boolean"
-              }
-            },
-            {
-              "description": "Defines the `primaryTitle`.\n\n**Note:** The `primaryTitle` would be hidden on S screen size (less than approx. 700px).",
-              "name": "primary-title",
-              "default": "undefined",
-              "fieldName": "primaryTitle",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "description": "Defines the `secondaryTitle`.\n\n**Note:** The `secondaryTitle` would be hidden on S and M screen sizes (less than approx. 1300px).",
-              "name": "secondary-title",
-              "default": "undefined",
-              "fieldName": "secondaryTitle",
-              "type": {
-                "text": "string | undefined"
               }
             },
             {
@@ -4217,7 +4218,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "The `ui5-shellbar-item` represents a custom item for `ui5-shellbar`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBarItem.js\";`",
+          "description": "The `ui5-shellbar-item` represents a custom item, that\nmight be added to the `ui5-shellbar`.\n\n### ES6 Module Import\n`import \"@ui5/webcomponents-fiori/dist/ShellBarItem.js\";`",
           "name": "ShellBarItem",
           "members": [
             {
@@ -4226,7 +4227,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the item's icon.",
+              "description": "Defines the name of the item's icon.",
               "default": "undefined",
               "privacy": "public"
             },
@@ -4236,7 +4237,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the item text.",
+              "description": "Defines the item text.\n\n**Note:** The text is only displayed inside the overflow popover list view.",
               "default": "undefined",
               "privacy": "public"
             },
@@ -4246,7 +4247,7 @@
               "type": {
                 "text": "string | undefined"
               },
-              "description": "Defines the count displayed in badge.",
+              "description": "Defines the count displayed in the top-right corner.",
               "default": "undefined",
               "privacy": "public"
             },
@@ -4264,7 +4265,7 @@
                 ]
               },
               "default": "{}",
-              "description": "Defines accessibility attributes.",
+              "description": "Defines additional accessibility attributes on Shellbar Items.\n\nThe accessibility attributes support the following values:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\n- **controls**: Identifies the element (or elements) whose contents\nor presence are controlled by the component.\nAccepts a lowercase string value, referencing the ID of the element it controls.",
               "privacy": "public"
             }
           ],
@@ -4281,12 +4282,12 @@
                   }
                 ]
               },
-              "description": "Fired when the item is clicked."
+              "description": "Fired, when the item is pressed."
             }
           ],
           "attributes": [
             {
-              "description": "Defines the item's icon.",
+              "description": "Defines the name of the item's icon.",
               "name": "icon",
               "default": "undefined",
               "fieldName": "icon",
@@ -4295,7 +4296,7 @@
               }
             },
             {
-              "description": "Defines the item text.",
+              "description": "Defines the item text.\n\n**Note:** The text is only displayed inside the overflow popover list view.",
               "name": "text",
               "default": "undefined",
               "fieldName": "text",
@@ -4304,7 +4305,7 @@
               }
             },
             {
-              "description": "Defines the count displayed in badge.",
+              "description": "Defines the count displayed in the top-right corner.",
               "name": "count",
               "default": "undefined",
               "fieldName": "count",
@@ -4313,7 +4314,7 @@
               }
             },
             {
-              "description": "Defines accessibility attributes.",
+              "description": "Defines additional accessibility attributes on Shellbar Items.\n\nThe accessibility attributes support the following values:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls,\nis currently expanded or collapsed.\nAccepts the following string values: `true` or `false`.\n\n- **hasPopup**: Indicates the availability and type of interactive popup element,\nsuch as menu or dialog, that can be triggered by the button.\n\n- **controls**: Identifies the element (or elements) whose contents\nor presence are controlled by the component.\nAccepts a lowercase string value, referencing the ID of the element it controls.",
               "name": "accessibility-attributes",
               "default": "{}",
               "fieldName": "accessibilityAttributes",
@@ -4368,6 +4369,146 @@
               "default": "false",
               "description": "Indicates whether the suggestions popover should be opened on focus.",
               "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown in the popup.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "noTypeahead",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the value will be autcompleted to match an item.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether the items picker is open.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fieldLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showClearIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the clear icon of the search will be shown.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA description of the field.",
+              "privacy": "public",
+              "default": "undefined",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "scopeValue",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the value of the component:\n\nApplications are responsible for setting the correct scope value.\n\n**Note:** If the given value does not match any existing scopes,\nno scope will be selected and the SearchField scope component will be displayed as empty.",
+              "privacy": "public",
+              "default": "\"\"",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
             }
           ],
           "attributes": [
@@ -4379,6 +4520,136 @@
               "type": {
                 "text": "boolean"
               }
+            },
+            {
+              "description": "Indicates whether a loading indicator should be shown in the popup.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "description": "Defines whether the value will be autcompleted to match an item.",
+              "name": "no-typeahead",
+              "default": "false",
+              "fieldName": "noTypeahead",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "description": "Indicates whether the items picker is open.",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "description": "Indicates whether a loading indicator should be shown in the input field.",
+              "name": "field-loading",
+              "default": "false",
+              "fieldName": "fieldLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines whether the clear icon of the search will be shown.",
+              "name": "show-clear-icon",
+              "default": "false",
+              "fieldName": "showClearIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "name": "value",
+              "default": "\"\"",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "name": "placeholder",
+              "default": "undefined",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA description of the field.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "description": "Defines the value of the component:\n\nApplications are responsible for setting the correct scope value.\n\n**Note:** If the given value does not match any existing scopes,\nno scope will be selected and the SearchField scope component will be displayed as empty.",
+              "name": "scope-value",
+              "default": "\"\"",
+              "fieldName": "scopeValue",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
             }
           ],
           "superclass": {
@@ -4387,7 +4658,121 @@
             "module": "dist/Search.js"
           },
           "tagName": "ui5-shellbar-search",
-          "customElement": true
+          "customElement": true,
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the Search suggestion items.",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "name": "action",
+              "description": "Defines the popup footer action button.",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "name": "illustration",
+              "description": "Defines the illustrated message to be shown in the popup.",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "name": "messageArea",
+              "description": "Defines the illustrated message to be shown in the popup.",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "name": "scopes",
+              "description": "Defines the component scope options.",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "name": "filterButton",
+              "description": "Defines the filter button slot, used to display an additional filtering button.\nThis slot is intended for passing a `ui5-button` with a filter icon to provide extended filtering options.\n\n**Note:** Scope button and Filter button are mutually exclusive.",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "open",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the popup is opened.",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "name": "close",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the popup is closed.",
+              "inheritedFrom": {
+                "name": "Search",
+                "module": "dist/Search.js"
+              }
+            },
+            {
+              "name": "input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when typing in input or clear icon is pressed.",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "name": "scope-change",
+              "type": {
+                "text": "CustomEvent<SearchFieldScopeSelectionChangeDetails>",
+                "references": [
+                  {
+                    "name": "SearchFieldScopeSelectionChangeDetails",
+                    "package": "@ui5/webcomponents-fiori",
+                    "module": "dist/SearchField.js"
+                  }
+                ]
+              },
+              "description": "Fired when the scope has changed.",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            },
+            {
+              "name": "search",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user has triggered search with Enter key or Search Button press.",
+              "inheritedFrom": {
+                "name": "SearchField",
+                "module": "dist/SearchField.js"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -6768,10 +7153,6 @@
             {
               "name": "accounts",
               "description": "Defines the user accounts.\n\n**Note:** If one item is used, it will be shown as the selected one. If more than one item is used, the first one will be shown as selected unless\nthere is an item with `selected` property set to `true`."
-            },
-            {
-              "name": "footer",
-              "description": "Defines custom footer content.\n\n**Note:** When provided, replaces the default \"Sign Out\" button. Use an empty element to hide the footer completely."
             }
           ],
           "members": [
@@ -8760,102 +9141,6 @@
       "path": "dist/illustrations/AllIllustrations.js",
       "declarations": [],
       "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shellbar/IShellBarSearchController.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shellbar/ShellBarAccessibility.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "ShellBarAccessibility",
-            "module": "dist/shellbar/ShellBarAccessibility.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shellbar/ShellBarItemNavigation.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "ShellBarItemNavigation",
-            "module": "dist/shellbar/ShellBarItemNavigation.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shellbar/ShellBarLegacy.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "ShellBarLegacy",
-            "module": "dist/shellbar/ShellBarLegacy.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shellbar/ShellBarOverflow.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "ShellBarOverflow",
-            "module": "dist/shellbar/ShellBarOverflow.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shellbar/ShellBarSearch.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "ShellBarSearch",
-            "module": "dist/shellbar/ShellBarSearch.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "dist/shellbar/ShellBarSearchLegacy.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "name": "ShellBarSearchLegacy",
-            "module": "dist/shellbar/ShellBarSearchLegacy.js"
-          }
-        }
-      ]
     },
     {
       "kind": "javascript-module",

@@ -1,5 +1,5 @@
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
-import type { ClassMap, AccessibilityInfo } from "@ui5/webcomponents-base/dist/types.js";
+import type { ClassMap } from "@ui5/webcomponents-base/dist/types.js";
 import ListItem from "./ListItem.js";
 /**
  * @class
@@ -48,8 +48,21 @@ declare class ListItemCustom extends ListItem {
      * @private
      */
     _isDragging(): boolean;
+    onAfterRendering(): void;
+    /**
+     * Returns the invisible text span element used for accessibility announcements
+     * @returns {HTMLElement | null} The HTMLElement representing the invisible text span used for accessibility announcements, or null if the element is not found in the shadow DOM
+     * @private
+     */
+    private get _invisibleTextSpan();
     private _updateInvisibleTextContent;
     private _clearInvisibleTextContent;
+    /**
+     * Gets accessibility description by processing content nodes and delete buttons
+     * @returns {string[]} Array of accessibility text strings
+     * @private
+     */
+    private _getAccessibilityDescription;
     /**
      * Gets delete button nodes to process for accessibility
      * @returns {Node[]} Array of nodes to process
@@ -57,6 +70,5 @@ declare class ListItemCustom extends ListItem {
      */
     private _getDeleteButtonNodes;
     get classes(): ClassMap;
-    get accessibilityInfo(): AccessibilityInfo;
 }
 export default ListItemCustom;

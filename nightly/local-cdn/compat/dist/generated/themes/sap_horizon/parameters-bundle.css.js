@@ -5,7 +5,7 @@ export default `:host{
     --ui5_table_multiselect_column_width: 2.75rem;
     --ui5_table_header_row_font_weight: normal;
     --ui5_table_header_row_font_family: var(--sapFontSemiboldDuplexFamily);
-    --ui5_table_header_row_border_bottom_color: var(--sapList_BorderColor);
+    --ui5_table_header_row_border_bottom_color: var(--sapList_HeaderBorderColor);
     --ui5_table_header_row_border_width: 1px;
     --_ui5_table_load_more_border-bottom: none;
     --ui5_table_row_outline_width: var(--sapContent_FocusWidth);

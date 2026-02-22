@@ -681,25 +681,13 @@ let Tokenizer = Tokenizer_1 = class Tokenizer extends UI5Element {
     }
     _fillClipboard(shortcutName, tokens) {
         const tokensTexts = tokens.filter(token => token.selected).map(token => token.text).join("\r\n");
-        // Async clipboard API (works in secure contexts - HTTPS/localhost)
-        if (navigator.clipboard?.writeText && window.isSecureContext) {
-            navigator.clipboard.writeText(tokensTexts)?.catch(() => {
-                // Silent fallback - user can retry
-            });
-            return;
-        }
-        // Fallback for HTTP: use ClipboardEvent with execCommand
-        // execCommand is deprecated but it is kept for compatibility reasons, as
-        // there is no other way to write to clipboard in non-secure contexts
-        const fillClipboardHandler = (e) => {
-            if (e.clipboardData) {
-                e.clipboardData.setData("text/plain", tokensTexts);
-            }
+        const cutToClipboard = (e) => {
+            navigator.clipboard.writeText(tokensTexts);
             e.preventDefault();
         };
-        document.addEventListener(shortcutName, fillClipboardHandler);
+        document.addEventListener(shortcutName, cutToClipboard);
         document.execCommand(shortcutName);
-        document.removeEventListener(shortcutName, fillClipboardHandler);
+        document.removeEventListener(shortcutName, cutToClipboard);
     }
     /**
      * Scrolls the container of the tokens to its beginning.

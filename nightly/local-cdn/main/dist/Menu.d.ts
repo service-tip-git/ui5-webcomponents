@@ -146,7 +146,6 @@ declare class Menu extends UI5Element {
     get isPhone(): boolean;
     get _popover(): ResponsivePopover;
     get _list(): List | null;
-    get _opener(): HTMLElement | null | undefined;
     /** Returns menu item groups */
     get _menuItemGroups(): import("./MenuItemGroup.js").default[];
     /** Returns menu items */

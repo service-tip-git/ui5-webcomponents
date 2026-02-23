@@ -16,6 +16,7 @@ import slideUp from "@ui5/webcomponents-base/dist/animations/slideUp.js";
 import { isSpace, isEnter, isEscape } from "@ui5/webcomponents-base/dist/Keys.js";
 import AnimationMode from "@ui5/webcomponents-base/dist/types/AnimationMode.js";
 import { getAnimationMode } from "@ui5/webcomponents-base/dist/config/AnimationMode.js";
+import { supportsTouch } from "@ui5/webcomponents-base/dist/Device.js";
 import i18n from "@ui5/webcomponents-base/dist/decorators/i18n.js";
 import PanelTemplate from "./PanelTemplate.js";
 import { PANEL_ICON } from "./generated/i18n/i18n-defaults.js";
@@ -140,6 +141,7 @@ let Panel = Panel_1 = class Panel extends UI5Element {
         this._contentExpanded = false;
         this._animationRunning = false;
         this._pendingToggle = false;
+        this._touched = false;
     }
     onBeforeRendering() {
         // If the animation is running, it will set the content expanded state at the end
@@ -157,6 +159,14 @@ let Panel = Panel_1 = class Panel extends UI5Element {
     }
     get shouldNotAnimate() {
         return this.noAnimation || getAnimationMode() === AnimationMode.None;
+    }
+    _isMobile() {
+        if (supportsTouch()) {
+            this._touched = true;
+        }
+    }
+    _headerFocusOut() {
+        this._touched = false;
     }
     _headerClick(e) {
         if (!this.shouldToggle(e.target)) {
@@ -324,6 +334,9 @@ __decorate([
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], Panel.prototype, "_pendingToggle", void 0);
+__decorate([
+    property({ type: Boolean })
+], Panel.prototype, "_touched", void 0);
 __decorate([
     slot()
 ], Panel.prototype, "header", void 0);

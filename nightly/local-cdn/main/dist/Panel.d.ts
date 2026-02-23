@@ -141,6 +141,7 @@ declare class Panel extends UI5Element {
     _contentExpanded: boolean;
     _animationRunning: boolean;
     _pendingToggle: boolean;
+    _touched: boolean;
     /**
      * Defines the component header area.
      *
@@ -152,6 +153,8 @@ declare class Panel extends UI5Element {
     onBeforeRendering(): void;
     shouldToggle(element: HTMLElement): boolean;
     get shouldNotAnimate(): boolean;
+    _isMobile(): void;
+    _headerFocusOut(): void;
     _headerClick(e: MouseEvent): void;
     _toggleButtonClick(e: UI5CustomEvent<Button, "click">): void;
     _headerKeyDown(e: KeyboardEvent): void;

@@ -58,8 +58,10 @@ declare class Option extends ListItemBase implements IOption {
     tooltip?: string;
     /**
      * Defines the selected state of the component.
+     *
      * @default false
      * @public
+     * @deprecated since 2.20.0, please use the parent Select's `value` property instead.
      */
     selected: boolean;
     get displayIconBegin(): boolean;

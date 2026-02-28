@@ -160,7 +160,6 @@ let FlexibleColumnLayout = FlexibleColumnLayout_1 = class FlexibleColumnLayout e
         * @default {}
         * @public
         * @since 2.16.0
-        * @experimental
         */
         this.layoutsConfiguration = {};
         /**
@@ -1160,12 +1159,13 @@ FlexibleColumnLayout = FlexibleColumnLayout_1 = __decorate([
     })
     /**
      * Fired when the `layoutsConfiguration` changes via user interaction by dragging the separators.
+     *
+     * **Note:** The `layout-configuration-change` event is in an experimental state and is a subject to change.
      * @param {FCLLayout} layout The current layout
      * @param {MEDIA} media The current media type
      * @param {array} columnLayout The effective column layout, f.e ["67%", "33%", "0px"]
      * @public
      * @since 2.16.0
-     * @experimental
      */
     ,
     event("layout-configuration-change", {

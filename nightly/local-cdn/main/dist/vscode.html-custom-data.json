@@ -656,7 +656,7 @@
     },
     {
       "name": "ui5-carousel",
-      "description": "### Overview\nThe Carousel allows the user to browse through a set of items.\nThe component is mostly used for showing a gallery of images, but can hold any other HTML element.\n\nThere are several ways to perform navigation:\n\n- on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.\n- on touch devices - the user can navigate using the navigation arrows (always visible) or can use swipe gestures.\n\n### Usage\n\n#### When to use:\n\n- The items you want to display are very different from each other.\n- You want to display the items one after the other.\n\n#### When not to use:\n\n- The items you want to display need to be visible at the same time.\n- The items you want to display are uniform and very similar.\n\n### Hidden Items\n\nCarousel items can be conditionally hidden by adding the `hidden` attribute to any child element.\nHidden items are automatically excluded from carousel navigation and will not be displayed or counted in pagination.\nThis allows for dynamic showing or hiding of carousel items without affecting the overall carousel behavior.\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-carousel` is focused the user can navigate between the items\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] - Navigates to previous and next item\n- [Left] or [Right] - Navigates to previous and next item\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Carousel.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **navigate** - Fired whenever the page changes due to user interaction,\nwhen the user clicks on the navigation arrows or while resizing,\nbased on the `items-per-page` property.\n\n### **Methods:**\n - **navigateTo(itemIndex: _number_)** - Changes the currently displayed page.\n\n### **Slots:**\n - **default** - Defines the content of the component.\n\n**Note:** Items with the `hidden` attribute will be automatically excluded from carousel navigation and page calculations.\nThey will not be displayed or accessible via keyboard navigation. See [sample](./#carousel-with-hidden-items).\n\n### **CSS Parts:**\n - **content** - Used to style the content of the component",
+      "description": "### Overview\nThe Carousel allows the user to browse through a set of items.\nThe component is mostly used for showing a gallery of images, but can hold any other HTML element.\n\nThere are several ways to perform navigation:\n\n- on desktop - the user can navigate using the navigation arrows or with keyboard shortcuts.\n- on touch devices - the user can navigate using the navigation arrows (always visible) or can use swipe gestures.\n\n### Usage\n\n#### When to use:\n\n- The items you want to display are very different from each other.\n- You want to display the items one after the other.\n\n#### When not to use:\n\n- The items you want to display need to be visible at the same time.\n- The items you want to display are uniform and very similar.\n\n### Hidden Items\n\nCarousel items can be conditionally hidden by adding the `hidden` attribute to any child element.\nHidden items are automatically excluded from carousel navigation and will not be displayed or counted in pagination.\nThis allows for dynamic showing or hiding of carousel items without affecting the overall carousel behavior.\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-carousel` is focused the user can navigate between the items\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] - Navigates to previous and next item\n- [Left] or [Right] - Navigates to previous and next item\n\n### Fast Navigation\nThis component provides a build in fast navigation group which can be used via [F6] / [Shift] + [F6] / [Ctrl] + [Alt/Option] / [Down] or [Ctrl] + [Alt/Option] + [Up].\nIn order to use this functionality, you need to import the following module:\n\n`import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"`\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Carousel.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **navigate** - Fired whenever the page changes due to user interaction,\nwhen the user clicks on the navigation arrows or while resizing,\nbased on the `items-per-page` property.\n\n### **Methods:**\n - **navigateTo(itemIndex: _number_): _void_** - Changes the currently displayed page.\n\n### **Slots:**\n - **default** - Defines the content of the component.\n\n**Note:** Items with the `hidden` attribute will be automatically excluded from carousel navigation and page calculations.\nThey will not be displayed or accessible via keyboard navigation. See [sample](./#carousel-with-hidden-items).\n\n### **CSS Parts:**\n - **content** - Used to style the content of the component",
       "attributes": [
         {
           "name": "accessible-name",
@@ -940,6 +940,11 @@
           "values": []
         },
         {
+          "name": "selected-value",
+          "description": "Defines the selected item's value.\n\nUse this property together with the `value` property on `ui5-cb-item` to:\n- Select an item programmatically by its unique identifier\n- Handle items with identical display text but different underlying values\n- Submit machine-readable values in forms (the `value` property is submitted instead of the display text)\n\nWhen set, the ComboBox finds and selects the item whose `value` matches this property\nand whose `text` matches the ComboBox's `value` (display text).\n\n**Note:** This replaces the deprecated `selected` property on `ui5-cb-item`.",
+          "values": []
+        },
+        {
           "name": "name",
           "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
           "values": []
@@ -1030,6 +1035,11 @@
         {
           "name": "additional-text",
           "description": "Defines the additional text of the component.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Defines the value of the `ui5-cb-item`.\n\nUse this property to associate a unique identifier or machine-readable value with the item,\nseparate from the display text. This enables:\n- Selecting items programmatically via `selectedValue` on the ComboBox\n- Submitting machine-readable values in forms\n- Distinguishing between items with identical display text\n\n**Example:**\n```html\n<ui5-combobox selected-value=\"DE\">\n  <ui5-cb-item text=\"Germany\" value=\"DE\"></ui5-cb-item>\n  <ui5-cb-item text=\"France\" value=\"FR\"></ui5-cb-item>\n</ui5-combobox>\n```",
           "values": []
         }
       ],
@@ -1432,6 +1442,122 @@
       "references": []
     },
     {
+      "name": "ui5-datetime-input",
+      "description": "Extention of the UI5 Input, so we do not modify Input's private properties within the datetime components.\nIntended to be used for the DateTime components.\n\n\n---\n\n\n\n\n### **Events:**\n - **change** - Fired when the input operation has finished by pressing Enter or on focusout.\n- **input** - Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected.\n- **select** - Fired when some text has been selected.\n- **selection-change** - Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.\n- **open** - Fired when the suggestions picker is open.\n- **close** - Fired when the suggestions picker is closed.\n\n### **Slots:**\n - **default** - Defines the suggestion items.\n\n**Note:** The suggestions would be displayed only if the `showSuggestions`\nproperty is set to `true`.\n\n**Note:** The `<ui5-suggestion-item>`, `<ui5-suggestion-item-group>` and `ui5-suggestion-item-custom` are recommended to be used as suggestion items.\n- **icon** - Defines the icon to be displayed in the component.\n- **valueStateMessage** - Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n**Note:** If the component has `suggestionItems`,\nthe `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.\n\n### **CSS Parts:**\n - **root** - Used to style the root DOM element of the Input component\n- **input** - Used to style the native input element\n- **clear-icon** - Used to style the clear icon, which can be pressed to clear user input text",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Defines whether the component is in disabled state.\n\n**Note:** A disabled component is completely noninteractive.",
+          "values": []
+        },
+        {
+          "name": "placeholder",
+          "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+          "values": []
+        },
+        {
+          "name": "readonly",
+          "description": "Defines whether the component is read-only.\n\n**Note:** A read-only component is not editable,\nbut still provides visual feedback upon user interaction.",
+          "values": []
+        },
+        {
+          "name": "required",
+          "description": "Defines whether the component is required.",
+          "values": []
+        },
+        {
+          "name": "no-typeahead",
+          "description": "Defines whether the value will be autcompleted to match an item",
+          "values": []
+        },
+        {
+          "name": "type",
+          "description": "Defines the HTML type of the component.\n\n**Notes:**\n\n- The particular effect of this property differs depending on the browser\nand the current language settings, especially for type `Number`.\n- The property is mostly intended to be used with touch devices\nthat use different soft keyboard layouts depending on the given input type.",
+          "values": [
+            { "name": "Text" },
+            { "name": "Email" },
+            { "name": "Number" },
+            { "name": "Password" },
+            { "name": "Tel" },
+            { "name": "URL" },
+            { "name": "Search" }
+          ]
+        },
+        {
+          "name": "value",
+          "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+          "values": []
+        },
+        {
+          "name": "value-state",
+          "description": "Defines the value state of the component.",
+          "values": [
+            { "name": "None" },
+            { "name": "Positive" },
+            { "name": "Critical" },
+            { "name": "Negative" },
+            { "name": "Information" }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+          "values": []
+        },
+        {
+          "name": "show-suggestions",
+          "description": "Defines whether the component should show suggestions, if such are present.",
+          "values": []
+        },
+        {
+          "name": "maxlength",
+          "description": "Sets the maximum number of characters available in the input field.\n\n**Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.",
+          "values": []
+        },
+        {
+          "name": "accessible-name",
+          "description": "Defines the accessible ARIA name of the component.",
+          "values": []
+        },
+        {
+          "name": "accessible-name-ref",
+          "description": "Receives id(or many ids) of the elements that label the input.",
+          "values": []
+        },
+        {
+          "name": "accessible-description",
+          "description": "Defines the accessible description of the component.",
+          "values": []
+        },
+        {
+          "name": "accessible-description-ref",
+          "description": "Receives id(or many ids) of the elements that describe the input.",
+          "values": []
+        },
+        {
+          "name": "show-clear-icon",
+          "description": "Defines whether the clear icon of the input will be shown.",
+          "values": []
+        },
+        {
+          "name": "open",
+          "description": "Defines whether the suggestions picker is open.\nThe picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.\nThe picker will close automatically and `close` event will be fired if the input is not in the viewport.",
+          "values": []
+        },
+        {
+          "name": "filter",
+          "description": "Defines the filter type of the component.",
+          "values": [
+            { "name": "None" },
+            { "name": "StartsWithPerTerm" },
+            { "name": "StartsWith" },
+            { "name": "Contains" }
+          ]
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "ui5-datetime-picker",
       "description": "### Overview\nThe `DateTimePicker` component alows users to select both date (day, month and year) and time (hours, minutes and seconds)\nand for the purpose it consists of input field and Date/Time picker.\n\n### Usage\n\nUse the `DateTimePicker` if you need a combined date and time input component.\nDon't use it if you want to use either date, or time value.\nIn this case, use the `DatePicker` or the `TimePicker` components instead.\n\nThe user can set date/time by:\n\n- using the calendar and the time selectors\n- typing in the input field\n\nProgrammatically, to set date/time for the `DateTimePicker`, use the `value` property\n\n### Formatting\n\nThe value entered by typing into the input field must fit to the used date/time format.\n\nSupported format options are pattern-based on Unicode LDML Date Format notation.\nFor more information, see [UTS #35: Unicode Locale Data Markup Language](https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).\n\n**Example:** the following format `dd/MM/yyyy, hh:mm:ss aa`\ncorresponds the `13/04/2020, 03:16:16 AM` value.\n\nThe small 'h' defines \"12\" hours format and the \"aa\" symbols - \"AM/PM\" time periods.\n\n**Example:** the following format `dd/MM/yyyy, HH:mm:ss`\ncorresponds the `13/04/2020, 15:16:16` value.\n\nThe capital 'H' indicates \"24\" hours format.\n\n**Note:** If the `formatPattern` does NOT include time,\nthe `DateTimePicker` will fallback to the default time format according to the locale.\n\n**Note:** If no placeholder is set to the `DateTimePicker`,\nthe current `formatPattern` is displayed as a placeholder.\nIf another placeholder is needed, it must be set or in case no placeholder is needed - it can be set to an empty string.\n\n**Note:** If the user input does NOT match the `formatPattern`,\nthe `DateTimePicker` makes an attempt to parse it based on the\nlocale settings.\n\n### Responsive behavior\n\nThe `DateTimePicker` is responsive and fully adapts to all devices.\nFor larger screens, such as tablet or desktop, it is displayed as a popover, while\non phone devices, it is displayed full screen.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DateTimePicker.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **change** - Fired when the input operation has finished by pressing Enter or on focusout.\n- **input** - Fired when the value of the component is changed at each key stroke.\n- **value-state-change** - Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.\n- **open** - Fired after the component's picker is opened.\n- **close** - Fired after the component's picker is closed.\n\n### **Methods:**\n - **isValid(value: _string_): _boolean_** - Checks if a value is valid against the current date format of the DatePicker.\n- **isValidValue(value: _string_): _boolean_** - Checks if a value is valid against the current date format of the DatePicker.\n- **isValidDisplayValue(value: _string_): _boolean_** - Checks if a value is valid against the current date format of the DatePicker.\n- **isInValidRange(value: _string_): _boolean_** - Checks if a date is between the minimum and maximum date.\n- **formatValue(date: _Date_): _string_** - Formats a Java Script date object into a string representing a locale date\naccording to the `formatPattern` property of the DatePicker instance\n\n### **Slots:**\n - **valueStateMessage** - Defines the value state message that will be displayed as pop up under the component.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n### **CSS Parts:**\n - **input** - Used to style the input element. This part is forwarded to the underlying ui5-input element.",
       "attributes": [
@@ -1577,6 +1703,70 @@
       "references": []
     },
     {
+      "name": "ui5-daypicker",
+      "description": "Represents the days inside a single month view of the `ui5-calendar` component.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "primary-calendar-type",
+          "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "secondary-calendar-type",
+          "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "format-pattern",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "display-format",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "value-format",
+          "description": "Determines the format, used for the value attribute.",
+          "values": []
+        },
+        {
+          "name": "min-date",
+          "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "max-date",
+          "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "calendar-week-numbering",
+          "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+          "values": [
+            { "name": "Default" },
+            { "name": "ISO_8601" },
+            { "name": "MiddleEastern" },
+            { "name": "WesternTraditional" }
+          ]
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "ui5-dialog",
       "description": "### Overview\nThe `ui5-dialog` component is used to temporarily display some information in a\nsize-limited window in front of the regular app screen.\nIt is used to prompt the user for an action or a confirmation.\nThe `ui5-dialog` interrupts the current app processing as it is the only focused UI element and\nthe main screen is dimmed/blocked.\nThe dialog combines concepts known from other technologies where the windows have\nnames such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box.\n\nThe `ui5-dialog` is modal, which means that a user action is required before it is possible to return to the parent window.\nTo open multiple dialogs, each dialog element should be separate in the markup. This will ensure the correct modal behavior. Avoid nesting dialogs within each other.\nThe content of the `ui5-dialog` is fully customizable.\n\n### Structure\nA `ui5-dialog` consists of a header, content, and a footer for action buttons.\nThe `ui5-dialog` is usually displayed at the center of the screen.\nIts position can be changed by the user. To enable this, you need to set the property `draggable` accordingly.\n\n\n### Responsive Behavior\nThe `stretch` property can be used to stretch the `ui5-dialog` to full screen. For better usability, it's recommended to stretch the dialog to full screen on phone devices.\n\n**Note:** When a `ui5-bar` is used in the header or in the footer, you should remove the default dialog's paddings.\n\nFor more information see the sample \"Bar in Header/Footer\".\n\n### Keyboard Handling\n\n#### Basic Navigation\nWhen the `ui5-dialog` has the `draggable` property set to `true` and the header is focused, the user can move the dialog\nwith the following keyboard shortcuts:\n\n- [Up] or [Down] arrow keys - Move the dialog up/down.\n- [Left] or [Right] arrow keys - Move the dialog left/right.\n\n#### Resizing\nWhen the `ui5-dialog` has the `resizable` property set to `true` and the header is focused, the user can change the size of the dialog\nwith the following keyboard shortcuts:\n\n- [Shift] + [Up] or [Down] - Decrease/Increase the height of the dialog.\n- [Shift] + [Left] or [Right] - Decrease/Increase the width of the dialog.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Dialog\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **before-open** - Fired before the component is opened. This event can be cancelled, which will prevent the popup from opening.\n- **open** - Fired after the component is opened.\n- **before-close** - Fired before the component is closed. This event can be cancelled, which will prevent the popup from closing.\n- **close** - Fired after the component is closed.\n\n### **Methods:**\n - **applyFocus(): _Promise<void>_** - Focuses the element denoted by `initialFocus`, if provided,\nor the first focusable element otherwise.\n\n### **Slots:**\n - **header** - Defines the header HTML Element.\n\n**Note:** When a `ui5-bar` is used in the header, you should remove the default dialog's paddings.\n\n**Note:** If `header` slot is provided, the labelling of the dialog is a responsibility of the application developer.\n`accessibleName` should be used.\n- **footer** - Defines the footer HTML Element.\n\n**Note:** When a `ui5-bar` is used in the footer, you should remove the default dialog's paddings.\n- **default** - Defines the content of the Popup.\n\n### **CSS Parts:**\n - **header** - Used to style the header of the component\n- **content** - Used to style the content of the component\n- **footer** - Used to style the footer of the component",
       "attributes": [
@@ -1659,6 +1849,37 @@
           "name": "open",
           "description": "Indicates if the element is open",
           "values": [{ "name": "any" }]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "ui5-drop-indicator",
+      "description": "### Overview\n\n### Usage\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DropIndicator.js\";`\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "target-reference",
+          "description": "Element where the drop indicator will be shown.",
+          "values": [{ "name": "HTMLElement" }]
+        },
+        {
+          "name": "owner-reference",
+          "description": "Owner of the indicator and the target.",
+          "values": [{ "name": "HTMLElement" }]
+        },
+        {
+          "name": "placement",
+          "description": "Placement of the indicator relative to the target.",
+          "values": [
+            { "name": "On" },
+            { "name": "Before" },
+            { "name": "After" }
+          ]
+        },
+        {
+          "name": "orientation",
+          "description": "Orientation of the indicator.",
+          "values": [{ "name": "Vertical" }, { "name": "Horizontal" }]
         }
       ],
       "references": []
@@ -2423,6 +2644,23 @@
       "references": []
     },
     {
+      "name": "ui5-li-group-header",
+      "description": "The `ui5-li-group-header` is a special list item, used only to separate other list items into logical groups.\n\n\n---\n\n\n\n\n### **Slots:**\n - **default** - Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+      "attributes": [
+        {
+          "name": "accessible-name",
+          "description": "Defines the text alternative of the component.\n\n**Note:** If not provided a default text alternative will be set, if present.",
+          "values": []
+        },
+        {
+          "name": "wrapping-type",
+          "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+          "values": [{ "name": "None" }, { "name": "Normal" }]
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "ui5-li",
       "description": "The `ui5-li` represents the simplest type of item for a `ui5-list`.\n\nThis is a list item,\nproviding the most common use cases such as `text`,\n`image` and `icon`.\n\n\n---\n\n\n\n\n### **Events:**\n - **detail-click** - Fired when the user clicks on the detail button when type is `Detail`.\n\n### **Slots:**\n - **default** - Defines the custom formatted text of the component.\n\n**Note:** For optimal text wrapping and a consistent layout, it is strongly recommended to use the `text` property.\n\nUse the `default` slot only when custom formatting with HTML elements (e.g., `<b>`, `<i>`) is required.\nBe aware that wrapping (via `wrappingType=\"Normal\"`) may not function correctly with custom HTML content in the `default` slot.\n\nIf both `text` and `default` slot are used, the `text` property takes precedence.\n- **image** - **Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with it's default size - S.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-li` should be customized in order to fit.\n- **deleteButton** - Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.\n\n### **CSS Parts:**\n - **title** - Used to style the title of the list item\n- **description** - Used to style the description of the list item\n- **additional-text** - Used to style the additionalText of the list item\n- **icon** - Used to style the icon of the list item\n- **native-li** - Used to style the main li tag of the list item\n- **content** - Used to style the content area of the list item\n- **detail-button** - Used to style the button rendered when the list item is of type detail\n- **delete-button** - Used to style the button rendered when the list item is in delete mode\n- **radio** - Used to style the radio button rendered when the list item is in single selection mode\n- **checkbox** - Used to style the checkbox rendered when the list item is in multiple selection mode",
       "attributes": [
@@ -2718,6 +2956,70 @@
       "references": []
     },
     {
+      "name": "ui5-monthpicker",
+      "description": "Month picker component.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "primary-calendar-type",
+          "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "secondary-calendar-type",
+          "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "format-pattern",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "display-format",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "value-format",
+          "description": "Determines the format, used for the value attribute.",
+          "values": []
+        },
+        {
+          "name": "min-date",
+          "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "max-date",
+          "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "calendar-week-numbering",
+          "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+          "values": [
+            { "name": "Default" },
+            { "name": "ISO_8601" },
+            { "name": "MiddleEastern" },
+            { "name": "WesternTraditional" }
+          ]
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "ui5-multi-combobox",
       "description": "### Overview\n\nThe `ui5-multi-combobox` component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.\n\nThe drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options.\nThe options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens.\n### Structure\nThe `ui5-multi-combobox` consists of the following elements:\n\n-  Tokenizer - a list of tokens with selected options.\n-  Input field - displays the selected option/s as token/s. Users can type to filter the list.\n-  Drop-down arrow - expands\\collapses the option list.\n-  Option list - the list of available options.\n\n### Keyboard Handling\n\nThe `ui5-multi-combobox` provides advanced keyboard handling.\n\n#### Picker\nIf the `ui5-multi-combobox` is focused,\nyou can open or close the drop-down by pressing [F4], [Alt] + [Up] or [Alt] + [Down] keys.\nOnce the drop-down is opened, you can use the `UP` and `DOWN` arrow keys\nto navigate through the available options and select one by pressing the `Space` or `Enter` keys.\n[Ctrl]+[Alt]+[F8] or [Command]+[Option]+[F8] - Focuses the first link in the value state message, if available. Pressing [Tab] moves the focus to the next link in the value state message, or closes the value state message if there are no more links.\n\n#### Tokens\n\n-  Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available).\n-  Delete -  deletes the token and focuses the previous token.\n-  Backspace -  deletes the token and focus the next token.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/MultiComboBox.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **change** - Fired when the input operation has finished by pressing Enter or on focusout.\n- **input** - Fired when the value of the component changes at each keystroke or clear icon is pressed.\n- **open** - Fired when the dropdown is opened.\n- **close** - Fired when the dropdown is closed.\n- **selection-change** - Fired when selection is changed by user interaction.\n- **value-state-change** - Fired before the value state of the component is updated internally.\nThe event is preventable, meaning that if it's default action is\nprevented, the component will not update the value state.\n\n### **Slots:**\n - **default** - Defines the component items.\n- **icon** - Defines the icon to be displayed in the component.\n- **valueStateMessage** - Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n### **CSS Parts:**\n - **token-\\{index\\}** - Used to style each token(where `token-0` corresponds to the first item)",
       "attributes": [
@@ -2832,6 +3134,11 @@
         {
           "name": "additional-text",
           "description": "Defines the additional text of the component.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Defines the value of the `ui5-cb-item`.\n\nUse this property to associate a unique identifier or machine-readable value with the item,\nseparate from the display text. This enables:\n- Selecting items programmatically via `selectedValue` on the ComboBox\n- Submitting machine-readable values in forms\n- Distinguishing between items with identical display text\n\n**Example:**\n```html\n<ui5-combobox selected-value=\"DE\">\n  <ui5-cb-item text=\"Germany\" value=\"DE\"></ui5-cb-item>\n  <ui5-cb-item text=\"France\" value=\"FR\"></ui5-cb-item>\n</ui5-combobox>\n```",
           "values": []
         }
       ],
@@ -3801,6 +4108,11 @@
           "values": []
         },
         {
+          "name": "step",
+          "description": "Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).\n\n**Note:** If set to 0 the slider handle movement is disabled.",
+          "values": []
+        },
+        {
           "name": "min",
           "description": "Defines the minimum value of the slider.",
           "values": []
@@ -3813,11 +4125,6 @@
         {
           "name": "name",
           "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
-          "values": []
-        },
-        {
-          "name": "step",
-          "description": "Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).\n\n**Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.",
           "values": []
         },
         {
@@ -3908,6 +4215,44 @@
           "values": []
         }
       ],
+      "references": []
+    },
+    {
+      "name": "ui5-slider-handle",
+      "description": "The <code>ui5-slider-handle</code> component represents the handle of the <code>ui5-slider</code> component.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Defines the value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be between the <code>min</code> and <code>max</code> properties of the parent <code>ui5-slider</code>.",
+          "values": []
+        },
+        {
+          "name": "min",
+          "description": "Defines the minimum value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be less than the <code>max</code> property of the parent <code>ui5-slider</code>.",
+          "values": []
+        },
+        {
+          "name": "max",
+          "description": "Defines the maximum value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be greater than the <code>min</code> property of the parent <code>ui5-slider</code>.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Defines whether the slider handle is disabled.\n<br><br>\n<b>Note:</b> A disabled slider handle cannot be interacted with.",
+          "values": []
+        },
+        {
+          "name": "active",
+          "description": "Defines whether the slider handle is active.\n<br><br>\n<b>Note:</b> An active slider handle is currently being interacted with.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "ui5-slider-tooltip",
+      "description": "### Overview\n\n\n---\n\n\n",
+      "attributes": [],
       "references": []
     },
     {
@@ -4115,6 +4460,105 @@
           "name": "wrapping-type",
           "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
           "values": [{ "name": "None" }, { "name": "Normal" }]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "ui5-li-suggestion-item",
+      "description": "The `ui5-li-suggestion-item` represents the suggestion item in the `ui5-input`\nsuggestion popover.\n\n\n---\n\n\n\n\n### **Events:**\n - **detail-click** - Fired when the user clicks on the detail button when type is `Detail`.\n\n### **Slots:**\n - **richDescription** - Defines a description that can contain HTML.\n**Note:** If not specified, the `description` property will be used.\n- **default** - Defines the title text of the suggestion item.\n- **image** - **Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with it's default size - S.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-li` should be customized in order to fit.\n- **deleteButton** - Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.\n\n### **CSS Parts:**\n - **title** - Used to style the title of the suggestion list item\n- **description** - Used to style the description of the suggestion list item\n- **info** - Used to style the info of the suggestion list item\n- **additional-text** - Used to style the additionalText of the list item\n- **icon** - Used to style the icon of the list item\n- **native-li** - Used to style the main li tag of the list item\n- **content** - Used to style the content area of the list item\n- **detail-button** - Used to style the button rendered when the list item is of type detail\n- **delete-button** - Used to style the button rendered when the list item is in delete mode\n- **radio** - Used to style the radio button rendered when the list item is in single selection mode\n- **checkbox** - Used to style the checkbox rendered when the list item is in multiple selection mode",
+      "attributes": [
+        {
+          "name": "text",
+          "description": "Defines the text of the component.",
+          "values": []
+        },
+        {
+          "name": "description",
+          "description": "Defines the description displayed right under the item text, if such is present.",
+          "values": []
+        },
+        {
+          "name": "icon",
+          "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+          "values": []
+        },
+        {
+          "name": "icon-end",
+          "description": "Defines whether the `icon` should be displayed in the beginning of the list item or in the end.",
+          "values": []
+        },
+        {
+          "name": "additional-text",
+          "description": "Defines the `additionalText`, displayed in the end of the list item.",
+          "values": []
+        },
+        {
+          "name": "additional-text-state",
+          "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+          "values": [
+            { "name": "None" },
+            { "name": "Positive" },
+            { "name": "Critical" },
+            { "name": "Negative" },
+            { "name": "Information" }
+          ]
+        },
+        {
+          "name": "movable",
+          "description": "Defines whether the item is movable.",
+          "values": []
+        },
+        {
+          "name": "accessible-name",
+          "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
+          "values": []
+        },
+        {
+          "name": "wrapping-type",
+          "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+          "values": [{ "name": "None" }, { "name": "Normal" }]
+        },
+        {
+          "name": "type",
+          "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+          "values": [
+            { "name": "Navigation" },
+            { "name": "Inactive" },
+            { "name": "Active" },
+            { "name": "Detail" }
+          ]
+        },
+        {
+          "name": "accessibility-attributes",
+          "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+          "values": [{ "name": "ListItemAccessibilityAttributes" }]
+        },
+        {
+          "name": "navigated",
+          "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+          "values": []
+        },
+        {
+          "name": "tooltip",
+          "description": "Defines the text of the tooltip that would be displayed for the list item.",
+          "values": []
+        },
+        {
+          "name": "highlight",
+          "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+          "values": [
+            { "name": "None" },
+            { "name": "Positive" },
+            { "name": "Critical" },
+            { "name": "Negative" },
+            { "name": "Information" }
+          ]
+        },
+        {
+          "name": "selected",
+          "description": "Defines the selected state of the component.",
+          "values": []
         }
       ],
       "references": []
@@ -4893,6 +5337,63 @@
       "references": []
     },
     {
+      "name": "ui5-time-picker-clock",
+      "description": "### Overview\n\n`ui5-time-picker-clock` allows selecting of hours,minutes or seconds (depending on property set).\nThe component supports interactions with mouse, touch and mouse wheel.\nThe step for displaying or selecting of items can be configured.\n\n`ui5-time-picker-clock` is used as part of `ui5-time-selection-clocks` component, which\nis used in `ui5-time-picker` component respectively.\n\n### Usage\n\n`ui5-time-picker-clock` can display hours, minutes or seconds\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TimePickerClock.js\";`\n\n\n---\n\n\n",
+      "attributes": [],
+      "references": []
+    },
+    {
+      "name": "time-picker-internals",
+      "description": "### Overview\n\n`ui5-time-picker-internals` is helper component that contains shared methods used in `ui5-time-selection-clocks`\nand `<ui5-time-selection-inputs>` components and should not be used separately.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Defines a formatted time value.",
+          "values": []
+        },
+        {
+          "name": "format-pattern",
+          "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "ui5-time-selection-clocks",
+      "description": "### Overview\n\n`ui5-time-selection-clocks` is component that contains all the `ui5-time-picker-clock` components\nnecessary for the `ui5-time-picker` as well as all necessary `ui5-toggle-spin-button` components\nused for switching between different clocks.\n`ui5-time-picker-clock` components and `ui5-toggle-spin-button` depend on the time format set to\n`ui5-time-picker` component.\n\nThis component should not be used separately.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Defines a formatted time value.",
+          "values": []
+        },
+        {
+          "name": "format-pattern",
+          "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+          "values": []
+        }
+      ],
+      "references": [null]
+    },
+    {
+      "name": "ui5-time-selection-inputs",
+      "description": "### Overview\n\n`ui5-time-selection-inputs` displays a popover with `ui5-input` components of type=\"number\" and an\noptional a AM/PM `ui5-segmented-button` according to the display format given to the `ui5-time-picker`.\nUsing of numeric input components enables display of mobile devices' native numeric keyboard, which speeds up entering of the time.\nThe popup appears only on mobile devices when there is a tap on the `ui5-time-picker` input.\n\nThis component should not be used separately.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "value",
+          "description": "Defines a formatted time value.",
+          "values": []
+        },
+        {
+          "name": "format-pattern",
+          "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
       "name": "ui5-title",
       "description": "### Overview\n\nThe `ui5-title` component is used to display titles inside a page.\nIt is a simple, large-sized text with explicit header/title semantics.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/Title.js\";`\n\n\n---\n\n\n\n\n### **Slots:**\n - **default** - Defines the text of the component.\nThis component supports nesting a `Link` component inside.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
       "attributes": [
@@ -4963,6 +5464,99 @@
     {
       "name": "ui5-toggle-button",
       "description": "### Overview\n\nThe `ui5-toggle-button` component is an enhanced `ui5-button`\nthat can be toggled between pressed and normal states.\nUsers can use the `ui5-toggle-button` as a switch to turn a setting on or off.\nIt can also be used to represent an independent choice similar to a check box.\n\nClicking or tapping on a `ui5-toggle-button` changes its state to `pressed`. The button returns to\nits initial state when the user clicks or taps on it again.\nBy applying additional custom CSS-styling classes, apps can give a different style to any `ui5-toggle-button`.\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/ToggleButton.js\";`\n\n\n---\n\n\n\n\n### **Events:**\n - **click** - Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled` property is set to `true`.\n\n### **Slots:**\n - **default** - Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.\n- **badge** - Adds a badge to the button.\n\n### **CSS Parts:**\n - **button** - Used to style the native button element\n- **icon** - Used to style the icon in the native button element\n- **endIcon** - Used to style the end icon in the native button element",
+      "attributes": [
+        {
+          "name": "pressed",
+          "description": "Determines whether the component is displayed as pressed.",
+          "values": []
+        },
+        {
+          "name": "design",
+          "description": "Defines the component design.",
+          "values": [
+            { "name": "Transparent" },
+            { "name": "Positive" },
+            { "name": "Negative" },
+            { "name": "Default" },
+            { "name": "Emphasized" },
+            { "name": "Attention" }
+          ]
+        },
+        {
+          "name": "disabled",
+          "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+          "values": []
+        },
+        {
+          "name": "icon",
+          "description": "Defines the icon, displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+          "values": []
+        },
+        {
+          "name": "end-icon",
+          "description": "Defines the icon, displayed as graphical element within the component after the button text.\n\n**Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.\nUsage of `endIcon` only should be avoided.\n\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+          "values": []
+        },
+        {
+          "name": "submits",
+          "description": "When set to `true`, the component will\nautomatically submit the nearest HTML form element on `press`.\n\n**Note:** This property is only applicable within the context of an HTML Form element.`",
+          "values": []
+        },
+        {
+          "name": "tooltip",
+          "description": "Defines the tooltip of the component.\n\n**Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.",
+          "values": []
+        },
+        {
+          "name": "accessible-name",
+          "description": "Defines the accessible ARIA name of the component.",
+          "values": []
+        },
+        {
+          "name": "accessible-name-ref",
+          "description": "Receives id(or many ids) of the elements that label the component.",
+          "values": []
+        },
+        {
+          "name": "accessibility-attributes",
+          "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.\nAccepts the following string values: `true` or `false`\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n- **ariaLabel**: Defines the accessible ARIA name of the component.\nAccepts any string value.\n\n - **ariaKeyShortcuts**: Defines keyboard shortcuts that activate or give focus to the button.\n\n- **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.\nAccepts a lowercase string value.",
+          "values": [{ "name": "ButtonAccessibilityAttributes" }]
+        },
+        {
+          "name": "accessible-description",
+          "description": "Defines the accessible description of the component.",
+          "values": []
+        },
+        {
+          "name": "type",
+          "description": "Defines whether the button has special form-related functionality.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+          "values": [
+            { "name": "Button" },
+            { "name": "Submit" },
+            { "name": "Reset" }
+          ]
+        },
+        {
+          "name": "accessible-role",
+          "description": "Describes the accessibility role of the button.\n\n**Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
+          "values": [{ "name": "Button" }, { "name": "Link" }]
+        },
+        {
+          "name": "loading",
+          "description": "Defines whether the button shows a loading indicator.\n\n**Note:** If set to `true`, a busy indicator component will be displayed on the related button.",
+          "values": []
+        },
+        {
+          "name": "loading-delay",
+          "description": "Specifies the delay in milliseconds before the loading indicator appears within the associated button.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "ui5-toggle-spin-button",
+      "description": "### Overview\n\n`ui5-toggle-spin-button` is explicitly used in the new design of `ui5-time-picker`.\nIt extends `ui5-toggle-button` with some specific accessibility-related properties in order to\nhave spin button look and feel from accessibility point of view. This component should not be used separately.\n\n\n---\n\n\n\n\n### **Events:**\n - **click** - Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled` property is set to `true`.\n\n### **Slots:**\n - **default** - Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.\n- **badge** - Adds a badge to the button.\n\n### **CSS Parts:**\n - **button** - Used to style the native button element\n- **icon** - Used to style the icon in the native button element\n- **endIcon** - Used to style the end icon in the native button element",
       "attributes": [
         {
           "name": "pressed",
@@ -5212,7 +5806,7 @@
         },
         {
           "name": "prevent-overflow-closing",
-          "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+          "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
           "values": []
         }
       ],
@@ -5220,7 +5814,7 @@
     },
     {
       "name": "ui5-toolbar-item",
-      "description": "Represents an abstract class for items, used in the `ui5-toolbar`.\n\n\n---\n\n\n\n\n### **Events:**\n - **close-overflow** - Fired when the overflow popover is closed.\n\n### **Slots:**\n - **default** - Wrapped component slot.",
+      "description": "### Overview\nThe `ui5-toolbar-item` is a wrapper component used to integrate UI5 Web Components into the `ui5-toolbar`.\nIt renders within the toolbar's shadow DOM and manages the lifecycle\nand overflow behavior of its child component.\n\n### Structure\nThe toolbar item wraps a single UI5 Web Component (such as CheckBox, Title, etc.) and handles:\n- Overflow management (determining if the item should be displayed in the main toolbar or overflow popover)\n- Automatic popover closing on interaction\n- CSS custom state exposure for styling based on overflow state\n\n### Usage\nThe `ui5-toolbar-item` is typically used implicitly when adding components to a toolbar,\nbut specialized wrappers like `ui5-toolbar-button` provide\ncomponent-specific functionality and should be preferred when available.\n\n\n---\n\n\n\n\n### **Events:**\n - **close-overflow** - Fired when the overflow popover is closed.\n\n### **Slots:**\n - **default** - Wrapped component slot.",
       "attributes": [
         {
           "name": "overflow-priority",
@@ -5233,7 +5827,7 @@
         },
         {
           "name": "prevent-overflow-closing",
-          "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+          "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
           "values": []
         }
       ],
@@ -5290,7 +5884,7 @@
         },
         {
           "name": "prevent-overflow-closing",
-          "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+          "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
           "values": []
         }
       ],
@@ -5323,7 +5917,7 @@
         },
         {
           "name": "prevent-overflow-closing",
-          "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+          "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
           "values": []
         }
       ],
@@ -5349,7 +5943,7 @@
         },
         {
           "name": "prevent-overflow-closing",
-          "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+          "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
           "values": []
         }
       ],
@@ -5688,6 +6282,134 @@
           "name": "selected",
           "description": "Defines the selected state of the component.",
           "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "ui5-yearpicker",
+      "description": "Displays years which can be selected.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "primary-calendar-type",
+          "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "secondary-calendar-type",
+          "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "format-pattern",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "display-format",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "value-format",
+          "description": "Determines the format, used for the value attribute.",
+          "values": []
+        },
+        {
+          "name": "min-date",
+          "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "max-date",
+          "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "calendar-week-numbering",
+          "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+          "values": [
+            { "name": "Default" },
+            { "name": "ISO_8601" },
+            { "name": "MiddleEastern" },
+            { "name": "WesternTraditional" }
+          ]
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "ui5-yearrangepicker",
+      "description": "Displays year ranges which help navigate through years faster.\n\n\n---\n\n\n",
+      "attributes": [
+        {
+          "name": "primary-calendar-type",
+          "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "secondary-calendar-type",
+          "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+          "values": [
+            { "name": "Gregorian" },
+            { "name": "Islamic" },
+            { "name": "Japanese" },
+            { "name": "Buddhist" },
+            { "name": "Persian" }
+          ]
+        },
+        {
+          "name": "format-pattern",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "display-format",
+          "description": "Determines the format, displayed in the input field.",
+          "values": []
+        },
+        {
+          "name": "value-format",
+          "description": "Determines the format, used for the value attribute.",
+          "values": []
+        },
+        {
+          "name": "min-date",
+          "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "max-date",
+          "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+          "values": []
+        },
+        {
+          "name": "calendar-week-numbering",
+          "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+          "values": [
+            { "name": "Default" },
+            { "name": "ISO_8601" },
+            { "name": "MiddleEastern" },
+            { "name": "WesternTraditional" }
+          ]
         }
       ],
       "references": []

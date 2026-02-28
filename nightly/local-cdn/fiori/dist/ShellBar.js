@@ -534,6 +534,12 @@ let ShellBar = ShellBar_1 = class ShellBar extends UI5Element {
         return this.splitContent(this.content).end;
     }
     get separatorConfig() {
+        if (this.isSBreakPoint) {
+            return {
+                showStartSeparator: false,
+                showEndSeparator: false,
+            };
+        }
         const { start, end } = this.splitContent(this.content);
         return {
             showStartSeparator: start.some(item => !this.hiddenItemsIds.includes(item._individualSlot)),

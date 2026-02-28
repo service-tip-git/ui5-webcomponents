@@ -179,7 +179,7 @@ let ListItem = ListItem_1 = class ListItem extends ListItemBase {
             return;
         }
         if (e.target === this._listItem) {
-            DragRegistry.setDraggedElement(this);
+            DragRegistry.setDraggedElement(this, e);
             this.setAttribute("data-moving", "");
             e.dataTransfer.dropEffect = "move";
             e.dataTransfer.effectAllowed = "move";

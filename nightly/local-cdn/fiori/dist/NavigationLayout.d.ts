@@ -2,6 +2,7 @@ import UI5Element from "@ui5/webcomponents-base/dist/UI5Element.js";
 import NavigationLayoutMode from "./types/NavigationLayoutMode.js";
 import type SideNavigation from "./SideNavigation.js";
 import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.js";
+import type { SideNavigationItemClickEventDetail } from "./SideNavigationItemBase.js";
 /**
  * @class
  *
@@ -30,6 +31,9 @@ import type { Slot, DefaultSlot } from "@ui5/webcomponents-base/dist/UI5Element.
  * @public
  */
 declare class NavigationLayout extends UI5Element {
+    eventDetails: {
+        "item-click": SideNavigationItemClickEventDetail;
+    };
     /**
      * Specifies the navigation layout mode.
      * @default "Auto"
@@ -48,6 +52,8 @@ declare class NavigationLayout extends UI5Element {
      * @private
      */
     isPhone: boolean;
+    private _itemClickHandler;
+    private _sideNavigationItemClicked;
     /**
      * Gets whether the side navigation is collapsed.
      * @public
@@ -69,6 +75,14 @@ declare class NavigationLayout extends UI5Element {
      */
     content: DefaultSlot<HTMLElement>;
     onBeforeRendering(): void;
+    onAfterRendering(): void;
+    onExitDOM(): void;
+    private _isSideNavigation;
+    private _attachSideNavigationListeners;
+    private _detachSideNavigationListeners;
+    private _handleItemClick;
+    private _isSmallScreen;
+    private _collapseSideNavigation;
     calcSideCollapsed(): void;
 }
 export default NavigationLayout;

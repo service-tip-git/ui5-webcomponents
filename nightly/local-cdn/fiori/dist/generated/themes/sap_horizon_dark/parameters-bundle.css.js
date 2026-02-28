@@ -153,8 +153,7 @@ export default `:host{
     --_ui5_timeline_tli_horizontal_indicator_short_after_width: var(--_ui5-compact-size, calc(100% - 1rem) )  var(--_ui5-cozy-size, 100%);
     --_ui5_side_navigation_width: 16rem;
     --_ui5_side_navigation_collapsed_width: 4rem;
-    --_ui5_side_navigation_navigation_separator_margin: var(--_ui5-compact-size, var(--_ui5_side_navigation_navigation_separator_margin_collapsed))  var(--_ui5-cozy-size, .25rem .5rem .25rem .5rem);
-    --_ui5_side_navigation_navigation_separator_margin_collapsed: var(--_ui5_side_navigation_navigation_separator_margin);
+    --_ui5_side_navigation_navigation_separator_margin: .25rem .5rem .25rem .5rem;
     --_ui5_side_navigation_navigation_separator_background_color: var(--sapToolbar_SeparatorColor);
     --_ui5_side_navigation_navigation_separator_radius: .125rem;
     --_ui5_side_navigation_navigation_separator_height: .0625rem;

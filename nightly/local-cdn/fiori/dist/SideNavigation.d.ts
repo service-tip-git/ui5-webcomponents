@@ -16,6 +16,9 @@ type SideNavigationPopoverContents = {
 type SideNavigationSelectionChangeEventDetail = {
     item: SideNavigationItemBase;
 };
+type SideNavigationItemClickEventDetail = {
+    item: SideNavigationSelectableItemBase;
+};
 /**
  * @class
  *
@@ -25,7 +28,7 @@ type SideNavigationSelectionChangeEventDetail = {
  * It consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).
  *
  *  - The header is meant for displaying user related information - profile data, avatar, etc.
- *  - The main navigation section is related to the user’s current work context
+ *  - The main navigation section is related to the user's current work context.
  *  - The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).
  *
  * ### Usage
@@ -66,6 +69,7 @@ type SideNavigationSelectionChangeEventDetail = {
 declare class SideNavigation extends UI5Element {
     eventDetails: {
         "selection-change": SideNavigationSelectionChangeEventDetail;
+        "item-click": SideNavigationItemClickEventDetail;
     };
     /**
      * Defines whether the `ui5-side-navigation` is expanded or collapsed.
@@ -137,6 +141,7 @@ declare class SideNavigation extends UI5Element {
     get navigationMenuPrimaryHiddenText(): string;
     get navigationMenuFooterHiddenText(): string;
     get overflowAccessibleName(): string;
+    get _effectiveCollapsed(): boolean;
     handlePopupItemClick(e: KeyboardEvent | PointerEvent): void;
     getOverflowPopover(): NavigationMenu;
     getPicker(): ResponsivePopover;
@@ -164,15 +169,18 @@ declare class SideNavigation extends UI5Element {
     _getAllItems(items: Array<SideNavigationItemBase>): Array<SideNavigationItemBase>;
     _findSelectedItem(items: Array<SideNavigationItemBase>): SideNavigationSelectableItemBase | undefined;
     get overflowItems(): Array<HTMLElement>;
+    private _isSmallScreen;
     _handleItemClick(e: KeyboardEvent | MouseEvent, item: SideNavigationSelectableItemBase): void;
     _handleOverflowClick(): void;
     _getOverflowItems(): Array<SideNavigationItem>;
     _selectItem(item: SideNavigationSelectableItemBase): void;
     get _overflowItem(): SideNavigationItem | null;
     get isOverflow(): boolean;
+    get isSideNavigation(): boolean;
     captureRef(ref: HTMLElement & {
         associatedItem?: UI5Element;
     } | null): void;
 }
+export declare const isInstanceOfSideNavigation: (object: any) => object is SideNavigation;
 export default SideNavigation;
-export type { SideNavigationSelectionChangeEventDetail, };
+export type { SideNavigationSelectionChangeEventDetail, SideNavigationItemClickEventDetail, };

@@ -35,7 +35,7 @@ import ListTemplate from "./ListTemplate.js";
 // Styles
 import listCss from "./generated/themes/List.css.js";
 // Texts
-import { LIST_ROLE_LIST_GROUP_DESCRIPTION, LIST_ROLE_LISTBOX_GROUP_DESCRIPTION, LOAD_MORE_TEXT, ARIA_LABEL_LIST_SELECTABLE, ARIA_LABEL_LIST_MULTISELECTABLE, ARIA_LABEL_LIST_DELETABLE, } from "./generated/i18n/i18n-defaults.js";
+import { LIST_ROLE_DESCRIPTION, LIST_ROLE_LIST_GROUP_DESCRIPTION, LIST_ROLE_LISTBOX_GROUP_DESCRIPTION, LOAD_MORE_TEXT, ARIA_LABEL_LIST_SELECTABLE, ARIA_LABEL_LIST_MULTISELECTABLE, ARIA_LABEL_LIST_DELETABLE, } from "./generated/i18n/i18n-defaults.js";
 import { isInstanceOfListItemGroup } from "./ListItemGroup.js";
 const INFINITE_SCROLL_DEBOUNCE_RATE = 250; // ms
 const PAGE_UP_DOWN_SIZE = 10;
@@ -340,7 +340,22 @@ let List = List_1 = class List extends UI5Element {
         return this._associatedLabelsRefTexts || getEffectiveAriaLabelText(this);
     }
     get ariaDescriptionText() {
-        return this._associatedDescriptionRefTexts || getEffectiveAriaDescriptionText(this) || this._getDescriptionForGroups();
+        const parts = [];
+        if (this.accessibleRole === ListAccessibleRole.List) {
+            parts.push(this.defaultAriaDescriptionText);
+        }
+        const externalDescription = this._associatedDescriptionRefTexts || getEffectiveAriaDescriptionText(this);
+        if (externalDescription) {
+            parts.push(externalDescription);
+        }
+        const groupDescription = this._getDescriptionForGroups();
+        if (groupDescription) {
+            parts.push(groupDescription);
+        }
+        return parts.join(" ");
+    }
+    get defaultAriaDescriptionText() {
+        return List_1.i18nBundle.getText(LIST_ROLE_DESCRIPTION);
     }
     get growingButtonAriaLabel() {
         return this.accessibilityAttributes.growingButton?.name;

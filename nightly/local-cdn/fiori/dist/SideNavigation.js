@@ -15,6 +15,8 @@ import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
 import ItemNavigation from "@ui5/webcomponents-base/dist/delegate/ItemNavigation.js";
+import { isPhone } from "@ui5/webcomponents-base/dist/Device.js";
+import createInstanceChecker from "@ui5/webcomponents-base/dist/util/createInstanceChecker.js";
 import NavigationMode from "@ui5/webcomponents-base/dist/types/NavigationMode.js";
 import { isInstanceOfSideNavigationSelectableItemBase } from "./SideNavigationSelectableItemBase.js";
 import { isInstanceOfSideNavigationItemBase } from "./SideNavigationItemBase.js";
@@ -36,7 +38,7 @@ const SCREEN_WIDTH_BREAKPOINT = 600;
  * It consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned).
  *
  *  - The header is meant for displaying user related information - profile data, avatar, etc.
- *  - The main navigation section is related to the user’s current work context
+ *  - The main navigation section is related to the user's current work context.
  *  - The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on).
  *
  * ### Usage
@@ -188,6 +190,9 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
     }
     get overflowAccessibleName() {
         return SideNavigation_1.i18nBundle.getText(SIDE_NAVIGATION_OVERFLOW_ACCESSIBLE_NAME);
+    }
+    get _effectiveCollapsed() {
+        return this.collapsed && !this._isSmallScreen();
     }
     handlePopupItemClick(e) {
         const associatedItem = e.target.associatedItem;
@@ -400,7 +405,11 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
             return result.concat(item.overflowItems);
         }, new Array());
     }
+    _isSmallScreen() {
+        return isPhone() || window.innerWidth < SCREEN_WIDTH_BREAKPOINT;
+    }
     _handleItemClick(e, item) {
+        this.fireDecoratorEvent("item-click", { item });
         if (item.effectiveDisabled) {
             e.stopPropagation();
             e.preventDefault();
@@ -419,7 +428,7 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
             }
             return;
         }
-        if (this.collapsed && isInstanceOfSideNavigationItem(item) && item.items.length) {
+        if (this._effectiveCollapsed && isInstanceOfSideNavigationItem(item) && item.items.length) {
             e.preventDefault();
             this._isOverflow = false;
             this._popoverContents = {
@@ -484,6 +493,9 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
     get isOverflow() {
         return this._isOverflow;
     }
+    get isSideNavigation() {
+        return true;
+    }
     captureRef(ref) {
         if (ref) {
             ref.associatedItem = this;
@@ -526,9 +538,9 @@ SideNavigation = SideNavigation_1 = __decorate([
         styles: [SideNavigationCss, SideNavigationPopoverCss],
     })
     /**
-     * Fired when the selection has changed via user interaction
+     * Fired when the selection has changed via user interaction.
      *
-     * @param {SideNavigationSelectableItemBase} item the clicked item.
+     * @param {SideNavigationSelectableItemBase} item The selected item.
      * @public
      */
     ,
@@ -536,8 +548,21 @@ SideNavigation = SideNavigation_1 = __decorate([
         bubbles: true,
         cancelable: true,
     })
+    /**
+     * Fired when an item is clicked.
+     *
+     * @param {SideNavigationSelectableItemBase} item The clicked item.
+     * @since 2.20.0
+     * @public
+     */
+    ,
+    event("item-click", {
+        bubbles: true,
+        cancelable: true,
+    })
 ], SideNavigation);
 const instanceOfItemOrGroup = createMultiInstanceChecker(["isSideNavigationItem", "isSideNavigationGroup"]);
 SideNavigation.define();
+export const isInstanceOfSideNavigation = createInstanceChecker("isSideNavigation");
 export default SideNavigation;
 //# sourceMappingURL=SideNavigation.js.map

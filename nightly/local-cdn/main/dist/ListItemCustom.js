@@ -84,7 +84,7 @@ let ListItemCustom = ListItemCustom_1 = class ListItemCustom extends ListItem {
     }
     /**
      * Checks if this element is currently being dragged
-     * @returns {boolean} True if this element is being dragged
+     * @returns True if this element is being dragged
      * @private
      */
     _isDragging() {
@@ -111,7 +111,7 @@ let ListItemCustom = ListItemCustom_1 = class ListItemCustom extends ListItem {
     }
     /**
      * Gets delete button nodes to process for accessibility
-     * @returns {Node[]} Array of nodes to process
+     * @returns Array of nodes to process
      * @private
      */
     _getDeleteButtonNodes() {

@@ -108,11 +108,9 @@ declare class Input extends BaseInput {
     /**
      * Handles the version change event from the versioning component.
      *
-     * @param {CustomEvent} e - The version change event
+     * @param e - The version change event
      */
-    _handleVersionChange(e: CustomEvent<{
-        backwards: boolean;
-    }>): void;
+    _handleVersionChange(e: CustomEvent<InputVersionChangeEventDetail>): void;
     /**
      * Handles the click event for the "Previous Version" button.
      * Updates the current version index and syncs content.

@@ -182,7 +182,6 @@ declare class FlexibleColumnLayout extends UI5Element {
     * @default {}
     * @public
     * @since 2.16.0
-    * @experimental
     */
     layoutsConfiguration: LayoutConfiguration;
     /**

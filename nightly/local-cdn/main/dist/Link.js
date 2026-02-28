@@ -135,7 +135,7 @@ let Link = Link_1 = class Link extends UI5Element {
         }
     }
     onBeforeRendering() {
-        const needsNoReferrer = this.target !== "_self"
+        const needsNoReferrer = this.target === "_blank"
             && this.href
             && this._isCrossOrigin(this.href);
         this._rel = needsNoReferrer ? "noreferrer noopener" : undefined;

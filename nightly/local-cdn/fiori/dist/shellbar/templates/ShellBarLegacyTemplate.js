@@ -54,7 +54,7 @@ function ShellBarLegacySecondaryTitle() {
     if (!legacy || !legacy.showSecondaryTitle) {
         return null;
     }
-    return (_jsx("div", { style: { display: "block" }, class: "ui5-shellbar-secondary-title ui5-shellbar-gap-start ui5-shellbar-gap-end", "data-ui5-stable": "secondary-title", children: this.secondaryTitle }));
+    return (_jsx("div", { class: "ui5-shellbar-secondary-title ui5-shellbar-gap-start ui5-shellbar-gap-end", "data-ui5-stable": "secondary-title", children: this.secondaryTitle }));
 }
 /**
  * Renders the menu popover.

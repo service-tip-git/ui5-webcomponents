@@ -79,8 +79,7 @@ export default `:host{
     --_ui5_shellbar_search_field_box_shadow_hover: none;
     --_ui5_side_navigation_width: 16rem;
     --_ui5_side_navigation_collapsed_width: 4rem;
-    --_ui5_side_navigation_navigation_separator_margin: var(--_ui5-compact-size, var(--_ui5_side_navigation_navigation_separator_margin_collapsed))  var(--_ui5-cozy-size, .25rem .5rem .25rem .5rem);
-    --_ui5_side_navigation_navigation_separator_margin_collapsed: var(--_ui5_side_navigation_navigation_separator_margin);
+    --_ui5_side_navigation_navigation_separator_margin: .25rem .5rem .25rem .5rem;
     --_ui5_side_navigation_navigation_separator_background_color: var(--sapList_GroupHeaderBorderColor);
     --_ui5_side_navigation_navigation_separator_radius: unset;
     --_ui5_side_navigation_navigation_separator_height: .0625rem;

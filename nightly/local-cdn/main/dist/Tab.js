@@ -318,7 +318,7 @@ let Tab = Tab_1 = class Tab extends UI5Element {
     }
     _ondragstart(e) {
         if (e.target instanceof HTMLElement) {
-            DragRegistry.setDraggedElement(this);
+            DragRegistry.setDraggedElement(this, e);
             e.target.setAttribute("data-moving", "");
         }
     }

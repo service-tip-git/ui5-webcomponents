@@ -3581,6 +3581,11 @@
             {
               "kind": "method",
               "name": "navigateTo",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
               "parameters": [
                 {
                   "name": "itemIndex",
@@ -4851,6 +4856,17 @@
             },
             {
               "kind": "field",
+              "name": "selectedValue",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the selected item's value.\n\nUse this property together with the `value` property on `ui5-cb-item` to:\n- Select an item programmatically by its unique identifier\n- Handle items with identical display text but different underlying values\n- Submit machine-readable values in forms (the `value` property is submitted instead of the display text)\n\nWhen set, the ComboBox finds and selects the item whose `value` matches this property\nand whose `text` matches the ComboBox's `value` (display text).\n\n**Note:** This replaces the deprecated `selected` property on `ui5-cb-item`.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
+            },
+            {
+              "kind": "field",
               "name": "name",
               "type": {
                 "text": "string | undefined"
@@ -5094,6 +5110,15 @@
               }
             },
             {
+              "description": "Defines the selected item's value.\n\nUse this property together with the `value` property on `ui5-cb-item` to:\n- Select an item programmatically by its unique identifier\n- Handle items with identical display text but different underlying values\n- Submit machine-readable values in forms (the `value` property is submitted instead of the display text)\n\nWhen set, the ComboBox finds and selects the item whose `value` matches this property\nand whose `text` matches the ComboBox's `value` (display text).\n\n**Note:** This replaces the deprecated `selected` property on `ui5-cb-item`.",
+              "name": "selected-value",
+              "default": "undefined",
+              "fieldName": "selectedValue",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
               "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
               "name": "name",
               "default": "undefined",
@@ -5270,6 +5295,17 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.11"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the value of the `ui5-cb-item`.\n\nUse this property to associate a unique identifier or machine-readable value with the item,\nseparate from the display text. This enables:\n- Selecting items programmatically via `selectedValue` on the ComboBox\n- Submitting machine-readable values in forms\n- Distinguishing between items with identical display text\n\n**Example:**\n```html\n<ui5-combobox selected-value=\"DE\">\n  <ui5-cb-item text=\"Germany\" value=\"DE\"></ui5-cb-item>\n  <ui5-cb-item text=\"France\" value=\"FR\"></ui5-cb-item>\n</ui5-combobox>\n```",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0"
             }
           ],
           "attributes": [
@@ -5287,6 +5323,15 @@
               "name": "additional-text",
               "default": "undefined",
               "fieldName": "additionalText",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines the value of the `ui5-cb-item`.\n\nUse this property to associate a unique identifier or machine-readable value with the item,\nseparate from the display text. This enables:\n- Selecting items programmatically via `selectedValue` on the ComboBox\n- Submitting machine-readable values in forms\n- Distinguishing between items with identical display text\n\n**Example:**\n```html\n<ui5-combobox selected-value=\"DE\">\n  <ui5-cb-item text=\"Germany\" value=\"DE\"></ui5-cb-item>\n  <ui5-cb-item text=\"France\" value=\"FR\"></ui5-cb-item>\n</ui5-combobox>\n```",
+              "name": "value",
+              "default": "undefined",
+              "fieldName": "value",
               "type": {
                 "text": "string | undefined"
               }
@@ -7782,11 +7827,749 @@
     {
       "kind": "javascript-module",
       "path": "dist/DateTimeInput.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Extention of the UI5 Input, so we do not modify Input's private properties within the datetime components.\nIntended to be used for the DateTime components.",
+          "name": "DateTimeInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component is in disabled state.\n\n**Note:** A disabled component is completely noninteractive.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component is read-only.\n\n**Note:** A read-only component is not editable,\nbut still provides visual feedback upon user interaction.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component is required.",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.3",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "noTypeahead",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the value will be autcompleted to match an item",
+              "privacy": "public",
+              "_ui5since": "1.4.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "InputType",
+                "references": [
+                  {
+                    "name": "InputType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/InputType.js"
+                  }
+                ]
+              },
+              "default": "\"Text\"",
+              "description": "Defines the HTML type of the component.\n\n**Notes:**\n\n- The particular effect of this property differs depending on the browser\nand the current language settings, especially for type `Number`.\n- The property is mostly intended to be used with touch devices\nthat use different soft keyboard layouts depending on the given input type.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "privacy": "public",
+              "_ui5formProperty": true,
+              "_ui5formEvents": "change,input",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "valueState",
+              "type": {
+                "text": "ValueState",
+                "references": [
+                  {
+                    "name": "ValueState",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/ValueState.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines the value state of the component.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showSuggestions",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component should show suggestions, if such are present.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxlength",
+              "type": {
+                "text": "number | undefined"
+              },
+              "description": "Sets the maximum number of characters available in the input field.\n\n**Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.5",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that label the input.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.9.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that describe the input.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.9.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showClearIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the clear icon of the input will be shown.",
+              "privacy": "public",
+              "_ui5since": "1.2.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the suggestions picker is open.\nThe picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.\nThe picker will close automatically and `close` event will be fired if the input is not in the viewport.",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "filter",
+              "type": {
+                "text": "InputSuggestionsFilter",
+                "references": [
+                  {
+                    "name": "InputSuggestionsFilter",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/InputSuggestionsFilter.js"
+                  }
+                ]
+              },
+              "description": "Defines the filter type of the component.",
+              "default": "\"None\"",
+              "privacy": "public",
+              "_ui5since": "2.19.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "Input",
+            "package": "@ui5/webcomponents",
+            "module": "dist/Input.js"
+          },
+          "tagName": "ui5-datetime-input",
+          "customElement": true,
+          "_ui5privacy": "private",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the suggestion items.\n\n**Note:** The suggestions would be displayed only if the `showSuggestions`\nproperty is set to `true`.\n\n**Note:** The `<ui5-suggestion-item>`, `<ui5-suggestion-item-group>` and `ui5-suggestion-item-custom` are recommended to be used as suggestion items.",
+              "_ui5propertyName": "suggestionItems",
+              "_ui5type": {
+                "text": "Array<IInputSuggestionItem>",
+                "references": [
+                  {
+                    "name": "IInputSuggestionItem",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Input.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "name": "icon",
+              "description": "Defines the icon to be displayed in the component.",
+              "_ui5type": {
+                "text": "Array<IIcon>",
+                "references": [
+                  {
+                    "name": "IIcon",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Icon.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "name": "valueStateMessage",
+              "description": "Defines the value state message that will be displayed as pop up under the component.\nThe value state message slot should contain only one root element.\n\n**Note:** If not specified, a default text (in the respective language) will be displayed.\n\n**Note:** The `valueStateMessage` would be displayed,\nwhen the component is in `Information`, `Critical` or `Negative` value state.\n\n**Note:** If the component has `suggestionItems`,\nthe `valueStateMessage` would be displayed as part of the same popover, if used on desktop, or dialog - on phone.",
+              "_ui5since": "1.0.0-rc.6",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Used to style the root DOM element of the Input component",
+              "name": "root",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Used to style the native input element",
+              "name": "input",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Used to style the clear icon, which can be pressed to clear user input text",
+              "name": "clear-icon",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines whether the component is in disabled state.\n\n**Note:** A disabled component is completely noninteractive.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines a short hint intended to aid the user with data entry when the\ncomponent has no value.",
+              "name": "placeholder",
+              "default": "undefined",
+              "fieldName": "placeholder",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is read-only.\n\n**Note:** A read-only component is not editable,\nbut still provides visual feedback upon user interaction.",
+              "name": "readonly",
+              "default": "false",
+              "fieldName": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is required.",
+              "name": "required",
+              "default": "false",
+              "fieldName": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines whether the value will be autcompleted to match an item",
+              "name": "no-typeahead",
+              "default": "false",
+              "fieldName": "noTypeahead",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines the HTML type of the component.\n\n**Notes:**\n\n- The particular effect of this property differs depending on the browser\nand the current language settings, especially for type `Number`.\n- The property is mostly intended to be used with touch devices\nthat use different soft keyboard layouts depending on the given input type.",
+              "name": "type",
+              "default": "\"Text\"",
+              "fieldName": "type",
+              "type": {
+                "text": "\"Text\" | \"Email\" | \"Number\" | \"Password\" | \"Tel\" | \"URL\" | \"Search\""
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines the value of the component.\n\n**Note:** The property is updated upon typing.",
+              "name": "value",
+              "default": "\"\"",
+              "fieldName": "value",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines the value state of the component.",
+              "name": "value-state",
+              "default": "\"None\"",
+              "fieldName": "valueState",
+              "type": {
+                "text": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Determines the name by which the component will be identified upon submission in an HTML form.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+              "name": "name",
+              "default": "undefined",
+              "fieldName": "name",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines whether the component should show suggestions, if such are present.",
+              "name": "show-suggestions",
+              "default": "false",
+              "fieldName": "showSuggestions",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Sets the maximum number of characters available in the input field.\n\n**Note:** This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored.",
+              "name": "maxlength",
+              "default": "undefined",
+              "fieldName": "maxlength",
+              "type": {
+                "text": "number | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that label the input.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that describe the input.",
+              "name": "accessible-description-ref",
+              "default": "undefined",
+              "fieldName": "accessibleDescriptionRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines whether the clear icon of the input will be shown.",
+              "name": "show-clear-icon",
+              "default": "false",
+              "fieldName": "showClearIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines whether the suggestions picker is open.\nThe picker will not open if the `showSuggestions` property is set to `false`, the input is disabled or the input is readonly.\nThe picker will close automatically and `close` event will be fired if the input is not in the viewport.",
+              "name": "open",
+              "default": "false",
+              "fieldName": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "description": "Defines the filter type of the component.",
+              "name": "filter",
+              "default": "\"None\"",
+              "fieldName": "filter",
+              "type": {
+                "text": "\"None\" | \"StartsWithPerTerm\" | \"StartsWith\" | \"Contains\""
+              },
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the input operation has finished by pressing Enter or on focusout.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "name": "input",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the value of the component changes at each keystroke,\nand when a suggestion item has been selected.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "name": "select",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when some text has been selected.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "name": "selection-change",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<InputSelectionChangeEventDetail>",
+                "references": [
+                  {
+                    "name": "InputSelectionChangeEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Input.js"
+                  }
+                ]
+              },
+              "description": "Fired when the user navigates to a suggestion item via the ARROW keys,\nas a preview, before the final selection.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.0.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "HTMLElement"
+                  },
+                  "name": "item",
+                  "_ui5privacy": "public",
+                  "description": "The previewed suggestion item."
+                }
+              ],
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "name": "open",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the suggestions picker is open.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            },
+            {
+              "name": "close",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the suggestions picker is closed.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": false,
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "Input",
+                "module": "dist/Input.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "DateTimeInput",
+            "module": "dist/DateTimeInput.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-datetime-input",
           "declaration": {
             "name": "DateTimeInput",
             "module": "dist/DateTimeInput.js"
@@ -8815,11 +9598,282 @@
     {
       "kind": "javascript-module",
       "path": "dist/DayPicker.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Represents the days inside a single month view of the `ui5-calendar` component.",
+          "name": "DayPicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "primaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "secondaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.16",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, used for the value attribute.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "CalendarPart",
+            "package": "@ui5/webcomponents",
+            "module": "dist/CalendarPart.js"
+          },
+          "tagName": "ui5-daypicker",
+          "customElement": true,
+          "_ui5privacy": "private",
+          "attributes": [
+            {
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "name": "primary-calendar-type",
+              "default": "undefined",
+              "fieldName": "primaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "name": "secondary-calendar-type",
+              "default": "undefined",
+              "fieldName": "secondaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "display-format",
+              "default": "undefined",
+              "fieldName": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, used for the value attribute.",
+              "name": "value-format",
+              "default": "undefined",
+              "fieldName": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "min-date",
+              "default": "\"\"",
+              "fieldName": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "max-date",
+              "default": "\"\"",
+              "fieldName": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "DayPicker",
+            "module": "dist/DayPicker.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-daypicker",
           "declaration": {
             "name": "DayPicker",
             "module": "dist/DayPicker.js"
@@ -9374,11 +10428,127 @@
     {
       "kind": "javascript-module",
       "path": "dist/DropIndicator.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\n### Usage\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/DropIndicator.js\";`",
+          "name": "DropIndicator",
+          "members": [
+            {
+              "kind": "field",
+              "name": "targetReference",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "default": "null",
+              "description": "Element where the drop indicator will be shown.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "ownerReference",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "default": "null",
+              "description": "Owner of the indicator and the target.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "placement",
+              "type": {
+                "text": "MovePlacement",
+                "references": [
+                  {
+                    "name": "MovePlacement",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/MovePlacement.js"
+                  }
+                ]
+              },
+              "default": "\"Before\"",
+              "description": "Placement of the indicator relative to the target.",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "Orientation",
+                "references": [
+                  {
+                    "name": "Orientation",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/Orientation.js"
+                  }
+                ]
+              },
+              "default": "\"Vertical\"",
+              "description": "Orientation of the indicator.",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Element where the drop indicator will be shown.",
+              "name": "target-reference",
+              "default": "null",
+              "fieldName": "targetReference",
+              "type": {
+                "text": "HTMLElement | null"
+              }
+            },
+            {
+              "description": "Owner of the indicator and the target.",
+              "name": "owner-reference",
+              "default": "null",
+              "fieldName": "ownerReference",
+              "type": {
+                "text": "HTMLElement | null"
+              }
+            },
+            {
+              "description": "Placement of the indicator relative to the target.",
+              "name": "placement",
+              "default": "\"Before\"",
+              "fieldName": "placement",
+              "type": {
+                "text": "\"On\" | \"Before\" | \"After\""
+              }
+            },
+            {
+              "description": "Orientation of the indicator.",
+              "name": "orientation",
+              "default": "\"Vertical\"",
+              "fieldName": "orientation",
+              "type": {
+                "text": "\"Vertical\" | \"Horizontal\""
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-drop-indicator",
+          "customElement": true,
+          "_ui5privacy": "private"
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "DropIndicator",
+            "module": "dist/DropIndicator.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-drop-indicator",
           "declaration": {
             "name": "DropIndicator",
             "module": "dist/DropIndicator.js"
@@ -13506,11 +14676,93 @@
     {
       "kind": "javascript-module",
       "path": "dist/ListItemGroupHeader.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-li-group-header` is a special list item, used only to separate other list items into logical groups.",
+          "name": "ListItemGroupHeader",
+          "slots": [
+            {
+              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+              "name": "default",
+              "_ui5privacy": "public",
+              "_ui5type": {
+                "text": "Array<Node>"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text alternative of the component.\n\n**Note:** If not provided a default text alternative will be set, if present.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "wrappingType",
+              "type": {
+                "text": "WrappingType",
+                "references": [
+                  {
+                    "name": "WrappingType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/WrappingType.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "privacy": "public",
+              "_ui5since": "2.15.0"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the text alternative of the component.\n\n**Note:** If not provided a default text alternative will be set, if present.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ListItemBase",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemBase.js"
+          },
+          "tagName": "ui5-li-group-header",
+          "customElement": true,
+          "_ui5privacy": "private"
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "ListItemGroupHeader",
+            "module": "dist/ListItemGroupHeader.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-li-group-header",
           "declaration": {
             "name": "ListItemGroupHeader",
             "module": "dist/ListItemGroupHeader.js"
@@ -15248,11 +16500,282 @@
     {
       "kind": "javascript-module",
       "path": "dist/MonthPicker.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Month picker component.",
+          "name": "MonthPicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "primaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "secondaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.16",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, used for the value attribute.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "CalendarPart",
+            "package": "@ui5/webcomponents",
+            "module": "dist/CalendarPart.js"
+          },
+          "tagName": "ui5-monthpicker",
+          "customElement": true,
+          "_ui5privacy": "private",
+          "attributes": [
+            {
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "name": "primary-calendar-type",
+              "default": "undefined",
+              "fieldName": "primaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "name": "secondary-calendar-type",
+              "default": "undefined",
+              "fieldName": "secondaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "display-format",
+              "default": "undefined",
+              "fieldName": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, used for the value attribute.",
+              "name": "value-format",
+              "default": "undefined",
+              "fieldName": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "min-date",
+              "default": "\"\"",
+              "fieldName": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "max-date",
+              "default": "\"\"",
+              "fieldName": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "MonthPicker",
+            "module": "dist/MonthPicker.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-monthpicker",
           "declaration": {
             "name": "MonthPicker",
             "module": "dist/MonthPicker.js"
@@ -15814,6 +17337,7 @@
               "default": "false",
               "description": "Defines the selected state of the component.",
               "privacy": "public",
+              "deprecated": "use value property of the item and selectedValue property of the ComboBox instead",
               "inheritedFrom": {
                 "name": "ListItemBase",
                 "module": "dist/ListItemBase.js"
@@ -15843,6 +17367,21 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "1.0.0-rc.11",
+              "inheritedFrom": {
+                "name": "ComboBoxItem",
+                "module": "dist/ComboBoxItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the value of the `ui5-cb-item`.\n\nUse this property to associate a unique identifier or machine-readable value with the item,\nseparate from the display text. This enables:\n- Selecting items programmatically via `selectedValue` on the ComboBox\n- Submitting machine-readable values in forms\n- Distinguishing between items with identical display text\n\n**Example:**\n```html\n<ui5-combobox selected-value=\"DE\">\n  <ui5-cb-item text=\"Germany\" value=\"DE\"></ui5-cb-item>\n  <ui5-cb-item text=\"France\" value=\"FR\"></ui5-cb-item>\n</ui5-combobox>\n```",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.20.0",
               "inheritedFrom": {
                 "name": "ComboBoxItem",
                 "module": "dist/ComboBoxItem.js"
@@ -15877,6 +17416,19 @@
               "name": "additional-text",
               "default": "undefined",
               "fieldName": "additionalText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ComboBoxItem",
+                "module": "dist/ComboBoxItem.js"
+              }
+            },
+            {
+              "description": "Defines the value of the `ui5-cb-item`.\n\nUse this property to associate a unique identifier or machine-readable value with the item,\nseparate from the display text. This enables:\n- Selecting items programmatically via `selectedValue` on the ComboBox\n- Submitting machine-readable values in forms\n- Distinguishing between items with identical display text\n\n**Example:**\n```html\n<ui5-combobox selected-value=\"DE\">\n  <ui5-cb-item text=\"Germany\" value=\"DE\"></ui5-cb-item>\n  <ui5-cb-item text=\"France\" value=\"FR\"></ui5-cb-item>\n</ui5-combobox>\n```",
+              "name": "value",
+              "default": "undefined",
+              "fieldName": "value",
               "type": {
                 "text": "string | undefined"
               },
@@ -17101,6 +18653,7 @@
               "default": "false",
               "description": "Defines the selected state of the component.",
               "privacy": "public",
+              "deprecated": "since 2.20.0, please use the parent Select's `value` property instead.",
               "inheritedFrom": {
                 "name": "ListItemBase",
                 "module": "dist/ListItemBase.js"
@@ -17151,7 +18704,8 @@
               "fieldName": "selected",
               "type": {
                 "text": "boolean"
-              }
+              },
+              "deprecated": "since 2.20.0, please use the parent Select's `value` property instead."
             }
           ],
           "superclass": {
@@ -21391,6 +22945,20 @@
             },
             {
               "kind": "field",
+              "name": "step",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).\n\n**Note:** If set to 0 the slider handle movement is disabled.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "SliderBase",
+                "module": "dist/SliderBase.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "min",
               "type": {
                 "text": "number"
@@ -21427,20 +22995,6 @@
               "default": "undefined",
               "privacy": "public",
               "_ui5since": "2.0.0",
-              "inheritedFrom": {
-                "name": "SliderBase",
-                "module": "dist/SliderBase.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "step",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).\n\n**Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.",
-              "privacy": "public",
               "inheritedFrom": {
                 "name": "SliderBase",
                 "module": "dist/SliderBase.js"
@@ -21536,10 +23090,23 @@
             {
               "description": "Current value of the slider",
               "name": "value",
-              "default": "undefined",
+              "default": "0",
               "fieldName": "value",
               "type": {
                 "text": "number"
+              }
+            },
+            {
+              "description": "Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).\n\n**Note:** If set to 0 the slider handle movement is disabled.",
+              "name": "step",
+              "default": "1",
+              "fieldName": "step",
+              "type": {
+                "text": "number"
+              },
+              "inheritedFrom": {
+                "name": "SliderBase",
+                "module": "dist/SliderBase.js"
               }
             },
             {
@@ -21575,19 +23142,6 @@
               "fieldName": "name",
               "type": {
                 "text": "string | undefined"
-              },
-              "inheritedFrom": {
-                "name": "SliderBase",
-                "module": "dist/SliderBase.js"
-              }
-            },
-            {
-              "description": "Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10).\n\n**Note:** If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.",
-              "name": "step",
-              "default": "1",
-              "fieldName": "step",
-              "type": {
-                "text": "number"
               },
               "inheritedFrom": {
                 "name": "SliderBase",
@@ -21985,12 +23539,191 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/SliderTooltip.js",
+      "path": "dist/SliderHandle.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The <code>ui5-slider-handle</code> component represents the handle of the <code>ui5-slider</code> component.",
+          "name": "SliderHandle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Defines the value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be between the <code>min</code> and <code>max</code> properties of the parent <code>ui5-slider</code>.",
+              "privacy": "public",
+              "_ui5since": "2.19.0"
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "description": "Defines the minimum value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be less than the <code>max</code> property of the parent <code>ui5-slider</code>.",
+              "privacy": "public",
+              "_ui5since": "2.19.0"
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "description": "Defines the maximum value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be greater than the <code>min</code> property of the parent <code>ui5-slider</code>.",
+              "privacy": "public",
+              "_ui5since": "2.19.0"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the slider handle is disabled.\n<br><br>\n<b>Note:</b> A disabled slider handle cannot be interacted with.",
+              "privacy": "public",
+              "_ui5since": "2.19.0"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the slider handle is active.\n<br><br>\n<b>Note:</b> An active slider handle is currently being interacted with.",
+              "privacy": "public",
+              "_ui5since": "2.19.0"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines the value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be between the <code>min</code> and <code>max</code> properties of the parent <code>ui5-slider</code>.",
+              "name": "value",
+              "default": "0",
+              "fieldName": "value",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Defines the minimum value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be less than the <code>max</code> property of the parent <code>ui5-slider</code>.",
+              "name": "min",
+              "default": "0",
+              "fieldName": "min",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Defines the maximum value of the slider handle.\n<br><br>\n<b>Note:</b> The value should be greater than the <code>min</code> property of the parent <code>ui5-slider</code>.",
+              "name": "max",
+              "default": "100",
+              "fieldName": "max",
+              "type": {
+                "text": "number"
+              }
+            },
+            {
+              "description": "Defines whether the slider handle is disabled.\n<br><br>\n<b>Note:</b> A disabled slider handle cannot be interacted with.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              }
+            },
+            {
+              "description": "Defines whether the slider handle is active.\n<br><br>\n<b>Note:</b> An active slider handle is currently being interacted with.",
+              "name": "active",
+              "default": "false",
+              "fieldName": "active",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-slider-handle",
+          "customElement": true,
+          "_ui5since": "2.19.0",
+          "_ui5privacy": "private"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SliderHandle",
+            "module": "dist/SliderHandle.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-slider-handle",
+          "declaration": {
+            "name": "SliderHandle",
+            "module": "dist/SliderHandle.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SliderScale.js",
       "declarations": [],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "SliderScale",
+            "module": "dist/SliderScale.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/SliderTooltip.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview",
+          "name": "SliderTooltip",
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-slider-tooltip",
+          "customElement": true,
+          "_ui5privacy": "private"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "SliderTooltip",
+            "module": "dist/SliderTooltip.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-slider-tooltip",
           "declaration": {
             "name": "SliderTooltip",
             "module": "dist/SliderTooltip.js"
@@ -23121,11 +24854,648 @@
     {
       "kind": "javascript-module",
       "path": "dist/SuggestionListItem.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "The `ui5-li-suggestion-item` represents the suggestion item in the `ui5-input`\nsuggestion popover.",
+          "name": "SuggestionListItem",
+          "cssParts": [
+            {
+              "description": "Used to style the title of the suggestion list item",
+              "name": "title",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the description of the suggestion list item",
+              "name": "description",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the info of the suggestion list item",
+              "name": "info"
+            },
+            {
+              "description": "Used to style the additionalText of the list item",
+              "name": "additional-text",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the icon of the list item",
+              "name": "icon",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the main li tag of the list item",
+              "name": "native-li",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the content area of the list item",
+              "name": "content",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the button rendered when the list item is of type detail",
+              "name": "detail-button",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the button rendered when the list item is in delete mode",
+              "name": "delete-button",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the radio button rendered when the list item is in single selection mode",
+              "name": "radio",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Used to style the checkbox rendered when the list item is in multiple selection mode",
+              "name": "checkbox",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "richDescription",
+              "description": "Defines a description that can contain HTML.\n**Note:** If not specified, the `description` property will be used.",
+              "_ui5since": "1.0.0-rc.8",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public"
+            },
+            {
+              "name": "default",
+              "description": "Defines the title text of the suggestion item.",
+              "_ui5propertyName": "titleText",
+              "_ui5type": {
+                "text": "Array<Node>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "name": "image",
+              "description": "**Note:** While the slot allows option for setting custom avatar, to match the\ndesign guidelines, please use the `ui5-avatar` with it's default size - S.\n\n**Note:** If bigger `ui5-avatar` needs to be used, then the size of the\n`ui5-li` should be customized in order to fit.",
+              "_ui5since": "2.0.0",
+              "_ui5type": {
+                "text": "Array<HTMLElement>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "name": "deleteButton",
+              "description": "Defines the delete button, displayed in \"Delete\" mode.\n**Note:** While the slot allows custom buttons, to match\ndesign guidelines, please use the `ui5-button` component.\n**Note:** When the slot is not present, a built-in delete button will be displayed.",
+              "_ui5since": "1.9.0",
+              "_ui5type": {
+                "text": "Array<IButton>",
+                "references": [
+                  {
+                    "name": "IButton",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.10.0",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the description displayed right under the item text, if such is present.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "0.8.0",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iconEnd",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the `icon` should be displayed in the beginning of the list item or in the end.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "additionalText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the `additionalText`, displayed in the end of the list item.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "additionalTextState",
+              "type": {
+                "text": "ValueState",
+                "references": [
+                  {
+                    "name": "ValueState",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/ValueState.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "movable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the item is movable.",
+              "privacy": "public",
+              "_ui5since": "2.0.0",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wrappingType",
+              "type": {
+                "text": "WrappingType",
+                "references": [
+                  {
+                    "name": "WrappingType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/WrappingType.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "privacy": "public",
+              "_ui5since": "2.10.0",
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "ListItemType",
+                "references": [
+                  {
+                    "name": "ListItemType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ListItemType.js"
+                  }
+                ]
+              },
+              "default": "\"Active\"",
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "ListItemAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "ListItemAccessibilityAttributes",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ListItem.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+              "privacy": "public",
+              "_ui5since": "1.15.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "navigated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+              "privacy": "public",
+              "_ui5since": "1.10.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.23.0",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "highlight",
+              "type": {
+                "text": "Highlight",
+                "references": [
+                  {
+                    "name": "Highlight",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/Highlight.js"
+                  }
+                ]
+              },
+              "default": "\"None\"",
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "privacy": "public",
+              "_ui5since": "1.24",
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines the selected state of the component.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ListItemBase",
+                "module": "dist/ListItemBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ListItemStandard",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ListItemStandard.js"
+          },
+          "tagName": "ui5-li-suggestion-item",
+          "customElement": true,
+          "_ui5privacy": "private",
+          "attributes": [
+            {
+              "description": "Defines the text of the component.",
+              "name": "text",
+              "default": "undefined",
+              "fieldName": "text",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines the description displayed right under the item text, if such is present.",
+              "name": "description",
+              "default": "undefined",
+              "fieldName": "description",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines the `icon` source URI.\n\n**Note:**\nSAP-icons font provides numerous built-in icons. To find all the available icons, see the\n[Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "icon",
+              "default": "undefined",
+              "fieldName": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines whether the `icon` should be displayed in the beginning of the list item or in the end.",
+              "name": "icon-end",
+              "default": "false",
+              "fieldName": "iconEnd",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines the `additionalText`, displayed in the end of the list item.",
+              "name": "additional-text",
+              "default": "undefined",
+              "fieldName": "additionalText",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines the state of the `additionalText`.\n\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "name": "additional-text-state",
+              "default": "\"None\"",
+              "fieldName": "additionalTextState",
+              "type": {
+                "text": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines whether the item is movable.",
+              "name": "movable",
+              "default": "false",
+              "fieldName": "movable",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines the text alternative of the component.\nNote: If not provided a default text alternative will be set, if present.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines if the text of the component should wrap when it's too long.\nWhen set to \"Normal\", the content (title, description) will be wrapped\nusing the `ui5-expandable-text` component.<br/>\n\nThe text can wrap up to 100 characters on small screens (size S) and\nup to 300 characters on larger screens (size M and above). When text exceeds\nthese limits, it truncates with an ellipsis followed by a text expansion trigger.\n\nAvailable options are:\n- `None` (default) - The text will truncate with an ellipsis.\n- `Normal` - The text will wrap (without truncation).",
+              "name": "wrapping-type",
+              "default": "\"None\"",
+              "fieldName": "wrappingType",
+              "type": {
+                "text": "\"None\" | \"Normal\""
+              },
+              "inheritedFrom": {
+                "name": "ListItemStandard",
+                "module": "dist/ListItemStandard.js"
+              }
+            },
+            {
+              "description": "Defines the visual indication and behavior of the list items.\nAvailable options are `Active` (by default), `Inactive`, `Detail` and `Navigation`.\n\n**Note:** When set to `Active` or `Navigation`, the item will provide visual response upon press and hover,\nwhile with type `Inactive` and `Detail` - will not.",
+              "name": "type",
+              "default": "\"Active\"",
+              "fieldName": "type",
+              "type": {
+                "text": "\"Navigation\" | \"Inactive\" | \"Active\" | \"Detail\""
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **ariaSetsize**: Defines the number of items in the current set  when not all items in the set are present in the DOM.\n**Note:** The value is an integer reflecting the number of items in the complete set. If the size of the entire set is unknown, set `-1`.\n\n\t- **ariaPosinset**: Defines an element's number or position in the current set when not all items are present in the DOM.\n\t**Note:** The value is an integer greater than or equal to 1, and less than or equal to the size of the set when that size is known.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "ListItemAccessibilityAttributes"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "The navigated state of the list item.\nIf set to `true`, a navigation indicator is displayed at the end of the list item.",
+              "name": "navigated",
+              "default": "false",
+              "fieldName": "navigated",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the text of the tooltip that would be displayed for the list item.",
+              "name": "tooltip",
+              "default": "undefined",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the highlight state of the list items.\nAvailable options are: `\"None\"` (by default), `\"Positive\"`, `\"Critical\"`, `\"Information\"` and `\"Negative\"`.",
+              "name": "highlight",
+              "default": "\"None\"",
+              "fieldName": "highlight",
+              "type": {
+                "text": "\"None\" | \"Positive\" | \"Critical\" | \"Negative\" | \"Information\""
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            },
+            {
+              "description": "Defines the selected state of the component.",
+              "name": "selected",
+              "default": "false",
+              "fieldName": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "detail-click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the user clicks on the detail button when type is `Detail`.",
+              "_ui5Cancelable": false,
+              "_ui5allowPreventDefault": false,
+              "_ui5Bubbles": true,
+              "inheritedFrom": {
+                "name": "ListItem",
+                "module": "dist/ListItem.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "SuggestionListItem",
+            "module": "dist/SuggestionListItem.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-li-suggestion-item",
           "declaration": {
             "name": "SuggestionListItem",
             "module": "dist/SuggestionListItem.js"
@@ -27900,11 +30270,34 @@
     {
       "kind": "javascript-module",
       "path": "dist/TimePickerClock.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\n`ui5-time-picker-clock` allows selecting of hours,minutes or seconds (depending on property set).\nThe component supports interactions with mouse, touch and mouse wheel.\nThe step for displaying or selecting of items can be configured.\n\n`ui5-time-picker-clock` is used as part of `ui5-time-selection-clocks` component, which\nis used in `ui5-time-picker` component respectively.\n\n### Usage\n\n`ui5-time-picker-clock` can display hours, minutes or seconds\n\n### ES6 Module Import\n\n`import \"@ui5/webcomponents/dist/TimePickerClock.js\";`",
+          "name": "TimePickerClock",
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "tagName": "ui5-time-picker-clock",
+          "customElement": true,
+          "_ui5since": "1.15.0",
+          "_ui5privacy": "private"
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "TimePickerClock",
+            "module": "dist/TimePickerClock.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-time-picker-clock",
           "declaration": {
             "name": "TimePickerClock",
             "module": "dist/TimePickerClock.js"
@@ -27915,7 +30308,64 @@
     {
       "kind": "javascript-module",
       "path": "dist/TimePickerInternals.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\n`ui5-time-picker-internals` is helper component that contains shared methods used in `ui5-time-selection-clocks`\nand `<ui5-time-selection-inputs>` components and should not be used separately.",
+          "name": "TimePickerInternals",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a formatted time value.",
+              "default": "undefined",
+              "privacy": "public"
+            },
+            {
+              "kind": "field",
+              "name": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+              "default": "undefined",
+              "privacy": "public"
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Defines a formatted time value.",
+              "name": "value",
+              "default": "undefined",
+              "fieldName": "value",
+              "type": {
+                "text": "string | undefined"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "UI5Element",
+            "package": "@ui5/webcomponents-base",
+            "module": "dist/UI5Element.js"
+          },
+          "customElement": true,
+          "_ui5since": "1.15.0",
+          "_ui5privacy": "private",
+          "_ui5abstract": true
+        }
+      ],
       "exports": [
         {
           "kind": "js",
@@ -27930,11 +30380,92 @@
     {
       "kind": "javascript-module",
       "path": "dist/TimeSelectionClocks.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\n`ui5-time-selection-clocks` is component that contains all the `ui5-time-picker-clock` components\nnecessary for the `ui5-time-picker` as well as all necessary `ui5-toggle-spin-button` components\nused for switching between different clocks.\n`ui5-time-picker-clock` components and `ui5-toggle-spin-button` depend on the time format set to\n`ui5-time-picker` component.\n\nThis component should not be used separately.",
+          "name": "TimeSelectionClocks",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a formatted time value.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TimePickerInternals",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TimePickerInternals.js"
+          },
+          "tagName": "ui5-time-selection-clocks",
+          "customElement": true,
+          "_ui5since": "1.15.0",
+          "_ui5privacy": "private",
+          "attributes": [
+            {
+              "description": "Defines a formatted time value.",
+              "name": "value",
+              "default": "undefined",
+              "fieldName": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "TimeSelectionClocks",
+            "module": "dist/TimeSelectionClocks.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-time-selection-clocks",
           "declaration": {
             "name": "TimeSelectionClocks",
             "module": "dist/TimeSelectionClocks.js"
@@ -27945,11 +30476,93 @@
     {
       "kind": "javascript-module",
       "path": "dist/TimeSelectionInputs.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\n`ui5-time-selection-inputs` displays a popover with `ui5-input` components of type=\"number\" and an\noptional a AM/PM `ui5-segmented-button` according to the display format given to the `ui5-time-picker`.\nUsing of numeric input components enables display of mobile devices' native numeric keyboard, which speeds up entering of the time.\nThe popup appears only on mobile devices when there is a tap on the `ui5-time-picker` input.\n\nThis component should not be used separately.",
+          "name": "TimeSelectionInputs",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines a formatted time value.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "TimePickerInternals",
+            "package": "@ui5/webcomponents",
+            "module": "dist/TimePickerInternals.js"
+          },
+          "tagName": "ui5-time-selection-inputs",
+          "customElement": true,
+          "_ui5since": "1.18.0",
+          "_ui5privacy": "private",
+          "_ui5abstract": true,
+          "attributes": [
+            {
+              "description": "Defines a formatted time value.",
+              "name": "value",
+              "default": "undefined",
+              "fieldName": "value",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.\n\nExample:\nHH:mm:ss -> 11:42:35\nhh:mm:ss a -> 2:23:15 PM\nmm:ss -> 12:04 (only minutes and seconds)",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "TimePickerInternals",
+                "module": "dist/TimePickerInternals.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "TimeSelectionInputs",
+            "module": "dist/TimeSelectionInputs.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-time-selection-inputs",
           "declaration": {
             "name": "TimeSelectionInputs",
             "module": "dist/TimeSelectionInputs.js"
@@ -28825,11 +31438,610 @@
     {
       "kind": "javascript-module",
       "path": "dist/ToggleSpinButton.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "### Overview\n\n`ui5-toggle-spin-button` is explicitly used in the new design of `ui5-time-picker`.\nIt extends `ui5-toggle-button` with some specific accessibility-related properties in order to\nhave spin button look and feel from accessibility point of view. This component should not be used separately.",
+          "name": "ToggleSpinButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "pressed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Determines whether the component is displayed as pressed.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "ToggleButton",
+                "module": "dist/ToggleButton.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "design",
+              "type": {
+                "text": "ButtonDesign",
+                "references": [
+                  {
+                    "name": "ButtonDesign",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ButtonDesign.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines the component design.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the icon, displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "endIcon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the icon, displayed as graphical element within the component after the button text.\n\n**Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.\nUsage of `endIcon` only should be avoided.\n\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "submits",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When set to `true`, the component will\nautomatically submit the nearest HTML form element on `press`.\n\n**Note:** This property is only applicable within the context of an HTML Form element.`",
+              "privacy": "public",
+              "deprecated": "Set the \"type\" property to \"Submit\" to achieve the same result. The \"submits\" property is ignored if \"type\" is set to any value other than \"Button\".",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the tooltip of the component.\n\n**Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.2.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible ARIA name of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.15",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.1.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibilityAttributes",
+              "type": {
+                "text": "ButtonAccessibilityAttributes",
+                "references": [
+                  {
+                    "name": "ButtonAccessibilityAttributes",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "default": "{}",
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.\nAccepts the following string values: `true` or `false`\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n- **ariaLabel**: Defines the accessible ARIA name of the component.\nAccepts any string value.\n\n - **ariaKeyShortcuts**: Defines keyboard shortcuts that activate or give focus to the button.\n\n- **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.\nAccepts a lowercase string value.",
+              "privacy": "public",
+              "_ui5since": "1.2.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Defines the accessible description of the component.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.5.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "ButtonType",
+                "references": [
+                  {
+                    "name": "ButtonType",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ButtonType.js"
+                  }
+                ]
+              },
+              "default": "\"Button\"",
+              "description": "Defines whether the button has special form-related functionality.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+              "privacy": "public",
+              "_ui5since": "1.15.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accessibleRole",
+              "type": {
+                "text": "ButtonAccessibleRole",
+                "references": [
+                  {
+                    "name": "ButtonAccessibleRole",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/ButtonAccessibleRole.js"
+                  }
+                ]
+              },
+              "default": "\"Button\"",
+              "description": "Describes the accessibility role of the button.\n\n**Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
+              "privacy": "public",
+              "_ui5since": "1.23",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Defines whether the button shows a loading indicator.\n\n**Note:** If set to `true`, a busy indicator component will be displayed on the related button.",
+              "privacy": "public",
+              "_ui5since": "2.13.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loadingDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000",
+              "description": "Specifies the delay in milliseconds before the loading indicator appears within the associated button.",
+              "privacy": "public",
+              "_ui5since": "2.13.0",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "ToggleButton",
+            "package": "@ui5/webcomponents",
+            "module": "dist/ToggleButton.js"
+          },
+          "tagName": "ui5-toggle-spin-button",
+          "customElement": true,
+          "_ui5since": "1.15.0",
+          "_ui5privacy": "private",
+          "slots": [
+            {
+              "name": "default",
+              "description": "Defines the text of the component.\n\n**Note:** Although this slot accepts HTML Elements, it is strongly recommended that you only use text in order to preserve the intended design.",
+              "_ui5propertyName": "text",
+              "_ui5type": {
+                "text": "Array<Node>"
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "name": "badge",
+              "description": "Adds a badge to the button.",
+              "_ui5since": "2.7.0",
+              "_ui5type": {
+                "text": "Array<ButtonBadge>",
+                "references": [
+                  {
+                    "name": "ButtonBadge",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/ButtonBadge.js"
+                  }
+                ]
+              },
+              "_ui5privacy": "public",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "Used to style the native button element",
+              "name": "button",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Used to style the icon in the native button element",
+              "name": "icon",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Used to style the end icon in the native button element",
+              "name": "endIcon",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "description": "Determines whether the component is displayed as pressed.",
+              "name": "pressed",
+              "default": "false",
+              "fieldName": "pressed",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "ToggleButton",
+                "module": "dist/ToggleButton.js"
+              }
+            },
+            {
+              "description": "Defines the component design.",
+              "name": "design",
+              "default": "\"Default\"",
+              "fieldName": "design",
+              "type": {
+                "text": "\"Transparent\" | \"Positive\" | \"Negative\" | \"Default\" | \"Emphasized\" | \"Attention\""
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines whether the component is disabled.\nA disabled component can't be pressed or\nfocused, and it is not in the tab chain.",
+              "name": "disabled",
+              "default": "false",
+              "fieldName": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines the icon, displayed as graphical element within the component.\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "icon",
+              "default": "undefined",
+              "fieldName": "icon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines the icon, displayed as graphical element within the component after the button text.\n\n**Note:** It is highly recommended to use `endIcon` property only together with `icon` and/or `text` properties.\nUsage of `endIcon` only should be avoided.\n\nThe SAP-icons font provides numerous options.\n\nExample:\nSee all the available icons within the [Icon Explorer](https://sdk.openui5.org/test-resources/sap/m/demokit/iconExplorer/webapp/index.html).",
+              "name": "end-icon",
+              "default": "undefined",
+              "fieldName": "endIcon",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "When set to `true`, the component will\nautomatically submit the nearest HTML form element on `press`.\n\n**Note:** This property is only applicable within the context of an HTML Form element.`",
+              "name": "submits",
+              "default": "false",
+              "fieldName": "submits",
+              "type": {
+                "text": "boolean"
+              },
+              "deprecated": "Set the \"type\" property to \"Submit\" to achieve the same result. The \"submits\" property is ignored if \"type\" is set to any value other than \"Button\".",
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines the tooltip of the component.\n\n**Note:** A tooltip attribute should be provided for icon-only buttons, in order to represent their exact meaning/function.",
+              "name": "tooltip",
+              "default": "undefined",
+              "fieldName": "tooltip",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines the accessible ARIA name of the component.",
+              "name": "accessible-name",
+              "default": "undefined",
+              "fieldName": "accessibleName",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Receives id(or many ids) of the elements that label the component.",
+              "name": "accessible-name-ref",
+              "default": "undefined",
+              "fieldName": "accessibleNameRef",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines the additional accessibility attributes that will be applied to the component.\nThe following fields are supported:\n\n- **expanded**: Indicates whether the button, or another grouping element it controls, is currently expanded or collapsed.\nAccepts the following string values: `true` or `false`\n\n- **hasPopup**: Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by the button.\nAccepts the following string values: `dialog`, `grid`, `listbox`, `menu` or `tree`.\n\n- **ariaLabel**: Defines the accessible ARIA name of the component.\nAccepts any string value.\n\n - **ariaKeyShortcuts**: Defines keyboard shortcuts that activate or give focus to the button.\n\n- **controls**: Identifies the element (or elements) whose contents or presence are controlled by the button element.\nAccepts a lowercase string value.",
+              "name": "accessibility-attributes",
+              "default": "{}",
+              "fieldName": "accessibilityAttributes",
+              "type": {
+                "text": "ButtonAccessibilityAttributes"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines the accessible description of the component.",
+              "name": "accessible-description",
+              "default": "undefined",
+              "fieldName": "accessibleDescription",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines whether the button has special form-related functionality.\n\n**Note:** This property is only applicable within the context of an HTML Form element.",
+              "name": "type",
+              "default": "\"Button\"",
+              "fieldName": "type",
+              "type": {
+                "text": "\"Button\" | \"Submit\" | \"Reset\""
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Describes the accessibility role of the button.\n\n**Note:** Use <code>ButtonAccessibleRole.Link</code> role only with a press handler, which performs a navigation. In all other scenarios the default button semantics are recommended.",
+              "name": "accessible-role",
+              "default": "\"Button\"",
+              "fieldName": "accessibleRole",
+              "type": {
+                "text": "\"Button\" | \"Link\""
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Defines whether the button shows a loading indicator.\n\n**Note:** If set to `true`, a busy indicator component will be displayed on the related button.",
+              "name": "loading",
+              "default": "false",
+              "fieldName": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            },
+            {
+              "description": "Specifies the delay in milliseconds before the loading indicator appears within the associated button.",
+              "name": "loading-delay",
+              "default": "1000",
+              "fieldName": "loadingDelay",
+              "type": {
+                "text": "number"
+              },
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "click",
+              "_ui5privacy": "public",
+              "type": {
+                "text": "CustomEvent<ButtonClickEventDetail>",
+                "references": [
+                  {
+                    "name": "ButtonClickEventDetail",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/Button.js"
+                  }
+                ]
+              },
+              "description": "Fired when the component is activated either with a mouse/tap or by using the Enter or Space key.\n\n**Note:** The event will not be fired if the `disabled` property is set to `true`.",
+              "_ui5Cancelable": true,
+              "_ui5allowPreventDefault": true,
+              "_ui5Bubbles": true,
+              "_ui5since": "2.10.0",
+              "_ui5parameters": [
+                {
+                  "type": {
+                    "text": "Event"
+                  },
+                  "name": "originalEvent",
+                  "_ui5privacy": "public",
+                  "description": "Returns original event that comes from user's **click** interaction"
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "altKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"ALT\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "ctrlKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"CTRL\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "metaKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"META\" key was pressed when the event was triggered."
+                },
+                {
+                  "type": {
+                    "text": "boolean"
+                  },
+                  "name": "shiftKey",
+                  "_ui5privacy": "public",
+                  "description": "Returns whether the \"SHIFT\" key was pressed when the event was triggered."
+                }
+              ],
+              "inheritedFrom": {
+                "name": "Button",
+                "module": "dist/Button.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "ToggleSpinButton",
+            "module": "dist/ToggleSpinButton.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-toggle-spin-button",
           "declaration": {
             "name": "ToggleSpinButton",
             "module": "dist/ToggleSpinButton.js"
@@ -29527,7 +32739,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "ToolbarItem",
@@ -29678,7 +32890,7 @@
               }
             },
             {
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "name": "prevent-overflow-closing",
               "default": "false",
               "fieldName": "preventOverflowClosing",
@@ -29723,6 +32935,16 @@
                 "module": "dist/ToolbarItem.js"
               }
             }
+          ],
+          "cssStates": [
+            {
+              "description": "When the item is displayed in the overflow popover. Use this state to apply different styles when the item is overflowed. Available since 2.20.0.",
+              "name": "overflowed",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
           ]
         }
       ],
@@ -29751,7 +32973,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "Represents an abstract class for items, used in the `ui5-toolbar`.",
+          "description": "### Overview\nThe `ui5-toolbar-item` is a wrapper component used to integrate UI5 Web Components into the `ui5-toolbar`.\nIt renders within the toolbar's shadow DOM and manages the lifecycle\nand overflow behavior of its child component.\n\n### Structure\nThe toolbar item wraps a single UI5 Web Component (such as CheckBox, Title, etc.) and handles:\n- Overflow management (determining if the item should be displayed in the main toolbar or overflow popover)\n- Automatic popover closing on interaction\n- CSS custom state exposure for styling based on overflow state\n\n### Usage\nThe `ui5-toolbar-item` is typically used implicitly when adding components to a toolbar,\nbut specialized wrappers like `ui5-toolbar-button` provide\ncomponent-specific functionality and should be preferred when available.",
           "name": "ToolbarItem",
           "slots": [
             {
@@ -29797,7 +33019,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "privacy": "public"
             }
           ],
@@ -29826,13 +33048,19 @@
               }
             },
             {
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "name": "prevent-overflow-closing",
               "default": "false",
               "fieldName": "preventOverflowClosing",
               "type": {
                 "text": "boolean"
               }
+            }
+          ],
+          "cssStates": [
+            {
+              "description": "When the item is displayed in the overflow popover. Use this state to apply different styles when the item is overflowed. Available since 2.20.0.",
+              "name": "overflowed"
             }
           ],
           "superclass": {
@@ -29842,7 +33070,6 @@
           },
           "tagName": "ui5-toolbar-item",
           "customElement": true,
-          "_ui5experimental": "This module is experimental and its API might change significantly in future.",
           "_ui5since": "1.17.0",
           "_ui5privacy": "public"
         }
@@ -30002,7 +33229,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "ToolbarItem",
@@ -30147,7 +33374,7 @@
               }
             },
             {
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "name": "prevent-overflow-closing",
               "default": "false",
               "fieldName": "preventOverflowClosing",
@@ -30169,7 +33396,17 @@
           "customElement": true,
           "_ui5since": "1.17.0",
           "_ui5privacy": "public",
-          "_ui5abstract": true
+          "_ui5abstract": true,
+          "cssStates": [
+            {
+              "description": "When the item is displayed in the overflow popover. Use this state to apply different styles when the item is overflowed. Available since 2.20.0.",
+              "name": "overflowed",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ]
         }
       ],
       "exports": [
@@ -30301,7 +33538,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "ToolbarItem",
@@ -30357,7 +33594,7 @@
               }
             },
             {
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "name": "prevent-overflow-closing",
               "default": "false",
               "fieldName": "preventOverflowClosing",
@@ -30382,6 +33619,16 @@
               "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
               "_ui5since": "1.17.0",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ],
+          "cssStates": [
+            {
+              "description": "When the item is displayed in the overflow popover. Use this state to apply different styles when the item is overflowed. Available since 2.20.0.",
+              "name": "overflowed",
               "inheritedFrom": {
                 "name": "ToolbarItem",
                 "module": "dist/ToolbarItem.js"
@@ -30456,7 +33703,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "privacy": "public",
               "inheritedFrom": {
                 "name": "ToolbarItem",
@@ -30488,7 +33735,7 @@
               }
             },
             {
-              "description": "Defines if the toolbar overflow popup should close upon intereaction with the item.\nIt will close by default.",
+              "description": "Defines if the toolbar overflow popup should close upon interaction with the item.\nIt will close by default.",
               "name": "prevent-overflow-closing",
               "default": "false",
               "fieldName": "preventOverflowClosing",
@@ -30546,6 +33793,16 @@
               "_ui5allowPreventDefault": true,
               "_ui5Bubbles": true,
               "_ui5since": "1.17.0",
+              "inheritedFrom": {
+                "name": "ToolbarItem",
+                "module": "dist/ToolbarItem.js"
+              }
+            }
+          ],
+          "cssStates": [
+            {
+              "description": "When the item is displayed in the overflow popover. Use this state to apply different styles when the item is overflowed. Available since 2.20.0.",
+              "name": "overflowed",
               "inheritedFrom": {
                 "name": "ToolbarItem",
                 "module": "dist/ToolbarItem.js"
@@ -32687,11 +35944,282 @@
     {
       "kind": "javascript-module",
       "path": "dist/YearPicker.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays years which can be selected.",
+          "name": "YearPicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "primaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "secondaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.16",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, used for the value attribute.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "CalendarPart",
+            "package": "@ui5/webcomponents",
+            "module": "dist/CalendarPart.js"
+          },
+          "tagName": "ui5-yearpicker",
+          "customElement": true,
+          "_ui5privacy": "private",
+          "attributes": [
+            {
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "name": "primary-calendar-type",
+              "default": "undefined",
+              "fieldName": "primaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "name": "secondary-calendar-type",
+              "default": "undefined",
+              "fieldName": "secondaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "display-format",
+              "default": "undefined",
+              "fieldName": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, used for the value attribute.",
+              "name": "value-format",
+              "default": "undefined",
+              "fieldName": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "min-date",
+              "default": "\"\"",
+              "fieldName": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "max-date",
+              "default": "\"\"",
+              "fieldName": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "YearPicker",
+            "module": "dist/YearPicker.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-yearpicker",
           "declaration": {
             "name": "YearPicker",
             "module": "dist/YearPicker.js"
@@ -32702,11 +36230,282 @@
     {
       "kind": "javascript-module",
       "path": "dist/YearRangePicker.js",
-      "declarations": [],
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Displays year ranges which help navigate through years faster.",
+          "name": "YearRangePicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "primaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "default": "undefined",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "secondaryCalendarType",
+              "type": {
+                "text": "CalendarType | undefined",
+                "references": [
+                  {
+                    "name": "CalendarType",
+                    "package": "@ui5/webcomponents-base",
+                    "module": "dist/types/CalendarType.js"
+                  }
+                ]
+              },
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.16",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "privacy": "public",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, displayed in the input field.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Determines the format, used for the value attribute.",
+              "default": "undefined",
+              "privacy": "public",
+              "_ui5since": "2.14.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "privacy": "public",
+              "_ui5since": "1.0.0-rc.6",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "calendarWeekNumbering",
+              "type": {
+                "text": "CalendarWeekNumbering",
+                "references": [
+                  {
+                    "name": "CalendarWeekNumbering",
+                    "package": "@ui5/webcomponents",
+                    "module": "dist/types/CalendarWeekNumbering.js"
+                  }
+                ]
+              },
+              "default": "\"Default\"",
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "privacy": "public",
+              "_ui5since": "2.2.0",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "CalendarPart",
+            "package": "@ui5/webcomponents",
+            "module": "dist/CalendarPart.js"
+          },
+          "tagName": "ui5-yearrangepicker",
+          "customElement": true,
+          "_ui5privacy": "private",
+          "attributes": [
+            {
+              "description": "Sets a calendar type used for display.\nIf not set, the calendar type of the global configuration is used.",
+              "name": "primary-calendar-type",
+              "default": "undefined",
+              "fieldName": "primaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines the secondary calendar type.\nIf not set, the calendar will only show the primary calendar type.",
+              "name": "secondary-calendar-type",
+              "default": "undefined",
+              "fieldName": "secondaryCalendarType",
+              "type": {
+                "text": "\"Gregorian\" | \"Islamic\" | \"Japanese\" | \"Buddhist\" | \"Persian\" | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "format-pattern",
+              "default": "undefined",
+              "fieldName": "formatPattern",
+              "type": {
+                "text": "string | undefined"
+              },
+              "deprecated": "Use displayFormat and valueFormat instead",
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, displayed in the input field.",
+              "name": "display-format",
+              "default": "undefined",
+              "fieldName": "displayFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the format, used for the value attribute.",
+              "name": "value-format",
+              "default": "undefined",
+              "fieldName": "valueFormat",
+              "type": {
+                "text": "string | undefined"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the minimum date available for selection.\n\n**Note:** If the formatPattern property is not set, the minDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "min-date",
+              "default": "\"\"",
+              "fieldName": "minDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Determines the maximum date available for selection.\n\n**Note:** If the formatPattern property is not set, the maxDate value must be provided in the ISO date format (yyyy-MM-dd).",
+              "name": "max-date",
+              "default": "\"\"",
+              "fieldName": "maxDate",
+              "type": {
+                "text": "string"
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            },
+            {
+              "description": "Defines how to calculate calendar weeks and first day of the week.\nIf not set, the calendar will be displayed according to the currently set global configuration.",
+              "name": "calendar-week-numbering",
+              "default": "\"Default\"",
+              "fieldName": "calendarWeekNumbering",
+              "type": {
+                "text": "\"Default\" | \"ISO_8601\" | \"MiddleEastern\" | \"WesternTraditional\""
+              },
+              "inheritedFrom": {
+                "name": "DateComponentBase",
+                "module": "dist/DateComponentBase.js"
+              }
+            }
+          ]
+        }
+      ],
       "exports": [
         {
           "kind": "js",
           "name": "default",
+          "declaration": {
+            "name": "YearRangePicker",
+            "module": "dist/YearRangePicker.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ui5-yearrangepicker",
           "declaration": {
             "name": "YearRangePicker",
             "module": "dist/YearRangePicker.js"
@@ -32753,7 +36552,14 @@
           "description": "",
           "name": "DateRange",
           "_ui5since": "2.11.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32776,7 +36582,14 @@
           "description": "",
           "name": "DateTimeRange",
           "_ui5since": "2.16.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32799,7 +36612,14 @@
           "description": "",
           "name": "FromDateTime",
           "_ui5since": "2.11.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32828,7 +36648,14 @@
           "description": "",
           "name": "LastOptions",
           "_ui5since": "2.14.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32851,7 +36678,14 @@
           "description": "",
           "name": "NextOptions",
           "_ui5since": "2.14.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32874,7 +36708,14 @@
           "description": "",
           "name": "SingleDate",
           "_ui5since": "2.11.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32897,7 +36738,14 @@
           "description": "",
           "name": "ToDateTime",
           "_ui5since": "2.11.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32920,7 +36768,14 @@
           "description": "",
           "name": "Today",
           "_ui5since": "2.11.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32943,7 +36798,14 @@
           "description": "",
           "name": "Tomorrow",
           "_ui5since": "2.11.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -32966,7 +36828,14 @@
           "description": "",
           "name": "Yesterday",
           "_ui5since": "2.11.0",
-          "_ui5privacy": "public"
+          "_ui5privacy": "public",
+          "_ui5implements": [
+            {
+              "name": "IDynamicDateRangeOption",
+              "package": "@ui5/webcomponents",
+              "module": "dist/DynamicDateRange.js"
+            }
+          ]
         }
       ],
       "exports": [
@@ -33226,12 +37095,12 @@
           "name": "AvatarMode",
           "description": "Different Avatar modes.",
           "_ui5privacy": "public",
+          "_ui5since": "2.20.0",
           "members": [
             {
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "_ui5since": "2.20",
               "description": "Image mode (by default).\nConfigures the component to internally render role=\"img\".",
               "default": "Image",
               "name": "Image",
@@ -33241,7 +37110,6 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "_ui5since": "2.20",
               "description": "Decorative mode.\nConfigures the component to internally render role=\"presentation\" and aria-hidden=\"true\",\nmaking it purely decorative without semantic content or interactivity.",
               "default": "Decorative",
               "name": "Decorative",
@@ -33251,7 +37119,6 @@
               "kind": "field",
               "static": true,
               "privacy": "public",
-              "_ui5since": "2.20",
               "description": "Interactive mode.\nConfigures the component to internally render role=\"button\".\nThis mode also supports focus and enables keyboard interaction.",
               "default": "Interactive",
               "name": "Interactive",

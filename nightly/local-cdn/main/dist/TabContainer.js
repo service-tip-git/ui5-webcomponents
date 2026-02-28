@@ -267,7 +267,7 @@ let TabContainer = TabContainer_1 = class TabContainer extends UI5Element {
         }
         e.dataTransfer.dropEffect = "move";
         e.dataTransfer.effectAllowed = "move";
-        DragRegistry.setDraggedElement(e.target.realTabReference);
+        DragRegistry.setDraggedElement(e.target.realTabReference, e);
     }
     _onHeaderDragEnter(e) {
         e.preventDefault();

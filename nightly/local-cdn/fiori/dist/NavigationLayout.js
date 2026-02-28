@@ -11,6 +11,7 @@ import slot from "@ui5/webcomponents-base/dist/decorators/slot-strict.js";
 import jsxRenderer from "@ui5/webcomponents-base/dist/renderer/JsxRenderer.js";
 import { isPhone } from "@ui5/webcomponents-base/dist/Device.js";
 import NavigationLayoutMode from "./types/NavigationLayoutMode.js";
+import { isInstanceOfSideNavigation } from "./SideNavigation.js";
 // Template
 import NavigationLayoutTemplate from "./NavigationLayoutTemplate.js";
 // Styles
@@ -55,7 +56,7 @@ let NavigationLayout = class NavigationLayout extends UI5Element {
         /**
          * @private
          */
-        this.sideCollapsed = isPhone() || window.innerWidth < SCREEN_WIDTH_BREAKPOINT;
+        this.sideCollapsed = this._isSmallScreen();
         /**
          * @private
          */
@@ -64,6 +65,8 @@ let NavigationLayout = class NavigationLayout extends UI5Element {
          * @private
          */
         this.isPhone = isPhone();
+        this._itemClickHandler = this._handleItemClick.bind(this);
+        this._sideNavigationItemClicked = false;
     }
     /**
      * Gets whether the side navigation is collapsed.
@@ -74,16 +77,58 @@ let NavigationLayout = class NavigationLayout extends UI5Element {
         return this.sideCollapsed;
     }
     onBeforeRendering() {
-        this.calcSideCollapsed();
+        if (!this._sideNavigationItemClicked) {
+            this.calcSideCollapsed();
+        }
         const sideNavigation = this.sideContent[0];
         this.hasSideNavigation = !!sideNavigation;
-        if (sideNavigation) {
+        if (sideNavigation && !this._sideNavigationItemClicked) {
             sideNavigation.collapsed = this.isSideCollapsed();
+        }
+    }
+    onAfterRendering() {
+        this._sideNavigationItemClicked = false;
+        this._detachSideNavigationListeners();
+        this._attachSideNavigationListeners();
+    }
+    onExitDOM() {
+        this._detachSideNavigationListeners();
+    }
+    _isSideNavigation(sideNavigation) {
+        return isInstanceOfSideNavigation(sideNavigation);
+    }
+    _attachSideNavigationListeners() {
+        const sideNavigation = this.sideContent[0];
+        if (this._isSideNavigation(sideNavigation)) {
+            sideNavigation.addEventListener("ui5-item-click", this._itemClickHandler);
+        }
+    }
+    _detachSideNavigationListeners() {
+        const sideNavigation = this.sideContent[0];
+        if (this._isSideNavigation(sideNavigation)) {
+            sideNavigation.removeEventListener("ui5-item-click", this._itemClickHandler);
+        }
+    }
+    _handleItemClick() {
+        if (this._isSmallScreen()) {
+            this._sideNavigationItemClicked = true;
+            this._collapseSideNavigation();
+        }
+    }
+    _isSmallScreen() {
+        return isPhone() || window.innerWidth < SCREEN_WIDTH_BREAKPOINT;
+    }
+    _collapseSideNavigation() {
+        const sideNavigation = this.sideContent[0];
+        if (this._isSideNavigation(sideNavigation)) {
+            sideNavigation.collapsed = true;
+            this.sideCollapsed = true;
+            this.mode = NavigationLayoutMode.Collapsed;
         }
     }
     calcSideCollapsed() {
         if (this.mode === NavigationLayoutMode.Auto) {
-            this.sideCollapsed = isPhone() || window.innerWidth < SCREEN_WIDTH_BREAKPOINT;
+            this.sideCollapsed = this._isSmallScreen();
         }
         else {
             this.sideCollapsed = this.mode === NavigationLayoutMode.Collapsed;

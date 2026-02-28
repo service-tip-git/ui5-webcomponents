@@ -764,8 +764,8 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
     /**
      * Returns only visible (non-hidden) content items.
      * Items with the 'hidden' attribute are automatically excluded from carousel navigation.
+     * @default []
      * @private
-     * @returns {Array<HTMLElement>}
      */
     get _visibleItems() {
         return this.content.filter(x => !x.hasAttribute("hidden"));

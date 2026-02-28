@@ -44,7 +44,7 @@ declare class ListItemCustom extends ListItem {
     _onfocusout(e: FocusEvent): void;
     /**
      * Checks if this element is currently being dragged
-     * @returns {boolean} True if this element is being dragged
+     * @returns True if this element is being dragged
      * @private
      */
     _isDragging(): boolean;
@@ -52,7 +52,7 @@ declare class ListItemCustom extends ListItem {
     private _clearInvisibleTextContent;
     /**
      * Gets delete button nodes to process for accessibility
-     * @returns {Node[]} Array of nodes to process
+     * @returns Array of nodes to process
      * @private
      */
     private _getDeleteButtonNodes;

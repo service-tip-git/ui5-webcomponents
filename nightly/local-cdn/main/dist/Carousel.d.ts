@@ -331,10 +331,10 @@ declare class Carousel extends UI5Element {
     /**
      * Returns only visible (non-hidden) content items.
      * Items with the 'hidden' attribute are automatically excluded from carousel navigation.
+     * @default []
      * @private
-     * @returns {Array<HTMLElement>}
      */
-    get _visibleItems(): HTMLElement[];
+    get _visibleItems(): Array<HTMLElement>;
     carouselItemDomRef(idx: number): Array<HTMLElement>;
 }
 export default Carousel;

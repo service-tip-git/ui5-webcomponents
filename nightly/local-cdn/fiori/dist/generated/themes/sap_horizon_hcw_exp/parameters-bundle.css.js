@@ -40,8 +40,7 @@ export default `:host{
     --_ui5_shellbar_menu_button_title_font_size: .75rem;
     --_ui5_side_navigation_width: 16rem;
     --_ui5_side_navigation_collapsed_width: 3rem;
-    --_ui5_side_navigation_navigation_separator_margin: var(--_ui5-compact-size, var(--_ui5_side_navigation_navigation_separator_margin_collapsed))  var(--_ui5-cozy-size, .25rem .875rem .25rem .875rem);
-    --_ui5_side_navigation_navigation_separator_margin_collapsed: .25rem .5rem .25rem .5rem;
+    --_ui5_side_navigation_navigation_separator_margin: .25rem .5rem .25rem .5rem;
     --_ui5_side_navigation_navigation_separator_background_color: var(--sapList_GroupHeaderBorderColor);
     --_ui5_side_navigation_navigation_separator_radius: unset;
     --_ui5_side_navigation_navigation_separator_height: calc(2 * var(--sapList_BorderWidth));

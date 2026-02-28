@@ -11,7 +11,28 @@ interface IOverflowToolbarItem extends HTMLElement {
     hasOverflow?: boolean | undefined;
 }
 /**
- * Fired when the overflow popover is closed.
+ * @class
+ *
+ * ### Overview
+ * The `ui5-toolbar-item` is a wrapper component used to integrate UI5 Web Components into the `ui5-toolbar`.
+ * It renders within the toolbar's shadow DOM and manages the lifecycle
+ * and overflow behavior of its child component.
+ *
+ * ### Structure
+ * The toolbar item wraps a single UI5 Web Component (such as CheckBox, Title, etc.) and handles:
+ * - Overflow management (determining if the item should be displayed in the main toolbar or overflow popover)
+ * - Automatic popover closing on interaction
+ * - CSS custom state exposure for styling based on overflow state
+ *
+ * ### Usage
+ * The `ui5-toolbar-item` is typically used implicitly when adding components to a toolbar,
+ * but specialized wrappers like `ui5-toolbar-button` provide
+ * component-specific functionality and should be preferred when available.
+ *
+ *
+ * @cssState overflowed - When the item is displayed in the overflow popover. Use this state to apply different styles when the item is overflowed. Available since 2.20.0.
+ * @constructor
+ * @extends UI5Element
  * @public
  * @since 1.17.0
  */
@@ -28,19 +49,21 @@ declare class ToolbarItem extends UI5Element {
      */
     overflowPriority: `${ToolbarItemOverflowBehavior}`;
     /**
-     * Defines if the toolbar overflow popup should close upon intereaction with the item.
+     * Defines if the toolbar overflow popup should close upon interaction with the item.
      * It will close by default.
      * @default false
      * @public
      */
     preventOverflowClosing: boolean;
+    _isOverflowed: boolean;
+    get isOverflowed(): boolean;
     /**
      * Defines if the toolbar item is overflowed.
      * @default false
      * @protected
      * @since 2.11.0
      */
-    isOverflowed: boolean;
+    set isOverflowed(value: boolean);
     _isRendering: boolean;
     _maxWidth: number;
     _wrapperChecked: boolean;

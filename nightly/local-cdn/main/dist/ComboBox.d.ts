@@ -27,6 +27,7 @@ import type InputComposition from "./features/InputComposition.js";
 interface IComboBoxItem extends UI5Element {
     text?: string;
     headerText?: string;
+    value?: string;
     focused: boolean;
     isGroupItem?: boolean;
     selected?: boolean;
@@ -94,6 +95,23 @@ declare class ComboBox extends UI5Element implements IFormInputElement {
      * @public
      */
     value: string;
+    /**
+     * Defines the selected item's value.
+     *
+     * Use this property together with the `value` property on `ui5-cb-item` to:
+     * - Select an item programmatically by its unique identifier
+     * - Handle items with identical display text but different underlying values
+     * - Submit machine-readable values in forms (the `value` property is submitted instead of the display text)
+     *
+     * When set, the ComboBox finds and selects the item whose `value` matches this property
+     * and whose `text` matches the ComboBox's `value` (display text).
+     *
+     * **Note:** This replaces the deprecated `selected` property on `ui5-cb-item`.
+     * @default undefined
+     * @public
+     * @since 2.20.0
+     */
+    selectedValue?: string;
     /**
      * Determines the name by which the component will be identified upon submission in an HTML form.
      *
@@ -258,6 +276,7 @@ declare class ComboBox extends UI5Element implements IFormInputElement {
     _lastValue: string;
     _selectedItemText: string;
     _userTypedValue: string;
+    _useSelectedValue: boolean;
     _valueStateLinks: Array<HTMLElement>;
     _composition?: InputComposition;
     static i18nBundle: I18nBundle;

@@ -9143,12 +9143,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "dist/illustrations/AllIllustrations.js",
-      "declarations": [],
-      "exports": []
-    },
-    {
-      "kind": "javascript-module",
       "path": "dist/shellbar/IShellBarSearchController.js",
       "declarations": [],
       "exports": []
@@ -9242,6 +9236,12 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "dist/illustrations/AllIllustrations.js",
+      "declarations": [],
+      "exports": []
     },
     {
       "kind": "javascript-module",

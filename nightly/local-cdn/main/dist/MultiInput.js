@@ -125,6 +125,8 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
     }
     innerFocusIn() {
         this.focused = true;
+        this.tokenizer._scrollToEndOnExpand = true;
+        this.tokenizer.expanded = true;
         this.tokens.forEach(token => {
             token.selected = false;
         });

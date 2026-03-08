@@ -13,6 +13,10 @@ import type Icon from "./Icon.js";
 type CarouselNavigateEventDetail = {
     selectedIndex: number;
 };
+type ChangeSlideOptions = {
+    fireEvent?: boolean;
+    moveFocus?: boolean;
+};
 type ItemsInfo = {
     id: string;
     item: HTMLElement & {
@@ -217,7 +221,6 @@ declare class Carousel extends UI5Element {
     _lastInnerFocusedElement?: HTMLElement;
     _pageStep: number;
     _visibleItemsIndexes: Array<number>;
-    _itemIndicator: number;
     _contentItemsObserver: MutationObserver;
     _observableContent: Array<HTMLElement>;
     /**
@@ -255,10 +258,8 @@ declare class Carousel extends UI5Element {
     get _getLastFocusedActivePageIndex(): number;
     navigateLeft(): Promise<void>;
     navigateRight(): Promise<void>;
-    navigateArrowRight(): void;
-    navigateArrowLeft(): void;
-    _calculateItemSlideIndex(currentSlideIndex: number, itemStep: number): number;
-    _moveToItem(slideIndex: number): void;
+    navigateArrowRight(): Promise<void>;
+    navigateArrowLeft(): Promise<void>;
     focusItem(): void;
     _navButtonClick(e: UI5CustomEvent<Icon, "click">): void;
     /**
@@ -268,7 +269,8 @@ declare class Carousel extends UI5Element {
      * @public
      */
     navigateTo(itemIndex: number): void;
-    skipToItem(focusIndex: number, offset: number): void;
+    _changeSlideIndex(itemIndex: number, options?: ChangeSlideOptions): void;
+    _changeFocusIndex(itemIndex: number): void;
     /**
      * The indices of the currently visible items of the component.
      * @public

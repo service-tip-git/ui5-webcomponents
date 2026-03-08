@@ -8,7 +8,8 @@ export default function ToolbarTemplate() {
                     "ui5-tb-items-full-width": this.hasFlexibleSpacers,
                 }, role: this.accInfo.root.role, "aria-label": this.accInfo.root.accessibleName, children: [this.standardItems.map(item => {
                         return (_jsx("div", { class: {
-                                "ui5-tb-item": true,
+                                "ui5-tb-item": !item.hasFlexibleWidth,
+                                "ui5-tb-spacer": item.hasFlexibleWidth,
                                 "ui5-tb-self-overflow": item.hasOverflow,
                             }, id: item._individualSlot, children: _jsx("slot", { name: item._individualSlot }) }));
                     }), _jsx(Button, { "aria-hidden": this.hideOverflowButton, icon: overflowIcon, design: "Transparent", onClick: this.toggleOverflow, class: {

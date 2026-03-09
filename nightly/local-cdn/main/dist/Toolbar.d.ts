@@ -5,7 +5,7 @@ import "@ui5/webcomponents-icons/dist/overflow.js";
 import type I18nBundle from "@ui5/webcomponents-base/dist/i18nBundle.js";
 import type ToolbarAlign from "./types/ToolbarAlign.js";
 import type ToolbarDesign from "./types/ToolbarDesign.js";
-import type ToolbarItemBase from "./ToolbarItemBase.js";
+import type ToolbarItem from "./ToolbarItem.js";
 import type Button from "./Button.js";
 import type Popover from "./Popover.js";
 type ToolbarMinWidthChangeEventDetail = {
@@ -86,10 +86,10 @@ declare class Toolbar extends UI5Element {
      * **Note:** Currently only `ui5-toolbar-button`, `ui5-toolbar-select`, `ui5-toolbar-separator` and `ui5-toolbar-spacer` are allowed here.
      * @public
      */
-    items: DefaultSlot<ToolbarItemBase>;
+    items: DefaultSlot<ToolbarItem>;
     _onResize: ResizeObserverCallback;
     _onCloseOverflow: EventListener;
-    itemsToOverflow: Array<ToolbarItemBase>;
+    itemsToOverflow: Array<ToolbarItem>;
     itemsWidth: number;
     minContentWidth: number;
     ITEMS_WIDTH_MAP: Map<string, number>;
@@ -100,12 +100,12 @@ declare class Toolbar extends UI5Element {
      */
     get overflowButtonSize(): number;
     get padding(): number;
-    get alwaysOverflowItems(): ToolbarItemBase[];
-    get movableItems(): ToolbarItemBase[];
-    get overflowItems(): ToolbarItemBase[];
-    get standardItems(): ToolbarItemBase[];
+    get alwaysOverflowItems(): ToolbarItem[];
+    get movableItems(): ToolbarItem[];
+    get overflowItems(): ToolbarItem[];
+    get standardItems(): ToolbarItem[];
     get hideOverflowButton(): boolean;
-    get interactiveItems(): ToolbarItemBase[];
+    get interactiveItems(): ToolbarItem[];
     /**
      * Accessibility
      */
@@ -142,7 +142,7 @@ declare class Toolbar extends UI5Element {
     onInvalidation(changeInfo: ChangeInfo): void;
     onBeforeRendering(): void;
     onAfterRendering(): Promise<void>;
-    addItemsAdditionalProperties(item: ToolbarItemBase): void;
+    addItemsAdditionalProperties(item: ToolbarItem): void;
     /**
      * Returns if the overflow popup is open.
      * @public
@@ -160,7 +160,7 @@ declare class Toolbar extends UI5Element {
     distributeItems(overflowSpace?: number): void;
     distributeItemsThatAlwaysOverflow(): void;
     setSeperatorsVisibilityInOverflow(): void;
-    shouldShowSeparatorInOverflow(separatorIdx: number, overflowItems: Array<ToolbarItemBase>): boolean;
+    shouldShowSeparatorInOverflow(separatorIdx: number, overflowItems: Array<ToolbarItem>): boolean;
     /**
      * Adds AlwaysOverflow items to overflow to ensure they are never rendered outside overflow (and visual flash is prevented)
      */
@@ -177,7 +177,7 @@ declare class Toolbar extends UI5Element {
     attachListeners(): void;
     detachListeners(): void;
     onToolbarItemChange(): void;
-    getItemWidth(item: ToolbarItemBase): number;
+    getItemWidth(item: ToolbarItem): number;
     getCachedItemWidth(id: string): number | undefined;
 }
 export default Toolbar;

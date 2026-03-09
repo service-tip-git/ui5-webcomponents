@@ -832,7 +832,7 @@ __decorate([
     property()
 ], Table.prototype, "accessibleNameRef", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], Table.prototype, "_hiddenColumns", void 0);
 __decorate([
     property({ type: Boolean })

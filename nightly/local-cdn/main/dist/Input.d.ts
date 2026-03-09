@@ -366,7 +366,6 @@ declare class Input extends UI5Element implements SuggestionComponent, IFormInpu
     _clearIconClicked?: boolean;
     _focusedAfterClear: boolean;
     _changeToBeFired?: boolean;
-    _matchedSuggestionItem?: IInputSuggestionItemSelectable;
     _performTextSelection?: boolean;
     _isLatestValueFromSuggestions: boolean;
     _isChangeTriggeredBySuggestion: boolean;

@@ -66,32 +66,6 @@ var ValueStateIconMapping;
  * -  Drop-down arrow - expands\collapses the option list.
  * -  Option list - the list of available options.
  *
- * ### Working with Values
- *
- * The ComboBox offers two ways to work with item selection:
- *
- * **1. Display Text Only (using `value`):**
- * ```html
- * <ui5-combobox value="Germany">
- *   <ui5-cb-item text="Germany"></ui5-cb-item>
- *   <ui5-cb-item text="France"></ui5-cb-item>
- * </ui5-combobox>
- * ```
- * Use this approach when the displayed text is sufficient for your needs.
- *
- * **2. Unique Identifiers - Recommended (using `selectedValue` and item `value`):**
- * ```html
- * <ui5-combobox value="Germany" selected-value="DE">
- *   <ui5-cb-item text="Germany" value="DE"></ui5-cb-item>
- *   <ui5-cb-item text="France" value="FR"></ui5-cb-item>
- * </ui5-combobox>
- * ```
- * This is the recommended approach when you need to work with unique identifiers (IDs, codes) separate from display text.
- * The `selectedValue` property references the `value` property of the selected item.
- * In forms, the item's `value` (e.g., "DE") will be submitted instead of the display text.
- *
- * **Important:** Do not mix the `selectedValue` approach with the deprecated `selected` property on items.
- *
  * ### Keyboard Handling
  *
  * The `ui5-combobox` provides advanced keyboard handling.
@@ -804,10 +778,10 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
         if (matchingItems.length) {
             let exactMatch;
             if (this._useSelectedValue) {
-                exactMatch = matchingItems.find(item => item.value === (currentlyFocusedItem?.value || this.selectedValue) && item.text?.toLowerCase() === current.toLowerCase());
+                exactMatch = matchingItems.find(item => item.value === (currentlyFocusedItem?.value || this.selectedValue) && item.text === current);
             }
             else {
-                exactMatch = matchingItems.find(item => item.text?.toLowerCase() === current.toLowerCase());
+                exactMatch = matchingItems.find(item => item.text === current);
             }
             return exactMatch ?? matchingItems[0];
         }
@@ -815,10 +789,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     _applyAtomicValueAndSelection(item, filterValue) {
         const value = (item && item.text) || "";
         this.inner.value = value;
-        // select the whole value if it doesn't start with the filterValue, otherwise select only the autocompleted part
-        const startsWithFilter = value.toLowerCase().startsWith(filterValue.toLowerCase());
-        const selectionStart = startsWithFilter ? filterValue.length : 0;
-        this.inner.setSelectionRange(selectionStart, value.length);
+        this.inner.setSelectionRange(filterValue.length, value.length);
         this.value = value;
         if (this._useSelectedValue) {
             this.selectedValue = item.value;
@@ -848,18 +819,18 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
             if (!shouldSelectionBeCleared && !itemToBeSelected) {
                 if (isInstanceOfComboBoxItemGroup(item)) {
                     if (this._useSelectedValue) {
-                        itemToBeSelected = item.items.find(i => i.value === valueToMatch && (this.value === "" || i.text?.toLowerCase() === this.value.toLowerCase()));
+                        itemToBeSelected = item.items.find(i => i.value === valueToMatch && (this.value === "" || this.value === i.text));
                     }
                     else {
-                        itemToBeSelected = item.items?.find(i => i.text?.toLowerCase() === this.value.toLowerCase());
+                        itemToBeSelected = item.items?.find(i => i.text === this.value);
                     }
                 }
                 else {
                     if (this._useSelectedValue) {
-                        itemToBeSelected = this.items.find(i => i.value === valueToMatch && (this.value === "" || i.text?.toLowerCase() === this.value.toLowerCase()));
+                        itemToBeSelected = this.items.find(i => i.value === valueToMatch && (this.value === "" || this.value === i.text));
                         return;
                     }
-                    itemToBeSelected = item.text?.toLowerCase() === this.value.toLowerCase() ? item : undefined;
+                    itemToBeSelected = item.text === this.value ? item : undefined;
                 }
             }
         });
@@ -960,7 +931,7 @@ let ComboBox = ComboBox_1 = class ComboBox extends UI5Element {
     }
     _clear() {
         const selectedItem = this.items.find(item => item.selected);
-        if (selectedItem?.text?.toLowerCase() === this.value.toLowerCase()) {
+        if (selectedItem?.text === this.value) {
             this.fireDecoratorEvent("change");
         }
         this.value = "";
@@ -1255,7 +1226,7 @@ __decorate([
     property({ type: Boolean, noAttribute: true })
 ], ComboBox.prototype, "_iconPressed", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], ComboBox.prototype, "_filteredItems", void 0);
 __decorate([
     property({ type: Number, noAttribute: true })
@@ -1273,7 +1244,7 @@ __decorate([
     property({ type: Boolean })
 ], ComboBox.prototype, "_handleLinkNavigation", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], ComboBox.prototype, "_linksListenersArray", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })

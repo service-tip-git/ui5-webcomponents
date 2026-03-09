@@ -1129,7 +1129,7 @@ __decorate([
     property({ noAttribute: true })
 ], TabContainer.prototype, "_endOverflowText", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], TabContainer.prototype, "_popoverItemsFlat", void 0);
 __decorate([
     property({ type: Number, noAttribute: true })

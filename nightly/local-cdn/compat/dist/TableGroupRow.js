@@ -79,7 +79,7 @@ __decorate([
     property()
 ], TableGroupRow.prototype, "mode", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], TableGroupRow.prototype, "_columnsInfo", void 0);
 __decorate([
     property()

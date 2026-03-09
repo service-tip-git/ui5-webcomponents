@@ -170,13 +170,6 @@ let DatePicker = DatePicker_1 = class DatePicker extends DateComponentBase {
          * @since 2.0.0
          */
         this.open = false;
-        /**
-         * Defines whether the clear icon of the input will be shown.
-         * @default false
-         * @public
-         * @since 2.20.0
-         */
-        this.showClearIcon = false;
         this._calendarCurrentPicker = "day";
     }
     get formValidityMessage() {
@@ -796,9 +789,6 @@ __decorate([
 __decorate([
     property()
 ], DatePicker.prototype, "accessibleDescriptionRef", void 0);
-__decorate([
-    property({ type: Boolean })
-], DatePicker.prototype, "showClearIcon", void 0);
 __decorate([
     property({ type: Object })
 ], DatePicker.prototype, "_respPopoverConfig", void 0);

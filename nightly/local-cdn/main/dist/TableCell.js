@@ -31,11 +31,9 @@ let TableCell = class TableCell extends TableCellBase {
     onBeforeRendering() {
         super.onBeforeRendering();
         if (this.horizontalAlign) {
-            this.style.textAlign = this.horizontalAlign;
             this.style.justifyContent = this.horizontalAlign;
         }
         else if (this._headerCell) {
-            this.style.textAlign = `var(--halign-${this._headerCell._id})`;
             this.style.justifyContent = `var(--halign-${this._headerCell._id})`;
         }
     }

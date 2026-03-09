@@ -10,7 +10,7 @@ import property from "@ui5/webcomponents-base/dist/decorators/property.js";
 import ToolbarSeparatorTemplate from "./ToolbarSeparatorTemplate.js";
 // Styles
 import ToolbarSeparatorCss from "./generated/themes/ToolbarSeparator.css.js";
-import ToolbarItemBase from "./ToolbarItemBase.js";
+import ToolbarItem from "./ToolbarItem.js";
 /**
  * @class
  *
@@ -18,12 +18,12 @@ import ToolbarItemBase from "./ToolbarItemBase.js";
  * The `ui5-toolbar-separator` is an element, used for visual separation between two elements.
  * It takes no space in calculating toolbar items width.
  * @constructor
- * @extends ToolbarItemBase
+ * @extends ToolbarItem
  * @since 1.17.0
  * @abstract
  * @public
  */
-let ToolbarSeparator = class ToolbarSeparator extends ToolbarItemBase {
+let ToolbarSeparator = class ToolbarSeparator extends ToolbarItem {
     constructor() {
         super(...arguments);
         this.visible = false;

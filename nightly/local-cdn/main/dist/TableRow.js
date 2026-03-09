@@ -67,25 +67,13 @@ let TableRow = class TableRow extends TableRowBase {
         HTMLElement.prototype.focus.call(this, focusOptions);
         return Promise.resolve();
     }
-    async _onpointerdown(e) {
-        if (e.button !== 0 || !this._isInteractive) {
-            return;
-        }
-        const composedPath = e.composedPath();
-        composedPath.splice(composedPath.indexOf(this));
-        await new Promise(resolve => setTimeout(resolve)); // wait for the focus to be set
-        const activeElement = getActiveElement();
-        if (!composedPath.includes(activeElement)) {
-            this._setActive("pointerup");
-        }
-    }
     _onkeydown(e, eventOrigin) {
         super._onkeydown(e, eventOrigin);
         if (e.defaultPrevented) {
             return;
         }
         if (eventOrigin === this && this._isInteractive && isEnter(e)) {
-            this._setActive("keyup");
+            this.toggleAttribute("_active", true);
             this._onclick();
         }
     }
@@ -99,11 +87,11 @@ let TableRow = class TableRow extends TableRowBase {
             }
         }
     }
-    _setActive(deactivationEvent) {
-        this.toggleAttribute("_active", true);
-        document.addEventListener(deactivationEvent, () => {
-            this.removeAttribute("_active");
-        }, { once: true });
+    _onkeyup() {
+        this.removeAttribute("_active");
+    }
+    _onfocusout() {
+        this.removeAttribute("_active");
     }
     _onOverflowButtonClick(e) {
         const ctor = this.actions[0].constructor;
@@ -115,7 +103,7 @@ let TableRow = class TableRow extends TableRowBase {
     }
     get _isNavigable() {
         return this._fixedActions.find(action => {
-            return action.hasAttribute("ui5-table-row-action-navigation") && !action.invisible && !action._isInteractive;
+            return action.hasAttribute("ui5-table-row-action-navigation") && !action._isInteractive;
         }) !== undefined;
     }
     get _rowIndex() {

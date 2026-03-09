@@ -81,6 +81,7 @@ const ICON_NOT_FOUND = "ICON_NOT_FOUND";
  * ### Keyboard Handling
  *
  * - [Space] / [Enter] or [Return] - Fires the `click` event if the `mode` property is set to `Interactive`.
+ * - [Shift] - If [Space] / [Enter] or [Return] is pressed, pressing [Shift] releases the ui5-icon without triggering the click event.
  *
  * ### ES6 Module Import
  *
@@ -124,14 +125,6 @@ let Icon = Icon_1 = class Icon extends UI5Element {
         * @private
         */
         this.invalid = false;
-    }
-    _onclick(e) {
-        if (this.mode !== IconMode.Interactive) {
-            return;
-        }
-        // prevents the native browser "click" event from firing
-        e.stopImmediatePropagation();
-        this.fireDecoratorEvent("click");
     }
     _onkeydown(e) {
         if (this.mode !== IconMode.Interactive) {
@@ -266,7 +259,7 @@ __decorate([
     property()
 ], Icon.prototype, "mode", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], Icon.prototype, "pathData", void 0);
 __decorate([
     property({ type: Object, noAttribute: true })
@@ -290,10 +283,9 @@ Icon = Icon_1 = __decorate([
         styles: iconCss,
     })
     /**
-     * Fired when the component is activated by mouse/touch, keyboard (Enter or Space),
-     * or screen reader virtual cursor activation.
-     *
-     * **Note:** The event will not be fired if the `mode` property is set to `Decorative` or `Image`.
+     * Fired on mouseup, `SPACE` and `ENTER`.
+     * - on mouse click, the icon fires native `click` event
+     * - on `SPACE` and `ENTER`, the icon fires custom `click` event
      * @public
      * @since 2.11.0
      */

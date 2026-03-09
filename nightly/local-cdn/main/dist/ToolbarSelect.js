@@ -12,7 +12,7 @@ import event from "@ui5/webcomponents-base/dist/decorators/event-strict.js";
 import ToolbarSelectCss from "./generated/themes/ToolbarSelect.css.js";
 // Templates
 import ToolbarSelectTemplate from "./ToolbarSelectTemplate.js";
-import ToolbarItemBase from "./ToolbarItemBase.js";
+import ToolbarItem from "./ToolbarItem.js";
 /**
  * @class
  *
@@ -26,11 +26,11 @@ import ToolbarItemBase from "./ToolbarItemBase.js";
  * `import "@ui5/webcomponents/dist/ToolbarSelectOption.js";` (comes with `ui5-toolbar-select`)
  * @constructor
  * @abstract
- * @extends ToolbarItemBase
+ * @extends ToolbarItem
  * @public
  * @since 1.17.0
  */
-let ToolbarSelect = class ToolbarSelect extends ToolbarItemBase {
+let ToolbarSelect = class ToolbarSelect extends ToolbarItem {
     constructor() {
         super(...arguments);
         /**

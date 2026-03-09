@@ -221,8 +221,10 @@ let SideNavigation = SideNavigation_1 = class SideNavigation extends UI5Element 
             return;
         }
         this._selectItem(associatedItem);
-        this.closePicker();
-        this._popoverContents.item?.getDomRef().classList.add("ui5-sn-item-no-hover-effect");
+        setTimeout(() => {
+            this.closePicker();
+            this._popoverContents.item?.getDomRef().classList.add("ui5-sn-item-no-hover-effect");
+        });
     }
     getOverflowPopover() {
         return this.shadowRoot.querySelector(".ui5-side-navigation-overflow-menu");

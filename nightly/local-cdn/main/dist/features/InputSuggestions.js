@@ -265,7 +265,7 @@ class Suggestions {
     _deselectItems() {
         const items = this._getItems();
         items.forEach(item => {
-            if (item.hasAttribute("ui5-suggestion-item") || item.hasAttribute("ui5-suggestion-item-custom")) {
+            if (item.hasAttribute("ui5-suggestion-item")) {
                 item.selected = false;
             }
             item.focused = false;

@@ -735,7 +735,7 @@ let DayPicker = DayPicker_1 = class DayPicker extends CalendarPart {
     }
 };
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], DayPicker.prototype, "selectedDates", void 0);
 __decorate([
     property()
@@ -744,22 +744,22 @@ __decorate([
     property({ type: Boolean })
 ], DayPicker.prototype, "hideWeekNumbers", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], DayPicker.prototype, "_weeks", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], DayPicker.prototype, "_dayNames", void 0);
 __decorate([
     property({ type: Boolean, noAttribute: true })
 ], DayPicker.prototype, "_hidden", void 0);
 __decorate([
-    property({ type: Number, noAttribute: true })
+    property({ type: Number })
 ], DayPicker.prototype, "_secondTimestamp", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], DayPicker.prototype, "specialCalendarDates", void 0);
 __decorate([
-    property({ type: Array, noAttribute: true })
+    property({ type: Array })
 ], DayPicker.prototype, "disabledDates", void 0);
 __decorate([
     query("[data-sap-focus-ref]")

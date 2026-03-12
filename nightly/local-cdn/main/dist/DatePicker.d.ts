@@ -214,6 +214,13 @@ declare class DatePicker extends DateComponentBase implements IFormInputElement 
      * @since 2.14.0
      */
     accessibleDescriptionRef?: string;
+    /**
+     * Defines whether the clear icon of the input will be shown.
+     * @default false
+     * @public
+     * @since 2.20.0
+     */
+    showClearIcon: boolean;
     _respPopoverConfig?: object;
     _calendarCurrentPicker: Picker;
     liveValue?: string;

@@ -1,7 +1,6 @@
 type RuntimeData = VersionInfo & {
     alias: string;
     description: string;
-    importMetaUrl: string;
 };
 /**
  * Registers the current runtime in the shared runtimes resource registry

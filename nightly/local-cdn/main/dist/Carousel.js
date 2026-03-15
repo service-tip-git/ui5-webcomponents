@@ -186,11 +186,11 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
          */
         this._visibleItemsCount = 0;
         /**
-         * Defines the current page index, which determines the first visible item.
+         * Defines the current slide index, which contains the visible item in the viewport.
          * @private
          * @since 2.16.0-r.c1
          */
-        this._currentPageIndex = 0;
+        this._currentSlideIndex = 0;
         this._pageStep = 10;
         this._observableContent = [];
         this._contentItemsObserver = new MutationObserver(() => {
@@ -199,9 +199,9 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
                 return;
             }
             this._visibleItemsCount = visibleItemsCount;
-            this._currentPageIndex = clamp(this._currentPageIndex, 0, Math.max(0, this.items.length - this.effectiveItemsPerPage));
-            this._focusedItemIndex = clamp(this._focusedItemIndex, this._currentPageIndex, this.items.length - 1);
-            this._changePageIndex(this._currentPageIndex, { fireEvent: false });
+            this._currentSlideIndex = clamp(this._currentSlideIndex, 0, Math.max(0, this.items.length - this.effectiveItemsPerPage));
+            this._focusedItemIndex = clamp(this._focusedItemIndex, this._currentSlideIndex, this.items.length - 1);
+            this._changeSlideIndex(this._currentSlideIndex, { fireEvent: false });
         });
         this._scrollEnablement = new ScrollEnablement(this);
         this._scrollEnablement.attachEvent("touchend", e => {
@@ -210,7 +210,7 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         this._onResizeBound = this._onResize.bind(this);
         this._resizing = false; // indicates if the carousel is in process of resizing
         this._lastFocusedElements = [];
-        this._orderOfLastFocusedItems = [];
+        this._orderOfLastFocusedPages = [];
         this._visibleItemsIndexes = [];
     }
     onBeforeRendering() {
@@ -218,7 +218,7 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         if (this.arrowsPlacement === CarouselArrowsPlacement.Navigation || !isDesktop()) {
             this._visibleNavigationArrows = true;
         }
-        this.validateFocusedIndex();
+        this.validateSelectedIndex();
     }
     onAfterRendering() {
         this._scrollEnablement.scrollContainer = this.getDomRef();
@@ -235,7 +235,7 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         this._observableContent = [];
         ResizeHandler.deregister(this, this._onResizeBound);
     }
-    validateFocusedIndex() {
+    validateSelectedIndex() {
         if (!this.isIndexInRange(this._focusedItemIndex)) {
             this._focusedItemIndex = 0;
         }
@@ -247,13 +247,13 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         // Change transitively effectiveItemsPerPage by modifying _width
         this._width = this.offsetWidth;
         this._itemWidth = Math.floor(this._width / this.effectiveItemsPerPage);
-        this._updateVisibleItems(this._currentPageIndex);
+        this._updateVisibleItems(this._currentSlideIndex);
         // Items per page did not change or the current,
         // therefore page index does not need to be re-adjusted
         if (this.effectiveItemsPerPage === previousItemsPerPage) {
             return;
         }
-        this._focusedItemIndex = clamp(this._focusedItemIndex, this._currentPageIndex, this.items.length - this.effectiveItemsPerPage);
+        this._focusedItemIndex = clamp(this._focusedItemIndex, this._currentSlideIndex, this.items.length - this.effectiveItemsPerPage);
     }
     _updateScrolling(e) {
         if (!e) {
@@ -297,25 +297,25 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         if (target === this.getDomRef()) {
             return;
         }
-        let itemIndex = -1;
+        let pageIndex = -1;
         for (let i = 0; i < this._visibleItems.length; i++) {
             if (this._visibleItems[i].isEqualNode(target?.querySelector("slot")?.assignedNodes()[0])) {
-                itemIndex = i;
+                pageIndex = i;
                 break;
             }
         }
-        if (itemIndex === -1) {
+        if (pageIndex === -1) {
             return;
         }
-        this._focusedItemIndex = itemIndex;
-        // Save reference of the last focused element for each item
-        this._lastFocusedElements[itemIndex] = target;
-        const sortedItemIndex = this._orderOfLastFocusedItems.indexOf(itemIndex);
-        if (sortedItemIndex === -1) {
-            this._orderOfLastFocusedItems.unshift(itemIndex);
+        this._focusedItemIndex = pageIndex;
+        // Save reference of the last focused element for each page
+        this._lastFocusedElements[pageIndex] = target;
+        const sortedPageIndex = this._orderOfLastFocusedPages.indexOf(pageIndex);
+        if (sortedPageIndex === -1) {
+            this._orderOfLastFocusedPages.unshift(pageIndex);
         }
         else {
-            this._orderOfLastFocusedItems.splice(0, 0, this._orderOfLastFocusedItems.splice(sortedItemIndex, 1)[0]);
+            this._orderOfLastFocusedPages.splice(0, 0, this._orderOfLastFocusedPages.splice(sortedPageIndex, 1)[0]);
         }
     }
     _onmouseout() {
@@ -341,7 +341,7 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         }
     }
     async _handleF7Key(e) {
-        const lastFocusedElement = this._lastFocusedElements[this._getLastFocusedItemIndex];
+        const lastFocusedElement = this._lastFocusedElements[this._getLastFocusedActivePageIndex];
         if (!this._lastInnerFocusedElement) {
             const firstFocusable = await getFirstFocusableElement(this.items[this._focusedItemIndex].item);
             firstFocusable?.focus();
@@ -381,36 +381,36 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
     }
     async _handleHome(e) {
         e.preventDefault();
-        this._changePageIndex(0, { moveFocus: true });
+        this._changeSlideIndex(0, { moveFocus: true });
         await renderFinished();
         this.focusItem();
     }
     async _handleEnd(e) {
         e.preventDefault();
-        this._changePageIndex(this.items.length - 1, { moveFocus: true });
+        this._changeSlideIndex(this.items.length - 1, { moveFocus: true });
         await renderFinished();
         this.focusItem();
     }
     async _handlePageUp(e) {
         e.preventDefault();
-        this._changePageIndex(this._currentPageIndex + this._pageStep, { moveFocus: true });
+        this._changeSlideIndex(this._currentSlideIndex + this._pageStep, { moveFocus: true });
         await renderFinished();
         this.focusItem();
     }
     async _handlePageDown(e) {
         e.preventDefault();
-        this._changePageIndex(this._currentPageIndex - this._pageStep, { moveFocus: true });
+        this._changeSlideIndex(this._currentSlideIndex - this._pageStep, { moveFocus: true });
         await renderFinished();
         this.focusItem();
     }
     get _backgroundDesign() {
         return this.backgroundDesign.toLowerCase();
     }
-    get _getLastFocusedItemIndex() {
-        for (let i = 0; i < this._orderOfLastFocusedItems.length; i++) {
-            const itemIndex = this._orderOfLastFocusedItems[i];
-            if (this.isItemVisible(itemIndex)) {
-                return itemIndex;
+    get _getLastFocusedActivePageIndex() {
+        for (let i = 0; i < this._orderOfLastFocusedPages.length; i++) {
+            const pageIndex = this._orderOfLastFocusedPages[i];
+            if (this.isItemInViewport(pageIndex)) {
+                return pageIndex;
             }
         }
         return this._focusedItemIndex;
@@ -434,20 +434,20 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         this.focusItem();
     }
     async navigateArrowRight() {
-        let newCurrentPageIndex = this._currentPageIndex + 1;
-        if (this.cyclic && newCurrentPageIndex > this.items.length - this.effectiveItemsPerPage) {
-            newCurrentPageIndex = 0;
+        let newCurrentSlideIndex = this._currentSlideIndex + 1;
+        if (this.cyclic && newCurrentSlideIndex > this.items.length - this.effectiveItemsPerPage) {
+            newCurrentSlideIndex = 0;
         }
-        this._changePageIndex(newCurrentPageIndex);
+        this._changeSlideIndex(newCurrentSlideIndex);
         await renderFinished();
         this.focusItem();
     }
     async navigateArrowLeft() {
-        let newCurrentPageIndex = this._currentPageIndex - 1;
-        if (this.cyclic && newCurrentPageIndex < 0) {
-            newCurrentPageIndex = this.items.length - 1;
+        let newCurrentSlideIndex = this._currentSlideIndex - 1;
+        if (this.cyclic && newCurrentSlideIndex < 0) {
+            newCurrentSlideIndex = this.items.length - 1;
         }
-        this._changePageIndex(newCurrentPageIndex);
+        this._changeSlideIndex(newCurrentSlideIndex);
         await renderFinished();
         this.focusItem();
     }
@@ -470,36 +470,36 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
      * @public
      */
     navigateTo(itemIndex) {
-        this._changePageIndex(itemIndex, { fireEvent: false });
+        this._changeSlideIndex(itemIndex, { fireEvent: false });
     }
-    _changePageIndex(itemIndex, options = {}) {
+    _changeSlideIndex(itemIndex, options = {}) {
         const { fireEvent = true, moveFocus = false } = options;
-        const newPageIndex = clamp(itemIndex, 0, this.items.length - this.effectiveItemsPerPage);
-        if (moveFocus || (this._focusedItemIndex < newPageIndex || this._focusedItemIndex > newPageIndex + this.effectiveItemsPerPage - 1)) {
+        const newSlideIndex = clamp(itemIndex, 0, this.items.length - this.effectiveItemsPerPage);
+        if (moveFocus || (this._focusedItemIndex < newSlideIndex || this._focusedItemIndex > newSlideIndex + this.effectiveItemsPerPage - 1)) {
             this._focusedItemIndex = clamp(itemIndex, 0, this.items.length - 1);
         }
-        if (this._currentPageIndex === newPageIndex) {
+        if (this._currentSlideIndex === newSlideIndex) {
             return;
         }
-        this._currentPageIndex = newPageIndex;
-        this._updateVisibleItems(newPageIndex);
+        this._currentSlideIndex = newSlideIndex;
+        this._updateVisibleItems(newSlideIndex);
         if (fireEvent) {
-            this.fireDecoratorEvent("navigate", { selectedIndex: newPageIndex });
+            this.fireDecoratorEvent("navigate", { selectedIndex: newSlideIndex });
         }
     }
     _changeFocusIndex(itemIndex) {
         itemIndex = clamp(itemIndex, 0, this.items.length - 1);
-        let newPageIndex = this._currentPageIndex;
-        if (itemIndex < this._currentPageIndex) {
-            newPageIndex = itemIndex;
+        let newSlideIndex = this._currentSlideIndex;
+        if (itemIndex < this._currentSlideIndex) {
+            newSlideIndex = itemIndex;
         }
-        else if (itemIndex > this._currentPageIndex + this.effectiveItemsPerPage - 1) {
-            newPageIndex = itemIndex - this.effectiveItemsPerPage + 1;
+        else if (itemIndex > this._currentSlideIndex + this.effectiveItemsPerPage - 1) {
+            newSlideIndex = itemIndex - this.effectiveItemsPerPage + 1;
         }
-        if (this._currentPageIndex !== newPageIndex) {
-            this._currentPageIndex = newPageIndex;
-            this._updateVisibleItems(newPageIndex);
-            this.fireDecoratorEvent("navigate", { selectedIndex: newPageIndex });
+        if (this._currentSlideIndex !== newSlideIndex) {
+            this._currentSlideIndex = newSlideIndex;
+            this._updateVisibleItems(newSlideIndex);
+            this.fireDecoratorEvent("navigate", { selectedIndex: newSlideIndex });
         }
         this._focusedItemIndex = itemIndex;
     }
@@ -521,10 +521,10 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
             return {
                 id: `${this._id}-carousel-item-${idx + 1}`,
                 item,
-                tabIndex: this.isItemVisible(this._focusedItemIndex) ? 0 : -1,
+                tabIndex: this.isItemInViewport(this._focusedItemIndex) ? 0 : -1,
                 posinset: idx + 1,
                 setsize: this._visibleItems.length,
-                visible: this.isItemVisible(idx),
+                visible: this.isItemInViewport(idx),
             };
         });
     }
@@ -559,7 +559,7 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         }
         return itemsPerPageSizeXL;
     }
-    isItemVisible(index) {
+    isItemInViewport(index) {
         return this._visibleItemsIndexes.includes(index);
     }
     _updateVisibleItems(index) {
@@ -634,7 +634,7 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         const pages = this.pagesCount;
         for (let index = 0; index < pages; index++) {
             dots.push({
-                active: index === this._currentPageIndex,
+                active: index === this._currentSlideIndex,
                 ariaLabel: Carousel_1.i18nBundle.getText(CAROUSEL_DOT_TEXT, index + 1, pages),
             });
         }
@@ -648,16 +648,19 @@ let Carousel = Carousel_1 = class Carousel extends UI5Element {
         };
     }
     get hasPrev() {
-        return this.cyclic || (this._focusedItemIndex - 1 >= 0 && this._currentPageIndex !== 0);
+        return this.cyclic || (this._focusedItemIndex - 1 >= 0 && this._currentSlideIndex !== 0);
     }
     get hasNext() {
-        return this.cyclic || (this._focusedItemIndex + 1 <= this._visibleItems.length - 1 && this._currentPageIndex < this.pagesCount - 1);
+        return this.cyclic || (this._focusedItemIndex + 1 <= this._visibleItems.length - 1 && this._currentSlideIndex < this.pagesCount - 1);
     }
     get suppressAnimation() {
         return this._resizing || getAnimationMode() === AnimationMode.None;
     }
     get _isRTL() {
         return this.effectiveDir === "rtl";
+    }
+    get selectedIndexToShow() {
+        return this._isRTL ? this.items.length - (this.items.length - this._focusedItemIndex) + 1 : this._focusedItemIndex + 1;
     }
     get ofText() {
         return Carousel_1.i18nBundle.getText(CAROUSEL_OF_TEXT);
@@ -743,7 +746,7 @@ __decorate([
 ], Carousel.prototype, "_visibleItemsCount", void 0);
 __decorate([
     property({ type: Number, noAttribute: true })
-], Carousel.prototype, "_currentPageIndex", void 0);
+], Carousel.prototype, "_currentSlideIndex", void 0);
 __decorate([
     slot({ "default": true, type: HTMLElement, individualSlots: true })
 ], Carousel.prototype, "content", void 0);

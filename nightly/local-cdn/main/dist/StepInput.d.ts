@@ -171,8 +171,6 @@ declare class StepInput extends UI5Element implements IFormInputElement {
     _formatter?: NumberFormat;
     _languageChangeHandler?: (lang: string) => Promise<void>;
     _languageChanged?: boolean;
-    _delimiter?: string;
-    _groupSeparator?: string;
     static i18nBundle: I18nBundle;
     formElementAnchor(): Promise<HTMLElement | undefined>;
     get formValidityMessage(): string;
@@ -197,8 +195,6 @@ declare class StepInput extends UI5Element implements IFormInputElement {
     _setupLanguageChangeHandler(): void;
     _cleanupLanguageChangeHandler(): void;
     get formatter(): NumberFormat;
-    get delimiter(): string;
-    get groupSeparator(): string;
     get input(): Input;
     get innerInput(): HTMLInputElement;
     get inputOuter(): Element;
@@ -243,7 +239,6 @@ declare class StepInput extends UI5Element implements IFormInputElement {
     _onkeydown(e: KeyboardEvent): void;
     _getCaretPosition(): number | null;
     _getValueOnkeyDown(e: KeyboardEvent, inputValue: string, cursorPosition?: number): string;
-    _removeGroupSeparators(value: string): string;
     _isInputValueValid(typedValue: string, parsedValue: number): boolean;
     _decSpin(): void;
     _incSpin(): void;

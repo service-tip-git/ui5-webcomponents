@@ -13,7 +13,7 @@ import type Icon from "./Icon.js";
 type CarouselNavigateEventDetail = {
     selectedIndex: number;
 };
-type ChangePageOptions = {
+type ChangeSlideOptions = {
     fireEvent?: boolean;
     moveFocus?: boolean;
 };
@@ -208,16 +208,16 @@ declare class Carousel extends UI5Element {
      */
     _visibleItemsCount: number;
     /**
-     * Defines the current page index, which determines the first visible item.
+     * Defines the current slide index, which contains the visible item in the viewport.
      * @private
      * @since 2.16.0-r.c1
      */
-    _currentPageIndex: number;
+    _currentSlideIndex: number;
     _scrollEnablement: ScrollEnablement;
     _onResizeBound: ResizeObserverCallback;
     _resizing: boolean;
     _lastFocusedElements: Array<HTMLElement>;
-    _orderOfLastFocusedItems: Array<number>;
+    _orderOfLastFocusedPages: Array<number>;
     _lastInnerFocusedElement?: HTMLElement;
     _pageStep: number;
     _visibleItemsIndexes: Array<number>;
@@ -238,7 +238,7 @@ declare class Carousel extends UI5Element {
     onAfterRendering(): void;
     onEnterDOM(): void;
     onExitDOM(): void;
-    validateFocusedIndex(): void;
+    validateSelectedIndex(): void;
     _onResize(): void;
     _updateScrolling(e: ScrollEnablementEventListenerParam): void;
     _onkeydown(e: KeyboardEvent): void;
@@ -255,7 +255,7 @@ declare class Carousel extends UI5Element {
     _handlePageUp(e: KeyboardEvent): Promise<void>;
     _handlePageDown(e: KeyboardEvent): Promise<void>;
     get _backgroundDesign(): string;
-    get _getLastFocusedItemIndex(): number;
+    get _getLastFocusedActivePageIndex(): number;
     navigateLeft(): Promise<void>;
     navigateRight(): Promise<void>;
     navigateArrowRight(): Promise<void>;
@@ -269,7 +269,7 @@ declare class Carousel extends UI5Element {
      * @public
      */
     navigateTo(itemIndex: number): void;
-    _changePageIndex(itemIndex: number, options?: ChangePageOptions): void;
+    _changeSlideIndex(itemIndex: number, options?: ChangeSlideOptions): void;
     _changeFocusIndex(itemIndex: number): void;
     /**
      * The indices of the currently visible items of the component.
@@ -284,7 +284,7 @@ declare class Carousel extends UI5Element {
      */
     get items(): Array<ItemsInfo>;
     get effectiveItemsPerPage(): number;
-    isItemVisible(index: number): boolean;
+    isItemInViewport(index: number): boolean;
     _updateVisibleItems(index: number): void;
     isIndexInRange(index: number): boolean;
     /**
@@ -323,6 +323,7 @@ declare class Carousel extends UI5Element {
     get hasNext(): boolean;
     get suppressAnimation(): boolean;
     get _isRTL(): boolean;
+    get selectedIndexToShow(): number;
     get ofText(): string;
     get ariaLabelTxt(): string | undefined;
     get nextPageText(): string;

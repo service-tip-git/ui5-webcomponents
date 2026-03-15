@@ -179,10 +179,13 @@ let MultiInput = MultiInput_1 = class MultiInput extends Input {
         }
     }
     _handleBackspace(e) {
+        const cursorPosition = this.getDomRef().querySelector(`input`).selectionStart;
+        const selectionEnd = this.getDomRef().querySelector(`input`).selectionEnd;
+        const isValueSelected = cursorPosition === 0 && selectionEnd === this.value.length;
         const tokens = this.tokens;
         const lastToken = tokens.length && tokens[tokens.length - 1];
-        // Only move focus to the last token if the input is empty
-        if (!this.value && lastToken) {
+        // selectionStart property applies only to inputs of types text, search, URL, tel, and password
+        if ((!this.value || (this.value && cursorPosition === 0 && !isValueSelected)) && lastToken) {
             e.preventDefault();
             lastToken.focus();
             this.tokenizer._itemNav.setCurrentItem(lastToken);

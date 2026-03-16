@@ -211,6 +211,7 @@ class Suggestions {
             items[previousSelectedIdx].focused = false;
             this.component.focused = true;
             this.component.hasSuggestionItemSelected = false;
+            this.component.value = this.component.typedInValue;
             this.selectedItemIndex -= 1;
             return;
         }
